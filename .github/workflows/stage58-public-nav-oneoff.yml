@@ -1,0 +1,125 @@
+name: "One-off public AMFI NAV reconstruction"
+on:
+  push:
+    paths: [".github/workflows/stage58-public-nav-oneoff.yml"]
+  workflow_dispatch:
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and calculate public NAV histories
+        env:
+          AMFI_SCHEME_CODES: "147625,152731,153161,152908,154088,120716,119063,152889,152482,149343,152092,153330,152716,152968,152751,120684,149288,147622,148726,148519,150677,148703,152875,152949,122639,118955,120166,148990,120843,118535,150346,152712,148381,151489,150920,152098,151183,150847,154372,150733,151495,150845,150681,118987,120692,125503,119016,119800,140088,113076,111954,113049,106193,113434,105463,152284,151416,151737,149464,150556,150948,150610,150523,151779,120334,119843,148457,119131,120821,119771,119574,120364,129052,120795,118968,120377,154436,154437,154306,152156,154321,118989,118668,140228,118778,130503,125497,145137,118650,119835,148927,119128,119839,119116,119092,150581"
+        run: |
+          mkdir -p research/stage58 output/raw_json
+          cat > /tmp/stage58.py <<'PY'
+          import os,csv,json,hashlib,math,time,statistics,concurrent.futures,urllib.request
+          from datetime import datetime,date,timedelta
+          from collections import defaultdict
+          from pathlib import Path
+          cutoff=date(2026,10,31)
+          codes=os.environ["AMFI_SCHEME_CODES"].split(",")
+          out=Path("research/stage58")
+          raw=Path("output/raw_json")
+          def parse(s): return datetime.strptime(s,"%d-%m-%Y").date()
+          def fetch(code):
+              url=f"https://api.mfapi.in/mf/{code}"
+              for attempt in range(4):
+                  try:
+                      rq=urllib.request.Request(url,headers={"User-Agent":"Stage58-Public-Research/1.0"})
+                      with urllib.request.urlopen(rq,timeout=45) as f: body=f.read()
+                      x=json.loads(body)
+                      if x.get("status")!="SUCCESS" or not isinstance(x.get("data"),list): raise ValueError("Invalid response")
+                      raw.joinpath(f"{code}.json").write_bytes(body)
+                      return code,x,hashlib.sha256(body).hexdigest(),""
+                  except Exception as e:
+                      error=str(e)
+                      time.sleep(min(2**attempt,8))
+              return code,None,"",error
+          def write(name,rows,cols):
+              with out.joinpath(name).open("w",newline="") as f:
+                  w=csv.DictWriter(f,fieldnames=cols,extrasaction="ignore")
+                  w.writeheader();w.writerows(rows)
+          def calc(code,x,sha):
+              obs={}
+              for r in x["data"]:
+                  try:
+                      d=parse(r["date"]);v=float(r["nav"])
+                      if d<=cutoff and math.isfinite(v) and v>0: obs[d]=v
+                  except: pass
+              pts=sorted(obs.items());m=x.get("meta") or {}
+              result=dict(scheme_code=code,source_name=m.get("scheme_name",""),source_isin=m.get("isin_growth") or "",
+                  source_url=f"https://api.mfapi.in/mf/{code}",sha256=sha,n_obs=len(pts),
+                  first_date=pts[0][0].isoformat() if pts else "",last_date=pts[-1][0].isoformat() if pts else "",
+                  last_nav=pts[-1][1] if pts else "",status="OK" if len(pts)>1 else "INSUFFICIENT_DATA")
+              if len(pts)<2:return result,{}
+              end,ev=pts[-1]; monthly={}
+              for d,v in pts:monthly[d.year*12+d.month]=(d,v)
+              rets={k:monthly[k][1]/monthly[k-1][1]-1 for k in sorted(monthly) if k-1 in monthly}
+              def maxdd(series):
+                  peak=series[0][1];worst=0
+                  for d,v in series:peak=max(peak,v);worst=min(worst,v/peak-1)
+                  return 100*worst
+              result["dd_full_pct"]=round(maxdd(pts),5)
+              for yrs in (1,3,5,10):
+                  target=end-timedelta(days=round(yrs*365.2425))
+                  anchors=[(d,v) for d,v in pts if 0<=(target-d).days<=10]
+                  if pts[0][0]<=target and anchors:
+                      d,v=anchors[-1]
+                      result[f"cagr_{yrs}y_pct"]=round(100*((ev/v)**(365.2425/(end-d).days)-1),5)
+                  else:result[f"cagr_{yrs}y_pct"]=""
+              end5=end-timedelta(days=round(5*365.2425))
+              result["dd_5y_pct"]=round(maxdd([(d,v) for d,v in pts if d>=end5]),5) if pts[0][0]<=end5 else ""
+              endmonth=end.year*12+end.month
+              last36=[rets.get(endmonth-i) for i in range(35,-1,-1)]
+              result["vol_36m_pct"]=round(100*statistics.stdev(last36)*math.sqrt(12),5) if all(v is not None for v in last36) and len(rets)>=36 else ""
+              result["months_of_return"]=len(rets)
+              return result,rets
+          rows=[];fail=[];rsets={}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+              for code,x,sha,error in pool.map(fetch,codes):
+                  if x is None:
+                      fail.append(dict(scheme_code=code,error=error));continue
+                  r,rset=calc(code,x,sha);rows.append(r);rsets[code]=rset
+          cols=["scheme_code","source_name","source_isin","source_url","sha256","n_obs",
+                "first_date","last_date","last_nav","cagr_1y_pct","cagr_3y_pct","cagr_5y_pct",
+                "cagr_10y_pct","vol_36m_pct","dd_5y_pct","dd_full_pct","months_of_return","status"]
+          write("public_nav_metrics.csv",rows,cols)
+          write("public_nav_errors.csv",fail,["scheme_code","error"])
+          term=cutoff.year*12+cutoff.month
+          months=list(range(term-35,term+1))
+          elig={k:r for k,r in rsets.items() if all(j in r for j in months)}
+          corr=[]
+          keys=sorted(elig)
+          for i,a in enumerate(keys):
+              va=[elig[a][j] for j in months]
+              for b in keys[i:]:
+                  vb=[elig[b][j] for j in months]
+                  if statistics.pstdev(va)==0 or statistics.pstdev(vb)==0:continue
+                  ma=statistics.mean(va);mb=statistics.mean(vb)
+                  correlation=sum((q-ma)*(z-mb) for q,z in zip(va,vb))/(math.sqrt(sum((q-ma)**2 for q in va)*sum((z-mb)**2 for z in vb)))
+                  corr.append(dict(code_a=a,code_b=b,correlation=round(correlation,8),months=36))
+          write("public_nav_correlations_36m.csv",corr,["code_a","code_b","correlation","months"])
+          summary={"requested":len(codes),"calculated":len(rows),"errors":len(fail),"36m_qualified":len(elig),
+                  "correlation_pairs":len(corr),"cutoff":str(cutoff),"source":"mfapi.in; independent AMFI verification still required"}
+          out.joinpath("public_nav_summary.json").write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary))
+          PY
+          python /tmp/stage58.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage58-public-nav-raw-and-calculated
+          path: |
+            output/raw_json
+            research/stage58
+          retention-days: 7
+      - name: Commit public metrics only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/stage58/
+          git diff --cached --quiet || (git commit -m "Publish public 2026 NAV reconstruction metrics" && git push)
