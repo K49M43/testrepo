@@ -1,0 +1,45 @@
+name: Stage59 AMFI TER API inspection
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-api-inspect.yml"]
+jobs:
+  scan-js:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect public AMFI client data paths
+        run: |
+          mkdir -p research/stage59
+          python - <<'PY'
+          import urllib.request,re,html,json,concurrent.futures
+          BASE='https://www.amfiindia.com'
+          def get(url):
+           try:
+            return urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'}),timeout=25).read().decode('utf-8','replace')
+           except Exception as e:return "ERROR:"+str(e)
+          s=get(BASE+'/ter-of-mf-schemes')
+          chunks=list(dict.fromkeys(re.findall(r'<script[^>]*src="([^"]+)"',s)))
+          rg=re.compile(r'(?i)(?:https?[:\\/]+[^"\\s]{10,150}|/api/[a-zA-Z0-9_/?=&.-]+|[a-zA-Z]{0,16}(?:getTER|getTer|MFTER|mfTer|expenseRatio|expense-ratio|ter_of|terDetails|ter-of|baseExpense|brokerageCost)[a-zA-Z0-9_:-]{0,22})')
+          def inspect(path):
+           txt=get(BASE+path)
+           if len(txt)<300:return {'path':path,'bytes':len(txt),'error':txt}
+           occ=list(rg.finditer(txt))
+           sni=[txt[max(0,m.start()-150):min(len(txt),m.end()+210)] for m in occ]
+           filt=[]
+           for x in sni:
+            if x not in filt:filt.append(x)
+           return {'path':path,'bytes':len(txt),'snippets':filt[:80]}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+           data=list(pool.map(inspect,chunks))
+          out={'chunks':len(chunks),'items':[d for d in data if d.get('snippets') or d.get('error')]}
+          open('research/stage59/amfi_ter_client_endpoints.json','w').write(json.dumps(out,indent=2))
+          print('chunks',len(chunks),'matched chunks',len(out['items']))
+          PY
+      - name: Commit public endpoint diagnostics
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Inspect public AMFI TER application API references" && git push)
