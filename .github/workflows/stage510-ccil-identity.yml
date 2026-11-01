@@ -1,0 +1,96 @@
+name: Stage510 CCIL sovereign security master
+on:
+  push:
+    paths: [".github/workflows/stage510-ccil-identity.yml"]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public CCIL security registry ISIN coupon and maturity
+        run: |
+          mkdir -p research/stage510
+          cat > /tmp/verify.py <<'PY'
+          import urllib.request,re,csv,json,html,hashlib,datetime
+          from html.parser import HTMLParser
+          from pathlib import Path
+          out=Path('research/stage510')
+          targets=[
+          ("C066","IN0020250133",6.68,"2033-01-27"),("C067","IN0020230085",7.18,"2033-08-14"),
+          ("C068","IN0020240019",7.10,"2034-04-08"),("C069","IN0020240100",6.90,"2034-08-05"),
+          ("C070","IN0020040039",7.50,"2034-08-10"),("C071","IN0020200096",6.19,"2034-09-16"),
+          ("C072","IN0020240126",6.79,"2034-10-07"),("C073","IN0020240159",6.79,"2034-12-02"),
+          ("C074","IN0020150051",7.73,"2034-12-19"),("C075","IN0020200245",6.22,"2035-03-16"),
+          ("C076","IN0020250026",6.33,"2035-05-05"),("C077","IN0020210020",6.64,"2035-06-16"),
+          ("C078","IN0020050012",7.40,"2035-09-09"),("C079","IN0020250091",6.48,"2035-10-06"),
+          ("C080","IN0020210152",6.67,"2035-12-15"),("C081","IN0020260025",6.94,"2036-05-11"),
+          ("C082","IN0020220029",7.54,"2036-05-23"),("C083","IN0020060045",8.33,"2036-06-07"),
+          ("C084","IN0020220102",7.41,"2036-12-19"),("C085","IN0020230077",7.18,"2037-07-24"),
+          ("C086","IN0020080050",6.83,"2039-01-19"),("C087","IN0020240027",7.23,"2039-04-15"),
+          ("C088","IN0020240134",6.92,"2039-11-18"),("C089","IN0020250042",6.68,"2040-07-07")]
+          urls=[
+           'https://enotice.ccilindia.com/ERCS/EligibleISIN.jsp?SEGMENT=CBLO',
+           'https://enotice.ccilindia.com/ERCS/EligibleISIN.jsp?SEGMENT=SECURITIES']
+          class Table(HTMLParser):
+           def __init__(self):super().__init__();self.row=False;self.td=False;self.current=[];self.rows=[];self.txt=''
+           def handle_starttag(self,tag,attrs):
+            if tag=='tr':self.row=True;self.current=[]
+            if tag in ('td','th') and self.row:self.td=True;self.txt=''
+           def handle_data(self,data):
+            if self.td:self.txt+=data
+           def handle_endtag(self,tag):
+            if tag in ('td','th') and self.td:self.current.append(' '.join(self.txt.split()));self.td=False
+            if tag=='tr' and self.row:
+             if self.current:self.rows.append(self.current)
+             self.row=False
+          resp=[];alllines=[]
+          for u in urls:
+           try:
+            req=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0'})
+            with urllib.request.urlopen(req,timeout=35) as f:
+             raw=f.read();status=f.status
+            src=raw.decode('utf-8','replace')
+            p=Table();p.feed(src)
+            lines=[' | '.join(x) for x in p.rows]
+            alllines+=[(u,x) for x in lines]
+            resp.append(dict(url=u,http=status,html_bytes=len(raw),table_rows=len(lines),sha256=hashlib.sha256(raw).hexdigest(),sample=lines[:3]))
+           except Exception as e:resp.append(dict(url=u,error=str(e)))
+          rows=[]
+          for cid,isin,coupon,mat in targets:
+           candidates=[(url,line) for url,line in alllines if isin in line]
+           valid=[]
+           for u,line in candidates:
+            m=re.search(r'(\d+\.\d+)\s*%?\s*(?:GS|GOVT)',line,re.I)
+            cp=float(m.group(1)) if m else None
+            expected=datetime.date.fromisoformat(mat)
+            date_string=expected.strftime('%d/%m/%Y')
+            acceptable=[date_string,expected.strftime('%d-%b-%y'),expected.strftime('%d-%b-%Y')]
+            dateok=any(a.casefold() in line.casefold() for a in acceptable)
+            couponok= cp is not None and abs(cp-coupon)<.011
+            valid.append(dict(u=u,line=line,cp=cp,dateok=dateok,couponok=couponok))
+           if any(v['couponok'] and v['dateok'] for v in valid):
+            match=next(v for v in valid if v['couponok'] and v['dateok'])
+            status='ISIN_COUPON_MATURITY_MATCH'
+           elif valid:
+            match=valid[0];status='ISIN_PRESENT_NEEDS_TEXT_REVIEW'
+           else:match=None;status='NOT_PRESENT_IN_CRAWLED_CCIL_HTML'
+           rows.append(dict(candidate_id=cid,isin=isin,coupon_pct=coupon,maturity=mat,
+            ccil_status=status,ccil_url=match['u'] if match else '',matched_line=match['line'] if match else '',
+            registry_scope='CCIL eligibility not exhaustive proof of securities outstanding'))
+          columns=list(rows[0])
+          with (out/'goi_ccil_24_verification.csv').open('w',newline='') as f:
+           w=csv.DictWriter(f,fieldnames=columns);w.writeheader();w.writerows(rows)
+          summary={'num_securities':len(rows),'fully_matched':sum(r['ccil_status']=='ISIN_COUPON_MATURITY_MATCH' for r in rows),
+          'isin_present_review':sum(r['ccil_status']=='ISIN_PRESENT_NEEDS_TEXT_REVIEW' for r in rows),'not_present':sum(r['ccil_status']=='NOT_PRESENT_IN_CRAWLED_CCIL_HTML' for r in rows),'source_reports':resp}
+          (out/'goi_ccil_verification_summary.json').write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary)[:3000])
+          PY
+          python /tmp/verify.py
+      - name: Commit public identity output
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage510
+          git diff --cached --quiet || (git commit -m "Verify 24 public sovereign security identities against CCIL" && git push)
