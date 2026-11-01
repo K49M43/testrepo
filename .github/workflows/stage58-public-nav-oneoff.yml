@@ -1,4 +1,4 @@
-name: "Public AMFI NAV reconstruction and corrected verification"
+name: "Public AMFI NAV reconciliation with split-date tolerance"
 on:
   push:
     paths: [".github/workflows/stage58-public-nav-oneoff.yml"]
