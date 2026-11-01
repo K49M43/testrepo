@@ -35,7 +35,7 @@ def official():
    except Exception as exc:
     error=str(exc);data=None;time.sleep(attempt+1)
   if data is None:
-   reports.append(dict(source=label,url=url,status="FAILED",rows=0,error=error));continue
+   reports.append(dict(source=label,url=url,status="FAILED",rows=0,error=error,sample=""));continue
   n=0
   for line in data.splitlines():
    chunks=line.strip().split(";")
@@ -49,8 +49,8 @@ def official():
     if d<=CUT and math.isfinite(nav) and nav>0:
      records[code][d]=(nav,name,isin,url,label);n+=1
    except Exception:pass
-  reports.append(dict(source=label,url=url,status="OK" if n else "NO_RECORDS",rows=n,error=""))
- wr("official_source_reports.csv",["source","url","status","rows","error"],reports)
+  reports.append(dict(source=label,url=url,status="OK" if n else "NO_RECORDS",rows=n,error="",sample=repr(data[:180])))
+ wr("official_source_reports.csv",["source","url","status","rows","error","sample"],reports)
  return records,reports
 def monthly(ret,end):
  terminal=end.year*12+end.month
