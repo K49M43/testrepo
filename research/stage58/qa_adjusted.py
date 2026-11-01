@@ -48,16 +48,20 @@ for f in sorted(RAW.glob("*.json")):
  if len(pts)<2:continue
  approved=[]
  for d,k,url in bycode.get(code,[]):
-  before=[(day,v) for day,v in pts if day<d and (d-day).days<14]
-  after=[(day,v) for day,v in pts if day>=d and (day-d).days<14]
-  if before and after:
-   pre=before[-1][1];post=after[0][1];ratio=post/pre
-   # Verify an order-of-magnitude unit drop, within broad market-day tolerance.
-   verified=abs(ratio*k-1)<.30
-   status="EVENT_MATCHED" if verified else "NOT_MATCHED_OR_ALREADY_ADJUSTED"
+  # Match the *observed* discontinuity, whose NAV publication date can lag exchange ex-date.
+  candidates=[]
+  for ix in range(1,len(pts)):
+   pday,pnav=pts[ix-1];day,nav=pts[ix]
+   ratio=nav/pnav
+   if abs((day-d).days)<=10 and (day-pday).days<=12 and abs(ratio*k-1)<0.30:
+    candidates.append((day,ratio))
+  if candidates:
+   day,ratio=min(candidates,key=lambda z:abs((z[0]-d).days))
+   approved.append((day,k))
+   status="OBSERVED_NAV_BREAK_MATCHES_DOCUMENTED_SPLIT"
   else:
-   ratio=None;verified=False;status="DATE_WINDOW_NO_SOURCE_DATA"
-  if verified:approved.append((d,k))
+   ratio=None
+   status="DOCUMENTED_SPLIT_BUT_NO_MATCHED_DAILY_BREAK"
   adjustments.append(dict(scheme_code=code,ex_date=str(d),factor=k,observed_ratio=round(ratio,8) if ratio else "",
        status=status,source_url=url))
  adjusted=[]
