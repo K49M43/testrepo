@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://www.amfiindia.com/api/populate-ter-month?year=2026",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes_fragment": 2,
+    "sample": "[]"
+  },
+  {
+    "url": "https://www.amfiindia.com/api/populate-ter-year",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&page=1&pageSize=5",
+    "error": "HTTP Error 400: Bad Request"
+  },
+  {
+    "url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&excel=true",
+    "error": "HTTP Error 400: Bad Request"
+  },
+  {
+    "url": "https://portal.amfiindia.com/api/populate-ter-month?year=2026",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://portal.amfiindia.com/api/populate-ter-year",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://portal.amfiindia.com/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&page=1&pageSize=5",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://portal.amfiindia.com/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&excel=true",
+    "error": "HTTP Error 404: Not Found"
+  }
+]
