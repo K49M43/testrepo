@@ -53,9 +53,8 @@ def official():
  wr("official_source_reports.csv",["source","url","status","rows","error"],reports)
  return records,reports
 def monthly(ret,end):
- dates={d.year*12+d.month:v for d,v in ret}
  terminal=end.year*12+end.month
- return [dates.get(terminal-i) for i in range(35,-1,-1)]
+ return [ret.get(terminal-i) for i in range(35,-1,-1)]
 def corr(a,b):
  ma=statistics.mean(a);mb=statistics.mean(b)
  num=sum((x-ma)*(y-mb) for x,y in zip(a,b))
