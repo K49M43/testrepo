@@ -128,7 +128,7 @@ write("adjusted_correlations_36m.csv",cor,["scheme_a","scheme_b","correlation","
 summary=dict(n_schemes=len(res),
  official_reconciled=sum(x["official_status"]=="PASS_SAMPLED_OFFICIAL" for x in res),
  corporate_action_events=len(adjustments),
- corporate_action_events_matched=sum(x["status"]=="EVENT_MATCHED" for x in adjustments),
+ corporate_action_events_matched=sum(x["status"]=="OBSERVED_NAV_BREAK_MATCHES_DOCUMENTED_SPLIT" for x in adjustments),
  unresolved_scheme_jumps=sum(x["unresolved_daily_jumps"]>0 for x in res),
  clean_36m_n=len(risk),official_verified_clean_36m_n=len(cleanrisk),
  approved_pairs=len(cor),no_official=sum(x["official_status"]!="PASS_SAMPLED_OFFICIAL" for x in res),
