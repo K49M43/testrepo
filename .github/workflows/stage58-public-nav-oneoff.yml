@@ -1,4 +1,4 @@
-name: "AMFI date-corrected and split-adjusted NAV audit"
+name: "AMFI eight-column verified NAV quality audit"
 on:
   push:
     paths: [".github/workflows/stage58-public-nav-oneoff.yml"]
