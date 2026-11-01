@@ -1,4 +1,4 @@
-name: "One-off public AMFI NAV reconstruction"
+name: "Public AMFI NAV reconstruction and fast verification"
 on:
   push:
     paths: [".github/workflows/stage58-public-nav-oneoff.yml"]
