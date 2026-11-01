@@ -1,0 +1,81 @@
+name: Stage59 Single Official AMFI TER Excel Export
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-excel.yml"]
+jobs:
+  import-2026-ter:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download single AMFI official Oct 2026 expense export
+        run: |
+          mkdir -p research/stage59
+          cat > /tmp/read_amfi_export.py <<'PY'
+          import csv,json,zipfile,xml.etree.ElementTree as ET,io,urllib.request,hashlib,re,unicodedata
+          from pathlib import Path
+          u='https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true'
+          rq=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0','Accept':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
+          with urllib.request.urlopen(rq,timeout=180) as resp:raw=resp.read()
+          if not raw.startswith(b'PK'):raise RuntimeError('Not a ZIP/XLSX file')
+          x=zipfile.ZipFile(io.BytesIO(raw));ns={'m':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          shared=[]
+          if 'xl/sharedStrings.xml' in x.namelist():
+           root=ET.fromstring(x.read('xl/sharedStrings.xml'))
+           for si in root.findall('m:si',ns):shared.append(''.join(t.text or '' for t in si.findall('.//m:t',ns)))
+          def cells(row):
+           out={}
+           for cell in row.findall('m:c',ns):
+            key=re.match(r'[A-Z]+',cell.attrib.get('r',''))
+            if not key:continue
+            key=key.group()
+            typ=cell.attrib.get('t')
+            v=cell.find('m:v',ns)
+            if typ=='inlineStr':
+             ix=cell.find('m:is',ns);val=''.join(n.text or '' for n in ix.findall('.//m:t',ns)) if ix is not None else ''
+            elif v is None:val=''
+            elif typ=='s':
+             try:val=shared[int(v.text)]
+             except:val=v.text
+            else:val=v.text
+            out[key]=val
+           return out
+          source='xl/worksheets/sheet1.xml'
+          rs=[]
+          with x.open(source) as f:
+           for ev,elem in ET.iterparse(f,events=('end',)):
+            if elem.tag.endswith('}row'):
+             rs.append(cells(elem));elem.clear()
+          if not rs:raise RuntimeError('No Excel rows')
+          keys=list(rs[0])
+          header=rs[0]
+          normalized=[{str(header.get(k,k)):r.get(k,'') for k in keys} for r in rs[1:]]
+          path=Path('research/stage59')
+          Path(path,'amfi_ter_export_diagnostic.json').write_text(json.dumps({'total_excel_rows':len(rs),'column_headers':header,'first_records':normalized[:3],'export_url':u,'download_size':len(raw),'sha256':hashlib.sha256(raw).hexdigest()},indent=2))
+          # Keep only newest dated row per NSDL scheme code, preserving daily expenses.
+          def dval(r):
+           for k,v in r.items():
+            if 'date' in k.casefold():return v
+           return ''
+          def sec(r):
+           for k in r:
+            if 'scheme' in k.casefold() and ('code' in k.casefold() or 'nsdl' in k.casefold()):return str(r[k])
+           return ''
+          latest={}
+          for r in normalized:
+           k=sec(r) or r.get('Scheme_Name') or r.get('Scheme Name') or ''
+           if not k:continue
+           if k not in latest or dval(r)>=dval(latest[k]):latest[k]=r
+          if normalized:
+           with Path(path,'amfi_ter_oct2026_export_latest.csv').open('w',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=list(normalized[0]),extrasaction='ignore');w.writeheader();w.writerows(latest.values())
+          print('export row count',len(normalized),'latest scheme',len(latest),'cols',list(normalized[0]) if normalized else [])
+          PY
+          python /tmp/read_amfi_export.py
+      - name: Save public summaries
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Collect official October 2026 expense ratio export" && git push)
