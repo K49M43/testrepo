@@ -113,6 +113,7 @@ jobs:
       - name: Official AMFI NAV reconciliation and discontinuity QA
         run: |
           python research/stage58/qa_public_history.py
+          python research/stage58/qa_adjusted.py
       - uses: actions/upload-artifact@v4
         with:
           name: stage58-public-nav-raw-and-calculated
