@@ -1,0 +1,66 @@
+name: Stage59 Match official TER to verified NAV identities
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-match96.yml"]
+jobs:
+  match:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconcile AMFI scheme names to 96 already-verified scheme codes
+        run: |
+          python - <<'PY'
+          import csv,re,unicodedata,datetime,json
+          from collections import defaultdict,Counter
+          from pathlib import Path
+          folder=Path('research/stage59')
+          with open(folder/'amfi_ter_oct2026_export_latest.csv',newline='') as f:ter=list(csv.DictReader(f))
+          with open('research/stage58/public_nav_metrics.csv',newline='') as f:nav=list(csv.DictReader(f))
+          def norm(s):
+           s=unicodedata.normalize('NFKD',s).casefold()
+           s=re.sub(r'\b(direct plan|regular plan|direct growth|regular growth|growth option|option growth|direct|regular|growth|plan|option)\b',' ',s)
+           s=re.sub(r'[^a-z0-9]',' ',s)
+           return ' '.join(s.split())
+          idx=defaultdict(list)
+          for r in ter:idx[norm(r['Scheme Name'])].append(r)
+          cols=['scheme_code','nav_name','source_isin','status','ter_scheme_name','nsdl_code','ter_date','D_TER','D_BER','D_BrokerageCost','D_TransactionCost','D_StatutoryLevies','R_TER','TER_TOTAL_MATH_CHECK','official_url']
+          matches=[]
+          for s in nav:
+           picks=idx.get(norm(s['source_name']),[])
+           if len(picks)==1: status='UNIQUE_SCHEME_NAME';r=picks[0]
+           elif not picks:status='NO_EXACT_CANONICAL';r=None
+           else:status='AMBIGUOUS_SCHEME_NAME';r=None
+           row={'scheme_code':s['scheme_code'],'nav_name':s['source_name'],'source_isin':s['source_isin'],'status':status,
+                'official_url':'https://www.amfiindia.com/ter-of-mf-schemes'}
+           if r:
+            row.update({'ter_scheme_name':r['Scheme Name'],'nsdl_code':r['NSDL Scheme Code'],
+                 'ter_date':str((datetime.date(1899,12,30)+datetime.timedelta(days=int(float(r['TER Date']))))),
+                 'D_TER':r['Direct Plan - Total TER (%)'],'D_BER':r['Direct Plan - Base Expense Ratio (BER) (%)'],
+                 'D_BrokerageCost':r['Direct Plan - Brokerage cost (%)'],
+                 'D_TransactionCost':r['Direct Plan - Transaction Cost incurred for the purpose of execution of trade (%)'],
+                 'D_StatutoryLevies':r['Direct Plan - Statutory Levies (including GST) (%)'],
+                 'R_TER':r['Regular Plan - Total TER (%)']})
+            try:
+             actual=float(row['D_TER']);calc=sum(float(row[k]) for k in ['D_BER','D_BrokerageCost','D_TransactionCost','D_StatutoryLevies'])
+             row['TER_TOTAL_MATH_CHECK']='PASS' if abs(calc-actual)<.021 else 'FAILED'
+            except Exception:row['TER_TOTAL_MATH_CHECK']='NOT_COMPUTABLE'
+           matches.append(row)
+          with open(folder/'amfi_ter_matched_96_v14.csv','w',newline='') as f:
+           w=csv.DictWriter(f,fieldnames=cols);w.writeheader();w.writerows(matches)
+          summary={'scheme_count':len(nav),'exact_scheme_name':sum(x['status']=='UNIQUE_SCHEME_NAME' for x in matches),
+            'ambiguous':sum(x['status']=='AMBIGUOUS_SCHEME_NAME' for x in matches),
+            'unmatched':sum(x['status']=='NO_EXACT_CANONICAL' for x in matches),
+            'direct_total_numeric':sum(x.get('D_TER','') not in ('','-') for x in matches),
+            'total_math_checks':dict(Counter(x.get('TER_TOTAL_MATH_CHECK','NO_MATCH') for x in matches)),
+            'official_period':'October 2026'}
+          (folder/'amfi_ter_match96_summary.json').write_text(json.dumps(summary,indent=2))
+          print(summary)
+          PY
+      - name: Commit public reconciliation
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Match official AMFI 2026 scheme expense disclosures to 96 NAV identities" && git push)
