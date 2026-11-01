@@ -8,7 +8,11 @@ from pathlib import Path
 from collections import defaultdict
 BASE=Path("research/stage58"); RAW=Path("output/raw_json"); CUT=date(2026,10,31)
 BASE.mkdir(parents=True,exist_ok=True)
-def dt(x):return datetime.strptime(x,"%d-%m-%Y").date()
+def dt(x):
+ for fmt in ("%d-%m-%Y","%d-%b-%Y"):
+  try:return datetime.strptime(x,fmt).date()
+  except ValueError:pass
+ raise ValueError("Unsupported AMFI date: "+x)
 def wr(name,cols,rows):
  with (BASE/name).open("w",newline="") as f:
   w=csv.DictWriter(f,fieldnames=cols,extrasaction="ignore");w.writeheader();w.writerows(rows)
