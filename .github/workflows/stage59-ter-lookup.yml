@@ -1,0 +1,36 @@
+name: Stage59 AMFI TER public source discovery
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-lookup.yml"]
+  workflow_dispatch:
+jobs:
+  inspect-ter:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect published AMFI TER interface
+        run: |
+          mkdir -p research/stage59
+          python - <<'PY'
+          import urllib.request,re,json,html
+          u='https://www.amfiindia.com/ter-of-mf-schemes'
+          req=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0 (compatible; investor researcher)'})
+          try:
+           x=urllib.request.urlopen(req,timeout=35).read().decode('utf-8','replace')
+           patterns=[r'<form[^>]*>',r'<select[^>]*>',r'<option[^>]*>',r'<script[^>]*src="[^"]+"',r'<a[^>]*href="[^"]+"',r'.{0,140}(?:MFTER|TERDetails|expense|ratio|api/|/api).{0,180}']
+           results={'http_status':'OK','length':len(x),'title':re.findall(r'<title[^>]*>(.*?)</title>',x,re.S|re.I)[:3],'snippets':{}}
+           for p in patterns:
+            vals=re.findall(p,x,re.S|re.I);results['snippets'][p]=[html.unescape(v[:650]) for v in vals[:80]]
+           open('research/stage59/amfi_ter_interface.json','w').write(json.dumps(results,indent=2))
+          except Exception as ex:
+           open('research/stage59/amfi_ter_interface.json','w').write(json.dumps({'error':str(ex)}))
+          PY
+      - name: Preserve public diagnostic
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Capture public AMFI TER interface diagnostics" && git push)
