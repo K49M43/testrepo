@@ -12,7 +12,7 @@ def dt(x):return datetime.strptime(x,"%d-%m-%Y").date()
 def wr(name,cols,rows):
  with (BASE/name).open("w",newline="") as f:
   w=csv.DictWriter(f,fieldnames=cols,extrasaction="ignore");w.writeheader();w.writerows(rows)
-def req(url,timeout=100):
+def req(url,timeout=18):
  rq=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (public investment research; citation AMFI)"})
  with urllib.request.urlopen(rq,timeout=timeout) as r:return r.read().decode("utf-8-sig","replace")
 def official():
@@ -27,7 +27,7 @@ def official():
   sources.append((label,f"https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt={a}&todt={b}",8))
  for label,url,colcount in sources:
   data=None;error=""
-  for attempt in range(3):
+  for attempt in range(1):
    try:
     data=req(url)
     if data.lower().find("<html")>=0 or len(data)<20000:raise ValueError(f"stub_html_or_short_response size={len(data)}")
