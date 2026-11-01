@@ -6,35 +6,40 @@
       "url": "https://portal.amfiindia.com/spages/NAVAll.txt",
       "status": "NO_RECORDS",
       "rows": 0,
-      "error": ""
+      "error": "",
+      "sample": "\"Scheme Code;ISIN Div Payout/ ISIN Growth;ISIN Div Reinvestment;Scheme Name;Plan;Option;Net Asset Value;Date\\r\\n \\r\\nOpen Ended Schemes(Children\u2019s Fund - Childrens' Fund)\\r\\n \\r\\nAxis Mutua\""
     },
     {
       "source": "Oct26",
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=26-Oct-2026&todt=31-Oct-2026",
       "status": "NO_RECORDS",
       "rows": 0,
-      "error": ""
+      "error": "",
+      "sample": "'Scheme Code;NAV Name;Plan;Option;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Date\\r\\n\\r\\nOpen Ended Schemes ( Equity Scheme - Multi Cap Fund )\\r\\n\\r\\n\\r\\nAditya Birla S'"
     },
     {
       "source": "Jun26",
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Jun-2026&todt=30-Jun-2026",
       "status": "NO_RECORDS",
       "rows": 0,
-      "error": ""
+      "error": "",
+      "sample": "'Scheme Code;NAV Name;Plan;Option;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Date\\r\\n\\r\\nOpen Ended Schemes ( Money Market )\\r\\n\\r\\n\\r\\nTaurus Mutual Fund\\r\\n139619;Tauru'"
     },
     {
       "source": "Sep25",
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Sep-2025&todt=30-Sep-2025",
       "status": "NO_RECORDS",
       "rows": 0,
-      "error": ""
+      "error": "",
+      "sample": "'Scheme Code;NAV Name;Plan;Option;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Date\\r\\n\\r\\nOpen Ended Schemes ( Money Market )\\r\\n\\r\\n\\r\\nTaurus Mutual Fund\\r\\n139619;Tauru'"
     },
     {
       "source": "Sep23",
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Sep-2023&todt=30-Sep-2023",
       "status": "NO_RECORDS",
       "rows": 0,
-      "error": ""
+      "error": "",
+      "sample": "'Scheme Code;NAV Name;Plan;Option;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Date\\r\\n\\r\\nOpen Ended Schemes ( Money Market )\\r\\n\\r\\n\\r\\nTaurus Mutual Fund\\r\\n139619;Tauru'"
     }
   ],
   "official_covered": 0,
