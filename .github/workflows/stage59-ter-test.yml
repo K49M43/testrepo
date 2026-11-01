@@ -1,0 +1,40 @@
+name: Stage59 AMFI public TER endpoint test
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-test.yml"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test public 2026 TER endpoint
+        run: |
+          mkdir -p research/stage59
+          python - <<'PY'
+          import urllib.request,urllib.error,json
+          endpoints=[
+           '/api/populate-ter-month?year=2026',
+           '/api/populate-ter-year',
+           '/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&page=1&pageSize=5',
+           '/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&excel=true',
+          ]
+          hosts=['https://www.amfiindia.com','https://portal.amfiindia.com']
+          rows=[]
+          for host in hosts:
+           for ep in endpoints:
+            try:
+             rq=urllib.request.Request(host+ep,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+             with urllib.request.urlopen(rq,timeout=22) as z:
+              a=z.read(20000);typ=z.headers.get('content-type','')
+              rows.append({'url':host+ep,'status':z.status,'content_type':typ,'bytes_fragment':len(a),'sample':a[:4000].decode('utf-8','replace')})
+            except Exception as e:rows.append({'url':host+ep,'error':str(e)})
+          open('research/stage59/ter_endpoint_tests.json','w').write(json.dumps(rows,indent=2))
+          PY
+      - name: Save endpoints
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Record public AMFI 2026 expense endpoint tests" && git push)
