@@ -1,4 +1,4 @@
-name: "Public AMFI NAV reconciliation with split-date tolerance"
+name: "AMFI date-corrected and split-adjusted NAV audit"
 on:
   push:
     paths: [".github/workflows/stage58-public-nav-oneoff.yml"]
