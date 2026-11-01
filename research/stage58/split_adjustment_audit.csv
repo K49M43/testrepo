@@ -1,0 +1,13 @@
+scheme_code,ex_date,factor,observed_ratio,status,source_url
+105463,2021-03-25,100,0.99688067,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.nseindia.com/get-quote/equity/GOLDBETA/UTI-Mutual-Fund---UTI-Gold-Exchange-Traded-Fund
+106193,2015-04-13,10,0.99719838,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.nseindia.com/companies-listing/corporate-filings-actions?symbol=GOLD1
+106193,2021-07-22,10,0.98553769,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.nseindia.com/companies-listing/corporate-filings-actions?symbol=GOLD1
+111954,2022-01-06,100,0.99289672,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.msei.in/SX-Content/Circulars/2022/January/Circular-11335.pdf
+113049,2021-02-17,100,0.98459919,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.nseindia.com/get-quote/equity/HDFCGOLD/HDFC-Gold-ETF
+113076,2016-06-09,10,,DATE_WINDOW_NO_SOURCE_DATA,https://www.msei.in/markets/equity/get-quotes/etf?series=EQ&symbol=GOLDIETF
+113076,2018-11-15,10,1.00573429,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.msei.in/markets/equity/get-quotes/etf?series=EQ&symbol=GOLDIETF
+113434,2020-07-23,100,1.01551084,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://piickr.in/index.php/etfs/GOLDAXIS
+140088,2019-12-19,100,0.99754451,NOT_MATCHED_OR_ALREADY_ADJUSTED,https://www.msei.in/SX-Content/Circulars/2019/December/Circular-8430.pdf
+150523,2026-08-28,10,0.1018673,EVENT_MATCHED,https://noticeblue.com/circulars/fea4cdf3-f639-4811-bc82-298e4160ff8a
+150948,2026-02-27,10,0.1021787,EVENT_MATCHED,https://nsearchives.nseindia.com/content/circulars/CML72916.pdf
+151737,2026-08-28,10,0.10068493,EVENT_MATCHED,https://noticeblue.com/circulars/fea4cdf3-f639-4811-bc82-298e4160ff8a

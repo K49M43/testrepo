@@ -1,0 +1,13 @@
+{
+  "n_schemes": 96,
+  "official_reconciled": 0,
+  "corporate_action_events": 12,
+  "corporate_action_events_matched": 3,
+  "unresolved_scheme_jumps": 9,
+  "clean_36m_n": 76,
+  "official_verified_clean_36m_n": 0,
+  "approved_pairs": 0,
+  "no_official": 96,
+  "stage58_closed": false,
+  "note": "Full-history results are split-adjusted only for exchange-verified, raw-date-matched events. Unresolved jumps remain quarantined. NAV histories are third-party sourced and sampled against AMFI official NAVs."
+}

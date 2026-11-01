@@ -1,0 +1,49 @@
+{
+  "scheme_series": 96,
+  "official_source_reports": [
+    {
+      "source": "latest",
+      "url": "https://portal.amfiindia.com/spages/NAVAll.txt",
+      "status": "NO_RECORDS",
+      "rows": 0,
+      "error": ""
+    },
+    {
+      "source": "Oct26",
+      "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=26-Oct-2026&todt=31-Oct-2026",
+      "status": "NO_RECORDS",
+      "rows": 0,
+      "error": ""
+    },
+    {
+      "source": "Jun26",
+      "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Jun-2026&todt=30-Jun-2026",
+      "status": "NO_RECORDS",
+      "rows": 0,
+      "error": ""
+    },
+    {
+      "source": "Sep25",
+      "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Sep-2025&todt=30-Sep-2025",
+      "status": "NO_RECORDS",
+      "rows": 0,
+      "error": ""
+    },
+    {
+      "source": "Sep23",
+      "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=25-Sep-2023&todt=30-Sep-2023",
+      "status": "NO_RECORDS",
+      "rows": 0,
+      "error": ""
+    }
+  ],
+  "official_covered": 0,
+  "official_reconciled": 0,
+  "official_failed": 0,
+  "daily_breaks": 15,
+  "schemes_with_breaks": 12,
+  "clean_36m_schemes": 73,
+  "clean_corr_pairs": 2701,
+  "qa_pass_schemes": 0,
+  "status": "PARTIAL_QA; ETF unit-split events not back-adjusted. OFFICIAL historical reconciliation required for every scheme."
+}
