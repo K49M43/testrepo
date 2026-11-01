@@ -1,4 +1,4 @@
-name: Stage59 AMFI current TER detailed records
+name: Stage59 AMFI October expense export
 on:
   push:
     paths: [".github/workflows/stage59-ter-test.yml"]
@@ -21,8 +21,8 @@ jobs:
            '/api/populate-ter-month?year=2025-26',
            '/api/populate-ter-month?year=2025-2026',
            '/api/populate-ter-year',
-           '/api/populate-te-rdata-revised?MF_ID=-1&Month=10-2026&strCat=-1&strType=-1&page=1&pageSize=5',
-           '/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&excel=true',
+           '/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&page=1&pageSize=5',
+           '/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true',
           ]
           hosts=['https://www.amfiindia.com','https://portal.amfiindia.com']
           rows=[]
