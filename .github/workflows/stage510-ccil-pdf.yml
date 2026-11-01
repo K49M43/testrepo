@@ -1,0 +1,67 @@
+name: Stage510 CCIL sovereign 24 securities public PDF check
+on:
+  push:
+    paths: [".github/workflows/stage510-ccil-pdf.yml"]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse January 2026 CCIL official security margin list
+        run: |
+          mkdir -p research/stage510
+          cat >/tmp/checkccil.py <<'PY'
+          import urllib.request,subprocess,shutil,hashlib,json,re,csv
+          from pathlib import Path
+          p=Path('research/stage510')
+          u='https://www.ccilindia.com/documents/d/ccil/M_F%20Rep%20Fortnightly_30012026-1769784701116-pdf'
+          targets=[('C066','IN0020250133',6.68,'27-Jan-33'),('C067','IN0020230085',7.18,'14-Aug-33'),
+           ('C068','IN0020240019',7.1,'08-Apr-34'),('C069','IN0020240100',6.9,'05-Aug-34'),
+           ('C070','IN0020040039',7.5,'10-Aug-34'),('C071','IN0020200096',6.19,'16-Sep-34'),
+           ('C072','IN0020240126',6.79,'07-Oct-34'),('C073','IN0020240159',6.79,'02-Dec-34'),
+           ('C074','IN0020150051',7.73,'19-Dec-34'),('C075','IN0020200245',6.22,'16-Mar-35'),
+           ('C076','IN0020250026',6.33,'05-May-35'),('C077','IN0020210020',6.64,'16-Jun-35'),
+           ('C078','IN0020050012',7.4,'09-Sep-35'),('C079','IN0020250091',6.48,'06-Oct-35'),
+           ('C080','IN0020210152',6.67,'15-Dec-35'),('C081','IN0020260025',6.94,'11-May-36'),
+           ('C082','IN0020220029',7.54,'23-May-36'),('C083','IN0020060045',8.33,'07-Jun-36'),
+           ('C084','IN0020220102',7.41,'19-Dec-36'),('C085','IN0020230077',7.18,'24-Jul-37'),
+           ('C086','IN0020080050',6.83,'19-Jan-39'),('C087','IN0020240027',7.23,'15-Apr-39'),
+           ('C088','IN0020240134',6.92,'18-Nov-39'),('C089','IN0020250042',6.68,'07-Jul-40')]
+          error='';pdf=b'';text=''
+          try:
+           req=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0'})
+           with urllib.request.urlopen(req,timeout=45) as r:pdf=r.read()
+           if not pdf.startswith(b'%PDF'):raise ValueError('not_pdf')
+           fn='/tmp/ccil_2026.pdf';Path(fn).write_bytes(pdf)
+           if not shutil.which('pdftotext'):raise ValueError('pdftotext not installed')
+           subprocess.run(['pdftotext','-layout',fn,'/tmp/ccil.txt'],check=True)
+           text=Path('/tmp/ccil.txt').read_text(errors='replace')
+          except Exception as e:error=str(e)
+          rows=[]
+          for cid,isin,coupon,mat in targets:
+           snippets=[]
+           for m in re.finditer(re.escape(isin),text):
+            sn=' '.join(text[max(0,m.start()-100):m.end()+135].split())
+            snippets.append(sn)
+           matched=[z for z in snippets if mat.lower() in z.lower() and (str(coupon)+'%' in z or re.search(r'\b'+re.escape(f'{coupon:.2f}')+r'\b',z))]
+           status='VERIFIED_ISIN_COUPON_MATURITY' if matched else 'ISIN_ONLY_NEEDS_REVIEW' if snippets else 'NOT_IN_JAN2026_REFERENCE'
+           if cid=='C081' and not snippets:status='POST_JAN2026_ISSUE__SEPARATE_NSE_2026_SOURCE'
+           rows.append(dict(candidate_id=cid,isin=isin,coupon=coupon,maturity=mat,status=status,
+            evidence_snippet=(matched or snippets or [''])[0][:350],reference_url=u))
+          with (p/'goi_ccil_24_pdf_verification.csv').open('w',newline='') as f:
+           w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+          summary=dict(status='FETCHED' if pdf else 'ERROR',error=error,pdf_bytes=len(pdf),sha256=hashlib.sha256(pdf).hexdigest() if pdf else '',text_chars=len(text),
+           exact_matches=sum(x['status']=='VERIFIED_ISIN_COUPON_MATURITY' for x in rows),isin_review=sum(x['status']=='ISIN_ONLY_NEEDS_REVIEW' for x in rows),
+           missing=[x['isin'] for x in rows if x['status']!='VERIFIED_ISIN_COUPON_MATURITY'],url=u)
+          (p/'goi_ccil_pdf_summary.json').write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary))
+          PY
+          python /tmp/checkccil.py
+      - name: Commit public verification results
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage510
+          git diff --cached --quiet || (git commit -m "Reconcile government-bond ISIN terms against official CCIL Jan 2026 PDF" && git push)
