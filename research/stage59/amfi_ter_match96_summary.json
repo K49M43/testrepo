@@ -1,0 +1,11 @@
+{
+  "scheme_count": 96,
+  "exact_scheme_name": 96,
+  "ambiguous": 0,
+  "unmatched": 0,
+  "direct_total_numeric": 96,
+  "total_math_checks": {
+    "PASS": 96
+  },
+  "official_period": "October 2026"
+}
