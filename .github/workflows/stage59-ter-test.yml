@@ -1,4 +1,4 @@
-name: Stage59 AMFI public TER endpoint test
+name: Stage59 AMFI API reporting year verification
 on:
   push:
     paths: [".github/workflows/stage59-ter-test.yml"]
@@ -16,6 +16,10 @@ jobs:
           import urllib.request,urllib.error,json
           endpoints=[
            '/api/populate-ter-month?year=2026',
+           '/api/populate-ter-month?year=2026-27',
+           '/api/populate-ter-month?year=2026-2027',
+           '/api/populate-ter-month?year=2025-26',
+           '/api/populate-ter-month?year=2025-2026',
            '/api/populate-ter-year',
            '/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&page=1&pageSize=5',
            '/api/populate-te-rdata-revised?MF_ID=-1&Month=10&strCat=-1&strType=-1&excel=true',
