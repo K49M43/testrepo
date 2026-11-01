@@ -1,0 +1,96 @@
+name: Stage59 Public AMFI October 2026 TER bulk
+on:
+  push:
+    paths: [".github/workflows/stage59-ter-bulk.yml"]
+jobs:
+  collect-ter:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official AMFI October 2026 TER and match 96 public scheme identities
+        run: |
+          mkdir -p research/stage59
+          cat > /tmp/ter.py <<'PY'
+          import csv,json,urllib.request,concurrent.futures,math,re,time,unicodedata
+          from datetime import date
+          from pathlib import Path
+          from urllib.parse import urlencode
+          BASE='https://www.amfiindia.com/api/populate-te-rdata-revised'
+          PARAM={'MF_ID':'All','Month':'10-2026','strCat':'-1','strType':'-1'}
+          def page(i,ps=5000):
+           args=dict(PARAM,page=i,pageSize=ps)
+           u=BASE+'?'+urlencode(args)
+           rq=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+           for j in range(3):
+            try:
+             with urllib.request.urlopen(rq,timeout=100) as resp:data=json.load(resp)
+             return i,data['data'],data['meta']
+            except Exception as e:
+             err=str(e);time.sleep(1+j)
+           return i,[],{'error':err}
+          idx,initial,meta=page(1)
+          if not initial or not meta.get('total'):raise ValueError('No official TER data for requested 10-2026 period: '+str(meta))
+          size=5000;total=meta['total'];n=math.ceil(total/size)
+          records=list(initial);errors=[]
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+           for i,part,m in pool.map(page,range(2,n+1)):
+            if m.get('error'):errors.append((i,m['error']))
+            records.extend(part)
+          if errors:raise RuntimeError('Incomplete paging: '+str(errors))
+          # Keep Oct only and as of 2026-10-31; no November info.
+          latest={}
+          for r in records:
+           try:
+            dt=r['TER_Date'][:10]
+            if not ('2026-10-01'<=dt<='2026-10-31'):continue
+            key=(r.get('NSDLSchemeCode') or '',r.get('Scheme_Name') or '')
+            if key not in latest or latest[key]['TER_Date']<r['TER_Date']:latest[key]=r
+           except Exception:continue
+          latest=list(latest.values())
+          head=['NSDLSchemeCode','Scheme_Name','SchemeType_Desc','SchemeCat_Desc','TER_Date','R_BER','R_BrokerageCost','R_TransactionCost','R_StatutoryLevies','R_TER','D_BER','D_BrokerageCost','D_TransactionCost','D_StatutoryLevies','D_TER','MF_ID','Month']
+          def save(fname,rs,cols=head):
+           with Path('research/stage59',fname).open('w',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=cols,extrasaction='ignore');w.writeheader();w.writerows(rs)
+          save('amfi_ter_oct2026_latest_all_schemes.csv',latest)
+          # Existing public historical NAV identity database - no private investor inputs.
+          with open('research/stage58/public_nav_metrics.csv',newline='') as f:schemes=list(csv.DictReader(f))
+          def norm(s):
+           s=unicodedata.normalize('NFKD',s).casefold()
+           s=re.sub(r'[^a-z0-9 ]',' ',s)
+           for old in ['direct plan','regular plan','growth option','option growth',' growth ',' - growth','direct','regular','option','plan','fund of fund']:
+            s=s.replace(old,' ')
+           return ' '.join(s.split())
+          byname={}
+          for r in latest:byname.setdefault(norm(r['Scheme_Name']),[]).append(r)
+          matches=[]
+          for s in schemes:
+           name=norm(s['source_name']); candidates=byname.get(name,[])
+           if not candidates:status='NO_CANONICAL_NAME_MATCH';chosen=None
+           elif len(candidates)>1:status='AMBIGUOUS_CANONICAL_MATCH';chosen=None
+           else:status='EXACT_CANONICAL_UNIQUE';chosen=candidates[0]
+           row={'amfi_scheme_code':s['scheme_code'],'amfi_scheme_name':s['source_name'],'scheme_isin':s['source_isin'],'match_status':status,'normalized_name':name}
+           if chosen:row.update(chosen)
+           matches.append(row)
+          outhead=['amfi_scheme_code','amfi_scheme_name','scheme_isin','match_status','normalized_name']+head
+          save('amfi_ter_96_scheme_match.csv',matches,outhead)
+          # 2026 regulation: total approx BER+brokerage+transaction+statutory levies; validate independently.
+          calc_checks=[]
+          for r in latest:
+           for letter in ['R','D']:
+            try:
+             vals=[float(r[f'{letter}_'+k]) for k in ['BER','BrokerageCost','TransactionCost','StatutoryLevies']]
+             tot=float(r[f'{letter}_TER']);delta=round(sum(vals)-tot,6)
+             if abs(delta)>.021:calc_checks.append({'scheme':r['Scheme_Name'],'plan':letter,'difference':delta})
+            except:pass
+          Path('research/stage59/amfi_ter_bulk_summary.json').write_text(json.dumps({'period':'10-2026','requested_page_records':total,'pages':n,'downloaded_records':len(records),'distinct_schemes':len(latest),'matched_96_exact':sum(x['match_status']=='EXACT_CANONICAL_UNIQUE' for x in matches),'ambiguous':sum(x['match_status']=='AMBIGUOUS_CANONICAL_MATCH' for x in matches),'unmatched':sum(x['match_status']=='NO_CANONICAL_NAME_MATCH' for x in matches),'component_sum_discrepancies_gt_0.021':len(calc_checks),'discrepancy_samples':calc_checks[:15],'source_url':BASE+'?'+urlencode(PARAM)},indent=2))
+          print('AMFI official downloaded',len(records),'unique',len(latest),'matched',sum(x['match_status']=='EXACT_CANONICAL_UNIQUE' for x in matches))
+          PY
+          python /tmp/ter.py
+      - name: Commit published public TER extracts
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage59
+          git diff --cached --quiet || (git commit -m "Publish Oct 2026 official AMFI TER dataset with exact-match controls" && git push)
