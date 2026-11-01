@@ -1,0 +1,9 @@
+{
+  "requested": 96,
+  "calculated": 96,
+  "errors": 0,
+  "36m_qualified": 76,
+  "correlation_pairs": 2926,
+  "cutoff": "2026-10-31",
+  "source": "mfapi.in; independent AMFI verification still required"
+}
