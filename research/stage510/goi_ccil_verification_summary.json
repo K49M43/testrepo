@@ -1,0 +1,16 @@
+{
+  "num_securities": 24,
+  "fully_matched": 0,
+  "isin_present_review": 0,
+  "not_present": 24,
+  "source_reports": [
+    {
+      "url": "https://enotice.ccilindia.com/ERCS/EligibleISIN.jsp?SEGMENT=CBLO",
+      "error": "HTTP Error 500: Internal Server Error"
+    },
+    {
+      "url": "https://enotice.ccilindia.com/ERCS/EligibleISIN.jsp?SEGMENT=SECURITIES",
+      "error": "HTTP Error 500: Internal Server Error"
+    }
+  ]
+}
