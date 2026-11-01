@@ -22,7 +22,7 @@ def req(url,timeout=18):
 def official():
  """Use latest AMFI daily text plus four historical week-window reports; parse both formats."""
  records=defaultdict(dict);reports=[]
- sources=[("latest","https://portal.amfiindia.com/spages/NAVAll.txt",6)]
+ sources=[("latest","https://portal.amfiindia.com/spages/NAVAll.txt",8)]
  for label,a,b in [
    ("Oct26","26-Oct-2026","31-Oct-2026"),
    ("Jun26","25-Jun-2026","30-Jun-2026"),
@@ -46,10 +46,12 @@ def official():
    if len(chunks)<colcount or not chunks[0].strip().isdigit():continue
    try:
     code=chunks[0].strip()
-    if colcount==6:
-     isin=chunks[1].strip();name=chunks[3].strip();nav=float(chunks[4]);d=dt(chunks[5].strip())
+    if label=="latest":
+     # AMFI current 8 fields: code, ISIN1, ISIN2, Scheme, Plan, Option, NAV, Date.
+     isin=chunks[1].strip();name=" ".join(chunks[3:6]).strip();nav=float(chunks[6]);d=dt(chunks[7].strip())
     else:
-     isin=chunks[2].strip();name=chunks[1].strip();nav=float(chunks[4]);d=dt(chunks[7].strip())
+     # AMFI historical current 8 fields: code, NAV name, Plan, Option, ISIN1, ISIN2, NAV, Date.
+     isin=chunks[4].strip();name=" ".join(chunks[1:4]).strip();nav=float(chunks[6]);d=dt(chunks[7].strip())
     if d<=CUT and math.isfinite(nav) and nav>0:
      records[code][d]=(nav,name,isin,url,label);n+=1
    except Exception:pass
