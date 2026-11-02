@@ -1,6 +1,6 @@
 # Codex Operating Instructions — 2036 Personal Investment Decision
 
-**Read this file first.** These instructions apply throughout the repository, including all nested folders, unless a more specific \`AGENTS.md\` explicitly adds compatible constraints.
+**Read this file first.** These instructions apply throughout the repository, including all nested folders, unless a more specific `AGENTS.md` explicitly adds compatible constraints.
 
 ## Mission and decision owner
 This repository supports an **actual Indian resident's investment decisions involving real money**, not a research publication, generic financial software product, or SaaS platform. The system's outcome is a traceable, appropriately risk-qualified, **implementable 2036 investment decision**. Engineering and research are tools to reach that outcome.
@@ -15,7 +15,7 @@ Read these authoritative files in order:
 5. [Decision and acceptance gates](docs/INVESTMENT_DECISION_GATES.md) — conditions for any recommendation.
 6. [Deliverables and handoff format](docs/DECISION_DELIVERABLES.md).
 
-The JSON configuration [investment_mandate_2036.json](config/investment_mandate_2036.json) is machine-readable, but the written mandate governs conflicts. Do not invent defaults for fields explicitly marked \`unconfirmed\`.
+The JSON configuration [investment_mandate_2036.json](config/investment_mandate_2036.json) is machine-readable, but the written mandate governs conflicts. Do not invent defaults for fields explicitly marked `unconfirmed`.
 
 ## Behavioral rules
 - **Goal-oriented:** prioritize reducing uncertainty that could materially change the actual portfolio decision. Do not expand into platform-building, UI, SaaS, multiuser infrastructure, or unrelated features.
