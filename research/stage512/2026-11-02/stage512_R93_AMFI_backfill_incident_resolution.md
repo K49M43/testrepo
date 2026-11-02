@@ -50,6 +50,9 @@ The first full backfill wrote `FAIL_INCOMPLETE` for **24** intended six-month pe
 
 The failed manifest is **preserved** until a corrected run commits a later result. R9 is not a GO merely because errors were explained and code fixed.
 
+The corrected parser has additional offline [regression tests](../tests/test_r93_amfi_null_option_rate_limit.py) for `Option=null`, explicit dividend rejection, HTTP 429 fail-closed behavior, exact raw SHA256 cache reuse, and six-month window continuity. The [CI regression workflow](../../../.github/workflows/stage512-r93-regression-tests.yml) is separate from the live source-acquisition gate. The fixed full backfill is configured as a serial, rate-limit-aware workflow that stores successful official raw segments for cached resume.
+
+
 ## Independent forward-model protection
 
 A separate official NSE Nifty500 TRI versus AMFI LIC ETF historical risk bridge can execute **only** after full source qualification. The NSE whitepaper's 129 official monthly TRI return observations (Jan 2015–Sep 2025) are already pinned from R8.
