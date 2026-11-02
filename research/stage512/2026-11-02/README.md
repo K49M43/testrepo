@@ -25,6 +25,7 @@
 11. [R7: fully sourced four-fund NAV covariance, subperiod risk and the impossibility of ten-year simultaneous fund history](stage512_official_NAV_regime_horizon_R7.md)
 12. [R8: two-layer benchmark evidence contract and official NSE TRI source-access audit](stage512_two_layer_benchmark_gate_R8.md)
 13. [R8 source resolution: official NSE 129-month TRI checks and RBI bullion 437-month mirror with sampled primary checks](stage512_R8_benchmark_source_resolution.md)
+14. [R9 government-bond long-history fund audit, LIC benchmark anchors and source gate](stage512_R9_gsec_long_history_source_audit.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -79,3 +80,10 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [RBI-origin bullion monthly history (437 months, **secondary mirror**)](../data/r8_rbi_origin_mirror/rbi_origin_mumbai_bullion_monthly_SECONDARY_MIRROR.csv)
 - [Secondary source integrity record](../data/r8_rbi_origin_mirror/normalized_validation.json) and [seven-month official RBI publication cross-check](../data/r8_rbi_bullion_primary_spotcheck_manifest.json).
 - [R8 detailed audit and remaining sovereign total-return index blocker](stage512_R8_benchmark_source_resolution.md).
+
+## R9 government-bond index tracking evidence
+- [LIC MF official 1/3/5-year ETF vs G-Sec benchmark performance](../data/r9_lic_gsec_official_factsheet_anchors.csv).
+- [Published-return validation CI result](../data/r9_lic_gsec_factsheet_bridge.json) — 12 official lookback anchor pairs, not 12 independent trials.
+- [AMFI 133307 historical backfill program](../pipelines/r9_lic_gsec_official_amfi_history.py) and [live qualification workflow](../../../.github/workflows/stage512-r9-lic-gsec-history.yml).
+- [Official 2014–2026 NAV qualification manifest](../data/r9_lic_gsec_etf/qualification_manifest.json): promote only when `PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY` exists.
+- [Conditional 129-month official Nifty 500 TRI and G-Sec ETF NAV risk bridge](../pipelines/r9_nifty500_gsec_instrument_bridge.py) and [workflow](../../../.github/workflows/stage512-r9-equity-bond-risk-bridge.yml).
