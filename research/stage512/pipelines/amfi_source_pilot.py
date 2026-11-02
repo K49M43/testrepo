@@ -43,14 +43,18 @@ def parse_nav_text(raw: bytes, *, history: bool) -> tuple[list[NavRow], dict]:
         x = line.split(";")
         if not x or not CODE.fullmatch(x[0].strip()):
             continue
-        if history:
-            if len(x) != 8:
-                rejected.append([line_no, "expected eight columns"]); continue
-            code, name, isin, _, price, _, _, day = x
-        else:
-            if len(x) != 6:
-                rejected.append([line_no, "expected six columns"]); continue
+        if history and len(x) == 8:
+            # Official 2026 historical: code,NAV name,plan,option,ISIN1,ISIN2,NAV,date.
+            code, nav_name, plan, option, isin, _, price, day = x
+            name = " ".join(v for v in (nav_name, plan, option) if v.strip())
+        elif not history and len(x) == 8:
+            # Official 2026 latest: code,ISIN1,ISIN2,name,plan,option,NAV,date.
+            code, isin, _, nav_name, plan, option, price, day = x
+            name = " ".join(v for v in (nav_name, plan, option) if v.strip())
+        elif not history and len(x) == 6:
             code, isin, _, name, price, day = x
+        else:
+            rejected.append([line_no, "unrecognized AMFI format / field count"]); continue
         try:
             nav = float(price)
             date = parse_date(day)
