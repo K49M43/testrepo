@@ -1,0 +1,269 @@
+{
+  "status": "FAIL_INCOMPLETE",
+  "research_source_gate": "NO_GO_UNTIL_QUALIFIED",
+  "scheme_code": "133307",
+  "isin": "INF767K01MV5",
+  "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+  "official_amfi_history": true,
+  "nse_index_historical_total_return_acquired": false,
+  "nav_is_tradable_etf_market_price": false,
+  "full_2036_forecast_validated": false,
+  "investment_authorization": "NO_GO",
+  "retrieved_utc": "2026-11-02T13:25:00.223521+00:00",
+  "segments": [
+    {
+      "start": "2014-12-26",
+      "end": "2015-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2014-12-26&to_date=2015-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2015-06-01",
+      "end": "2015-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2015-06-01&to_date=2015-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2015-12-01",
+      "end": "2016-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2015-12-01&to_date=2016-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2016-06-01",
+      "end": "2016-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2016-06-01&to_date=2016-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2016-12-01",
+      "end": "2017-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2016-12-01&to_date=2017-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2017-06-01",
+      "end": "2017-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2017-06-01&to_date=2017-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2017-12-01",
+      "end": "2018-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2017-12-01&to_date=2018-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2018-06-01",
+      "end": "2018-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2018-06-01&to_date=2018-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2018-12-01",
+      "end": "2019-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2018-12-01&to_date=2019-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2019-06-01",
+      "end": "2019-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2019-06-01&to_date=2019-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2019-12-01",
+      "end": "2020-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2019-12-01&to_date=2020-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2020-06-01",
+      "end": "2020-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2020-06-01&to_date=2020-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2020-12-01",
+      "end": "2021-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2020-12-01&to_date=2021-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2021-06-01",
+      "end": "2021-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2021-06-01&to_date=2021-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2021-12-01",
+      "end": "2022-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2021-12-01&to_date=2022-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2022-06-01",
+      "end": "2022-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2022-06-01&to_date=2022-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2022-12-01",
+      "end": "2023-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2022-12-01&to_date=2023-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2023-06-01",
+      "end": "2023-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-06-01&to_date=2023-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2023-12-01",
+      "end": "2024-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-12-01&to_date=2024-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2024-06-01",
+      "end": "2024-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-06-01&to_date=2024-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2024-12-01",
+      "end": "2025-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-12-01&to_date=2025-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "HTTPError: HTTP Error 429: Too Many Requests"
+      ]
+    },
+    {
+      "start": "2025-06-01",
+      "end": "2025-11-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-06-01&to_date=2025-11-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2025-12-01",
+      "end": "2026-05-31",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-12-01&to_date=2026-05-31&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "HTTPError: HTTP Error 429: Too Many Requests",
+        "ValueError: Unexpected option: none"
+      ]
+    },
+    {
+      "start": "2026-06-01",
+      "end": "2026-10-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-06-01&to_date=2026-10-30&sd_id=133307",
+      "status": "FAIL",
+      "errors": [
+        "ValueError: Unexpected option: none",
+        "ValueError: Unexpected option: none"
+      ]
+    }
+  ],
+  "lic_reference_factsheet": "https://www.licmf.com/assets/downloads/monthly_fact_sheet/2026-2027/04/lic-mf-factsheet-31st-March-2026.pdf",
+  "lic_factsheet_2026_03_31": {
+    "1": 3.18,
+    "3": 7.15,
+    "5": 5.49,
+    "since": 6.89
+  },
+  "nse_benchmark_return_snapshots_from_LIC_factsheet": {
+    "1": 3.32,
+    "3": 7.33,
+    "5": 5.75,
+    "since": 7.21
+  },
+  "error": "ValueError: Not all official source segments retrieved"
+}
