@@ -1,0 +1,156 @@
+{
+  "decision": "PASS_OFFICIAL_SOURCE_STRICT_DATE_ALIGNED_36M_R7_RESEARCH_ONLY",
+  "investment_authorization": "NO_GO",
+  "2036_probability_validated": false,
+  "official_source_provenance_segments": 12,
+  "source_qualified_assets": [
+    "equity",
+    "gilt_fund",
+    "gold_etf",
+    "silver_etf"
+  ],
+  "observed_date_window": [
+    "2023-09",
+    "2026-10"
+  ],
+  "monthly_return_window": [
+    "2023-11",
+    "2026-10"
+  ],
+  "aligned_monthly_return_count": 36,
+  "source_checks": {
+    "equity": {
+      "nav_count": 763,
+      "month_count": 38,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "max_gap_calendar_days": 4,
+      "max_abs_daily_logreturn_pct": 6.9477,
+      "official_snapshots_matched": 15
+    },
+    "gilt_fund": {
+      "nav_count": 751,
+      "month_count": 38,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "max_gap_calendar_days": 4,
+      "max_abs_daily_logreturn_pct": 0.9054,
+      "official_snapshots_matched": 16
+    },
+    "gold_etf": {
+      "nav_count": 766,
+      "month_count": 38,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "max_gap_calendar_days": 4,
+      "max_abs_daily_logreturn_pct": 10.5038,
+      "official_snapshots_matched": 16
+    },
+    "silver_etf": {
+      "nav_count": 766,
+      "month_count": 38,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "max_gap_calendar_days": 4,
+      "max_abs_daily_logreturn_pct": 22.3656,
+      "official_snapshots_matched": 16
+    }
+  },
+  "month_end_date_mismatches_quarantined": [
+    "2023-09"
+  ],
+  "affected_monthly_return_excluded": [
+    "2023-10"
+  ],
+  "original_37_month_window": [
+    "2023-10",
+    "2026-10"
+  ],
+  "original_month_only_aligned_return_count": 37,
+  "source_csv_sha256": "4ba6860f05909ff9a21e24f009d4a13948ebaa41322b98843dcc418ce8cf3047",
+  "qualification_manifest_sha256": "23be486f2b454493be1558371933286eba9596bc7fbf1b193351105af6cbab3f",
+  "full_period_annualized_log_return_volatility_pct": {
+    "equity": 15.65345,
+    "gilt_fund": 3.65747,
+    "gold_etf": 19.98569,
+    "silver_etf": 42.4028
+  },
+  "correlation_matrix_order": [
+    "equity",
+    "gilt_fund",
+    "gold_etf",
+    "silver_etf"
+  ],
+  "correlation_matrix": [
+    [
+      1.0,
+      0.5308937,
+      0.0573526,
+      0.0187119
+    ],
+    [
+      0.5308937,
+      1.0,
+      0.0621466,
+      -0.0013139
+    ],
+    [
+      0.0573526,
+      0.0621466,
+      1.0,
+      0.7673528
+    ],
+    [
+      0.0187119,
+      -0.0013139,
+      0.7673528,
+      1.0
+    ]
+  ],
+  "static_65_20_10_5_annualized_volatility_pct": 11.413711,
+  "subperiods": [
+    {
+      "period": "2023-10_to_2024-09",
+      "n_months": 11,
+      "annualized_volatility_pct": {
+        "equity": 9.104,
+        "gilt_fund": 1.746,
+        "gold_etf": 12.62,
+        "silver_etf": 26.174
+      },
+      "equity_gilt_correlation": -0.146,
+      "gold_silver_correlation": 0.4488
+    },
+    {
+      "period": "2024-10_to_2025-09",
+      "n_months": 12,
+      "annualized_volatility_pct": {
+        "equity": 15.518,
+        "gilt_fund": 4.154,
+        "gold_etf": 14.294,
+        "silver_etf": 25.573
+      },
+      "equity_gilt_correlation": 0.407,
+      "gold_silver_correlation": 0.6618
+    },
+    {
+      "period": "2025-10_to_2026-10",
+      "n_months": 13,
+      "annualized_volatility_pct": {
+        "equity": 17.882,
+        "gilt_fund": 4.192,
+        "gold_etf": 28.614,
+        "silver_etf": 63.617
+      },
+      "equity_gilt_correlation": 0.6702,
+      "gold_silver_correlation": 0.8378
+    }
+  ],
+  "limitations": [
+    "36 strictly date-aligned monthly returns only after excluding mismatched September 2023 boundary; strong sampling uncertainty and nonstationarity",
+    "Selected four schemes are research proxies for risk sleeves, not selected portfolio",
+    "ETF NAVs are not necessarily executable market purchase/sale prices",
+    "NAV includes fund management expenses, so avoid TER double counting",
+    "Volatility/correlation do not independently validate forward expected returns, taxes, inflation or 2036 floor probability"
+  ]
+}
