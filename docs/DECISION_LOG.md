@@ -29,6 +29,13 @@ This log records **actual investment authorization** separately from engineering
 - **Repository state:** PR #6 was already merged when inspected; its Checks tab showed zero checks. The correction is to be delivered as a separate follow-up change. Do not amend the historical PR #6 outcome.
 - **Decision impact:** no numeric after-tax outcome was produced. Tax qualification remains open; investment authorization stays **NO-GO**.
 
+## 2026-11-02 — TY 2026–27 section 202 surcharge examples
+- **Executed:** created `decision/tax_surcharge_examples_ty2026-27.md` with three threshold transitions (₹50 lakh, ₹1 crore, ₹2 crore) and one mixed section 202 / section 198 LTCG example. It applies surcharge before 4% cess and demonstrates the statutory marginal-relief ceiling immediately above each threshold.
+- **Arithmetic review:** recomputed the example amounts with decimal arithmetic. At each threshold plus ₹1, the pre-cess tax-plus-surcharge cap is threshold tax-plus-surcharge plus ₹1; no marginal relief is applied to cess. In the mixed case (₹2.10 crore ordinary income plus ₹1 crore eligible section 198 LTCG), pre-cess income-tax is ₹71,14,375, surcharge is ₹16,55,156.25 (25% on ordinary tax and 15% on the specified-gain tax component), cess is ₹3,50,781.25, and illustrative total is ₹91,20,312.50 before statutory rounding.
+- **Limitations:** examples assume resident individual, section 202 regime, no losses/deductions/rebate or other income, and full section 198 eligibility; they are not a tax return calculation and have not been reviewed by a qualified tax professional. No investor tax result or ledger is qualified.
+- **Source:** Finance Act 2026 section 3(4)(b), Table row 10, section 3(5), section 3(15); Income-tax Act 2025 section 202 and section 198; see the example file for primary links.
+- **Investment authorization:** remains **NO-GO**.
+
 ## 2026-11-02 — R9.3 complete AMFI history and strict risk bridge
 - **Executed:** sequential bounded AMFI request for all 24 half-year periods; archived original bytes; ran the independent raw-artifact validator and the existing 129-month TRI / ETF NAV bridge.
 - **Source result:** 2,867 official AMFI NAV observations, 26 Dec 2014–30 Oct 2026; all 24 source hashes and byte counts independently reproduced; max observation gap 6 days; LIC March 2026 1/3/5-year published NAV CAGR differences are 0.0047/0.0080/0.0054 percentage points.
