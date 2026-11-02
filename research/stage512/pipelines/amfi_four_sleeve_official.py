@@ -130,7 +130,7 @@ def compute():
             month_returns={}
             for k in sorted(month):
                 if k-1 in month:
-                    month_returns[k]=math.log(month[k][1][1]/month[k-1][1][1])
+                    month_returns[k]=math.log(month[k][1]/month[k-1][1])
             row.update(status="PASS_OFFICIAL_36M_COHORT",samples=len(series),
                        first=series[0][0].isoformat(),last=series[-1][0].isoformat(),
                        official_snapshot_checks=len(checked),mismatches=0,
