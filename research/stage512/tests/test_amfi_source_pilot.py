@@ -10,11 +10,16 @@ class OfficialAmfiParserContract(unittest.TestCase):
         rows, meta = parse_nav_text(raw, history=False)
         self.assertEqual((len(rows), meta['rejected'], rows[0].nav), (1, 0, 123.25))
     def test_history_eight_fields(self):
-        raw = b'Scheme Code;Scheme Name;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Repurchase Price;Sale Price;Date\n123456;Test Gilt Fund - Growth;INF000000000;;88.0250;;;03-Jan-2024\n'
+        raw = b'Scheme Code;NAV Name;Plan;Option;ISIN Div Payout/ISIN Growth;ISIN Div Reinvestment;Net Asset Value;Date\n123456;Test Gilt Fund;Direct;Growth;INF000000000;;88.0250;03-Jan-2024\n'
         rows, meta = parse_nav_text(raw, history=True)
         self.assertEqual(len(rows), 1)
         self.assertEqual(meta['rejected'], 0)
         self.assertEqual(rows[0].asof.isoformat(), '2024-01-03')
+    def test_live_amfi_eight_column_current(self):
+        raw = b'Scheme Code;ISIN Div Payout/ ISIN Growth;ISIN Div Reinvestment;Scheme Name;Plan;Option;Net Asset Value;Date\n123456;INF000000000;-;Test Nifty 500;Direct;Growth;125.2500;30-Oct-2026\n'
+        rows, meta = parse_nav_text(raw, history=False)
+        self.assertEqual((len(rows), meta['rejected'], rows[0].nav), (1, 0, 125.25))
+        self.assertIn('Direct Growth', rows[0].scheme_name)
     def test_html_block_not_nav(self):
         rows, _ = parse_nav_text(b'<html><body>Captcha forbidden</body></html>', history=True)
         self.assertEqual(len(rows), 0)
