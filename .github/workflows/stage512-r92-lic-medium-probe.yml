@@ -1,0 +1,24 @@
+name: Stage512 R9.2 LIC 8-13yr GSec 6month AMFI source probes
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r92-lic-medium-probe.yml'
+      - 'research/stage512/pipelines/r9_lic_gsec_medium_windows_probe.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  six-month-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 4 independent six-month windows from official AMFI
+        run: python research/stage512/pipelines/r9_lic_gsec_medium_windows_probe.py
+      - name: Commit auditable per-era source responses
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_lic_gsec_etf/medium_window_probe.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'audit(stage512): verify 6-month official AMFI GSec history source windows' && git push)
