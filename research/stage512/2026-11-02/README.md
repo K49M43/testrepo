@@ -26,6 +26,7 @@
 12. [R8: two-layer benchmark evidence contract and official NSE TRI source-access audit](stage512_two_layer_benchmark_gate_R8.md)
 13. [R8 source resolution: official NSE 129-month TRI checks and RBI bullion 437-month mirror with sampled primary checks](stage512_R8_benchmark_source_resolution.md)
 14. [R9 government-bond long-history fund audit, LIC benchmark anchors and source gate](stage512_R9_gsec_long_history_source_audit.md)
+15. [R9.3: corrected AMFI null-option and HTTP429 incident; six-month verified source windows](stage512_R93_AMFI_backfill_incident_resolution.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -87,3 +88,12 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [AMFI 133307 historical backfill program](../pipelines/r9_lic_gsec_official_amfi_history.py) and [live qualification workflow](../../../.github/workflows/stage512-r9-lic-gsec-history.yml).
 - [Official 2014–2026 NAV qualification manifest](../data/r9_lic_gsec_etf/qualification_manifest.json): promote only when `PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY` exists.
 - [Conditional 129-month official Nifty 500 TRI and G-Sec ETF NAV risk bridge](../pipelines/r9_nifty500_gsec_instrument_bridge.py) and [workflow](../../../.github/workflows/stage512-r9-equity-bond-risk-bridge.yml).
+
+## R9.3 staged evidence (2 November 2026)
+- [Four era-specific official AMFI short-window source checks](../data/r9_lic_gsec_etf/short_window_probe.json) — **4/4 passed**, includes March 31, 2026 INR 28.4282 NAV matching LIC.
+- [Four six-month official AMFI fetches](../data/r9_lic_gsec_etf/medium_window_probe.json) — **4/4 passed**, 477 priced observations in discontinuous samples.
+- [Original 24-window source backfill manifest](../data/r9_lic_gsec_etf/qualification_manifest.json) — initial FAIL from handling null Option and AMFI HTTP429; supersede only when a later successful source qualification is committed.
+- [Resumable, rate-limit-aware official AMFI source qualifier](../pipelines/r9_lic_gsec_official_amfi_history.py).
+- [129-month official Nifty500 TRI date-only mirror anchors](../data/nse500_tri_month_end_dates_R9.csv) — independently sourced **dates**, not direct NSE daily price verification.
+- [Strict date-aligned equity–bond ETF risk bridge](../pipelines/r9_nifty500_gsec_instrument_bridge.py); [bridge status manifest](../data/r9_nse_gsec_129m_source_bridge.json) is non-qualifying while full LIC data is unqualified.
+- All R9 source, analysis and investing gates are **separate**. Full 2036 investment authorization remains **NO-GO**.
