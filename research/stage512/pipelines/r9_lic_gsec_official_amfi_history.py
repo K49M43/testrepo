@@ -233,7 +233,10 @@ def main():
             pd,pv=monthly[prior];cd,cv=monthly[cur]
             if (cd.year*12+cd.month)-(pd.year*12+pd.month)!=1:
                 raise ValueError(f"Missing calendar NAV month {prior}->{cur}")
-            series.append([cur,cd.isoformat(),math.log(cv/pv),100*(cv/pv-1)])
+            # Round derived CSV values so one-ulp libm differences across
+            # Windows and Ubuntu do not change the byte-level source hash.
+            series.append([cur,cd.isoformat(),round(math.log(cv/pv),12),
+                           round(100*(cv/pv-1),12)])
         with (BASE/"lic_gsec_133307_monthly_returns.csv").open("w",newline="",encoding="utf8") as fh:
             w=csv.writer(fh,lineterminator="\n");w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
         vol=__import__("statistics").stdev([x[2] for x in series])*math.sqrt(12)*100

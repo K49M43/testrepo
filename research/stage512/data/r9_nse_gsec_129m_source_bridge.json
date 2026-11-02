@@ -98,8 +98,8 @@
   "strict_equity_annualized_log_vol_pct": 17.02981,
   "strict_bond_ETF_annualized_log_vol_pct": 3.72678,
   "month_end_date_anchor_type": "NSE-matched independent daily mirror (not first-party NSE daily export)",
-  "month_end_source_sha256": "9c0a1b22714f940dcf09a57dfcec563bd70ca5a57a8af6532f97f1f86f246e34",
-  "official_nse_129m_anchor_validation_sha256": "e0c98c73b0ca53759634836e2d9ce62ce4b6b22f12c5424e0ae5e2bd86e3dad6",
+  "month_end_source_sha256": "9c33e0fc2a339fc4b412a3d43d5a364336721eb389e3abc7bc40bd3da175ab40",
+  "official_nse_129m_anchor_validation_sha256": "bb1e3c68f9fb1d846f622280d85e7952046864f5452258c44ebf7edbc52e3d1b",
   "first_month": "2015-01",
   "last_month": "2025-09",
   "monthly_observations": 129,
@@ -110,8 +110,8 @@
   "annualized_geometric_bond_etf_nav_return_pct": 7.12099,
   "correlation_source_identification": "NSE official published Nifty500 gross TRI MONTHLY values vs AMFI official LIC ETF monthly NAV",
   "source_hashes": {
-    "nifty500_official_whitepaper": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e",
-    "lic_etf_official_monthly": "c852d17921e5e81cbf2f3538e9634ea98039315a4557a4c3f66215a4c91562ab"
+    "nifty500_official_whitepaper": "10a0aebe9f42c1e18836bc8ffeb457fa8c996ca60a7610cfd88497c717cb4eaa",
+    "lic_etf_official_monthly": "f5bb135e0fac756f4b3dc09a2b8625ff99ee800a6ca88686d9cb9d6da8574240"
   },
   "caution": [
     "Fund ETF NAV is not the 8-13-year G-Sec benchmark total-return index itself",

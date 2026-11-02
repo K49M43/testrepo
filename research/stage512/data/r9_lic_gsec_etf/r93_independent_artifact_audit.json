@@ -1,7 +1,7 @@
 {
   "status": "PASS_INDEPENDENT_ARTIFACT_AUDIT_RESEARCH_ONLY",
   "investment_authorization": "NO_GO",
-  "source_manifest_sha256": "f3478589bd26e013178560b11670b48e6fc19503d1e2f2de1841e73f64c759b8",
+  "source_manifest_sha256": "331ce749497fba6a20de91494212dd2dd5ce74e44d498b083bd3b09809d6f6cc",
   "raw_segments": 24,
   "raw_source_bytes_total": 512313,
   "raw_segment_sha256_list": [
@@ -39,7 +39,7 @@
   "null_or_absent_option_records": 2867,
   "explicit_growth_option_records": 0,
   "daily_csv_sha256": "7359b20c11de05b7cf0a86ca473f6e83b471d2b416793655bc43c6f0c14ca846",
-  "monthly_csv_sha256": "c852d17921e5e81cbf2f3538e9634ea98039315a4557a4c3f66215a4c91562ab",
+  "monthly_csv_sha256": "f5bb135e0fac756f4b3dc09a2b8625ff99ee800a6ca88686d9cb9d6da8574240",
   "factsheet_comparisons": [
     {
       "period_years": 1,
