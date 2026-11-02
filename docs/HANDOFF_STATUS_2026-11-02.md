@@ -2,16 +2,15 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
-## Latest development update — 2 November 2026 (after PR #5)
+## Latest development update — 2 November 2026 (after PR #8)
 
 This section supersedes the old “where to begin” and blocker snapshots below wherever they conflict; earlier failure records remain historical.
 
 - PR #5 merged as `da98bf8`, adding the deterministic pre-tax cashflow hurdle baseline. At 6% assumed CPI the ₹90L October 2026-real floor equates to about ₹1.612Cr in October 2036; its constant-return arithmetic hurdle is about 8.25% effective annually before taxes, fees and costs. This is not a forecast or feasibility result.
-- A new initial tax-rule map is in `decision/tax_rules_asof.md`; the execution plan and `decision/decision_log.md` identify its limited scope. It maps the TY 2026–27 Act 2025 / Finance Act 2026 rules but does not calculate investor taxes or establish security-specific eligibility.
-- **Tax surcharge correction:** PR #6 merged the initial tax map, but its post-merge review flagged a P1 error. Section 3(4)(a)(ii) does not make section 202 special-rate gains surcharge-free: Finance Act 2026 section 3(4)(b), Table row 10, applies a distinct surcharge schedule, including a 15% cap on surcharge attributable to tax on sections 196/197/198 gains. The map and plan now record that correction; independent worked-example validation remains open. PR #6 showed Checks (0), so no passing CI is claimed.
-- **Worked-example gate:** PR #7 corrected and merged the surcharge interpretation. Arithmetic boundary and mixed-income examples are in `decision/tax_surcharge_examples_ty2026-27.md`. They are source-based and decimal-recomputed but have not been reviewed by a qualified tax professional; no tax engine or investor-level tax output is qualified.
+- The TY 2026–27 instrument map is in `decision/tax_rules_asof.md`. PR #7 corrected the surcharge interpretation; PR #8 added boundary/marginal-relief and mixed-income arithmetic examples. Both are merged on `main` (latest merge `4f03574`). PR #8 showed Checks (0); its examples were decimal-recomputed from the cited statutory schedule but have not received qualified tax-professional review. No tax engine or investor-level tax output is qualified.
+- **Next sprint:** `docs/SPRINT_01_AFTER_TAX_LEDGER.md` defines the incremental/iterative scope, acceptance gates, dependencies, and tracker for the deterministic after-tax ledger. Audit CPI and input chronology, implement current-law tax components with boundary tests, build dated tax lots/events, then reconcile 120/122-month exits. Keep fixture outputs explicitly synthetic until investor-specific dates, holdings, tax facts, and charges are confirmed.
 - **Government-security rule correction:** entries 13D/13E were added by the Taxation and Other Laws (Amendment) Act, 2026 for Foreign Institutional Investors and the Bank for International Settlements. Notification 137/2026 dated 19 October prescribed Rule 281A/Form 173A. These institutional exemptions are not assumed for a resident retail investor. A prior handoff line describing them as pending has been corrected in the decision log and baseline.
-- **Next single work item:** obtain independent tax-professional review of the section 202 surcharge examples while building and reconciling the deterministic lot-level after-tax cashflow ledger (scheduled contributions, per-instrument distributions/coupons, fees/trading costs, tax-year aggregation, and alternative 120/122-month exits), then connect it to a released CPI vintage. No after-tax real-wealth output is qualified.
+- **Current gates:** qualified tax-professional review; official CPI vintage/base-month reconciliation; security-level classification; deterministic tax-lot/event ledger; and source-linked costs. No after-tax real-wealth output is qualified.
 - Investor authorization remains **NO-GO**.
 
 ## Post-merge update — 2 November 2026 (PR #4)
