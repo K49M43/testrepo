@@ -1,0 +1,32 @@
+name: Stage512 R8 RBI-origin bullion mirror source probe
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r8-bullion-mirror.yml'
+      - 'research/stage512/pipelines/r8_rbi_bullion_mirror_probe.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  discover-data-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe RBI-origin third-party mirror metadata and rows
+        run: python research/stage512/pipelines/r8_rbi_bullion_mirror_probe.py
+      - name: Retain full mirror CSV as workflow artifact for audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage512-r8-rbi-origin-bullion-unverified-mirror
+          path: research/stage512/data/r8_rbi_origin_mirror/*.csv
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Commit diagnostic manifest only (no falsely qualified data)
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r8_rbi_origin_mirror/source_probe.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): preserve RBI-origin monthly bullion mirror provenance" && git push)
