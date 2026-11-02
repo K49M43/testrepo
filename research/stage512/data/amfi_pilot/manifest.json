@@ -1,0 +1,304 @@
+{
+  "status": "FAIL_INCOMPLETE",
+  "run_utc": "2026-11-02T11:06:32.146534+00:00",
+  "source_ownership": "AMFI official portal",
+  "readme": "Named-scheme classes are keyword matches, not approved candidate identity. NAVs do not validate tracking error or scheme taxonomy.",
+  "windows": [
+    {
+      "label": "latest",
+      "status": "FAIL",
+      "start": null,
+      "end": null,
+      "source_url": "https://portal.amfiindia.com/spages/NAVAll.txt",
+      "http_status": 200,
+      "content_type": "text/plain",
+      "response_bytes": 1528600,
+      "sha256": "584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a",
+      "retrieved_utc": "2026-11-02T11:06:05.449516+00:00",
+      "parsed": 0,
+      "rejected": 14441,
+      "rejection_sample": [
+        [
+          7,
+          "expected six columns"
+        ],
+        [
+          8,
+          "expected six columns"
+        ],
+        [
+          9,
+          "expected six columns"
+        ],
+        [
+          10,
+          "expected six columns"
+        ],
+        [
+          11,
+          "expected six columns"
+        ],
+        [
+          12,
+          "expected six columns"
+        ],
+        [
+          13,
+          "expected six columns"
+        ],
+        [
+          14,
+          "expected six columns"
+        ],
+        [
+          20,
+          "expected six columns"
+        ],
+        [
+          21,
+          "expected six columns"
+        ],
+        [
+          22,
+          "expected six columns"
+        ],
+        [
+          23,
+          "expected six columns"
+        ],
+        [
+          27,
+          "expected six columns"
+        ],
+        [
+          28,
+          "expected six columns"
+        ],
+        [
+          29,
+          "expected six columns"
+        ],
+        [
+          30,
+          "expected six columns"
+        ],
+        [
+          34,
+          "expected six columns"
+        ],
+        [
+          35,
+          "expected six columns"
+        ],
+        [
+          36,
+          "expected six columns"
+        ],
+        [
+          37,
+          "expected six columns"
+        ]
+      ],
+      "error": "ValueError: Malformed NAV rows: 14441"
+    },
+    {
+      "label": "history_2024-01-02_2024-01-05",
+      "status": "FAIL",
+      "start": "2024-01-02",
+      "end": "2024-01-05",
+      "source_url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=02-Jan-2024&todt=05-Jan-2024",
+      "http_status": 200,
+      "content_type": "text/plain",
+      "response_bytes": 3687487,
+      "sha256": "00d367d0d760beab6c7380c92357e8fd071c8742b6666fc7ae5957066cf55dd3",
+      "retrieved_utc": "2026-11-02T11:06:16.942522+00:00",
+      "parsed": 0,
+      "rejected": 27226,
+      "rejection_sample": [
+        [
+          7,
+          "invalid NAV or date"
+        ],
+        [
+          8,
+          "invalid NAV or date"
+        ],
+        [
+          9,
+          "invalid NAV or date"
+        ],
+        [
+          10,
+          "invalid NAV or date"
+        ],
+        [
+          11,
+          "invalid NAV or date"
+        ],
+        [
+          12,
+          "invalid NAV or date"
+        ],
+        [
+          13,
+          "invalid NAV or date"
+        ],
+        [
+          14,
+          "invalid NAV or date"
+        ],
+        [
+          15,
+          "invalid NAV or date"
+        ],
+        [
+          16,
+          "invalid NAV or date"
+        ],
+        [
+          17,
+          "invalid NAV or date"
+        ],
+        [
+          18,
+          "invalid NAV or date"
+        ],
+        [
+          19,
+          "invalid NAV or date"
+        ],
+        [
+          20,
+          "invalid NAV or date"
+        ],
+        [
+          21,
+          "invalid NAV or date"
+        ],
+        [
+          22,
+          "invalid NAV or date"
+        ],
+        [
+          28,
+          "invalid NAV or date"
+        ],
+        [
+          29,
+          "invalid NAV or date"
+        ],
+        [
+          30,
+          "invalid NAV or date"
+        ],
+        [
+          31,
+          "invalid NAV or date"
+        ]
+      ],
+      "error": "ValueError: Malformed NAV rows: 27226"
+    },
+    {
+      "label": "history_2026-10-19_2026-10-23",
+      "status": "FAIL",
+      "start": "2026-10-19",
+      "end": "2026-10-23",
+      "source_url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=19-Oct-2026&todt=23-Oct-2026",
+      "http_status": 200,
+      "content_type": "text/plain",
+      "response_bytes": 4660562,
+      "sha256": "cceb34cff86617f2c0925aaaf9c20a11687ea636ae175c079de6df4e5ae04d24",
+      "retrieved_utc": "2026-11-02T11:06:32.067640+00:00",
+      "parsed": 0,
+      "rejected": 35144,
+      "rejection_sample": [
+        [
+          7,
+          "invalid NAV or date"
+        ],
+        [
+          8,
+          "invalid NAV or date"
+        ],
+        [
+          9,
+          "invalid NAV or date"
+        ],
+        [
+          10,
+          "invalid NAV or date"
+        ],
+        [
+          11,
+          "invalid NAV or date"
+        ],
+        [
+          12,
+          "invalid NAV or date"
+        ],
+        [
+          13,
+          "invalid NAV or date"
+        ],
+        [
+          14,
+          "invalid NAV or date"
+        ],
+        [
+          15,
+          "invalid NAV or date"
+        ],
+        [
+          16,
+          "invalid NAV or date"
+        ],
+        [
+          17,
+          "invalid NAV or date"
+        ],
+        [
+          18,
+          "invalid NAV or date"
+        ],
+        [
+          19,
+          "invalid NAV or date"
+        ],
+        [
+          20,
+          "invalid NAV or date"
+        ],
+        [
+          21,
+          "invalid NAV or date"
+        ],
+        [
+          22,
+          "invalid NAV or date"
+        ],
+        [
+          25,
+          "invalid NAV or date"
+        ],
+        [
+          26,
+          "invalid NAV or date"
+        ],
+        [
+          27,
+          "invalid NAV or date"
+        ],
+        [
+          28,
+          "invalid NAV or date"
+        ]
+      ],
+      "error": "ValueError: Malformed NAV rows: 35144"
+    }
+  ],
+  "matched_rows": 0,
+  "failed_windows": 3,
+  "investment_authorization": "NO_GO",
+  "full_investable_series_reconciled": false,
+  "2036_real_world_probability_validated": false
+}
