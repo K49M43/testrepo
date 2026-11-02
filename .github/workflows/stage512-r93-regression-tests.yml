@@ -1,0 +1,17 @@
+name: Stage512 R9.3 regression tests for official AMFI history importer
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r93-regression-tests.yml'
+      - 'research/stage512/tests/test_r93_amfi_null_option_rate_limit.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-correctness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regress null AMFI Option and rate limit/cached SHA behavior without network
+        run: python -m unittest discover -s research/stage512/tests -p 'test_r93_amfi_null_option_rate_limit.py' -v
