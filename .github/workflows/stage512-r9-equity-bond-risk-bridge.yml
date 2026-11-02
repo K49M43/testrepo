@@ -2,6 +2,9 @@ name: Stage512 R9 official equity TRI versus long government-bond ETF NAV
 on:
   push:
     paths:
+      - '.github/workflows/stage512-r9-equity-bond-risk-bridge.yml'
+      - 'research/stage512/pipelines/r9_nifty500_gsec_instrument_bridge.py'
+      - 'research/stage512/data/nse500_tri_month_end_dates_R9.csv'
       - 'research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json'
       - 'research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_monthly_returns.csv'
   workflow_dispatch:
