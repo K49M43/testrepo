@@ -2,6 +2,19 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Post-merge update — 2 November 2026 (PR #4)
+
+P0 Tasks 1–2 are now complete within the limits below. The merged main commit is `8eb9c20`.
+
+- R9 full official AMFI NAV history: **PASS for historical research**, 2,867 observations over 24 six-month source segments from 26 Dec 2014 through 30 Oct 2026; independent segment/hash/artifact audit passed.
+- Strict 129-month Nifty 500 TRI versus LIC ETF NAV-proxy bridge: **PASS for the 117 intervals whose current and prior month-end dates both match**; observed correlation 0.022541. Twelve intervals were excluded for date mismatch.
+- Actions on source commit `1bdf2c6` passed: full AMFI run `41475006266`, bridge run `41475006330`, offline contract run `41475006356`.
+- The LIC ETF remains a rolling-duration fund proxy, not the NSE G-Sec index or a direct 2036-maturity GoI bond. The bridge is historical and does not qualify a forward correlation.
+- Next: CPI vintage and base-month reconciliation, then independent tax-lot / after-tax real-wealth accounting. The October 2026 CPI was not yet released as of this update; the latest published reference is September 2026.
+- Investment authorization remains **NO-GO**.
+
+The original snapshot below is preserved as historical handoff context; its R9 failure status predates the successful qualification and merge.
+
 ## Where to begin
 Review `AGENTS.md` and `docs/INVESTMENT_DECISION_MANDATE_2036.md`. The existing `research/stage512/` tree represents an **evidence and computational workstream**, not a reason to keep the investor in research indefinitely. The objective is the actionable 2036 investment decision.
 
