@@ -1,0 +1,22 @@
+name: Stage512 AMFI official per-scheme historical API discovery
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-amfi-scheme-api-probe.yml'
+      - 'research/stage512/pipelines/amfi_scheme_api_probe.py'
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check alternate official API (small bounded probe only)
+        run: python research/stage512/pipelines/amfi_scheme_api_probe.py
+      - name: Publish provenance diagnostics (not raw fund-return data)
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/amfi_api_probe.json
+          git diff --cached --quiet || (git commit -m "audit(stage512): official AMFI per-scheme API discovery status" && git push)
