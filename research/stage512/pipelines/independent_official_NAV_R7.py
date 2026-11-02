@@ -93,24 +93,32 @@ def main():
     mismatch_dates=[]
     for k in keys:
         if len({monthly[a][k][0] for a in ORDER})!=1:mismatch_dates.append(month_str(k))
-    if mismatch_dates:raise ValueError("Cross-fund month-end alignment mismatch "+str(mismatch_dates))
-    common_return_months=keys[1:]
+    # A mismatched first month-end contaminates the immediately following return.
+    # Source acceptance remains valid; quarantine that boundary before risk estimation.
+    if mismatch_dates and mismatch_dates != [month_str(keys[0])]:
+        raise ValueError("Unexpected cross-fund month-end mismatch "+str(mismatch_dates))
+    published_months=keys[1:]
+    published_samples={a:[math.log(monthly[a][k][1]/monthly[a][k-1][1]) for k in published_months] for a in ORDER}
+    common_return_months=[k for k in keys[1:] if month_str(k-1) not in mismatch_dates and month_str(k) not in mismatch_dates]
+    if len(common_return_months)<36:
+        raise ValueError("Fewer than 36 strictly same-date monthly return observations")
     samples={a:[math.log(monthly[a][k][1]/monthly[a][k-1][1]) for k in common_return_months] for a in ORDER}
     n=len(common_return_months)
     corrs=[[correlation(samples[a],samples[b]) for b in ORDER] for a in ORDER]
     positive_definite(corrs)
     computed_vols={a:vol(samples[a]) for a in ORDER}
     stored=manifest["cross_asset_result"]
-    if int(stored["months"])!=n or stored["start_month"]!=month_str(common_return_months[0]) or stored["end_month"]!=month_str(common_return_months[-1]):
-        raise ValueError("Published official window is inconsistent")
+    # Verify the original 37 month-only aligned publication before applying strict date quarantine.
+    if int(stored["months"])!=len(published_months) or stored["start_month"]!=month_str(published_months[0]) or stored["end_month"]!=month_str(published_months[-1]):
+        raise ValueError("Published original 37-month window is inconsistent")
     for a in ORDER:
-        if abs(computed_vols[a]-float(stored["annualized_volatility_pct"][a]))>0.00006:
-            raise ValueError("Volatility audit mismatch for "+a)
+        if abs(vol(published_samples[a])-float(stored["annualized_volatility_pct"][a]))>0.00006:
+            raise ValueError("Original published volatility audit mismatch for "+a)
     for i,a in enumerate(ORDER):
         for j,b in enumerate(ORDER):
             key=a+"__"+b if i<=j else b+"__"+a
-            if abs(corrs[i][j]-float(stored["correlations"][key]))>0.000006:
-                raise ValueError("Published correlation mismatch "+key)
+            if abs(correlation(published_samples[a],published_samples[b])-float(stored["correlations"][key]))>0.000006:
+                raise ValueError("Original published correlation mismatch "+key)
     weights=[WEIGHTS[a] for a in ORDER]
     static_var=sum(weights[i]*weights[j]*correlation(samples[ORDER[i]],samples[ORDER[j]])*
         (stdev(samples[ORDER[i]])*math.sqrt(12))*(stdev(samples[ORDER[j]])*math.sqrt(12))
@@ -126,13 +134,17 @@ def main():
             "annualized_volatility_pct":{a:round(vol(s[a]),3) for a in ORDER},
             "equity_gilt_correlation":round(correlation(s["equity"],s["gilt_fund"]),4),
             "gold_silver_correlation":round(correlation(s["gold_etf"],s["silver_etf"]),4)})
-    result={"decision":"PASS_OFFICIAL_SOURCE_ARITHMETIC_R7_RESEARCH_ONLY",
+    result={"decision":"PASS_OFFICIAL_SOURCE_STRICT_DATE_ALIGNED_36M_R7_RESEARCH_ONLY",
             "investment_authorization":"NO_GO", "2036_probability_validated":False,
             "official_source_provenance_segments":len(manifest["source_manifest"]),
             "source_qualified_assets":ORDER,
             "observed_date_window":[month_str(keys[0]),month_str(keys[-1])],
             "monthly_return_window":[month_str(common_return_months[0]),month_str(common_return_months[-1])],
             "aligned_monthly_return_count":n,"source_checks":checks,
+            "month_end_date_mismatches_quarantined":mismatch_dates,
+            "affected_monthly_return_excluded":[month_str(keys[1])] if mismatch_dates else [],
+            "original_37_month_window":[month_str(published_months[0]),month_str(published_months[-1])],
+            "original_month_only_aligned_return_count":len(published_months),
             "source_csv_sha256":hashlib.sha256(INPUT.read_bytes()).hexdigest(),
             "qualification_manifest_sha256":hashlib.sha256(MANIFEST.read_bytes()).hexdigest(),
             "full_period_annualized_log_return_volatility_pct":{a:round(computed_vols[a],5) for a in ORDER},
@@ -140,7 +152,7 @@ def main():
             "correlation_matrix":[[round(x,7) for x in row] for row in corrs],
             "static_65_20_10_5_annualized_volatility_pct":round(100*math.sqrt(static_var),6),
             "subperiods":subperiod,
-            "limitations":["37 monthly returns only; strong sampling uncertainty and nonstationarity",
+            "limitations":["36 strictly date-aligned monthly returns only after excluding mismatched September 2023 boundary; strong sampling uncertainty and nonstationarity",
                            "Selected four schemes are research proxies for risk sleeves, not selected portfolio",
                            "ETF NAVs are not necessarily executable market purchase/sale prices",
                            "NAV includes fund management expenses, so avoid TER double counting",
