@@ -1,12 +1,12 @@
 {
-  "status": "FAIL_INCOMPLETE",
-  "run_utc": "2026-11-02T11:11:12.717929+00:00",
+  "status": "PASS_PILOT_ONLY",
+  "run_utc": "2026-11-02T11:20:22.369276+00:00",
   "source_ownership": "AMFI official portal",
   "readme": "Named-scheme classes are keyword matches, not approved candidate identity. NAVs do not validate tracking error or scheme taxonomy.",
   "windows": [
     {
       "label": "latest",
-      "status": "FAIL",
+      "status": "PASS",
       "start": null,
       "end": null,
       "source_url": "https://portal.amfiindia.com/spages/NAVAll.txt",
@@ -14,96 +14,149 @@
       "content_type": "text/plain",
       "response_bytes": 1528600,
       "sha256": "584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a",
-      "retrieved_utc": "2026-11-02T11:10:44.516050+00:00",
+      "retrieved_utc": "2026-11-02T11:19:52.484200+00:00",
       "parsed": 14200,
-      "rejected": 241,
-      "rejection_sample": [
+      "rejected": 0,
+      "excluded_unpriced_or_undated": 241,
+      "reason_counts": {
+        "zero_nav_no_investable_price": 241
+      },
+      "rejection_sample": [],
+      "exclusion_sample": [
         [
           269,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148304;INF090I01VZ8;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;Growth;0.0000;30-Oct-2026"
         ],
         [
           270,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148303;INF090I01VX3;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Regular Plan;Growth;0.0000;30-Oct-2026"
         ],
         [
           271,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147956;INF090I01TK4;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;;0.0000;20-Jul-2020"
         ],
         [
           272,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147955;INF090I01TL2;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;;0.0000;20-Jul-2020"
         ],
         [
           273,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147957;INF090I01TI8;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);;;0.0000;20-Jul-2020"
         ],
         [
           274,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147954;INF090I01TJ6;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);;;0.0000;20-Jul-2020"
         ],
         [
           275,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147959;INF090I01TM0;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);;;0.0000;11-Sep-2023"
         ],
         [
           276,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147958;INF090I01TP3;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;;0.0000;11-Sep-2023"
         ],
         [
           277,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147961;INF090I01TN8;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);;;0.0000;11-Sep-2023"
         ],
         [
           278,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148305;INF090I01VW5;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Regular Plan;IDCW;0.0000;30-Oct-2026"
         ],
         [
           279,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "147960;INF090I01TO6;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;;0.0000;11-Sep-2023"
         ],
         [
           280,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148306;INF090I01VY1;-;Franklin India Credit Risk Fund (No. of segregated portfolios-3);Direct Plan;IDCW;0.0000;30-Oct-2026"
         ],
         [
           306,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148262;INF204KB17P0;INF204KB18P8;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Direct Plan;IDCW Option;0.0000;30-Oct-2026"
         ],
         [
           307,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148264;INF204KB15P4;INF204KB16P2;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Direct Plan;QUARTERLY IDCW Option;0.0000;30-Oct-2026"
         ],
         [
           308,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148263;INF204KB13Q7;INF204KB14Q5;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Regular Plan;IDCW Option;0.0000;30-Oct-2026"
         ],
         [
           309,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148260;INF204KB11Q1;INF204KB12Q9;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Regular Plan;QUARTERLY IDCW Option;0.0000;30-Oct-2026"
         ],
         [
           322,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148261;INF204KB14P7;-;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Direct Plan;Growth Option;0.0000;30-Oct-2026"
         ],
         [
           323,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148258;INF204KB19P6;-;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Regular Plan;Growth Option;0.0000;30-Oct-2026"
         ],
         [
           324,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148259;INF204KB10Q3;-;Nippon India Credit Risk Fund (Existing Number of Segregated Portfolios - 1);Regular Plan;Institutional Plan-Growth Option;0.0000;30-Oct-2026"
         ],
         [
           337,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "148239;INF789F1ARG8;INF789F1ARH6;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
+        ],
+        [
+          338,
+          "zero_nav_no_investable_price",
+          "148241;INF789F1ARK0;INF789F1ARL8;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
+        ],
+        [
+          339,
+          "zero_nav_no_investable_price",
+          "148242;INF789F1ARF0;-;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
+        ],
+        [
+          340,
+          "zero_nav_no_investable_price",
+          "148238;INF789F1ARI4;INF789F1ARJ2;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
+        ],
+        [
+          341,
+          "zero_nav_no_investable_price",
+          "148240;INF789F1ARM6;INF789F1ARN4;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
+        ],
+        [
+          342,
+          "zero_nav_no_investable_price",
+          "148245;INF789F1ARD5;INF789F1ARE3;UTI - Credit Risk Fund (Segregated - 06032020);;;0;30-Oct-2026"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 241"
+      "first_observation": "2012-02-17",
+      "last_observation": "2026-11-01",
+      "unique_schemes": 14200,
+      "unique_dates": 823
     },
     {
       "label": "history_2024-01-02_2024-01-05",
-      "status": "FAIL",
+      "status": "PASS",
       "start": "2024-01-02",
       "end": "2024-01-05",
       "source_url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=02-Jan-2024&todt=05-Jan-2024",
@@ -111,96 +164,149 @@
       "content_type": "text/plain",
       "response_bytes": 3687487,
       "sha256": "00d367d0d760beab6c7380c92357e8fd071c8742b6666fc7ae5957066cf55dd3",
-      "retrieved_utc": "2026-11-02T11:10:55.998913+00:00",
+      "retrieved_utc": "2026-11-02T11:20:03.976661+00:00",
       "parsed": 26794,
-      "rejected": 432,
-      "rejection_sample": [
+      "rejected": 0,
+      "excluded_unpriced_or_undated": 432,
+      "reason_counts": {
+        "zero_nav_no_investable_price": 432
+      },
+      "rejection_sample": [],
+      "exclusion_sample": [
         [
           7102,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;02-Jan-2024"
         ],
         [
           7103,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;03-Jan-2024"
         ],
         [
           7104,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;04-Jan-2024"
         ],
         [
           7105,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;05-Jan-2024"
         ],
         [
           7106,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;02-Jan-2024"
         ],
         [
           7107,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;03-Jan-2024"
         ],
         [
           7108,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;04-Jan-2024"
         ],
         [
           7109,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;05-Jan-2024"
         ],
         [
           7110,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;02-Jan-2024"
         ],
         [
           7111,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;03-Jan-2024"
         ],
         [
           7112,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;04-Jan-2024"
         ],
         [
           7113,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;05-Jan-2024"
         ],
         [
           7114,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;02-Jan-2024"
         ],
         [
           7115,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;03-Jan-2024"
         ],
         [
           7116,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;04-Jan-2024"
         ],
         [
           7117,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;05-Jan-2024"
         ],
         [
           7118,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;02-Jan-2024"
         ],
         [
           7119,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;03-Jan-2024"
         ],
         [
           7120,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;04-Jan-2024"
         ],
         [
           7121,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;05-Jan-2024"
+        ],
+        [
+          7122,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;02-Jan-2024"
+        ],
+        [
+          7123,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;03-Jan-2024"
+        ],
+        [
+          7124,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;04-Jan-2024"
+        ],
+        [
+          7125,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;05-Jan-2024"
+        ],
+        [
+          7126,
+          "zero_nav_no_investable_price",
+          "152119;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Monthly IDCW option;Regular Plan;Regular IDCW;;;0;02-Jan-2024"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 432"
+      "first_observation": "2024-01-02",
+      "last_observation": "2024-01-05",
+      "unique_schemes": 6705,
+      "unique_dates": 4
     },
     {
       "label": "history_2026-10-19_2026-10-23",
-      "status": "FAIL",
+      "status": "PASS",
       "start": "2026-10-19",
       "end": "2026-10-23",
       "source_url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=19-Oct-2026&todt=23-Oct-2026",
@@ -208,96 +314,149 @@
       "content_type": "text/plain",
       "response_bytes": 4660562,
       "sha256": "cceb34cff86617f2c0925aaaf9c20a11687ea636ae175c079de6df4e5ae04d24",
-      "retrieved_utc": "2026-11-02T11:11:12.407579+00:00",
+      "retrieved_utc": "2026-11-02T11:20:22.083957+00:00",
       "parsed": 34712,
-      "rejected": 432,
-      "rejection_sample": [
+      "rejected": 0,
+      "excluded_unpriced_or_undated": 432,
+      "reason_counts": {
+        "zero_nav_no_investable_price": 432
+      },
+      "rejection_sample": [],
+      "exclusion_sample": [
         [
           8846,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;19-Oct-2026"
         ],
         [
           8847,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;21-Oct-2026"
         ],
         [
           8848,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;22-Oct-2026"
         ],
         [
           8849,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152111;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Annual IDCW option;Direct Plan;Direct IDCW;;;0;23-Oct-2026"
         ],
         [
           8850,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;19-Oct-2026"
         ],
         [
           8851,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;21-Oct-2026"
         ],
         [
           8852,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;22-Oct-2026"
         ],
         [
           8853,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152114;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Growth Option;Direct Plan;Direct Growth;;;0;23-Oct-2026"
         ],
         [
           8854,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;19-Oct-2026"
         ],
         [
           8855,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;21-Oct-2026"
         ],
         [
           8856,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;22-Oct-2026"
         ],
         [
           8857,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152112;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Monthly IDCW Option;Direct Plan;Direct IDCW;;;0;23-Oct-2026"
         ],
         [
           8858,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;19-Oct-2026"
         ],
         [
           8859,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;21-Oct-2026"
         ],
         [
           8860,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;22-Oct-2026"
         ],
         [
           8861,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152113;PGIM India Money Market Fund - Segregated Portfolio 1 - Direct Plan - Quarterly IDCW option;Direct Plan;Direct IDCW;;;0;23-Oct-2026"
         ],
         [
           8862,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;19-Oct-2026"
         ],
         [
           8863,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;21-Oct-2026"
         ],
         [
           8864,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;22-Oct-2026"
         ],
         [
           8865,
-          "invalid NAV or date"
+          "zero_nav_no_investable_price",
+          "152120;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Annual IDCW Option;Regular Plan;Regular IDCW;;;0;23-Oct-2026"
+        ],
+        [
+          8866,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;19-Oct-2026"
+        ],
+        [
+          8867,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;21-Oct-2026"
+        ],
+        [
+          8868,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;22-Oct-2026"
+        ],
+        [
+          8869,
+          "zero_nav_no_investable_price",
+          "152122;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular plan - Growth option;Regular Plan;Regular Growth;;;0;23-Oct-2026"
+        ],
+        [
+          8870,
+          "zero_nav_no_investable_price",
+          "152119;PGIM India Money Market Fund - Segregated Portfolio 1 - Regular Plan - Monthly IDCW option;Regular Plan;Regular IDCW;;;0;19-Oct-2026"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 432"
+      "first_observation": "2026-10-19",
+      "last_observation": "2026-10-23",
+      "unique_schemes": 8513,
+      "unique_dates": 5
     }
   ],
-  "matched_rows": 0,
-  "failed_windows": 3,
+  "matched_rows": 4040,
+  "failed_windows": 0,
   "investment_authorization": "NO_GO",
   "full_investable_series_reconciled": false,
   "2036_real_world_probability_validated": false
