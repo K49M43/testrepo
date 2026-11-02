@@ -5,6 +5,9 @@ on:
       - ".github/workflows/stage512-r9-lic-gsec-history.yml"
       - "research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py"
   workflow_dispatch:
+concurrency:
+  group: stage512-r9-licgsec-official-backfill
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
