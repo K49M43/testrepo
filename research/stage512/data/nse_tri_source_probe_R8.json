@@ -1,0 +1,42 @@
+{
+  "research_gate": "SOURCE_DISCOVERY_ONLY",
+  "investment_gate": "NO_GO",
+  "NIFTY500_TR_INDEX_HISTORY_QUALIFIED": false,
+  "source_owner": "NSE Indices",
+  "probes": [
+    {
+      "window": "2020-02",
+      "start": "01-Feb-2020",
+      "end": "30-Apr-2020",
+      "source_url": "https://www.niftyindices.com/Backpage.aspx/getTotalReturnIndexString",
+      "index_name": "NIFTY 500",
+      "status": "FAIL_UNQUALIFIED",
+      "retrieved_utc": "2026-11-02T12:01:25.167537+00:00",
+      "http_status": 200,
+      "bytes": 95850,
+      "content_type": "text/html; charset=utf-8",
+      "source_sha256": "30ba1733a296263a13706dadd5ceb5b79f881961acf54caba522d78b71fbd541",
+      "errors": [
+        "JSONDecodeError: Expecting value: line 1 column 2 (char 1)",
+        "JSONDecodeError: Expecting value: line 1 column 2 (char 1)"
+      ]
+    },
+    {
+      "window": "2026-08",
+      "start": "01-Aug-2026",
+      "end": "30-Oct-2026",
+      "source_url": "https://www.niftyindices.com/Backpage.aspx/getTotalReturnIndexString",
+      "index_name": "NIFTY 500",
+      "status": "FAIL_UNQUALIFIED",
+      "retrieved_utc": "2026-11-02T12:01:31.596911+00:00",
+      "http_status": 200,
+      "bytes": 95850,
+      "content_type": "text/html; charset=utf-8",
+      "source_sha256": "30ba1733a296263a13706dadd5ceb5b79f881961acf54caba522d78b71fbd541",
+      "errors": [
+        "JSONDecodeError: Expecting value: line 1 column 2 (char 1)",
+        "JSONDecodeError: Expecting value: line 1 column 2 (char 1)"
+      ]
+    }
+  ]
+}
