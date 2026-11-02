@@ -1,0 +1,113 @@
+{
+  "asof_ist": "2026-11-02T09:54:02.176621+05:30",
+  "warmup": [
+    {
+      "url": "https://www.nseindia.com/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.nseindia.com/market-data/exchange-traded-funds-etf",
+      "status": 200,
+      "bytes": 173198,
+      "cookies": 3
+    }
+  ],
+  "num_success": 1,
+  "quotes": [
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "GOLDBEES",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=GOLDBEES",
+      "request_time_ist": "2026-11-02T09:54:02.815764+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "SILVERBEES",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=SILVERBEES",
+      "request_time_ist": "2026-11-02T09:54:03.270288+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "NIFTYBEES",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=NIFTYBEES",
+      "request_time_ist": "2026-11-02T09:54:03.700967+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "HDFCGOLD",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=HDFCGOLD",
+      "request_time_ist": "2026-11-02T09:54:04.083283+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "HDFCSILVER",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=HDFCSILVER",
+      "request_time_ist": "2026-11-02T09:54:04.494592+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "SBIGOLD",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=SBIGOLD",
+      "request_time_ist": "2026-11-02T09:54:04.884795+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "SBISILVER",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=SBISILVER",
+      "request_time_ist": "2026-11-02T09:54:05.276071+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "GOLDAXIS",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=GOLDAXIS",
+      "request_time_ist": "2026-11-02T09:54:05.661515+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "GOLD1",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=GOLD1",
+      "request_time_ist": "2026-11-02T09:54:06.068106+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "SILVERIETF",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=SILVERIETF",
+      "request_time_ist": "2026-11-02T09:54:06.462490+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "ETF_SYMBOL",
+      "symbol": "DSPGOLD",
+      "url": "https://www.nseindia.com/api/quote-equity?symbol=DSPGOLD",
+      "request_time_ist": "2026-11-02T09:54:06.923083+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "category": "NSE_ETF_MARKET",
+      "symbol": "_ALL",
+      "url": "https://www.nseindia.com/api/etf",
+      "request_time_ist": "2026-11-02T09:54:07.317574+05:30",
+      "http": 200,
+      "content_type": "application/json; charset=utf-8",
+      "sha256": "f631924ea644566d8bd4eebbecd69b60d3c4b75fa2ae7c4908c2dbfc9d2203d7",
+      "bytes": 286592,
+      "json_data": "{'timestamp': '02-Nov-2026 09:52:23', 'data': [{'symbol': 'GOLDBEES', 'assets': 'Gold', 'open': '113.18', 'high': '113.18', 'low': '112.72', 'ltP': '112.86', 'chn': '-2.37', 'per': '-2.06', 'qty': '11128800', 'trdVal': '1256552808', 'nav': '115.0248', 'wkhi': '148.14', 'wklo': '97.3', 'xDt': '19-DEC-19', 'cAct': ' FACE VALUE SPLIT (SUB-DIVISION) - FROM RS 100/- TO RS 1/-', 'yPC': 13.222311396468692, 'mPC': -7.179866765358997, 'prevClose': '115.23', 'stockIndClosePrice': '0', 'perChange365d': 15.21, 'perChange30d': -5.11, 'date365dAgo': '31-Oct-2025', 'date30dAgo': '01-Oct-2026', 'CAct': ' FACE VALUE SPLIT (SUB-DIVISION) - FROM RS 100/- TO RS 1/-', 'MPC': -7.179866765358997, 'XDt': '19-DEC-19', 'YPC': 13.222311396468692, 'nearWKH': 23.815309842041305, 'nearWKL': -15.991778006166498, 'chartTodayPath': 'https://nsearchives.nseindia.com/today/GOLDBEESEQN.svg', 'chart30dPath': 'https://nsearchives.nseindia.com/30d/GOLDBEES-EQ.svg', 'chart365dPath': 'https://nsearchives.nseindia.com/365d/GOLDBEES-EQ.svg', 'series': 'EQ'}, {'symbol': 'SILVERBEES', 'assets': 'Domestic price of Silver- based on LBMA Silver daily spot fixing price', 'open': '171.36', 'high': '171.36', 'low': '170.03', 'ltP': '170.21', 'chn': '-3.13', 'per': '-1.81', 'qty': '7241508', 'trdVal': '1234387453.68', 'nav': '173.4303', 'wkhi': '360', 'wklo': '138.22', 'xDt': '-', 'cAct': '-', 'yPC': 21.128664958724734, 'mPC': -18.800686957351395, 'prevClose': '173.34', 'stockIndClosePrice': '0', 'perChange365d': 21.67, 'perChange30d': -16.95, 'date365dAgo': '31-Oct-2025', 'date30dAgo': '01-Oct-2026', 'CAct': '-', 'MPC': -18.800686957351395, 'XDt': '-', 'YPC': 21.128664958724734, 'nearWKH': 52.71944444444444, 'nearWKL': -23.14426276949791, 'chartTodayPath': 'https://nsearchives.nseindia.com/today/SILVERBEESEQN.svg', 'chart30dPath': 'https://nsearchives.nseindia.com/30d/SILVERBEES-EQ.svg', 'chart365dPath': 'https://nsearchives.nseindia.com/365d/SILVERBEES-EQ.svg', 'series': 'EQ'}, {'symbol': 'LIQUIDCASE', 'assets': 'Z"
+    },
+    {
+      "category": "GSEC_BOND",
+      "symbol": "833GS2036",
+      "url": "https://www.nseindia.com/api/quote-bonds?symbol=833GS2036",
+      "request_time_ist": "2026-11-02T09:54:07.970134+05:30",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}
