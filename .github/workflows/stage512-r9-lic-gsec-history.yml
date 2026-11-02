@@ -1,0 +1,45 @@
+name: Stage512 R9 direct-AMFI LIC 8-13yr GSec ETF 11-year NAV qualification
+on:
+  push:
+    paths:
+      - ".github/workflows/stage512-r9-lic-gsec-history.yml"
+      - "research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  qualify-gsec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire official AMFI 133307 histories and verify LIC factsheet returns
+        id: qualify
+        continue-on-error: true
+        run: python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
+      - name: Archive first-party AMFI byte-exact response segments
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage512-r9-lic-gsec-official-amfi-raw
+          path: research/stage512/data/r9_lic_gsec_etf/raw/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Publish source qualification manifest, accepted NAVs and return series
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json 2>/dev/null || true
+          if test -e research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_amfi_daily.csv; then
+            git add research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_amfi_daily.csv
+          fi
+          if test -e research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_monthly_returns.csv; then
+            git add research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_monthly_returns.csv
+          fi
+          git diff --cached --quiet || (git commit -m "audit(stage512): official 11-year LIC GSec ETF NAV history qualification R9" && git push)
+      - name: Reject incomplete or mismatched official ETF history
+        if: steps.qualify.outcome != 'success'
+        run: |
+          echo "LIC GSec ETF long official history did not qualify. Do not use as 2036 benchmark."
+          exit 1
