@@ -2,6 +2,16 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 2 November 2026 (after PR #5)
+
+This section supersedes the old “where to begin” and blocker snapshots below wherever they conflict; earlier failure records remain historical.
+
+- PR #5 merged as `da98bf8`, adding the deterministic pre-tax cashflow hurdle baseline. At 6% assumed CPI the ₹90L October 2026-real floor equates to about ₹1.612Cr in October 2036; its constant-return arithmetic hurdle is about 8.25% effective annually before taxes, fees and costs. This is not a forecast or feasibility result.
+- A new initial tax-rule map is in `decision/tax_rules_asof.md`; the execution plan and `decision/decision_log.md` identify its limited scope. It maps the TY 2026–27 Act 2025 / Finance Act 2026 rules but does not calculate investor taxes or establish security-specific eligibility.
+- **Government-security rule correction:** entries 13D/13E were added by the Taxation and Other Laws (Amendment) Act, 2026 for Foreign Institutional Investors and the Bank for International Settlements. Notification 137/2026 dated 19 October prescribed Rule 281A/Form 173A. These institutional exemptions are not assumed for a resident retail investor. A prior handoff line describing them as pending has been corrected in the decision log and baseline.
+- **Next single work item:** build and independently reconcile the deterministic lot-level after-tax cashflow ledger (scheduled contributions, per-instrument distributions/coupons, fees/trading costs, tax-year aggregation, and alternative 120/122-month exits), then connect it to a released CPI vintage. No after-tax real-wealth output is qualified.
+- Investor authorization remains **NO-GO**.
+
 ## Post-merge update — 2 November 2026 (PR #4)
 
 P0 Tasks 1–2 are now complete within the limits below. The merged main commit is `8eb9c20`.

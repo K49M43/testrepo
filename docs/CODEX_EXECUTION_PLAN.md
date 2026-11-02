@@ -9,6 +9,8 @@
 
 **Next incomplete work:** P1 Task 3–4, starting with audited linked-CPI vintage/anchor treatment and an independent deterministic, instrument-specific after-tax cashflow model. The arithmetic-only baseline is `research/stage512/2026-11-02/cashflow_hurdle_baseline.md`; it does not close the tax or real-wealth gates.
 
+**Current substep (2 November 2026):** initial Act 2025 / Finance Act 2026 instrument-tax map is documented in `decision/tax_rules_asof.md`. This closes only the source-mapping substep. The instrument/lot-level after-tax engine, tax-professional example review, and observed CPI-anchor choice remain open. Next work: implement and independently reconcile the deterministic after-tax cashflow ledger, with per-lot realization, coupons/distributions, annual tax aggregation, and 120/122-month terminal cases; then join its results to a released CPI vintage. Investment authorization remains NO-GO.
+
 ## P0 task definitions and acceptance gates (completed on this branch; retained for traceability)
 **Task 1 — Independently inspect and repair the R9 official bond-fund history gate.**
 1. Read `AGENTS.md`, mandate, handoff, prior R9.3 incident report and the latest live manifest. Check current branch, repository status and existing GitHub Actions results before assuming source failure persists.
@@ -29,6 +31,7 @@
 **Task 3 — CPI and total-return evidence.** Re-audit MoSPI linked CPI; NSE TRI anchor and later updates; RBI bullion secondary mirror against official published prices. Obtain actual G-Sec total-return index if feasible, or label a LIC ETF return as product proxy and independently validate duration. Account for bullion monthly-average vs fund month-end pricing.
 
 **Task 4 — Tax/real-wealth accounting.** Independently audit the ₹42L and stepped SIP cashflow engine, all holdings and tax lots under current Indian law, coupon reinvestment, ETF expense/price impacts, transaction costs, inflation-link basis and alternative 2036 exits. Demonstrate deterministic tests and produce nominal→tax→real result tables.
+- **Tax-rule source map started:** `decision/tax_rules_asof.md` documents TY 2026–27 provisions and product-specific branches, including Act 2025 transition, equity STT conditions, specified debt-fund units, direct-security coupons/sales, and non-equity precious-metal funds. It is not a tax result; exact-security classification, the after-tax ledger and professional example review remain acceptance gates.
 
 ## P2: Optimize investor decision, not code volume
 **Task 5 — Candidate screen.** Identify and verify **10+** legitimate investable candidates/strategies with current terms, source dates, identifiers, access via Groww/other lawful route, liquidity, risks and tax. Include direct GoI bond(s), rolling G-Sec alternatives, Nifty500/broad equity, gold **and silver**, and suitable alternatives. Reject candidates with reasons, not omission.
