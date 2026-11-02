@@ -1,0 +1,32 @@
+name: Stage512 R8 official NSE Nifty500 TRI whitepaper 129-month validation
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r8-nse-whitepaper-audit.yml'
+      - 'research/stage512/pipelines/r8_nse_whitepaper_monthly_verify.py'
+      - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  official-equity-crosscheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate NSE printed return matrix against immutable mirror Git blob
+        id: verify
+        continue-on-error: true
+        run: python research/stage512/pipelines/r8_nse_whitepaper_monthly_verify.py
+      - name: Commit passed or failed reconciliation evidence
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/nse500_tri_validation_R8.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): NSE whitepaper Nifty500 TRI 129-month source match" && git push)
+      - name: Reject incomplete official publication checks
+        if: steps.verify.outcome != 'success'
+        run: |
+          echo 'NSE official published monthly TRI reconciliation failed; NO-GO.'
+          exit 1
