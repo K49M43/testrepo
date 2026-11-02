@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "program": "2036 personal real-money investment decision",
+  "intent": "decision_support_not_research_platform",
+  "as_of": "2026-11-02",
+  "authoritative_mandate": "docs/INVESTMENT_DECISION_MANDATE_2036.md",
+  "investor": {
+    "residence": "India",
+    "broker": "Groww",
+    "income_tax_regime": "new",
+    "approximate_marginal_income_tax_rate": 0.3,
+    "marginal_rate_is_not_universal_capital_gains_rate": true,
+    "current_income_required": false,
+    "outstanding_liabilities_reported": false,
+    "funding_interruptions_expected": false,
+    "identity_not_in_repository": true
+  },
+  "cashflows": {
+    "initial_lump_sum_inr": 4200000,
+    "starting_monthly_contribution_inr": 25000,
+    "annual_sip_step_up_fraction": 0.1,
+    "months_between_step_ups": 12,
+    "illustrative_contribution_count": 120,
+    "modeled_contribution_timing": "end_of_month_unconfirmed",
+    "actual_first_contribution_date": null,
+    "actual_initial_investment_date": null,
+    "contribution_total_inr_120_months_estimate": 4781227.38,
+    "combined_contributed_capital_inr_estimate": 8981227.38
+  },
+  "goals": {
+    "target_calendar_year": 2036,
+    "force_liquidate_in_october_2036": false,
+    "purchasing_power_base_year": 2026,
+    "purchasing_power_base_specific_date": "October 2026 historical reference; confirm for final decision",
+    "real_after_tax_floor_inr": 9000000,
+    "real_after_tax_stretch_inr": 10000000,
+    "aspirational_model_floor_success_fraction": 0.85,
+    "modeled_floor_success_qualified": false,
+    "capital_or_real_floor_guarantee": false,
+    "target_measurement_dates_in_2036": null
+  },
+  "modeling": {
+    "planning_inflation_scenario_annual": 0.06,
+    "planning_inflation_is_prediction": false,
+    "require_inflation_sensitivities": true,
+    "baseline_existing_research_weights": {
+      "nifty500_equity": 0.65,
+      "gilt": 0.2,
+      "gold": 0.1,
+      "silver": 0.05
+    },
+    "research_allocation_approved": false,
+    "minimum_investable_candidates": 10,
+    "include_direct_sovereign_bonds": true,
+    "include_gold": true,
+    "include_silver": true,
+    "requires_instrument_tax_schedules": true,
+    "require_gross_to_tax_to_real_reporting": true,
+    "require_investment_drawdown_tolerance_confirmation": true,
+    "latest_investment_authorization": "NO_GO"
+  },
+  "unknowns_for_final_signoff": [
+    "actual first investment and SIP dates",
+    "specific 2036 measurement/liquidation policy",
+    "interim drawdown/loss tolerance",
+    "current exact tax/cess/surcharge context",
+    "up-to-date purchase eligibility, security identifiers and tradable prices"
+  ],
+  "current_source_gates": {
+    "amfi_4_asset_strict_36month_nav": "PASS_WITH_LIMITED_HISTORY",
+    "nifty500_129_published_monthly_tri": "PASS_SAMPLED_PUBLISHED_RETURNS",
+    "rbi_mumbai_bullion_437month_mirror": "PASS_SECONDARY_INTEGRITY_WITH_SAMPLED_RBI_CHECK",
+    "mospi_linked_cpi": "PROVISIONAL_NEEDS_VINTAGE_CHECKS",
+    "gsec_index_primary_complete_tr_history": "OPEN",
+    "lic_8_13yr_gsec_etf_full_amfi": "FAIL_INCOMPLETE_AS_OF_2026_11_02",
+    "real_2036_success_probability": "NOT_QUALIFIED"
+  },
+  "safeguards": {
+    "no_automatic_brokerage_actions": true,
+    "no_credentials_or_pii_in_public_repo": true,
+    "respect_http_429_and_source_access": true,
+    "failure_is_not_auto_promoted_to_pass": true,
+    "report_invalid_model_risks_explicitly": true
+  }
+}
