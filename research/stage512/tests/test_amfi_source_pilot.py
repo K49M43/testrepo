@@ -24,7 +24,7 @@ class OfficialAmfiParserContract(unittest.TestCase):
         rows, _ = parse_nav_text(b'<html><body>Captcha forbidden</body></html>', history=True)
         self.assertEqual(len(rows), 0)
     def test_invalid_duplicate_does_not_pass(self):
-        rows, stats = parse_nav_text(b'123456;Name;ISIN;;-3;;;03-Jan-2024\n123456;Name;ISIN;;1;;;03-Jan-2024\n123456;Name;ISIN;;2;;;03-Jan-2024', history=True)
+        rows, stats = parse_nav_text(b'123456;Name;Direct;Growth;ISIN;;-3;03-Jan-2024\n123456;Name;Direct;Growth;ISIN;;1;03-Jan-2024\n123456;Name;Direct;Growth;ISIN;;2;03-Jan-2024', history=True)
         self.assertEqual(stats['rejected'], 2)
     def test_window_limits(self):
         with self.assertRaises(ValueError):
