@@ -13,6 +13,9 @@ BASE=Path("research/stage512/data")
 NSE=BASE/"nse500_official_tri_monthly_2015_2025q3_R8.csv"
 NAV=BASE/"r9_lic_gsec_etf/lic_gsec_133307_monthly_returns.csv"
 MAN=BASE/"r9_lic_gsec_etf/qualification_manifest.json"
+EQUITY_DATES=BASE/"nse500_tri_month_end_dates_R9.csv"
+LIC_DAILY=BASE/"r9_lic_gsec_etf/lic_gsec_133307_amfi_daily.csv"
+NSE_VALID=BASE/"nse500_tri_validation_R8.json"
 OUT=BASE/"r9_nse_gsec_129m_source_bridge.json"
 def read(p):
     with p.open(newline="",encoding="utf8") as f:return list(csv.DictReader(f))
@@ -30,6 +33,9 @@ def main():
         manifest=json.loads(MAN.read_text())
         if manifest.get("status")!="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY":
             raise ValueError("LIC ETF raw official AMFI NAV and factsheet qualified history unavailable")
+        nse_validation=json.loads(NSE_VALID.read_text())
+        if nse_validation.get("status")!="PASS_129_OFFICIAL_MONTHLY_ANCHORS":
+            raise ValueError("Official NSE 129-month primary publication check missing")
         if len(manifest.get("segments",[]))<6 or any(v.get("status")!="PASS_SOURCE_SEGMENT" for v in manifest["segments"]):
             raise ValueError("Incomplete original AMFI primary-source segment metadata")
         if hashlib.sha256(NAV.read_bytes()).hexdigest()!=manifest["monthly_source_sha256"]:
@@ -45,7 +51,39 @@ def main():
             y,m=map(int,p.split("-")); yy,mm=map(int,q.split("-"))
             if (yy*12+mm)-(y*12+m)!=1:raise ValueError("Joint calendar month gap")
         eq=[official[m] for m in months];g=[etf[m] for m in months]
-        report.update(status="PASS_129_MONTH_EQUITY_TR_VS_BOND_ETF_NAV_RESEARCH_ONLY",
+        # Second gate: label-matched returns may use different fund-vs-index
+        # observation cutoffs. Compare both current AND previous month ends.
+        nse_end={z["month"]:z["last_nifty500_tri_daily_mirror_date"] for z in read(EQUITY_DATES)}
+        etf_end={}
+        for z in read(LIC_DAILY):
+            m=z["date"][:7]
+            if m not in etf_end or z["date"]>etf_end[m]:etf_end[m]=z["date"]
+        def previous(k):
+            y,m=map(int,k.split("-"))
+            return f"{y-1}-12" if m==1 else f"{y}-{m-1:02d}"
+        strict=[];mismatch=[]
+        for m in months:
+            p=previous(m)
+            if p not in nse_end or p not in etf_end or m not in nse_end or m not in etf_end:
+                raise ValueError("Missing date alignment source for "+m)
+            if nse_end[m]==etf_end[m] and nse_end[p]==etf_end[p]:
+                strict.append(m)
+            else:
+                mismatch.append({"month":m,"nse_current":nse_end[m],"etf_current":etf_end[m],
+                                 "nse_previous":nse_end[p],"etf_previous":etf_end[p]})
+        if len(strict)<100:
+            raise ValueError(f"Insufficient truly date-aligned monthly observations ({len(strict)}/129); sampled mismatches {mismatch[:5]}")
+        strict_eq=[official[m] for m in strict]; strict_g=[etf[m] for m in strict]
+        report.update(status="PASS_STRICT_DATE_ALIGNED_NSE_EQUITY_TR_VS_BOND_ETF_NAV_RESEARCH_ONLY",
+          strictly_date_aligned_months=len(strict),
+          strict_window_start=strict[0],strict_window_end=strict[-1],
+          excluded_date_mismatch_months=mismatch,
+          observed_strict_equity_gsec_ETF_correlation=round(corr(strict_eq,strict_g),6),
+          strict_equity_annualized_log_vol_pct=round(sd(strict_eq)*math.sqrt(12)*100,5),
+          strict_bond_ETF_annualized_log_vol_pct=round(sd(strict_g)*math.sqrt(12)*100,5),
+          month_end_date_anchor_type="NSE-matched independent daily mirror (not first-party NSE daily export)",
+          month_end_source_sha256=hashlib.sha256(EQUITY_DATES.read_bytes()).hexdigest(),
+          official_nse_129m_anchor_validation_sha256=hashlib.sha256(NSE_VALID.read_bytes()).hexdigest(),
           first_month=months[0],last_month=months[-1],
           monthly_observations=len(months),
           nifty500_tri_monthly_log_vol_annualized_pct=round(sd(eq)*math.sqrt(12)*100,5),
@@ -60,6 +98,7 @@ def main():
                    "Ten-year overlapping windows will not be independent samples",
                    "2015-2025 historical mean is not a forward-expected CAGR",
                    "NSE published monthly values rounded to two decimal return points",
+                   "Strict date-alignment reference uses the independently cross-checked NSE daily mirror; its month-end dates are not a direct NSE-provided export.",
                    "Direct 2036-maturity sovereign bond has fundamentally different maturity roll-down exposure",
                    "ETF exchange prices and market spread may diverge from observed NAVs",
                    "Fund NAV already includes TER: do not subtract fund expense twice"])
