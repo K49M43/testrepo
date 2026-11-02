@@ -216,7 +216,7 @@ def run(out: Path, windows: list[tuple[dt.date, dt.date]]) -> int:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--output", default="research/stage512/data/amfi_pilot")
-    ap.add_argument("--window", action="append", default=["2024-01-02:2024-01-05", "2026-10-19:2026-10-23"])
+    ap.add_argument("--window", action="append", default=["2020-03-16:2020-03-20", "2023-09-25:2023-09-29", "2024-01-02:2024-01-05", "2026-10-19:2026-10-23", "2026-10-26:2026-10-30"])
     args = ap.parse_args()
     return run(Path(args.output), windows_from_args(args.window))
 
