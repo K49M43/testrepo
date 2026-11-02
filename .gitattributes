@@ -1,0 +1,5 @@
+# Preserve byte-exact API response bodies; use canonical LF text for derived data
+# and manifests whose SHA256 values are recorded in other artifacts.
+research/stage512/data/r9_lic_gsec_etf/*.csv text eol=lf
+research/stage512/data/r9_lic_gsec_etf/*.json text eol=lf
+research/stage512/data/r9_lic_gsec_etf/raw/** -text

@@ -1,9 +1,126 @@
 {
-  "status": "FAIL_NOT_QUALIFIED",
+  "status": "PASS_STRICT_DATE_ALIGNED_NSE_EQUITY_TR_VS_BOND_ETF_NAV_RESEARCH_ONLY",
   "investment_gate": "NO_GO",
   "full_nse_8_13_gsec_index_monthly_history_qualified": false,
   "silver_or_gold_same_time_multi_asset_covariance_qualified": false,
   "etf_is_index_not_true": true,
   "nse_equity_monthly_precision": "rounded 0.01 percentage point",
-  "error": "ValueError: LIC ETF raw official AMFI NAV and factsheet qualified history unavailable"
+  "strictly_date_aligned_months": 117,
+  "strict_window_start": "2015-01",
+  "strict_window_end": "2025-09",
+  "excluded_date_mismatch_months": [
+    {
+      "month": "2015-02",
+      "nse_current": "2015-02-28",
+      "etf_current": "2015-02-27",
+      "nse_previous": "2015-01-30",
+      "etf_previous": "2015-01-30"
+    },
+    {
+      "month": "2015-03",
+      "nse_current": "2015-03-31",
+      "etf_current": "2015-03-31",
+      "nse_previous": "2015-02-28",
+      "etf_previous": "2015-02-27"
+    },
+    {
+      "month": "2016-10",
+      "nse_current": "2016-10-30",
+      "etf_current": "2016-10-28",
+      "nse_previous": "2016-09-30",
+      "etf_previous": "2016-09-30"
+    },
+    {
+      "month": "2016-11",
+      "nse_current": "2016-11-30",
+      "etf_current": "2016-11-30",
+      "nse_previous": "2016-10-30",
+      "etf_previous": "2016-10-28"
+    },
+    {
+      "month": "2018-04",
+      "nse_current": "2018-04-30",
+      "etf_current": "2018-04-27",
+      "nse_previous": "2018-03-28",
+      "etf_previous": "2018-03-28"
+    },
+    {
+      "month": "2018-05",
+      "nse_current": "2018-05-31",
+      "etf_current": "2018-05-31",
+      "nse_previous": "2018-04-30",
+      "etf_previous": "2018-04-27"
+    },
+    {
+      "month": "2020-10",
+      "nse_current": "2020-10-30",
+      "etf_current": "2020-10-29",
+      "nse_previous": "2020-09-30",
+      "etf_previous": "2020-09-30"
+    },
+    {
+      "month": "2020-11",
+      "nse_current": "2020-11-27",
+      "etf_current": "2020-11-27",
+      "nse_previous": "2020-10-30",
+      "etf_previous": "2020-10-29"
+    },
+    {
+      "month": "2024-03",
+      "nse_current": "2024-03-28",
+      "etf_current": "2024-03-31",
+      "nse_previous": "2024-02-29",
+      "etf_previous": "2024-02-29"
+    },
+    {
+      "month": "2024-04",
+      "nse_current": "2024-04-30",
+      "etf_current": "2024-04-30",
+      "nse_previous": "2024-03-28",
+      "etf_previous": "2024-03-31"
+    },
+    {
+      "month": "2025-03",
+      "nse_current": "2025-03-28",
+      "etf_current": "2025-03-31",
+      "nse_previous": "2025-02-28",
+      "etf_previous": "2025-02-28"
+    },
+    {
+      "month": "2025-04",
+      "nse_current": "2025-04-30",
+      "etf_current": "2025-04-30",
+      "nse_previous": "2025-03-28",
+      "etf_previous": "2025-03-31"
+    }
+  ],
+  "observed_strict_equity_gsec_ETF_correlation": 0.022541,
+  "strict_equity_annualized_log_vol_pct": 17.02981,
+  "strict_bond_ETF_annualized_log_vol_pct": 3.72678,
+  "month_end_date_anchor_type": "NSE-matched independent daily mirror (not first-party NSE daily export)",
+  "month_end_source_sha256": "9c0a1b22714f940dcf09a57dfcec563bd70ca5a57a8af6532f97f1f86f246e34",
+  "official_nse_129m_anchor_validation_sha256": "e0c98c73b0ca53759634836e2d9ce62ce4b6b22f12c5424e0ae5e2bd86e3dad6",
+  "first_month": "2015-01",
+  "last_month": "2025-09",
+  "monthly_observations": 129,
+  "nifty500_tri_monthly_log_vol_annualized_pct": 16.94893,
+  "lic_gsec_etf_monthly_log_vol_annualized_pct": 3.84506,
+  "observed_equity_gsec_etf_correlation": -0.020016,
+  "annualized_geometric_equity_tr_return_pct": 13.17267,
+  "annualized_geometric_bond_etf_nav_return_pct": 7.12099,
+  "correlation_source_identification": "NSE official published Nifty500 gross TRI MONTHLY values vs AMFI official LIC ETF monthly NAV",
+  "source_hashes": {
+    "nifty500_official_whitepaper": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e",
+    "lic_etf_official_monthly": "f5bb135e0fac756f4b3dc09a2b8625ff99ee800a6ca88686d9cb9d6da8574240"
+  },
+  "caution": [
+    "Fund ETF NAV is not the 8-13-year G-Sec benchmark total-return index itself",
+    "Ten-year overlapping windows will not be independent samples",
+    "2015-2025 historical mean is not a forward-expected CAGR",
+    "NSE published monthly values rounded to two decimal return points",
+    "Strict date-alignment reference uses the independently cross-checked NSE daily mirror; its month-end dates are not a direct NSE-provided export.",
+    "Direct 2036-maturity sovereign bond has fundamentally different maturity roll-down exposure",
+    "ETF exchange prices and market spread may diverge from observed NAVs",
+    "Fund NAV already includes TER: do not subtract fund expense twice"
+  ]
 }

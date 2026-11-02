@@ -172,17 +172,38 @@ def main():
             for d,nav in rows:
                 partial_rows.append((d.isoformat(),CODE,f"{nav:.8f}",
                      source.get("start",""),source.get("end",""),source.get("sha256","")))
-    with partial_file.open("w",newline="",encoding="utf8") as fh:
-        wr=csv.writer(fh)
-        wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
-        wr.writerows(sorted(partial_rows))
+    acquisition_incomplete = any(x.get("status") != "PASS_SOURCE_SEGMENT" for x in sources)
+    # Keep a historical unqualified partial artifact when acquisition is
+    # incomplete. Once full qualification succeeds, the daily/monthly outputs
+    # are canonical; do not overwrite the prior failure's partial artifact with
+    # a complete duplicate that still carries an UNQUALIFIED filename.
+    if acquisition_incomplete:
+        with partial_file.open("w",newline="",encoding="utf8") as fh:
+            wr=csv.writer(fh,lineterminator="\n")
+            wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
+            wr.writerows(sorted(partial_rows))
+    partial_rows_in_file = len(partial_rows) if acquisition_incomplete else 0
+    retrieved_utc=dt.datetime.now(dt.timezone.utc).isoformat()
+    # Replaying only committed response bodies verifies the same source data;
+    # keep its original acquisition timestamp so CI does not create a needless
+    # data commit on every code or workflow change.
+    if sources and all(x.get("retrieved_from_committed_cache") for x in sources):
+        try:
+            prior=json.loads((BASE/"qualification_manifest.json").read_text(encoding="utf8"))
+            signature=lambda items: [(x.get("start"),x.get("end"),x.get("sha256"),x.get("status")) for x in items]
+            if (prior.get("status")=="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY"
+                and prior.get("retrieved_utc")
+                and signature(prior.get("segments",[]))==signature(sources)):
+                retrieved_utc=prior["retrieved_utc"]
+        except (OSError,ValueError,TypeError):
+            pass
     manifest={"status":"FAIL_INCOMPLETE","research_source_gate":"NO_GO_UNTIL_QUALIFIED",
         "scheme_code":CODE,"isin":ISIN,"scheme_name":"LIC MF Nifty 8-13 yr G-Sec ETF",
         "official_amfi_history":True,"nse_index_historical_total_return_acquired":False,
         "nav_is_tradable_etf_market_price":False,"full_2036_forecast_validated":False,
-        "investment_authorization":"NO_GO","retrieved_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
-        "partial_observation_rows":len(partial_rows),
-        "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest(),
+        "investment_authorization":"NO_GO","retrieved_utc":retrieved_utc,
+        "partial_observation_rows":partial_rows_in_file,
+        "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest() if partial_file.is_file() else None,
         "partial_not_eligible_for_return_calibration":True,
         "segments":sources,"lic_reference_factsheet":REFERENCE,
         "lic_factsheet_2026_03_31":LIC_MARCH26,
@@ -202,7 +223,7 @@ def main():
         if failures:raise ValueError(f"Fund house published CAGR comparison differs >0.14 pp: {failures}")
         output=BASE/"lic_gsec_133307_amfi_daily.csv"
         with output.open("w",newline="",encoding="utf8") as fh:
-            w=csv.writer(fh);w.writerow(["date","amfi_scheme_code","nav_inr","source_type"])
+            w=csv.writer(fh,lineterminator="\n");w.writerow(["date","amfi_scheme_code","nav_inr","source_type"])
             for d,v in s:w.writerow([d.isoformat(),CODE,f"{v:.8f}","AMFI_OFFICIAL_NAV"])
         monthly={}
         for d,v in s:monthly[d.strftime("%Y-%m")]=(d,v)
@@ -212,18 +233,23 @@ def main():
             pd,pv=monthly[prior];cd,cv=monthly[cur]
             if (cd.year*12+cd.month)-(pd.year*12+pd.month)!=1:
                 raise ValueError(f"Missing calendar NAV month {prior}->{cur}")
-            series.append([cur,cd.isoformat(),math.log(cv/pv),100*(cv/pv-1)])
+            # Round derived CSV values so one-ulp libm differences across
+            # Windows and Ubuntu do not change the byte-level source hash.
+            series.append([cur,cd.isoformat(),round(math.log(cv/pv),12),
+                           round(100*(cv/pv-1),12)])
         with (BASE/"lic_gsec_133307_monthly_returns.csv").open("w",newline="",encoding="utf8") as fh:
-            w=csv.writer(fh);w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
+            w=csv.writer(fh,lineterminator="\n");w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
         vol=__import__("statistics").stdev([x[2] for x in series])*math.sqrt(12)*100
         manifest.update(status="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
+          research_source_gate="PASS_FULL_OFFICIAL_NAV_RESEARCH_ONLY",
           observations=len(s),first=str(s[0][0]),last=str(s[-1][0]),
           months_of_return=len(series),annualized_monthly_log_nav_volatility_pct=round(vol,5),
           official_lic_factsheet_cagr_comparisons=checks,
           daily_source_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
           monthly_source_sha256=hashlib.sha256((BASE/"lic_gsec_133307_monthly_returns.csv").read_bytes()).hexdigest())
     except Exception as e:manifest["error"]=f"{type(e).__name__}: {e}"
-    (BASE/"qualification_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf8")
+    with (BASE/"qualification_manifest.json").open("w",encoding="utf8",newline="\n") as fh:
+        fh.write(json.dumps(manifest,indent=2)+"\n")
     print(json.dumps({k:manifest.get(k) for k in ["status","observations","first","last",
       "months_of_return","annualized_monthly_log_nav_volatility_pct","error"]},indent=2))
     return 0 if manifest["status"]=="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY" else 2
