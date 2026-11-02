@@ -13,3 +13,11 @@ This log records **actual investment authorization** separately from engineering
 - **Next owner:** Codex executes engineering starting with R9 qualification; investor/independent reviewer controls actual investment decision.
 
 **Do not edit this 2026-11-02 entry retroactively to claim an outcome that occurred later.** Append later dated entries with commit references.
+
+## 2026-11-02 — R9.3 complete AMFI history and strict risk bridge
+- **Executed:** sequential bounded AMFI request for all 24 half-year periods; archived original bytes; ran the independent raw-artifact validator and the existing 129-month TRI / ETF NAV bridge.
+- **Source result:** 2,867 official AMFI NAV observations, 26 Dec 2014–30 Oct 2026; all 24 source hashes and byte counts independently reproduced; max observation gap 6 days; LIC March 2026 1/3/5-year published NAV CAGR differences are 0.0047/0.0080/0.0054 percentage points.
+- **Risk bridge:** 117 of 129 month returns passed both-end date equality; strict TRI / LIC ETF NAV correlation 0.022541, sample annualized log volatility 17.02981% / 3.72678%. Month-end index dates rely on a cross-checked third-party mirror. The LIC ETF is not the index or a direct 2036 sovereign bond.
+- **Comparison:** in the common recent 36-month sample LIC ETF NAV annualized volatility is 3.00403%, vs HDFC Gilt Fund 3.65747%; descriptive and backward-looking only.
+- **Evidence:** `research/stage512/2026-11-02/stage512_R93_live_backfill_and_129m_audit.md`, `research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json`, `research/stage512/data/r9_lic_gsec_etf/r93_independent_artifact_audit.json`, and `research/stage512/data/r9_nse_gsec_129m_source_bridge.json`.
+- **Investment decision:** **NO-GO unchanged.** This advances source qualification only; cashflow/tax/inflation model, eligible candidate screen, forward uncertainty, suitability and independent challenge are still open.

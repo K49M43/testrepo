@@ -1,6 +1,6 @@
 {
-  "status": "FAIL_INCOMPLETE",
-  "research_source_gate": "NO_GO_UNTIL_QUALIFIED",
+  "status": "PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
+  "research_source_gate": "PASS_FULL_OFFICIAL_NAV_RESEARCH_ONLY",
   "scheme_code": "133307",
   "isin": "INF767K01MV5",
   "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
@@ -9,250 +9,346 @@
   "nav_is_tradable_etf_market_price": false,
   "full_2036_forecast_validated": false,
   "investment_authorization": "NO_GO",
-  "retrieved_utc": "2026-11-02T13:26:42.032986+00:00",
+  "retrieved_utc": "2026-11-02T15:08:46.588144+00:00",
   "partial_observation_rows": 0,
-  "partial_source_file_sha256": "f5df3dc8338707c0087997578c59e84d5efa4d421db51560f1026cfd4550e049",
+  "partial_source_file_sha256": "ecd5ff8a41a40ae3282954fc63513f33c48b642b01d39328cd795ba9c209a76c",
   "partial_not_eligible_for_return_calibration": true,
   "segments": [
     {
       "start": "2014-12-26",
       "end": "2015-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2014-12-26&to_date=2015-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 101,
+      "retrieved_from_committed_cache": true,
+      "sha256": "bfbec3d16aa6f6e6642265a0a5d9249e691a6f7e0a9d80c211c0bbca7e971c7a",
+      "bytes": 18088,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2014-12-26",
+      "last": "2015-05-29"
     },
     {
       "start": "2015-06-01",
       "end": "2015-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2015-06-01&to_date=2015-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 123,
+      "retrieved_from_committed_cache": true,
+      "sha256": "ebbb06d8cf447d8e965302eb8f4830cdc6410f6b9a64d3d1086bc46e2fdb79f3",
+      "bytes": 21970,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2015-06-01",
+      "last": "2015-11-30"
     },
     {
       "start": "2015-12-01",
       "end": "2016-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2015-12-01&to_date=2016-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 119,
+      "retrieved_from_committed_cache": true,
+      "sha256": "4c0c4f39100d032006b7dcf728f0c47d8a774b34c0ab0979b0bf75a3094e0cf9",
+      "bytes": 21262,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2015-12-01",
+      "last": "2016-05-31"
     },
     {
       "start": "2016-06-01",
       "end": "2016-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2016-06-01&to_date=2016-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 122,
+      "retrieved_from_committed_cache": true,
+      "sha256": "23fdd18a29170c3071993945d9c820883751db146449e4d9b055afe07ea4c117",
+      "bytes": 21796,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2016-06-01",
+      "last": "2016-11-30"
     },
     {
       "start": "2016-12-01",
       "end": "2017-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2016-12-01&to_date=2017-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 120,
+      "retrieved_from_committed_cache": true,
+      "sha256": "b1d946a0bec70d3305893e5bd9199cf76f44b572423c9c9c2dfc86baa2500bc2",
+      "bytes": 21434,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2016-12-01",
+      "last": "2017-05-31"
     },
     {
       "start": "2017-06-01",
       "end": "2017-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2017-06-01&to_date=2017-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 124,
+      "retrieved_from_committed_cache": true,
+      "sha256": "85f928d3697117bef34e8d97a5ca4210d65993abca6978f3b0e4d3f925b9edfe",
+      "bytes": 22151,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2017-06-01",
+      "last": "2017-11-30"
     },
     {
       "start": "2017-12-01",
       "end": "2018-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2017-12-01&to_date=2018-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 119,
+      "retrieved_from_committed_cache": true,
+      "sha256": "07ef35690115050ab7ca9b3c581bd28d8c9a5ae37d6479c7e7f3071253d58a7a",
+      "bytes": 21263,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2017-12-04",
+      "last": "2018-05-31"
     },
     {
       "start": "2018-06-01",
       "end": "2018-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2018-06-01&to_date=2018-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 120,
+      "retrieved_from_committed_cache": true,
+      "sha256": "8392668024ffd30fc9d127db29f83531fdf0c1ac480fa8b4571edd14e9eec720",
+      "bytes": 21443,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2018-06-01",
+      "last": "2018-11-30"
     },
     {
       "start": "2018-12-01",
       "end": "2019-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2018-12-01&to_date=2019-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 121,
+      "retrieved_from_committed_cache": true,
+      "sha256": "c046e474db62d799196f557da65b176f992b6bc82506f7d6481049fbecd29df6",
+      "bytes": 21615,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2018-12-03",
+      "last": "2019-05-31"
     },
     {
       "start": "2019-06-01",
       "end": "2019-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2019-06-01&to_date=2019-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 120,
+      "retrieved_from_committed_cache": true,
+      "sha256": "8c7242bc2feb29432f0dc0c24192162fb5a7d2e84bf85ece48990f4981afe4cf",
+      "bytes": 21450,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2019-06-03",
+      "last": "2019-11-29"
     },
     {
       "start": "2019-12-01",
       "end": "2020-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2019-12-01&to_date=2020-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 117,
+      "retrieved_from_committed_cache": true,
+      "sha256": "3bd96ea907898d1b2ce778ef6f040c74892a545a40f18c6cfbe9f26e7866126f",
+      "bytes": 20919,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2019-12-02",
+      "last": "2020-05-29"
     },
     {
       "start": "2020-06-01",
       "end": "2020-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2020-06-01&to_date=2020-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 127,
+      "retrieved_from_committed_cache": true,
+      "sha256": "003ae3f23bc57282cf8eb532ffccc532fe239625d8be626432fa51c09a6989b5",
+      "bytes": 22682,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2020-06-01",
+      "last": "2020-11-27"
     },
     {
       "start": "2020-12-01",
       "end": "2021-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2020-12-01&to_date=2021-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 118,
+      "retrieved_from_committed_cache": true,
+      "sha256": "fb5737b2d28e020e4ba71a904cf24563bae7012bd6283ee9ed609b9a8f808038",
+      "bytes": 21087,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2020-12-01",
+      "last": "2021-05-31"
     },
     {
       "start": "2021-06-01",
       "end": "2021-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2021-06-01&to_date=2021-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 122,
+      "retrieved_from_committed_cache": true,
+      "sha256": "f943e39808673052bdc65d838783e4b38b51b6b627ee292001ef4e35035fc5a3",
+      "bytes": 21804,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2021-06-01",
+      "last": "2021-11-30"
     },
     {
       "start": "2021-12-01",
       "end": "2022-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2021-12-01&to_date=2022-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 121,
+      "retrieved_from_committed_cache": true,
+      "sha256": "121d55987113ceb6ab64ca0bff6a5868022bce043c12f068941a347cf8f7a120",
+      "bytes": 21626,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2021-12-01",
+      "last": "2022-05-31"
     },
     {
       "start": "2022-06-01",
       "end": "2022-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2022-06-01&to_date=2022-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 123,
+      "retrieved_from_committed_cache": true,
+      "sha256": "aadadae7a1fc3814fa95b785163a8428e3ccd564909ebe6a68f8e6de4a45f1e9",
+      "bytes": 21969,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2022-06-01",
+      "last": "2022-11-30"
     },
     {
       "start": "2022-12-01",
       "end": "2023-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2022-12-01&to_date=2023-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 121,
+      "retrieved_from_committed_cache": true,
+      "sha256": "f3983ec4bf00a2f9277488df760d03659016f8fae852fc0beda7bf69fcfcf0c0",
+      "bytes": 21619,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2022-12-01",
+      "last": "2023-05-31"
     },
     {
       "start": "2023-06-01",
       "end": "2023-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-06-01&to_date=2023-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 123,
+      "retrieved_from_committed_cache": true,
+      "sha256": "8f7a0278513f6da644bccddb2ac95a170b618a24ffd38dcc179a6359c3f1e4d5",
+      "bytes": 21965,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2023-06-01",
+      "last": "2023-11-30"
     },
     {
       "start": "2023-12-01",
       "end": "2024-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-12-01&to_date=2024-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 118,
+      "retrieved_from_committed_cache": true,
+      "sha256": "de9b02932062b1680145378465c1ec87d0ed6e7da650aca618d60a35c21322a9",
+      "bytes": 21086,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2023-12-01",
+      "last": "2024-05-31"
     },
     {
       "start": "2024-06-01",
       "end": "2024-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-06-01&to_date=2024-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "HTTPError: HTTP Error 429: Too Many Requests"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 122,
+      "retrieved_from_committed_cache": true,
+      "sha256": "7a805a2888b201a2de36132ceb0e46ff948a1a05423e8af6d8854e6543b63ea2",
+      "bytes": 21796,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2024-06-03",
+      "last": "2024-11-29"
     },
     {
       "start": "2024-12-01",
       "end": "2025-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-12-01&to_date=2025-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "HTTPError: HTTP Error 429: Too Many Requests",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 120,
+      "retrieved_from_committed_cache": true,
+      "sha256": "6f07c73cb774b20e7e14484d5e27226941143b4832fadf18668d704d176009fe",
+      "bytes": 21439,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2024-12-02",
+      "last": "2025-05-30"
     },
     {
       "start": "2025-06-01",
       "end": "2025-11-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-06-01&to_date=2025-11-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 123,
+      "retrieved_from_committed_cache": true,
+      "sha256": "1b9d8e8796fdab4294d1f66907d5be5ab9edd5dcca769cabfe13609a5b669791",
+      "bytes": 21968,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2025-06-02",
+      "last": "2025-11-28"
     },
     {
       "start": "2025-12-01",
       "end": "2026-05-31",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-12-01&to_date=2026-05-31&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 118,
+      "retrieved_from_committed_cache": true,
+      "sha256": "1b96fdc57424e9972027a442c6b746104e559001c4ba6d6f63544c727c2eee0a",
+      "bytes": 21090,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2025-12-01",
+      "last": "2026-05-29"
     },
     {
       "start": "2026-06-01",
       "end": "2026-10-30",
       "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-06-01&to_date=2026-10-30&sd_id=133307",
-      "status": "FAIL",
-      "errors": [
-        "ValueError: Unexpected option: none",
-        "ValueError: Unexpected option: none"
-      ]
+      "status": "PASS_SOURCE_SEGMENT",
+      "n": 105,
+      "retrieved_from_committed_cache": true,
+      "sha256": "a7f4e43e471e3ae446f82ffb2f7bfe4144c53012812c9bc83f5f70c4964bf493",
+      "bytes": 18791,
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "nav_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "first": "2026-06-01",
+      "last": "2026-10-30"
     }
   ],
   "lic_reference_factsheet": "https://www.licmf.com/assets/downloads/monthly_fact_sheet/2026-2027/04/lic-mf-factsheet-31st-March-2026.pdf",
@@ -268,5 +364,40 @@
     "5": 5.75,
     "since": 7.21
   },
-  "error": "ValueError: Not all official source segments retrieved"
+  "observations": 2867,
+  "first": "2014-12-26",
+  "last": "2026-10-30",
+  "months_of_return": 142,
+  "annualized_monthly_log_nav_volatility_pct": 3.82768,
+  "official_lic_factsheet_cagr_comparisons": [
+    {
+      "period_years": 1,
+      "source_start": "2025-03-31",
+      "source_end": "2026-03-31",
+      "calculated_nav_cagr_pct": 3.1753,
+      "lic_factsheet_cagr_pct": 3.18,
+      "abs_difference_pp": 0.0047,
+      "published_gsec_benchmark_cagr_pct": 3.32
+    },
+    {
+      "period_years": 3,
+      "source_start": "2023-03-31",
+      "source_end": "2026-03-31",
+      "calculated_nav_cagr_pct": 7.157973,
+      "lic_factsheet_cagr_pct": 7.15,
+      "abs_difference_pp": 0.007973,
+      "published_gsec_benchmark_cagr_pct": 7.33
+    },
+    {
+      "period_years": 5,
+      "source_start": "2021-03-31",
+      "source_end": "2026-03-31",
+      "calculated_nav_cagr_pct": 5.495434,
+      "lic_factsheet_cagr_pct": 5.49,
+      "abs_difference_pp": 0.005434,
+      "published_gsec_benchmark_cagr_pct": 5.75
+    }
+  ],
+  "daily_source_sha256": "4ee6834b029e11feb19ebf9aeaf9af500cfc1dd14e6d2638e5834d4bec29e542",
+  "monthly_source_sha256": "20e07778a95773710c4cc6ca09cdd8402e70d61568b0631fe46a7e89c1dfbee0"
 }

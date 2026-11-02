@@ -172,17 +172,24 @@ def main():
             for d,nav in rows:
                 partial_rows.append((d.isoformat(),CODE,f"{nav:.8f}",
                      source.get("start",""),source.get("end",""),source.get("sha256","")))
-    with partial_file.open("w",newline="",encoding="utf8") as fh:
-        wr=csv.writer(fh)
-        wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
-        wr.writerows(sorted(partial_rows))
+    acquisition_incomplete = any(x.get("status") != "PASS_SOURCE_SEGMENT" for x in sources)
+    # Keep a historical unqualified partial artifact when acquisition is
+    # incomplete. Once full qualification succeeds, the daily/monthly outputs
+    # are canonical; do not overwrite the prior failure's partial artifact with
+    # a complete duplicate that still carries an UNQUALIFIED filename.
+    if acquisition_incomplete:
+        with partial_file.open("w",newline="",encoding="utf8") as fh:
+            wr=csv.writer(fh)
+            wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
+            wr.writerows(sorted(partial_rows))
+    partial_rows_in_file = len(partial_rows) if acquisition_incomplete else 0
     manifest={"status":"FAIL_INCOMPLETE","research_source_gate":"NO_GO_UNTIL_QUALIFIED",
         "scheme_code":CODE,"isin":ISIN,"scheme_name":"LIC MF Nifty 8-13 yr G-Sec ETF",
         "official_amfi_history":True,"nse_index_historical_total_return_acquired":False,
         "nav_is_tradable_etf_market_price":False,"full_2036_forecast_validated":False,
         "investment_authorization":"NO_GO","retrieved_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
-        "partial_observation_rows":len(partial_rows),
-        "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest(),
+        "partial_observation_rows":partial_rows_in_file,
+        "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest() if partial_file.is_file() else None,
         "partial_not_eligible_for_return_calibration":True,
         "segments":sources,"lic_reference_factsheet":REFERENCE,
         "lic_factsheet_2026_03_31":LIC_MARCH26,
@@ -217,6 +224,7 @@ def main():
             w=csv.writer(fh);w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
         vol=__import__("statistics").stdev([x[2] for x in series])*math.sqrt(12)*100
         manifest.update(status="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
+          research_source_gate="PASS_FULL_OFFICIAL_NAV_RESEARCH_ONLY",
           observations=len(s),first=str(s[0][0]),last=str(s[-1][0]),
           months_of_return=len(series),annualized_monthly_log_nav_volatility_pct=round(vol,5),
           official_lic_factsheet_cagr_comparisons=checks,
