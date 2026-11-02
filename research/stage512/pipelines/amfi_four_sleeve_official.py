@@ -49,6 +49,9 @@ def get_segment(code,a,b):
     for attempt in range(2):
         try:
             raw=http_bytes(url,timeout=65)
+            raw_path=OUT/"raw"/code
+            raw_path.mkdir(parents=True,exist_ok=True)
+            (raw_path/(a.isoformat()+"_"+b.isoformat()+".json")).write_bytes(raw)
             x=json.loads(raw)
             if not isinstance(x,dict) or not isinstance(x.get("data"),dict):
                 raise ValueError("Unexpected AMFI response schema")
