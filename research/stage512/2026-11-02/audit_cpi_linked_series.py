@@ -1,7 +1,9 @@
-"""Independent structural and arithmetic audit of the staged linked CPI CSV.
+"""Mechanical audit of the staged linked CPI CSV.
 
-This verifies the recorded transformation and derived rates. It does not
-authenticate the CSV's transcribed source observations against government bytes.
+This verifies continuity, recorded transformations, and derived rates only. It
+does not qualify source observations. Run the separate e-Sankhyiki Back and
+PIB Annexure IV capture audits for those comparisons; neither preserves the
+original government release/response bytes.
 """
 
 from __future__ import annotations
@@ -77,7 +79,7 @@ def audit() -> dict[str, object]:
         "monthly_and_yoy_derivations": "PASS",
         "provisional_observations": provisional_months,
         "latest_observation": months[-1],
-        "source_qualification": "PASS — source-mapped provisional series reconciled to official published observations; original official source bytes are not preserved",
+        "source_qualification": "NOT CHECKED HERE — run the separate official capture audits",
         "investor_base_month_alignment": "OPEN — actual cashflow dates/base month not confirmed",
         "real_wealth_qualification": "NOT QUALIFIED",
     }
