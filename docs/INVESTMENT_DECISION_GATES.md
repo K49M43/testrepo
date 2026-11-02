@@ -23,7 +23,7 @@ PASS only if the cashflow, lot/tax, fee, inflation and XIRR engine satisfies ind
 - no duplicated TER, coupon tax, transaction cost or inflation adjustment;
 - no negative holdings/cash, impossible sales before purchases, or use of future observations;
 - annual 10% SIP step occurs after precisely 12 contributions; date-resolved flow ledger;
-- correct category-specific, vintage-specific Indian taxes; no global \`tax=30%\` shortcut;
+- correct category-specific, vintage-specific Indian taxes; no global `tax=30%` shortcut;
 - real wealth calculations use a *single anchored index* and published source linking;
 - show gross nominal → after-tax nominal → real.
 Tax tables/laws are sourced and date-stamped; unverified current taxation is a hard block for exact after-tax trade recommendation.
@@ -55,7 +55,7 @@ The investor alone authorizes transactions. Until G0–G4 are sufficiently met a
 
 ## Gate ledger discipline
 Every stage must write:
-- \`gate_id\`, \`scope\`, \`status\` (PASS/FAIL/BLOCKED/PROVISIONAL), \`as_of\`, \`evidence_paths\`, \`tests\`, \`known_limitations\`, \`next_action\`, \`decision_implication\`.
+- `gate_id`, `scope`, `status` (PASS/FAIL/BLOCKED/PROVISIONAL), `as_of`, `evidence_paths`, `tests`, `known_limitations`, `next_action`, `decision_implication`.
 - Do not modify gate criteria retroactively to obtain PASS; any revised acceptance condition requires rationale and recorded approval.
 - Treat publication of a code file or initiation of GitHub Actions as **PENDING**, not PASS, until result outputs are verified.
 - Keep failed results and root-cause records; append corrections rather than retroactive erasure.
