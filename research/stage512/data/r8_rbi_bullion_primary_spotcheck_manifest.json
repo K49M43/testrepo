@@ -1,0 +1,91 @@
+{
+  "status": "PASS_OFFICIAL_RBI_SAMPLED_ANCHORS_ONLY",
+  "timestamp_utc": "2026-11-02T12:40:39.121493+00:00",
+  "data_classification": "RBI_ORIGIN_437_MONTH_MIRROR_WITH_OFFICIAL_SAMPLED_ANCHORS",
+  "entire_rbi_primary_data_verified": false,
+  "2026_investment_gate": "NO_GO",
+  "primary_PDF_visual_review": "PENDING \u2014 text values checked, screenshot rendering unavailable in this environment",
+  "monthly_mirror_observations": 437,
+  "official_months_checked": 7,
+  "official_price_numbers_checked": 14,
+  "official_matches": 7,
+  "source_raw_sha256": "b170913646b0bd95096f200d03474b1401cb6b409e661a8253b6ed476cbf5337",
+  "normalized_source_sha256": "bc756e51b59329c7640885bd0f4e3012f209ee3002aed4765f4cb56f8809cf0a",
+  "official_anchor_file_sha256": "c0daf8a35fa72d1feb55c2a0985951bb435ccac0b585c4bdc8f4b272166ac60e",
+  "observation_window": [
+    "1990-04",
+    "2026-08"
+  ],
+  "checks": [
+    {
+      "month": "2021-01",
+      "gold_source": 49612.0,
+      "gold_mirror": 49612.0,
+      "silver_source": 66785.0,
+      "silver_mirror": 66785.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://www.rbi.org.in/hindi1/Upload/Bulletin/PDFs/20T_H26042021C0ED73889751447BA4174445F3375163.PDF"
+    },
+    {
+      "month": "2021-02",
+      "gold_source": 47107.0,
+      "gold_mirror": 47107.0,
+      "silver_source": 69065.0,
+      "silver_mirror": 69065.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://www.rbi.org.in/hindi1/Upload/Bulletin/PDFs/20T_H26042021C0ED73889751447BA4174445F3375163.PDF"
+    },
+    {
+      "month": "2023-03",
+      "gold_source": 57514.0,
+      "gold_mirror": 57514.0,
+      "silver_source": 66520.0,
+      "silver_mirror": 66520.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://www.rbi.org.in/hindi1/Upload/Bulletin/PDFs/20T_H23062023823C72126B78423F918CE474D1891B0E.PDF"
+    },
+    {
+      "month": "2023-04",
+      "gold_source": 60145.0,
+      "gold_mirror": 60145.0,
+      "silver_source": 74386.0,
+      "silver_mirror": 74386.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://www.rbi.org.in/hindi1/Upload/Bulletin/PDFs/20T_H23062023823C72126B78423F918CE474D1891B0E.PDF"
+    },
+    {
+      "month": "2024-04",
+      "gold_source": 71353.0,
+      "gold_mirror": 71353.0,
+      "silver_source": 80778.0,
+      "silver_mirror": 80778.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://systemhealth.rbi.org.in/Scripts/PublicationsView.aspx_id%3D22640.html"
+    },
+    {
+      "month": "2024-05",
+      "gold_source": 72135.0,
+      "gold_mirror": 72135.0,
+      "silver_source": 86866.0,
+      "silver_mirror": 86866.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://systemhealth.rbi.org.in/Scripts/PublicationsView.aspx_id%3D22640.html"
+    },
+    {
+      "month": "2024-06",
+      "gold_source": 72014.0,
+      "gold_mirror": 72014.0,
+      "silver_source": 88666.0,
+      "silver_mirror": 88666.0,
+      "both_match": true,
+      "official_rbi_publication_url": "https://systemhealth.rbi.org.in/Scripts/PublicationsView.aspx_id%3D22640.html"
+    }
+  ],
+  "caveats": [
+    "RBI source only spot-checked in seven published months; full 437-month primary validation outstanding",
+    "Two referenced RBI PDFs were read via extracted table text; a screenshot visual check was not obtained",
+    "Monthly AVERAGE Mumbai physical bullion prices are not ETF NAVs or end-of-month spot prices",
+    "Gold INR per 10g; silver INR per kg; no bullion taxes, exchange spreads or duties modeled",
+    "Do not splice monthly averages with last-trading-day fund NAV for comovement without timing reconciliation"
+  ]
+}
