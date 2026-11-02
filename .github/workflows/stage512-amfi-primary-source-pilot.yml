@@ -1,0 +1,42 @@
+name: Stage512 official AMFI source qualification pilot
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/stage512-amfi-primary-source-pilot.yml'
+      - 'research/stage512/pipelines/amfi_source_pilot.py'
+      - 'research/stage512/tests/test_amfi_source_pilot.py'
+permissions:
+  contents: write
+jobs:
+  amfi-primary-source-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate offline parser and window tests
+        run: python -m unittest discover -s research/stage512/tests -p 'test_amfi_source_pilot.py' -v
+      - name: Retrieve audited official AMFI observation windows
+        id: ingest
+        continue-on-error: true
+        run: python research/stage512/pipelines/amfi_source_pilot.py
+      - name: Upload raw source snapshots and metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage512-amfi-official-source-pilot
+          path: research/stage512/data/amfi_pilot/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit source manifest and selected public NAV samples
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/amfi_pilot/manifest.json research/stage512/data/amfi_pilot/named_scheme_observations.csv 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'audit(stage512): capture AMFI official-source pilot manifest' && git push)
+      - name: Enforce fail-closed source qualification
+        if: steps.ingest.outcome != 'success'
+        run: |
+          echo 'Official AMFI primary-source pilot did not pass. Source remains NOT QUALIFIED.'
+          exit 1
