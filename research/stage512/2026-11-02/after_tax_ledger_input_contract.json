@@ -1,0 +1,45 @@
+{
+  "contract_version": "1.0",
+  "purpose": "Deterministic research fixture; not an investor-specific tax result or return forecast.",
+  "currency": "INR",
+  "cashflow_fixture": {
+    "source_file": "cashflow_hurdle_monthly_2026-10_base.csv",
+    "initial_amount_inr": "4200000",
+    "initial_reference_month": "2026-10",
+    "monthly_sip_start_inr": "25000",
+    "annual_step_up": "0.10",
+    "step_every_months": 12,
+    "contribution_timing": "Illustrative end-of-month schedule; actual payment dates unconfirmed.",
+    "horizons_months": [120, 122],
+    "transaction_rounding": "Not assumed; fixture retains decimal schedule values."
+  },
+  "ledger_event_fields": {
+    "required": ["event_id", "event_date", "tax_year", "event_type", "instrument_id", "cash_amount_inr", "source_or_assumption", "qualification_status"],
+    "conditional": {
+      "acquisition_or_reinvestment": ["lot_id", "units", "unit_price_inr", "cost_basis_inr", "transaction_cost_inr"],
+      "coupon_or_distribution": ["gross_income_inr", "withholding_inr", "reinvested_lot_id"],
+      "disposal_or_maturity": ["lot_id", "units_disposed", "proceeds_inr", "transaction_cost_inr", "realized_gain_inr", "holding_period_classification"]
+    },
+    "allowed_event_types": ["initial_contribution", "sip_contribution", "acquisition", "fee", "coupon", "distribution", "withholding", "reinvestment", "partial_disposal", "maturity", "terminal_disposal"]
+  },
+  "unknowns_that_must_not_be_defaulted": [
+    "actual contribution and investment dates",
+    "investor tax regime, other income, losses, rebate eligibility, and withholding credits",
+    "security identifiers, tax classification, acquisition dates, and holding-period eligibility",
+    "brokerage, statutory levies, exit loads, and transaction rounding",
+    "terminal choice and date",
+    "investor-aligned CPI base month"
+  ],
+  "series_classification": {
+    "CPI": "All-India combined general CPI, 2024 base; linked historical levels Jan-2013 through Dec-2024 and direct 2024-base observations Jan-2025 through Sep-2026; provisional for real-wealth use pending independent observation-level audit and investor base-date alignment.",
+    "equity": "Nifty 500 TRI only when using the identified TRI source file; do not substitute price index.",
+    "bond": "LIC MF Nifty 8-13 Yr G-Sec ETF NAV is an investable fund NAV proxy; not a direct sovereign bond or official G-Sec total-return index.",
+    "gold_silver": "RBI Mumbai monthly bullion averages are bullion observations; not ETF returns."
+  },
+  "fail_closed_rules": [
+    "Unknown instrument or tax eligibility cannot receive an assumed tax rate.",
+    "Withholding is a tax credit and is not subtracted as final tax expense.",
+    "Unrealized gains are not realized taxable disposals.",
+    "Do not publish final real wealth until CPI base and observation alignment are qualified."
+  ]
+}
