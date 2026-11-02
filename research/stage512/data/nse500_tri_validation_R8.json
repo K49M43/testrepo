@@ -1,0 +1,66 @@
+{
+  "status": "PASS_129_OFFICIAL_MONTHLY_ANCHORS",
+  "asof_utc": "2026-11-02T12:37:21.477119+00:00",
+  "primary_official_NSE_document": "https://www.niftyindices.com/docs/default-source/indices/nifty-500/nifty-500-whitepaper_2025.pdf",
+  "source_page_label": "printed page 12, Exhibit 12 (PDF index 12)",
+  "benchmark": "NIFTY 500 Total Return Index (gross TRI)",
+  "mirror_owner": "Sams3pi01/SIP-Calculator; not NSE",
+  "mirror_url": "https://raw.githubusercontent.com/Sams3pi01/SIP-Calculator/main/NIFTY%20500%20TRI.csv",
+  "mirror_git_blob_sha1_expected": "89f0bb076ce6a733197e89416830203c6f3ddd8a",
+  "complete_official_NSE_daily_history_qualified": false,
+  "full_2036_probability_qualified": false,
+  "investment_gate": "NO_GO",
+  "verified_months": 129,
+  "max_abs_diff_pp": 0.0049783161357996875,
+  "mean_abs_diff_pp": 0.0024927713135668023,
+  "violations": [],
+  "independent_mirror_source_blob_sha1": "89f0bb076ce6a733197e89416830203c6f3ddd8a",
+  "official_table_sha256": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e",
+  "annual_published_reconciliation": {
+    "2015": {
+      "whitepaper_return_pct": 0.22,
+      "compounded_rounded_months_pct": 0.22877
+    },
+    "2016": {
+      "whitepaper_return_pct": 5.12,
+      "compounded_rounded_months_pct": 5.14299
+    },
+    "2017": {
+      "whitepaper_return_pct": 37.65,
+      "compounded_rounded_months_pct": 37.64745
+    },
+    "2018": {
+      "whitepaper_return_pct": -2.14,
+      "compounded_rounded_months_pct": -2.13107
+    },
+    "2019": {
+      "whitepaper_return_pct": 8.97,
+      "compounded_rounded_months_pct": 8.9602
+    },
+    "2020": {
+      "whitepaper_return_pct": 17.89,
+      "compounded_rounded_months_pct": 17.89121
+    },
+    "2021": {
+      "whitepaper_return_pct": 31.6,
+      "compounded_rounded_months_pct": 31.6063
+    },
+    "2022": {
+      "whitepaper_return_pct": 4.25,
+      "compounded_rounded_months_pct": 4.21315
+    },
+    "2023": {
+      "whitepaper_return_pct": 26.91,
+      "compounded_rounded_months_pct": 26.92755
+    },
+    "2024": {
+      "whitepaper_return_pct": 16.24,
+      "compounded_rounded_months_pct": 16.25019
+    },
+    "2025": {
+      "whitepaper_return_pct": 2.5,
+      "compounded_rounded_months_pct": 2.47974
+    }
+  },
+  "limitation": "Official NSE report verifies rounded MONTHLY TRI returns 2015-2025Q3; other months and all daily prices remain unverified against first-party daily feed."
+}
