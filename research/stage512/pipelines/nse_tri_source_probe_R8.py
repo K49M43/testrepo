@@ -7,8 +7,8 @@ No change to forward investment approval or statistical assumptions.
 """
 from __future__ import annotations
 import datetime as dt
-import hashlib, json, math, time
-from urllib.request import Request, urlopen
+import hashlib, json, math, time, http.cookiejar
+from urllib.request import Request, build_opener, HTTPCookieProcessor
 from pathlib import Path
 
 API="https://www.niftyindices.com/Backpage.aspx/getTotalReturnIndexString"
@@ -25,6 +25,15 @@ def probe(label,first,last):
             "source_url":API,"index_name":name,
             "status":"FAIL_UNQUALIFIED","retrieved_utc":dt.datetime.now(dt.timezone.utc).isoformat()}
     errors=[]
+    # Ordinary site session warm-up; not a CAPTCHA/challenge bypass.
+    opener=build_opener(HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    try:
+        warm=Request('https://www.niftyindices.com/reports/historical-data',headers={'User-Agent':'Mozilla/5.0','Accept':'text/html'})
+        with opener.open(warm,timeout=20) as response:
+            result['warmup_status']=response.status
+            response.read(2000)
+    except Exception as exc:
+        result['warmup_error']=f'{type(exc).__name__}: {exc}'
     for attempt in range(2):
         try:
             request=Request(API,data=data,method="POST",headers={
@@ -34,13 +43,16 @@ def probe(label,first,last):
                 "User-Agent":"Mozilla/5.0 (research, NSE historical index verification)",
                 "Accept":"application/json, text/plain, */*",
                 "Accept-Encoding":"identity"})
-            with urlopen(request,timeout=45) as response:
+            with opener.open(request,timeout=35) as response:
                 raw=response.read(3_000_001)
                 if response.status!=200 or len(raw)>3_000_000:
                     raise ValueError("Bad status or excessively large payload")
-                result.update(http_status=response.status,bytes=len(raw),
+                result.update(response_final_url=response.geturl(),http_status=response.status,bytes=len(raw),
                               content_type=response.headers.get("content-type",""),
                               source_sha256=hashlib.sha256(raw).hexdigest())
+            result["body_prefix"]=raw[:220].decode("utf8","replace")
+            if "html" in result.get("content_type","").lower() or raw.lstrip().startswith(b"<"):
+                raise ValueError("NSE endpoint returned HTML; source not qualified")
             obj=json.loads(raw)
             if not isinstance(obj,dict) or "d" not in obj:
                 raise ValueError("Unexpected NSE response wrapper")
