@@ -12,8 +12,8 @@ from pathlib import Path
 
 BASE = "https://www.amfiindia.com/api/nav-history"
 SPECS = [
-    ("147625", "2026-10-19", "2026-10-23"),
-    ("105463", "2026-10-19", "2026-10-23"),
+    ("147625", "2023-09-25", "2026-10-30"),
+    ("105463", "2023-09-25", "2026-10-30"),
 ]
 OUTPUT = Path("research/stage512/data/amfi_api_probe.json")
 def fetch(code: str, start: str, end: str) -> dict:
@@ -51,6 +51,11 @@ def fetch(code: str, start: str, end: str) -> dict:
                 item["historical_record_counts"] = [
                     len(g.get("historical_records", []))
                     for g in nav_groups if isinstance(g, dict) and isinstance(g.get("historical_records"), list)
+                ]
+                item["nav_record_examples"] = [
+                    {"nav_name": g.get("nav_name"), "first": g["historical_records"][0]}
+                    for g in nav_groups[:2] if isinstance(g, dict)
+                    and isinstance(g.get("historical_records"), list) and g["historical_records"]
                 ]
         item["body_prefix"] = raw[:160].decode("utf-8", "replace")
         item["status"] = "RESPONDED_JSON_UNVALIDATED"
