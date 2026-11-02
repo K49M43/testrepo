@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "url": "https://data-api.dbie.rbihub.in/api/tables/real_sector/r17_monthly_average_price_of_gold_and_silver_in_mumbai",
+    "status": "FETCH_OK_NOT_YET_QUALIFIED",
+    "fetched_utc": "2026-11-02T12:31:36.408731+00:00",
+    "http_status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 1713,
+    "sha256": "2efe42d5104f8f04159463c7fbd06222f7418d6382ea03ad9084b5cb535350fc",
+    "json_top_level_keys": [
+      "data",
+      "provenance"
+    ],
+    "body_excerpt": "{\"data\":{\"key\":\"real_sector.r17_monthly_average_price_of_gold_and_silver_in_mumbai\",\"source\":\"publication\",\"schema\":\"real_sector\",\"table\":\"r17_monthly_average_price_of_gold_and_silver_in_mumbai\",\"title\":\"Monthly Average Price of Gold and Silver in Mumbai\",\"dbie_path\":\"Publication \\u003e Time-Series Publications \\u003e Monthly RBI Bulletin \\u003e Monthly RBI Bulletin \\u003e Prices and Production\",\"frequency\":\"Monthly\",\"row_count\":444,\"loaded_at\":\"2026-10-31T15:37:43.131649Z\",\"layout\":\"columns\",\"width\":4,\"report_id\":17,\"columns\":[{\"name\":\"src_file\",\"type\":\"text\"},{\"name\":\"tab\",\"type\":\"text\"},{\"name\":\"period\",\"type\":\"text\"},{\"name\":\"row_no\",\"type\":\"integer\"},{\"name\":\"c1\",\"type\":\"text\"},{\"name\":\"c2\",\"type\":\"text\"},{\"name\":\"c3\",\"type\":\"text\"},{\"name\":\"c4\",\"type\":\"text\"}]},\"provenance\":{\"category\":\"Time-Series Publications\",\"document_id\":\"137505\",\"exported_at\":\"2026-10-31\",\"files\":[{\"bytes\":11256,\"empty\":false,\"file\":\"data/reports/publication/time-series-publications/monthly-rbi-bulletin/17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"loaded\":true,\"overwrittenTabs\":[],\"period\":\"full-history\",\"rows\":444,\"tab\":\"Monthly Average Price of Gold and Silver in Mumbai\",\"width\":4}],\"f"
+  },
+  "sample_rows": {
+    "url": "https://data-api.dbie.rbihub.in/api/tables/real_sector/r17_monthly_average_price_of_gold_and_silver_in_mumbai/rows?limit=10&labels=1",
+    "status": "FETCH_OK_NOT_YET_QUALIFIED",
+    "fetched_utc": "2026-11-02T12:31:37.286476+00:00",
+    "http_status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 1950,
+    "sha256": "1187189ee0021f375713ed4490a7d5d4c314c4ada3b295f0bca043e65df3a792",
+    "json_top_level_keys": [
+      "columns",
+      "limit",
+      "offset",
+      "returned",
+      "rows",
+      "table"
+    ],
+    "body_excerpt": "{\"columns\":[\"src_file\",\"tab\",\"period\",\"row_no\",\"c1\",\"c2\",\"c3\",\"c4\"],\"limit\":10,\"offset\":0,\"returned\":10,\"rows\":[[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",1,\"\",null,null,null],[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",2,\"Monthly Average Price of Gold and Silver in Mumbai\",null,null,null],[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",3,\"\",null,null,null],[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",4,\"Month/Year\",\"1 Standard Gold (Rupees per 10 grams)\",\"2 Silver (Rupees per kilogram)\",null],[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",5,\"Aug. 2026\",\"1,53,234\",\"2,29,655\",null],[\"17--monthly-average-price-of-gold-and-silver-in-mumbai.csv\",\"Monthly Average Price of Gold and Silver in Mumbai\",\"full-history\",6,\"Jul. 2026\",\"1,42,606\",\"2,22,396\",null],[\"17--monthly-ave"
+  },
+  "complete_csv": {
+    "url": "https://data-api.dbie.rbihub.in/api/tables/real_sector/r17_monthly_average_price_of_gold_and_silver_in_mumbai/csv",
+    "status": "FETCH_OK_NOT_YET_QUALIFIED",
+    "fetched_utc": "2026-11-02T12:31:37.990653+00:00",
+    "http_status": 200,
+    "content_type": "text/csv; charset=utf-8",
+    "bytes": 68861,
+    "sha256": "b170913646b0bd95096f200d03474b1401cb6b409e661a8253b6ed476cbf5337",
+    "first_rows": [
+      [
+        "src_file",
+        "tab",
+        "period",
+        "row_no",
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "1",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "2",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "",
+        "",
+        ""
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "3",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "4",
+        "Month/Year",
+        "1 Standard Gold (Rupees per 10 grams)",
+        "2 Silver (Rupees per kilogram)",
+        ""
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "5",
+        "Aug. 2026",
+        "1,53,234",
+        "2,29,655",
+        ""
+      ],
+      [
+        "17--monthly-average-price-of-gold-and-silver-in-mumbai.csv",
+        "Monthly Average Price of Gold and Silver in Mumbai",
+        "full-history",
+        "6",
+        "Jul. 2026",
+        "1,42,606",
+        "2,22,396",
+        ""
+      ]
+    ],
+    "line_count": 445,
+    "csv_headers": [
+      "src_file",
+      "tab",
+      "period",
+      "row_no",
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+    ]
+  },
+  "governance": {
+    "data_origin": "RBI Database on Indian Economy",
+    "data_distribution": "unofficial third-party DBIE mirror",
+    "official_RBI_primary_reconciled": false,
+    "investment_gate": "NO_GO",
+    "full_portfolio_calibration": false,
+    "source_documentation": "https://dev.dbie.rbihub.in/docs/using-the-site",
+    "official_reference": "https://dbie.rbi.org.in/"
+  }
+}
