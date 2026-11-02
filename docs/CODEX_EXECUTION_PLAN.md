@@ -4,8 +4,8 @@
 
 ## P0: Start immediately, without asking the investor to restate known constraints
 **Task 1 — Independently inspect and repair the R9 official bond-fund history gate.**
-1. Read \`AGENTS.md\`, mandate, handoff, prior R9.3 incident report and the latest live manifest. Check current branch, repository status and existing GitHub Actions results before assuming source failure persists.
-2. Execute offline regression, parser, finance and data-contract tests. Audit the most recent source-qualification code *as new code*, especially scheme ID 133307, \`Option:null\`, growth-only identity, start/end dates, calendar continuity, 429 retry semantics, byte SHA256 and cache/resume.
+1. Read `AGENTS.md`, mandate, handoff, prior R9.3 incident report and the latest live manifest. Check current branch, repository status and existing GitHub Actions results before assuming source failure persists.
+2. Execute offline regression, parser, finance and data-contract tests. Audit the most recent source-qualification code *as new code*, especially scheme ID 133307, `Option:null`, growth-only identity, start/end dates, calendar continuity, 429 retry semantics, byte SHA256 and cache/resume.
 3. Diagnose whether requests are rate-limited and whether half-year segments can be fetched respectfully and persisted. Implement incremental bounded recovery rather than all-or-nothing repeated 24-window concurrency; honor API terms. **Do not bypass 429, captchas or access controls.**
 4. For each original time segment save source URL, raw SHA256, start/end dates, accepted records, failures, full raw artifact and checkpoint. Keep failed data visibly unqualified. Qualify a contiguous monthly ETF NAV dataset only after complete test coverage and independent LIC factsheet 1/3/5-year NAV CAGR reconciliation.
 5. If full API access fails, produce a precise failure manifest, usable verified short segments, and an alternative lawful official bulk export / fund-house NAV plan. Do not waste investor time with repeated blind retry.
@@ -31,7 +31,7 @@
 **Task 7 — Decision alternatives and investor suitability.** Provide candidate shortlist, scenario-weighted comparisons, terminal real aftertax wealth distributions, severe shortfall probabilities, expected shortfalls, drawdowns, capital market and policy risks, and feasibility. Identify the minimum additional investor confirmations needed. If an acceptable plan does not support a defensible GO, recommend NO-GO and concrete viable modifications; do **not** silently relax the target.
 
 ## P3: Deliver decision pack for investor review
-**Task 8 — Produce \`decision/2036_DECISION_MEMO.md\` and associated artifacts** per \`docs/DECISION_DELIVERABLES.md\`: bottom-line decision, specific executable instruments/ISIN, allocation ₹ and %, funding calendar, taxes, justified alternatives, gross/aftertax/real outcomes, uncertainty, downside and execution checks.
+**Task 8 — Produce `decision/2036_DECISION_MEMO.md` and associated artifacts** per `docs/DECISION_DELIVERABLES.md`: bottom-line decision, specific executable instruments/ISIN, allocation ₹ and %, funding calendar, taxes, justified alternatives, gross/aftertax/real outcomes, uncertainty, downside and execution checks.
 **Task 9 — Independent challenge and signoff.** Separate reviewer should try to refute data, model, taxes, constraint consistency, real execution and target feasibility. Maintain unresolved conditions. Final approval and execution belong to the investor.
 
 ## Development delivery rules
@@ -44,6 +44,6 @@
 - When complete, provide a concrete investor briefing, not only code.
 
 ## Expected progress report
-\`Executed | Findings and numbers | Independent checks and links | Investment relevance | Remaining gated risks | Next single work item | Investor GO/NO-GO status\`.
+`Executed | Findings and numbers | Independent checks and links | Investment relevance | Remaining gated risks | Next single work item | Investor GO/NO-GO status`.
 
 An acceptable **conditional** result may be "the real aftertax target is not achievable at suitably bounded risk"; do not assume a portfolio must exist that hits 85%.
