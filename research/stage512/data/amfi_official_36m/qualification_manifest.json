@@ -1,0 +1,231 @@
+{
+  "status": "PASS_36M_COHORT_ONLY",
+  "asof_utc": "2026-11-02T11:39:44.854302+00:00",
+  "source": "Official AMFI per-scheme history JSON, not mfapi.in",
+  "period": [
+    "2023-09-25",
+    "2026-10-30"
+  ],
+  "target_investment_gate": "NO_GO",
+  "full_10y_forecast_validated": false,
+  "records": [
+    {
+      "code": "147625",
+      "asset": "equity",
+      "status": "PASS_OFFICIAL_36M_COHORT",
+      "samples": 763,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "official_snapshot_checks": 15,
+      "mismatches": 0,
+      "months_of_return": 37,
+      "annualized_volatility_pct": 15.573
+    },
+    {
+      "code": "119116",
+      "asset": "gilt_fund",
+      "status": "PASS_OFFICIAL_36M_COHORT",
+      "samples": 751,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "official_snapshot_checks": 16,
+      "mismatches": 0,
+      "months_of_return": 37,
+      "annualized_volatility_pct": 3.6211
+    },
+    {
+      "code": "105463",
+      "asset": "gold_etf",
+      "status": "PASS_OFFICIAL_36M_COHORT",
+      "samples": 766,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "official_snapshot_checks": 16,
+      "mismatches": 0,
+      "months_of_return": 37,
+      "annualized_volatility_pct": 19.8497
+    },
+    {
+      "code": "150556",
+      "asset": "silver_etf",
+      "status": "PASS_OFFICIAL_36M_COHORT",
+      "samples": 766,
+      "first": "2023-09-25",
+      "last": "2026-10-30",
+      "official_snapshot_checks": 16,
+      "mismatches": 0,
+      "months_of_return": 37,
+      "annualized_volatility_pct": 41.8173
+    }
+  ],
+  "source_manifest": [
+    {
+      "code": "147625",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2024-09-24&sd_id=147625",
+      "start": "2023-09-25",
+      "end": "2024-09-24",
+      "sha256": "6fff0002f258edecd5613bcfa747ad06f9f473a0d351364d0c4db1db12482f7b",
+      "bytes": 46773,
+      "records": 245,
+      "mf_name": "Motilal Oswal Mutual Fund",
+      "scheme_name": "Motilal Oswal Nifty 500 Index Fund",
+      "nav_name": "Motilal Oswal Nifty 500 Index Fund - Direct Plan"
+    },
+    {
+      "code": "147625",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-09-25&to_date=2025-09-24&sd_id=147625",
+      "start": "2024-09-25",
+      "end": "2025-09-24",
+      "sha256": "c982f0db8ae57b2a7714cce0537119d5e95cf7bee50f0a566639dee0abb74561",
+      "bytes": 47346,
+      "records": 248,
+      "mf_name": "Motilal Oswal Mutual Fund",
+      "scheme_name": "Motilal Oswal Nifty 500 Index Fund",
+      "nav_name": "Motilal Oswal Nifty 500 Index Fund - Direct Plan"
+    },
+    {
+      "code": "147625",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-09-25&to_date=2026-10-30&sd_id=147625",
+      "start": "2025-09-25",
+      "end": "2026-10-30",
+      "sha256": "3be7a603812d41966fe7ed96f706ce28056bf5d29754573a9d580c56940b7040",
+      "bytes": 51512,
+      "records": 270,
+      "mf_name": "Motilal Oswal Mutual Fund",
+      "scheme_name": "Motilal Oswal Nifty 500 Index Fund",
+      "nav_name": "Motilal Oswal Nifty 500 Index Fund - Direct Plan"
+    },
+    {
+      "code": "119116",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2024-09-24&sd_id=119116",
+      "start": "2023-09-25",
+      "end": "2024-09-24",
+      "sha256": "8b4e037552290fe680b242267446d8c0b636c92148a4c673c4f2ee4ff4242a71",
+      "bytes": 47670,
+      "records": 241,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Gilt Fund",
+      "nav_name": "HDFC Gilt Fund - Growth Option - Direct Plan"
+    },
+    {
+      "code": "119116",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-09-25&to_date=2025-09-24&sd_id=119116",
+      "start": "2024-09-25",
+      "end": "2025-09-24",
+      "sha256": "f2f1a2fe3f4bb69b9af50642d1f07c68d472596a89a3bdc8814fce97278c8653",
+      "bytes": 48256,
+      "records": 244,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Gilt Fund",
+      "nav_name": "HDFC Gilt Fund - Growth Option - Direct Plan"
+    },
+    {
+      "code": "119116",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-09-25&to_date=2026-10-30&sd_id=119116",
+      "start": "2025-09-25",
+      "end": "2026-10-30",
+      "sha256": "8f9b88997bad4bd9d05f37ee12397c8f0307d40e6d995ff7acce3ff192d1b800",
+      "bytes": 52590,
+      "records": 266,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Gilt Fund",
+      "nav_name": "HDFC Gilt Fund - Growth Option - Direct Plan"
+    },
+    {
+      "code": "105463",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2024-09-24&sd_id=105463",
+      "start": "2023-09-25",
+      "end": "2024-09-24",
+      "sha256": "1e577059df687f6b1c335055b3311ffb24a627c419c61fa37c3a47f58a1dc834",
+      "bytes": 47124,
+      "records": 247,
+      "mf_name": "UTI Mutual Fund",
+      "scheme_name": "UTI - Gold Exchange Traded Fund",
+      "nav_name": "UTI GOLD Exchange Traded Fund"
+    },
+    {
+      "code": "105463",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-09-25&to_date=2025-09-24&sd_id=105463",
+      "start": "2024-09-25",
+      "end": "2025-09-24",
+      "sha256": "f0da6f131913f5c625d86be2f761b869595916d4815ea10bc841974118ccf2ed",
+      "bytes": 47309,
+      "records": 248,
+      "mf_name": "UTI Mutual Fund",
+      "scheme_name": "UTI - Gold Exchange Traded Fund",
+      "nav_name": "UTI GOLD Exchange Traded Fund"
+    },
+    {
+      "code": "105463",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-09-25&to_date=2026-10-30&sd_id=105463",
+      "start": "2025-09-25",
+      "end": "2026-10-30",
+      "sha256": "eb461c768a92d3a9c3215ed1f5a5a041a8be1bad3bc79b4fad7b3f90851dbb63",
+      "bytes": 51946,
+      "records": 271,
+      "mf_name": "UTI Mutual Fund",
+      "scheme_name": "UTI - Gold Exchange Traded Fund",
+      "nav_name": "UTI GOLD Exchange Traded Fund"
+    },
+    {
+      "code": "150556",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2024-09-24&sd_id=150556",
+      "start": "2023-09-25",
+      "end": "2024-09-24",
+      "sha256": "9139c333a1c4ff92a76ea3b6e663a6963b871912d38bacfec93d93725f26b9dd",
+      "bytes": 46418,
+      "records": 246,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Silver ETF",
+      "nav_name": "HDFC Silver ETF - Growth Option"
+    },
+    {
+      "code": "150556",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2024-09-25&to_date=2025-09-24&sd_id=150556",
+      "start": "2024-09-25",
+      "end": "2025-09-24",
+      "sha256": "34f309adee6f7e14bb2d186c8d94d1e0841e6bec80e92f7ee066f70f40026800",
+      "bytes": 47067,
+      "records": 249,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Silver ETF",
+      "nav_name": "HDFC Silver ETF - Growth Option"
+    },
+    {
+      "code": "150556",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2025-09-25&to_date=2026-10-30&sd_id=150556",
+      "start": "2025-09-25",
+      "end": "2026-10-30",
+      "sha256": "7d49dbbb1f2bb443dbbb187f37eb29fbc580c065ddc52331352ffd86d0359a98",
+      "bytes": 51392,
+      "records": 271,
+      "mf_name": "HDFC Mutual Fund",
+      "scheme_name": "HDFC Silver ETF",
+      "nav_name": "HDFC Silver ETF - Growth Option"
+    }
+  ],
+  "errors": [],
+  "cross_asset_result": {
+    "months": 37,
+    "start_month": "2023-10",
+    "end_month": "2026-10",
+    "correlations": {
+      "equity__equity": 1.0,
+      "equity__gilt_fund": 0.53603,
+      "equity__gold_etf": 0.04046,
+      "equity__silver_etf": 0.02107,
+      "gilt_fund__gilt_fund": 1.0,
+      "gilt_fund__gold_etf": 0.05062,
+      "gilt_fund__silver_etf": 0.00041,
+      "gold_etf__gold_etf": 1.0,
+      "gold_etf__silver_etf": 0.75938,
+      "silver_etf__silver_etf": 1.0
+    },
+    "annualized_volatility_pct": {
+      "equity": 15.573,
+      "gilt_fund": 3.6211,
+      "gold_etf": 19.8497,
+      "silver_etf": 41.8173
+    }
+  }
+}
