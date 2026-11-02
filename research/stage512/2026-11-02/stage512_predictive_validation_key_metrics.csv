@@ -1,0 +1,8 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: stage512_predictive_validation_key_metrics.csv>
+index,series,horizon_months,n_forecasts,coverage90_pct,coverage80_pct,coverage95_pct,worst_z,worst_month_or_origin
+0,equity,1,105,92.38,86.67,96.19,-6.94,2020-03
+1,portfolio,1,105,94.29,85.71,97.14,-6.86,2020-03
+2,real_portfolio,1,105,93.33,85.71,97.14,-6.81,2020-03
+3,real_portfolio,12,94,89.36,71.28,93.62,-2.76,2019-04
+4,CPI,12,94,88.3,81.91,93.62,-2.63,2016-06
