@@ -19,15 +19,15 @@ Required sections in this order:
 11. **Unresolved investor confirmations and approval box.** Exact contribution/terminal dates, risk tolerances, operational eligibility, tax/account details not already provided. Never imply the investor has signed off.
 
 ## Supporting artifact contract
-- \`decision/candidate_universe.csv\` — 10+ instrument/strategy rows with source and screening status.
-- \`decision/portfolio_comparison.csv\` — alternative portfolios and comparable output metrics with common assumption/date convention.
-- \`decision/decision_summary.json\` — model version, as-of, status, central metrics, confidence/uncertainty designation, blocking gates.
-- \`decision/assumption_register.json\` — every financial assumption, source/date, base/low/high scenarios, owner, qualification.
-- \`decision/source_manifest.json\` — provenance & exact source scopes.
-- \`decision/tax_rules_asof.md\` — verified Indian instrument-specific taxation by product and acquisition/realization vintage, primary citations.
-- \`decision/model_validation_report.md\` — tests, calibration, failure modes, tail/regime robustness and independently reproduced checkpoints.
-- \`decision/execution_pretrade_checklist.md\` — no passwords or automated brokerage access.
-- \`decision/decision_log.md\` — prior and new NO-GO/CONDITIONAL/GO judgments with clear reasons and evidence.
+- `decision/candidate_universe.csv` — 10+ instrument/strategy rows with source and screening status.
+- `decision/portfolio_comparison.csv` — alternative portfolios and comparable output metrics with common assumption/date convention.
+- `decision/decision_summary.json` — model version, as-of, status, central metrics, confidence/uncertainty designation, blocking gates.
+- `decision/assumption_register.json` — every financial assumption, source/date, base/low/high scenarios, owner, qualification.
+- `decision/source_manifest.json` — provenance & exact source scopes.
+- `decision/tax_rules_asof.md` — verified Indian instrument-specific taxation by product and acquisition/realization vintage, primary citations.
+- `decision/model_validation_report.md` — tests, calibration, failure modes, tail/regime robustness and independently reproduced checkpoints.
+- `decision/execution_pretrade_checklist.md` — no passwords or automated brokerage access.
+- `decision/decision_log.md` — prior and new NO-GO/CONDITIONAL/GO judgments with clear reasons and evidence.
 
 The code may generate further files as needed, but do not spend investor time building a generic platform.
 
