@@ -131,11 +131,27 @@ def main():
     with ThreadPoolExecutor(max_workers=4) as exe:
         outcomes=list(exe.map(get_one,tasks))
     sources=[s for records,s in outcomes]
+    # Always retain sourced partial observations, even when some segments fail;
+    # never promote these rows to a continuous qualified return history.
+    partial_file=BASE/"partial_official_AMFI_NAV_UNQUALIFIED.csv"
+    partial_rows=[]
+    for rows,source in outcomes:
+        if source.get("status")=="PASS_SOURCE_SEGMENT":
+            for d,nav in rows:
+                partial_rows.append((d.isoformat(),CODE,f"{nav:.8f}",
+                     source.get("start",""),source.get("end",""),source.get("sha256","")))
+    with partial_file.open("w",newline="",encoding="utf8") as fh:
+        wr=csv.writer(fh)
+        wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
+        wr.writerows(sorted(partial_rows))
     manifest={"status":"FAIL_INCOMPLETE","research_source_gate":"NO_GO_UNTIL_QUALIFIED",
         "scheme_code":CODE,"isin":ISIN,"scheme_name":"LIC MF Nifty 8-13 yr G-Sec ETF",
         "official_amfi_history":True,"nse_index_historical_total_return_acquired":False,
         "nav_is_tradable_etf_market_price":False,"full_2036_forecast_validated":False,
         "investment_authorization":"NO_GO","retrieved_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
+        "partial_observation_rows":len(partial_rows),
+        "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest(),
+        "partial_not_eligible_for_return_calibration":True,
         "segments":sources,"lic_reference_factsheet":REFERENCE,
         "lic_factsheet_2026_03_31":LIC_MARCH26,
         "nse_benchmark_return_snapshots_from_LIC_factsheet":NSE_MARCH26}
