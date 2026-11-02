@@ -1,0 +1,38 @@
+name: Stage512 four-asset official AMFI NAV qualification
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-amfi-four-sleeve-qualify.yml'
+      - 'research/stage512/pipelines/amfi_four_sleeve_official.py'
+  workflow_dispatch:
+jobs:
+  qualify-four-sleeves:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve official AMFI per-scheme histories with strict snapshot reconciliation
+        id: qualify
+        continue-on-error: true
+        run: python research/stage512/pipelines/amfi_four_sleeve_official.py
+      - name: Archive raw official API payloads for independent reproduction
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage512-official-four-asset-nav-source
+          path: research/stage512/data/amfi_official_36m/raw/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit bounded research artifacts and qualification manifest
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/amfi_official_36m/qualification_manifest.json research/stage512/data/amfi_official_36m/official_nav_four_assets.csv 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'audit(stage512): official AMFI four-sleeve history qualification outcome' && git push)
+      - name: Enforce source qualification
+        if: steps.qualify.outcome != 'success'
+        run: |
+          echo 'Official four-sleeve qualification did not pass. No model approval or substitution is authorized.'
+          exit 1
