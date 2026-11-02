@@ -1,0 +1,31 @@
+name: Stage512 R9.1 LIC 8-13y GSec short official AMFI probes
+on:
+  push:
+    paths:
+      - ".github/workflows/stage512-r91-lic-short-probe.yml"
+      - "research/stage512/pipelines/r9_lic_gsec_short_windows_probe.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe four distinct historical windows (strict source-only)
+        run: python research/stage512/pipelines/r9_lic_gsec_short_windows_probe.py
+      - name: Preserve diagnostic outcome in Git
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_lic_gsec_etf/short_window_probe.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'audit(stage512): LIC ETF primary AMFI 4 historical era samples R9.1' && git push)
+      - name: Enforce sample qualifier
+        run: |
+          python - <<'PY'
+          import json
+          f=json.load(open("research/stage512/data/r9_lic_gsec_etf/short_window_probe.json"))
+          assert f["status"]=="PASS_ALL_FOUR_QUALIFICATION_SAMPLES_ONLY",f["status"]
+          PY
