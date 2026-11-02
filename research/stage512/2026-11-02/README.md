@@ -1,4 +1,6 @@
-# 2036 Investment Research — Stage 5.12 audit archive (2 November 2026)
+# 2036 Investment Decision — Stage 5.12 Evidence Archive (2 November 2026)
+
+> **Program purpose updated:** This directory is historical research evidence supporting an **actual personal investment decision**, not the final deliverable or a separate research platform. Follow repository [AGENTS.md](../../../AGENTS.md), [investor mandate](../../../docs/INVESTMENT_DECISION_MANDATE_2036.md), [Codex execution plan](../../../docs/CODEX_EXECUTION_PLAN.md) and [decision gates](../../../docs/INVESTMENT_DECISION_GATES.md). Current status remains investment NO-GO. Historic code-test/source PASS statuses do not authorize purchases.
 
 **Status: RESEARCH ONLY — INVESTMENT NO-GO.** This archive contains scenario models, historical-proxy analysis, calibration reports, source-reconciliation work, and preliminary validation. Neither an 85% real-world success probability nor a contractual inflation-adjusted ₹90 lakh floor has been established.
 
