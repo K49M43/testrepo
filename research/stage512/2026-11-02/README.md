@@ -23,6 +23,7 @@
 9. [R5: verified live AMFI ingestion and four-sleeve qualification contract](stage512_official_source_qualification_R5.md)
 10. [R6: independently reproduced actual-fund 36-month covariance and source limits](stage512_instrument_nav_covariance_R6.md)
 11. [R7: fully sourced four-fund NAV covariance, subperiod risk and the impossibility of ten-year simultaneous fund history](stage512_official_NAV_regime_horizon_R7.md)
+12. [R8: two-layer benchmark evidence contract and official NSE TRI source-access audit](stage512_two_layer_benchmark_gate_R8.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -65,3 +66,8 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [Exact official AMFI NAV time series for four instruments](../data/amfi_official_36m/official_nav_four_assets.csv).
 - [Independent R7 checker](../pipelines/independent_official_NAV_R7.py) and [CI diagnostics](../data/official_nav_R7_CI_diagnostics.json) (the latter exists only after workflow output is committed).
 - [Machine-reproducible R7 result](../data/official_nav_independent_R7.json) — only qualified if produced with a passing CI record.
+
+## R8 benchmark layer initial probe
+- [NSE Nifty500 TRI official-site request script](../pipelines/nse_tri_source_probe_R8.py)
+- [NSE official source access manifest](../data/nse_tri_source_probe_R8.json) — HTTP 200 but redirected HTML rather than TRI rows; this is **FAIL_UNQUALIFIED**, not a price-series approval.
+- [NSE source CI probe](../../../.github/workflows/stage512-nse-tri-probe-R8.yml).
