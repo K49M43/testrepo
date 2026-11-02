@@ -1,17 +1,17 @@
 {
-  "run_utc": "2026-11-02T11:22:48.035224+00:00",
+  "run_utc": "2026-11-02T11:24:23.645744+00:00",
   "purpose": "Official AMFI alternate API discovery, not approval",
   "probes": [
     {
       "code": "147625",
-      "start": "2026-10-19",
-      "end": "2026-10-23",
-      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-10-19&to_date=2026-10-23&sd_id=147625",
+      "start": "2023-09-25",
+      "end": "2026-10-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2026-10-30&sd_id=147625",
       "status": "RESPONDED_JSON_UNVALIDATED",
       "http_status": 200,
       "content_type": "application/json; charset=utf-8",
-      "body_sha256": "55ab060643b893c3a35608bef97191f68310b9e0a38fa19f3ff07787ace3222f",
-      "bytes": 1008,
+      "body_sha256": "0c17346f73273b1979f58e01366b65b0eb69071468caf6c234050b3bb8ee2f52",
+      "bytes": 145135,
       "top_level_keys": [
         "data"
       ],
@@ -30,41 +30,32 @@
         ]
       ],
       "historical_record_counts": [
-        4
+        763
       ],
-      "body_prefix": "{\"data\":{\"mf_name\":\"Motilal Oswal Mutual Fund\",\"scheme_name\":\"Motilal Oswal Nifty 500 Index Fund\",\"date_range\":\"From 19-Oct-2026 to 23-Oct-2026\",\"nav_groups\":[{"
+      "nav_record_examples": [
+        {
+          "nav_name": "Motilal Oswal Nifty 500 Index Fund - Direct Plan",
+          "first": {
+            "date": "2023-09-25",
+            "nav": 19.7792,
+            "upload_time": "2023-09-25T22:27:10.000Z",
+            "upload_time_display": "25 Sep 2023 22:27:10",
+            "repurchase": "",
+            "reissue": "",
+            "Plan": "Direct Plan",
+            "Option": "Growth"
+          }
+        }
+      ],
+      "body_prefix": "{\"data\":{\"mf_name\":\"Motilal Oswal Mutual Fund\",\"scheme_name\":\"Motilal Oswal Nifty 500 Index Fund\",\"date_range\":\"From 25-Sep-2023 to 30-Oct-2026\",\"nav_groups\":[{"
     },
     {
       "code": "105463",
-      "start": "2026-10-19",
-      "end": "2026-10-23",
-      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-10-19&to_date=2026-10-23&sd_id=105463",
-      "status": "RESPONDED_JSON_UNVALIDATED",
-      "http_status": 200,
-      "content_type": "application/json; charset=utf-8",
-      "body_sha256": "bf374789cfbdbabe834d275ceb2546ea7383c427e27291922b5a8de92fb0773e",
-      "bytes": 980,
-      "top_level_keys": [
-        "data"
-      ],
-      "data_type": "dict",
-      "data_keys": [
-        "date_range",
-        "mf_name",
-        "nav_groups",
-        "scheme_name"
-      ],
-      "nav_group_count": 1,
-      "group_key_examples": [
-        [
-          "historical_records",
-          "nav_name"
-        ]
-      ],
-      "historical_record_counts": [
-        4
-      ],
-      "body_prefix": "{\"data\":{\"mf_name\":\"UTI Mutual Fund\",\"scheme_name\":\"UTI - Gold Exchange Traded Fund\",\"date_range\":\"From 19-Oct-2026 to 23-Oct-2026\",\"nav_groups\":[{\"nav_name\":\"U"
+      "start": "2023-09-25",
+      "end": "2026-10-30",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2023-09-25&to_date=2026-10-30&sd_id=105463",
+      "status": "FAIL_UNQUALIFIED",
+      "error": "TimeoutError: The read operation timed out"
     }
   ],
   "qualified_as_official_NAV_series": false,
