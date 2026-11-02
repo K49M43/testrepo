@@ -21,6 +21,7 @@
 7. [Official CPI and market-source reconciliation](stage512_source_resolution_report.md)
 8. [Stage 5.12 R4: recover Stage 5.8 official AMFI evidence and source-quality gate](stage512_source_reuse_audit_R4.md)
 9. [R5: verified live AMFI ingestion and four-sleeve qualification contract](stage512_official_source_qualification_R5.md)
+10. [R6: independently reproduced actual-fund 36-month covariance and source limits](stage512_instrument_nav_covariance_R6.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -52,3 +53,8 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [Per-scheme official API probe manifest](../data/amfi_api_probe.json) — response and retrieval diagnostics; not itself qualified history.
 - [Four-asset official historical NAV qualification source](../pipelines/amfi_four_sleeve_official.py) and [corresponding workflow](../../../.github/workflows/stage512-amfi-four-sleeve-qualify.yml).
 - [Four-sleeve qualification manifest](../data/amfi_official_36m/qualification_manifest.json) — only if produced by the workflow; absence or FAIL means no promotion of investable-return estimates.
+
+## R6 NAV covariance reproducibility
+- [R6 reproducible NAV cross-asset correlation script](../pipelines/compare_stage58_covariance_R6.py)
+- [Source-pinned 36-month covariance results](../data/nav_stage58_comparison_R6.json)
+- **Provisional:** full official AMFI history remains required before replacing the model's benchmark proxy with scheme-level return probabilities.
