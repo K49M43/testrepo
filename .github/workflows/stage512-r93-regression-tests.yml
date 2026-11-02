@@ -6,12 +6,41 @@ on:
       - 'research/stage512/tests/test_r93_amfi_null_option_rate_limit.py'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   source-correctness:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      - name: Regress null AMFI Option and rate limit/cached SHA behavior without network
-        run: python -m unittest discover -s research/stage512/tests -p 'test_r93_amfi_null_option_rate_limit.py' -v
+      - name: Persist offline regressions and no-network diagnostics
+        id: regression
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import subprocess,datetime,json,pathlib
+          argv=["python","-m","unittest","discover","-s","research/stage512/tests","-p","test_r93_amfi_null_option_rate_limit.py","-v"]
+          r=subprocess.run(argv,capture_output=True,text=True,timeout=80)
+          target=pathlib.Path("research/stage512/data/r9_lic_gsec_etf/r93_offline_regression.json")
+          target.parent.mkdir(parents=True,exist_ok=True)
+          body={"status":"PASS" if r.returncode==0 else "FAIL",
+                "run_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "returncode":r.returncode,"stdout_tail":r.stdout[-7000:],"stderr_tail":r.stderr[-7000:],
+                "requires_live_AMFI_requalification":True,
+                "investment_authorization":"NO_GO"}
+          target.write_text(json.dumps(body,indent=2)+"\n")
+          print(json.dumps({"status":body["status"],"stderr_tail":body["stderr_tail"]},indent=2))
+          raise SystemExit(r.returncode)
+          PY
+      - name: Commit machine-checkable offline test outcome
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_lic_gsec_etf/r93_offline_regression.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'test(stage512): persist R9.3 source parser regression outcome' && git push)
+      - name: Fail source regression gate
+        if: steps.regression.outcome != 'success'
+        run: |
+          echo 'R9.3 AMFI parser regression failed. Historical qualification remains NO-GO.'
+          exit 1
