@@ -32,10 +32,18 @@ def parse_date(value: str) -> dt.date:
     return dt.datetime.strptime(value.strip(), DATE_FMT).date()
 
 def parse_nav_text(raw: bytes, *, history: bool) -> tuple[list[NavRow], dict]:
+    """Parse the observed AMFI versions; quarantine missing NAV, reject malformed values."""
     text = raw.decode("utf-8-sig", errors="strict")
-    data = []
-    rejected = []
-    duplicate_key = set()
+    data: list[NavRow] = []
+    rejected: list[list] = []
+    excluded: list[list] = []
+    seen: set[tuple[str, dt.date]] = set()
+    reasons: dict[str, int] = {}
+    def record(reason: str, line_no: int, raw_line: str, *, skip: bool = False):
+        reasons[reason] = reasons.get(reason, 0) + 1
+        target = excluded if skip else rejected
+        if len(target) < 25:
+            target.append([line_no, reason, raw_line[:175]])
     for line_no, line in enumerate(text.splitlines(), 1):
         line = line.strip()
         if not line or line.startswith("Scheme Code;") or "Schemes(" in line or "Schemes (" in line:
@@ -44,30 +52,58 @@ def parse_nav_text(raw: bytes, *, history: bool) -> tuple[list[NavRow], dict]:
         if not x or not CODE.fullmatch(x[0].strip()):
             continue
         if history and len(x) == 8:
-            # Official 2026 historical: code,NAV name,plan,option,ISIN1,ISIN2,NAV,date.
             code, nav_name, plan, option, isin, _, price, day = x
             name = " ".join(v for v in (nav_name, plan, option) if v.strip())
         elif not history and len(x) == 8:
-            # Official 2026 latest: code,ISIN1,ISIN2,name,plan,option,NAV,date.
             code, isin, _, nav_name, plan, option, price, day = x
             name = " ".join(v for v in (nav_name, plan, option) if v.strip())
         elif not history and len(x) == 6:
             code, isin, _, name, price, day = x
         else:
-            rejected.append([line_no, "unrecognized AMFI format / field count"]); continue
+            record("unsupported_columns", line_no, line)
+            continue
+        price = price.strip()
+        day = day.strip()
+        if price.casefold() in {"", "-", "na", "n.a.", "n/a", "null"}:
+            record("nav_unavailable", line_no, line, skip=True)
+            continue
         try:
             nav = float(price)
+        except ValueError:
+            record("non_numeric_nav", line_no, line)
+            continue
+        if not (nav == nav and nav < float("inf")):
+            record("non_finite_nav", line_no, line)
+            continue
+        if nav == 0:
+            record("zero_nav_no_investable_price", line_no, line, skip=True)
+            continue
+        if nav < 0:
+            record("negative_nav", line_no, line)
+            continue
+        if not name.strip():
+            record("empty_scheme_name", line_no, line)
+            continue
+        if not day or day == "-":
+            record("missing_nav_date", line_no, line, skip=True)
+            continue
+        try:
             date = parse_date(day)
-            if not (0 < nav < 1_000_000_000) or not name.strip():
-                raise ValueError("missing name / invalid NAV")
-            k = (code.strip(), date)
-            if k in duplicate_key:
-                rejected.append([line_no, "duplicate scheme/date"]); continue
-            duplicate_key.add(k)
-            data.append(NavRow(code.strip(), name.strip(), nav, date, isin.strip()))
-        except (ValueError, OverflowError):
-            rejected.append([line_no, "invalid NAV or date"])
-    stats = {"parsed": len(data), "rejected": len(rejected), "rejection_sample": rejected[:20]}
+        except ValueError:
+            record("unparseable_date", line_no, line)
+            continue
+        k = (code.strip(), date)
+        if k in seen:
+            record("duplicate_scheme_date", line_no, line)
+            continue
+        seen.add(k)
+        data.append(NavRow(code.strip(), name.strip(), nav, date, isin.strip()))
+    stats = {
+        "parsed": len(data), "rejected": sum(v for k,v in reasons.items() if k not in {"nav_unavailable", "zero_nav_no_investable_price", "missing_nav_date"}),
+        "excluded_unpriced_or_undated": sum(v for k,v in reasons.items() if k in {"nav_unavailable", "zero_nav_no_investable_price", "missing_nav_date"}),
+        "reason_counts": reasons,
+        "rejection_sample": rejected, "exclusion_sample": excluded
+    }
     return data, stats
 
 def fetch(url: str, *, retries: int = 2, timeout: int = 70) -> tuple[bytes, dict]:
