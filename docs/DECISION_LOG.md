@@ -36,6 +36,13 @@ This log records **actual investment authorization** separately from engineering
 - **Source:** Finance Act 2026 section 3(4)(b), Table row 10, section 3(5), section 3(15); Income-tax Act 2025 section 202 and section 198; see the example file for primary links.
 - **Investment authorization:** remains **NO-GO**.
 
+## 2026-11-02 — Sprint 1 plan: deterministic after-tax ledger
+- **Planned:** incremental vertical slices with iterative source/arithmetic review to deliver a deterministic model fixture, not an investment forecast or investor-specific tax estimate.
+- **Increments:** (0) freeze cashflow/event inputs and mark unconfirmed facts; (1) audit CPI vintage and series identity; (2) implement current-law tax components with boundary checks against `decision/tax_surcharge_examples_ty2026-27.md`; (3) build dated lot/event accounting for contributions, coupons/distributions, charges, and disposals; (4) reconcile 120/122-month and alternate terminal cases.
+- **Acceptance:** source and assumption manifest; cashflow and holdings reconciliation; passing deterministic tests and independent hand checks; explicit fail-closed eligibility rules; tax-professional review; CPI source/base aligned before real purchasing-power claims. Detailed tracker: `docs/SPRINT_01_AFTER_TAX_LEDGER.md`.
+- **Dependencies:** tax-professional review not yet obtained; investor-specific dates, tax facts, exact securities, and fees unconfirmed. No external reviewer has been contacted.
+- **Decision status:** no model output or investment authorization changes; **NO-GO** remains.
+
 ## 2026-11-02 — R9.3 complete AMFI history and strict risk bridge
 - **Executed:** sequential bounded AMFI request for all 24 half-year periods; archived original bytes; ran the independent raw-artifact validator and the existing 129-month TRI / ETF NAV bridge.
 - **Source result:** 2,867 official AMFI NAV observations, 26 Dec 2014–30 Oct 2026; all 24 source hashes and byte counts independently reproduced; max observation gap 6 days; LIC March 2026 1/3/5-year published NAV CAGR differences are 0.0047/0.0080/0.0054 percentage points.

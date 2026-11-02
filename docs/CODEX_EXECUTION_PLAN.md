@@ -2,6 +2,10 @@
 
 **Priority order matters.** Build the minimum decision-grade system needed to make a real investment decision, not a generalized research/portfolio SaaS.
 
+## Next sprint — S1 deterministic after-tax ledger
+
+The tracked scope and completion criteria are in [Sprint 1 — Deterministic after-tax ledger](SPRINT_01_AFTER_TAX_LEDGER.md). Use incremental vertical slices with an iterative source/arithmetic review after every slice. Do not start forward-return modeling or claim investor-specific real wealth before the ledger, tax review, and CPI anchor gates pass.
+
 ## Completed on 2 November 2026 — P0 Tasks 1–2
 - **Task 1:** official AMFI scheme 133307 NAV history passed for research use: 2,867 observations across 24 source segments, 26 Dec 2014–30 Oct 2026; raw segment bytes and hashes independently audited; LIC 1/3/5-year factsheet arithmetic reconciled. Evidence: `research/stage512/2026-11-02/stage512_R93_live_backfill_and_129m_audit.md` and `research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json`.
 - **Task 2:** strict equity TRI / LIC ETF NAV proxy bridge passed for 117 of 129 intervals after both-end date alignment; sample correlation 0.022541. This does not qualify a direct G-Sec total-return index or a forward correlation. Evidence: `research/stage512/data/r9_nse_gsec_129m_source_bridge.json`.
@@ -9,7 +13,7 @@
 
 **Next incomplete work:** P1 Task 3–4, starting with audited linked-CPI vintage/anchor treatment and an independent deterministic, instrument-specific after-tax cashflow model. The arithmetic-only baseline is `research/stage512/2026-11-02/cashflow_hurdle_baseline.md`; it does not close the tax or real-wealth gates.
 
-**Current substep (2 November 2026):** PR #6 added the initial Act 2025 / Finance Act 2026 instrument-tax map, but its post-merge Codex review found a P1 error in the section 202 surcharge interpretation. PR #7 corrected the map and merged to `main` as `12af0d8`. Arithmetic boundary/marginal-relief and mixed capital-gain examples are now documented in `decision/tax_surcharge_examples_ty2026-27.md`. A qualified tax professional has not reviewed them; the exact investor-level computation and instrument/lot-level after-tax engine remain open. Next work: independently review the examples, then build and reconcile the deterministic after-tax cashflow ledger with per-lot realization, coupons/distributions, annual tax aggregation, and 120/122-month terminal cases; then join results to a released CPI vintage. Investment authorization remains NO-GO.
+**Current substep (2 November 2026):** PR #6 added the initial Act 2025 / Finance Act 2026 instrument-tax map and its post-merge review found a P1 error in section 202 surcharge treatment. PR #7 corrected the map (`12af0d8`); PR #8 added source-based arithmetic boundary and mixed-income examples (`4f03574`). The examples have not been reviewed by a qualified tax professional. Sprint 1 is now planned in `docs/SPRINT_01_AFTER_TAX_LEDGER.md`: audit the released CPI vintage; implement and check current-law tax components; build the dated tax-lot/event ledger; reconcile 120/122-month deterministic exits. Actual investor dates, taxes, securities, and fees remain unconfirmed, so initial ledger fixtures must be explicitly synthetic and cannot be presented as investor results. Investment authorization remains NO-GO.
 
 ## P0 task definitions and acceptance gates (completed on this branch; retained for traceability)
 **Task 1 — Independently inspect and repair the R9 official bond-fund history gate.**
