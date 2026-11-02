@@ -1,0 +1,72 @@
+{
+  "run_utc": "2026-11-02T11:22:48.035224+00:00",
+  "purpose": "Official AMFI alternate API discovery, not approval",
+  "probes": [
+    {
+      "code": "147625",
+      "start": "2026-10-19",
+      "end": "2026-10-23",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-10-19&to_date=2026-10-23&sd_id=147625",
+      "status": "RESPONDED_JSON_UNVALIDATED",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "body_sha256": "55ab060643b893c3a35608bef97191f68310b9e0a38fa19f3ff07787ace3222f",
+      "bytes": 1008,
+      "top_level_keys": [
+        "data"
+      ],
+      "data_type": "dict",
+      "data_keys": [
+        "date_range",
+        "mf_name",
+        "nav_groups",
+        "scheme_name"
+      ],
+      "nav_group_count": 1,
+      "group_key_examples": [
+        [
+          "historical_records",
+          "nav_name"
+        ]
+      ],
+      "historical_record_counts": [
+        4
+      ],
+      "body_prefix": "{\"data\":{\"mf_name\":\"Motilal Oswal Mutual Fund\",\"scheme_name\":\"Motilal Oswal Nifty 500 Index Fund\",\"date_range\":\"From 19-Oct-2026 to 23-Oct-2026\",\"nav_groups\":[{"
+    },
+    {
+      "code": "105463",
+      "start": "2026-10-19",
+      "end": "2026-10-23",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-10-19&to_date=2026-10-23&sd_id=105463",
+      "status": "RESPONDED_JSON_UNVALIDATED",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "body_sha256": "bf374789cfbdbabe834d275ceb2546ea7383c427e27291922b5a8de92fb0773e",
+      "bytes": 980,
+      "top_level_keys": [
+        "data"
+      ],
+      "data_type": "dict",
+      "data_keys": [
+        "date_range",
+        "mf_name",
+        "nav_groups",
+        "scheme_name"
+      ],
+      "nav_group_count": 1,
+      "group_key_examples": [
+        [
+          "historical_records",
+          "nav_name"
+        ]
+      ],
+      "historical_record_counts": [
+        4
+      ],
+      "body_prefix": "{\"data\":{\"mf_name\":\"UTI Mutual Fund\",\"scheme_name\":\"UTI - Gold Exchange Traded Fund\",\"date_range\":\"From 19-Oct-2026 to 23-Oct-2026\",\"nav_groups\":[{\"nav_name\":\"U"
+    }
+  ],
+  "qualified_as_official_NAV_series": false,
+  "investment_gate": "NO_GO"
+}
