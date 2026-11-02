@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-02T11:56:00.521653+00:00",
+  "returncode": 1,
+  "status": "FAIL",
+  "stdout_tail": "",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/testrepo/testrepo/research/stage512/pipelines/independent_official_NAV_R7.py\", line 153, in <module>\n    if __name__==\"__main__\":main()\n                            ^^^^^^\n  File \"/home/runner/work/testrepo/testrepo/research/stage512/pipelines/independent_official_NAV_R7.py\", line 96, in main\n    if mismatch_dates:raise ValueError(\"Cross-fund month-end alignment mismatch \"+str(mismatch_dates))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Cross-fund month-end alignment mismatch ['2023-09']\n",
+  "investment_authorization": "NO_GO"
+}
