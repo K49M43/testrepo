@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv, datetime as dt, hashlib, json, math, statistics, time
 import urllib.parse, urllib.request
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 REPO = Path("research")
@@ -116,10 +117,22 @@ def compute():
              "period":[START.isoformat(),END.isoformat()],
              "target_investment_gate":"NO_GO","full_10y_forecast_validated":False,
              "records":[],"source_manifest":[],"errors":[]}
-    for code,identity in COHORT.items():
+    def fetch_one(item):
+        code, identity = item
+        try:
+            return code, get_code(code, identity["expected"]), None
+        except Exception as exc:
+            return code, None, f"{type(exc).__name__}: {exc}"
+    # At most two simultaneous official AMFI requests; bounded for access stability.
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        fetched = list(pool.map(fetch_one, COHORT.items()))
+    for code, payload, acquisition_error in fetched:
+        identity = COHORT[code]
         row={"code":code,"asset":identity["asset"],"status":"FAIL"}
         try:
-            series,meta=get_code(code,identity["expected"])
+            if acquisition_error:
+                raise RuntimeError(acquisition_error)
+            series,meta=payload
             points=dict(series)
             checked=[(d,nav,points[d]) for d,nav in source_anchors.get(code,{}).items() if d in points]
             mismatches=[(str(d),a,b) for d,a,b in checked if abs(a-b)>max(.0002,abs(a)*.0001)]
