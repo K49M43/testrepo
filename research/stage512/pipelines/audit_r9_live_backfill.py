@@ -186,7 +186,8 @@ def main() -> int:
             "This source and artifact pass does not validate forward returns, taxes, real-wealth probability or investment suitability.",
         ],
     }
-    OUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    with OUT.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(result, indent=2) + "\n")
     print(json.dumps({k: result[k] for k in ("status", "raw_segments", "reconstructed_observations", "first_date", "last_date", "maximum_gap_calendar_days")}, indent=2))
     return 0
 

@@ -25,7 +25,9 @@
 | Monthly NAV return intervals | 142, Jan 2015–Oct 2026 |
 | Annualized sample volatility of monthly log NAV returns | 3.82768% |
 
-`Option` was null or absent for some API records. Those records were treated as unspecified; every explicit value was growth-compatible. The acquisition parser rejects explicit non-growth options. The original R9.3 four regression tests were recorded PASS in GitHub Actions (4/4). A local rerun was attempted but this Windows sandbox denied the test fixture's dynamically created temporary directories before assertions could run; this is an execution-environment failure, not a failing parser assertion.
+`Option` was null or absent for some API records. Those records were treated as unspecified; every explicit value was growth-compatible. The acquisition parser rejects explicit non-growth options. The original R9.3 four regression tests were recorded PASS in GitHub Actions (4/4). An initial sandboxed local rerun was blocked before assertions because fixture temporary directories were inaccessible; rerunning the same suite with temporary-fixture access passed **4/4**.
+
+The first branch bridge workflow failed while the R9 qualification workflow was rewriting source CSVs on Linux. The Windows commit's manifest hashes had been computed over CRLF working bytes, but Git's default text normalization stored LF blobs, so the bridge's byte-hash check correctly rejected that checkout. The R9 workflow then refreshed the manifest from the committed cached source. To prevent repeat divergence, `.gitattributes` now disables line-ending conversion for every file under the R9 evidence directory. The independent audit and bridge were rerun against the refreshed manifest and both passed locally; the pushed follow-up bridge workflow will confirm the byte-stable commit.
 
 ## Strict 129-month return bridge
 

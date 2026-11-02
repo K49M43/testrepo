@@ -179,7 +179,7 @@ def main():
     # a complete duplicate that still carries an UNQUALIFIED filename.
     if acquisition_incomplete:
         with partial_file.open("w",newline="",encoding="utf8") as fh:
-            wr=csv.writer(fh)
+            wr=csv.writer(fh,lineterminator="\n")
             wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
             wr.writerows(sorted(partial_rows))
     partial_rows_in_file = len(partial_rows) if acquisition_incomplete else 0
@@ -209,7 +209,7 @@ def main():
         if failures:raise ValueError(f"Fund house published CAGR comparison differs >0.14 pp: {failures}")
         output=BASE/"lic_gsec_133307_amfi_daily.csv"
         with output.open("w",newline="",encoding="utf8") as fh:
-            w=csv.writer(fh);w.writerow(["date","amfi_scheme_code","nav_inr","source_type"])
+            w=csv.writer(fh,lineterminator="\n");w.writerow(["date","amfi_scheme_code","nav_inr","source_type"])
             for d,v in s:w.writerow([d.isoformat(),CODE,f"{v:.8f}","AMFI_OFFICIAL_NAV"])
         monthly={}
         for d,v in s:monthly[d.strftime("%Y-%m")]=(d,v)
@@ -221,7 +221,7 @@ def main():
                 raise ValueError(f"Missing calendar NAV month {prior}->{cur}")
             series.append([cur,cd.isoformat(),math.log(cv/pv),100*(cv/pv-1)])
         with (BASE/"lic_gsec_133307_monthly_returns.csv").open("w",newline="",encoding="utf8") as fh:
-            w=csv.writer(fh);w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
+            w=csv.writer(fh,lineterminator="\n");w.writerow(["month","end_nav_date","log_nav_return","simple_nav_return_pct"]);w.writerows(series)
         vol=__import__("statistics").stdev([x[2] for x in series])*math.sqrt(12)*100
         manifest.update(status="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
           research_source_gate="PASS_FULL_OFFICIAL_NAV_RESEARCH_ONLY",
@@ -231,7 +231,8 @@ def main():
           daily_source_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
           monthly_source_sha256=hashlib.sha256((BASE/"lic_gsec_133307_monthly_returns.csv").read_bytes()).hexdigest())
     except Exception as e:manifest["error"]=f"{type(e).__name__}: {e}"
-    (BASE/"qualification_manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf8")
+    with (BASE/"qualification_manifest.json").open("w",encoding="utf8",newline="\n") as fh:
+        fh.write(json.dumps(manifest,indent=2)+"\n")
     print(json.dumps({k:manifest.get(k) for k in ["status","observations","first","last",
       "months_of_return","annualized_monthly_log_nav_volatility_pct","error"]},indent=2))
     return 0 if manifest["status"]=="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY" else 2

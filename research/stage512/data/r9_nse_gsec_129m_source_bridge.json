@@ -111,7 +111,7 @@
   "correlation_source_identification": "NSE official published Nifty500 gross TRI MONTHLY values vs AMFI official LIC ETF monthly NAV",
   "source_hashes": {
     "nifty500_official_whitepaper": "10a0aebe9f42c1e18836bc8ffeb457fa8c996ca60a7610cfd88497c717cb4eaa",
-    "lic_etf_official_monthly": "20e07778a95773710c4cc6ca09cdd8402e70d61568b0631fe46a7e89c1dfbee0"
+    "lic_etf_official_monthly": "c852d17921e5e81cbf2f3538e9634ea98039315a4557a4c3f66215a4c91562ab"
   },
   "caution": [
     "Fund ETF NAV is not the 8-13-year G-Sec benchmark total-return index itself",
