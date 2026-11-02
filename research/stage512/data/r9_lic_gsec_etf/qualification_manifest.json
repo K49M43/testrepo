@@ -9,7 +9,7 @@
   "nav_is_tradable_etf_market_price": false,
   "full_2036_forecast_validated": false,
   "investment_authorization": "NO_GO",
-  "retrieved_utc": "2026-11-02T15:21:02.585594+00:00",
+  "retrieved_utc": "2026-11-02T15:41:36.661054+00:00",
   "partial_observation_rows": 0,
   "partial_source_file_sha256": "eec1b4e946e853415e75c5996518d555a575548a52c474f9e7243c3ad93f7392",
   "partial_not_eligible_for_return_calibration": true,
@@ -399,5 +399,5 @@
     }
   ],
   "daily_source_sha256": "7359b20c11de05b7cf0a86ca473f6e83b471d2b416793655bc43c6f0c14ca846",
-  "monthly_source_sha256": "c852d17921e5e81cbf2f3538e9634ea98039315a4557a4c3f66215a4c91562ab"
+  "monthly_source_sha256": "e3610f2f6f09a545e4d9c9102c4975c0937c856d867892f500cef0b9271fc9d5"
 }
