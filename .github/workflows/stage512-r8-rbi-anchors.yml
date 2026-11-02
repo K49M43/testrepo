@@ -1,0 +1,33 @@
+name: Stage512 R8 RBI bulletin primary-source sampled price checks
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r8-rbi-anchors.yml'
+      - 'research/stage512/pipelines/r8_rbi_bullion_primary_anchor_check.py'
+      - 'research/stage512/data/r8_rbi_bullion_official_published_anchors.csv'
+      - 'research/stage512/data/r8_rbi_origin_mirror/rbi_origin_mumbai_bullion_monthly_SECONDARY_MIRROR.csv'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Qualify bullion mirror integrity against original RBI bulletins
+        id: audit
+        continue-on-error: true
+        run: python research/stage512/pipelines/r8_rbi_bullion_primary_anchor_check.py
+      - name: Publish source-matched historical data audit
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r8_rbi_bullion_primary_spotcheck_manifest.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): RBI bullion seven primary publication anchors vs secondary mirror" && git push)
+      - name: Enforce primary sampled acceptance
+        if: steps.audit.outcome != 'success'
+        run: |
+          echo "Official RBI monthly prices failed sampled comparison; no further risk calibration."
+          exit 1
