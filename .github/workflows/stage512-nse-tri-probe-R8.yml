@@ -1,0 +1,35 @@
+name: Stage512 R8 official Nifty 500 TRI source probe
+on:
+  push:
+    paths:
+      - ".github/workflows/stage512-nse-tri-probe-R8.yml"
+      - "research/stage512/pipelines/nse_tri_source_probe_R8.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  nse-tri-sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch two bounded official Nifty500 TRI windows
+        id: retrieve
+        continue-on-error: true
+        run: python research/stage512/pipelines/nse_tri_source_probe_R8.py
+      - name: Commit source diagnostics and checksums for audit
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/nse_tri_source_probe_R8.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): preserve official NSE Nifty500 TRI source probe" && git push)
+      - name: Reject missing or malformed official source windows
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("research/stage512/data/nse_tri_source_probe_R8.json"))
+          stat=[x["status"] for x in r["probes"]]
+          print("NSE official TRI validation:",stat)
+          assert len(stat)==2 and all(x=="PASS_SAMPLE_TRI_ONLY" for x in stat), "NO-GO: NSE source retrieval not qualified"
+          PY
