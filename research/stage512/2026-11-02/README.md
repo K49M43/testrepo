@@ -20,6 +20,7 @@
 6. [Tail validation and source gates](stage512_validation_resolution_v2.md)
 7. [Official CPI and market-source reconciliation](stage512_source_resolution_report.md)
 8. [Stage 5.12 R4: recover Stage 5.8 official AMFI evidence and source-quality gate](stage512_source_reuse_audit_R4.md)
+9. [R5: verified live AMFI ingestion and four-sleeve qualification contract](stage512_official_source_qualification_R5.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -44,3 +45,10 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [Pilot manifest (status may remain FAIL until corrected rerun)](../data/amfi_pilot/manifest.json)
 
 **Important:** A successful ingestion pilot qualifies only the downloaded sample windows, not the full 10-year investable-product history or the investment decision. Prior Stage 5.8 official NAV spot-check results were recovered; see R4.
+
+## Official historical NAV qualification results
+- [Live official AMFI bulk-sample manifest](../data/amfi_pilot/manifest.json) — 75,706 valid priced NAVs across three windows, 1,105 zero-NAV exclusions, no unexplained parse rejects.
+- [27 exact overlapping official NAV / ISIN crosschecks](../data/amfi_pilot/reconciliation_vs_stage58.csv).
+- [Per-scheme official API probe manifest](../data/amfi_api_probe.json) — response and retrieval diagnostics; not itself qualified history.
+- [Four-asset official historical NAV qualification source](../pipelines/amfi_four_sleeve_official.py) and [corresponding workflow](../../../.github/workflows/stage512-amfi-four-sleeve-qualify.yml).
+- [Four-sleeve qualification manifest](../data/amfi_official_36m/qualification_manifest.json) — only if produced by the workflow; absence or FAIL means no promotion of investable-return estimates.
