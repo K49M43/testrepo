@@ -72,7 +72,8 @@
     "rbi_mumbai_bullion_437month_mirror": "PASS_SECONDARY_INTEGRITY_WITH_SAMPLED_RBI_CHECK",
     "mospi_linked_cpi": "PROVISIONAL_NEEDS_VINTAGE_CHECKS",
     "gsec_index_primary_complete_tr_history": "OPEN",
-    "lic_8_13yr_gsec_etf_full_amfi": "FAIL_INCOMPLETE_AS_OF_2026_11_02",
+    "lic_8_13yr_gsec_etf_full_amfi": "PASS_FULL_OFFICIAL_NAV_RESEARCH_ONLY",
+    "nifty500_vs_lic_etf_strict_129m_bridge": "PASS_117_STRICT_DATE_ALIGNED_INTERVALS_RESEARCH_ONLY",
     "real_2036_success_probability": "NOT_QUALIFIED"
   },
   "safeguards": {

@@ -12,19 +12,19 @@ Evidence: [docs/HANDOFF_STATUS_2026-11-02.md](docs/HANDOFF_STATUS_2026-11-02.md)
 
 > You are continuing my **actual 2036 personal investment decision program for real money** in this connected GitHub repository, not a generic research project or software product. Read root `AGENTS.md`, the 2036 mandate, current evidence handoff, quality/decision gates, and execution plan **before changing code**. Treat existing PASS results only within their stated scope. Confirm the current GitHub branch and latest R9 LIC 8–13y G-Sec ETF source manifest and CI results.
 >
-> **Perform P0 Task 1 now:** independently audit and fix/resume the official AMFI scheme 133307 2014–2026 NAV backfill, honoring HTTP 429 and source access limits, checking `Option:null`, raw source checksums, partial resume, source continuity, ETF identity, corporate actions, and independent LIC factsheet NAV returns. Run tests, create a targeted branch/PR, and commit the scripts, qualified data and audit manifest. Do not bypass site restrictions. If acquisition remains blocked, commit a precise fail-closed diagnosis and a compliant alternate official-data route.
+> **P0 Tasks 1–2 are complete and merged in PR #4** (`8eb9c20`): the 2,867-row AMFI history passed its scoped source qualification and the strict NSE TRI / LIC ETF NAV proxy bridge passed on 117 exactly aligned monthly intervals. Source-commit Actions runs `41475006266`, `41475006330`, and `41475006356` passed. Preserve the limitations in the audit report; do not rerun the completed acquisition task unless the source or artifact changes.
 >
-> If and only if the full NAV input passes, continue **P0 Task 2**: construct the independently checked, strictly same-date 129-month NSE Nifty500 TRI versus LIC G-Sec ETF NAV correlation, compare with recent HDFC gilt risk, and keep fund/benchmark/direct sovereign risks separate.
+> **Continue P1 Tasks 3–4:** finish auditing the linked MoSPI CPI data vintage and choose an observed base month, then independently build the date-resolved ₹42L plus stepped-SIP after-tax cashflow engine. As of 2026-04-01, current-year law is the Income-tax Act, 2025; map the applicable provisions and Finance Act 2026 rates by instrument, and treat the Oct 2026 proposed Government-security exemption process as pending unless final rules are verified. Keep tax lots, fees, coupon reinvestment, CPI linking, and alternate 2036 exits distinct. Start from `research/stage512/2026-11-02/cashflow_hurdle_baseline.md`, which currently provides only a pre-tax/pre-cost arithmetic hurdle. Do not call it a forecast or GO evidence.
 >
 > Continue through current Indian tax rules, linked CPI, long/recent/tail multi-asset modeling, at least 10 eligible candidates including direct sovereign bonds and gold/silver, and a realistically executable 2036 decision memo. Investor facts: ₹42 lakh available, ₹25k starting SIP stepping up 10% annually, no expected funding interruptions or outstanding liabilities, resident India/new tax regime/approx 30% income marginal slab, Groww, 2036 target year, ₹90 lakh 2026-real **after-tax** planning floor and ₹1Cr real stretch, ~85% modeled floor aspiration **not yet proven**, 6% inflation planning case. Do **not** treat the existing 65/20/10/5 as approved.
 >
 > Report what you **actually executed**, test outcomes, source quality, financial decision impact, unresolved gates and exact commits/PR links. **Never mark investment GO simply because a data import, simulation or code test passed.** Do not place trades or access broker credentials. Work through as many engineering steps as the available environment permits without asking me to repeat this context.
 
 ## What a correct first Codex response looks like
-1. Finds latest R9 manifest and GitHub Actions status (prior `FAIL_INCOMPLETE` with `Option:null` and HTTP429; 4/4 regression tests passed).
-2. Runs/pins existing tests; identifies a precise technical blocker and source access policy.
-3. Fixes and tests the issue, preferably with a targeted PR, then records the actual results.
-4. States which analysis can now be done and which real-money investment questions remain unresolved.
+1. Confirms merged PR #4 and current main head; reads the current R9 qualification and bridge audit as scope-limited research evidence.
+2. Reviews the new cashflow hurdle baseline and the CPI source vintage; October 2026 CPI was not yet published as of 2 November 2026.
+3. Continues with instrument-specific tax and after-tax accounting; keeps exact investor dates and final 2036 measurement date explicitly unconfirmed.
+4. Preserves NO-GO until the remaining market-data, model, portfolio, suitability, and independent-review gates are resolved.
 
 **No trades are authorized by opening this file or starting Codex.**
 

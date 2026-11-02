@@ -41,4 +41,4 @@ The JSON configuration [investment_mandate_2036.json](config/investment_mandate_
 - No irreversible real-money actions without explicit investor instruction and confirmation.
 
 ## Start now
-Open [docs/CODEX_EXECUTION_PLAN.md](docs/CODEX_EXECUTION_PLAN.md) and execute **P0 / Task 1** against the current GitHub code and test evidence. Continue toward an actual decision memo; do not wait for further prompts when safe engineering work can proceed.
+Open [docs/CODEX_EXECUTION_PLAN.md](docs/CODEX_EXECUTION_PLAN.md), verify the current branch and evidence, then execute the first incomplete task. P0 Tasks 1–2 (R9 source qualification and its strict ETF-proxy bridge) were completed and merged in PR #4 on 2026-11-02. Continue toward an actual decision memo; do not wait for further prompts when safe engineering work can proceed.

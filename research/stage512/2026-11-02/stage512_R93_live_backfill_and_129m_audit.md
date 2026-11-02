@@ -55,3 +55,7 @@ python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
 python research/stage512/pipelines/audit_r9_live_backfill.py
 python research/stage512/pipelines/r9_nifty500_gsec_instrument_bridge.py
 ```
+
+## Post-merge CI confirmation — 2 November 2026
+
+PR #4 was merged to `main` at `8eb9c20`. The source-commit Actions runs completed successfully: full AMFI qualification `41475006266`, equity-bond bridge `41475006330`, and offline contract `41475006356`. This confirms the byte-preserving artifact and bounded rebase/retry publisher fixes within those workflow scopes. It does not extend the historical investment gate or resolve the separate tax/real-wealth blockers.
