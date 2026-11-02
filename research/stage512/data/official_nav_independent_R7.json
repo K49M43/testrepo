@@ -110,7 +110,7 @@
   "static_65_20_10_5_annualized_volatility_pct": 11.413711,
   "subperiods": [
     {
-      "period": "2023-10_to_2024-09",
+      "period": "2023-11_to_2024-09",
       "n_months": 11,
       "annualized_volatility_pct": {
         "equity": 9.104,
