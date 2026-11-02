@@ -7,7 +7,7 @@ This is **not an academic research repository or an investment SaaS/platform dev
 **Current investor decision status: NO-GO — supporting data/model/tax/portfolio qualification incomplete.** No code or simulated outcome authorizes a trade.
 
 ## Start here — Codex
-1. **[CODEX_START_HERE.md](CODEX_START_HERE.md)** — ready-to-paste task for Codex to continue directly in this repository.
+1. **[CODEX_START_HERE.md](CODEX_START_HERE.md)** — ready-to-paste task for Codex to continue directly in this repository; [tracked GitHub issue #3](https://github.com/K49M43/testrepo/issues/3).
 2. **[AGENTS.md](AGENTS.md)** — repository-wide operating rules that Codex should follow.
 3. **[Actual investment mandate](docs/INVESTMENT_DECISION_MANDATE_2036.md)** — investor objective, cashflows, real after-tax floor, constraints and assumptions.
 4. **[Dated handoff and current blockers](docs/HANDOFF_STATUS_2026-11-02.md)** — verified prior evidence, failed R9 NAV backfill, qualified source scopes.
