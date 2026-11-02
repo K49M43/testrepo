@@ -1,0 +1,32 @@
+name: Stage512 R9 LIC gilt ETF official factsheet benchmark anchor audit
+on:
+  push:
+    paths:
+      - ".github/workflows/stage512-r9-lic-factsheet-audit.yml"
+      - "research/stage512/pipelines/r9_lic_gsec_factsheet_audit.py"
+      - "research/stage512/data/r9_lic_gsec_official_factsheet_anchors.csv"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-anchor-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently validate 12 published LIC MF tracking-difference anchors
+        id: audit
+        continue-on-error: true
+        run: python research/stage512/pipelines/r9_lic_gsec_factsheet_audit.py
+      - name: Commit source-anchored evidence
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_lic_gsec_factsheet_bridge.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m 'audit(stage512): official LIC gilt ETF and Nifty GSec published tracking differences R9' && git push)
+      - name: Fail closed if factsheet references are invalid
+        if: steps.audit.outcome != 'success'
+        run: |
+          echo 'LIC official return anchors not fully validated'
+          exit 1
