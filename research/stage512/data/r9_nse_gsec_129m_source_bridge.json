@@ -1,0 +1,9 @@
+{
+  "status": "FAIL_NOT_QUALIFIED",
+  "investment_gate": "NO_GO",
+  "full_nse_8_13_gsec_index_monthly_history_qualified": false,
+  "silver_or_gold_same_time_multi_asset_covariance_qualified": false,
+  "etf_is_index_not_true": true,
+  "nse_equity_monthly_precision": "rounded 0.01 percentage point",
+  "error": "ValueError: LIC ETF raw official AMFI NAV and factsheet qualified history unavailable"
+}
