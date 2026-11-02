@@ -19,6 +19,7 @@
 5. [Predictive-validation audit](stage512_predictive_validation_report.md)
 6. [Tail validation and source gates](stage512_validation_resolution_v2.md)
 7. [Official CPI and market-source reconciliation](stage512_source_resolution_report.md)
+8. [Stage 5.12 R4: recover Stage 5.8 official AMFI evidence and source-quality gate](stage512_source_reuse_audit_R4.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -35,3 +36,11 @@ Structured results: `stage512_risk_scenarios.csv`, `stage512_empirical_sensitivi
 5. Conduct investment committee review before any GO decision.
 
 All report figures and modeled probabilities are research hypotheses, not guaranteed investor outcomes or an investment instruction.
+
+## Official AMFI source pilot — November 2026
+- [Primary-source retrieval script](../pipelines/amfi_source_pilot.py)
+- [Offline parser contract tests](../tests/test_amfi_source_pilot.py)
+- [Automated public-source acquisition workflow](../../../.github/workflows/stage512-amfi-primary-source-pilot.yml)
+- [Pilot manifest (status may remain FAIL until corrected rerun)](../data/amfi_pilot/manifest.json)
+
+**Important:** A successful ingestion pilot qualifies only the downloaded sample windows, not the full 10-year investable-product history or the investment decision. Prior Stage 5.8 official NAV spot-check results were recovered; see R4.
