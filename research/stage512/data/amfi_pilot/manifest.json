@@ -1,6 +1,6 @@
 {
   "status": "FAIL_INCOMPLETE",
-  "run_utc": "2026-11-02T11:06:32.146534+00:00",
+  "run_utc": "2026-11-02T11:11:12.717929+00:00",
   "source_ownership": "AMFI official portal",
   "readme": "Named-scheme classes are keyword matches, not approved candidate identity. NAVs do not validate tracking error or scheme taxonomy.",
   "windows": [
@@ -14,92 +14,92 @@
       "content_type": "text/plain",
       "response_bytes": 1528600,
       "sha256": "584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a",
-      "retrieved_utc": "2026-11-02T11:06:05.449516+00:00",
-      "parsed": 0,
-      "rejected": 14441,
+      "retrieved_utc": "2026-11-02T11:10:44.516050+00:00",
+      "parsed": 14200,
+      "rejected": 241,
       "rejection_sample": [
         [
-          7,
-          "expected six columns"
+          269,
+          "invalid NAV or date"
         ],
         [
-          8,
-          "expected six columns"
+          270,
+          "invalid NAV or date"
         ],
         [
-          9,
-          "expected six columns"
+          271,
+          "invalid NAV or date"
         ],
         [
-          10,
-          "expected six columns"
+          272,
+          "invalid NAV or date"
         ],
         [
-          11,
-          "expected six columns"
+          273,
+          "invalid NAV or date"
         ],
         [
-          12,
-          "expected six columns"
+          274,
+          "invalid NAV or date"
         ],
         [
-          13,
-          "expected six columns"
+          275,
+          "invalid NAV or date"
         ],
         [
-          14,
-          "expected six columns"
+          276,
+          "invalid NAV or date"
         ],
         [
-          20,
-          "expected six columns"
+          277,
+          "invalid NAV or date"
         ],
         [
-          21,
-          "expected six columns"
+          278,
+          "invalid NAV or date"
         ],
         [
-          22,
-          "expected six columns"
+          279,
+          "invalid NAV or date"
         ],
         [
-          23,
-          "expected six columns"
+          280,
+          "invalid NAV or date"
         ],
         [
-          27,
-          "expected six columns"
+          306,
+          "invalid NAV or date"
         ],
         [
-          28,
-          "expected six columns"
+          307,
+          "invalid NAV or date"
         ],
         [
-          29,
-          "expected six columns"
+          308,
+          "invalid NAV or date"
         ],
         [
-          30,
-          "expected six columns"
+          309,
+          "invalid NAV or date"
         ],
         [
-          34,
-          "expected six columns"
+          322,
+          "invalid NAV or date"
         ],
         [
-          35,
-          "expected six columns"
+          323,
+          "invalid NAV or date"
         ],
         [
-          36,
-          "expected six columns"
+          324,
+          "invalid NAV or date"
         ],
         [
-          37,
-          "expected six columns"
+          337,
+          "invalid NAV or date"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 14441"
+      "error": "ValueError: Malformed NAV rows: 241"
     },
     {
       "label": "history_2024-01-02_2024-01-05",
@@ -111,92 +111,92 @@
       "content_type": "text/plain",
       "response_bytes": 3687487,
       "sha256": "00d367d0d760beab6c7380c92357e8fd071c8742b6666fc7ae5957066cf55dd3",
-      "retrieved_utc": "2026-11-02T11:06:16.942522+00:00",
-      "parsed": 0,
-      "rejected": 27226,
+      "retrieved_utc": "2026-11-02T11:10:55.998913+00:00",
+      "parsed": 26794,
+      "rejected": 432,
       "rejection_sample": [
         [
-          7,
+          7102,
           "invalid NAV or date"
         ],
         [
-          8,
+          7103,
           "invalid NAV or date"
         ],
         [
-          9,
+          7104,
           "invalid NAV or date"
         ],
         [
-          10,
+          7105,
           "invalid NAV or date"
         ],
         [
-          11,
+          7106,
           "invalid NAV or date"
         ],
         [
-          12,
+          7107,
           "invalid NAV or date"
         ],
         [
-          13,
+          7108,
           "invalid NAV or date"
         ],
         [
-          14,
+          7109,
           "invalid NAV or date"
         ],
         [
-          15,
+          7110,
           "invalid NAV or date"
         ],
         [
-          16,
+          7111,
           "invalid NAV or date"
         ],
         [
-          17,
+          7112,
           "invalid NAV or date"
         ],
         [
-          18,
+          7113,
           "invalid NAV or date"
         ],
         [
-          19,
+          7114,
           "invalid NAV or date"
         ],
         [
-          20,
+          7115,
           "invalid NAV or date"
         ],
         [
-          21,
+          7116,
           "invalid NAV or date"
         ],
         [
-          22,
+          7117,
           "invalid NAV or date"
         ],
         [
-          28,
+          7118,
           "invalid NAV or date"
         ],
         [
-          29,
+          7119,
           "invalid NAV or date"
         ],
         [
-          30,
+          7120,
           "invalid NAV or date"
         ],
         [
-          31,
+          7121,
           "invalid NAV or date"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 27226"
+      "error": "ValueError: Malformed NAV rows: 432"
     },
     {
       "label": "history_2026-10-19_2026-10-23",
@@ -208,92 +208,92 @@
       "content_type": "text/plain",
       "response_bytes": 4660562,
       "sha256": "cceb34cff86617f2c0925aaaf9c20a11687ea636ae175c079de6df4e5ae04d24",
-      "retrieved_utc": "2026-11-02T11:06:32.067640+00:00",
-      "parsed": 0,
-      "rejected": 35144,
+      "retrieved_utc": "2026-11-02T11:11:12.407579+00:00",
+      "parsed": 34712,
+      "rejected": 432,
       "rejection_sample": [
         [
-          7,
+          8846,
           "invalid NAV or date"
         ],
         [
-          8,
+          8847,
           "invalid NAV or date"
         ],
         [
-          9,
+          8848,
           "invalid NAV or date"
         ],
         [
-          10,
+          8849,
           "invalid NAV or date"
         ],
         [
-          11,
+          8850,
           "invalid NAV or date"
         ],
         [
-          12,
+          8851,
           "invalid NAV or date"
         ],
         [
-          13,
+          8852,
           "invalid NAV or date"
         ],
         [
-          14,
+          8853,
           "invalid NAV or date"
         ],
         [
-          15,
+          8854,
           "invalid NAV or date"
         ],
         [
-          16,
+          8855,
           "invalid NAV or date"
         ],
         [
-          17,
+          8856,
           "invalid NAV or date"
         ],
         [
-          18,
+          8857,
           "invalid NAV or date"
         ],
         [
-          19,
+          8858,
           "invalid NAV or date"
         ],
         [
-          20,
+          8859,
           "invalid NAV or date"
         ],
         [
-          21,
+          8860,
           "invalid NAV or date"
         ],
         [
-          22,
+          8861,
           "invalid NAV or date"
         ],
         [
-          25,
+          8862,
           "invalid NAV or date"
         ],
         [
-          26,
+          8863,
           "invalid NAV or date"
         ],
         [
-          27,
+          8864,
           "invalid NAV or date"
         ],
         [
-          28,
+          8865,
           "invalid NAV or date"
         ]
       ],
-      "error": "ValueError: Malformed NAV rows: 35144"
+      "error": "ValueError: Malformed NAV rows: 432"
     }
   ],
   "matched_rows": 0,
