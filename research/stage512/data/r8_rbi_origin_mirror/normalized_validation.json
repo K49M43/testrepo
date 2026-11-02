@@ -1,0 +1,54 @@
+{
+  "status": "PASS_SECONDARY_MIRROR_INTEGRITY_ONLY",
+  "distribution": "THIRD_PARTY_DBIE_MIRROR_OF_RBI_BULLETIN",
+  "official_rbi_primary_verified": false,
+  "2036_investment_authorized": false,
+  "retrieved_utc": "2026-11-02T12:36:20.686930+00:00",
+  "source_url": "https://data-api.dbie.rbihub.in/api/tables/real_sector/r17_monthly_average_price_of_gold_and_silver_in_mumbai/csv",
+  "source_page": "https://dbie.rbihub.in/tables?table=real_sector.r17_monthly_average_price_of_gold_and_silver_in_mumbai",
+  "units": {
+    "gold": "INR per 10 grams",
+    "silver": "INR per kilogram"
+  },
+  "raw_source_sha256": "b170913646b0bd95096f200d03474b1401cb6b409e661a8253b6ed476cbf5337",
+  "bytes": 68861,
+  "observations": 437,
+  "first_month": "1990-04",
+  "last_month": "2026-08",
+  "unused_nonobservation_row_samples": [
+    {
+      "row_no": "1",
+      "c1": ""
+    },
+    {
+      "row_no": "2",
+      "c1": "Monthly Average Price of Gold and Silver in Mumbai"
+    },
+    {
+      "row_no": "3",
+      "c1": ""
+    },
+    {
+      "row_no": "4",
+      "c1": "Month/Year"
+    },
+    {
+      "row_no": "442",
+      "c1": ""
+    },
+    {
+      "row_no": "443",
+      "c1": "Source: Bombay Bullion Association Ltd."
+    },
+    {
+      "row_no": "444",
+      "c1": ""
+    }
+  ],
+  "normalized_sha256": "bc756e51b59329c7640885bd0f4e3012f209ee3002aed4765f4cb56f8809cf0a",
+  "gold_first": 3417.0,
+  "gold_last": 153234.0,
+  "silver_first": 6756.0,
+  "silver_last": 229655.0,
+  "official_rbi_source_reconciliation": "OPEN"
+}
