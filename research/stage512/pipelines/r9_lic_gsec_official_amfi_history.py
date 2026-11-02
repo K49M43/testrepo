@@ -4,7 +4,7 @@
 LIC MF Nifty 8-13 yr G-Sec ETF: scheme code 133307, ISIN INF767K01MV5.
 The ETF's own official NAV history is NOT the NSE index total-return history.
 Source: first-party AMFI scheme NAV JSON API. Offline standard-library parser.
-Acquires bounded, nonoverlapping periods with 2 simultaneous requests; archives
+Acquires bounded, nonoverlapping six-month periods sequentially with rate limits; archives
 exact raw bytes through GitHub Actions artifacts; records SHA256 and rejects
 inconsistent scheme names, invalid NAV, duplicate/conflicting dates, price jumps.
 Verification vs first-party LIC factsheet return windows: 31 Mar 2026, 1/3/5 yr.
@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request,urlopen
+from urllib.error import HTTPError
 import csv,datetime as dt,hashlib,json,math,time
 BASE=Path("research/stage512/data/r9_lic_gsec_etf")
 URL="https://www.amfiindia.com/api/nav-history"
@@ -45,19 +46,23 @@ def get_one(t):
     url=URL+"?"+urlencode({"query_type":"historical_period","from_date":a.isoformat(),"to_date":b.isoformat(),"sd_id":CODE})
     evidence={"start":str(a),"end":str(b),"url":url,"status":"FAIL"}
     errs=[]
-    for attempt in range(2):
+    rawdir=BASE/"raw"
+    rawdir.mkdir(parents=True,exist_ok=True)
+    rawfile=rawdir/f"{a}_{b}.json"
+    for attempt in range(3):
         try:
-            req=Request(url,headers={"User-Agent":"Mozilla/5.0 (Stage512 primary source audit)",
-              "Accept":"application/json","Accept-Encoding":"identity",
-              "Referer":"https://www.amfiindia.com/net-asset-value/nav-history"})
-            with urlopen(req,timeout=32) as rsp:
-                raw=rsp.read(3_000_001)
-                status=rsp.status
-            if status!=200 or len(raw)>3_000_000 or not raw:
-                raise ValueError(f"HTTP {status}, bytes={len(raw)}")
-            rawdir=BASE/"raw"
-            rawdir.mkdir(parents=True,exist_ok=True)
-            (rawdir/f"{a}_{b}.json").write_bytes(raw)
+            cached=rawfile.is_file()
+            if cached:
+                raw=rawfile.read_bytes()
+            else:
+                req=Request(url,headers={"User-Agent":"Mozilla/5.0 (Stage512 primary source audit)",
+                  "Accept":"application/json","Accept-Encoding":"identity",
+                  "Referer":"https://www.amfiindia.com/net-asset-value/nav-history"})
+                with urlopen(req,timeout=35) as rsp:
+                    raw=rsp.read(3_000_001)
+                    status=rsp.status
+                if status!=200 or len(raw)>3_000_000 or not raw:
+                    raise ValueError(f"HTTP {status}, bytes={len(raw)}")
             x=json.loads(raw)
             body=x.get("data") if isinstance(x,dict) else None
             if not isinstance(body,dict):raise ValueError("AMFI data is missing")
@@ -77,19 +82,33 @@ def get_one(t):
                 nav=float(r["nav"])
                 if d<a or d>b or not math.isfinite(nav) or nav<=0:
                     raise ValueError(f"Invalid NAV or date: {d} {nav}")
-                opt=str(r.get("Option","")).lower()
+                raw_opt=r.get("Option")
+                opt=str(raw_opt).strip().lower() if raw_opt is not None else ""
+                # API versions can omit/return null for the option. The named
+                # ETF is a growth-only scheme; reject only an explicit non-growth option.
                 if opt and "growth" not in opt:
-                    raise ValueError(f"Unexpected option: {opt}")
+                    raise ValueError(f"Unexpected non-growth option: {opt}")
                 rows.append((d,nav))
             if len({d for d,v in rows})!=len(rows):raise ValueError("Duplicate date")
+            if not cached:
+                rawfile.write_bytes(raw)
             evidence.update(status="PASS_SOURCE_SEGMENT",n=len(rows),
+                retrieved_from_committed_cache=cached,
                 sha256=hashlib.sha256(raw).hexdigest(),bytes=len(raw),
                 scheme_name=scheme,nav_name=name,
                 first=str(min(d for d,v in rows)),last=str(max(d for d,v in rows)))
             return rows,evidence
+        except HTTPError as exc:
+            errs.append(f"HTTPError: {exc.code} {exc.reason}")
+            if exc.code==429 and attempt<2:
+                time.sleep([15,30][attempt])
+            elif attempt<2:
+                time.sleep(3)
+            else:
+                break
         except Exception as exc:
             errs.append(f"{type(exc).__name__}: {exc}")
-            if attempt<1:time.sleep(2)
+            if attempt<2:time.sleep(3)
     evidence["errors"]=errs
     return [],evidence
 def check_history(rows):
@@ -128,8 +147,21 @@ def compare_lic(ordered):
 def main():
     BASE.mkdir(parents=True,exist_ok=True)
     tasks=segments()
-    with ThreadPoolExecutor(max_workers=4) as exe:
-        outcomes=list(exe.map(get_one,tasks))
+    # Avoid simultaneous large AMFI queries (prior R9 received HTTP 429).
+    # Commit every successful raw segment and resume on later runs.
+    outcomes=[]
+    for i,segment in enumerate(tasks):
+        records,source=get_one(segment)
+        outcomes.append((records,source))
+        if source.get("status")!="PASS_SOURCE_SEGMENT" and any("429" in e for e in source.get("errors",[])):
+            # Stop rather than repeatedly pressure a rate-limited official service.
+            for remaining in tasks[i+1:]:
+                a,b=remaining
+                outcomes.append(([],{"start":str(a),"end":str(b),
+                 "status":"SKIPPED_RATE_LIMIT","errors":["Earlier segment hit HTTP 429; halt and preserve partial evidence"]}))
+            break
+        if not source.get("retrieved_from_committed_cache"):
+            time.sleep(3)
     sources=[s for records,s in outcomes]
     # Always retain sourced partial observations, even when some segments fail;
     # never promote these rows to a continuous qualified return history.
