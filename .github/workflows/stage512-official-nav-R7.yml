@@ -15,11 +15,33 @@ jobs:
     timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
-      - name: Validate source SHA256, 63 official anchors, dates and published covariance
-        run: python research/stage512/pipelines/independent_official_NAV_R7.py
-      - name: Commit independent reproducibility report
+      - name: Execute independent R7 check and persist diagnostics
+        id: verify
+        continue-on-error: true
+        run: |
+          mkdir -p research/stage512/data
+          python - <<'PY'
+          import json,subprocess,datetime
+          p=subprocess.run(["python","research/stage512/pipelines/independent_official_NAV_R7.py"],
+              capture_output=True,text=True,timeout=100)
+          entry={"utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "returncode":p.returncode,"status":"PASS" if p.returncode==0 else "FAIL",
+            "stdout_tail":p.stdout[-10000:],"stderr_tail":p.stderr[-10000:],
+            "investment_authorization":"NO_GO"}
+          open("research/stage512/data/official_nav_R7_CI_diagnostics.json","w").write(json.dumps(entry,indent=2))
+          print(json.dumps(entry,indent=2))
+          raise SystemExit(0 if p.returncode==0 else 1)
+          PY
+      - name: Commit source-audit output and diagnostic status
+        if: always()
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add research/stage512/data/official_nav_independent_R7.json
-          git diff --cached --quiet || (git commit -m "audit(stage512): verify official four-fund NAV covariance and regime changes R7" && git push)
+          git add research/stage512/data/official_nav_R7_CI_diagnostics.json 2>/dev/null || true
+          test -f research/stage512/data/official_nav_independent_R7.json && git add research/stage512/data/official_nav_independent_R7.json || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): persist R7 independent test and diagnostics" && git push)
+      - name: Enforce fail-closed qualification
+        if: steps.verify.outcome != 'success'
+        run: |
+          echo 'Independent source audit incomplete; see diagnostic manifest. NO-GO.'
+          exit 1
