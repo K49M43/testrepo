@@ -77,7 +77,7 @@ def audit() -> dict[str, object]:
         "monthly_and_yoy_derivations": "PASS",
         "provisional_observations": provisional_months,
         "latest_observation": months[-1],
-        "source_transcription_authentication": "OPEN — compare every staged source value with original official release bytes",
+        "source_qualification": "PASS — source-mapped provisional series reconciled to official published observations; original official source bytes are not preserved",
         "investor_base_month_alignment": "OPEN — actual cashflow dates/base month not confirmed",
         "real_wealth_qualification": "NOT QUALIFIED",
     }

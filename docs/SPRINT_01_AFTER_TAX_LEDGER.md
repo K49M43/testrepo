@@ -1,6 +1,6 @@
 # Sprint 1 — Deterministic after-tax ledger
 
-**Status:** In progress — Increment 0 input contract passed; Increment 1 CPI audit open
+**Status:** In progress — Increment 0 input contract passed; CPI source vintage provisionally qualified; Increment 1 price-series identity and investor anchor audit remain open
 **Plan date:** 2 November 2026  
 **Program status:** Investment authorization remains **NO-GO**.
 
@@ -53,7 +53,8 @@ Use an **incremental build with iterative review**. Each increment must produce 
 | --- | --- | --- |
 | Sprint plan | Active | Incremental delivery with iterative review; record changes in `docs/DECISION_LOG.md`. |
 | Increment 0 input contract and cashflow reconciliation | **PASS** | `research/stage512/2026-11-02/after_tax_ledger_input_contract.json`; rerun `python research/stage512/2026-11-02/reconcile_after_tax_input_contract.py`. 123 rows reconcile across 120/122 months; dates and transaction rounding remain explicitly unconfirmed. |
-| CPI vintage and anchor audit | In progress — mechanical audit PASS; source qualification open | `research/stage512/2026-11-02/audit_cpi_linked_series.py` reproduces 165 rows, 144 linked levels, 21 direct levels, and all stored monthly/YoY rates. MoSPI confirms an official 2013–2024 back-series is available on e-Sankhyiki, but original downloaded bytes and 2025–Sep 2026 observation-level source mapping are not yet pinned and reconciled. Investor base-month alignment also remains open. |
+| CPI source-vintage audit | **PASS — provisional series** | `audit_cpi_linked_series.py` checks the contiguous 165-month series and derived rates. `audit_cpi_esankhyiki_back_capture.py` compares all 144 January 2013–December 2024 linked observations to the official e-Sankhyiki Back table at the published one-decimal input precision. `audit_cpi_pib_sep2026_annexure_iv.py` compares all 21 January 2025–September 2026 direct observations and provisional flags to MoSPI/PIB September 2026 release Annexure IV; all match at published precision. Captures are source-linked transcriptions; original release/download bytes are not preserved. |
+| Increment 1 asset-series identity and CPI anchor | In progress — research-series types mapped; investor inputs open | `research/stage512/2026-11-02/stage512_source_resolution_report.md` now distinguishes the 129 official Nifty 500 gross TRI monthly anchors, 2,867 official LIC G-Sec ETF NAV observations (a proxy, not an index or market price), 437 RBI-origin secondary bullion reference months, and the unqualified continuous NSE G-Sec TRI. Actual selected security identifiers, cashflow dates, transaction costs, and CPI base month remain unconfirmed; do not claim final real wealth. |
 | Tax component implementation | Not started | Source map: `decision/tax_rules_asof.md`; arithmetic examples: `decision/tax_surcharge_examples_ty2026-27.md`. |
 | Event/lot ledger | Not started | Existing baseline is pre-tax and pre-cost; do not treat it as an after-tax result. |
 | Independent tax-professional review | Open dependency | No reviewer or sign-off recorded. |

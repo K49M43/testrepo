@@ -6,9 +6,9 @@
 
 ## Executive result
 
-**CPI source gap substantially resolved:** We built a contiguous 165-month *all-India combined general* CPI 2024-base history from January 2013 through September 2026 using observed figures from the Government of India, not the formerly mislabeled unofficial CPI series. The original 2013–2024 monthly observations come from the Ministry of Statistics and Programme Implementation (MoSPI), December 2025 CPI press release, **Annexure VI (page 10)**. Their published 2012-base general index was converted using MoSPI's government-published 2024-base linked-series factor **0.5267**. For January 2025 onward, actual 2024-base CPI observations from previously government-verified release snapshots are used directly; the old-base series was **not** inappropriately multiplied through 2025.
+**CPI observation mapping and published-value reconciliation now pass:** The contiguous 165-month *All India Combined General* CPI 2024-base history from January 2013 through September 2026 uses official MoSPI values. The January 2013–December 2024 old-base observations were converted using the published linked-series factor **0.5267**; all 144 linked levels match MoSPI e-Sankhyiki's rendered Back series to the one-decimal precision of the source inputs. For January 2025–September 2026, all 21 direct 2024-base values and the September provisional flag match the September 2026 MoSPI/PIB release, Annexure IV. Reproducible audit scripts and dated transcriptions are in this directory. These captures are transcriptions, not preserved original release/download bytes, so byte-level provenance remains open.
 
-**Other source gaps remain OPEN:** Neither the full authoritative Nifty 500 TRI download, nor the complete NSE G-Sec total-return series, nor full RBI Mumbai gold/silver monthlies, nor scheme-level AMFI historical NAV have been imported into the model in this execution. These official sources were identified and verified, but links and sample observations are not equivalent to a complete reconciled dataset. Hence the earlier forward success frequencies are still conditional calculations, not validated probabilities.
+**Market-series identity status (updated 3 November 2026):** Official NSE Nifty 500 TRI monthly anchors, full official AMFI LIC G-Sec ETF NAV history, and an RBI-origin secondary bullion history are now present in the research repository with distinct qualifications. The continuous NSE 8–13 Year G-Sec total-return index history and complete first-party RBI bullion history remain unavailable. These unlike series must not be presented as interchangeable investable returns; earlier forward success frequencies remain conditional calculations, not validated probabilities.
 
 ## Official inflation time series constructed
 
@@ -22,7 +22,7 @@
 | CPI level September 2026, actual 2024 base | **109.49** |
 | Annualized CPI growth January 2013–December 2024 | **5.3839%** |
 
-**Audit:** The script passes contiguous-month tests, shows correct base/units and source URL for every observation, and reproduces published year-on-year rates for January 2014 (8.60%), January 2015 (5.19%), January 2016 (5.69%), January 2026 (~2.74%), and September 2026 (~5.54%) within rounding tolerance. The transcribed 2013–2024 historical table also agrees with MoSPI’s September 2025 independent publication of Annexure VI (https://mospi.gov.in/sites/default/files/press_release/CPI_PR_12sep25.pdf#page=10). A final line-by-line visual transcription audit and comparison to the separately downloadable NSO 2024-base back-cast remain desirable independent crosschecks.
+**Audit:** `audit_cpi_linked_series.py` passes continuity, source-label, link-factor, and rate-reproduction checks. `audit_cpi_esankhyiki_back_capture.py` reports 144/144 2013–2024 values matching at source input precision; `audit_cpi_pib_sep2026_annexure_iv.py` reports 21/21 2025–September 2026 direct values and provisional flags matching the release table. The captures' hashes identify our transcription files, not official source bytes. Investor base-month alignment also remains unresolved.
 
 Sources:
 - MoSPI December 2025 original monthly table: https://cpi.mospi.gov.in/PDFile/Press/PR%20December%202025.pdf#page=10
@@ -45,15 +45,15 @@ A same-month check of 144 observations (2013–2024) against the previous public
 
 Prior CPI source for controlled comparison: https://github.com/aswinv90/indian-market-historical-data/blob/main/data/MACRO/cpi_inflation.csv
 
-## Required remaining source reconciliation
+## Market-series identity and current qualification
 
-| Series | Primary source | Current state | Acceptance test |
+| Series identity | Observed type and scope | Current qualification | Remaining limit |
 |---|---|---|---|
-| Nifty 500 total return index | NSE Indices | NOT IMPORTED | Actual TRI values 2013–2026, checks for consistent month-end observation and no price-index substitution |
-| G-Sec total return | NSE Indices | NOT IMPORTED | Actual total-return bond benchmark; never substitute a static-duration price approximation as an actual index |
-| Gold and silver, Mumbai INR | RBI DBIE | NOT IMPORTED IN FULL | Monthly-average gold per 10 g and silver per kg; correctly label as bullion, not ETF returns |
-| Actual scheme NAV | AMFI | NOT IMPORTED | Direct-growth scheme-code-specific NAV, inception, tracking, expense/exit loads and missing-date checks |
-| CPI 2024-base | MoSPI | **DERIVED PRIMARY SERIES AVAILABLE** | 165 contiguous values and published YoY crosschecks PASS; separate bytewise official backseries verification pending |
+| CPI All India Combined General | Monthly price index; 2012-base 144 observations linked by 0.5267, then 21 direct 2024-base observations; Jan 2013–Sep 2026 | **PASS — provisional source-qualified deflator.** All 144 linked levels match MoSPI e-Sankhyiki at the old-base published input precision; all 21 direct levels and September provisional flag match the MoSPI/PIB September 2026 Annexure IV. See the two dated capture audits above. | Actual investor cashflow/base month is unknown; no final real-wealth output. Captures are transcriptions rather than preserved release/response bytes. |
+| Nifty 500 | Gross total-return index (TRI), not price index; 129 monthly observations Jan 2015–Sep 2025 | **PASS — 129 official monthly published anchors.** Monthly figures were transcribed from NSE's 2025 whitepaper and independently reconciled to a protected daily mirror. | Not a complete official daily history; daily month-end date bridge uses independently cross-checked mirror data. |
+| LIC MF Nifty 8–13 yr G-Sec ETF (scheme 133307; ISIN INF767K01MV5) | Fund NAV, not exchange-traded market price and not the NSE G-Sec index; 2,867 AMFI daily observations, 26 Dec 2014–30 Oct 2026 | **PASS — official AMFI NAV research history.** Full source segments, manifest, independent audit, and published factsheet anchors are recorded under `research/stage512/data/r9_lic_gsec_etf/`. | ETF NAV is a rolling sovereign-duration proxy; not a direct bond, not a benchmark TRI, and not tradable ETF price. Fees/tax/market spread and investor instrument are separate. |
+| Mumbai gold and silver reference | Monthly-average bullion spot reference; gold INR/10 g and silver INR/kg; 437 observations Apr 1990–Aug 2026 | **PARTIAL — secondary mirror integrity plus seven RBI-published anchor months.** | Complete first-party RBI extraction and anchor validation remain open; not ETF or investable-product return history. |
+| NSE Nifty 8–13 Year G-Sec index | Official index factsheet identifies total-return methodology; selected factsheet return windows only | **NOT QUALIFIED as a continuous monthly return series.** | Do not substitute LIC ETF NAV or clean-price G-Sec index observations for this total-return history. |
 
 Primary-source endpoints:
 - NSE: https://www.niftyindices.com/reports/historical-data
@@ -69,8 +69,8 @@ For an actual fund NAV, the gate evaluates observed fund history from inception,
 
 ## What is and is not resolved
 
-- **Resolved to research-use standard:** Correct original CPI source found; 2013–2026 all-India general linked levels rebuilt; month-by-month inflation computed; multiple YoY tests passed; old corrupted/mislabeled CPI replaced. Next sensitivity rerun may use these CPI values.
-- **Not resolved:** Joint five-variable official risk-covariance panel; actual investable fund returns; scheme-level taxes, tracking and execution; independent ten-year probability inference. The updated CPI series alone is insufficient to rerun the final investable portfolio forecast without still relying on three stale/non-investable proxies.
+- **Resolved to research-use standard:** CPI observations and series types are mapped; 2013–2026 official published observations reconcile as described above. Official Nifty 500 monthly TRI anchors and complete official LIC ETF NAV history are available with scope limits recorded. A provisional deflator may be used for nominal-to-real fixture calculations only after its CPI base month is stated.
+- **Not resolved:** Actual investor cashflow/base dates and selected security identifiers; full continuous NSE G-Sec TRI; first-party complete RBI bullion history; scheme-level transaction costs and personal tax facts; independent ten-year probability inference. Do not relabel the mixed-source panel as a fully official investable covariance panel.
 - **Unchanged:** The model's hypothetical 6% planning inflation; this is a scenario input, not the mean rate of the historical CPI series. ₹90 lakh floor at 85% modeling confidence is not a contractual CPI-linked payout guarantee.
 
-**Next gate:** Import the four primary market histories, reconcile their units and calendars, compare actual product tracking errors, then repeat short-horizon tail tests and 2036 after-tax real-wealth simulations on the corrected panel. Keep an explicit parameter-uncertainty envelope, not one presumed 'true' success probability.
+**Next gate for the after-tax ledger:** confirm which actual instruments and transaction dates belong in the model before treating any reference series as an investable holding. Preserve the recorded distinction between official TRI anchors, fund NAV, secondary bullion reference, and direct G-Sec benchmark. Use the provisional CPI series only with an explicitly stated measurement month; keep real-wealth claims open until the investor's dates are aligned.
