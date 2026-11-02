@@ -1,0 +1,37 @@
+name: Stage512 R9 offline historical-source contract
+on:
+  push:
+    paths:
+      - '.github/workflows/stage512-r9-offline-contract.yml'
+      - 'research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  offline-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax and deterministic interval invariant tests
+        id: test
+        continue-on-error: true
+        run: |
+          python -m py_compile research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
+          python - <<'PY'
+          import importlib.util,datetime as dt,json
+          src="research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py"
+          spec=importlib.util.spec_from_file_location("gsec_r9",src)
+          mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+          parts=mod.segments()
+          assert len(parts)>=6
+          assert parts[0][0]==dt.date(2014,12,26)
+          assert parts[-1][1]==dt.date(2026,10,30)
+          assert all(a<=b and (b-a).days<590 for a,b in parts)
+          assert all(parts[i][1]+dt.timedelta(days=1)==parts[i+1][0] for i in range(len(parts)-1))
+          assert mod.CODE=="133307" and mod.ISIN=="INF767K01MV5"
+          print(json.dumps({"status":"PASS_OFFLINE_CONTRACT","intervals":len(parts),"first":str(parts[0]),"last":str(parts[-1])}))
+          PY
+      - name: Fail gate if syntax or segment contract fails
+        if: steps.test.outcome != 'success'
+        run: exit 1
