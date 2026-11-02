@@ -125,7 +125,7 @@ def main():
         for i in range(4) for j in range(4))
     if static_var<=0:raise ValueError("Invalid static variance")
     subperiod=[]
-    for label,start,end in [("2023-10_to_2024-09","2023-10","2024-09"),
+    for label,start,end in [("2023-11_to_2024-09","2023-11","2024-09"),
                              ("2024-10_to_2025-09","2024-10","2025-09"),
                              ("2025-10_to_2026-10","2025-10","2026-10")]:
         ix=[i for i,k in enumerate(common_return_months) if start<=month_str(k)<=end]
