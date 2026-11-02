@@ -1,0 +1,53 @@
+{
+  "status": "PASS_PUBLISHED_RETURN_ANCHOR_ARITHMETIC_ONLY",
+  "asof_utc": "2026-11-02T13:11:05.666240+00:00",
+  "investment_gate": "NO_GO",
+  "full_nse_gsec_index_monthly_history_acquired": false,
+  "is_tracking_error_estimate": false,
+  "provenance_sha256": "be589d78023bc0a59c4e3d0d2e1cb1262b088fd0425b2458d10b7c1584a027f3",
+  "official_factsheet_rows": 12,
+  "published_report_months": [
+    "2024-08",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "annualized_tracking_difference_by_tenor": {
+    "1": {
+      "observations": 4,
+      "difference_pp_by_report_month": {
+        "2024-08": 0.18,
+        "2026-02": 0.16,
+        "2026-03": 0.14,
+        "2026-04": 0.19
+      },
+      "mean_benchmark_minus_fund_annualized_percentage_points": 0.1675
+    },
+    "3": {
+      "observations": 4,
+      "difference_pp_by_report_month": {
+        "2024-08": 0.27,
+        "2026-02": 0.18,
+        "2026-03": 0.18,
+        "2026-04": 0.19
+      },
+      "mean_benchmark_minus_fund_annualized_percentage_points": 0.205
+    },
+    "5": {
+      "observations": 4,
+      "difference_pp_by_report_month": {
+        "2024-08": 0.33,
+        "2026-02": 0.25,
+        "2026-03": 0.26,
+        "2026-04": 0.25
+      },
+      "mean_benchmark_minus_fund_annualized_percentage_points": 0.2725
+    }
+  },
+  "caveats": [
+    "Annualized *tracking difference* is not tracking error (variability of return differences).",
+    "Four report months and three trailing windows overlap heavily; do not treat as 12 independent observations.",
+    "ETF NAV includes TER but exchange market price adds premium/discount and spread.",
+    "The ETF's published underlying benchmark total returns are point-in-time windows, not a continuous investable index series."
+  ]
+}
