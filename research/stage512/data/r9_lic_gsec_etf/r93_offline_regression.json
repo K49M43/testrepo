@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "run_utc": "2026-11-02T13:34:38.003513+00:00",
+  "returncode": 0,
+  "stdout_tail": "",
+  "stderr_tail": "test_explicit_dividend_rejected (test_r93_amfi_null_option_rate_limit.R9Regression.test_explicit_dividend_rejected) ... ok\ntest_null_option_accepted_and_cache_protects_raw_sha (test_r93_amfi_null_option_rate_limit.R9Regression.test_null_option_accepted_and_cache_protects_raw_sha) ... ok\ntest_rate_limit_fail_closed_without_source_rows (test_r93_amfi_null_option_rate_limit.R9Regression.test_rate_limit_fail_closed_without_source_rows) ... ok\ntest_windows_contiguous_and_nonoverlapping (test_r93_amfi_null_option_rate_limit.R9Regression.test_windows_contiguous_and_nonoverlapping) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.003s\n\nOK\n",
+  "requires_live_AMFI_requalification": true,
+  "investment_authorization": "NO_GO"
+}
