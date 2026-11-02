@@ -53,7 +53,7 @@ Use an **incremental build with iterative review**. Each increment must produce 
 | --- | --- | --- |
 | Sprint plan | Active | Incremental delivery with iterative review; record changes in `docs/DECISION_LOG.md`. |
 | Increment 0 input contract and cashflow reconciliation | **PASS** | `research/stage512/2026-11-02/after_tax_ledger_input_contract.json`; rerun `python research/stage512/2026-11-02/reconcile_after_tax_input_contract.py`. 123 rows reconcile across 120/122 months; dates and transaction rounding remain explicitly unconfirmed. |
-| CPI vintage and anchor audit | In progress | Official MoSPI/PIB release says Sep 2026 is latest; Oct release scheduled 12 Nov 2026. Historical CPI file has 165 rows, but independent observation-level reproduction and investor base-month alignment remain open. |
+| CPI vintage and anchor audit | In progress — mechanical audit PASS; source qualification open | `research/stage512/2026-11-02/audit_cpi_linked_series.py` reproduces 165 rows, 144 linked levels, 21 direct levels, and all stored monthly/YoY rates. MoSPI confirms an official 2013–2024 back-series is available on e-Sankhyiki, but original downloaded bytes and 2025–Sep 2026 observation-level source mapping are not yet pinned and reconciled. Investor base-month alignment also remains open. |
 | Tax component implementation | Not started | Source map: `decision/tax_rules_asof.md`; arithmetic examples: `decision/tax_surcharge_examples_ty2026-27.md`. |
 | Event/lot ledger | Not started | Existing baseline is pre-tax and pre-cost; do not treat it as an after-tax result. |
 | Independent tax-professional review | Open dependency | No reviewer or sign-off recorded. |
