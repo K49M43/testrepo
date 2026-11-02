@@ -1,0 +1,42 @@
+name: Stage512 R8 RBI-origin monthly bullion mirror integrity audit
+on:
+  push:
+    paths:
+      - ".github/workflows/stage512-r8-bullion-normalize.yml"
+      - "research/stage512/pipelines/r8_bullion_mirror_normalize.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate RBI-origin bullion mirror table and publish lineage
+        id: audit
+        continue-on-error: true
+        run: python research/stage512/pipelines/r8_bullion_mirror_normalize.py
+      - name: Archive original byte-exact secondary-mirror payload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage512-r8-secondary-rbi-bullion-raw
+          path: research/stage512/data/r8_rbi_origin_mirror/raw_mirror_monthly_bullion.csv
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Commit integrity report and normalized historical monthly data
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r8_rbi_origin_mirror/normalized_validation.json 2>/dev/null || true
+          if test -f research/stage512/data/r8_rbi_origin_mirror/rbi_origin_mumbai_bullion_monthly_SECONDARY_MIRROR.csv; then
+            git add research/stage512/data/r8_rbi_origin_mirror/rbi_origin_mumbai_bullion_monthly_SECONDARY_MIRROR.csv
+          fi
+          git diff --cached --quiet || (git commit -m "data(stage512): qualify monthly RBI-origin bullion secondary mirror integrity" && git push)
+      - name: Enforce integrity gate
+        if: steps.audit.outcome != 'success'
+        run: |
+          echo "Monthly bullion mirror not qualified. NO-GO."
+          exit 1
