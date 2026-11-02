@@ -1,5 +1,7 @@
 # Start Codex Here — Exact Continuation Assignment
 
+**Tracked execution issue:** [#3 — Codex P0 official G-Sec ETF data and real 2036 investment decision](https://github.com/K49M43/testrepo/issues/3). Open this issue in Codex to follow the acceptance checklist.
+
 Repository: **K49M43/testrepo** (`main` at handoff).
 Top-level instructions: [AGENTS.md](AGENTS.md).
 Mandate: [docs/INVESTMENT_DECISION_MANDATE_2036.md](docs/INVESTMENT_DECISION_MANDATE_2036.md).
