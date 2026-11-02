@@ -26,6 +26,18 @@ class OfficialAmfiParserContract(unittest.TestCase):
     def test_invalid_duplicate_does_not_pass(self):
         rows, stats = parse_nav_text(b'123456;Name;Direct;Growth;ISIN;;-3;03-Jan-2024\n123456;Name;Direct;Growth;ISIN;;1;03-Jan-2024\n123456;Name;Direct;Growth;ISIN;;2;03-Jan-2024', history=True)
         self.assertEqual(stats['rejected'], 2)
+    def test_no_price_rows_are_separately_excluded(self):
+        raw = ("123456;Fund;Direct;Growth;ISIN;;0.0000;03-Jan-2024\n"
+               "123457;Fund;Direct;Growth;ISIN;;-;03-Jan-2024\n"
+               "123458;Fund;Direct;Growth;ISIN;;10.123;03-Jan-2024\n").encode()
+        rows, stats = parse_nav_text(raw, history=True)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(stats["rejected"], 0)
+        self.assertEqual(stats["excluded_unpriced_or_undated"], 2)
+    def test_non_numeric_nav_is_rejected(self):
+        rows, stats = parse_nav_text(b"123456;Fund;Direct;Growth;ISIN;;xyz;03-Jan-2024\n", history=True)
+        self.assertEqual(len(rows), 0)
+        self.assertEqual(stats["rejected"], 1)
     def test_window_limits(self):
         with self.assertRaises(ValueError):
             windows_from_args(['2024-01-01:2024-05-01'])
