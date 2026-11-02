@@ -1,0 +1,31 @@
+name: Stage512 R9 official equity TRI versus long government-bond ETF NAV
+on:
+  push:
+    paths:
+      - 'research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json'
+      - 'research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_monthly_returns.csv'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-sleeve-crosscheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compute only if AMFI full history passed and 129 months overlap with NSE official return matrix
+        id: bridge
+        continue-on-error: true
+        run: python research/stage512/pipelines/r9_nifty500_gsec_instrument_bridge.py
+      - name: Record evidence including fail-closed status
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add research/stage512/data/r9_nse_gsec_129m_source_bridge.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "audit(stage512): NSE official TRI versus 11yr LIC gilt ETF NAV risk bridge" && git push)
+      - name: Enforce acceptance
+        if: steps.bridge.outcome != 'success'
+        run: |
+          echo 'R9 official NSE equity and bond ETF NAV bridge unqualified. Investment gate NO-GO.'
+          exit 1
