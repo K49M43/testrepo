@@ -1,0 +1,95 @@
+{
+  "status": "RESEARCH_ONLY_PROXY_MIRROR_SAMPLED_AMFI",
+  "official_complete_series_qualified": false,
+  "investment_gate": "NO_GO",
+  "purpose": "Compare actual scheme NAV behavior to prior long-history asset-class proxies",
+  "data_months": 36,
+  "instrument_order": [
+    "equity",
+    "gilt_fund",
+    "gold_etf",
+    "silver_etf"
+  ],
+  "metrics": {
+    "equity": {
+      "code": "147625",
+      "name": "Motilal Oswal Nifty 500 Index Fund - Direct Plan - Growth",
+      "volatility_percent_annualized": 15.60532,
+      "observations_in_mirror": 1760,
+      "official_anchors_matched": 15,
+      "historic_jumps_detected": 0,
+      "source_type": "mfapi.in NAV mirror with sampled official AMFI reconciliation"
+    },
+    "gilt_fund": {
+      "code": "119116",
+      "name": "HDFC Gilt Fund - Direct Plan - Growth Option",
+      "volatility_percent_annualized": 3.66962,
+      "observations_in_mirror": 3341,
+      "official_anchors_matched": 16,
+      "historic_jumps_detected": 0,
+      "source_type": "mfapi.in NAV mirror with sampled official AMFI reconciliation"
+    },
+    "gold_etf": {
+      "code": "105463",
+      "name": "UTI - Gold Exchange Traded Fund - Direct Plan - Growth",
+      "volatility_percent_annualized": 20.83795,
+      "observations_in_mirror": 4811,
+      "official_anchors_matched": 16,
+      "historic_jumps_detected": 1,
+      "source_type": "mfapi.in NAV mirror with sampled official AMFI reconciliation"
+    },
+    "silver_etf": {
+      "code": "150556",
+      "name": "HDFC Silver ETF - Growth Option",
+      "volatility_percent_annualized": 45.65748,
+      "observations_in_mirror": 1027,
+      "official_anchors_matched": 16,
+      "historic_jumps_detected": 0,
+      "source_type": "mfapi.in NAV mirror with sampled official AMFI reconciliation"
+    }
+  },
+  "correlation_matrix": [
+    [
+      1.0,
+      0.52345469,
+      0.03079814,
+      -0.0131
+    ],
+    [
+      0.52345469,
+      1.0,
+      0.05487876,
+      -0.00765358
+    ],
+    [
+      0.03079814,
+      0.05487876,
+      1.0,
+      0.76390559
+    ],
+    [
+      -0.0131,
+      -0.00765358,
+      0.76390559,
+      1.0
+    ]
+  ],
+  "weights": {
+    "equity": 0.65,
+    "gilt_fund": 0.2,
+    "gold_etf": 0.1,
+    "silver_etf": 0.05
+  },
+  "indicative_portfolio_annualized_volatility_percent": 11.352585,
+  "caveats": [
+    "36 monthly returns are not 36 independent economic regimes",
+    "Data are mirrored NAV histories, sampled against official AMFI, not 36 months independently primary-source audited",
+    "Portfolio variance is a static approximation, excludes dynamic flows and cashflow sequencing",
+    "Historical 36-month covariance is not a 2036 probability forecast",
+    "Scheme NAV already reflects embedded fund TER; do not subtract the same fund TER twice"
+  ],
+  "data_provenance": {
+    "research/stage58/qa_metrics.csv": "b8c7adb68e1a56b34ab26a1706ce09ab4a06903e8468dab61c9dfc64280ef344",
+    "research/stage58/qa_correlations_36m.csv": "b4481d3574604488e4273f55a5a0ada1c60d33e4c7844ef7a4d04d544ac5578c"
+  }
+}
