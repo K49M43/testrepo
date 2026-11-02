@@ -4,7 +4,7 @@ This code supports **actual personal investment**, so traceability, timely instr
 
 ## Source contract
 For each series keep:
-\`source_owner\`, \`source_url\`, \`source_publisher\`, \`retrieved_utc\`, \`released_at/as_of\`, \`series_id\`, \`security_id/ISIN\`, \`currency\`, \`unit\`, \`price_type\`, \`return_type\`, \`raw_sha256\`, \`schema_version\`, \`date_basis\`, \`coverage\`, \`adjustment\`, \`known_missing\`, \`qualification_scope\`.
+`source_owner`, `source_url`, `source_publisher`, `retrieved_utc`, `released_at/as_of`, `series_id`, `security_id/ISIN`, `currency`, `unit`, `price_type`, `return_type`, `raw_sha256`, `schema_version`, `date_basis`, `coverage`, `adjustment`, `known_missing`, `qualification_scope`.
 
 Keep original raw observations **unchanged**, cleaned normalized observations separately, adjustment logs and executable tests. Never treat a blob hash or HTTP 200 alone as data qualification.
 
