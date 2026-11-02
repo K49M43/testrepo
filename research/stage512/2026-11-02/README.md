@@ -22,6 +22,7 @@
 8. [Stage 5.12 R4: recover Stage 5.8 official AMFI evidence and source-quality gate](stage512_source_reuse_audit_R4.md)
 9. [R5: verified live AMFI ingestion and four-sleeve qualification contract](stage512_official_source_qualification_R5.md)
 10. [R6: independently reproduced actual-fund 36-month covariance and source limits](stage512_instrument_nav_covariance_R6.md)
+11. [R7: fully sourced four-fund NAV covariance, subperiod risk and the impossibility of ten-year simultaneous fund history](stage512_official_NAV_regime_horizon_R7.md)
 
 ## Reproducibility artifacts
 Scripts: `stage512_risk_audit.py`, `stage512_forward_calibration.py`, `stage512_model_uncertainty.py`, `stage512_predictive_validation.py`, `stage512_tail_validation_v2.py`, `stage512_import_gate.py`.
@@ -58,3 +59,9 @@ All report figures and modeled probabilities are research hypotheses, not guaran
 - [R6 reproducible NAV cross-asset correlation script](../pipelines/compare_stage58_covariance_R6.py)
 - [Source-pinned 36-month covariance results](../data/nav_stage58_comparison_R6.json)
 - **Provisional:** full official AMFI history remains required before replacing the model's benchmark proxy with scheme-level return probabilities.
+
+## R7 validation artifacts
+- [Four-fund official source qualification](../data/amfi_official_36m/qualification_manifest.json) — PASS_36M_COHORT_ONLY; not a forward 2036 probability.
+- [Exact official AMFI NAV time series for four instruments](../data/amfi_official_36m/official_nav_four_assets.csv).
+- [Independent R7 checker](../pipelines/independent_official_NAV_R7.py) and [CI diagnostics](../data/official_nav_R7_CI_diagnostics.json) (the latter exists only after workflow output is committed).
+- [Machine-reproducible R7 result](../data/official_nav_independent_R7.json) — only qualified if produced with a passing CI record.
