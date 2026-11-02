@@ -50,6 +50,9 @@ The first full backfill wrote `FAIL_INCOMPLETE` for **24** intended six-month pe
 
 The failed manifest is **preserved** until a corrected run commits a later result. R9 is not a GO merely because errors were explained and code fixed.
 
+**CI verification (2 Nov 2026, 13:34:38 UTC):** The separate R9.3 no-network regression workflow returned **PASS, four tests passing**. It verified successful parsing of `Option=null`, rejection of explicit dividend options, HTTP429 fail-closed handling, cached-source SHA256 reuse, and interval continuity. [Machine-readable test log](../data/r9_lic_gsec_etf/r93_offline_regression.json). This test establishes **corrected parser behavior only**, not a complete officially sourced NAV backfill.
+
+
 The corrected parser has additional offline [regression tests](../tests/test_r93_amfi_null_option_rate_limit.py) for `Option=null`, explicit dividend rejection, HTTP 429 fail-closed behavior, exact raw SHA256 cache reuse, and six-month window continuity. The [CI regression workflow](../../../.github/workflows/stage512-r93-regression-tests.yml) is separate from the live source-acquisition gate. The fixed full backfill is configured as a serial, rate-limit-aware workflow that stores successful official raw segments for cached resume.
 
 
