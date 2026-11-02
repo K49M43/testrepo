@@ -183,11 +183,25 @@ def main():
             wr.writerow(["date","scheme_code","nav","segment_start","segment_end","segment_sha256"])
             wr.writerows(sorted(partial_rows))
     partial_rows_in_file = len(partial_rows) if acquisition_incomplete else 0
+    retrieved_utc=dt.datetime.now(dt.timezone.utc).isoformat()
+    # Replaying only committed response bodies verifies the same source data;
+    # keep its original acquisition timestamp so CI does not create a needless
+    # data commit on every code or workflow change.
+    if sources and all(x.get("retrieved_from_committed_cache") for x in sources):
+        try:
+            prior=json.loads((BASE/"qualification_manifest.json").read_text(encoding="utf8"))
+            signature=lambda items: [(x.get("start"),x.get("end"),x.get("sha256"),x.get("status")) for x in items]
+            if (prior.get("status")=="PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY"
+                and prior.get("retrieved_utc")
+                and signature(prior.get("segments",[]))==signature(sources)):
+                retrieved_utc=prior["retrieved_utc"]
+        except (OSError,ValueError,TypeError):
+            pass
     manifest={"status":"FAIL_INCOMPLETE","research_source_gate":"NO_GO_UNTIL_QUALIFIED",
         "scheme_code":CODE,"isin":ISIN,"scheme_name":"LIC MF Nifty 8-13 yr G-Sec ETF",
         "official_amfi_history":True,"nse_index_historical_total_return_acquired":False,
         "nav_is_tradable_etf_market_price":False,"full_2036_forecast_validated":False,
-        "investment_authorization":"NO_GO","retrieved_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
+        "investment_authorization":"NO_GO","retrieved_utc":retrieved_utc,
         "partial_observation_rows":partial_rows_in_file,
         "partial_source_file_sha256":hashlib.sha256(partial_file.read_bytes()).hexdigest() if partial_file.is_file() else None,
         "partial_not_eligible_for_return_calibration":True,
