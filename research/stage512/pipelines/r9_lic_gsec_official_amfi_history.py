@@ -31,9 +31,10 @@ def segments():
     out=[]
     a=START
     while a<=END:
-        # approximately 18 calendar months, avoids huge server-side queries
-        y=a.year+(a.month+17)//12
-        mo=(a.month+17)%12+1
+        # Six calendar months: verified by R9.2 across 2015/2018/2022/2026.
+        # Long 18-month AMFI requests can hang or timeout.
+        y=a.year+(a.month+5)//12
+        mo=(a.month+5)%12+1
         cap=dt.date(y,mo,1)-dt.timedelta(days=1)
         b=min(cap,END)
         out.append((a,b))
@@ -44,12 +45,12 @@ def get_one(t):
     url=URL+"?"+urlencode({"query_type":"historical_period","from_date":a.isoformat(),"to_date":b.isoformat(),"sd_id":CODE})
     evidence={"start":str(a),"end":str(b),"url":url,"status":"FAIL"}
     errs=[]
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             req=Request(url,headers={"User-Agent":"Mozilla/5.0 (Stage512 primary source audit)",
               "Accept":"application/json","Accept-Encoding":"identity",
               "Referer":"https://www.amfiindia.com/net-asset-value/nav-history"})
-            with urlopen(req,timeout=65) as rsp:
+            with urlopen(req,timeout=32) as rsp:
                 raw=rsp.read(3_000_001)
                 status=rsp.status
             if status!=200 or len(raw)>3_000_000 or not raw:
@@ -88,7 +89,7 @@ def get_one(t):
             return rows,evidence
         except Exception as exc:
             errs.append(f"{type(exc).__name__}: {exc}")
-            if attempt<2:time.sleep(2*(attempt+1))
+            if attempt<1:time.sleep(2)
     evidence["errors"]=errs
     return [],evidence
 def check_history(rows):
@@ -127,7 +128,7 @@ def compare_lic(ordered):
 def main():
     BASE.mkdir(parents=True,exist_ok=True)
     tasks=segments()
-    with ThreadPoolExecutor(max_workers=2) as exe:
+    with ThreadPoolExecutor(max_workers=4) as exe:
         outcomes=list(exe.map(get_one,tasks))
     sources=[s for records,s in outcomes]
     manifest={"status":"FAIL_INCOMPLETE","research_source_gate":"NO_GO_UNTIL_QUALIFIED",
