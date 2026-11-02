@@ -1,0 +1,141 @@
+{
+  "retrieved_utc": "2026-11-02T13:21:13.145789+00:00",
+  "status": "PASS_ALL_FOUR_QUALIFICATION_SAMPLES_ONLY",
+  "index_total_return_history_qualified": false,
+  "ETF_full_history_qualified": false,
+  "investment_authorization": "NO_GO",
+  "windows": [
+    {
+      "label": "2015-01",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2015-01-05&to_date=2015-01-09&sd_id=133307",
+      "state": "PASS_SOURCE_SAMPLE",
+      "source": "AMFI_PRIMARY",
+      "response_code": 200,
+      "content_type": "application/json; charset=utf-8",
+      "sha256": "c628b2b7ff57dee5186cc1ab213710dd6afe1bae6620fd392ca676e4f321073a",
+      "bytes": 1101,
+      "title": "LIC MF Nifty 8-13 yr G-Sec ETF LIC MF Nifty 8-13 yr G-Sec ETF",
+      "records": 5,
+      "min_date": "2015-01-05",
+      "max_date": "2015-01-09",
+      "last_nav": 13.5386,
+      "observed_navs": [
+        [
+          "2015-01-05",
+          13.4933
+        ],
+        [
+          "2015-01-06",
+          13.4887
+        ],
+        [
+          "2015-01-08",
+          13.5242
+        ],
+        [
+          "2015-01-09",
+          13.5386
+        ]
+      ]
+    },
+    {
+      "label": "2018-06",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2018-06-04&to_date=2018-06-08&sd_id=133307",
+      "state": "PASS_SOURCE_SAMPLE",
+      "source": "AMFI_PRIMARY",
+      "response_code": 200,
+      "content_type": "application/json; charset=utf-8",
+      "sha256": "4e84f91e44adb4f028c09b44020fda76da360ca79646694278d1adc81c16a501",
+      "bytes": 1100,
+      "title": "LIC MF Nifty 8-13 yr G-Sec ETF LIC MF Nifty 8-13 yr G-Sec ETF",
+      "records": 5,
+      "min_date": "2018-06-04",
+      "max_date": "2018-06-08",
+      "last_nav": 16.6209,
+      "observed_navs": [
+        [
+          "2018-06-04",
+          16.677
+        ],
+        [
+          "2018-06-05",
+          16.7214
+        ],
+        [
+          "2018-06-07",
+          16.5655
+        ],
+        [
+          "2018-06-08",
+          16.6209
+        ]
+      ]
+    },
+    {
+      "label": "2022-03",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2022-03-21&to_date=2022-03-25&sd_id=133307",
+      "state": "PASS_SOURCE_SAMPLE",
+      "source": "AMFI_PRIMARY",
+      "response_code": 200,
+      "content_type": "application/json; charset=utf-8",
+      "sha256": "5b8b58f53686e87bbcac1649bcee879c9aa14e9d19f0966b976d8d4a369424c8",
+      "bytes": 1101,
+      "title": "LIC MF Nifty 8-13 yr G-Sec ETF LIC MF Nifty 8-13 yr G-Sec ETF",
+      "records": 5,
+      "min_date": "2022-03-21",
+      "max_date": "2022-03-25",
+      "last_nav": 22.2286,
+      "observed_navs": [
+        [
+          "2022-03-21",
+          22.2229
+        ],
+        [
+          "2022-03-22",
+          22.1799
+        ],
+        [
+          "2022-03-24",
+          22.1867
+        ],
+        [
+          "2022-03-25",
+          22.2286
+        ]
+      ]
+    },
+    {
+      "label": "2026-03",
+      "url": "https://www.amfiindia.com/api/nav-history?query_type=historical_period&from_date=2026-03-23&to_date=2026-03-31&sd_id=133307",
+      "state": "PASS_SOURCE_SAMPLE",
+      "source": "AMFI_PRIMARY",
+      "response_code": 200,
+      "content_type": "application/json; charset=utf-8",
+      "sha256": "6c7497e7da2e8a5c866d62a504eda5e771ea1b87e18cc750c9760bfabfbe2ad5",
+      "bytes": 1278,
+      "title": "LIC MF Nifty 8-13 yr G-Sec ETF LIC MF Nifty 8-13 yr G-Sec ETF",
+      "records": 6,
+      "min_date": "2026-03-23",
+      "max_date": "2026-03-31",
+      "last_nav": 28.4282,
+      "observed_navs": [
+        [
+          "2026-03-23",
+          28.7289
+        ],
+        [
+          "2026-03-24",
+          28.7017
+        ],
+        [
+          "2026-03-30",
+          28.4229
+        ],
+        [
+          "2026-03-31",
+          28.4282
+        ]
+      ]
+    }
+  ]
+}
