@@ -2,6 +2,13 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 3 November 2026 (Sprint 1 residual audit hardening)
+
+- **Executed:** added a second same-lot partial-disposal case to `decision/audit_after_tax_event_ledger.py`. It sells two units from a three-unit lot in separate events and verifies ₹50 realized gain, ₹450 ending cash, ₹100 remaining market value/basis, and zero reconciliation residual within the declared ₹1e-12 arithmetic tolerance. The audit also asserts that a realized loss fails closed. The tax-component audit now asserts that ambiguous basic-exemption allocation and unqualified mixed-income surcharge marginal relief fail closed.
+- **Local validation:** the tax-component, event/lot, and terminal-case audits passed; the 120/122 terminal artifact remains byte/reconciliation-consistent and original fixture totals did not change. The input-contract audit and all three CPI structure/source-capture audits also passed (123 schedule rows; 144 linked CPI values; 21 direct CPI values; 165 monthly levels). CPI investor-base alignment remains open. Relevant module compilation passed.
+- **Limits:** Sprint 1 is still open. Capital-loss set-off/carry-forward, statutory rounding under section 516, mixed special-income surcharge relief and ambiguous basic-exemption allocation are not fully implemented. Independent tax-professional review is still required and no external reviewer was contacted. Investor-specific security/date/cost/tax/CPI inputs remain open.
+- **Remote status:** GitHub CLI v2.103.3 is installed at `C:\Program Files\GitHub CLI\gh.exe`, but `gh auth status` has no authenticated host. Current PR/review/Actions checks were not verified. No push or merge was performed; investment authorization remains **NO-GO**.
+
 ## Latest development update — 3 November 2026 (Sprint 1 tax-source trace hardening)
 
 - After Increment 4, an acceptance review found that annual tax-category inputs needed an explicit link back to taxable source events. `decision/after_tax_event_ledger.py` now emits event-level source records and per-tax-year event IDs by category; sale and lot-linked coupon records include acquisition dates, and withholding remains a separate credit. Annual tax remains calculated per year and is not fabricated as an event-specific amount.

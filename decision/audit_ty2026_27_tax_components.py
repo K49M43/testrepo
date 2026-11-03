@@ -95,6 +95,27 @@ def audit() -> dict[str, object]:
     else:
         raise AssertionError("non-resident inputs must fail closed")
 
+    # These combinations are known to need additional legal composition work;
+    # keep them as explicit failures rather than producing plausible numbers.
+    try:
+        calculate_tax(TaxInput(
+            ordinary_income=D("200000"),
+            section196_stcg=D("50000"), section197_ltcg=D("50000"),
+            section196_eligible=True, section197_eligible=True,
+        ))
+    except NotImplementedError as error:
+        assert "basic-exemption allocation" in str(error)
+    else:
+        raise AssertionError("ambiguous basic-exemption allocation must fail closed")
+    try:
+        calculate_tax(TaxInput(
+            ordinary_income=D("4900000"), section196_stcg=D("200000"), section196_eligible=True,
+        ))
+    except NotImplementedError as error:
+        assert "mixed special-income surcharge marginal relief" in str(error)
+    else:
+        raise AssertionError("unqualified mixed-income surcharge marginal relief must fail closed")
+
     # Specified-fund section 76 gains are explicit ordinary-rate inputs; the
     # helper refuses to apply the rule without both legal predicates.
     gain = section76_specified_fund_gain(
@@ -126,6 +147,8 @@ def audit() -> dict[str, object]:
         "section76_gain_inr": str(gain),
         "section156_rebate_boundary": "PASS",
         "withholding_credit_separate": "PASS",
+        "unsupported_mixed_income_boundaries_fail_closed": "PASS",
+        "statutory_rounding": "OPEN; deliberately not represented as implemented",
         "authorization": "NO-GO",
     }
 
