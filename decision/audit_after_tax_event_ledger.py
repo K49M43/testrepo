@@ -7,6 +7,7 @@ from datetime import date
 from decimal import Decimal
 
 from after_tax_event_ledger import LedgerEvent, run_ledger, tax_year_for
+from capital_gain_loss_schedule import Loss, Offset
 from ty2026_27_tax_components import TaxInput
 
 
@@ -128,6 +129,25 @@ def audit() -> dict[str, object]:
     assert result.net_accessible_fixture_wealth_inr == D("2109.4360")
     assert any(lot["lot_id"] == "lot-a" and D(lot["unrealized_gain_inr"]) == D("60") for lot in result.open_lots)
 
+    # A supplied carried loss must enter the candidate stage and block the
+    # ordinary tax path even when the current ledger has no realized loss.
+    carried_only_result = run_ledger(
+        events, {"lot-a": D("120"), "lot-b": D("450")},
+        external_tax_inputs=external,
+        carried_losses_by_year={"2027-28": [
+            Loss("carried-st", "prior-loss-event", "prior-loss-lot", "2026-27",
+                 D("10"), "short", True, "fixture:return-263-1")
+        ]},
+    )
+    assert carried_only_result.ledger_status == "ECONOMIC_PASS_TAX_UNQUALIFIED"
+    assert carried_only_result.tax_years["2027-28"]["tax_qualification_status"] == \
+        "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"
+    carried_candidate = carried_only_result.capital_loss_candidate_schedules["2027-28"]
+    assert carried_candidate["gross_gains_by_bucket"]["section197"] == "38"
+    assert carried_candidate["unallocated_losses"] == {"carried-st": "10"}
+    assert carried_candidate["carryforward_losses"] == {"carried-st": "10"}
+    assert carried_candidate["tax_application_allowed"] is False
+
     # Repeated partial disposals from the same lot must remove basis in
     # proportion to the units remaining at each event, without losing units
     # or basis through fractional Decimal division.
@@ -162,16 +182,22 @@ def audit() -> dict[str, object]:
     loss_events = [
         event("loss-cash", date(2026, 10, 31), 1, "initial_contribution", "500"),
         event("loss-buy", date(2026, 10, 31), 2, "acquisition", "300", lot="loss-lot", units="3", price="100"),
+        event("gain-buy", date(2026, 10, 31), 3, "acquisition", "100", lot="gain-lot", units="1", price="100"),
         event("loss-sale", date(2027, 3, 31), 1, "partial_disposal", "90", lot="loss-lot", units="1", price="90",
+              tax_class="section196", confirmed=True, section196_eligible=True),
+        event("gain-sale", date(2027, 3, 31), 2, "partial_disposal", "120", lot="gain-lot", units="1", price="120",
               tax_class="section196", confirmed=True, section196_eligible=True),
     ]
     loss_result = run_ledger(loss_events, {"loss-lot": D("100")},
-                             external_tax_inputs={"2026-27": TaxInput()})
+                             external_tax_inputs={"2026-27": TaxInput()},
+                             capital_loss_offsets_by_year={
+                                 "2026-27": [Offset("loss-sale", "gain-sale", D("10"))]
+                             })
     assert loss_result.ledger_status == "ECONOMIC_PASS_TAX_UNQUALIFIED"
-    assert loss_result.ending_cash_inr == D("290")
+    assert loss_result.ending_cash_inr == D("310")
     assert loss_result.ending_market_value_inr == D("200")
-    assert abs(loss_result.realized_economic_gain_inr - D("-10")) <= D("0.000000000001")
-    assert loss_result.gross_terminal_wealth_inr == D("490")
+    assert abs(loss_result.realized_economic_gain_inr - D("10")) <= D("0.000000000001")
+    assert loss_result.gross_terminal_wealth_inr == D("510")
     assert loss_result.reconciliation_residual_inr == D("0")
     assert loss_result.incremental_portfolio_tax_inr is None
     assert loss_result.remaining_incremental_tax_after_withholding_inr is None
@@ -182,6 +208,7 @@ def audit() -> dict[str, object]:
     assert abs(D(loss_result.capital_loss_trace[0]["loss_amount_inr"]) - D("10")) <= D("0.000000000001")
     assert loss_result.capital_loss_trace[0]["proceeds_inr"] == "90"
     assert abs(D(loss_result.capital_loss_trace[0]["tax_basis_removed_inr"]) - D("100")) <= D("0.000000000001")
+    assert loss_result.capital_loss_trace[0]["tax_basis_removed_inr"] == "100"
     assert loss_result.capital_loss_trace[0]["lot_id"] == "loss-lot"
     assert loss_result.capital_loss_trace[0]["carryforward_eligibility"] == {
         "status": "UNDETERMINED_RETURN_EVIDENCE_NOT_SUPPLIED",
@@ -190,10 +217,15 @@ def audit() -> dict[str, object]:
     }
     assert loss_result.tax_years["2026-27"]["tax_qualification_status"] == \
         "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"
+    candidate = loss_result.capital_loss_candidate_schedules["2026-27"]
+    assert candidate["gross_gains_by_bucket"]["section196"] == "20"
+    assert candidate["offsets_by_bucket"]["section196"] == "10"
+    assert candidate["candidate_gains_after_explicit_offsets_by_bucket"]["section196"] == "10"
+    assert candidate["tax_application_allowed"] is False
     assert not any(row["event_id"] == "loss-sale" for row in loss_result.tax_event_trace)
 
     unqualified_loss_events = loss_events[:-1] + [
-        event("unqualified-loss-sale", date(2027, 3, 31), 1, "partial_disposal", "90",
+        event("unqualified-loss-sale", date(2027, 3, 31), 3, "partial_disposal", "90",
               lot="loss-lot", units="1", price="90")
     ]
     try:
@@ -226,6 +258,8 @@ def audit() -> dict[str, object]:
         "net_accessible_fixture_wealth_inr": str(result.net_accessible_fixture_wealth_inr),
         "repeated_partial_sales_same_lot": "PASS",
         "signed_disposal_trace": "PASS; realized loss economically reconciled, tax result withheld",
+        "loss_schedule_pipeline": "PASS; explicit offset appears only as a candidate, never as tax",
+        "carried_loss_only_pipeline": "PASS; supplied carryforward blocks tax even without a current-year loss event",
         "unrealized_gain_taxed": False,
         "withholding_is_credit": True,
         "authorization": "NO-GO",

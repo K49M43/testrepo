@@ -13,6 +13,9 @@ from datetime import date
 from decimal import Decimal
 from typing import Any, Iterable, Mapping
 
+from capital_gain_loss_schedule import (
+    Loss, Offset, build_schedule_from_disposal_traces,
+)
 from ty2026_27_tax_components import TaxInput, calculate_tax
 
 
@@ -118,6 +121,7 @@ class EventLedgerResult:
     open_lots: list[dict[str, str]]
     tax_event_trace: list[dict[str, Any]]
     capital_loss_trace: list[dict[str, Any]]
+    capital_loss_candidate_schedules: dict[str, dict[str, Any]]
     tax_scope: str = "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input"
 
     def as_json(self) -> dict[str, Any]:
@@ -155,6 +159,8 @@ def run_ledger(
     valuation_prices: Mapping[str, Decimal | int | str],
     *,
     external_tax_inputs: Mapping[str, TaxInput],
+    capital_loss_offsets_by_year: Mapping[str, list[Offset]] | None = None,
+    carried_losses_by_year: Mapping[str, list[Loss]] | None = None,
 ) -> EventLedgerResult:
     """Run events, value remaining lots, and calculate incremental fixture tax.
 
@@ -165,6 +171,9 @@ def run_ledger(
     event_list = list(events)
     if not event_list:
         raise ValueError("at least one ledger event is required")
+    offsets_by_year = capital_loss_offsets_by_year or {}
+    carried_by_year = carried_losses_by_year or {}
+    supplied_schedule_years = set(offsets_by_year) | set(carried_by_year)
     ids = [event.event_id for event in event_list]
     if len(ids) != len(set(ids)):
         raise ValueError("event_id values must be unique")
@@ -325,9 +334,11 @@ def run_ledger(
                 raise ValueError(f"disposal units/proceeds do not reconcile: {event.event_id}")
             if transfer_expenses > fee:
                 raise ValueError(f"deductible transfer expenses cannot exceed total sale transaction cost: {event.event_id}")
-            fraction = units / lot.units
-            cash_basis_removed = lot.cash_basis_inr * fraction
-            tax_basis_removed = lot.tax_basis_inr * fraction
+            # Multiply before dividing to preserve exact Decimal results for
+            # common equal-unit lots (e.g. 300 / 3) and reduce rounding drift
+            # across repeated partial disposals.
+            cash_basis_removed = lot.cash_basis_inr * units / lot.units
+            tax_basis_removed = lot.tax_basis_inr * units / lot.units
             realized_gain = proceeds - tax_basis_removed - transfer_expenses
             if realized_gain < ZERO and abs(realized_gain) <= ARITHMETIC_TOLERANCE:
                 realized_gain = ZERO
@@ -476,9 +487,35 @@ def run_ledger(
 
     # Preserve a reconciled economic ledger while preventing unqualified loss
     # treatment from leaking into annual tax or accessible-wealth results.
-    if has_realized_loss:
-        unqualified_years = sorted(set(incomes) | set(external_tax_inputs)
-                                   | {row["tax_year"] for row in capital_loss_trace})
+    if has_realized_loss or supplied_schedule_years:
+        known_years = (set(external_tax_inputs)
+                       | {row["tax_year"] for row in tax_event_trace}
+                       | {row["tax_year"] for row in capital_loss_trace})
+        unknown_schedule_years = supplied_schedule_years - known_years
+        if unknown_schedule_years:
+            raise ValueError(f"capital-loss schedules reference unknown tax years: {sorted(unknown_schedule_years)}")
+        unqualified_years = sorted(known_years | {row["tax_year"] for row in capital_loss_trace})
+        candidate_schedules: dict[str, dict[str, Any]] = {}
+        for year in unqualified_years:
+            schedule = build_schedule_from_disposal_traces(
+                year,
+                [row for row in tax_event_trace if row["tax_year"] == year],
+                [row for row in capital_loss_trace if row["tax_year"] == year],
+                offsets_by_year.get(year, []),
+                carried_losses=carried_by_year.get(year, []),
+            )
+            candidate_schedules[year] = {
+                "tax_application_allowed": schedule.tax_application_allowed,
+                "gross_gains_by_bucket": {key: str(value) for key, value in schedule.gross_gains_by_bucket.items()},
+                "offsets_by_bucket": {key: str(value) for key, value in schedule.offsets_by_bucket.items()},
+                "candidate_gains_after_explicit_offsets_by_bucket": {
+                    key: str(value) for key, value in schedule.candidate_gains_after_explicit_offsets_by_bucket.items()
+                },
+                "loss_trace": schedule.loss_trace,
+                "offset_trace": schedule.offset_trace,
+                "unallocated_losses": {key: str(value) for key, value in schedule.unallocated_losses.items()},
+                "carryforward_losses": {key: str(value) for key, value in schedule.carryforward_losses.items()},
+            }
         return EventLedgerResult(
             ledger_status="ECONOMIC_PASS_TAX_UNQUALIFIED",
             event_count=len(event_list),
@@ -503,6 +540,7 @@ def run_ledger(
             open_lots=open_lot_rows,
             tax_event_trace=tax_event_trace,
             capital_loss_trace=capital_loss_trace,
+            capital_loss_candidate_schedules=candidate_schedules,
         )
 
     all_years = sorted(set(incomes) | set(external_tax_inputs))
@@ -569,4 +607,5 @@ def run_ledger(
         open_lots=open_lot_rows,
         tax_event_trace=tax_event_trace,
         capital_loss_trace=capital_loss_trace,
+        capital_loss_candidate_schedules={},
     )
