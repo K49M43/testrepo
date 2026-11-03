@@ -6,7 +6,9 @@ import json
 from decimal import Decimal
 
 from ty2026_27_tax_components import (
+    CESS_RATE,
     TaxInput,
+    ZERO,
     calculate_tax,
     section156_rebate,
     section202_slab_tax,
@@ -134,6 +136,31 @@ def audit() -> dict[str, object]:
         if income in ("5000005", "10000005", "20000005"):
             close(result.marginal_surcharge_relief, surcharge_expected)
 
+    # Mixed-income probes immediately below, at, and above each total-income
+    # surcharge threshold. These assert component invariants, not a legal
+    # disposition of the provisional reference-composition convention.
+    mixed_boundary_cases = (
+        (D("5000000"), "section196_stcg", "section196_eligible"),
+        (D("10000000"), "section197_ltcg", "section197_eligible"),
+        (D("20000000"), "section198_ltcg", "section198_eligible"),
+    )
+    for boundary, gain_name, eligibility_name in mixed_boundary_cases:
+        for delta in (D("-10"), D("0"), D("10")):
+            gain = D("100000")
+            tax_input = {
+                "ordinary_income": boundary + delta - gain,
+                gain_name: gain,
+                eligibility_name: True,
+            }
+            mixed = calculate_tax(TaxInput(**tax_input))
+            assert mixed.raw_total_income == boundary + delta
+            assert mixed.total_income == section516_round_rupees(boundary + delta)
+            assert ZERO <= mixed.marginal_surcharge_relief <= mixed.surcharge_before_relief
+            close(mixed.surcharge_after_relief + mixed.marginal_surcharge_relief,
+                  str(mixed.surcharge_before_relief))
+            close(mixed.cess,
+                  str((mixed.income_tax_after_rebate + mixed.surcharge_after_relief) * CESS_RATE))
+
     # Example B: ordinary income plus eligible section 198 LTCG and 15% cap.
     example_b = calculate_tax(TaxInput(
         ordinary_income=D("21000000"),
@@ -253,6 +280,7 @@ def audit() -> dict[str, object]:
         "audit": "PASS",
         "scope": "TY 2026–27 resident individual research components; section 516 total income and final payable/refund rounding integrated; mixed-income rounding convention requires qualified review",
         "surcharge_boundary_examples": 9,
+        "mixed_surcharge_boundary_probes": 9,
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
         "section76_gain_inr": str(gain),
