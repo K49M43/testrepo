@@ -19,6 +19,28 @@ The official Income-tax Act, 2025 distinguishes loss netting in the same year fr
 
 These rules are enough to specify loss character, expiry, and return-status data. They are not enough to safely net losses into this calculator's separate section 76, 196, 197, and 198 tax buckets. A capital loss can change the amounts taxed at different rates, the section 198 annual allowance, surcharge, marginal relief, and the incremental tax comparison. The applicable computation and priority among those rate buckets need a reviewed worked case before implementation. Until then, realized losses must continue to fail closed.
 
+## End-to-end integration finding
+
+The current boundary is the source of the repeated blocker:
+
+1. A disposal is valued from its lot basis and produces one signed economic gain.
+2. Positive section 76 gain is folded into `YearIncome.ordinary_income`; positive sections 196/197/198 gains are placed in separate positive-only buckets.
+3. A negative disposal raises before the event is completed in the lot/economic ledger.
+4. The tax component receives only annual non-negative aggregates. There is no source-level gain/loss schedule between disposal classification and `TaxInput`.
+
+That shape cannot support legally permitted loss set-off without either losing the original character or inventing an allocation. The minimal safe integration boundary is a **pre-tax capital-gains schedule** keyed by source event/lot and tax year. It must retain holding-period character (`short`/`long`) separately from the rate bucket (`section76`, `section196`, `section197`, `section198`). Coupon and dividend rows remain outside this schedule. A set-off allocation must identify both the loss source and gain destination; the calculator validates legal eligibility and arithmetic, then passes net positive buckets to the existing tax-component API. Unallocated/ambiguous offsets fail closed.
+
+Compatibility invariants for that change:
+
+- No-loss fixtures produce byte-for-byte equivalent tax inputs and the same terminal tax/wealth outputs.
+- Economic disposal cash, residual units, basis, and portfolio conservation are computed whether the disposal produces a gain or loss; tax qualification is a separate result gate.
+- Only realized capital-gain buckets participate in loss offsets; no loss reaches coupon, dividend, withholding, or unrealized-value fields.
+- Gross gain, loss, offset, remaining taxable gain, and carried loss remain separately traceable to event and lot IDs.
+- External-only taxpayer tax remains a separate calculation; portfolio incremental tax is still full-tax-with-portfolio minus external-only tax.
+- The calculation does not choose an offset priority when law leaves a choice. It requires an explicit, auditable policy (or produces a clearly labeled sensitivity range once that range algorithm is independently validated).
+
+The isolated schedule is implemented in `decision/capital_gain_loss_schedule.py` and audited by `decision/audit_capital_gain_loss_schedule.py`. It accepts only source-linked, caller-selected offsets; validates same-year/carry-forward character, gain/loss caps, the eight-year window, and a section 263(1) return evidence reference; then returns separate gross, explicit-offset, candidate remaining-gain, and residual balances for each rate bucket. Its result explicitly sets `tax_application_allowed=false`. It does not select a priority, infer gain character, qualify tax inputs, or support pre-2026 transition losses. The event ledger and tax components are intentionally not wired to it yet. The integration gate remains closed until an independently reviewed allocation worked case establishes how offsets should be attributed among differently taxed gain buckets. The existing no-loss tax path and terminal-case builder remain untouched.
+
 ## Required loss-engine acceptance cases
 
 1. Same-year short-term loss can offset short- or long-term capital gains but not ordinary coupon/dividend income. Test both allocations across different statutory-rate buckets unless an authoritative rule fixes the allocation order.

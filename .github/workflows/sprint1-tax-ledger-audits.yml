@@ -12,6 +12,8 @@ on:
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/audit_capital_gain_loss_schedule.py'
       - 'decision/terminal_case_reconciliation.py'
       - 'decision/audit_terminal_case_reconciliation.py'
       - 'decision/tax_rules_asof.md'
@@ -28,6 +30,8 @@ on:
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/audit_capital_gain_loss_schedule.py'
       - 'decision/terminal_case_reconciliation.py'
       - 'decision/audit_terminal_case_reconciliation.py'
       - 'decision/tax_rules_asof.md'
@@ -51,7 +55,9 @@ jobs:
         run: python decision/audit_ty2026_27_tax_components.py
       - name: Audit synthetic event and lot ledger
         run: python decision/audit_after_tax_event_ledger.py
+      - name: Audit explicit capital gain/loss allocations
+        run: python decision/audit_capital_gain_loss_schedule.py
       - name: Audit 120/122-month terminal cases against hand calculations
         run: python decision/audit_terminal_case_reconciliation.py --check
       - name: Compile tax and ledger modules
-        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py
