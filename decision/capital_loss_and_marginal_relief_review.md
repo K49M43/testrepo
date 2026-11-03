@@ -113,6 +113,6 @@ The calculator now tests the section 156(2) ₹12 lakh threshold against total i
 - No qualified Indian tax professional has reviewed the worked cases; repository instructions prohibit assuming or making that contact without separate authorization.
 - Actual security IDs, dates, charges, personal tax-year income/loss/return facts, and CPI base month have not been confirmed.
 - Future tax-year rules through 2036 are not enacted today and must be refreshed for each modeled tax year; TY 2026–27 rates cannot be projected as law through 2036.
-- GitHub CLI 2.103.3 is installed and authenticated as K49M43. On 3 November 2026, draft PR #12 was verified open at head `79ec2d69d1a938e74ac30855cabed59e0a96e29d`; its four reported workflow checks passed. No review decision is recorded and the PR remains unmerged. These checks do not close the tax-policy review gate.
+- GitHub CLI 2.103.3 is installed and authenticated as K49M43. Draft PR #12 remains open and draft. The earlier head `79ec2d69d1a938e74ac30855cabed59e0a96e29d` had four passing workflow checks. Commit `d30b392` corrected a withholding-validation bypass; its initial tax/ledger run then correctly failed because the committed terminal-case artifact still pinned the prior ledger hash. That artifact has been regenerated for the corrected ledger; CI rerun is pending. No review decision is recorded. Passing software checks do not close the tax-policy review gate.
 
 Sprint 1 remains in progress. Investment authorization remains **NO-GO**.
