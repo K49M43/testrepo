@@ -1,5 +1,5 @@
 {
-  "contract_version": "1.1",
+  "contract_version": "1.2",
   "purpose": "Deterministic research fixture; not an investor-specific tax result or return forecast.",
   "currency": "INR",
   "cashflow_fixture": {
@@ -21,7 +21,7 @@
       "tax_year": "Derived from event_date using the Indian tax year beginning 1 April; mismatch is rejected.",
       "tax_withholding_inr": "Record withholding as a separate withholding event and credit in its event tax year; do not net it against gross income.",
       "tax_classification": "Income needs confirmed ordinary/dividend classification. Positive realized gains need confirmed section76/196/197/198 classification and corresponding eligibility predicate. Unrealized gains are valuation only.",
-      "amount_precision": "Decimal arithmetic; no statutory rupee rounding is applied by this fixture implementation."
+      "amount_precision": "Decimal arithmetic; no statutory rupee or transaction rounding is applied. Derived unit-price multiplication may retain a computation-only residual up to ₹0.000000000001; residuals above this fail reconciliation."
     },
     "conditional": {
       "acquisition_or_reinvestment": ["lot_id", "units", "unit_price_inr", "transaction_cost_inr", "tax_basis_addition_inr"],
@@ -31,6 +31,19 @@
     },
     "allowed_event_types": ["initial_contribution", "sip_contribution", "acquisition", "fee", "coupon", "distribution", "withholding", "withdrawal", "reinvestment", "partial_disposal", "maturity", "terminal_disposal"],
     "implemented_ledger_scope": "Synthetic event/lot fixture supports positive gains and explicit eligible sections only. Capital losses, set-off/carry-forward, investor-specific facts, and statutory rupee rounding are not implemented; reject or keep unqualified rather than infer."
+  },
+  "terminal_case_fixture": {
+    "source_schedule": "cashflow_hurdle_monthly_2026-10_base.csv",
+    "horizons_months": [120, 122],
+    "cases": ["fund one-year liquidation", "50% staged liquidation across tax years", "direct-bond annual coupon and par maturity"],
+    "fund_assumption": "Synthetic specified-fund lot; 5% per year simple NAV appreciation applied linearly by month, with no distribution stream; positive terminal gain classified under section 76 solely for mechanics testing.",
+    "bond_assumption": "Synthetic direct bond purchased at par, annual 5% cash coupon, principal returned at par; no secondary-market sale or accrued-interest price is modeled.",
+    "external_tax_fixture": "₹30 lakh ordinary income explicitly supplied in every tax year containing portfolio income.",
+    "tax_rule_assumption": "TY 2026-27 component rules are held constant through the synthetic future tax years; this is not a future-law or personal tax forecast.",
+    "staged_sale_timing": "Half of every fund lot is sold at the terminal month-end and the remainder on the following 1 April.",
+    "tax_payment_timing": "Tax liabilities are deducted from terminal fixture wealth; interim tax payments and reinvestment effects are not modeled.",
+    "fees": "Zero fixture fees; actual product and transaction costs are unconfirmed.",
+    "real_wealth": "Not calculated until CPI base and actual cashflow dates are aligned."
   },
   "unknowns_that_must_not_be_defaulted": [
     "actual contribution and investment dates",

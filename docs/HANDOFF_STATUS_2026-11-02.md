@@ -2,6 +2,14 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 3 November 2026 (Sprint 1 Increment 4)
+
+- Sprint 1 Increments 0–4 now pass only at their recorded fixture or research-source scope. Increment 4 reconciles the frozen 120/122-month schedules across one-year synthetic fund exit, staged liquidation, and direct-bond coupon/maturity cases. The independently audited artifact is `research/stage512/2026-11-03/terminal_case_reconciliation.json`; source/code/rule SHA256 values are pinned in its run manifest.
+- Exact 120/122 contributions reconcile to ₹89,81,227.3803 / ₹91,10,914.503305. Outputs use invented 5% simple annual fund NAV appreciation and a 5% bond coupon, explicit synthetic ₹30 lakh other income, zero fixture fees, and TY 2026–27 tax rules held constant into the future. No real-wealth or investor tax conclusion follows.
+- PR #12 (`https://github.com/K49M43/testrepo/pull/12`) contains the Sprint 1 tax/ledger work and is stacked on PR #11. Check its current review and Actions status before treating the submitted Increment 4 changes as accepted; neither PR is authorized for merge by this handoff.
+- Remaining Sprint 1 gates: actual security identifiers and dates, actual fees and tax facts, an aligned CPI base, future tax-law revalidation at decision time, and independent qualified tax-professional review. No reviewer has been contacted. Until these are satisfied, no investor-specific after-tax/real-wealth output is qualified and authorization remains **NO-GO**.
+- The detailed historical sections below predate this update and are retained as evidence snapshots; the current tracker is `docs/SPRINT_01_AFTER_TAX_LEDGER.md`.
+
 ## Latest development update — 2 November 2026 (after PR #8)
 
 This section supersedes the old “where to begin” and blocker snapshots below wherever they conflict; earlier failure records remain historical.

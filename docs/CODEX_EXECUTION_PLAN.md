@@ -2,9 +2,11 @@
 
 **Priority order matters.** Build the minimum decision-grade system needed to make a real investment decision, not a generalized research/portfolio SaaS.
 
-## Next sprint — S1 deterministic after-tax ledger
+## Active sprint — S1 deterministic after-tax ledger
 
-The tracked scope and completion criteria are in [Sprint 1 — Deterministic after-tax ledger](SPRINT_01_AFTER_TAX_LEDGER.md). Use incremental vertical slices with an iterative source/arithmetic review after every slice. Do not start forward-return modeling or claim investor-specific real wealth before the ledger, tax review, and CPI anchor gates pass.
+The tracked scope and completion criteria are in [Sprint 1 — Deterministic after-tax ledger](SPRINT_01_AFTER_TAX_LEDGER.md). Increments 0–4 pass only at their documented research or synthetic-fixture scope. PR #12 contains the current implementation and is stacked on PR #11; inspect the live review and Actions state before recording acceptance. The sprint remains open for actual security/date/fee/tax inputs, aligned CPI base, future-law validation, and independent tax-professional review. Continue incremental delivery with iterative arithmetic and source review. Do not claim investor-specific real wealth before those gates pass.
+
+**Next action:** after PR #12 review, resolve remaining input and review dependencies needed to turn the mechanics fixture into an investor-specific ledger. Do not invent confirmations or contact an outside reviewer without authorization. Investment authorization remains **NO-GO**.
 
 ## Completed on 2 November 2026 — P0 Tasks 1–2
 - **Task 1:** official AMFI scheme 133307 NAV history passed for research use: 2,867 observations across 24 source segments, 26 Dec 2014–30 Oct 2026; raw segment bytes and hashes independently audited; LIC 1/3/5-year factsheet arithmetic reconciled. Evidence: `research/stage512/2026-11-02/stage512_R93_live_backfill_and_129m_audit.md` and `research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json`.

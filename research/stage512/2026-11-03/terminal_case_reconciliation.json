@@ -1,0 +1,723 @@
+{
+  "audit": "PASS",
+  "analysis_date": "2026-11-03",
+  "run_manifest": {
+    "rule_vintage": "Act 2025 / Finance Act 2026 component mapping as recorded in tax_rules_asof.md; TY 2026-27 calculator held constant",
+    "contract_version": "1.2",
+    "source_sha256": {
+      "decision/terminal_case_reconciliation.py": "79f5780eee2a6a19f290c302bb18bcd505caacbd52703a510e0665cb9c8fd152",
+      "decision/audit_terminal_case_reconciliation.py": "106a4889d57ed5761ccb9e93d71cc4d16950fabff222f2451b36c3a99f597b87",
+      "decision/after_tax_event_ledger.py": "ca7f98cf29fca272b86ec64736f72575151444b719860e025be4a51d0cbfbdc4",
+      "decision/ty2026_27_tax_components.py": "eccc8341f4c9509c475c9d5458c70f286a275c6287aba4dddbfab8488083a0f5",
+      "decision/tax_rules_asof.md": "2d1bcd0089898df740bd82a668e534ea3180ddca98846b6db0ed0863dab9fd75",
+      "research/stage512/2026-11-02/after_tax_ledger_input_contract.json": "d487ac5feccf6b6f337a1267b41b8af8eb487e4f5b0be019d45d1412c26634ef",
+      "research/stage512/2026-11-02/cashflow_hurdle_baseline.py": "b302e4fa6f51a66026e2efbd78053f2fd8f6ae795ea2128635abbb2e2a7ccc9c",
+      "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    }
+  },
+  "scope": "120/122-month synthetic mechanics; no investable return or investor-specific tax/wealth result",
+  "assumptions": {
+    "cashflow_schedule": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+    "fund_return": "5% per year simple synthetic NAV appreciation, applied linearly by month; no distribution stream is modeled",
+    "bond_terms": "par-priced direct-bond fixture; 5% annual cash coupon; principal returned at par",
+    "external_ordinary_income_each_tax_year_inr": "3000000",
+    "external_tax_inputs": "explicit synthetic ₹30 lakh ordinary income in every modeled year; no credits/deductions",
+    "staged_sale": "50% of each fund lot at terminal month-end; remaining units sold on following 1 April",
+    "fees": "zero solely for mechanics fixture; real fees remain unknown",
+    "tax_rule_vintage": "TY 2026-27 component code applied unchanged to all modeled years",
+    "cash_tax_timing": "tax liability is deducted from terminal fixture wealth; interim payment/reinvestment is not simulated",
+    "real_wealth": "not calculated; CPI base and actual dates are unconfirmed"
+  },
+  "cases": [
+    {
+      "ledger_status": "PASS",
+      "event_count": 363,
+      "tax_years": {
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "2945390.295350327684553629766",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "1559977.949364232461338805736",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "1060777.949364232461338805736",
+          "remaining_incremental_tax_after_portfolio_withholding": "1060777.949364232461338805736",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "8981227.380300000",
+      "gross_income_inr": "0",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "11926617.67565032768455362978",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "2945390.295350327684553629766",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "11926617.67565032768455362978",
+      "incremental_portfolio_tax_inr": "1060777.949364232461338805736",
+      "remaining_incremental_tax_after_withholding_inr": "1060777.949364232461338805736",
+      "net_accessible_fixture_wealth_inr": "10865839.72628609522321482404",
+      "reconciliation_residual_inr": "-1E-20",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "fund_one_year_liquidation",
+      "horizon_months": 120,
+      "terminal_date": "2036-10-31",
+      "stage_two_date": null,
+      "annual_synthetic_fund_return": "0.05",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    },
+    {
+      "ledger_status": "PASS",
+      "event_count": 484,
+      "tax_years": {
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "1472695.147675163842276814883",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "958680.8860746511187903662435",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "459480.8860746511187903662435",
+          "remaining_incremental_tax_after_portfolio_withholding": "459480.8860746511187903662435",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2037-38": {
+          "portfolio_income": {
+            "ordinary": "1572083.628305583239648095134",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "989690.0920313419707702056818",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "490490.0920313419707702056818",
+          "remaining_incremental_tax_after_portfolio_withholding": "490490.0920313419707702056818",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "8981227.380300000",
+      "gross_income_inr": "0",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "12026006.15628074708192490998",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "3044778.775980747081924910018",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "12026006.15628074708192490998",
+      "incremental_portfolio_tax_inr": "949970.9781059930895605719253",
+      "remaining_incremental_tax_after_withholding_inr": "949970.9781059930895605719253",
+      "net_accessible_fixture_wealth_inr": "11076035.17817475399236433805",
+      "reconciliation_residual_inr": "4E-20",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "fund_staged_liquidation",
+      "horizon_months": 120,
+      "terminal_date": "2036-10-31",
+      "stage_two_date": "2037-04-01",
+      "annual_synthetic_fund_return": "0.05",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    },
+    {
+      "ledger_status": "PASS",
+      "event_count": 913,
+      "tax_years": {
+        "2027-28": {
+          "portfolio_income": {
+            "ordinary": "216250.00000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "566670.000000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "67470.000000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "67470.000000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2028-29": {
+          "portfolio_income": {
+            "ordinary": "231875.00000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "571545.000000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "72345.000000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "72345.000000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2029-30": {
+          "portfolio_income": {
+            "ordinary": "249062.50000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "576907.500000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "77707.500000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "77707.500000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2030-31": {
+          "portfolio_income": {
+            "ordinary": "267968.75000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "582806.250000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "83606.250000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "83606.250000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2031-32": {
+          "portfolio_income": {
+            "ordinary": "288765.62500000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "589294.875000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "90094.875000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "90094.875000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2032-33": {
+          "portfolio_income": {
+            "ordinary": "311642.18750000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "596432.362500000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "97232.362500000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "97232.362500000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2033-34": {
+          "portfolio_income": {
+            "ordinary": "336806.40625000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "604283.598750000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "105083.598750000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "105083.598750000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2034-35": {
+          "portfolio_income": {
+            "ordinary": "364487.04687500000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "612919.958625000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "113719.958625000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "113719.958625000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2035-36": {
+          "portfolio_income": {
+            "ordinary": "394935.75156250000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "622419.954487500000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "123219.954487500000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "123219.954487500000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "328820.42296250000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "601791.971964300000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "102591.971964300000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "102591.971964300000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "8981227.380300000",
+      "gross_income_inr": "2990613.69015000000",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "11971841.07045000000",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "0E-9",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "11971841.07045000000",
+      "incremental_portfolio_tax_inr": "933071.471326800000000",
+      "remaining_incremental_tax_after_withholding_inr": "933071.471326800000000",
+      "net_accessible_fixture_wealth_inr": "11038769.599123200000000",
+      "reconciliation_residual_inr": "0E-11",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "direct_bond_coupon_and_maturity",
+      "horizon_months": 120,
+      "terminal_date": "2036-10-31",
+      "synthetic_coupon_rate": "0.05",
+      "coupons_paid_inr": "2990613.69015000000",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    },
+    {
+      "ledger_status": "PASS",
+      "event_count": 369,
+      "tax_years": {
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "3011828.904491297495174187787",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "1582779.680021413300343781249",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "1083579.680021413300343781249",
+          "remaining_incremental_tax_after_portfolio_withholding": "1083579.680021413300343781249",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "9110914.503305000",
+      "gross_income_inr": "0",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "12122743.40779629749517418779",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "3011828.904491297495174187787",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "12122743.40779629749517418779",
+      "incremental_portfolio_tax_inr": "1083579.680021413300343781249",
+      "remaining_incremental_tax_after_withholding_inr": "1083579.680021413300343781249",
+      "net_accessible_fixture_wealth_inr": "11039163.72777488419483040654",
+      "reconciliation_residual_inr": "0E-20",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "fund_one_year_liquidation",
+      "horizon_months": 122,
+      "terminal_date": "2036-12-31",
+      "stage_two_date": null,
+      "annual_synthetic_fund_return": "0.05",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    },
+    {
+      "ledger_status": "PASS",
+      "event_count": 492,
+      "tax_years": {
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "1505914.452245648747587093895",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "969045.3091006424092471732952",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "469845.3091006424092471732952",
+          "remaining_incremental_tax_after_portfolio_withholding": "469845.3091006424092471732952",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2037-38": {
+          "portfolio_income": {
+            "ordinary": "1572890.935161650391206840792",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "989941.9717704349220565343271",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "490741.9717704349220565343271",
+          "remaining_incremental_tax_after_portfolio_withholding": "490741.9717704349220565343271",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "9110914.503305000",
+      "gross_income_inr": "0",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "12189719.89071229913879393463",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "3078805.387407299138793934688",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "12189719.89071229913879393463",
+      "incremental_portfolio_tax_inr": "960587.2808710773313037076223",
+      "remaining_incremental_tax_after_withholding_inr": "960587.2808710773313037076223",
+      "net_accessible_fixture_wealth_inr": "11229132.60984122180749022701",
+      "reconciliation_residual_inr": "6E-20",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "fund_staged_liquidation",
+      "horizon_months": 122,
+      "terminal_date": "2036-12-31",
+      "stage_two_date": "2037-04-01",
+      "annual_synthetic_fund_return": "0.05",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    },
+    {
+      "ledger_status": "PASS",
+      "event_count": 939,
+      "tax_years": {
+        "2027-28": {
+          "portfolio_income": {
+            "ordinary": "216250.00000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "566670.000000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "67470.000000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "67470.000000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2028-29": {
+          "portfolio_income": {
+            "ordinary": "231875.00000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "571545.000000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "72345.000000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "72345.000000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2029-30": {
+          "portfolio_income": {
+            "ordinary": "249062.50000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "576907.500000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "77707.500000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "77707.500000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2030-31": {
+          "portfolio_income": {
+            "ordinary": "267968.75000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "582806.250000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "83606.250000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "83606.250000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2031-32": {
+          "portfolio_income": {
+            "ordinary": "288765.62500000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "589294.875000000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "90094.875000000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "90094.875000000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2032-33": {
+          "portfolio_income": {
+            "ordinary": "311642.18750000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "596432.362500000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "97232.362500000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "97232.362500000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2033-34": {
+          "portfolio_income": {
+            "ordinary": "336806.40625000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "604283.598750000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "105083.598750000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "105083.598750000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2034-35": {
+          "portfolio_income": {
+            "ordinary": "364487.04687500000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "612919.958625000000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "113719.958625000000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "113719.958625000000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2035-36": {
+          "portfolio_income": {
+            "ordinary": "394935.75156250000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "622419.954487500000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "123219.954487500000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "123219.954487500000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        },
+        "2036-37": {
+          "portfolio_income": {
+            "ordinary": "368663.98446500000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "total_tax_before_credits": "614223.163153080000000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "115023.163153080000000",
+          "remaining_incremental_tax_after_portfolio_withholding": "115023.163153080000000",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "cash_contributions_inr": "9110914.503305000",
+      "gross_income_inr": "3030457.25165250000",
+      "portfolio_withholding_inr": "0",
+      "transaction_costs_inr": "0",
+      "other_fees_inr": "0",
+      "withdrawals_inr": "0",
+      "ending_cash_inr": "12141371.75495750000",
+      "ending_market_value_inr": "0",
+      "realized_economic_gain_inr": "0E-9",
+      "unrealized_gain_inr": "0",
+      "gross_terminal_wealth_inr": "12141371.75495750000",
+      "incremental_portfolio_tax_inr": "945502.662515580000000",
+      "remaining_incremental_tax_after_withholding_inr": "945502.662515580000000",
+      "net_accessible_fixture_wealth_inr": "11195869.092441920000000",
+      "reconciliation_residual_inr": "0E-11",
+      "open_lots": [],
+      "tax_scope": "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input",
+      "case": "direct_bond_coupon_and_maturity",
+      "horizon_months": 122,
+      "terminal_date": "2036-12-31",
+      "synthetic_coupon_rate": "0.05",
+      "coupons_paid_inr": "3030457.25165250000",
+      "tax_law_fixture": "TY 2026-27 rules held constant; not a future-law forecast"
+    }
+  ],
+  "authorization": "NO-GO",
+  "independent_acceptance": {
+    "status": "PASS",
+    "schedule_contributions_inr": {
+      "120": "8981227.380300000",
+      "122": "9110914.503305000"
+    },
+    "representative_lot_hand_calculation": {
+      "principal_inr": "4200000",
+      "annual_coupon_rate": "0.05",
+      "coupon_inr": "210000.00",
+      "other_ordinary_income_inr": "3000000",
+      "marginal_tax_plus_cess_rate": "0.312",
+      "incremental_tax_inr": "65520.000000"
+    },
+    "full_tax_year_coupon_checks": {
+      "120:2027-28": {
+        "coupon_income_inr": "216250.00000000000",
+        "hand_calculated_incremental_tax_inr": "67470.000000000000000",
+        "engine_incremental_tax_inr": "67470.000000000000000"
+      },
+      "120:2028-29": {
+        "coupon_income_inr": "231875.00000000000",
+        "hand_calculated_incremental_tax_inr": "72345.000000000000000",
+        "engine_incremental_tax_inr": "72345.000000000000000"
+      },
+      "120:2029-30": {
+        "coupon_income_inr": "249062.50000000000",
+        "hand_calculated_incremental_tax_inr": "77707.500000000000000",
+        "engine_incremental_tax_inr": "77707.500000000000000"
+      },
+      "120:2030-31": {
+        "coupon_income_inr": "267968.75000000000",
+        "hand_calculated_incremental_tax_inr": "83606.250000000000000",
+        "engine_incremental_tax_inr": "83606.250000000000000"
+      },
+      "120:2031-32": {
+        "coupon_income_inr": "288765.62500000000",
+        "hand_calculated_incremental_tax_inr": "90094.875000000000000",
+        "engine_incremental_tax_inr": "90094.875000000000000"
+      },
+      "120:2032-33": {
+        "coupon_income_inr": "311642.18750000000",
+        "hand_calculated_incremental_tax_inr": "97232.362500000000000",
+        "engine_incremental_tax_inr": "97232.362500000000000"
+      },
+      "120:2033-34": {
+        "coupon_income_inr": "336806.40625000000",
+        "hand_calculated_incremental_tax_inr": "105083.598750000000000",
+        "engine_incremental_tax_inr": "105083.598750000000000"
+      },
+      "120:2034-35": {
+        "coupon_income_inr": "364487.04687500000",
+        "hand_calculated_incremental_tax_inr": "113719.958625000000000",
+        "engine_incremental_tax_inr": "113719.958625000000000"
+      },
+      "120:2035-36": {
+        "coupon_income_inr": "394935.75156250000",
+        "hand_calculated_incremental_tax_inr": "123219.954487500000000",
+        "engine_incremental_tax_inr": "123219.954487500000000"
+      },
+      "120:2036-37": {
+        "coupon_income_inr": "328820.42296250000",
+        "hand_calculated_incremental_tax_inr": "102591.971964300000000",
+        "engine_incremental_tax_inr": "102591.971964300000000"
+      },
+      "122:2027-28": {
+        "coupon_income_inr": "216250.00000000000",
+        "hand_calculated_incremental_tax_inr": "67470.000000000000000",
+        "engine_incremental_tax_inr": "67470.000000000000000"
+      },
+      "122:2028-29": {
+        "coupon_income_inr": "231875.00000000000",
+        "hand_calculated_incremental_tax_inr": "72345.000000000000000",
+        "engine_incremental_tax_inr": "72345.000000000000000"
+      },
+      "122:2029-30": {
+        "coupon_income_inr": "249062.50000000000",
+        "hand_calculated_incremental_tax_inr": "77707.500000000000000",
+        "engine_incremental_tax_inr": "77707.500000000000000"
+      },
+      "122:2030-31": {
+        "coupon_income_inr": "267968.75000000000",
+        "hand_calculated_incremental_tax_inr": "83606.250000000000000",
+        "engine_incremental_tax_inr": "83606.250000000000000"
+      },
+      "122:2031-32": {
+        "coupon_income_inr": "288765.62500000000",
+        "hand_calculated_incremental_tax_inr": "90094.875000000000000",
+        "engine_incremental_tax_inr": "90094.875000000000000"
+      },
+      "122:2032-33": {
+        "coupon_income_inr": "311642.18750000000",
+        "hand_calculated_incremental_tax_inr": "97232.362500000000000",
+        "engine_incremental_tax_inr": "97232.362500000000000"
+      },
+      "122:2033-34": {
+        "coupon_income_inr": "336806.40625000000",
+        "hand_calculated_incremental_tax_inr": "105083.598750000000000",
+        "engine_incremental_tax_inr": "105083.598750000000000"
+      },
+      "122:2034-35": {
+        "coupon_income_inr": "364487.04687500000",
+        "hand_calculated_incremental_tax_inr": "113719.958625000000000",
+        "engine_incremental_tax_inr": "113719.958625000000000"
+      },
+      "122:2035-36": {
+        "coupon_income_inr": "394935.75156250000",
+        "hand_calculated_incremental_tax_inr": "123219.954487500000000",
+        "engine_incremental_tax_inr": "123219.954487500000000"
+      },
+      "122:2036-37": {
+        "coupon_income_inr": "368663.98446500000",
+        "hand_calculated_incremental_tax_inr": "115023.163153080000000",
+        "engine_incremental_tax_inr": "115023.163153080000000"
+      }
+    },
+    "checks": [
+      "independent sum of 120/122 schedule rows equals recorded baseline cumulative contributions",
+      "fund single-year and staged exits reconcile all lots and tax years",
+      "direct-bond coupons are gross ordinary income and maturity returns principal at par",
+      "gross terminal value less fees and incremental tax equals net fixture wealth",
+      "representative lot and every full bond coupon tax year match independent marginal-rate arithmetic",
+      "no CPI-adjusted or investor-specific result is produced"
+    ]
+  }
+}

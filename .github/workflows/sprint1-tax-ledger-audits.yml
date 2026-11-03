@@ -8,8 +8,11 @@ on:
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/terminal_case_reconciliation.py'
+      - 'decision/audit_terminal_case_reconciliation.py'
       - 'decision/tax_rules_asof.md'
       - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+      - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
   push:
     paths:
       - '.github/workflows/sprint1-tax-ledger-audits.yml'
@@ -17,8 +20,11 @@ on:
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/terminal_case_reconciliation.py'
+      - 'decision/audit_terminal_case_reconciliation.py'
       - 'decision/tax_rules_asof.md'
       - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+      - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
   workflow_dispatch:
 
 permissions:
@@ -37,5 +43,7 @@ jobs:
         run: python decision/audit_ty2026_27_tax_components.py
       - name: Audit synthetic event and lot ledger
         run: python decision/audit_after_tax_event_ledger.py
+      - name: Audit 120/122-month terminal cases against hand calculations
+        run: python decision/audit_terminal_case_reconciliation.py --check
       - name: Compile tax and ledger modules
-        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py

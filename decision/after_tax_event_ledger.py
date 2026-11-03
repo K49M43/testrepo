@@ -17,6 +17,10 @@ from ty2026_27_tax_components import TaxInput, calculate_tax
 
 
 ZERO = Decimal("0")
+# Finite Decimal division can leave a sub-picorupee residue when units are
+# derived from cash / NAV. This is a computation tolerance, not transaction or
+# statutory rupee rounding; it is three orders below this schedule's 1e-9 INR precision.
+ARITHMETIC_TOLERANCE = Decimal("0.000000000001")
 TAX_CLASSES = {"ordinary", "dividend", "section76", "section196", "section197", "section198", "none"}
 CONTRIBUTIONS = {"initial_contribution", "sip_contribution"}
 ACQUISITIONS = {"acquisition", "reinvestment"}
@@ -206,7 +210,7 @@ def run_ledger(
             if basis_addition > fee:
                 raise ValueError(f"tax basis addition cannot exceed the recorded acquisition transaction cost: {event.event_id}")
             principal = units * price
-            if cash_amount != principal + fee:
+            if abs(cash_amount - (principal + fee)) > ARITHMETIC_TOLERANCE:
                 raise ValueError(f"acquisition cash must equal principal plus fee: {event.event_id}")
             if cash < cash_amount:
                 raise ValueError(f"insufficient cash for acquisition: {event.event_id}")
@@ -217,8 +221,8 @@ def run_ledger(
                 instrument_id=event.instrument_id,
                 acquired=event.event_date,
                 units=units,
-                cash_basis_inr=principal,
-                tax_basis_inr=principal + basis_addition,
+                cash_basis_inr=cash_amount - fee,
+                tax_basis_inr=cash_amount - fee + basis_addition,
                 source_or_assumption=event.source_or_assumption,
                 qualification_status=event.qualification_status,
             )
@@ -279,6 +283,8 @@ def run_ledger(
             cash_basis_removed = lot.cash_basis_inr * fraction
             tax_basis_removed = lot.tax_basis_inr * fraction
             realized_gain = proceeds - tax_basis_removed - transfer_expenses
+            if realized_gain < ZERO and abs(realized_gain) <= ARITHMETIC_TOLERANCE:
+                realized_gain = ZERO
             if realized_gain < ZERO:
                 raise NotImplementedError("capital losses and set-off/carry-forward are outside this ledger increment")
             if realized_gain > ZERO:
@@ -374,7 +380,7 @@ def run_ledger(
         contributions + gross_income + realized_economic_gain + unrealized_gain
         - withholding - transaction_costs - other_fees - withdrawals - gross_terminal
     )
-    if reconciliation_residual != ZERO:
+    if abs(reconciliation_residual) > ARITHMETIC_TOLERANCE:
         raise AssertionError(f"portfolio reconciliation failed by {reconciliation_residual} INR")
 
     return EventLedgerResult(
