@@ -435,11 +435,13 @@ def run_ledger(
                 del lots[event.lot_id]
             continue
 
-    if not has_realized_loss:
-        for year, withheld in event_withholding_by_year.items():
-            taxable_gross = incomes[year].ordinary_income + incomes[year].dividend_income
-            if withheld > taxable_gross:
-                raise ValueError(f"withholding exceeds recorded ordinary/distribution income in tax year {year}")
+    # Validate each year's withholding independently of whether some other
+    # year has a realized loss. A loss keeps tax application unqualified; it
+    # must not disable input validation for otherwise unrelated years.
+    for year, withheld in event_withholding_by_year.items():
+        taxable_gross = incomes[year].ordinary_income + incomes[year].dividend_income
+        if withheld > taxable_gross:
+            raise ValueError(f"withholding exceeds recorded ordinary/distribution income in tax year {year}")
 
     prices = {lot_id: amount(price, f"valuation_prices[{lot_id}]") for lot_id, price in valuation_prices.items()}
     missing_marks = set(lots) - set(prices)
