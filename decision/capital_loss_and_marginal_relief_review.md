@@ -93,6 +93,17 @@ Primary source: [Finance Act 2026 section 3](https://indiacode.ecourtsindia.com/
 
 The `section516_round_rupees` primitive is covered by boundary cases and is applied to final payable/refundable balances after credits. Integration remains open for rounding statutory total income and specifying how the rounded total controls threshold selection while preserving distinct rate buckets. The final payable/refundable result is distinguished from the ledger's counterfactual incremental portfolio tax, which is not itself a statutory assessment amount.
 
+### Worked case for reviewer
+
+Use raw computed total income of ₹50,00,004, which section 516 rounds to ₹50,00,000:
+
+| Composition | Raw component tax arithmetic before surcharge/cess | If the ₹4 rounding residual reduces the ordinary-rate base | If the ₹4 residual reduces section 196 gain |
+|---|---:|---:|---:|
+| Ordinary income ₹50,00,004 | Section 202 tax = ₹10,80,001.20 | Section 202 tax on ₹50,00,000 = ₹10,80,000.00 | Not applicable |
+| Ordinary income ₹49,00,004 + section 196 STCG ₹1,00,000 | Section 202 tax ₹10,50,001.20 + section 196 tax ₹20,000 = ₹10,70,001.20 | Section 202 tax ₹10,50,000 + section 196 tax ₹20,000 = ₹10,70,000.00 | Section 202 tax ₹10,50,001.20 + section 196 tax on ₹99,996 = ₹10,70,000.40 |
+
+These are alternative arithmetic treatments to review, not a claim that both are legally available. They expose the precise question: does section 516's deemed total feed the section 202/196 component formula before tax, and does the special-rate formula determine the residual base as rounded total income less the special gain? The reviewer should extend this to sections 197/198, dividends, basic-exemption adjustment, section 198's annual deduction, rebate, surcharge, and marginal relief. Tests should then use the signed-off formula, not reverse-engineer one from current outputs.
+
 ## Section 156 mixed-income threshold review
 
 The calculator now tests the section 156(2) ₹12 lakh threshold against total income while limiting the rebate amount to section 202(1) tax. This follows section 156(2)(b)'s explicit total-income test and section 156(3)'s cap, with section 198(7) separately specifying the treatment of qualifying long-term gains. Regression fixtures cover total income of ₹12,00,000, ₹12,00,010, and ₹12,20,000 with ordinary income held at ₹11,90,000. These fixtures are arithmetic probes of the statutory wording, not independent legal sign-off. The threshold basis, interaction with section 516 rounding, and any applicable treatment under other special-rate provisions remain for qualified review.
@@ -102,6 +113,6 @@ The calculator now tests the section 156(2) ₹12 lakh threshold against total i
 - No qualified Indian tax professional has reviewed the worked cases; repository instructions prohibit assuming or making that contact without separate authorization.
 - Actual security IDs, dates, charges, personal tax-year income/loss/return facts, and CPI base month have not been confirmed.
 - Future tax-year rules through 2036 are not enacted today and must be refreshed for each modeled tax year; TY 2026–27 rates cannot be projected as law through 2036.
-- `gh` is not available on the current shell PATH; this branch's latest local commits have not been pushed or checked remotely.
+- GitHub CLI 2.103.3 is installed and on the user PATH, but `gh auth status` reports no authenticated GitHub host. The current local commit has not been pushed or checked remotely.
 
 Sprint 1 remains in progress. Investment authorization remains **NO-GO**.
