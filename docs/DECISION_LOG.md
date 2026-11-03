@@ -210,3 +210,8 @@ This log records **actual investment authorization** separately from engineering
 - **GitHub CLI:** located the installed GitHub CLI, added its existing install directory to user PATH, and authenticated K49M43 through Chrome device approval. Authentication for repository operations now works through CLI; no browser is needed for ordinary PR/check queries.
 - **Published/verified:** pushed the updated review packet to existing draft PR #12 at head `f872c4125baae666aa14f04fa1e05ed1e9bbc3c1`. Four source/cashflow and tax/ledger check records pass (runs 41636891323, 41636900294, 41636891370, 41636900328). PR remains open, draft, unmerged, with no review decision.
 - **Decision:** Sprint 1 remains IN PROGRESS because qualified tax review, section 516 mixed-bucket ordering, tax-loss application, and investor-specific inputs remain open. Authorization remains NO-GO.
+
+## 2026-11-03 — Next blocker confirmed
+- **Current acceptance state:** verified PR #12 at head `e4fd1e0887a4ece3e997922be5b7b736446b8f12`. Four source/cashflow and tax/ledger check records pass. PR remains open and draft; no review decision exists.
+- **Next blocker:** qualified review of the prepared section 156, section 516, loss-allocation, section 198, basic-exemption, and mixed surcharge-relief cases. Repository instructions do not authorize contacting an external reviewer.
+- **Closure route:** investor arranges qualified review and supplies the written dispositions; then implement only accepted rules, rerun the integrated taxpayer-year reconciliation, and verify checks on the resulting head. Investor-specific dates, tax facts, instrument costs, and CPI anchor remain separate inputs.
