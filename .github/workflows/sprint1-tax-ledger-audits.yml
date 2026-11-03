@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'decision/ty2026_27_tax_components.py'
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'
@@ -16,6 +20,10 @@ on:
   push:
     paths:
       - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'decision/ty2026_27_tax_components.py'
       - 'decision/audit_ty2026_27_tax_components.py'
       - 'decision/after_tax_event_ledger.py'

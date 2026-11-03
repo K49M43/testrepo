@@ -5,8 +5,9 @@
 ## Latest development update — 3 November 2026 (Sprint 1 tax-source trace hardening)
 
 - After Increment 4, an acceptance review found that annual tax-category inputs needed an explicit link back to taxable source events. `decision/after_tax_event_ledger.py` now emits event-level source records and per-tax-year event IDs by category; sale and lot-linked coupon records include acquisition dates, and withholding remains a separate credit. Annual tax remains calculated per year and is not fabricated as an event-specific amount.
-- Input contract v1.3 and `research/stage512/2026-11-03/terminal_case_reconciliation.json` record the trace contract and reproducible source evidence. The local audits pass; GitHub Actions must be checked on the updated PR head before acceptance.
-- PR #12 remains a draft, stacked on PR #11, and must not be merged until its review/check state is confirmed and the user decides. Sprint 1 remains open; actual investor inputs, CPI alignment, future-law validation, and qualified tax-professional review remain gates. Authorization stays **NO-GO**.
+- Input contract v1.3 and `research/stage512/2026-11-03/terminal_case_reconciliation.json` record the trace contract and reproducible source evidence. Local audits pass; on PR #12 head `7c8dacb`, source/cashflow run [41568107162](https://github.com/K49M43/testrepo/actions/runs/41568107162) and tax/ledger run [41568107287](https://github.com/K49M43/testrepo/actions/runs/41568107287) both succeeded, for 4/4 passing PR checks.
+- PR #12 remains a draft, stacked on PR #11, and must not be merged until its review and base-PR state are resolved and the user decides. Sprint 1 remains open; actual investor inputs, CPI alignment, future-law validation, and qualified tax-professional review remain gates. Authorization stays **NO-GO**.
+- `docs/SPRINT_01_INVESTOR_INPUT_WORKSHEET.md` is prepared as a blank, privacy-conscious intake template. It does not contain new investor values and does not close the open dates, holdings, costs, tax, CPI, risk-tolerance, or independent-review gates.
 
 ## Prior development update — 3 November 2026 (Sprint 1 Increment 4)
 
