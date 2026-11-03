@@ -93,11 +93,15 @@ Primary source: [Finance Act 2026 section 3](https://indiacode.ecourtsindia.com/
 
 The `section516_round_rupees` primitive is covered by boundary cases and is applied to final payable/refundable balances after credits. Integration remains open for rounding statutory total income and specifying how the rounded total controls threshold selection while preserving distinct rate buckets. The final payable/refundable result is distinguished from the ledger's counterfactual incremental portfolio tax, which is not itself a statutory assessment amount.
 
+## Section 156 mixed-income threshold review
+
+The calculator now tests the section 156(2) ₹12 lakh threshold against total income while limiting the rebate amount to section 202(1) tax. This follows section 156(2)(b)'s explicit total-income test and section 156(3)'s cap, with section 198(7) separately specifying the treatment of qualifying long-term gains. Regression fixtures cover total income of ₹12,00,000, ₹12,00,010, and ₹12,20,000 with ordinary income held at ₹11,90,000. These fixtures are arithmetic probes of the statutory wording, not independent legal sign-off. The threshold basis, interaction with section 516 rounding, and any applicable treatment under other special-rate provisions remain for qualified review.
+
 ## External Sprint 1 gates
 
 - No qualified Indian tax professional has reviewed the worked cases; repository instructions prohibit assuming or making that contact without separate authorization.
 - Actual security IDs, dates, charges, personal tax-year income/loss/return facts, and CPI base month have not been confirmed.
 - Future tax-year rules through 2036 are not enacted today and must be refreshed for each modeled tax year; TY 2026–27 rates cannot be projected as law through 2036.
-- GitHub CLI is installed but unauthenticated; this branch's local commits have not been pushed or checked remotely.
+- `gh` is not available on the current shell PATH; this branch's latest local commits have not been pushed or checked remotely.
 
 Sprint 1 remains in progress. Investment authorization remains **NO-GO**.

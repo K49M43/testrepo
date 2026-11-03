@@ -44,6 +44,28 @@ def audit() -> dict[str, object]:
     close(section156_rebate(D("1210000"), D("61500")), "51500")
     close(section156_rebate(D("1270588"), section202_slab_tax(D("1270588"))), "0.20")
     close(section156_rebate(D("1270589"), section202_slab_tax(D("1270589"))), "0")
+    mixed_rebate_at_limit = calculate_tax(TaxInput(
+        ordinary_income=D("1190000"), section198_ltcg=D("10000"), section198_eligible=True,
+    ))
+    assert mixed_rebate_at_limit.total_income == D("1200000")
+    close(mixed_rebate_at_limit.section156_rebate, "59000.00")
+    close(mixed_rebate_at_limit.tax_before_credits, "0.0000")
+    mixed_rebate_10_over = calculate_tax(TaxInput(
+        ordinary_income=D("1190000"), section198_ltcg=D("10010"), section198_eligible=True,
+    ))
+    assert mixed_rebate_10_over.total_income == D("1200010")
+    close(mixed_rebate_10_over.section156_rebate, "58990.00")
+    close(mixed_rebate_10_over.tax_before_credits, "10.4000")
+    mixed_rebate_edge = calculate_tax(TaxInput(
+        ordinary_income=D("1190000"),
+        section198_ltcg=D("30000"),
+        section198_eligible=True,
+    ))
+    assert mixed_rebate_edge.total_income == D("1220000")
+    close(mixed_rebate_edge.section202_tax_before_rebate, "59000.00")
+    close(mixed_rebate_edge.section156_rebate, "39000.00")
+    close(mixed_rebate_edge.section198_tax, "0")
+    close(mixed_rebate_edge.tax_before_credits, "20800.0000")
 
     # Finance Act 2026 ordinary-only surcharge/marginal relief examples A.
     ordinary_cases = (
@@ -181,7 +203,7 @@ def audit() -> dict[str, object]:
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
         "section76_gain_inr": str(gain),
-        "section156_rebate_boundary": "PASS",
+        "section156_mixed_income_rule": "PASS at fixture scope; total-income threshold and section 202 rebate cap; qualified review and section 516 rounding remain open",
         "withholding_credit_separate": "PASS",
         "mixed_income_marginal_relief_reference_case": "PASS; reference mix is an explicit provisional assumption",
         "unsupported_mixed_income_reference_overflow_fails_closed": "PASS",
