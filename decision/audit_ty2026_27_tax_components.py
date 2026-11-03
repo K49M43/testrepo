@@ -119,14 +119,28 @@ def audit() -> dict[str, object]:
         assert "basic-exemption allocation" in str(error)
     else:
         raise AssertionError("ambiguous basic-exemption allocation must fail closed")
+    # Mixed-income s.3(5) relief uses a transparent reference composition:
+    # keep special-rate income fixed and reduce ordinary income to the band
+    # threshold. This fixture is deliberately near the ₹50L boundary.
+    mixed_relief = calculate_tax(TaxInput(
+        ordinary_income=D("4900000"), section196_stcg=D("200000"), section196_eligible=True,
+    ))
+    close(mixed_relief.income_tax_after_rebate, "1090000.000")
+    close(mixed_relief.surcharge_before_relief, "109000.00000")
+    close(mixed_relief.marginal_surcharge_relief, "39000.00000")
+    close(mixed_relief.surcharge_after_relief, "70000.000")
+    close(mixed_relief.tax_before_credits, "1206400.00000")
+    mixed_10m_edge = calculate_tax(TaxInput(
+        ordinary_income=D("9800001"), section196_stcg=D("200000"), section196_eligible=True,
+    ))
+    close(mixed_10m_edge.marginal_surcharge_relief, "127999.34500")
+    close(mixed_10m_edge.surcharge_after_relief, "256000.70000")
     try:
-        calculate_tax(TaxInput(
-            ordinary_income=D("4900000"), section196_stcg=D("200000"), section196_eligible=True,
-        ))
+        calculate_tax(TaxInput(section196_stcg=D("6000000"), section196_eligible=True))
     except NotImplementedError as error:
-        assert "mixed special-income surcharge marginal relief" in str(error)
+        assert "cannot preserve special income" in str(error)
     else:
-        raise AssertionError("unqualified mixed-income surcharge marginal relief must fail closed")
+        raise AssertionError("reference composition beyond the threshold must fail closed")
 
     # Specified-fund section 76 gains are explicit ordinary-rate inputs; the
     # helper refuses to apply the rule without both legal predicates.
@@ -149,19 +163,31 @@ def audit() -> dict[str, object]:
     credited = calculate_tax(TaxInput(ordinary_income=D("1500000"), tax_withheld_credit=D("5000")))
     close(credited.tax_before_credits, "109200.0000")
     close(credited.balance_payable, "104200.0000")
+    fractional_due = calculate_tax(TaxInput(
+        ordinary_income=D("1500001"), tax_withheld_credit=D("5000"),
+    ))
+    close(fractional_due.balance_payable,
+          str(section516_round_rupees(fractional_due.tax_before_credits - D("5000"))))
+    fully_credited = calculate_tax(TaxInput(
+        ordinary_income=D("1500000"), tax_withheld_credit=credited.tax_before_credits + D("15"),
+    ))
+    close(fully_credited.balance_payable, "0")
+    close(fully_credited.excess_credit, "20")
 
     return {
         "audit": "PASS",
-        "scope": "TY 2026–27 resident individual research components; section 516 helper audited but not integrated",
+        "scope": "TY 2026–27 resident individual research components; final payable/refund rounded, statutory total income not rounded",
         "surcharge_boundary_examples": 6,
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
         "section76_gain_inr": str(gain),
         "section156_rebate_boundary": "PASS",
         "withholding_credit_separate": "PASS",
-        "unsupported_mixed_income_boundaries_fail_closed": "PASS",
-        "statutory_rounding_primitive": "PASS; isolated section 516 helper audited",
-        "statutory_rounding_in_tax_calculator": "OPEN; not yet applied to income or final liability",
+        "mixed_income_marginal_relief_reference_case": "PASS; reference mix is an explicit provisional assumption",
+        "unsupported_mixed_income_reference_overflow_fails_closed": "PASS",
+        "statutory_rounding_primitive": "PASS; section 516 helper and settlement integration audited",
+        "statutory_rounding_final_payable_refund": "PASS; Section 516 applied to settlement amounts",
+        "statutory_total_income_rounding": "OPEN; component ordering still needs review",
         "authorization": "NO-GO",
     }
 

@@ -3,11 +3,12 @@
 This is a deliberately bounded research calculator, not a return-preparation
 engine. It handles section 202 ordinary-rate income, eligible sections 196,
 197 and 198 gains, section 76 specified-fund gains entered as ordinary-rate
-income, section 156 rebate, the section 202 surcharge schedule, cess, and tax
-withholding credits. Unsupported losses, deductions, non-resident/age rules,
-and mixed special-income marginal-relief cases fail closed or remain outside
-this component. Amounts are Decimal rupees; statutory rupee rounding is not
-applied in the fixture calculations.
+income, section 156 rebate, the section 202 surcharge schedule, a documented
+provisional mixed-income surcharge-relief composition, cess, and withholding
+credits. Unsupported losses, deductions, non-resident/age rules, and mixed
+relief cases whose reference composition cannot fit fail closed. Amounts are
+Decimal rupees; total-income rounding is open, while settlement amounts use
+section 516 rounding.
 """
 
 from __future__ import annotations
@@ -41,9 +42,9 @@ def section516_round_rupees(amount: Decimal | int | str) -> Decimal:
     """Round non-negative total-income/payable/refundable amounts per s.516.
 
     Section 516 first ignores paise, then rounds to the nearest ₹10; a final
-    rupee digit of 5 or more rounds upward. This primitive is intentionally
-    isolated: the tax component calculator does not yet apply it because the
-    ordering and allocation across mixed income components needs qualification.
+    rupee digit of 5 or more rounds upward. The calculator applies this helper
+    to final payable/refundable balances. Total-income rounding remains open
+    because its ordering across mixed income components needs qualification.
     """
     value = amount if isinstance(amount, Decimal) else Decimal(str(amount))
     if not value.is_finite() or value < ZERO:
@@ -167,32 +168,8 @@ def _surcharge_rate(total_income: Decimal, ordinary_ex_dividend_and_special_gain
     return Decimal("0.15")
 
 
-def _ordinary_surcharge_relief(
-    ordinary_income: Decimal,
-    tax_after_rebate: Decimal,
-    surcharge_before_relief: Decimal,
-) -> tuple[Decimal, Decimal]:
-    """Return (surcharge after relief, relief) for ordinary-only income."""
-    boundaries = (
-        (Decimal("5000000"), ZERO),
-        (Decimal("10000000"), Decimal("0.10")),
-        (Decimal("20000000"), Decimal("0.15")),
-    )
-    for boundary, threshold_rate in boundaries:
-        if ordinary_income <= boundary:
-            continue
-        baseline_tax = section202_slab_tax(boundary)
-        baseline_surcharge = baseline_tax * threshold_rate
-        ceiling = baseline_tax + baseline_surcharge + (ordinary_income - boundary)
-        uncapped = tax_after_rebate + surcharge_before_relief
-        if uncapped > ceiling:
-            allowed_surcharge = max(ZERO, ceiling - tax_after_rebate)
-            return allowed_surcharge, surcharge_before_relief - allowed_surcharge
-    return surcharge_before_relief, ZERO
-
-
-def calculate_tax(inputs: TaxInput) -> TaxResult:
-    """Calculate bounded TY 2026–27 components with explicit eligibility flags."""
+def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResult:
+    """Calculate components, optionally applying the section 3(5) surcharge cap."""
     if not inputs.resident_individual:
         raise NotImplementedError("this component supports resident individuals only")
     names = (
@@ -257,24 +234,59 @@ def calculate_tax(inputs: TaxInput) -> TaxResult:
     )
     income_tax = normal_tax_after_rebate + section196_tax + section197_tax + section198_tax
 
-    if special_income == ZERO:
-        surcharge_after_relief, relief = _ordinary_surcharge_relief(ordinary, income_tax, surcharge)
-    elif total_income > Decimal("5000000") and income_tax + surcharge > total_income - max(
-        threshold for threshold in (Decimal("5000000"), Decimal("10000000"), Decimal("20000000"))
-        if total_income > threshold
-    ):
-        # A mixed-income marginal-relief base depends on the statutory tax
-        # composition at the threshold. Do not invent that allocation.
-        # Example cases below the excess-income lower bound need no relief.
-        raise NotImplementedError("mixed special-income surcharge marginal relief needs a threshold-composition audit")
+    if not apply_marginal_relief:
+        surcharge_after_relief, relief = surcharge, ZERO
     else:
         surcharge_after_relief, relief = surcharge, ZERO
+        # Finance Act 2026 s.3(5): cap tax+surcharge at the tax+surcharge on
+        # the applicable threshold plus income above it. For a mixed income
+        # fixture, hold dividend and special-rate income fixed at the threshold
+        # and reduce ordinary income to construct the reference composition.
+        # This is explicit and auditable; cases where that composition cannot
+        # fit are fail-closed pending tax-professional confirmation.
+        applicable_boundaries = [
+            boundary for boundary in (Decimal("5000000"), Decimal("10000000"), Decimal("20000000"))
+            if total_income > boundary
+        ]
+        if applicable_boundaries:
+            boundary = applicable_boundaries[-1]
+            nonordinary_for_surcharge = (
+                dividends + values["section196_stcg"] + values["section197_ltcg"]
+                + values["section198_ltcg"]
+            )
+            if nonordinary_for_surcharge > boundary:
+                raise NotImplementedError(
+                    "marginal-relief reference composition cannot preserve special income at this threshold"
+                )
+            reference_inputs = TaxInput(
+                ordinary_income=boundary - nonordinary_for_surcharge,
+                dividend_income=dividends,
+                section196_stcg=values["section196_stcg"],
+                section197_ltcg=values["section197_ltcg"],
+                section198_ltcg=values["section198_ltcg"],
+                resident_individual=inputs.resident_individual,
+                section196_eligible=inputs.section196_eligible,
+                section197_eligible=inputs.section197_eligible,
+                section198_eligible=inputs.section198_eligible,
+            )
+            reference = _calculate_tax(reference_inputs, apply_marginal_relief=False)
+            ceiling = (
+                reference.income_tax_after_rebate + reference.surcharge_before_relief
+                + total_income - boundary
+            )
+            uncapped_tax_and_surcharge = income_tax + surcharge
+            if uncapped_tax_and_surcharge > ceiling:
+                surcharge_after_relief = max(ZERO, ceiling - income_tax)
+                relief = surcharge - surcharge_after_relief
 
     cess = (income_tax + surcharge_after_relief) * CESS_RATE
     tax_before_credits = income_tax + surcharge_after_relief + cess
     credit = values["tax_withheld_credit"]
-    balance = max(ZERO, tax_before_credits - credit)
-    excess = max(ZERO, credit - tax_before_credits)
+    # Section 516 applies to the final amount payable/refundable. Keep the
+    # pre-credit analytical tax precise for the ledger's marginal comparison;
+    # only the statutory settlement amounts are rounded here.
+    balance = section516_round_rupees(max(ZERO, tax_before_credits - credit))
+    excess = section516_round_rupees(max(ZERO, credit - tax_before_credits))
     return TaxResult(
         total_income=total_income,
         normal_rate_income=normal_income,
@@ -293,6 +305,11 @@ def calculate_tax(inputs: TaxInput) -> TaxResult:
         balance_payable=balance,
         excess_credit=excess,
     )
+
+
+def calculate_tax(inputs: TaxInput) -> TaxResult:
+    """Calculate bounded TY 2026–27 components with explicit eligibility flags."""
+    return _calculate_tax(inputs, apply_marginal_relief=True)
 
 
 def as_of_tax_year() -> str:

@@ -32,15 +32,15 @@ These rules are enough to specify loss character, expiry, and return-status data
 
 ## Mixed special-income surcharge marginal relief — source review
 
-Finance Act 2026 section 3(5) caps income tax plus surcharge near each surcharge threshold at the reference amount plus income above that threshold. The statutory text defines the reference as tax and surcharge, if applicable, “on” the threshold amount, but the current official materials reviewed here provide no worked allocation for a threshold case that contains multiple ordinary and special-rate income components. The result cannot be reproduced by applying the ordinary-only cap to the whole mixed case or by allocating the threshold composition without a sourced convention.
+Finance Act 2026 section 3(5) caps income tax plus surcharge near each surcharge threshold at the reference amount plus income above that threshold. The statutory formula does not provide a worked allocation for a threshold case with multiple ordinary and special-rate components. To make bounded progress, the calculator now uses a **provisional reference-composition convention**: hold dividend and special-rate income fixed, and reduce ordinary income to the threshold. It applies only when those held components fit within the threshold; otherwise it fails closed. This convention is tested at ₹50L and ₹1Cr but has not received professional review and must not be presented as a qualified legal interpretation.
 
-The existing calculator correctly fails closed when special-income composition makes this cap material. The next acceptance case needs official or tax-professional treatment for ordinary income plus special gains immediately below and above ₹50L, ₹1Cr, and ₹2Cr, including the 15% special-income surcharge cap, basic-exemption adjustment, and section 198 annual deduction. Cess is computed after income tax and surcharge; the Finance Act says marginal relief does not apply to cess.
+Additional acceptance cases must cover ordinary income plus special gains immediately below and above ₹50L, ₹1Cr, and ₹2Cr, including the 15% special-income surcharge cap, basic-exemption adjustment, and section 198 annual deduction. Cess is computed after income tax and surcharge; the Finance Act says marginal relief does not apply to cess.
 
 Primary source: [Finance Act 2026 section 3](https://indiacode.ecourtsindia.com/finance-act-2026/section/3/), especially subsections (4), (5), and (15); Department [Finance Bill Memorandum, marginal-relief notes](https://www.incometaxindia.gov.in/documents/81799/11848482/memo-2026.pdf/fe530cfa-9c49-fc5c-4bfa-fc96fd5e7b7a?t=1770008674037).
 
 ## Section 516 integration boundary
 
-The isolated `section516_round_rupees` primitive is covered by boundary cases. Integration remains open until the tax computation specifies which returned fields are statutory total income, how the rounded total controls threshold selection while preserving distinct rate buckets, and how the final payable/refundable amount is rounded after credits. The final payable/refundable result must be distinguished from the ledger's counterfactual incremental portfolio tax, which is not itself a statutory assessment amount.
+The `section516_round_rupees` primitive is covered by boundary cases and is applied to final payable/refundable balances after credits. Integration remains open for rounding statutory total income and specifying how the rounded total controls threshold selection while preserving distinct rate buckets. The final payable/refundable result is distinguished from the ledger's counterfactual incremental portfolio tax, which is not itself a statutory assessment amount.
 
 ## External Sprint 1 gates
 
