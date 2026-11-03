@@ -110,7 +110,7 @@ The reviewer must confirm that this residual convention applies to TY 2026–27 
 
 ## Section 156 mixed-income threshold review
 
-The calculator tests the section 156(2) ₹12 lakh threshold against section 516 deemed total income while limiting the rebate to section 202(1) tax. This follows section 156(2)(b)'s total-income wording and section 156(3)'s cap, with section 198(7) separately addressing qualifying long-term gains. Regression fixtures cover totals at ₹12,00,000, ₹12,00,010, and ₹12,20,000, including raw income that rounds across the threshold. These are arithmetic probes, not independent legal sign-off; the rounded-threshold interaction and other special-rate provisions remain for qualified review.
+The calculator tests the section 156(2) ₹12 lakh threshold against section 516 deemed total income. The statutory text distinguishes the formula base from the cap: section 156(2) refers to income-tax payable on total income, section 156(3) caps the deduction at section 202(1) tax, and section 198(7) excludes tax on qualifying section 198 gains from its rebate calculation. The helper therefore uses pre-rebate income-tax on total income (net of section 198 tax) for the formula, then caps the result at section 202 tax. A new section 196 mixed-income fixture covers the distinction. Regression fixtures also cover totals at ₹12,00,000, ₹12,00,010, and ₹12,20,000, including raw income that rounds across the threshold. These are arithmetic probes, not independent legal sign-off; the interaction across other special-rate provisions remains for qualified review.
 
 ## External Sprint 1 gates
 

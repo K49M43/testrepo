@@ -117,6 +117,14 @@ def audit() -> dict[str, object]:
     close(mixed_rebate_edge.section156_rebate, "39000.00")
     close(mixed_rebate_edge.section198_tax, "0")
     close(mixed_rebate_edge.tax_before_credits, "20800.0000")
+    mixed_stcg_rebate = calculate_tax(TaxInput(
+        ordinary_income=D("1190000"), section196_stcg=D("50000"),
+        section196_eligible=True,
+    ))
+    close(mixed_stcg_rebate.section202_tax_before_rebate, "59000")
+    close(mixed_stcg_rebate.section196_tax, "10000")
+    close(mixed_stcg_rebate.section156_rebate, "29000")
+    close(mixed_stcg_rebate.tax_before_credits, "41600.0000")
 
     # Finance Act 2026 ordinary-only surcharge/marginal relief examples A.
     ordinary_cases = (

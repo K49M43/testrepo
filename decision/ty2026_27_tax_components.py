@@ -76,21 +76,32 @@ def section202_slab_tax(taxable_income: Decimal | int | str) -> Decimal:
     return tax
 
 
-def section156_rebate(total_income: Decimal | int | str, section202_tax: Decimal | int | str) -> Decimal:
-    """Section 156(2) rebate against section 202(1) tax only.
+def section156_rebate(
+    total_income: Decimal | int | str,
+    section202_tax: Decimal | int | str,
+    *,
+    income_tax_before_rebate: Decimal | int | str | None = None,
+    section198_tax: Decimal | int | str = ZERO,
+) -> Decimal:
+    """Calculate section 156 rebate with its section 202 cap.
 
-    The caller supplies the section 516 deemed total income. The statutory
-    ₹12 lakh threshold and marginal-relief excess use total
-    income. The rebate amount remains capped by section 202(1) tax, so tax on
-    special-rate gains is never reduced by this function. This interpretation
-    follows the section 156 total-income wording and is still subject to
-    qualified review.
+    Section 156(2) measures the rebate against tax payable on total income;
+    subsection (3) caps the deduction at section 202(1) tax. Section 198(7)
+    specifically removes the tax payable on qualifying section 198 gains
+    before allowing that rebate. The optional total-tax argument preserves
+    the ordinary-only helper behavior for direct boundary calculations.
     """
     income = _amount(total_income, "total_income")
     tax = _amount(section202_tax, "section202_tax")
+    total_tax = _amount(
+        tax if income_tax_before_rebate is None else income_tax_before_rebate,
+        "income_tax_before_rebate",
+    )
+    section198_amount = _amount(section198_tax, "section198_tax")
+    rebate_base = max(ZERO, total_tax - section198_amount)
     if income <= REBATE_LIMIT:
-        return min(tax, REBATE_CAP)
-    marginal_relief = max(ZERO, tax - (income - REBATE_LIMIT))
+        return min(tax, REBATE_CAP, rebate_base)
+    marginal_relief = max(ZERO, rebate_base - (income - REBATE_LIMIT))
     return min(tax, marginal_relief)
 
 
@@ -226,11 +237,19 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
             equity_ltcg = max(ZERO, equity_ltcg - basic_shortfall)
 
     ordinary_tax_before_rebate = section202_slab_tax(normal_income)
-    rebate = section156_rebate(total_income, ordinary_tax_before_rebate) if inputs.resident_individual else ZERO
-    normal_tax_after_rebate = ordinary_tax_before_rebate - rebate
     section196_tax = stcg * Decimal("0.20")
     section197_tax = other_ltcg * Decimal("0.125")
     section198_tax = max(ZERO, equity_ltcg - SECTION198_ANNUAL_DEDUCTION) * Decimal("0.125")
+    income_tax_before_rebate = (
+        ordinary_tax_before_rebate + section196_tax + section197_tax + section198_tax
+    )
+    rebate = section156_rebate(
+        total_income,
+        ordinary_tax_before_rebate,
+        income_tax_before_rebate=income_tax_before_rebate,
+        section198_tax=section198_tax,
+    ) if inputs.resident_individual else ZERO
+    normal_tax_after_rebate = ordinary_tax_before_rebate - rebate
 
     # Section 3(4)(b), Table row 10: only the incremental slab tax attributable
     # to dividend income is subject to the special-income 15% surcharge cap.
