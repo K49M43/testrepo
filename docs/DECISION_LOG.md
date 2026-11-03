@@ -167,3 +167,8 @@ This log records **actual investment authorization** separately from engineering
 - Implemented a tested, explicit reference-composition convention for Finance Act 2026 section 3(5): hold dividend/special-rate income constant and reduce ordinary income to the active threshold. If special components do not fit at that threshold, the calculator fails closed. This is a provisional model convention, not a qualified legal opinion.
 - Applied section 516 rounding to final payable/refundable balances after credits. Pre-credit analytical tax remains unrounded for incremental ledger comparison; total-income rounding remains open.
 - Tax audit now covers ₹50L and ₹1Cr mixed-composition examples, overflow fail-closed behavior, and final payable/refund rounding. Qualified review, loss handling, investor data, CPI anchor, future-year tax law, and remote checks remain open. NO-GO unchanged.
+
+## 2026-11-03 — Sprint 1 first-principles closure sequence
+- Recorded the root cause of the repeated open status: existing components do not yet form one dependency-ordered tax-year pipeline. Capital-loss netting changes gain buckets; those determine statutory income and surcharge; credits and section 516 settlement rounding follow afterward.
+- Added Gates A–G to `docs/SPRINT_01_AFTER_TAX_LEDGER.md`, separating local implementation from professional review, investor-supplied facts, and authenticated remote CI.
+- No new calculation was marked qualified. Sprint 1 remains IN PROGRESS; investment authorization remains NO-GO.
