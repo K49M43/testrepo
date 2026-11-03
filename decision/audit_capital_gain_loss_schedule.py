@@ -147,6 +147,18 @@ def audit() -> dict[str, object]:
     assert integrated.tax_application_allowed is False
     assert not any(row.get("event_id") in {"coupon", "dividend"} for row in integrated.offset_trace)
 
+    # The adapter must reject a tampered magnitude or a non-loss signed result
+    # before either can create candidate offsets.
+    loss_row = ledger.capital_loss_trace[0]
+    mismatched_loss = [{**loss_row, "loss_amount_inr": "11"}]
+    rejects(lambda: build_schedule_from_disposal_traces(
+        "2026-27", ledger.tax_event_trace, mismatched_loss, []),
+        "does not reconcile")
+    wrong_sign_loss = [{**loss_row, "signed_realized_result_inr": "10"}]
+    rejects(lambda: build_schedule_from_disposal_traces(
+        "2026-27", ledger.tax_event_trace, wrong_sign_loss, []),
+        "must be finite and negative")
+
     return {
         "audit": "PASS",
         "explicit_cross_bucket_allocation": "PASS; no priority inferred",
@@ -154,6 +166,7 @@ def audit() -> dict[str, object]:
         "eight_succeeding_year_expiry_and_return_gate": "PASS",
         "gain_loss_caps_and_traceability": "PASS",
         "ledger_to_schedule_contract": "PASS; coupon/dividend excluded, tax application still barred",
+        "loss_trace_amount_reconciliation": "PASS; mismatched amount and non-loss sign rejected",
     }
 
 

@@ -150,8 +150,21 @@ def build_schedule_from_disposal_traces(
             raise ValueError(f"current-year loss {event_id} has an unexpected carry-forward state")
         if row.get("tax_year") != tax_year:
             raise ValueError(f"capital-loss event {event_id} belongs to a different tax year")
+        # Reconcile the convenience magnitude against the source signed result.
+        # Otherwise a malformed or edited trace could silently overstate the
+        # loss available for explicit candidate offsets.
+        try:
+            signed_result = Decimal(str(row["signed_realized_result_inr"]))
+        except (KeyError, ArithmeticError, ValueError) as error:
+            raise ValueError(f"capital-loss event {event_id} requires a valid signed realized result") from error
+        if not signed_result.is_finite() or signed_result >= ZERO:
+            raise ValueError(f"capital-loss event {event_id} signed realized result must be finite and negative")
+        loss_amount = _positive(row.get("loss_amount_inr", "0"),
+                                f"capital-loss event {event_id} amount")
+        if loss_amount != -signed_result:
+            raise ValueError(f"capital-loss event {event_id} amount does not reconcile to signed realized result")
         losses.append(Loss(event_id, event_id, lot_id, tax_year,
-                           _positive(row.get("loss_amount_inr", "0"), f"capital-loss event {event_id} amount"),
+                           loss_amount,
                            bucket_character[1], False))
     losses.extend(carried_losses or [])
     return build_schedule(tax_year, gains, losses, offsets)
