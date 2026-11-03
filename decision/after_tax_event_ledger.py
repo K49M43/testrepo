@@ -115,6 +115,7 @@ class EventLedgerResult:
     net_accessible_fixture_wealth_inr: Decimal
     reconciliation_residual_inr: Decimal
     open_lots: list[dict[str, str]]
+    tax_event_trace: list[dict[str, Any]]
     tax_scope: str = "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input"
 
     def as_json(self) -> dict[str, Any]:
@@ -175,6 +176,35 @@ def run_ledger(
     cash = contributions = gross_income = withholding = transaction_costs = other_fees = withdrawals = ZERO
     realized_economic_gain = ZERO
     event_withholding_by_year: dict[str, Decimal] = {}
+    tax_event_trace: list[dict[str, Any]] = []
+    tax_event_ids_by_year: dict[str, dict[str, list[str]]] = {}
+
+    def record_tax_source(event: LedgerEvent, category: str, taxable_amount: Decimal, rule_reference: str,
+                          *, acquired: date | None = None) -> None:
+        tax_event_trace.append({
+            "event_id": event.event_id,
+            "event_date": event.event_date.isoformat(),
+            "tax_year": event.tax_year,
+            "instrument_id": event.instrument_id,
+            "event_type": event.event_type,
+            "lot_id": event.lot_id,
+            "lot_acquired": acquired.isoformat() if acquired else None,
+            "tax_category": category,
+            "taxable_amount_inr": str(taxable_amount),
+            "tax_classification": event.tax_classification,
+            "tax_classification_confirmed": event.tax_classification_confirmed,
+            "eligibility_confirmed": {
+                "section76_specified_fund": event.section76_specified_fund_confirmed,
+                "section196": event.section196_eligibility_confirmed,
+                "section197": event.section197_eligibility_confirmed,
+                "section198": event.section198_eligibility_confirmed,
+            },
+            "rule_reference": rule_reference,
+            "source_or_assumption": event.source_or_assumption,
+            "qualification_status": event.qualification_status,
+        })
+        year_sources = tax_event_ids_by_year.setdefault(event.tax_year, {})
+        year_sources.setdefault(category, []).append(event.event_id)
 
     def year_income(value: str) -> YearIncome:
         return incomes.setdefault(value, YearIncome())
@@ -232,6 +262,8 @@ def run_ledger(
             gross = amount(event.gross_income_inr, "gross_income_inr")
             if cash_amount != gross or gross == ZERO or event.tax_withheld_inr:
                 raise ValueError(f"income event cash must equal positive gross income; withholding is separate: {event.event_id}")
+            if event.lot_id and (event.lot_id not in lots or lots[event.lot_id].instrument_id != event.instrument_id):
+                raise ValueError(f"income event lot must identify an open lot of the same instrument: {event.event_id}")
             if not event.tax_classification_confirmed or event.tax_classification not in {"ordinary", "dividend"}:
                 raise ValueError(f"income event requires confirmed ordinary/dividend treatment: {event.event_id}")
             cash += gross
@@ -239,8 +271,12 @@ def run_ledger(
             income = year_income(year)
             if event.tax_classification == "dividend":
                 income.dividend_income += gross
+                record_tax_source(event, "dividend", gross, "TY 2026-27 component model: section 202 ordinary-rate income",
+                                  acquired=lots[event.lot_id].acquired if event.lot_id else None)
             else:
                 income.ordinary_income += gross
+                record_tax_source(event, "ordinary", gross, "TY 2026-27 component model: section 202 ordinary income",
+                                  acquired=lots[event.lot_id].acquired if event.lot_id else None)
             continue
 
         if event.event_type == "withholding":
@@ -251,6 +287,8 @@ def run_ledger(
             withholding += withheld
             year_income(year).withholding_credit += withheld
             event_withholding_by_year[year] = event_withholding_by_year.get(year, ZERO) + withheld
+            record_tax_source(event, "withholding_credit", withheld,
+                              "TY 2026-27 component model: tax withheld is a credit, not a reduction in gross income")
             continue
 
         if event.event_type == "fee":
@@ -295,21 +333,30 @@ def run_ledger(
                     if lot.acquired < date(2023, 4, 1) or not event.section76_specified_fund_confirmed:
                         raise ValueError("section 76 requires a qualifying specified mutual fund and a lot acquired on/after 1 April 2023")
                     income.ordinary_income += realized_gain
+                    category = "ordinary"
+                    rule_reference = "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income"
                 elif event.tax_classification == "section196":
                     if not event.section196_eligibility_confirmed:
                         raise ValueError("section 196 requires confirmed STT and asset eligibility")
                     income.section196_stcg += realized_gain
                     income.section196_eligible = True
+                    category = "section196_stcg"
+                    rule_reference = "TY 2026-27 component model: section 196 short-term gain"
                 elif event.tax_classification == "section197":
                     if not event.section197_eligibility_confirmed:
                         raise ValueError("section 197 requires confirmed long-term asset eligibility")
                     income.section197_ltcg += realized_gain
                     income.section197_eligible = True
+                    category = "section197_ltcg"
+                    rule_reference = "TY 2026-27 component model: section 197 long-term gain"
                 elif event.tax_classification == "section198":
                     if not event.section198_eligibility_confirmed:
                         raise ValueError("section 198 requires confirmed equity and STT eligibility")
                     income.section198_ltcg += realized_gain
                     income.section198_eligible = True
+                    category = "section198_ltcg"
+                    rule_reference = "TY 2026-27 component model: section 198 long-term gain"
+                record_tax_source(event, category, realized_gain, rule_reference, acquired=lot.acquired)
             elif event.tax_classification != "none" and not event.tax_classification_confirmed:
                 raise ValueError("zero-gain event cannot carry an unconfirmed tax classification")
 
@@ -367,6 +414,9 @@ def run_ledger(
                 "section198_ltcg": str(portfolio.section198_ltcg),
                 "withholding_credit": str(portfolio.withholding_credit),
             },
+            "portfolio_income_source_event_ids": {
+                category: ids for category, ids in sorted(tax_event_ids_by_year.get(year, {}).items())
+            },
             "total_tax_before_credits": str(total_tax.tax_before_credits),
             "external_only_tax_before_credits": str(external_only_tax),
             "incremental_portfolio_tax": str(year_incremental_tax),
@@ -415,4 +465,5 @@ def run_ledger(
             }
             for lot in sorted(lots.values(), key=lambda item: (item.acquired, item.lot_id))
         ],
+        tax_event_trace=tax_event_trace,
     )

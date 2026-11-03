@@ -206,7 +206,8 @@ def bond_case(months: int) -> dict[str, Any]:
             coupon = principal * DIRECT_BOND_COUPON_RATE
             coupon_total += coupon
             add(event(f"bond-coupon-{lot_id}-{coupon_year}", coupon_date, 0, "coupon", coupon,
-                      instrument=SYNTHETIC_BOND, income=coupon, tax_class="ordinary", confirmed=True))
+                      instrument=SYNTHETIC_BOND, lot=lot_id, income=coupon,
+                      tax_class="ordinary", confirmed=True))
             coupon_year += 1
 
     for lot_id, (_, principal) in lots.items():
@@ -250,7 +251,7 @@ def reconcile() -> dict[str, Any]:
         "analysis_date": "2026-11-03",
         "run_manifest": {
             "rule_vintage": "Act 2025 / Finance Act 2026 component mapping as recorded in tax_rules_asof.md; TY 2026-27 calculator held constant",
-            "contract_version": "1.2",
+            "contract_version": "1.3",
             "source_sha256": {
                 relative: hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
                 for relative in manifest_paths

@@ -69,7 +69,7 @@ def audit() -> dict[str, object]:
     events = [
         event("cash-1", date(2026, 10, 31), 1, "initial_contribution", "1000"),
         event("buy-a", date(2026, 10, 31), 2, "acquisition", "505", lot="lot-a", units="5", price="100", fee="5", basis_addition="5"),
-        event("coupon", date(2027, 3, 31), 1, "coupon", "1000", gross_income="1000", tax_class="ordinary", confirmed=True),
+        event("coupon", date(2027, 3, 31), 1, "coupon", "1000", lot="lot-a", gross_income="1000", tax_class="ordinary", confirmed=True),
         event("coupon-tds", date(2027, 3, 31), 2, "withholding", "100", withholding="100"),
         event("dividend", date(2027, 4, 1), 1, "distribution", "500", gross_income="500", tax_class="dividend", confirmed=True),
         event("dividend-tds", date(2027, 4, 1), 2, "withholding", "50", withholding="50"),
@@ -99,6 +99,28 @@ def audit() -> dict[str, object]:
     assert D(result.tax_years["2026-27"]["remaining_incremental_tax_after_portfolio_withholding"]) == D("212")
     assert D(result.tax_years["2027-28"]["portfolio_income"]["section197_ltcg"]) == D("38")
     assert D(result.tax_years["2027-28"]["incremental_portfolio_tax"]) == D("160.9400")
+    assert result.tax_years["2026-27"]["portfolio_income_source_event_ids"] == {
+        "ordinary": ["coupon"], "withholding_credit": ["coupon-tds"]
+    }
+    assert result.tax_years["2027-28"]["portfolio_income_source_event_ids"] == {
+        "dividend": ["dividend"], "section197_ltcg": ["sell-a"],
+        "withholding_credit": ["dividend-tds"]
+    }
+    trace_by_id = {line["event_id"]: line for line in result.tax_event_trace}
+    assert trace_by_id["sell-a"]["lot_id"] == "lot-a"
+    assert trace_by_id["sell-a"]["lot_acquired"] == "2026-10-31"
+    assert D(trace_by_id["sell-a"]["taxable_amount_inr"]) == D("38")
+    assert trace_by_id["sell-a"]["rule_reference"].startswith("TY 2026-27 component model: section 197")
+    assert trace_by_id["coupon"]["lot_id"] == "lot-a"
+    assert trace_by_id["coupon"]["lot_acquired"] == "2026-10-31"
+    assert trace_by_id["coupon-tds"]["tax_category"] == "withholding_credit"
+    for year in ("2026-27", "2027-28"):
+        by_category: dict[str, Decimal] = {}
+        for line in result.tax_event_trace:
+            if line["tax_year"] == year:
+                by_category[line["tax_category"]] = by_category.get(line["tax_category"], D("0")) + D(line["taxable_amount_inr"])
+        for category, amount in by_category.items():
+            assert D(result.tax_years[year]["portfolio_income"][category]) == amount
     assert result.incremental_portfolio_tax_inr == D("472.9400")
     assert result.remaining_incremental_tax_after_withholding_inr == D("322.9400")
     assert result.net_accessible_fixture_wealth_inr == D("2110.0600")

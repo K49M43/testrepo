@@ -1,5 +1,5 @@
 {
-  "contract_version": "1.2",
+  "contract_version": "1.3",
   "purpose": "Deterministic research fixture; not an investor-specific tax result or return forecast.",
   "currency": "INR",
   "cashflow_fixture": {
@@ -21,6 +21,7 @@
       "tax_year": "Derived from event_date using the Indian tax year beginning 1 April; mismatch is rejected.",
       "tax_withholding_inr": "Record withholding as a separate withholding event and credit in its event tax year; do not net it against gross income.",
       "tax_classification": "Income needs confirmed ordinary/dividend classification. Positive realized gains need confirmed section76/196/197/198 classification and corresponding eligibility predicate. Unrealized gains are valuation only.",
+      "tax_source_trace": "Each portfolio tax-year category and withholding credit must list source event IDs. Each source record carries date, tax year, instrument, classification, rule reference, and lot/acquisition date when lot-linked. Annual tax is calculated at tax-year level and is not allocated across events.",
       "amount_precision": "Decimal arithmetic; no statutory rupee or transaction rounding is applied. Derived unit-price multiplication may retain a computation-only residual up to ₹0.000000000001; residuals above this fail reconciliation."
     },
     "conditional": {

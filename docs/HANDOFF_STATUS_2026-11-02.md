@@ -2,7 +2,13 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
-## Latest development update — 3 November 2026 (Sprint 1 Increment 4)
+## Latest development update — 3 November 2026 (Sprint 1 tax-source trace hardening)
+
+- After Increment 4, an acceptance review found that annual tax-category inputs needed an explicit link back to taxable source events. `decision/after_tax_event_ledger.py` now emits event-level source records and per-tax-year event IDs by category; sale and lot-linked coupon records include acquisition dates, and withholding remains a separate credit. Annual tax remains calculated per year and is not fabricated as an event-specific amount.
+- Input contract v1.3 and `research/stage512/2026-11-03/terminal_case_reconciliation.json` record the trace contract and reproducible source evidence. The local audits pass; GitHub Actions must be checked on the updated PR head before acceptance.
+- PR #12 remains a draft, stacked on PR #11, and must not be merged until its review/check state is confirmed and the user decides. Sprint 1 remains open; actual investor inputs, CPI alignment, future-law validation, and qualified tax-professional review remain gates. Authorization stays **NO-GO**.
+
+## Prior development update — 3 November 2026 (Sprint 1 Increment 4)
 
 - Sprint 1 Increments 0–4 now pass only at their recorded fixture or research-source scope. Increment 4 reconciles the frozen 120/122-month schedules across one-year synthetic fund exit, staged liquidation, and direct-bond coupon/maturity cases. The independently audited artifact is `research/stage512/2026-11-03/terminal_case_reconciliation.json`; source/code/rule SHA256 values are pinned in its run manifest.
 - Exact 120/122 contributions reconcile to ₹89,81,227.3803 / ₹91,10,914.503305. Outputs use invented 5% simple annual fund NAV appreciation and a 5% bond coupon, explicit synthetic ₹30 lakh other income, zero fixture fees, and TY 2026–27 tax rules held constant into the future. No real-wealth or investor tax conclusion follows.
