@@ -13,7 +13,7 @@ applied in the fixture calculations.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from decimal import Decimal
+from decimal import Decimal, ROUND_DOWN
 from typing import Any
 
 
@@ -35,6 +35,23 @@ BASIC_EXEMPTION_202 = Decimal("400000")
 SECTION198_ANNUAL_DEDUCTION = Decimal("125000")
 CESS_RATE = Decimal("0.04")
 SPECIAL_SURCHARGE_CAP = Decimal("0.15")
+
+
+def section516_round_rupees(amount: Decimal | int | str) -> Decimal:
+    """Round non-negative total-income/payable/refundable amounts per s.516.
+
+    Section 516 first ignores paise, then rounds to the nearest ₹10; a final
+    rupee digit of 5 or more rounds upward. This primitive is intentionally
+    isolated: the tax component calculator does not yet apply it because the
+    ordering and allocation across mixed income components needs qualification.
+    """
+    value = amount if isinstance(amount, Decimal) else Decimal(str(amount))
+    if not value.is_finite() or value < ZERO:
+        raise ValueError("section 516 amount must be finite and non-negative")
+    whole_rupees = value.to_integral_value(rounding=ROUND_DOWN)
+    lower_ten = (whole_rupees // Decimal("10")) * Decimal("10")
+    remainder = whole_rupees - lower_ten
+    return lower_ten + (Decimal("10") if remainder >= Decimal("5") else ZERO)
 
 
 def _amount(value: Decimal | int | str, name: str) -> Decimal:

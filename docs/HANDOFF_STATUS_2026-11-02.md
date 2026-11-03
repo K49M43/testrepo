@@ -95,3 +95,9 @@ Review `AGENTS.md` and `docs/INVESTMENT_DECISION_MANDATE_2036.md`. The existing 
 **Investor GO:** **NO-GO**.
 
 Never erase the failed manifests. Write a new dated audit for new findings and update the gate ledger only with verified results.
+
+## 2026-11-03 — Sprint 1 section 516 rounding primitive
+- **Executed:** added `section516_round_rupees` as an isolated Decimal helper implementing the statutory rule to ignore paise and round total income/payable/refundable to the nearest ₹10, with ₹5 upward. Boundary cases and negative-input rejection pass in `decision/audit_ty2026_27_tax_components.py`.
+- **Integration boundary:** tax outputs remain unrounded. Do not describe statutory rounding as implemented in the calculator; the order of total-income rounding and handling of mixed ordinary/special-income components remain to be audited before integration.
+- **Validation:** tax-component and event-ledger audits passed; terminal reconciliation artifact regenerated and its `--check` passed with updated rule-source hashes; Python compilation and `git diff --check` passed. Terminal fixture economics did not change.
+- **Next:** resolve mixed special-income surcharge relief and loss set-off/carry-forward with official-source worked cases, then integrate rounding and re-audit. External professional review, investor-specific facts, and remote GitHub checks remain open. Sprint 1 is **IN PROGRESS**; investment authorization remains **NO-GO**.

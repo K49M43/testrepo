@@ -11,6 +11,7 @@ from ty2026_27_tax_components import (
     section156_rebate,
     section202_slab_tax,
     section76_specified_fund_gain,
+    section516_round_rupees,
 )
 
 
@@ -22,6 +23,17 @@ def close(actual: Decimal, expected: str) -> None:
 
 
 def audit() -> dict[str, object]:
+    # Section 516 drops paise before rounding to ₹10, with 5 rupees upward.
+    for raw, expected in (("4.99", "0"), ("5", "10"), ("14.99", "10"),
+                          ("15", "20"), ("19.99", "20"), ("20", "20")):
+        close(section516_round_rupees(raw), expected)
+    try:
+        section516_round_rupees("-0.01")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("section 516 rounding must reject negative amounts")
+
     # Section 202 slab arithmetic, including statutory band edges.
     close(section202_slab_tax(D("1200000")), "60000.00")
     close(section202_slab_tax(D("2400000")), "300000.00")
@@ -140,7 +152,7 @@ def audit() -> dict[str, object]:
 
     return {
         "audit": "PASS",
-        "scope": "TY 2026–27 resident individual research components; statutory rupee rounding omitted",
+        "scope": "TY 2026–27 resident individual research components; section 516 helper audited but not integrated",
         "surcharge_boundary_examples": 6,
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
@@ -148,7 +160,8 @@ def audit() -> dict[str, object]:
         "section156_rebate_boundary": "PASS",
         "withholding_credit_separate": "PASS",
         "unsupported_mixed_income_boundaries_fail_closed": "PASS",
-        "statutory_rounding": "OPEN; deliberately not represented as implemented",
+        "statutory_rounding_primitive": "PASS; isolated section 516 helper audited",
+        "statutory_rounding_in_tax_calculator": "OPEN; not yet applied to income or final liability",
         "authorization": "NO-GO",
     }
 
