@@ -1,5 +1,5 @@
 {
-  "contract_version": "1.0",
+  "contract_version": "1.1",
   "purpose": "Deterministic research fixture; not an investor-specific tax result or return forecast.",
   "currency": "INR",
   "cashflow_fixture": {
@@ -14,13 +14,23 @@
     "transaction_rounding": "Not assumed; fixture retains decimal schedule values."
   },
   "ledger_event_fields": {
-    "required": ["event_id", "event_date", "tax_year", "event_type", "instrument_id", "cash_amount_inr", "source_or_assumption", "qualification_status"],
-    "conditional": {
-      "acquisition_or_reinvestment": ["lot_id", "units", "unit_price_inr", "cost_basis_inr", "transaction_cost_inr"],
-      "coupon_or_distribution": ["gross_income_inr", "withholding_inr", "reinvested_lot_id"],
-      "disposal_or_maturity": ["lot_id", "units_disposed", "proceeds_inr", "transaction_cost_inr", "realized_gain_inr", "holding_period_classification"]
+    "required": ["event_id", "event_date", "tax_year", "event_sequence", "event_type", "instrument_id", "cash_amount_inr", "source_or_assumption", "qualification_status"],
+    "conventions": {
+      "cash_amount_inr": "Finite non-negative magnitude; event_type determines direction. Contributions and income add cash; acquisitions, fees, withholding, and withdrawals use cash; disposals add proceeds less fee.",
+      "event_sequence": "Unique integer within each date; controls same-day processing order.",
+      "tax_year": "Derived from event_date using the Indian tax year beginning 1 April; mismatch is rejected.",
+      "tax_withholding_inr": "Record withholding as a separate withholding event and credit in its event tax year; do not net it against gross income.",
+      "tax_classification": "Income needs confirmed ordinary/dividend classification. Positive realized gains need confirmed section76/196/197/198 classification and corresponding eligibility predicate. Unrealized gains are valuation only.",
+      "amount_precision": "Decimal arithmetic; no statutory rupee rounding is applied by this fixture implementation."
     },
-    "allowed_event_types": ["initial_contribution", "sip_contribution", "acquisition", "fee", "coupon", "distribution", "withholding", "reinvestment", "partial_disposal", "maturity", "terminal_disposal"]
+    "conditional": {
+      "acquisition_or_reinvestment": ["lot_id", "units", "unit_price_inr", "transaction_cost_inr", "tax_basis_addition_inr"],
+      "coupon_or_distribution": ["gross_income_inr", "tax_classification", "tax_classification_confirmed"],
+      "withholding": ["tax_withheld_inr"],
+      "disposal_or_maturity": ["lot_id", "units", "unit_price_inr", "transaction_cost_inr", "deductible_transfer_expenses_inr", "tax_classification", "tax_classification_confirmed", "applicable_section_eligibility_confirmation"]
+    },
+    "allowed_event_types": ["initial_contribution", "sip_contribution", "acquisition", "fee", "coupon", "distribution", "withholding", "withdrawal", "reinvestment", "partial_disposal", "maturity", "terminal_disposal"],
+    "implemented_ledger_scope": "Synthetic event/lot fixture supports positive gains and explicit eligible sections only. Capital losses, set-off/carry-forward, investor-specific facts, and statutory rupee rounding are not implemented; reject or keep unqualified rather than infer."
   },
   "unknowns_that_must_not_be_defaulted": [
     "actual contribution and investment dates",

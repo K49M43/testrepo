@@ -1,0 +1,41 @@
+name: Sprint 1 tax and ledger audits
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/tax_rules_asof.md'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+  push:
+    paths:
+      - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/tax_rules_asof.md'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tax-ledger-audits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit TY 2026-27 tax components
+        run: python decision/audit_ty2026_27_tax_components.py
+      - name: Audit synthetic event and lot ledger
+        run: python decision/audit_after_tax_event_ledger.py
+      - name: Compile tax and ledger modules
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py
