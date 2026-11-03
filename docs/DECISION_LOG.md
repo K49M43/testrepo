@@ -157,3 +157,8 @@ This log records **actual investment authorization** separately from engineering
 - The helper is not integrated into the TY 2026–27 calculator. Total-income rounding order and mixed-income composition still need a source-based worked-case audit.
 - Tax-component and event-ledger audits passed; the terminal reconciliation artifact was refreshed for the updated tax-rule source hash and `--check` passed. Existing fixture results are unchanged.
 - Sprint 1 remains open for mixed-income surcharge relief, capital-loss rules, integrated statutory rounding, qualified review, actual investor inputs, CPI anchoring, and remote check verification. Investment authorization remains **NO-GO**.
+
+## 2026-11-03 — Sprint 1 tax-source and completion-gate audit
+- Verified official Income-tax Act 2025 sections 108/111/121 and section 536 transition provisions for capital-loss character, carry-forward, expiry, return prerequisite, and legacy-loss preservation. Added `decision/capital_loss_and_marginal_relief_review.md` with the source map and acceptance cases.
+- The tax engine still cannot safely apply losses across its special-rate buckets or calculate mixed-composition Finance Act section 3(5) marginal relief without a reviewed worked-case convention. Those paths remain fail-closed; section 516 remains a tested primitive only.
+- Sprint 1 has external and investor-specific gates that cannot be closed from repository evidence: qualified professional signoff, actual private inputs and aligned CPI base, future-law refresh, and authenticated remote checks. Keep status IN PROGRESS and investment authorization NO-GO.
