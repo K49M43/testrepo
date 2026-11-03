@@ -52,6 +52,35 @@ The isolated schedule is implemented in `decision/capital_gain_loss_schedule.py`
 7. Annual loss use reconciles to gain buckets and cannot create negative taxable gains or cross the capital-gains head.
 8. At least one independent tax-professional worked example must cover losses spanning differently taxed gain buckets before the integration gate can pass.
 
+## Next gate — rate-bucket allocation review packet
+
+The ledger-to-schedule trace adapter now passes synthetic integration. The next unresolved gate is not more adapter code: it is an approved rule for choosing or constraining loss allocations when the statute permits multiple capital-gain destinations. The examples below are arithmetic fixtures for review, not conclusions about a taxpayer's allowed choice or tax liability.
+
+### Worked allocation cases
+
+All amounts are ₹000. Tax buckets preserve the calculator's existing distinction: section 76 is deemed short-term but uses ordinary-rate tax treatment in this component model; sections 196, 197, and 198 retain their separate rate treatment. The official Act defines section 76 gains as short-term capital gains; its applicability and loss treatment still require product and legal confirmation. [Official section 76](https://www.incometaxindia.gov.in/w/section-76-102).
+
+| Case | Gross gain buckets / loss | Allocation candidate 1 | Allocation candidate 2 | Reviewer must decide |
+|---|---|---|---|---|
+| A. Same-year STCL across rate buckets | §76 100; §196 100; §197 100; §198 250; STCL 150 | 100 to §76 + 50 to §196 → remaining 0 / 50 / 100 / 250 | 100 to §198 + 50 to §197 → remaining 100 / 100 / 50 / 150 | Are both allocations legally available, or is an ordering prescribed? What is the allowable selection basis? |
+| B. Same-year LTCL | §76 100; §196 100; §197 100; §198 250; LTCL 150 | 100 to §197 + 50 to §198 → remaining 100 / 100 / 0 / 200 | 150 to §198 → remaining 100 / 100 / 100 / 100 | Confirm §76/§196 exclusions and whether section 197 vs 198 allocation is elective or ordered. |
+| C. Carried STCL and LTCL | Use Case A gains; carried STCL 150 and LTCL 150 | Apply carried STCL to any eligible capital bucket; LTCL only to §197/§198 | Vary the explicit allocation while preserving character | Confirm section 111 use order, expiry by origin tax year, and return/determination evidence under sections 121 and 263(1). |
+| D. Section 198 annual deduction interaction | §198 gross 250; STCL 100; compare offsets allocated to §198 vs another eligible bucket | Candidate §198 amount after offset = 150, then evaluate the annual deduction | Leave §198 at 250 and offset another eligible bucket | Confirm the legal order between capital-loss set-off and the section 198 annual deduction, including whether the deduction is once per taxpayer-year. |
+| E. Section 76 negative result | Qualifying specified-fund unit with a computed negative result | Preserve as a short-term loss candidate under the applicable computation | Reject / separately classify if the section 76 formula or other provision disallows that result | Confirm whether and how a negative section 76 computation enters section 108 loss set-off. Do not assume ordinary treatment means ordinary-income loss. |
+| F. Carry-forward eligibility | Residual current-year loss, one timely section 263(1) return case and one missing/late/ineligible case | Use only a loss determined in pursuance of qualifying return evidence | Reject carry-forward and preserve the source loss record | Define evidence fields: origin year, return type/date/due date, determination status, original character, balance and expiry. Test section 536 legacy losses separately. |
+
+These cases intentionally do not calculate tax. A reviewer should return a signed disposition for each question, identify any governing return-form/rule instruction, and state whether the resulting rule is mandatory, taxpayer-elective, or still ambiguous. If ambiguity remains, the implementation must preserve explicit candidate scenarios and keep tax application unqualified until a compliant selection rule is established.
+
+### Reviewer acceptance
+
+1. Every permitted and prohibited loss-to-gain pair has a source-supported rule.
+2. The allocation mechanism does not let capital losses offset coupons, dividends, withholding credits, or unrealized gains.
+3. The reviewer decides the interaction with sections 76 and 198, the section 198 deduction, statutory total-income rounding, and surcharge/marginal relief.
+4. The reviewer confirms the return and determination evidence needed for section 121 and the section 536 transition for legacy losses.
+5. One independent hand calculation covers the full tax year with external income, portfolio gains, portfolio losses, credits, and a full-tax versus external-only comparison.
+
+Until those five checks are signed off, the next implementation gate may validate arithmetic and candidate schedules but must not feed losses into the tax calculator.
+
 ## Mixed special-income surcharge marginal relief — source review
 
 Finance Act 2026 section 3(5) caps income tax plus surcharge near each surcharge threshold at the reference amount plus income above that threshold. The statutory formula does not provide a worked allocation for a threshold case with multiple ordinary and special-rate components. To make bounded progress, the calculator now uses a **provisional reference-composition convention**: hold dividend and special-rate income fixed, and reduce ordinary income to the threshold. It applies only when those held components fit within the threshold; otherwise it fails closed. This convention is tested at ₹50L and ₹1Cr but has not received professional review and must not be presented as a qualified legal interpretation.

@@ -371,6 +371,11 @@ def run_ledger(
                         "character": character,
                         "tax_classification": event.tax_classification,
                         "tax_classification_confirmed": event.tax_classification_confirmed,
+                        "carryforward_eligibility": {
+                            "status": "UNDETERMINED_RETURN_EVIDENCE_NOT_SUPPLIED",
+                            "return_filed_under_263_1": None,
+                            "evidence_reference": None,
+                        },
                         "eligibility_confirmed": {
                             "section76_specified_fund": event.section76_specified_fund_confirmed,
                             "section196": event.section196_eligibility_confirmed,

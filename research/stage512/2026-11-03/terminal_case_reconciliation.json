@@ -7,7 +7,7 @@
     "source_sha256": {
       "decision/terminal_case_reconciliation.py": "bb13cf479000d7b009ec00b84fe4433b042a293661873fd400a697795c5a0a44",
       "decision/audit_terminal_case_reconciliation.py": "106a4889d57ed5761ccb9e93d71cc4d16950fabff222f2451b36c3a99f597b87",
-      "decision/after_tax_event_ledger.py": "8df9a267c5fe4e6c116aff4df56aee541506e174b096fb4a1da7cfabc140e982",
+      "decision/after_tax_event_ledger.py": "ae11431ad6bd83c8f72e74b4534ef6e71a4a8857ffc6c8d66e9df695b5a82faa",
       "decision/ty2026_27_tax_components.py": "b944787c9d877fa1288619c0c1c9cad8a3bf4fecd22eb80474aeeac2c3ca79dc",
       "decision/tax_rules_asof.md": "9c690eaf8996f23702d16cd9c5ddaf28cc90e6671c7f31af03252cf093da70b7",
       "research/stage512/2026-11-02/after_tax_ledger_input_contract.json": "fd7c1a5eeb3eb929c0738d5cc7ccc6c181c41bff83491ed5d61b87e9392444ec",

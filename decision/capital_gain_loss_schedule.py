@@ -143,6 +143,11 @@ def build_schedule_from_disposal_traces(
             raise ValueError(f"capital-loss event {event_id} is not tax-classification confirmed")
         if row.get("eligibility_confirmed", {}).get(eligibility_key[row["tax_classification"]]) is not True:
             raise ValueError(f"capital-loss event {event_id} is not eligibility confirmed")
+        cfl = row.get("carryforward_eligibility", {})
+        if (cfl.get("status") != "UNDETERMINED_RETURN_EVIDENCE_NOT_SUPPLIED"
+                or cfl.get("return_filed_under_263_1") is not None
+                or cfl.get("evidence_reference") is not None):
+            raise ValueError(f"current-year loss {event_id} has an unexpected carry-forward state")
         if row.get("tax_year") != tax_year:
             raise ValueError(f"capital-loss event {event_id} belongs to a different tax year")
         losses.append(Loss(event_id, event_id, lot_id, tax_year,

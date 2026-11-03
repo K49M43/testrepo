@@ -181,9 +181,26 @@ def audit() -> dict[str, object]:
     assert loss_result.capital_loss_trace[0]["proceeds_inr"] == "90"
     assert abs(D(loss_result.capital_loss_trace[0]["tax_basis_removed_inr"]) - D("100")) <= D("0.000000000001")
     assert loss_result.capital_loss_trace[0]["lot_id"] == "loss-lot"
+    assert loss_result.capital_loss_trace[0]["carryforward_eligibility"] == {
+        "status": "UNDETERMINED_RETURN_EVIDENCE_NOT_SUPPLIED",
+        "return_filed_under_263_1": None,
+        "evidence_reference": None,
+    }
     assert loss_result.tax_years["2026-27"]["tax_qualification_status"] == \
         "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"
     assert not any(row["event_id"] == "loss-sale" for row in loss_result.tax_event_trace)
+
+    unqualified_loss_events = loss_events[:-1] + [
+        event("unqualified-loss-sale", date(2027, 3, 31), 1, "partial_disposal", "90",
+              lot="loss-lot", units="1", price="90")
+    ]
+    try:
+        run_ledger(unqualified_loss_events, {"loss-lot": D("100")},
+                   external_tax_inputs={"2026-27": TaxInput()})
+    except ValueError as error:
+        assert "confirmed statutory tax class" in str(error)
+    else:
+        raise AssertionError("a disposal loss without confirmed tax character must fail closed")
 
     # A positive gain with no explicit tax classification must not pass.
     unknown_class = [
