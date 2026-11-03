@@ -112,6 +112,7 @@ class EventLedgerResult:
     gross_terminal_wealth_inr: Decimal
     incremental_portfolio_tax_inr: Decimal | None
     remaining_incremental_tax_after_withholding_inr: Decimal | None
+    excess_portfolio_withholding_not_valued_inr: Decimal | None
     net_accessible_fixture_wealth_inr: Decimal | None
     reconciliation_residual_inr: Decimal
     open_lots: list[dict[str, str]]
@@ -496,6 +497,7 @@ def run_ledger(
             gross_terminal_wealth_inr=gross_terminal,
             incremental_portfolio_tax_inr=None,
             remaining_incremental_tax_after_withholding_inr=None,
+            excess_portfolio_withholding_not_valued_inr=None,
             net_accessible_fixture_wealth_inr=None,
             reconciliation_residual_inr=reconciliation_residual,
             open_lots=open_lot_rows,
@@ -505,7 +507,7 @@ def run_ledger(
 
     all_years = sorted(set(incomes) | set(external_tax_inputs))
     tax_year_results: dict[str, dict[str, Any]] = {}
-    incremental_tax = remaining_incremental_tax = ZERO
+    incremental_tax = remaining_incremental_tax = excess_withholding_not_valued = ZERO
     for year in all_years:
         if year not in external_tax_inputs:
             raise ValueError(f"explicit external tax inputs (including zero fixture values) required for {year}")
@@ -518,8 +520,10 @@ def run_ledger(
         if year_incremental_tax < ZERO:
             raise NotImplementedError("portfolio loss relief and negative incremental tax are not modeled")
         year_net_after_tds = max(ZERO, year_incremental_tax - portfolio.withholding_credit)
+        year_excess_withholding = max(ZERO, portfolio.withholding_credit - year_incremental_tax)
         incremental_tax += year_incremental_tax
         remaining_incremental_tax += year_net_after_tds
+        excess_withholding_not_valued += year_excess_withholding
         tax_year_results[year] = {
             "portfolio_income": {
                 "ordinary": str(portfolio.ordinary_income),
@@ -536,6 +540,7 @@ def run_ledger(
             "external_only_tax_before_credits": str(external_only_tax),
             "incremental_portfolio_tax": str(year_incremental_tax),
             "remaining_incremental_tax_after_portfolio_withholding": str(year_net_after_tds),
+            "excess_portfolio_withholding_not_valued_as_refund": str(year_excess_withholding),
             "tax_component_scope": total_tax.calculation_scope,
         }
 
@@ -558,6 +563,7 @@ def run_ledger(
         gross_terminal_wealth_inr=gross_terminal,
         incremental_portfolio_tax_inr=incremental_tax,
         remaining_incremental_tax_after_withholding_inr=remaining_incremental_tax,
+        excess_portfolio_withholding_not_valued_inr=excess_withholding_not_valued,
         net_accessible_fixture_wealth_inr=fixture_wealth,
         reconciliation_residual_inr=reconciliation_residual,
         open_lots=open_lot_rows,
