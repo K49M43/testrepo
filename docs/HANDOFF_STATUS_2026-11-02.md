@@ -2,6 +2,13 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 3 November 2026 (loss disposal economic reconciliation)
+
+- **Executed:** the event ledger now records each non-zero disposal as a signed event/lot record including proceeds, basis removed, deductible transfer expenses, statutory bucket, holding character, and eligibility flags. A classified loss now completes cash, units, basis, ending valuation, and portfolio conservation instead of aborting before the sale is recorded.
+- **Tax boundary:** when any realized loss is present, the ledger returns `ECONOMIC_PASS_TAX_UNQUALIFIED`; tax, incremental-tax, and after-tax-accessible-wealth fields are null. An audited adapter now consumes the ledger's source-linked gain/loss records and demonstrates an explicit offset while keeping coupons/dividends outside the schedule. The main ledger does not invoke that adapter and annual tax still does not consume the candidate schedule.
+- **Validation:** the loss fixture reconciles to ₹490 gross terminal wealth, zero conservation residual, two units, and ₹200 remaining tax basis. Existing no-loss terminal economics and tax outputs are unchanged; its artifact was regenerated to include source-linked signed-disposal traces and the updated code hash. All four source/cashflow audits and the loss schedule, tax component, event/lot, and terminal reproducibility audits pass locally; module compilation passes.
+- **Remaining closure gates:** allocation policy/review, the integrated taxpayer-year loss pipeline, statutory total-income rounding, qualified review of mixed surcharge/basic-exemption cases, actual investor instruments/dates/fees/tax facts/CPI anchor, and remote CI acceptance. GitHub CLI remains unauthenticated. Sprint 1 remains **IN PROGRESS**; authorization remains **NO-GO**.
+
 ## Latest development update — 3 November 2026 (Sprint 1 residual audit hardening)
 
 - **Executed:** added a second same-lot partial-disposal case to `decision/audit_after_tax_event_ledger.py`. It sells two units from a three-unit lot in separate events and verifies ₹50 realized gain, ₹450 ending cash, ₹100 remaining market value/basis, and zero reconciliation residual within the declared ₹1e-12 arithmetic tolerance. The audit also asserts that a realized loss fails closed. The tax-component audit now asserts that ambiguous basic-exemption allocation and unqualified mixed-income surcharge marginal relief fail closed.

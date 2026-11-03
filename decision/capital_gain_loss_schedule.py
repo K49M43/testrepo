@@ -85,6 +85,73 @@ def _validate_character(value: str, field: str) -> None:
         raise ValueError(f"{field} character must be 'short' or 'long'")
 
 
+def build_schedule_from_disposal_traces(
+    tax_year: str,
+    taxable_event_trace: list[dict[str, Any]],
+    capital_loss_trace: list[dict[str, Any]],
+    offsets: list[Offset],
+    *,
+    carried_losses: list[Loss] | None = None,
+) -> ScheduleResult:
+    """Adapt event-ledger disposal traces into the explicit-offset schedule.
+
+    Coupon, dividend, and withholding trace rows are ignored because they do
+    not carry a ``realized_disposal`` record. Carried losses must be supplied
+    separately with their verified origin/return evidence. This adapter still
+    produces an unqualified candidate schedule; it does not authorize tax use.
+    """
+    gains: list[Gain] = []
+    losses: list[Loss] = []
+    bucket_by_class = {
+        "section76": ("section76", "short"),
+        "section196": ("section196", "short"),
+        "section197": ("section197", "long"),
+        "section198": ("section198", "long"),
+    }
+    eligibility_key = {
+        "section76": "section76_specified_fund",
+        "section196": "section196",
+        "section197": "section197",
+        "section198": "section198",
+    }
+    for row in taxable_event_trace:
+        disposal = row.get("realized_disposal")
+        if disposal is None:
+            continue
+        event_id = row.get("event_id")
+        lot_id = row.get("lot_id")
+        bucket_character = bucket_by_class.get(row.get("tax_classification"))
+        if not event_id or not lot_id or bucket_character is None:
+            raise ValueError("realized-gain trace is missing event, lot, or supported tax classification")
+        if row.get("tax_classification_confirmed") is not True:
+            raise ValueError(f"realized-gain event {event_id} is not tax-classification confirmed")
+        if row.get("eligibility_confirmed", {}).get(eligibility_key[row["tax_classification"]]) is not True:
+            raise ValueError(f"realized-gain event {event_id} is not eligibility confirmed")
+        if row.get("tax_year") != tax_year:
+            raise ValueError(f"realized-gain event {event_id} belongs to a different tax year")
+        signed = _positive(disposal.get("signed_realized_result_inr", "0"),
+                           f"realized-gain event {event_id} amount")
+        gains.append(Gain(event_id, event_id, lot_id, tax_year, signed,
+                          bucket_character[1], bucket_character[0]))
+    for row in capital_loss_trace:
+        event_id = row.get("event_id")
+        lot_id = row.get("lot_id")
+        bucket_character = bucket_by_class.get(row.get("tax_classification"))
+        if not event_id or not lot_id or bucket_character is None:
+            raise ValueError("capital-loss trace is missing event, lot, or supported tax classification")
+        if row.get("tax_classification_confirmed") is not True:
+            raise ValueError(f"capital-loss event {event_id} is not tax-classification confirmed")
+        if row.get("eligibility_confirmed", {}).get(eligibility_key[row["tax_classification"]]) is not True:
+            raise ValueError(f"capital-loss event {event_id} is not eligibility confirmed")
+        if row.get("tax_year") != tax_year:
+            raise ValueError(f"capital-loss event {event_id} belongs to a different tax year")
+        losses.append(Loss(event_id, event_id, lot_id, tax_year,
+                           _positive(row.get("loss_amount_inr", "0"), f"capital-loss event {event_id} amount"),
+                           bucket_character[1], False))
+    losses.extend(carried_losses or [])
+    return build_schedule(tax_year, gains, losses, offsets)
+
+
 def build_schedule(
     tax_year: str,
     gains: list[Gain],

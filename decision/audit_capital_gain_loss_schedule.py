@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 import json
+from datetime import date
 from decimal import Decimal
 
-from capital_gain_loss_schedule import Gain, Loss, Offset, build_schedule
+from after_tax_event_ledger import LedgerEvent, run_ledger
+from capital_gain_loss_schedule import (
+    Gain, Loss, Offset, build_schedule, build_schedule_from_disposal_traces,
+)
 
 
 D = Decimal
@@ -101,13 +105,55 @@ def audit() -> dict[str, object]:
     untouched = build_schedule("2026-27", gains, losses, [])
     assert untouched.candidate_gains_after_explicit_offsets_by_bucket == untouched.gross_gains_by_bucket
     assert untouched.unallocated_losses == {"l-current-st": D("80"), "l-current-lt": D("50")}
+
+    # End-to-end boundary: actual signed ledger records feed the schedule,
+    # while coupons and dividends stay outside capital-gain netting.
+    def ledger_event(event_id, when, seq, kind, cash, **kwargs):
+        return LedgerEvent(
+            event_id=event_id, event_date=when, tax_year="2026-27", event_sequence=seq,
+            event_type=kind, instrument_id="SYNTHETIC", cash_amount_inr=D(cash),
+            source_or_assumption="synthetic integration fixture",
+            qualification_status="mechanics only", **kwargs,
+        )
+
+    integration_events = [
+        ledger_event("capital", date(2026, 10, 31), 1, "initial_contribution", "1000"),
+        ledger_event("buy-loss", date(2026, 10, 31), 2, "acquisition", "100",
+                     lot_id="lot-loss", units=D("1"), unit_price_inr=D("100")),
+        ledger_event("buy-gain", date(2026, 10, 31), 3, "acquisition", "100",
+                     lot_id="lot-gain", units=D("1"), unit_price_inr=D("100")),
+        ledger_event("coupon", date(2027, 3, 30), 1, "coupon", "10", gross_income_inr=D("10"),
+                     tax_classification="ordinary", tax_classification_confirmed=True),
+        ledger_event("dividend", date(2027, 3, 30), 2, "distribution", "5", gross_income_inr=D("5"),
+                     tax_classification="dividend", tax_classification_confirmed=True),
+        ledger_event("sale-loss", date(2027, 3, 31), 1, "partial_disposal", "90",
+                     lot_id="lot-loss", units=D("1"), unit_price_inr=D("90"),
+                     tax_classification="section196", tax_classification_confirmed=True,
+                     section196_eligibility_confirmed=True),
+        ledger_event("sale-gain", date(2027, 3, 31), 2, "partial_disposal", "120",
+                     lot_id="lot-gain", units=D("1"), unit_price_inr=D("120"),
+                     tax_classification="section196", tax_classification_confirmed=True,
+                     section196_eligibility_confirmed=True),
+    ]
+    ledger = run_ledger(integration_events, {}, external_tax_inputs={})
+    assert ledger.ledger_status == "ECONOMIC_PASS_TAX_UNQUALIFIED"
+    integrated = build_schedule_from_disposal_traces(
+        "2026-27", ledger.tax_event_trace, ledger.capital_loss_trace,
+        [Offset("sale-loss", "sale-gain", D("10"))],
+    )
+    assert integrated.gross_gains_by_bucket["section196"] == D("20")
+    assert integrated.offsets_by_bucket["section196"] == D("10")
+    assert integrated.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("10")
+    assert integrated.tax_application_allowed is False
+    assert not any(row.get("event_id") in {"coupon", "dividend"} for row in integrated.offset_trace)
+
     return {
         "audit": "PASS",
         "explicit_cross_bucket_allocation": "PASS; no priority inferred",
         "same_year_and_carried_character_restrictions": "PASS",
         "eight_succeeding_year_expiry_and_return_gate": "PASS",
         "gain_loss_caps_and_traceability": "PASS",
-        "coupon_dividend_and_tax_calculation": "NOT IN SCOPE; no integration performed",
+        "ledger_to_schedule_contract": "PASS; coupon/dividend excluded, tax application still barred",
     }
 
 

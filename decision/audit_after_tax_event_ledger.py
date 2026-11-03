@@ -147,24 +147,43 @@ def audit() -> dict[str, object]:
     assert repeated_result.reconciliation_residual_inr == D("0")
     assert abs(D(repeated_result.tax_years["2026-27"]["portfolio_income"]["section196_stcg"]) - D("50")) <= D("0.000000000001")
     assert D(repeated_result.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("10.4000")
+    gain_trace = [row for row in repeated_result.tax_event_trace if row["event_id"] in {"sell-1", "sell-2"}]
+    assert len(gain_trace) == 2
+    assert abs(sum((D(row["realized_disposal"]["signed_realized_result_inr"]) for row in gain_trace), D("0"))
+               - D("50")) <= D("0.000000000001")
     assert len(repeated_result.open_lots) == 1
     assert D(repeated_result.open_lots[0]["units"]) == D("1")
     assert D(repeated_result.open_lots[0]["tax_basis_inr"]) == D("100")
 
-    # A realized capital loss remains unsupported and must fail closed until
-    # statutory same-year set-off and carry-forward are implemented.
+    # The sale now completes economic cash/lot reconciliation, but its tax
+    # result remains absent until set-off/carry-forward is qualified.
     loss_events = [
         event("loss-cash", date(2026, 10, 31), 1, "initial_contribution", "500"),
         event("loss-buy", date(2026, 10, 31), 2, "acquisition", "300", lot="loss-lot", units="3", price="100"),
         event("loss-sale", date(2027, 3, 31), 1, "partial_disposal", "90", lot="loss-lot", units="1", price="90",
               tax_class="section196", confirmed=True, section196_eligible=True),
     ]
-    try:
-        run_ledger(loss_events, {"loss-lot": D("100")}, external_tax_inputs={"2026-27": TaxInput()})
-    except NotImplementedError as error:
-        assert "capital losses and set-off" in str(error)
-    else:
-        raise AssertionError("realized capital loss must not be silently ignored")
+    loss_result = run_ledger(loss_events, {"loss-lot": D("100")},
+                             external_tax_inputs={"2026-27": TaxInput()})
+    assert loss_result.ledger_status == "ECONOMIC_PASS_TAX_UNQUALIFIED"
+    assert loss_result.ending_cash_inr == D("290")
+    assert loss_result.ending_market_value_inr == D("200")
+    assert abs(loss_result.realized_economic_gain_inr - D("-10")) <= D("0.000000000001")
+    assert loss_result.gross_terminal_wealth_inr == D("490")
+    assert loss_result.reconciliation_residual_inr == D("0")
+    assert loss_result.incremental_portfolio_tax_inr is None
+    assert loss_result.remaining_incremental_tax_after_withholding_inr is None
+    assert loss_result.net_accessible_fixture_wealth_inr is None
+    assert loss_result.open_lots[0]["units"] == "2"
+    assert D(loss_result.open_lots[0]["tax_basis_inr"]) == D("200")
+    assert loss_result.capital_loss_trace[0]["event_id"] == "loss-sale"
+    assert abs(D(loss_result.capital_loss_trace[0]["loss_amount_inr"]) - D("10")) <= D("0.000000000001")
+    assert loss_result.capital_loss_trace[0]["proceeds_inr"] == "90"
+    assert abs(D(loss_result.capital_loss_trace[0]["tax_basis_removed_inr"]) - D("100")) <= D("0.000000000001")
+    assert loss_result.capital_loss_trace[0]["lot_id"] == "loss-lot"
+    assert loss_result.tax_years["2026-27"]["tax_qualification_status"] == \
+        "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"
+    assert not any(row["event_id"] == "loss-sale" for row in loss_result.tax_event_trace)
 
     # A positive gain with no explicit tax classification must not pass.
     unknown_class = [
@@ -187,7 +206,7 @@ def audit() -> dict[str, object]:
         "incremental_portfolio_tax_inr": str(result.incremental_portfolio_tax_inr),
         "net_accessible_fixture_wealth_inr": str(result.net_accessible_fixture_wealth_inr),
         "repeated_partial_sales_same_lot": "PASS",
-        "realized_loss_fails_closed": "PASS",
+        "signed_disposal_trace": "PASS; realized loss economically reconciled, tax result withheld",
         "unrealized_gain_taxed": False,
         "withholding_is_credit": True,
         "authorization": "NO-GO",

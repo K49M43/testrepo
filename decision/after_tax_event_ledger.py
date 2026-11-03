@@ -110,12 +110,13 @@ class EventLedgerResult:
     realized_economic_gain_inr: Decimal
     unrealized_gain_inr: Decimal
     gross_terminal_wealth_inr: Decimal
-    incremental_portfolio_tax_inr: Decimal
-    remaining_incremental_tax_after_withholding_inr: Decimal
-    net_accessible_fixture_wealth_inr: Decimal
+    incremental_portfolio_tax_inr: Decimal | None
+    remaining_incremental_tax_after_withholding_inr: Decimal | None
+    net_accessible_fixture_wealth_inr: Decimal | None
     reconciliation_residual_inr: Decimal
     open_lots: list[dict[str, str]]
     tax_event_trace: list[dict[str, Any]]
+    capital_loss_trace: list[dict[str, Any]]
     tax_scope: str = "Synthetic fixture only; external investor income defaults to zero only when explicitly supplied as fixture input"
 
     def as_json(self) -> dict[str, Any]:
@@ -177,11 +178,14 @@ def run_ledger(
     realized_economic_gain = ZERO
     event_withholding_by_year: dict[str, Decimal] = {}
     tax_event_trace: list[dict[str, Any]] = []
+    capital_loss_trace: list[dict[str, Any]] = []
+    has_realized_loss = False
     tax_event_ids_by_year: dict[str, dict[str, list[str]]] = {}
 
     def record_tax_source(event: LedgerEvent, category: str, taxable_amount: Decimal, rule_reference: str,
-                          *, acquired: date | None = None) -> None:
-        tax_event_trace.append({
+                          *, acquired: date | None = None,
+                          disposal_details: Mapping[str, str] | None = None) -> None:
+        source_row = {
             "event_id": event.event_id,
             "event_date": event.event_date.isoformat(),
             "tax_year": event.tax_year,
@@ -202,7 +206,10 @@ def run_ledger(
             "rule_reference": rule_reference,
             "source_or_assumption": event.source_or_assumption,
             "qualification_status": event.qualification_status,
-        })
+        }
+        if disposal_details is not None:
+            source_row["realized_disposal"] = dict(disposal_details)
+        tax_event_trace.append(source_row)
         year_sources = tax_event_ids_by_year.setdefault(event.tax_year, {})
         year_sources.setdefault(category, []).append(event.event_id)
 
@@ -323,40 +330,89 @@ def run_ledger(
             realized_gain = proceeds - tax_basis_removed - transfer_expenses
             if realized_gain < ZERO and abs(realized_gain) <= ARITHMETIC_TOLERANCE:
                 realized_gain = ZERO
-            if realized_gain < ZERO:
-                raise NotImplementedError("capital losses and set-off/carry-forward are outside this ledger increment")
-            if realized_gain > ZERO:
+            if realized_gain != ZERO:
                 if not event.tax_classification_confirmed or event.tax_classification not in {"section76", "section196", "section197", "section198"}:
                     raise ValueError(f"realized gain requires a confirmed statutory tax class: {event.event_id}")
-                income = year_income(year)
                 if event.tax_classification == "section76":
                     if lot.acquired < date(2023, 4, 1) or not event.section76_specified_fund_confirmed:
                         raise ValueError("section 76 requires a qualifying specified mutual fund and a lot acquired on/after 1 April 2023")
-                    income.ordinary_income += realized_gain
-                    category = "ordinary"
-                    rule_reference = "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income"
+                    bucket = "section76"
+                    character = "short"
                 elif event.tax_classification == "section196":
                     if not event.section196_eligibility_confirmed:
                         raise ValueError("section 196 requires confirmed STT and asset eligibility")
-                    income.section196_stcg += realized_gain
-                    income.section196_eligible = True
-                    category = "section196_stcg"
-                    rule_reference = "TY 2026-27 component model: section 196 short-term gain"
+                    bucket = "section196"
+                    character = "short"
                 elif event.tax_classification == "section197":
                     if not event.section197_eligibility_confirmed:
                         raise ValueError("section 197 requires confirmed long-term asset eligibility")
-                    income.section197_ltcg += realized_gain
-                    income.section197_eligible = True
-                    category = "section197_ltcg"
-                    rule_reference = "TY 2026-27 component model: section 197 long-term gain"
-                elif event.tax_classification == "section198":
+                    bucket = "section197"
+                    character = "long"
+                else:
                     if not event.section198_eligibility_confirmed:
                         raise ValueError("section 198 requires confirmed equity and STT eligibility")
-                    income.section198_ltcg += realized_gain
-                    income.section198_eligible = True
-                    category = "section198_ltcg"
-                    rule_reference = "TY 2026-27 component model: section 198 long-term gain"
-                record_tax_source(event, category, realized_gain, rule_reference, acquired=lot.acquired)
+                    bucket = "section198"
+                    character = "long"
+                if realized_gain < ZERO:
+                    capital_loss_trace.append({
+                        "event_id": event.event_id,
+                        "event_date": event.event_date.isoformat(),
+                        "tax_year": year,
+                        "instrument_id": event.instrument_id,
+                        "lot_id": event.lot_id,
+                        "lot_acquired": lot.acquired.isoformat(),
+                        "units_disposed": str(units),
+                        "proceeds_inr": str(proceeds),
+                        "tax_basis_removed_inr": str(tax_basis_removed),
+                        "deductible_transfer_expenses_inr": str(transfer_expenses),
+                        "signed_realized_result_inr": str(realized_gain),
+                        "loss_amount_inr": str(-realized_gain),
+                        "tax_bucket": bucket,
+                        "character": character,
+                        "tax_classification": event.tax_classification,
+                        "tax_classification_confirmed": event.tax_classification_confirmed,
+                        "eligibility_confirmed": {
+                            "section76_specified_fund": event.section76_specified_fund_confirmed,
+                            "section196": event.section196_eligibility_confirmed,
+                            "section197": event.section197_eligibility_confirmed,
+                            "section198": event.section198_eligibility_confirmed,
+                        },
+                        "source_or_assumption": event.source_or_assumption,
+                        "qualification_status": event.qualification_status,
+                    })
+                if realized_gain < ZERO:
+                    has_realized_loss = True
+                else:
+                    income = year_income(year)
+                    if event.tax_classification == "section76":
+                        income.ordinary_income += realized_gain
+                        category = "ordinary"
+                        rule_reference = "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income"
+                    elif event.tax_classification == "section196":
+                        income.section196_stcg += realized_gain
+                        income.section196_eligible = True
+                        category = "section196_stcg"
+                        rule_reference = "TY 2026-27 component model: section 196 short-term gain"
+                    elif event.tax_classification == "section197":
+                        income.section197_ltcg += realized_gain
+                        income.section197_eligible = True
+                        category = "section197_ltcg"
+                        rule_reference = "TY 2026-27 component model: section 197 long-term gain"
+                    else:
+                        income.section198_ltcg += realized_gain
+                        income.section198_eligible = True
+                        category = "section198_ltcg"
+                        rule_reference = "TY 2026-27 component model: section 198 long-term gain"
+                    record_tax_source(
+                        event, category, realized_gain, rule_reference, acquired=lot.acquired,
+                        disposal_details={
+                            "units_disposed": str(units),
+                            "proceeds_inr": str(proceeds),
+                            "tax_basis_removed_inr": str(tax_basis_removed),
+                            "deductible_transfer_expenses_inr": str(transfer_expenses),
+                            "signed_realized_result_inr": str(realized_gain),
+                        },
+                    )
             elif event.tax_classification != "none" and not event.tax_classification_confirmed:
                 raise ValueError("zero-gain event cannot carry an unconfirmed tax classification")
 
@@ -374,10 +430,11 @@ def run_ledger(
                 del lots[event.lot_id]
             continue
 
-    for year, withheld in event_withholding_by_year.items():
-        taxable_gross = incomes[year].ordinary_income + incomes[year].dividend_income
-        if withheld > taxable_gross:
-            raise ValueError(f"withholding exceeds recorded ordinary/distribution income in tax year {year}")
+    if not has_realized_loss:
+        for year, withheld in event_withholding_by_year.items():
+            taxable_gross = incomes[year].ordinary_income + incomes[year].dividend_income
+            if withheld > taxable_gross:
+                raise ValueError(f"withholding exceeds recorded ordinary/distribution income in tax year {year}")
 
     prices = {lot_id: amount(price, f"valuation_prices[{lot_id}]") for lot_id, price in valuation_prices.items()}
     missing_marks = set(lots) - set(prices)
@@ -387,6 +444,57 @@ def run_ledger(
     ending_market_value = sum((lots[lot_id].units * prices[lot_id] for lot_id in lots), ZERO)
     remaining_cash_basis = sum((lot.cash_basis_inr for lot in lots.values()), ZERO)
     unrealized_gain = ending_market_value - remaining_cash_basis
+    gross_terminal = cash + ending_market_value
+    reconciliation_residual = (
+        contributions + gross_income + realized_economic_gain + unrealized_gain
+        - withholding - transaction_costs - other_fees - withdrawals - gross_terminal
+    )
+    if abs(reconciliation_residual) > ARITHMETIC_TOLERANCE:
+        raise AssertionError(f"portfolio reconciliation failed by {reconciliation_residual} INR")
+
+    open_lot_rows = [
+        {
+            "lot_id": lot.lot_id,
+            "instrument_id": lot.instrument_id,
+            "acquired": lot.acquired.isoformat(),
+            "units": str(lot.units),
+            "cash_basis_inr": str(lot.cash_basis_inr),
+            "tax_basis_inr": str(lot.tax_basis_inr),
+            "valuation_inr": str(lot.units * prices[lot.lot_id]),
+            "unrealized_gain_inr": str(lot.units * prices[lot.lot_id] - lot.cash_basis_inr),
+        }
+        for lot in sorted(lots.values(), key=lambda item: (item.acquired, item.lot_id))
+    ]
+
+    # Preserve a reconciled economic ledger while preventing unqualified loss
+    # treatment from leaking into annual tax or accessible-wealth results.
+    if has_realized_loss:
+        unqualified_years = sorted(set(incomes) | set(external_tax_inputs)
+                                   | {row["tax_year"] for row in capital_loss_trace})
+        return EventLedgerResult(
+            ledger_status="ECONOMIC_PASS_TAX_UNQUALIFIED",
+            event_count=len(event_list),
+            tax_years={year: {"tax_qualification_status": "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"}
+                       for year in unqualified_years},
+            cash_contributions_inr=contributions,
+            gross_income_inr=gross_income,
+            portfolio_withholding_inr=withholding,
+            transaction_costs_inr=transaction_costs,
+            other_fees_inr=other_fees,
+            withdrawals_inr=withdrawals,
+            ending_cash_inr=cash,
+            ending_market_value_inr=ending_market_value,
+            realized_economic_gain_inr=realized_economic_gain,
+            unrealized_gain_inr=unrealized_gain,
+            gross_terminal_wealth_inr=gross_terminal,
+            incremental_portfolio_tax_inr=None,
+            remaining_incremental_tax_after_withholding_inr=None,
+            net_accessible_fixture_wealth_inr=None,
+            reconciliation_residual_inr=reconciliation_residual,
+            open_lots=open_lot_rows,
+            tax_event_trace=tax_event_trace,
+            capital_loss_trace=capital_loss_trace,
+        )
 
     all_years = sorted(set(incomes) | set(external_tax_inputs))
     tax_year_results: dict[str, dict[str, Any]] = {}
@@ -424,14 +532,7 @@ def run_ledger(
             "tax_component_scope": total_tax.calculation_scope,
         }
 
-    gross_terminal = cash + ending_market_value
     fixture_wealth = gross_terminal - remaining_incremental_tax
-    reconciliation_residual = (
-        contributions + gross_income + realized_economic_gain + unrealized_gain
-        - withholding - transaction_costs - other_fees - withdrawals - gross_terminal
-    )
-    if abs(reconciliation_residual) > ARITHMETIC_TOLERANCE:
-        raise AssertionError(f"portfolio reconciliation failed by {reconciliation_residual} INR")
 
     return EventLedgerResult(
         ledger_status="PASS",
@@ -452,18 +553,7 @@ def run_ledger(
         remaining_incremental_tax_after_withholding_inr=remaining_incremental_tax,
         net_accessible_fixture_wealth_inr=fixture_wealth,
         reconciliation_residual_inr=reconciliation_residual,
-        open_lots=[
-            {
-                "lot_id": lot.lot_id,
-                "instrument_id": lot.instrument_id,
-                "acquired": lot.acquired.isoformat(),
-                "units": str(lot.units),
-                "cash_basis_inr": str(lot.cash_basis_inr),
-                "tax_basis_inr": str(lot.tax_basis_inr),
-                "valuation_inr": str(lot.units * prices[lot.lot_id]),
-                "unrealized_gain_inr": str(lot.units * prices[lot.lot_id] - lot.cash_basis_inr),
-            }
-            for lot in sorted(lots.values(), key=lambda item: (item.acquired, item.lot_id))
-        ],
+        open_lots=open_lot_rows,
         tax_event_trace=tax_event_trace,
+        capital_loss_trace=capital_loss_trace,
     )
