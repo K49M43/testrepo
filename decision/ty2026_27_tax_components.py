@@ -5,10 +5,10 @@ engine. It handles section 202 ordinary-rate income, eligible sections 196,
 197 and 198 gains, section 76 specified-fund gains entered as ordinary-rate
 income, section 156 rebate, the section 202 surcharge schedule, a documented
 provisional mixed-income surcharge-relief composition, cess, and withholding
-credits. Unsupported losses, deductions, non-resident/age rules, and mixed
-relief cases whose reference composition cannot fit fail closed. Amounts are
-Decimal rupees; total-income rounding is open, while settlement amounts use
-section 516 rounding.
+credits. Unsupported losses, deductions, non-resident/age rules, negative
+ordinary residuals, and mixed relief cases whose reference composition cannot
+fit fail closed. Amounts are Decimal rupees; section 516 total-income and
+settlement rounding are implemented with provisional mixed-bucket handling.
 """
 
 from __future__ import annotations
@@ -42,9 +42,8 @@ def section516_round_rupees(amount: Decimal | int | str) -> Decimal:
     """Round non-negative total-income/payable/refundable amounts per s.516.
 
     Section 516 first ignores paise, then rounds to the nearest ₹10; a final
-    rupee digit of 5 or more rounds upward. The calculator applies this helper
-    to final payable/refundable balances. Total-income rounding remains open
-    because its ordering across mixed income components needs qualification.
+    rupee digit of 5 or more rounds upward. The helper is used for both deemed
+    total income and final payable/refundable balances.
     """
     value = amount if isinstance(amount, Decimal) else Decimal(str(amount))
     if not value.is_finite() or value < ZERO:
@@ -80,12 +79,12 @@ def section202_slab_tax(taxable_income: Decimal | int | str) -> Decimal:
 def section156_rebate(total_income: Decimal | int | str, section202_tax: Decimal | int | str) -> Decimal:
     """Section 156(2) rebate against section 202(1) tax only.
 
-    The statutory ₹12 lakh threshold and marginal-relief excess use total
+    The caller supplies the section 516 deemed total income. The statutory
+    ₹12 lakh threshold and marginal-relief excess use total
     income. The rebate amount remains capped by section 202(1) tax, so tax on
     special-rate gains is never reduced by this function. This interpretation
     follows the section 156 total-income wording and is still subject to
-    qualified review. Total-income section 516 rounding is a separate,
-    still-open integration gate.
+    qualified review.
     """
     income = _amount(total_income, "total_income")
     tax = _amount(section202_tax, "section202_tax")
@@ -137,6 +136,7 @@ class TaxInput:
 
 @dataclass(frozen=True)
 class TaxResult:
+    raw_total_income: Decimal
     total_income: Decimal
     normal_rate_income: Decimal
     section202_tax_before_rebate: Decimal
@@ -193,8 +193,26 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
     other_ltcg = values["section197_ltcg"]
     equity_ltcg = values["section198_ltcg"]
     special_gains = [gain for gain in (stcg, other_ltcg, equity_ltcg) if gain > ZERO]
-    normal_income = ordinary + dividends
-    total_income = normal_income + sum(special_gains, ZERO)
+    raw_normal_income = ordinary + dividends
+    raw_total_income = raw_normal_income + sum(special_gains, ZERO)
+    total_income = section516_round_rupees(raw_total_income)
+    # Section 516 deems the rounded total to be total income. The predecessor
+    # return workflow rounds the final total-income field, then computes the
+    # normal-rate amount as total income less separately identified special-
+    # rate income. Keep the separately reported dividend amount fixed and
+    # apply the residual to non-dividend ordinary income. A negative
+    # normal-rate or ordinary residual cannot be allocated safely, so fail
+    # closed.
+    normal_income = total_income - sum(special_gains, ZERO)
+    if normal_income < ZERO:
+        raise NotImplementedError(
+            "section 516 rounded total is below separately identified special-rate income"
+        )
+    ordinary_for_tax = normal_income - dividends
+    if ordinary_for_tax < ZERO:
+        raise NotImplementedError(
+            "section 516 normal-rate base is below separately reported dividend income"
+        )
 
     basic_shortfall = max(ZERO, BASIC_EXEMPTION_202 - normal_income) if inputs.resident_individual else ZERO
     if basic_shortfall and len(special_gains) > 1:
@@ -216,16 +234,16 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
 
     # Section 3(4)(b), Table row 10: only the incremental slab tax attributable
     # to dividend income is subject to the special-income 15% surcharge cap.
-    dividend_tax_before_rebate = ordinary_tax_before_rebate - section202_slab_tax(ordinary)
+    dividend_tax_before_rebate = ordinary_tax_before_rebate - section202_slab_tax(ordinary_for_tax)
     if ordinary_tax_before_rebate:
         keep_fraction = normal_tax_after_rebate / ordinary_tax_before_rebate
     else:
         keep_fraction = ZERO
-    nondividend_s202_tax = section202_slab_tax(ordinary) * keep_fraction
+    nondividend_s202_tax = section202_slab_tax(ordinary_for_tax) * keep_fraction
     dividend_s202_tax = dividend_tax_before_rebate * keep_fraction
 
     special_income = dividends + values["section196_stcg"] + values["section197_ltcg"] + values["section198_ltcg"]
-    regular_for_25_tier = ordinary
+    regular_for_25_tier = ordinary_for_tax
     rate = _surcharge_rate(total_income, regular_for_25_tier)
     special_rate = min(rate, SPECIAL_SURCHARGE_CAP)
     surcharge = (
@@ -291,6 +309,7 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
     balance = section516_round_rupees(max(ZERO, tax_before_credits - credit))
     excess = section516_round_rupees(max(ZERO, credit - tax_before_credits))
     return TaxResult(
+        raw_total_income=raw_total_income,
         total_income=total_income,
         normal_rate_income=normal_income,
         section202_tax_before_rebate=ordinary_tax_before_rebate,

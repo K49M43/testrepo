@@ -98,7 +98,8 @@ def audit() -> dict[str, object]:
     assert D(result.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("312")
     assert D(result.tax_years["2026-27"]["remaining_incremental_tax_after_portfolio_withholding"]) == D("212")
     assert D(result.tax_years["2027-28"]["portfolio_income"]["section197_ltcg"]) == D("38")
-    assert D(result.tax_years["2027-28"]["incremental_portfolio_tax"]) == D("160.9400")
+    assert D(result.tax_years["2027-28"]["incremental_portfolio_tax"]) == D("161.5640")
+    assert D(result.tax_years["2027-28"]["excess_portfolio_withholding_not_valued_as_refund"]) == D("0")
     assert result.tax_years["2026-27"]["portfolio_income_source_event_ids"] == {
         "ordinary": ["coupon"], "withholding_credit": ["coupon-tds"]
     }
@@ -121,9 +122,10 @@ def audit() -> dict[str, object]:
                 by_category[line["tax_category"]] = by_category.get(line["tax_category"], D("0")) + D(line["taxable_amount_inr"])
         for category, amount in by_category.items():
             assert D(result.tax_years[year]["portfolio_income"][category]) == amount
-    assert result.incremental_portfolio_tax_inr == D("472.9400")
-    assert result.remaining_incremental_tax_after_withholding_inr == D("322.9400")
-    assert result.net_accessible_fixture_wealth_inr == D("2110.0600")
+    assert result.incremental_portfolio_tax_inr == D("473.5640")
+    assert result.remaining_incremental_tax_after_withholding_inr == D("323.5640")
+    assert result.excess_portfolio_withholding_not_valued_inr == D("0")
+    assert result.net_accessible_fixture_wealth_inr == D("2109.4360")
     assert any(lot["lot_id"] == "lot-a" and D(lot["unrealized_gain_inr"]) == D("60") for lot in result.open_lots)
 
     # Repeated partial disposals from the same lot must remove basis in

@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from terminal_case_reconciliation import reconcile
+from ty2026_27_tax_components import section516_round_rupees
 
 
 D = Decimal
@@ -67,11 +68,13 @@ def audit() -> dict[str, Any]:
             coupon_income = D(details["portfolio_income"]["ordinary"])
             external_income = D("3000000")
             assert external_income + coupon_income < D("5000000")
-            manual_tax = coupon_income * D("0.30") * D("1.04")
+            statutory_coupon_base = section516_round_rupees(coupon_income)
+            manual_tax = statutory_coupon_base * D("0.30") * D("1.04")
             engine_tax = D(details["incremental_portfolio_tax"])
             assert abs(engine_tax - manual_tax) <= tolerance
             full_year_checks[f"{horizon}:{year}"] = {
                 "coupon_income_inr": str(coupon_income),
+                "section516_rounded_coupon_base_inr": str(statutory_coupon_base),
                 "hand_calculated_incremental_tax_inr": str(manual_tax),
                 "engine_incremental_tax_inr": str(engine_tax),
             }

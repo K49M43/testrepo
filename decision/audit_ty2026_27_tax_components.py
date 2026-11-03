@@ -39,6 +39,55 @@ def audit() -> dict[str, object]:
     close(section202_slab_tax(D("2400000")), "300000.00")
     close(section202_slab_tax(D("5000000")), "1080000.00")
 
+    # Section 516 applies to the final computed total income before statutory
+    # threshold tests. The normal-rate base is the rounded total less the
+    # separately identified special-rate income. These are arithmetic probes;
+    # the mixed-bucket residual convention remains subject to qualified review.
+    rounding_down = calculate_tax(TaxInput(ordinary_income=D("5000001")))
+    assert rounding_down.raw_total_income == D("5000001")
+    assert rounding_down.total_income == D("5000000")
+    close(rounding_down.normal_rate_income, "5000000")
+    close(rounding_down.tax_before_credits, "1123200.0000")
+    rounding_up = calculate_tax(TaxInput(ordinary_income=D("5000005")))
+    assert rounding_up.raw_total_income == D("5000005")
+    assert rounding_up.total_income == D("5000010")
+    close(rounding_up.tax_before_credits, "1123210.4000")
+    close(rounding_up.marginal_surcharge_relief, "107993.3000")
+    mixed_total_rounding = calculate_tax(TaxInput(
+        ordinary_income=D("4900004"), section196_stcg=D("100000"), section196_eligible=True,
+    ))
+    assert mixed_total_rounding.raw_total_income == D("5000004")
+    assert mixed_total_rounding.total_income == D("5000000")
+    close(mixed_total_rounding.normal_rate_income, "4900000")
+    close(mixed_total_rounding.section202_tax_before_rebate, "1050000.00")
+    close(mixed_total_rounding.tax_before_credits, "1112800.0000")
+    rounded_rebate_threshold = calculate_tax(TaxInput(
+        ordinary_income=D("1190006"), section198_ltcg=D("10000"), section198_eligible=True,
+    ))
+    assert rounded_rebate_threshold.raw_total_income == D("1200006")
+    assert rounded_rebate_threshold.total_income == D("1200010")
+    close(rounded_rebate_threshold.section202_tax_before_rebate, "59001.00")
+    close(rounded_rebate_threshold.section156_rebate, "58991.00")
+    close(rounded_rebate_threshold.tax_before_credits, "10.4000")
+    dividend_rounding = calculate_tax(TaxInput(
+        ordinary_income=D("5000000"), dividend_income=D("1"),
+    ))
+    assert dividend_rounding.raw_total_income == D("5000001")
+    assert dividend_rounding.total_income == D("5000000")
+    close(dividend_rounding.normal_rate_income, "5000000")
+    try:
+        calculate_tax(TaxInput(dividend_income=D("5000001")))
+    except NotImplementedError as error:
+        assert "below separately reported dividend income" in str(error)
+    else:
+        raise AssertionError("negative ordinary residual under dividends must fail closed")
+    try:
+        calculate_tax(TaxInput(section198_ltcg=D("1000003"), section198_eligible=True))
+    except NotImplementedError as error:
+        assert "below separately identified special-rate income" in str(error)
+    else:
+        raise AssertionError("negative normal-rate residual must fail closed")
+
     # Section 156 rebate and its marginal-relief boundary.
     close(section156_rebate(D("1200000"), D("60000")), "60000")
     close(section156_rebate(D("1210000"), D("61500")), "51500")
@@ -69,17 +118,20 @@ def audit() -> dict[str, object]:
 
     # Finance Act 2026 ordinary-only surcharge/marginal relief examples A.
     ordinary_cases = (
-        ("5000000", "1123200.00", "0"),
-        ("5000001", "1123201.04", "107999.33"),
-        ("10000000", "2951520.00", "0"),
-        ("10000001", "2951521.04", "128999.345"),
-        ("20000000", "6673680.00", "0"),
-        ("20000001", "6673681.04", "557999.375"),
+        ("5000000", "1123200.0000", "0"),
+        ("5000001", "1123200.0000", "0"),
+        ("5000005", "1123210.4000", "107993.3000"),
+        ("10000000", "2951520.0000", "0"),
+        ("10000001", "2951520.0000", "0"),
+        ("10000005", "2951530.4000", "128993.4500"),
+        ("20000000", "6673680.0000", "0"),
+        ("20000001", "6673680.0000", "0"),
+        ("20000005", "6673690.4000", "557993.7500"),
     )
     for income, total_expected, surcharge_expected in ordinary_cases:
         result = calculate_tax(TaxInput(ordinary_income=D(income)))
         close(result.tax_before_credits, total_expected)
-        if income in ("5000001", "10000001", "20000001"):
+        if income in ("5000005", "10000005", "20000005"):
             close(result.marginal_surcharge_relief, surcharge_expected)
 
     # Example B: ordinary income plus eligible section 198 LTCG and 15% cap.
@@ -153,10 +205,11 @@ def audit() -> dict[str, object]:
     close(mixed_relief.surcharge_after_relief, "70000.000")
     close(mixed_relief.tax_before_credits, "1206400.00000")
     mixed_10m_edge = calculate_tax(TaxInput(
-        ordinary_income=D("9800001"), section196_stcg=D("200000"), section196_eligible=True,
+        ordinary_income=D("9800005"), section196_stcg=D("200000"), section196_eligible=True,
     ))
-    close(mixed_10m_edge.marginal_surcharge_relief, "127999.34500")
-    close(mixed_10m_edge.surcharge_after_relief, "256000.70000")
+    assert mixed_10m_edge.total_income == D("10000010")
+    close(mixed_10m_edge.marginal_surcharge_relief, "127993.45000")
+    close(mixed_10m_edge.surcharge_after_relief, "256007.00000")
     try:
         calculate_tax(TaxInput(section196_stcg=D("6000000"), section196_eligible=True))
     except NotImplementedError as error:
@@ -198,18 +251,18 @@ def audit() -> dict[str, object]:
 
     return {
         "audit": "PASS",
-        "scope": "TY 2026–27 resident individual research components; final payable/refund rounded, statutory total income not rounded",
-        "surcharge_boundary_examples": 6,
+        "scope": "TY 2026–27 resident individual research components; section 516 total income and final payable/refund rounding integrated; mixed-income rounding convention requires qualified review",
+        "surcharge_boundary_examples": 9,
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
         "section76_gain_inr": str(gain),
-        "section156_mixed_income_rule": "PASS at fixture scope; total-income threshold and section 202 rebate cap; qualified review and section 516 rounding remain open",
+        "section156_mixed_income_rule": "PASS at fixture scope; uses section 516 deemed total income and caps rebate at section 202 tax; qualified review remains open",
         "withholding_credit_separate": "PASS",
         "mixed_income_marginal_relief_reference_case": "PASS; reference mix is an explicit provisional assumption",
         "unsupported_mixed_income_reference_overflow_fails_closed": "PASS",
-        "statutory_rounding_primitive": "PASS; section 516 helper and settlement integration audited",
+        "statutory_rounding_primitive": "PASS; section 516 helper applied to deemed total income and settlement amounts",
         "statutory_rounding_final_payable_refund": "PASS; Section 516 applied to settlement amounts",
-        "statutory_total_income_rounding": "OPEN; component ordering still needs review",
+        "statutory_total_income_rounding": "IMPLEMENTED PROVISIONALLY; residual applied to ordinary income while preserving dividend and special-rate buckets; negative residual fails closed; qualified review open",
         "authorization": "NO-GO",
     }
 

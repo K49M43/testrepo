@@ -2,6 +2,13 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 3 November 2026 (section 516 total-income integration)
+
+- **Finding:** section 516 deems rounded total income to be total income. Official predecessor-Act ITR instructions show the total-income field rounded at the end of the computation and normal-rate tax calculated separately from special-rate income. The Department says TY 2026–27 forms under the new Rules 2026 will be notified before filing; the predecessor workflow is evidence for a provisional interpretation, not direct validation of the new form.
+- **Implementation:** the tax component now preserves raw and rounded total income; uses rounded total for section 156, surcharge and marginal-relief thresholds; preserves reported dividend and special-rate components; and assigns the rounding residual to ordinary income. It fails closed if ordinary income would become negative. This mixed-bucket ordering remains unreviewed.
+- **Validation:** section 516 component, event-ledger, loss-schedule and terminal-case audits pass locally. The synthetic no-loss event result changed to ₹473.564 incremental tax, ₹323.564 remaining after withholding, and ₹2,109.436 net fixture wealth. Terminal-case evidence was regenerated with rounded income bases. These are synthetic results, not an investor tax estimate.
+- **Remaining gates:** qualified tax review, actual TY 2026–27 return-form confirmation, integrated capital-loss tax application, mixed-income surcharge review, investor-specific inputs, CPI anchor, and final remote CI on the published head. Sprint 1 remains **IN PROGRESS**; authorization remains **NO-GO**.
+
 ## Latest development update — 3 November 2026 (loss disposal economic reconciliation)
 
 - **Executed:** the event ledger now records each non-zero disposal as a signed event/lot record including proceeds, basis removed, deductible transfer expenses, statutory bucket, holding character, and eligibility flags. A classified loss now completes cash, units, basis, ending valuation, and portfolio conservation instead of aborting before the sale is recorded.

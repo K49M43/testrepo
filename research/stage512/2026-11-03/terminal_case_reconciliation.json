@@ -6,10 +6,10 @@
     "contract_version": "1.3",
     "source_sha256": {
       "decision/terminal_case_reconciliation.py": "bb13cf479000d7b009ec00b84fe4433b042a293661873fd400a697795c5a0a44",
-      "decision/audit_terminal_case_reconciliation.py": "106a4889d57ed5761ccb9e93d71cc4d16950fabff222f2451b36c3a99f597b87",
+      "decision/audit_terminal_case_reconciliation.py": "adf25c9902b65f8cb673d9892ac12278d8474cd0059ad91944b136d2a9c99025",
       "decision/after_tax_event_ledger.py": "f612881c00a9917cfc54b51918ffe8c55d3c690580999034e1fb8d434543f28e",
-      "decision/ty2026_27_tax_components.py": "e7ddf51313703995333b7de50847fceb23bdcda66dc16ad3c141cb282cc4de1a",
-      "decision/tax_rules_asof.md": "9c690eaf8996f23702d16cd9c5ddaf28cc90e6671c7f31af03252cf093da70b7",
+      "decision/ty2026_27_tax_components.py": "caba1c8c076e56110ca33e5d4229c5c7c4e7529a3316c853566052307c393303",
+      "decision/tax_rules_asof.md": "47355a1d4a14984107110363a04992b4f5efa2825e6094c8867dbe7a9de6b9c9",
       "research/stage512/2026-11-02/after_tax_ledger_input_contract.json": "fd7c1a5eeb3eb929c0738d5cc7ccc6c181c41bff83491ed5d61b87e9392444ec",
       "research/stage512/2026-11-02/cashflow_hurdle_baseline.py": "b302e4fa6f51a66026e2efbd78053f2fd8f6ae795ea2128635abbb2e2a7ccc9c",
       "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
@@ -166,10 +166,10 @@
               "sell-fund-119-all"
             ]
           },
-          "total_tax_before_credits": "1559977.949364232461338805736",
+          "total_tax_before_credits": "1559977.8480000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "1060777.949364232461338805736",
-          "remaining_incremental_tax_after_portfolio_withholding": "1060777.949364232461338805736",
+          "incremental_portfolio_tax": "1060777.8480000",
+          "remaining_incremental_tax_after_portfolio_withholding": "1060777.8480000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -185,10 +185,10 @@
       "realized_economic_gain_inr": "2945390.295350327684553629766",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "11926617.67565032768455362978",
-      "incremental_portfolio_tax_inr": "1060777.949364232461338805736",
-      "remaining_incremental_tax_after_withholding_inr": "1060777.949364232461338805736",
+      "incremental_portfolio_tax_inr": "1060777.8480000",
+      "remaining_incremental_tax_after_withholding_inr": "1060777.8480000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "10865839.72628609522321482404",
+      "net_accessible_fixture_wealth_inr": "10865839.82765032768455362978",
       "reconciliation_residual_inr": "-1E-20",
       "open_lots": [],
       "tax_event_trace": [
@@ -3819,10 +3819,10 @@
               "sell-fund-119-a"
             ]
           },
-          "total_tax_before_credits": "958680.8860746511187903662435",
+          "total_tax_before_credits": "958682.40000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "459480.8860746511187903662435",
-          "remaining_incremental_tax_after_portfolio_withholding": "459480.8860746511187903662435",
+          "incremental_portfolio_tax": "459482.40000",
+          "remaining_incremental_tax_after_portfolio_withholding": "459482.40000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -3960,10 +3960,10 @@
               "sell-fund-120-b"
             ]
           },
-          "total_tax_before_credits": "989690.0920313419707702056818",
+          "total_tax_before_credits": "989688.96000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "490490.0920313419707702056818",
-          "remaining_incremental_tax_after_portfolio_withholding": "490490.0920313419707702056818",
+          "incremental_portfolio_tax": "490488.96000",
+          "remaining_incremental_tax_after_portfolio_withholding": "490488.96000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -3979,10 +3979,10 @@
       "realized_economic_gain_inr": "3044778.775980747081924910018",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "12026006.15628074708192490998",
-      "incremental_portfolio_tax_inr": "949970.9781059930895605719253",
-      "remaining_incremental_tax_after_withholding_inr": "949970.9781059930895605719253",
+      "incremental_portfolio_tax_inr": "949971.36000",
+      "remaining_incremental_tax_after_withholding_inr": "949971.36000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "11076035.17817475399236433805",
+      "net_accessible_fixture_wealth_inr": "11076034.79628074708192490998",
       "reconciliation_residual_inr": "4E-20",
       "open_lots": [],
       "tax_event_trace": [
@@ -11008,10 +11008,10 @@
               "bond-coupon-bond-005-2028"
             ]
           },
-          "total_tax_before_credits": "566670.000000000000000",
+          "total_tax_before_credits": "566670.00000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "67470.000000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "67470.000000000000000",
+          "incremental_portfolio_tax": "67470.00000",
+          "remaining_incremental_tax_after_portfolio_withholding": "67470.00000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11046,10 +11046,10 @@
               "bond-coupon-bond-017-2029"
             ]
           },
-          "total_tax_before_credits": "571545.000000000000000",
+          "total_tax_before_credits": "571546.56000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "72345.000000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "72345.000000000000000",
+          "incremental_portfolio_tax": "72346.56000",
+          "remaining_incremental_tax_after_portfolio_withholding": "72346.56000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11096,10 +11096,10 @@
               "bond-coupon-bond-029-2030"
             ]
           },
-          "total_tax_before_credits": "576907.500000000000000",
+          "total_tax_before_credits": "576906.72000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "77707.500000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "77707.500000000000000",
+          "incremental_portfolio_tax": "77706.72000",
+          "remaining_incremental_tax_after_portfolio_withholding": "77706.72000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11158,10 +11158,10 @@
               "bond-coupon-bond-041-2031"
             ]
           },
-          "total_tax_before_credits": "582806.250000000000000",
+          "total_tax_before_credits": "582806.64000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "83606.250000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "83606.250000000000000",
+          "incremental_portfolio_tax": "83606.64000",
+          "remaining_incremental_tax_after_portfolio_withholding": "83606.64000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11232,10 +11232,10 @@
               "bond-coupon-bond-053-2032"
             ]
           },
-          "total_tax_before_credits": "589294.875000000000000",
+          "total_tax_before_credits": "589296.24000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "90094.875000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "90094.875000000000000",
+          "incremental_portfolio_tax": "90096.24000",
+          "remaining_incremental_tax_after_portfolio_withholding": "90096.24000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11318,10 +11318,10 @@
               "bond-coupon-bond-065-2033"
             ]
           },
-          "total_tax_before_credits": "596432.362500000000000",
+          "total_tax_before_credits": "596431.68000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "97232.362500000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "97232.362500000000000",
+          "incremental_portfolio_tax": "97231.68000",
+          "remaining_incremental_tax_after_portfolio_withholding": "97231.68000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11416,10 +11416,10 @@
               "bond-coupon-bond-077-2034"
             ]
           },
-          "total_tax_before_credits": "604283.598750000000000",
+          "total_tax_before_credits": "604284.72000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "105083.598750000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "105083.598750000000000",
+          "incremental_portfolio_tax": "105084.72000",
+          "remaining_incremental_tax_after_portfolio_withholding": "105084.72000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11526,10 +11526,10 @@
               "bond-coupon-bond-089-2035"
             ]
           },
-          "total_tax_before_credits": "612919.958625000000000",
+          "total_tax_before_credits": "612920.88000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "113719.958625000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "113719.958625000000000",
+          "incremental_portfolio_tax": "113720.88000",
+          "remaining_incremental_tax_after_portfolio_withholding": "113720.88000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11648,10 +11648,10 @@
               "bond-coupon-bond-101-2036"
             ]
           },
-          "total_tax_before_credits": "622419.954487500000000",
+          "total_tax_before_credits": "622421.28000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "123219.954487500000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "123219.954487500000000",
+          "incremental_portfolio_tax": "123221.28000",
+          "remaining_incremental_tax_after_portfolio_withholding": "123221.28000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -11732,10 +11732,10 @@
               "bond-coupon-bond-108-2036"
             ]
           },
-          "total_tax_before_credits": "601791.971964300000000",
+          "total_tax_before_credits": "601791.84000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "102591.971964300000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "102591.971964300000000",
+          "incremental_portfolio_tax": "102591.84000",
+          "remaining_incremental_tax_after_portfolio_withholding": "102591.84000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -11751,10 +11751,10 @@
       "realized_economic_gain_inr": "0E-9",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "11971841.07045000000",
-      "incremental_portfolio_tax_inr": "933071.471326800000000",
-      "remaining_incremental_tax_after_withholding_inr": "933071.471326800000000",
+      "incremental_portfolio_tax_inr": "933076.56000",
+      "remaining_incremental_tax_after_withholding_inr": "933076.56000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "11038769.599123200000000",
+      "net_accessible_fixture_wealth_inr": "11038764.51045000000",
       "reconciliation_residual_inr": "0E-11",
       "open_lots": [],
       "tax_event_trace": [
@@ -24007,10 +24007,10 @@
               "sell-fund-121-all"
             ]
           },
-          "total_tax_before_credits": "1582779.680021413300343781249",
+          "total_tax_before_credits": "1582780.0560000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "1083579.680021413300343781249",
-          "remaining_incremental_tax_after_portfolio_withholding": "1083579.680021413300343781249",
+          "incremental_portfolio_tax": "1083580.0560000",
+          "remaining_incremental_tax_after_portfolio_withholding": "1083580.0560000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -24026,10 +24026,10 @@
       "realized_economic_gain_inr": "3011828.904491297495174187787",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "12122743.40779629749517418779",
-      "incremental_portfolio_tax_inr": "1083579.680021413300343781249",
-      "remaining_incremental_tax_after_withholding_inr": "1083579.680021413300343781249",
+      "incremental_portfolio_tax_inr": "1083580.0560000",
+      "remaining_incremental_tax_after_withholding_inr": "1083580.0560000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "11039163.72777488419483040654",
+      "net_accessible_fixture_wealth_inr": "11039163.35179629749517418779",
       "reconciliation_residual_inr": "0E-20",
       "open_lots": [],
       "tax_event_trace": [
@@ -27720,10 +27720,10 @@
               "sell-fund-121-a"
             ]
           },
-          "total_tax_before_credits": "969045.3091006424092471732952",
+          "total_tax_before_credits": "969043.92000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "469845.3091006424092471732952",
-          "remaining_incremental_tax_after_portfolio_withholding": "469845.3091006424092471732952",
+          "incremental_portfolio_tax": "469843.92000",
+          "remaining_incremental_tax_after_portfolio_withholding": "469843.92000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -27863,10 +27863,10 @@
               "sell-fund-122-b"
             ]
           },
-          "total_tax_before_credits": "989941.9717704349220565343271",
+          "total_tax_before_credits": "989941.68000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "490741.9717704349220565343271",
-          "remaining_incremental_tax_after_portfolio_withholding": "490741.9717704349220565343271",
+          "incremental_portfolio_tax": "490741.68000",
+          "remaining_incremental_tax_after_portfolio_withholding": "490741.68000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -27882,10 +27882,10 @@
       "realized_economic_gain_inr": "3078805.387407299138793934688",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "12189719.89071229913879393463",
-      "incremental_portfolio_tax_inr": "960587.2808710773313037076223",
-      "remaining_incremental_tax_after_withholding_inr": "960587.2808710773313037076223",
+      "incremental_portfolio_tax_inr": "960585.60000",
+      "remaining_incremental_tax_after_withholding_inr": "960585.60000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "11229132.60984122180749022701",
+      "net_accessible_fixture_wealth_inr": "11229134.29071229913879393463",
       "reconciliation_residual_inr": "6E-20",
       "open_lots": [],
       "tax_event_trace": [
@@ -35027,10 +35027,10 @@
               "bond-coupon-bond-005-2028"
             ]
           },
-          "total_tax_before_credits": "566670.000000000000000",
+          "total_tax_before_credits": "566670.00000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "67470.000000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "67470.000000000000000",
+          "incremental_portfolio_tax": "67470.00000",
+          "remaining_incremental_tax_after_portfolio_withholding": "67470.00000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35065,10 +35065,10 @@
               "bond-coupon-bond-017-2029"
             ]
           },
-          "total_tax_before_credits": "571545.000000000000000",
+          "total_tax_before_credits": "571546.56000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "72345.000000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "72345.000000000000000",
+          "incremental_portfolio_tax": "72346.56000",
+          "remaining_incremental_tax_after_portfolio_withholding": "72346.56000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35115,10 +35115,10 @@
               "bond-coupon-bond-029-2030"
             ]
           },
-          "total_tax_before_credits": "576907.500000000000000",
+          "total_tax_before_credits": "576906.72000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "77707.500000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "77707.500000000000000",
+          "incremental_portfolio_tax": "77706.72000",
+          "remaining_incremental_tax_after_portfolio_withholding": "77706.72000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35177,10 +35177,10 @@
               "bond-coupon-bond-041-2031"
             ]
           },
-          "total_tax_before_credits": "582806.250000000000000",
+          "total_tax_before_credits": "582806.64000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "83606.250000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "83606.250000000000000",
+          "incremental_portfolio_tax": "83606.64000",
+          "remaining_incremental_tax_after_portfolio_withholding": "83606.64000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35251,10 +35251,10 @@
               "bond-coupon-bond-053-2032"
             ]
           },
-          "total_tax_before_credits": "589294.875000000000000",
+          "total_tax_before_credits": "589296.24000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "90094.875000000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "90094.875000000000000",
+          "incremental_portfolio_tax": "90096.24000",
+          "remaining_incremental_tax_after_portfolio_withholding": "90096.24000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35337,10 +35337,10 @@
               "bond-coupon-bond-065-2033"
             ]
           },
-          "total_tax_before_credits": "596432.362500000000000",
+          "total_tax_before_credits": "596431.68000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "97232.362500000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "97232.362500000000000",
+          "incremental_portfolio_tax": "97231.68000",
+          "remaining_incremental_tax_after_portfolio_withholding": "97231.68000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35435,10 +35435,10 @@
               "bond-coupon-bond-077-2034"
             ]
           },
-          "total_tax_before_credits": "604283.598750000000000",
+          "total_tax_before_credits": "604284.72000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "105083.598750000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "105083.598750000000000",
+          "incremental_portfolio_tax": "105084.72000",
+          "remaining_incremental_tax_after_portfolio_withholding": "105084.72000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35545,10 +35545,10 @@
               "bond-coupon-bond-089-2035"
             ]
           },
-          "total_tax_before_credits": "612919.958625000000000",
+          "total_tax_before_credits": "612920.88000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "113719.958625000000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "113719.958625000000000",
+          "incremental_portfolio_tax": "113720.88000",
+          "remaining_incremental_tax_after_portfolio_withholding": "113720.88000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35667,10 +35667,10 @@
               "bond-coupon-bond-101-2036"
             ]
           },
-          "total_tax_before_credits": "622419.954487500000000",
+          "total_tax_before_credits": "622421.28000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "123219.954487500000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "123219.954487500000000",
+          "incremental_portfolio_tax": "123221.28000",
+          "remaining_incremental_tax_after_portfolio_withholding": "123221.28000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
@@ -35771,10 +35771,10 @@
               "bond-coupon-bond-110-2036"
             ]
           },
-          "total_tax_before_credits": "614223.163153080000000",
+          "total_tax_before_credits": "614221.92000",
           "external_only_tax_before_credits": "499200.00000",
-          "incremental_portfolio_tax": "115023.163153080000000",
-          "remaining_incremental_tax_after_portfolio_withholding": "115023.163153080000000",
+          "incremental_portfolio_tax": "115021.92000",
+          "remaining_incremental_tax_after_portfolio_withholding": "115021.92000",
           "excess_portfolio_withholding_not_valued_as_refund": "0",
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         }
@@ -35790,10 +35790,10 @@
       "realized_economic_gain_inr": "0E-9",
       "unrealized_gain_inr": "0",
       "gross_terminal_wealth_inr": "12141371.75495750000",
-      "incremental_portfolio_tax_inr": "945502.662515580000000",
-      "remaining_incremental_tax_after_withholding_inr": "945502.662515580000000",
+      "incremental_portfolio_tax_inr": "945506.64000",
+      "remaining_incremental_tax_after_withholding_inr": "945506.64000",
       "excess_portfolio_withholding_not_valued_inr": "0",
-      "net_accessible_fixture_wealth_inr": "11195869.092441920000000",
+      "net_accessible_fixture_wealth_inr": "11195865.11495750000",
       "reconciliation_residual_inr": "0E-11",
       "open_lots": [],
       "tax_event_trace": [
@@ -48366,103 +48366,123 @@
     "full_tax_year_coupon_checks": {
       "120:2027-28": {
         "coupon_income_inr": "216250.00000000000",
-        "hand_calculated_incremental_tax_inr": "67470.000000000000000",
-        "engine_incremental_tax_inr": "67470.000000000000000"
+        "section516_rounded_coupon_base_inr": "216250",
+        "hand_calculated_incremental_tax_inr": "67470.0000",
+        "engine_incremental_tax_inr": "67470.00000"
       },
       "120:2028-29": {
         "coupon_income_inr": "231875.00000000000",
-        "hand_calculated_incremental_tax_inr": "72345.000000000000000",
-        "engine_incremental_tax_inr": "72345.000000000000000"
+        "section516_rounded_coupon_base_inr": "231880",
+        "hand_calculated_incremental_tax_inr": "72346.5600",
+        "engine_incremental_tax_inr": "72346.56000"
       },
       "120:2029-30": {
         "coupon_income_inr": "249062.50000000000",
-        "hand_calculated_incremental_tax_inr": "77707.500000000000000",
-        "engine_incremental_tax_inr": "77707.500000000000000"
+        "section516_rounded_coupon_base_inr": "249060",
+        "hand_calculated_incremental_tax_inr": "77706.7200",
+        "engine_incremental_tax_inr": "77706.72000"
       },
       "120:2030-31": {
         "coupon_income_inr": "267968.75000000000",
-        "hand_calculated_incremental_tax_inr": "83606.250000000000000",
-        "engine_incremental_tax_inr": "83606.250000000000000"
+        "section516_rounded_coupon_base_inr": "267970",
+        "hand_calculated_incremental_tax_inr": "83606.6400",
+        "engine_incremental_tax_inr": "83606.64000"
       },
       "120:2031-32": {
         "coupon_income_inr": "288765.62500000000",
-        "hand_calculated_incremental_tax_inr": "90094.875000000000000",
-        "engine_incremental_tax_inr": "90094.875000000000000"
+        "section516_rounded_coupon_base_inr": "288770",
+        "hand_calculated_incremental_tax_inr": "90096.2400",
+        "engine_incremental_tax_inr": "90096.24000"
       },
       "120:2032-33": {
         "coupon_income_inr": "311642.18750000000",
-        "hand_calculated_incremental_tax_inr": "97232.362500000000000",
-        "engine_incremental_tax_inr": "97232.362500000000000"
+        "section516_rounded_coupon_base_inr": "311640",
+        "hand_calculated_incremental_tax_inr": "97231.6800",
+        "engine_incremental_tax_inr": "97231.68000"
       },
       "120:2033-34": {
         "coupon_income_inr": "336806.40625000000",
-        "hand_calculated_incremental_tax_inr": "105083.598750000000000",
-        "engine_incremental_tax_inr": "105083.598750000000000"
+        "section516_rounded_coupon_base_inr": "336810",
+        "hand_calculated_incremental_tax_inr": "105084.7200",
+        "engine_incremental_tax_inr": "105084.72000"
       },
       "120:2034-35": {
         "coupon_income_inr": "364487.04687500000",
-        "hand_calculated_incremental_tax_inr": "113719.958625000000000",
-        "engine_incremental_tax_inr": "113719.958625000000000"
+        "section516_rounded_coupon_base_inr": "364490",
+        "hand_calculated_incremental_tax_inr": "113720.8800",
+        "engine_incremental_tax_inr": "113720.88000"
       },
       "120:2035-36": {
         "coupon_income_inr": "394935.75156250000",
-        "hand_calculated_incremental_tax_inr": "123219.954487500000000",
-        "engine_incremental_tax_inr": "123219.954487500000000"
+        "section516_rounded_coupon_base_inr": "394940",
+        "hand_calculated_incremental_tax_inr": "123221.2800",
+        "engine_incremental_tax_inr": "123221.28000"
       },
       "120:2036-37": {
         "coupon_income_inr": "328820.42296250000",
-        "hand_calculated_incremental_tax_inr": "102591.971964300000000",
-        "engine_incremental_tax_inr": "102591.971964300000000"
+        "section516_rounded_coupon_base_inr": "328820",
+        "hand_calculated_incremental_tax_inr": "102591.8400",
+        "engine_incremental_tax_inr": "102591.84000"
       },
       "122:2027-28": {
         "coupon_income_inr": "216250.00000000000",
-        "hand_calculated_incremental_tax_inr": "67470.000000000000000",
-        "engine_incremental_tax_inr": "67470.000000000000000"
+        "section516_rounded_coupon_base_inr": "216250",
+        "hand_calculated_incremental_tax_inr": "67470.0000",
+        "engine_incremental_tax_inr": "67470.00000"
       },
       "122:2028-29": {
         "coupon_income_inr": "231875.00000000000",
-        "hand_calculated_incremental_tax_inr": "72345.000000000000000",
-        "engine_incremental_tax_inr": "72345.000000000000000"
+        "section516_rounded_coupon_base_inr": "231880",
+        "hand_calculated_incremental_tax_inr": "72346.5600",
+        "engine_incremental_tax_inr": "72346.56000"
       },
       "122:2029-30": {
         "coupon_income_inr": "249062.50000000000",
-        "hand_calculated_incremental_tax_inr": "77707.500000000000000",
-        "engine_incremental_tax_inr": "77707.500000000000000"
+        "section516_rounded_coupon_base_inr": "249060",
+        "hand_calculated_incremental_tax_inr": "77706.7200",
+        "engine_incremental_tax_inr": "77706.72000"
       },
       "122:2030-31": {
         "coupon_income_inr": "267968.75000000000",
-        "hand_calculated_incremental_tax_inr": "83606.250000000000000",
-        "engine_incremental_tax_inr": "83606.250000000000000"
+        "section516_rounded_coupon_base_inr": "267970",
+        "hand_calculated_incremental_tax_inr": "83606.6400",
+        "engine_incremental_tax_inr": "83606.64000"
       },
       "122:2031-32": {
         "coupon_income_inr": "288765.62500000000",
-        "hand_calculated_incremental_tax_inr": "90094.875000000000000",
-        "engine_incremental_tax_inr": "90094.875000000000000"
+        "section516_rounded_coupon_base_inr": "288770",
+        "hand_calculated_incremental_tax_inr": "90096.2400",
+        "engine_incremental_tax_inr": "90096.24000"
       },
       "122:2032-33": {
         "coupon_income_inr": "311642.18750000000",
-        "hand_calculated_incremental_tax_inr": "97232.362500000000000",
-        "engine_incremental_tax_inr": "97232.362500000000000"
+        "section516_rounded_coupon_base_inr": "311640",
+        "hand_calculated_incremental_tax_inr": "97231.6800",
+        "engine_incremental_tax_inr": "97231.68000"
       },
       "122:2033-34": {
         "coupon_income_inr": "336806.40625000000",
-        "hand_calculated_incremental_tax_inr": "105083.598750000000000",
-        "engine_incremental_tax_inr": "105083.598750000000000"
+        "section516_rounded_coupon_base_inr": "336810",
+        "hand_calculated_incremental_tax_inr": "105084.7200",
+        "engine_incremental_tax_inr": "105084.72000"
       },
       "122:2034-35": {
         "coupon_income_inr": "364487.04687500000",
-        "hand_calculated_incremental_tax_inr": "113719.958625000000000",
-        "engine_incremental_tax_inr": "113719.958625000000000"
+        "section516_rounded_coupon_base_inr": "364490",
+        "hand_calculated_incremental_tax_inr": "113720.8800",
+        "engine_incremental_tax_inr": "113720.88000"
       },
       "122:2035-36": {
         "coupon_income_inr": "394935.75156250000",
-        "hand_calculated_incremental_tax_inr": "123219.954487500000000",
-        "engine_incremental_tax_inr": "123219.954487500000000"
+        "section516_rounded_coupon_base_inr": "394940",
+        "hand_calculated_incremental_tax_inr": "123221.2800",
+        "engine_incremental_tax_inr": "123221.28000"
       },
       "122:2036-37": {
         "coupon_income_inr": "368663.98446500000",
-        "hand_calculated_incremental_tax_inr": "115023.163153080000000",
-        "engine_incremental_tax_inr": "115023.163153080000000"
+        "section516_rounded_coupon_base_inr": "368660",
+        "hand_calculated_incremental_tax_inr": "115021.9200",
+        "engine_incremental_tax_inr": "115021.92000"
       }
     },
     "checks": [

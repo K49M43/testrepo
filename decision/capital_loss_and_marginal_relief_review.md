@@ -91,22 +91,26 @@ Primary source: [Finance Act 2026 section 3](https://indiacode.ecourtsindia.com/
 
 ## Section 516 integration boundary
 
-The `section516_round_rupees` primitive is covered by boundary cases and is applied to final payable/refundable balances after credits. Integration remains open for rounding statutory total income and specifying how the rounded total controls threshold selection while preserving distinct rate buckets. The final payable/refundable result is distinguished from the ledger's counterfactual incremental portfolio tax, which is not itself a statutory assessment amount.
+The component now records both raw computed total income and the deemed total income rounded under section 516. It uses the rounded total for the section 156 threshold, surcharge thresholds, and marginal-relief boundary. The normal-rate base is calculated as rounded total income less separately identified special-rate gains. Reported dividend income stays fixed and the rounding residual adjusts ordinary income; the component fails closed if this would make ordinary income negative.
+
+This ordering is a provisional inference, not a tax opinion. Section 516 deems the rounded computed total to be total income. The official ITR-2 instructions under predecessor section 288A direct rounding in the final total-income field, while their return structure calculates normal-rate tax separately from special-rate income. The Department says TY 2026–27 forms under the new Rules 2026 will be notified before filing, so the predecessor form is a workflow precedent only. A qualified reviewer must confirm the residual treatment against the new form and mixed-income statute before tax results can be qualified. [Income-tax Act 2025, section 516](https://www.incometaxindia.gov.in/Documents/Act/Income-tax-Act-2025.pdf) · [Official ITR-2 instructions (predecessor Act)](https://incometaxindia.gov.in/Supporting%20Files/ITR2023/Instructions_ITR2_AY_2023_24.pdf/fe470b08-ceb7-340f-d2e3-d8fd1bf877b7?t=1765434371538&version=1.0) · [Income Tax Department return-form FAQ](https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/%20income%20tax%20returns-faq)
+
+Coverage now includes ₹10 rounding up/down, raw incomes one rupee above surcharge thresholds that round back to the threshold, the first rounded value above each ₹50L/₹1Cr/₹2Cr boundary, a mixed section 196 gain case, the section 156 threshold, and fail-closed dividend/negative-residual cases. This arithmetic coverage does not independently validate the statutory convention.
 
 ### Worked case for reviewer
 
-Use raw computed total income of ₹50,00,004, which section 516 rounds to ₹50,00,000:
+Use raw computed total income of ₹50,00,004, which section 516 rounds to ₹50,00,000. Under the current provisional convention, the special-rate gain remains ₹1,00,000 and the ₹4 residual reduces the normal-rate base:
 
-| Composition | Raw component tax arithmetic before surcharge/cess | If the ₹4 rounding residual reduces the ordinary-rate base | If the ₹4 residual reduces section 196 gain |
-|---|---:|---:|---:|
-| Ordinary income ₹50,00,004 | Section 202 tax = ₹10,80,001.20 | Section 202 tax on ₹50,00,000 = ₹10,80,000.00 | Not applicable |
-| Ordinary income ₹49,00,004 + section 196 STCG ₹1,00,000 | Section 202 tax ₹10,50,001.20 + section 196 tax ₹20,000 = ₹10,70,001.20 | Section 202 tax ₹10,50,000 + section 196 tax ₹20,000 = ₹10,70,000.00 | Section 202 tax ₹10,50,001.20 + section 196 tax on ₹99,996 = ₹10,70,000.40 |
+| Composition | Raw component tax arithmetic before surcharge/cess | Provisional statutory component base used by the calculator |
+|---|---:|---:|
+| Ordinary income ₹50,00,004 | Section 202 tax = ₹10,80,001.20 | Section 202 tax on ₹50,00,000 = ₹10,80,000.00 |
+| Ordinary income ₹49,00,004 + section 196 STCG ₹1,00,000 | Section 202 tax ₹10,50,001.20 + section 196 tax ₹20,000 = ₹10,70,001.20 | Section 202 tax on ₹49,00,000 = ₹10,50,000; section 196 tax on ₹1,00,000 = ₹20,000; total ₹10,70,000.00 |
 
-These are alternative arithmetic treatments to review, not a claim that both are legally available. They expose the precise question: does section 516's deemed total feed the section 202/196 component formula before tax, and does the special-rate formula determine the residual base as rounded total income less the special gain? The reviewer should extend this to sections 197/198, dividends, basic-exemption adjustment, section 198's annual deduction, rebate, surcharge, and marginal relief. Tests should then use the signed-off formula, not reverse-engineer one from current outputs.
+The reviewer must confirm that this residual convention applies to TY 2026–27 and determine how it interacts with sections 197/198, dividends, basic-exemption adjustment, section 198's annual deduction, rebate, surcharge, and marginal relief. The calculator fails closed if ordinary income would become negative after preserving dividend and special-rate buckets. Tests use the current provisional convention and must be revised if the reviewer or TY 2026–27 return form specifies another method.
 
 ## Section 156 mixed-income threshold review
 
-The calculator now tests the section 156(2) ₹12 lakh threshold against total income while limiting the rebate amount to section 202(1) tax. This follows section 156(2)(b)'s explicit total-income test and section 156(3)'s cap, with section 198(7) separately specifying the treatment of qualifying long-term gains. Regression fixtures cover total income of ₹12,00,000, ₹12,00,010, and ₹12,20,000 with ordinary income held at ₹11,90,000. These fixtures are arithmetic probes of the statutory wording, not independent legal sign-off. The threshold basis, interaction with section 516 rounding, and any applicable treatment under other special-rate provisions remain for qualified review.
+The calculator tests the section 156(2) ₹12 lakh threshold against section 516 deemed total income while limiting the rebate to section 202(1) tax. This follows section 156(2)(b)'s total-income wording and section 156(3)'s cap, with section 198(7) separately addressing qualifying long-term gains. Regression fixtures cover totals at ₹12,00,000, ₹12,00,010, and ₹12,20,000, including raw income that rounds across the threshold. These are arithmetic probes, not independent legal sign-off; the rounded-threshold interaction and other special-rate provisions remain for qualified review.
 
 ## External Sprint 1 gates
 
