@@ -1,0 +1,64 @@
+name: G4.4 independent policy disposition
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g4-disposition-audit.yml'
+      - '.github/workflows/g4-database-adapter.yml'
+      - 'config/g4_action_allocation_policy*'
+      - 'config/g4_allocation_policy_cases*'
+      - 'decision/audit_g4_action_allocation_policy.py'
+      - 'decision/audit_g4_allocation_policy_cases.py'
+      - 'decision/audit_g4_allocation_database_adapter.py'
+      - 'decision/audit_g4_independent_disposition.py'
+      - 'decision/g4_allocation_database_adapter.py'
+      - 'decision/sprint2_database_pilot.py'
+      - 'decision/migrations/001_sprint2_fixture_pilot.sql'
+      - 'decision/requirements-g4-validation.txt'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/G4_3_DATABASE_ADAPTER.md'
+      - 'docs/G4_4_INDEPENDENT_DISPOSITION.md'
+      - 'research/sprint2/fixture_v1/**'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g4_*'
+  push:
+    paths:
+      - '.github/workflows/g4-disposition-audit.yml'
+      - '.github/workflows/g4-database-adapter.yml'
+      - 'config/g4_action_allocation_policy*'
+      - 'config/g4_allocation_policy_cases*'
+      - 'decision/audit_g4_action_allocation_policy.py'
+      - 'decision/audit_g4_allocation_policy_cases.py'
+      - 'decision/audit_g4_allocation_database_adapter.py'
+      - 'decision/audit_g4_independent_disposition.py'
+      - 'decision/g4_allocation_database_adapter.py'
+      - 'decision/sprint2_database_pilot.py'
+      - 'decision/migrations/001_sprint2_fixture_pilot.sql'
+      - 'decision/requirements-g4-validation.txt'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/G4_3_DATABASE_ADAPTER.md'
+      - 'docs/G4_4_INDEPENDENT_DISPOSITION.md'
+      - 'research/sprint2/fixture_v1/**'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g4_*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g4-disposition-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned contract-validation dependency
+        run: python -m pip install -r decision/requirements-g4-validation.txt
+      - name: Re-audit G4.1 action-policy contract
+        run: python decision/audit_g4_action_allocation_policy.py
+      - name: Re-audit G4.2 bounded allocation cases
+        run: python decision/audit_g4_allocation_policy_cases.py
+      - name: Re-audit G4.3 SQLite adapter boundary
+        run: python decision/audit_g4_allocation_database_adapter.py
+      - name: Independently audit policy invariants and G4 disposition
+        run: python decision/audit_g4_independent_disposition.py
