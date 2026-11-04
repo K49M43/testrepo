@@ -1,4 +1,4 @@
-name: Sprint 1 tax and ledger audits
+name: Tax, ledger, and database pilot audits
 
 on:
   pull_request:
@@ -17,6 +17,12 @@ on:
       - 'decision/audit_capital_gain_loss_schedule.py'
       - 'decision/terminal_case_reconciliation.py'
       - 'decision/audit_terminal_case_reconciliation.py'
+      - 'decision/sprint2_database_pilot.py'
+      - 'decision/run_sprint2_database_pilot.py'
+      - 'decision/audit_sprint2_database_pilot.py'
+      - 'decision/migrations/001_sprint2_fixture_pilot.sql'
+      - 'research/sprint2/fixture_v1/input.json'
+      - 'research/sprint2/fixture_v1/expected.json'
       - 'decision/tax_rules_asof.md'
       - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
       - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
@@ -36,6 +42,12 @@ on:
       - 'decision/audit_capital_gain_loss_schedule.py'
       - 'decision/terminal_case_reconciliation.py'
       - 'decision/audit_terminal_case_reconciliation.py'
+      - 'decision/sprint2_database_pilot.py'
+      - 'decision/run_sprint2_database_pilot.py'
+      - 'decision/audit_sprint2_database_pilot.py'
+      - 'decision/migrations/001_sprint2_fixture_pilot.sql'
+      - 'research/sprint2/fixture_v1/input.json'
+      - 'research/sprint2/fixture_v1/expected.json'
       - 'decision/tax_rules_asof.md'
       - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
       - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
@@ -45,7 +57,7 @@ permissions:
   contents: read
 
 jobs:
-  tax-ledger-audits:
+  tax-ledger-and-database-audits:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -63,5 +75,7 @@ jobs:
         run: python decision/audit_capital_gain_loss_schedule.py
       - name: Audit 120/122-month terminal cases against hand calculations
         run: python decision/audit_terminal_case_reconciliation.py --check
+      - name: Audit Sprint 2 database-backed deterministic fixture
+        run: python decision/audit_sprint2_database_pilot.py
       - name: Compile tax and ledger modules
-        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/audit_independent_loss_tax_reconciliation.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/audit_independent_loss_tax_reconciliation.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py decision/sprint2_database_pilot.py decision/run_sprint2_database_pilot.py decision/audit_sprint2_database_pilot.py

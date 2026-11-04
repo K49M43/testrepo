@@ -1,0 +1,41 @@
+{
+  "fixture_id": "after-tax-ledger-two-lot-two-tax-year",
+  "fixture_version": "1",
+  "expected_outputs": {
+    "ledger_status": "PASS",
+    "event_count": 9,
+    "cash_contributions_inr": "1000",
+    "gross_income_inr": "1500",
+    "portfolio_withholding_inr": "150",
+    "transaction_costs_inr": "7",
+    "other_fees_inr": "10",
+    "withdrawals_inr": "0",
+    "ending_cash_inr": "1623",
+    "ending_market_value_inr": "810",
+    "realized_economic_gain_inr": "40",
+    "unrealized_gain_inr": "60",
+    "gross_terminal_wealth_inr": "2433",
+    "incremental_portfolio_tax_inr": "473.5640",
+    "remaining_incremental_tax_after_withholding_inr": "323.5640",
+    "excess_portfolio_withholding_not_valued_inr": "0",
+    "net_accessible_fixture_wealth_inr": "2109.4360",
+    "reconciliation_residual_inr": "0",
+    "tax_years": {
+      "2026-27": {
+        "portfolio_ordinary_income_inr": "1000",
+        "portfolio_withholding_inr": "100",
+        "incremental_portfolio_tax_inr": "312",
+        "remaining_tax_after_withholding_inr": "212"
+      },
+      "2027-28": {
+        "portfolio_dividend_income_inr": "500",
+        "portfolio_section197_ltcg_inr": "38",
+        "portfolio_withholding_inr": "50",
+        "incremental_portfolio_tax_inr": "161.5640",
+        "remaining_tax_after_withholding_inr": "111.5640",
+        "excess_withholding_not_valued_as_refund_inr": "0"
+      }
+    }
+  },
+  "scope": "Synthetic mechanics golden values; not an investor forecast or personal tax result"
+}
