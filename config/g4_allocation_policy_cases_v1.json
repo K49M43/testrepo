@@ -1,0 +1,292 @@
+{
+  "contract_id": "g4-allocation-policy-cases",
+  "contract_version": "1.0.0",
+  "contract_status": "DRAFT",
+  "as_of": "2026-11-04",
+  "investment_authorization": "NO_GO",
+  "input_contract_reference": {
+    "path": "config/g4_action_allocation_policy_v1.json",
+    "contract_version": "1.0.0",
+    "content_sha256": "941d2737e4ef3973a866f5888bf176e799a10af673fc9dbc0e90a6ca85cd7bda"
+  },
+  "relationship_to_g4_1": "Additive G4.2 case-set artifact. The pinned G4.1 contract and its empty NOT_STARTED_G4_2 placeholder remain an immutable snapshot of the G4.1 milestone; this file defines the subsequent case set without rewriting that accepted milestone artifact.",
+  "case_limit": {
+    "minimum_investable_research_cases": 3,
+    "maximum_investable_research_cases": 5,
+    "optimizer_allowed": false,
+    "comparison_rule": "Predeclare the cases; compare them later under the same inputs; retain no-winner and insufficient-evidence outcomes."
+  },
+  "asset_sleeves": [
+    {
+      "sleeve_id": "nifty500_equity",
+      "description": "Indian equity research sleeve referenced to Nifty 500 TRI; no security selected or approved."
+    },
+    {
+      "sleeve_id": "rolling_gilt_fund_proxy",
+      "description": "Government fixed-income research sleeve using the existing rolling gilt-fund proxy convention; not a direct held-to-maturity GoI bond and no security selected or approved."
+    },
+    {
+      "sleeve_id": "gold",
+      "description": "Gold research sleeve; product, tax category, and execution route remain subject to G5."
+    },
+    {
+      "sleeve_id": "silver",
+      "description": "Silver research sleeve; product, tax category, and execution route remain subject to G5."
+    },
+    {
+      "sleeve_id": "strategic_cash",
+      "description": "Cash held as a strategic portfolio allocation; a 0% policy weight does not assert that an external or brokerage cash reserve is unnecessary."
+    }
+  ],
+  "common_action_rules": {
+    "initial_deployment": {
+      "rule": "LUMP_SUM_ON_ACTUAL_CONFIRMED_DATE",
+      "status": "ANALYST_PROPOSED",
+      "investor_confirmation_required": true,
+      "date_field_id": "capital.initial_corpus.date",
+      "staged_deployment": false,
+      "decision_effect": "Use one initial deployment for like-for-like asset-allocation comparison. This is a research convention, not an investor-confirmed deployment instruction."
+    },
+    "capital_basis": {
+      "rule": "Apply weights to capital later designated for this investment goal after any reserve decision.",
+      "initial_amount_field_id": "capital.initial_corpus.amount",
+      "external_reserve_field_id": "capital.reserve.amount",
+      "external_reserve_amount_inr": null,
+      "external_reserve_status": "UNRESOLVED",
+      "must_not_infer_reserve_is_zero": true
+    },
+    "contribution_schedule": {
+      "starting_amount_field_id": "contributions.starting_monthly_amount",
+      "step_up_fraction_field_id": "contributions.step_up_fraction",
+      "step_up_interval_field_id": "contributions.step_up_interval",
+      "step_up_fraction": "0.10",
+      "step_up_interval_contributions": 12,
+      "step_up_allocation_rule": "Same sleeve fractions as the case SIP allocation.",
+      "timing_field_id": "contributions.timing_convention",
+      "research_timing_value": "END_OF_MONTH",
+      "timing_status": "ANALYST_PROPOSED",
+      "first_payment_date_field_id": "contributions.first_payment_date",
+      "actual_first_payment_date_status": "UNRESOLVED",
+      "fixture_horizons_in_contributions": [
+        120,
+        122
+      ]
+    },
+    "rebalancing": {
+      "rule": "At each 12-contribution anniversary in the fixture schedule, rebalance to the case's target weights; between anniversaries, direct new contributions by those target weights.",
+      "cadence_contributions": 12,
+      "target_rule": "Restore holdings to the case target weights at the stated cadence.",
+      "status": "ANALYST_PROPOSED",
+      "investor_confirmation_required": true,
+      "calendar_dates": "Relative contribution counts only until actual dates are confirmed.",
+      "transaction_cost_and_tax": "Not estimated in G4.2; account for them in downstream deterministic and instrument-level work."
+    },
+    "distribution_handling": {
+      "field_id": "income_and_coupon_handling",
+      "research_value": "REINVEST_AFTER_TAX",
+      "status": "ANALYST_PROPOSED",
+      "investor_confirmation_required": true,
+      "rule": "Reinvest net distributions into the sleeve that generated them; do not count pre-tax distributions as reinvested."
+    },
+    "cash_and_reserve": {
+      "strategic_cash_weight_fraction": "0",
+      "external_reserve_field_id": "capital.reserve.amount",
+      "external_reserve_amount_inr": null,
+      "external_reserve_status": "UNRESOLVED",
+      "must_not_infer_no_reserve": true,
+      "decision_effect": "Zero strategic cash is a comparison dimension only. It does not set an emergency, brokerage, or off-portfolio reserve to zero."
+    },
+    "terminal_measurement_and_exit": {
+      "status": "BLOCKED_PENDING_G3_AND_INVESTOR_DATE",
+      "dependency_issue": 18,
+      "outcome_field_id": "goals.success_and_shortfall_event",
+      "date_field_id": "horizon.terminal_measurement_date",
+      "investor_date_status": "UNRESOLVED",
+      "forced_liquidation": "NOT_ASSUMED_PENDING_G3",
+      "decision_effect": "Consume the accepted G3 outcome and liquidation semantics when available; no terminal success event or executable exit is defined here."
+    },
+    "product_eligibility": {
+      "status": "BLOCKED_PENDING_G5",
+      "dependency": "G5 identity, availability, source, fee, tax, and execution checks",
+      "security_identifiers": [],
+      "security_eligible": false
+    },
+    "execution_precision": {
+      "research_allocation_precision": "Exact decimal fractions; no whole-unit or order-lot rounding is simulated.",
+      "execution_rounding_status": "BLOCKED_PENDING_G5_AND_G4_3"
+    }
+  },
+  "policy_cases": [
+    {
+      "case_id": "existing_65_20_10_5_challenger",
+      "label": "Existing 65/20/10/5 research challenger",
+      "case_role": "REFERENCE_CHALLENGER",
+      "design_origin": "EXISTING_UNAPPROVED_RESEARCH_REFERENCE",
+      "research_question": "What does the already-studied 65/20/10/5 mix show under common assumptions? It remains an unapproved research challenger, not a default or preferred portfolio.",
+      "weights_fraction": {
+        "nifty500_equity": "0.65",
+        "rolling_gilt_fund_proxy": "0.20",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "initial_allocation_fraction": {
+        "nifty500_equity": "0.65",
+        "rolling_gilt_fund_proxy": "0.20",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "sip_allocation_fraction": {
+        "nifty500_equity": "0.65",
+        "rolling_gilt_fund_proxy": "0.20",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "step_up_allocation_fraction": {
+        "nifty500_equity": "0.65",
+        "rolling_gilt_fund_proxy": "0.20",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "common_action_rules_ref": "#/common_action_rules",
+      "investment_decision_status": "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS",
+      "blocked_dependencies": [
+        "G3 issue #18 outcome and exit contract",
+        "G5 product identity, availability, fee, tax, and execution",
+        "Investor confirmation of unresolved G4.1 inputs"
+      ],
+      "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
+    },
+    {
+      "case_id": "lower_equity_cashflow_matched",
+      "label": "Lower-equity, cashflow-matched comparison",
+      "case_role": "LOWER_EQUITY_TEST",
+      "design_origin": "ANALYST_DESIGNED_NOT_INVESTOR_PREFERENCE",
+      "research_question": "What changes when equity is reduced by 15 percentage points and government fixed income and gold receive the difference, while the cashflow schedule and silver weight stay matched?",
+      "weights_fraction": {
+        "nifty500_equity": "0.50",
+        "rolling_gilt_fund_proxy": "0.30",
+        "gold": "0.15",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "initial_allocation_fraction": {
+        "nifty500_equity": "0.50",
+        "rolling_gilt_fund_proxy": "0.30",
+        "gold": "0.15",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "sip_allocation_fraction": {
+        "nifty500_equity": "0.50",
+        "rolling_gilt_fund_proxy": "0.30",
+        "gold": "0.15",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "step_up_allocation_fraction": {
+        "nifty500_equity": "0.50",
+        "rolling_gilt_fund_proxy": "0.30",
+        "gold": "0.15",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "common_action_rules_ref": "#/common_action_rules",
+      "investment_decision_status": "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS",
+      "blocked_dependencies": [
+        "G3 issue #18 outcome and exit contract",
+        "G5 product identity, availability, fee, tax, and execution",
+        "Investor confirmation of unresolved G4.1 inputs"
+      ],
+      "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
+    },
+    {
+      "case_id": "equity_forward_diversified_growth",
+      "label": "Equity-forward diversified-growth comparison",
+      "case_role": "GROWTH_SENSITIVITY_TEST",
+      "design_origin": "ANALYST_DESIGNED_NOT_INVESTOR_PREFERENCE",
+      "research_question": "What changes when equity rises by 10 percentage points, funded from the government fixed-income sleeve, while gold and silver remain represented?",
+      "weights_fraction": {
+        "nifty500_equity": "0.75",
+        "rolling_gilt_fund_proxy": "0.10",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "initial_allocation_fraction": {
+        "nifty500_equity": "0.75",
+        "rolling_gilt_fund_proxy": "0.10",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "sip_allocation_fraction": {
+        "nifty500_equity": "0.75",
+        "rolling_gilt_fund_proxy": "0.10",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "step_up_allocation_fraction": {
+        "nifty500_equity": "0.75",
+        "rolling_gilt_fund_proxy": "0.10",
+        "gold": "0.10",
+        "silver": "0.05",
+        "strategic_cash": "0"
+      },
+      "common_action_rules_ref": "#/common_action_rules",
+      "investment_decision_status": "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS",
+      "blocked_dependencies": [
+        "G3 issue #18 outcome and exit contract",
+        "G5 product identity, availability, fee, tax, and execution",
+        "Investor confirmation of unresolved G4.1 inputs"
+      ],
+      "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
+    }
+  ],
+  "zero_return_arithmetic_control": {
+    "control_id": "ZERO_RETURN_ARITHMETIC_CONTROL",
+    "not_an_investable_case": true,
+    "purpose": "Reconcile gross mandate initial capital plus scheduled contributions before any separately confirmed reserve when return, tax, fees, and inflation are all zero; this is not deployable portfolio value, a forecast, or performance evidence.",
+    "source_fixture": {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    },
+    "assumptions": {
+      "nominal_return_fraction_per_month": "0",
+      "tax_inr": "0",
+      "fees_and_costs_inr": "0",
+      "inflation_fraction_per_month": "0"
+    },
+    "expected_terminal_values": [
+      {
+        "horizon_contributions": 120,
+        "expected_nominal_value_inr_exact": "8981227.380300000",
+        "expected_nominal_value_inr_rounded_2dp": "8981227.38"
+      },
+      {
+        "horizon_contributions": 122,
+        "expected_nominal_value_inr_exact": "9110914.503305000",
+        "expected_nominal_value_inr_rounded_2dp": "9110914.50"
+      }
+    ]
+  },
+  "known_limitations": [
+    "The three cases are allocation hypotheses only; they are not ranked, recommended, optimized, suitability-assessed, or shown to meet either goal.",
+    "The zero-return control is arithmetic only and provides no return, risk, tax, fee, or purchasing-power estimate.",
+    "Actual terminal outcome and exit remain blocked by G3 and the investor's unresolved measurement date.",
+    "No sleeve maps to an eligible security until G5 identity, availability, source, fee, tax, and execution checks pass.",
+    "External reserve, actual funding dates, account constraints, and execution rounding remain unresolved or blocked."
+  ],
+  "invalidation_triggers": [
+    "A change to the pinned G4.1 input contract or its content fingerprint.",
+    "A change to mandate capital, contribution amounts, step-up rate, or step-up interval.",
+    "Acceptance or revision of G3 outcome, terminal measurement, or liquidation semantics.",
+    "Investor confirmation of reserve, initial/SIP dates, timing, drawdown tolerance, distribution treatment, or exit choice.",
+    "A change to the sleeve definitions, case weights, rebalancing rule, policy limits, or product eligibility evidence."
+  ],
+  "content_sha256": "33c951848e0adf3ca4d9045869a787833e87d83f1aa1cd62b7e01f8f014518df"
+}
