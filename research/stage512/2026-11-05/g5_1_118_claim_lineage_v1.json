@@ -63,7 +63,9 @@
     "command": "python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir <fresh-output-directory>",
     "corrected_scenario_rows": 6,
     "numeric_values_match_pinned_original": true,
-    "fresh_rerun_matches_committed_output_exactly": true,
+    "fresh_scenario_csv_matches_committed_output_exactly": true,
+    "assumption_register_matches_with_abs_tolerance": 1e-12,
+    "assumption_register_within_tolerance": true,
     "pre_correction_source_hashes_verified_at_pinned_commit": {
       "research/stage512/2026-11-02/stage512_assumption_register.json": "e5d1af01137b14d7a17336af89cee8f6b5c3e1490e4cd9b5c619e512116c6c47",
       "research/stage512/2026-11-02/stage512_risk_audit.py": "99e624f1b093bc7cf81f297c922b092534ca860a3731534d2beeb5b4994b50e2",
@@ -73,7 +75,7 @@
   },
   "current_source_hashes_sha256_utf8_lf": {
     ".github/workflows/g5-1-claim-lineage.yml": "1743b2346e5a1f8f897f376abff3edfd5b88eb820cc80f2c46f946dc89c54b27",
-    "decision/audit_g5_1_claim_lineage.py": "36d58e33c4d2fb650b8893d755c1ebca0014861902fa426160fbfc13b78b0602",
+    "decision/audit_g5_1_claim_lineage.py": "6e013a17519b4a1df6b50a47a1a340f92536f25215eca207e75b21dfb75542ea",
     "docs/DECISION_LOG.md": "ad6b4a492fcfee49500c33860204c1d9dd0e40772492d6e37cd0ecd7ba384cce",
     "research/stage512/2026-11-02/stage512_assumption_register.json": "02f89458e06b07ff175d3207afb0e87b46f66baf68651c7446292f459d29f697",
     "research/stage512/2026-11-02/stage512_risk_audit.py": "302a75baef9832e95e71d83fa0276232bed98ce211ea8244426a121957d56ac4",

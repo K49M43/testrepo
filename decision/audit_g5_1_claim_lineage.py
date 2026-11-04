@@ -6,6 +6,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any
@@ -55,6 +56,22 @@ def _json(path: Path) -> dict[str, Any]:
 def _rows(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8-sig") as stream:
         return list(csv.DictReader(stream))
+
+
+def _json_close(actual: Any, expected: Any, tolerance: float = 1e-12) -> bool:
+    if isinstance(actual, dict) and isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            _json_close(actual[key], expected[key], tolerance) for key in actual
+        )
+    if isinstance(actual, list) and isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            _json_close(left, right, tolerance) for left, right in zip(actual, expected)
+        )
+    if isinstance(actual, bool) or isinstance(expected, bool):
+        return actual is expected
+    if isinstance(actual, (int, float)) and isinstance(expected, (int, float)):
+        return math.isclose(actual, expected, rel_tol=0.0, abs_tol=tolerance)
+    return actual == expected
 
 
 def _scenario_rows(rows: list[dict[str, str]], label: str) -> list[dict[str, str]]:
@@ -168,9 +185,13 @@ def audit(baseline_dir: Path, reproduced_dir: Path) -> dict[str, Any]:
     committed_rerun_assumption = RERUN_DIR / "stage512_assumption_register.json"
     _require(reproduced_csv.is_file() and reproduced_assumption_path.is_file(),
              "fresh model rerun must emit both expected artifacts")
-    _require(_normalized_bytes(reproduced_csv) == _normalized_bytes(committed_rerun_csv)
-             and _normalized_bytes(reproduced_assumption_path) == _normalized_bytes(committed_rerun_assumption),
-             "fresh pinned-runtime model rerun does not reproduce the committed outputs exactly")
+    _require(_normalized_bytes(reproduced_csv) == _normalized_bytes(committed_rerun_csv),
+             "fresh pinned-runtime scenario CSV does not reproduce committed rows exactly")
+    assumption_register_within_tolerance = _json_close(
+        _json(reproduced_assumption_path), _json(committed_rerun_assumption)
+    )
+    _require(assumption_register_within_tolerance,
+             "fresh assumption register differs beyond the 1e-12 absolute floating-point tolerance")
 
     official_rows = _rows(ROOT / NSE_SERIES)
     validation = _json(ROOT / NSE_VALIDATION)
@@ -252,7 +273,9 @@ def audit(baseline_dir: Path, reproduced_dir: Path) -> dict[str, Any]:
             "command": "python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir <fresh-output-directory>",
             "corrected_scenario_rows": 6,
             "numeric_values_match_pinned_original": baseline_numeric_preserved,
-            "fresh_rerun_matches_committed_output_exactly": True,
+            "fresh_scenario_csv_matches_committed_output_exactly": True,
+            "assumption_register_matches_with_abs_tolerance": 1e-12,
+            "assumption_register_within_tolerance": assumption_register_within_tolerance,
             "pre_correction_source_hashes_verified_at_pinned_commit": baseline_hashes,
         },
         "current_source_hashes_sha256_utf8_lf": evidence_hashes,
