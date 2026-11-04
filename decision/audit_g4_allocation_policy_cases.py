@@ -19,6 +19,13 @@ SCHEMA_PATH = ROOT / "config" / "g4_allocation_policy_cases.schema.v1.json"
 INPUT_PATH = ROOT / "config" / "g4_action_allocation_policy_v1.json"
 TOLERANCE = Decimal("0.000000000001")
 SLEEVE_IDS = ["nifty500_equity", "rolling_gilt_fund_proxy", "gold", "silver", "strategic_cash"]
+EXPECTED_SLEEVE_DESCRIPTIONS = {
+    "nifty500_equity": "Indian equity research sleeve referenced to Nifty 500 TRI; no security selected or approved.",
+    "rolling_gilt_fund_proxy": "Government fixed-income research sleeve using the existing rolling gilt-fund proxy convention; not a direct held-to-maturity GoI bond and no security selected or approved.",
+    "gold": "Gold research sleeve; product, tax category, and execution route remain subject to G5.",
+    "silver": "Silver research sleeve; product, tax category, and execution route remain subject to G5.",
+    "strategic_cash": "Cash held as a strategic portfolio allocation; a 0% policy weight does not assert that an external or brokerage cash reserve is unnecessary.",
+}
 EXPECTED_CASES = {
     "existing_65_20_10_5_challenger": {
         "nifty500_equity": "0.65", "rolling_gilt_fund_proxy": "0.20", "gold": "0.10", "silver": "0.05", "strategic_cash": "0"
@@ -65,6 +72,21 @@ EXPECTED_RULES = {
     "execution_precision": "Exact decimal fractions; no whole-unit or order-lot rounding is simulated.",
     "control_purpose": "Reconcile gross mandate initial capital plus scheduled contributions before any separately confirmed reserve when return, tax, fees, and inflation are all zero; this is not deployable portfolio value, a forecast, or performance evidence.",
 }
+EXPECTED_G4_1_RELATIONSHIP = "Additive G4.2 case-set artifact. The pinned G4.1 contract and its empty NOT_STARTED_G4_2 placeholder remain an immutable snapshot of the G4.1 milestone; this file defines the subsequent case set without rewriting that accepted milestone artifact."
+EXPECTED_LIMITATIONS = [
+    "The three cases are allocation hypotheses only; they are not ranked, recommended, optimized, suitability-assessed, or shown to meet either goal.",
+    "The zero-return control is arithmetic only and provides no return, risk, tax, fee, or purchasing-power estimate.",
+    "Actual terminal outcome and exit remain blocked by G3 and the investor's unresolved measurement date.",
+    "No sleeve maps to an eligible security until G5 identity, availability, source, fee, tax, and execution checks pass.",
+    "External reserve, actual funding dates, account constraints, and execution rounding remain unresolved or blocked.",
+]
+EXPECTED_INVALIDATION_TRIGGERS = [
+    "A change to the pinned G4.1 input contract or its content fingerprint.",
+    "A change to mandate capital, contribution amounts, step-up rate, or step-up interval.",
+    "Acceptance or revision of G3 outcome, terminal measurement, or liquidation semantics.",
+    "Investor confirmation of reserve, initial/SIP dates, timing, drawdown tolerance, distribution treatment, or exit choice.",
+    "A change to the sleeve definitions, case weights, rebalancing rule, policy limits, or product eligibility evidence.",
+]
 EXPECTED_CONTROL_VALUES = {
     120: "8981227.380300000",
     122: "9110914.503305000",
@@ -189,8 +211,7 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
     _require(ref.get("path") == "config/g4_action_allocation_policy_v1.json", "wrong G4.1 input contract path")
     _require(ref.get("contract_version") == input_contract.get("contract_version"), "G4.1 contract version does not match")
     _require(ref.get("content_sha256") == input_contract.get("content_sha256"), "G4.1 contract fingerprint does not match")
-    _require("immutable snapshot" in contract.get("relationship_to_g4_1", "") and
-             "without rewriting" in contract.get("relationship_to_g4_1", ""),
+    _require(contract.get("relationship_to_g4_1") == EXPECTED_G4_1_RELATIONSHIP,
              "G4.2 must explain that it extends rather than mutates the accepted G4.1 contract snapshot")
 
     mandate = _load_json(ROOT / "config" / "investment_mandate_2036.json")
@@ -204,8 +225,10 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
              Decimal(base["silver"]) == Decimal(str(mandate_weights["silver"])),
              "reference precious-metal weights diverge from the mandate research anchor")
 
-    sleeves = [item["sleeve_id"] for item in contract.get("asset_sleeves", [])]
-    _require(sleeves == SLEEVE_IDS, "asset sleeves must be complete and in the controlled order")
+    sleeves = contract.get("asset_sleeves", [])
+    _require([item["sleeve_id"] for item in sleeves] == SLEEVE_IDS and
+             all(item["description"] == EXPECTED_SLEEVE_DESCRIPTIONS[item["sleeve_id"]] for item in sleeves),
+             "asset sleeves must preserve their definitions and G5 eligibility boundary")
     cases = contract.get("policy_cases", [])
     _require(3 <= len(cases) <= 5, "policy case count must be from 3 to 5")
     ids = [case.get("case_id") for case in cases]
@@ -359,10 +382,10 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
         fixture_ref = input_contract["upstream_contracts"]["cashflow_fixture"]
         _require(contract["zero_return_arithmetic_control"]["source_fixture"]["sha256"] == fixture_ref["sha256"],
                  "G4.2 zero-return control must use the G4.1-pinned fixture")
-    _require(isinstance(contract.get("known_limitations"), list) and contract["known_limitations"],
-             "G4.2 limitations must be explicit")
-    _require(isinstance(contract.get("invalidation_triggers"), list) and contract["invalidation_triggers"],
-             "G4.2 invalidation triggers must be explicit")
+    _require(contract.get("known_limitations") == EXPECTED_LIMITATIONS,
+             "G4.2 limitations must preserve the audited scope boundaries")
+    _require(contract.get("invalidation_triggers") == EXPECTED_INVALIDATION_TRIGGERS,
+             "G4.2 invalidation triggers must remain complete")
     return values
 
 
@@ -523,6 +546,16 @@ def audit() -> dict[str, Any]:
     bad = copy.deepcopy(contract)
     bad["case_limit"]["comparison_rule"] = "Optimize all weights to reach the 85% target and select the best case."
     _expect_rejected(bad, "comparison rule optimizes or selects a winner")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["asset_sleeves"][1]["description"] = "Direct GoI bond ISIN X is verified eligible and approved."
+    _expect_rejected(bad, "asset-sleeve text claims an eligible security before G5")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["known_limitations"][2] = "G3 exit semantics are accepted and final."
+    _expect_rejected(bad, "limitations contradict the blocked G3 dependency")
     negative_cases += 1
 
     bad = copy.deepcopy(contract)
