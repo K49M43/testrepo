@@ -1,9 +1,13 @@
 # G3 — 2036 outcome contract and deterministic hurdles
 
-**Status:** bounded arithmetic and outcome-definition artifact; no portfolio forecast, probability, or investment authorization.  
-**Contract:** [`g3_outcome_contract_v1.json`](../research/stage512/2026-11-04/g3_outcome_contract_v1.json)  
-**Reproducible results:** [`g3_deterministic_hurdles_v1.json`](../research/stage512/2026-11-04/g3_deterministic_hurdles_v1.json)  
-**Calculation:** [`g3_goal_hurdle.py`](../decision/g3_goal_hurdle.py)  
+**Status:** bounded arithmetic and outcome-definition artifact; no portfolio forecast, probability, or investment authorization.
+
+**Contract:** [`g3_outcome_contract_v1.json`](../research/stage512/2026-11-04/g3_outcome_contract_v1.json)
+
+**Reproducible results:** [`g3_deterministic_hurdles_v1.json`](../research/stage512/2026-11-04/g3_deterministic_hurdles_v1.json)
+
+**Calculation:** [`g3_goal_hurdle.py`](../decision/g3_goal_hurdle.py)
+
 **Independent audit:** [`audit_g3_goal_hurdle.py`](../decision/audit_g3_goal_hurdle.py)
 
 ## Decision question this goal resolves
