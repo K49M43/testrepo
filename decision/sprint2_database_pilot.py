@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from after_tax_event_ledger import LedgerEvent, run_ledger, tax_year_for
 from capital_gain_loss_schedule import Loss, Offset
@@ -338,6 +338,16 @@ def _hash_code_and_migration() -> tuple[str, str]:
     return sha256_text(canonical_json(components)), components[MIGRATION_PATH.relative_to(ROOT).as_posix()]
 
 
+def calculation_identity() -> dict[str, Any]:
+    """Expose the accepted engine and schema identity to bounded adapters."""
+    code_hash, migration_hash = _hash_code_and_migration()
+    return {
+        "engine_code_sha256": code_hash,
+        "schema_version": MIGRATION_VERSION,
+        "migration_sha256": migration_hash,
+    }
+
+
 def _execute_sql_script(conn: sqlite3.Connection, script: str) -> None:
     statement = ""
     for line in script.splitlines(keepends=True):
@@ -470,13 +480,24 @@ def _read_snapshot(conn: sqlite3.Connection, snapshot_hash: str, expected_event_
 
 def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
                   expected_path: Path = DEFAULT_EXPECTED_PATH, *,
-                  inject_failure_after: str | None = None) -> dict[str, Any]:
+                  inject_failure_after: str | None = None,
+                  snapshot_context: Mapping[str, Any] | None = None,
+                  run_context_extension: Mapping[str, Any] | None = None,
+                  result_extensions: Mapping[str, Any] | None = None,
+                  result_calculator: Callable[[Mapping[str, Any]], Mapping[str, Any]] | None = None) -> dict[str, Any]:
     if inject_failure_after not in (None, "inputs", "compute"):
         raise ValueError("inject_failure_after must be None, 'inputs', or 'compute'")
+    if result_extensions is not None and result_calculator is not None:
+        raise ValueError("provide either result_extensions or result_calculator, not both")
     load_started = time.perf_counter()
     input_text, input_file_hash = normalized_text_and_sha256(input_path)
     expected_text, expected_file_hash = normalized_text_and_sha256(expected_path)
     fixture = load_fixture_text(input_text)
+    if snapshot_context is not None:
+        context = dict(snapshot_context)
+        # Fail before touching SQLite if the adapter context is not canonical JSON.
+        canonical_json(context)
+        fixture.raw["integration_context"] = context
     expected_data = json.loads(expected_text)
     if expected_data.get("fixture_id") != fixture.raw["fixture_id"] or expected_data.get("fixture_version") != fixture.raw["fixture_version"]:
         raise ValueError("expected-output fixture identity does not match input fixture")
@@ -496,6 +517,10 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
         "git_revision": git_revision,
         "runtime": runtime,
     }
+    if run_context_extension is not None:
+        extension = dict(run_context_extension)
+        canonical_json(extension)
+        run_context["integration_context"] = extension
     run_key = content_run_key(run_context)
     attempt_id = uuid.uuid4().hex
     started_at = _utc_now()
@@ -538,6 +563,12 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
             compute_started = time.perf_counter()
             ledger_result = run_fixture(persisted_fixture)
             assert_expected(ledger_result, expected_path, expected_data=expected_data)
+            if result_calculator is not None:
+                calculated_extensions = result_calculator(snapshot_payload)
+                if not isinstance(calculated_extensions, Mapping):
+                    raise ValueError("result_calculator must return a mapping")
+                result_extensions = dict(calculated_extensions)
+                canonical_json(result_extensions)
             compute_ms = (time.perf_counter() - compute_started) * 1000
             if inject_failure_after == "compute":
                 raise RuntimeError("injected failure after calculation before result persistence")
@@ -557,6 +588,12 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
                 "schema_version": MIGRATION_VERSION,
             }
             output = {"run_manifest": manifest, "result": result_payload}
+            if run_context_extension is not None:
+                output["run_manifest"]["integration_context"] = dict(run_context_extension)
+            if result_extensions is not None:
+                extensions = dict(result_extensions)
+                canonical_json(extensions)
+                output["additional_results"] = extensions
             output_json = canonical_json(output)
             output_hash = sha256_text(output_json)
             prior = conn.execute(
