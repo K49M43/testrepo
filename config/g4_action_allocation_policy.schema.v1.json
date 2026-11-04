@@ -7,6 +7,7 @@
   "required": [
     "contract_id",
     "contract_version",
+    "content_sha256",
     "contract_status",
     "as_of",
     "investment_authorization",
@@ -22,6 +23,10 @@
   "properties": {
     "contract_id": { "const": "g4-action-allocation-policy" },
     "contract_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "content_sha256": {
+      "$ref": "#/$defs/sha256",
+      "description": "SHA-256 of canonical JSON excluding this property; sort keys, compact separators, UTF-8, no ASCII escaping."
+    },
     "contract_status": { "enum": ["DRAFT", "ACCEPTED"] },
     "as_of": { "type": "string", "format": "date" },
     "investment_authorization": { "const": "NO_GO" },

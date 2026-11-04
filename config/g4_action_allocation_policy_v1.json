@@ -346,5 +346,6 @@
     "Acceptance or revision of the G2 database snapshot/run identity contract.",
     "Investor confirmation of dates, reserves, account limits, risk tolerance, or liquidation preferences.",
     "A change to the permitted policy dimensions or source qualification status."
-  ]
+  ],
+  "content_sha256": "941d2737e4ef3973a866f5888bf176e799a10af673fc9dbc0e90a6ca85cd7bda"
 }

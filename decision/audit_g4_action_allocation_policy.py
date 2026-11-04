@@ -185,6 +185,16 @@ def _portable_text_sha256(raw: bytes) -> str:
     return hashlib.sha256(canonical).hexdigest()
 
 
+def _contract_fingerprint(contract: dict[str, Any]) -> str:
+    payload = {key: value for key, value in contract.items() if key != "content_sha256"}
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
+
+
+def _refresh_contract_fingerprint(contract: dict[str, Any]) -> None:
+    contract["content_sha256"] = _contract_fingerprint(contract)
+
+
 def _check_hash_reference(reference: dict[str, Any], label: str) -> None:
     relative = reference.get("path")
     expected = reference.get("sha256")
@@ -276,6 +286,8 @@ def _validate_field_semantics(field: dict[str, Any]) -> None:
 def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) -> None:
     _require(contract.get("contract_id") == "g4-action-allocation-policy", "wrong contract_id")
     _require(contract.get("contract_version") == "1.0.0", "unexpected contract version")
+    _require(contract.get("content_sha256") == _contract_fingerprint(contract),
+             "contract content_sha256 is stale; refresh identity after any contract change")
     _require(contract.get("contract_status") in {"DRAFT", "ACCEPTED"}, "invalid contract_status")
     _require(contract.get("investment_authorization") == "NO_GO", "G4.1 must fail closed to NO_GO")
     _require(contract.get("as_of") == "2026-11-04", "as_of must be explicitly reviewed when the contract changes")
@@ -361,7 +373,10 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
         _check_mandate_derived_values(contract)
 
 
-def _expect_rejected(candidate: dict[str, Any], label: str, *, check_sources: bool = False) -> None:
+def _expect_rejected(candidate: dict[str, Any], label: str, *, check_sources: bool = False,
+                     refresh_fingerprint: bool = True) -> None:
+    if refresh_fingerprint:
+        _refresh_contract_fingerprint(candidate)
     try:
         validate_contract(candidate, check_sources=check_sources)
     except (ValueError, TypeError, KeyError):
@@ -380,6 +395,11 @@ def audit() -> dict[str, Any]:
     validate_contract(contract, check_sources=True)
 
     negative_cases = 0
+    bad = copy.deepcopy(contract)
+    bad["content_sha256"] = "0" * 64
+    _expect_rejected(bad, "stale contract identity", refresh_fingerprint=False)
+    negative_cases += 1
+
     bad = copy.deepcopy(contract)
     next(field for field in bad["field_register"] if field["field_id"] == "capital.reserve.amount")["status"] = "MANDATE_DERIVED"
     _expect_rejected(bad, "unresolved reserve promoted without a value")
