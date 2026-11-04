@@ -65,7 +65,7 @@
           "properties": {
             "minimum_investable_research_cases": { "type": "integer", "minimum": 1 },
             "maximum_investable_research_cases": { "type": "integer", "minimum": 1 },
-            "required_control": { "type": "string", "minLength": 1 },
+            "required_control": { "const": "ZERO_RETURN_ARITHMETIC_CONTROL" },
             "optimizer_allowed": { "type": "boolean" }
           }
         }

@@ -50,6 +50,108 @@ EXPECTED_UNITS = {
     "policy.terminal_measurement_contract": "exit_policy",
     "policy.investor_exit_choice": "exit_policy",
 }
+EXPECTED_TYPES = {
+    "capital.initial_corpus.amount": "decimal_string",
+    "capital.reserve.amount": "decimal_string",
+    "capital.initial_corpus.date": "iso_date",
+    "contributions.starting_monthly_amount": "decimal_string",
+    "contributions.step_up_fraction": "decimal_string",
+    "contributions.step_up_interval": "positive_integer",
+    "contributions.timing_convention": "enum",
+    "contributions.first_payment_date": "iso_date",
+    "goals.planning_floor.amount": "decimal_string",
+    "goals.stretch_goal.amount": "decimal_string",
+    "goals.success_and_shortfall_event": "string",
+    "inflation.purchasing_power_anchor_date": "iso_date",
+    "horizon.terminal_measurement_date": "iso_date",
+    "risk.interim_drawdown_tolerance": "decimal_string",
+    "implementation.account_and_product_constraints": "string",
+    "implementation.broker_route": "string",
+    "income_and_coupon_handling": "enum",
+    "policy.initial_deployment_rule": "enum",
+    "policy.allocation_schedule": "object",
+    "policy.rebalancing_rule": "string",
+    "policy.terminal_measurement_contract": "string",
+    "policy.investor_exit_choice": "string",
+}
+EXPECTED_SOURCES = {
+    "capital.initial_corpus.amount": "config/investment_mandate_2036.json#/cashflows/initial_lump_sum_inr",
+    "capital.reserve.amount": "config/investment_mandate_2036.json#/cashflows/initial_lump_sum_inr",
+    "capital.initial_corpus.date": "config/investment_mandate_2036.json#/cashflows/actual_initial_investment_date",
+    "contributions.starting_monthly_amount": "config/investment_mandate_2036.json#/cashflows/starting_monthly_contribution_inr",
+    "contributions.step_up_fraction": "config/investment_mandate_2036.json#/cashflows/annual_sip_step_up_fraction",
+    "contributions.step_up_interval": "config/investment_mandate_2036.json#/cashflows/months_between_step_ups",
+    "contributions.timing_convention": "config/investment_mandate_2036.json#/cashflows/modeled_contribution_timing",
+    "contributions.first_payment_date": "config/investment_mandate_2036.json#/cashflows/actual_first_contribution_date",
+    "goals.planning_floor.amount": "config/investment_mandate_2036.json#/goals/real_after_tax_floor_inr",
+    "goals.stretch_goal.amount": "config/investment_mandate_2036.json#/goals/real_after_tax_stretch_inr",
+    "goals.success_and_shortfall_event": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+    "inflation.purchasing_power_anchor_date": "config/investment_mandate_2036.json#/goals/purchasing_power_base_specific_date",
+    "horizon.terminal_measurement_date": "config/investment_mandate_2036.json#/goals/target_measurement_dates_in_2036",
+    "risk.interim_drawdown_tolerance": "config/investment_mandate_2036.json#/modeling/require_investment_drawdown_tolerance_confirmation",
+    "implementation.account_and_product_constraints": "config/investment_mandate_2036.json#/unknowns_for_final_signoff",
+    "implementation.broker_route": "config/investment_mandate_2036.json#/investor/broker",
+    "income_and_coupon_handling": "docs/INVESTMENT_DECISION_MANDATE_2036.md",
+    "policy.initial_deployment_rule": "GitHub issue #22 (G4.2 bounded action set)",
+    "policy.allocation_schedule": "GitHub issue #22 (G4.2 bounded action set)",
+    "policy.rebalancing_rule": "GitHub issue #22 (G4.2 bounded action set)",
+    "policy.terminal_measurement_contract": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+    "policy.investor_exit_choice": "config/investment_mandate_2036.json#/goals/target_measurement_dates_in_2036",
+}
+EXPECTED_STATUSES = {
+    "capital.initial_corpus.amount": "MANDATE_DERIVED",
+    "capital.reserve.amount": "UNRESOLVED",
+    "capital.initial_corpus.date": "UNRESOLVED",
+    "contributions.starting_monthly_amount": "MANDATE_DERIVED",
+    "contributions.step_up_fraction": "MANDATE_DERIVED",
+    "contributions.step_up_interval": "MANDATE_DERIVED",
+    "contributions.timing_convention": "ANALYST_PROPOSED",
+    "contributions.first_payment_date": "UNRESOLVED",
+    "goals.planning_floor.amount": "MANDATE_DERIVED",
+    "goals.stretch_goal.amount": "MANDATE_DERIVED",
+    "goals.success_and_shortfall_event": "DEPENDENCY_BLOCKED",
+    "inflation.purchasing_power_anchor_date": "UNRESOLVED",
+    "horizon.terminal_measurement_date": "UNRESOLVED",
+    "risk.interim_drawdown_tolerance": "UNRESOLVED",
+    "implementation.account_and_product_constraints": "UNRESOLVED",
+    "implementation.broker_route": "MANDATE_DERIVED",
+    "income_and_coupon_handling": "ANALYST_PROPOSED",
+    "policy.initial_deployment_rule": "DEPENDENCY_BLOCKED",
+    "policy.allocation_schedule": "DEPENDENCY_BLOCKED",
+    "policy.rebalancing_rule": "DEPENDENCY_BLOCKED",
+    "policy.terminal_measurement_contract": "DEPENDENCY_BLOCKED",
+    "policy.investor_exit_choice": "UNRESOLVED",
+}
+EXPECTED_CONFIRMATION = {
+    "MANDATE_DERIVED": False,
+    "ANALYST_PROPOSED": True,
+    "UNRESOLVED": True,
+    "DEPENDENCY_BLOCKED": False,
+}
+DECIMAL_RANGES = {
+    "capital.initial_corpus.amount": (Decimal("0"), None),
+    "capital.reserve.amount": (Decimal("0"), None),
+    "contributions.starting_monthly_amount": (Decimal("0"), None),
+    "contributions.step_up_fraction": (Decimal("0"), Decimal("1")),
+    "goals.planning_floor.amount": (Decimal("0"), None),
+    "goals.stretch_goal.amount": (Decimal("0"), None),
+    "risk.interim_drawdown_tolerance": (Decimal("0"), Decimal("1")),
+}
+STRICTLY_POSITIVE_DECIMALS = {
+    "capital.initial_corpus.amount",
+    "contributions.starting_monthly_amount",
+    "goals.planning_floor.amount",
+    "goals.stretch_goal.amount",
+}
+MANDATE_DERIVED_POINTERS = {
+    "capital.initial_corpus.amount": ("cashflows", "initial_lump_sum_inr"),
+    "contributions.starting_monthly_amount": ("cashflows", "starting_monthly_contribution_inr"),
+    "contributions.step_up_fraction": ("cashflows", "annual_sip_step_up_fraction"),
+    "contributions.step_up_interval": ("cashflows", "months_between_step_ups"),
+    "goals.planning_floor.amount": ("goals", "real_after_tax_floor_inr"),
+    "goals.stretch_goal.amount": ("goals", "real_after_tax_stretch_inr"),
+    "implementation.broker_route": ("investor", "broker"),
+}
 REQUIRED_FIELD_IDS = set(EXPECTED_UNITS)
 REQUIRED_DIMENSIONS = {
     "capital_and_reserve",
@@ -104,9 +206,14 @@ def _validate_typed_value(field: dict[str, Any]) -> None:
         _require(isinstance(value, str) and bool(re.fullmatch(r"-?\d+(?:\.\d+)?", value)),
                  f"{field['field_id']} must be a finite decimal string")
         try:
-            _require(Decimal(value).is_finite(), f"{field['field_id']} must be finite")
+            number = Decimal(value)
+            _require(number.is_finite(), f"{field['field_id']} must be finite")
         except InvalidOperation as error:
             raise ValueError(f"{field['field_id']} is not a valid decimal") from error
+        lower, upper = DECIMAL_RANGES[field["field_id"]]
+        lower_ok = number > lower if field["field_id"] in STRICTLY_POSITIVE_DECIMALS else number >= lower
+        _require(lower_ok and (upper is None or number <= upper),
+                 f"{field['field_id']} is outside its permitted numeric range")
     elif field_type == "positive_integer":
         _require(isinstance(value, int) and not isinstance(value, bool) and value > 0,
                  f"{field['field_id']} must be a positive integer")
@@ -128,6 +235,44 @@ def _validate_typed_value(field: dict[str, Any]) -> None:
         raise ValueError(f"Unsupported data type for {field['field_id']}: {field_type}")
 
 
+def _resolve_json_pointer(document: Any, pointer: tuple[str, ...]) -> Any:
+    current = document
+    for token in pointer:
+        token = token.replace("~1", "/").replace("~0", "~")
+        _require(isinstance(current, dict) and token in current,
+                 f"mandate source pointer does not resolve: {pointer}")
+        current = current[token]
+    return current
+
+
+def _check_mandate_derived_values(contract: dict[str, Any]) -> None:
+    mandate = _load_json(ROOT / "config" / "investment_mandate_2036.json")
+    for field in contract["field_register"]:
+        field_id = field["field_id"]
+        if field["status"] != "MANDATE_DERIVED":
+            continue
+        _require(field_id in MANDATE_DERIVED_POINTERS,
+                 f"no approved mandate source mapping for {field_id}")
+        source_value = _resolve_json_pointer(mandate, MANDATE_DERIVED_POINTERS[field_id])
+        if field["data_type"] == "decimal_string":
+            matches = Decimal(str(source_value)) == Decimal(field["value"])
+        else:
+            matches = source_value == field["value"]
+        _require(matches, f"{field_id} value differs from its pinned mandate source")
+
+
+def _validate_field_semantics(field: dict[str, Any]) -> None:
+    field_id = field["field_id"]
+    _require(field["data_type"] == EXPECTED_TYPES[field_id],
+             f"wrong data_type for {field_id}; expected {EXPECTED_TYPES[field_id]}")
+    _require(field["source_ref"] == EXPECTED_SOURCES[field_id],
+             f"unsupported source_ref for {field_id}")
+    _require(field["status"] == EXPECTED_STATUSES[field_id],
+             f"unexpected provenance status for {field_id}; requires explicit contract review")
+    _require(field["investor_confirmation_required"] == EXPECTED_CONFIRMATION[field["status"]],
+             f"incorrect investor confirmation flag for {field_id}")
+
+
 def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) -> None:
     _require(contract.get("contract_id") == "g4-action-allocation-policy", "wrong contract_id")
     _require(contract.get("contract_version") == "1.0.0", "unexpected contract version")
@@ -146,6 +291,7 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
         _require(isinstance(field_id, str) and field_id not in indexed, f"duplicate or invalid field_id: {field_id}")
         indexed[field_id] = field
         _require(field_id in EXPECTED_UNITS, f"unrecognized policy field: {field_id}")
+        _validate_field_semantics(field)
         _require(field.get("unit") == EXPECTED_UNITS[field_id], f"wrong unit for {field_id}")
         status = field.get("status")
         _require(status in STATUS_VALUES, f"invalid provenance status for {field_id}")
@@ -192,6 +338,10 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
     limits = case_set.get("case_limit", {})
     _require(limits.get("minimum_investable_research_cases") == 3, "G4.2 minimum case count drifted")
     _require(limits.get("maximum_investable_research_cases") == 5, "G4.2 maximum case count drifted")
+    _require(limits.get("required_control") == "ZERO_RETURN_ARITHMETIC_CONTROL",
+             "G4.2 must retain its mandatory zero-return arithmetic control")
+    _require(limits.get("minimum_investable_research_cases") <= limits.get("maximum_investable_research_cases"),
+             "G4.2 case-count limits are inconsistent")
     _require(limits.get("optimizer_allowed") is False, "G4.1 must not authorize an optimizer")
 
     upstream = contract.get("upstream_contracts", {})
@@ -208,11 +358,12 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
     if check_sources:
         _check_hash_reference(contract["mandate_reference"], "mandate")
         _check_hash_reference(upstream["cashflow_fixture"], "cashflow fixture")
+        _check_mandate_derived_values(contract)
 
 
-def _expect_rejected(candidate: dict[str, Any], label: str) -> None:
+def _expect_rejected(candidate: dict[str, Any], label: str, *, check_sources: bool = False) -> None:
     try:
-        validate_contract(candidate)
+        validate_contract(candidate, check_sources=check_sources)
     except (ValueError, TypeError, KeyError):
         return
     raise AssertionError(f"negative case unexpectedly passed: {label}")
@@ -263,6 +414,42 @@ def audit() -> dict[str, Any]:
     _expect_rejected(bad, "unverified G3 contract marked accepted")
     negative_cases += 1
 
+    bad = copy.deepcopy(contract)
+    field = next(field for field in bad["field_register"] if field["field_id"] == "capital.initial_corpus.amount")
+    field.update({"data_type": "string", "value": "banana", "status": "INVESTOR_CONFIRMED",
+                  "as_of": "2026-11-04", "investor_confirmation_required": True})
+    _expect_rejected(bad, "field type and status cannot be relabeled to bypass validation")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    field = next(field for field in bad["field_register"] if field["field_id"] == "capital.initial_corpus.amount")
+    field["source_ref"] = "unsupported source"
+    _expect_rejected(bad, "unsupported provenance source")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    field = next(field for field in bad["field_register"] if field["field_id"] == "capital.initial_corpus.amount")
+    field["value"] = "9999999"
+    _expect_rejected(bad, "mandate-derived value conflicts with cited source", check_sources=True)
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    field = next(field for field in bad["field_register"] if field["field_id"] == "contributions.step_up_fraction")
+    field["value"] = "2"
+    _expect_rejected(bad, "step-up fraction exceeds its permitted range")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    field = next(field for field in bad["field_register"] if field["field_id"] == "contributions.starting_monthly_amount")
+    field["value"] = "0"
+    _expect_rejected(bad, "mandated monthly contribution must be positive")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["policy_case_set"]["case_limit"]["required_control"] = "NONE"
+    _expect_rejected(bad, "required zero-return control cannot be removed")
+    negative_cases += 1
+
     return {
         "audit": "PASS",
         "contract": "g4-action-allocation-policy 1.0.0",
@@ -271,7 +458,7 @@ def audit() -> dict[str, Any]:
         "required_policy_dimensions": len(contract["required_policy_dimensions"]),
         "negative_cases_rejected": negative_cases,
         "json_schema_2020_12": "PASS; schema validates and validates the contract instance",
-        "source_hashes": "PASS; normalized UTF-8/LF hashes match mandate and cashflow fixture",
+        "source_hashes": "PASS; normalized UTF-8/LF hashes match mandate and cashflow fixture; mandate-derived field values resolve and match",
         "unresolved_investor_inputs_preserved": "PASS; reserve, dates, exit, product limits, and drawdown tolerance are not imputed",
         "g2_g3_dependencies": "PASS; pending contracts remain blocked pending acceptance",
         "investment_authorization": contract["investment_authorization"],
