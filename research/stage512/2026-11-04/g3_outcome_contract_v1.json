@@ -1,0 +1,96 @@
+{
+  "contract_id": "2036-capital-allocation-outcome-contract",
+  "contract_version": "1.0.0",
+  "goal": "Freeze target, measurement, cashflow, and deterministic hurdle semantics before comparing strategies.",
+  "mandate_source": "docs/INVESTMENT_DECISION_MANDATE_2036.md",
+  "objective_status": "investor-declared planning objective; not a guarantee or approved risk limit",
+  "targets": [
+    {
+      "target_id": "planning_floor",
+      "real_amount_inr_2026": "9000000",
+      "role": "primary planning floor",
+      "guarantee": false
+    },
+    {
+      "target_id": "stretch_goal",
+      "real_amount_inr_2026": "10000000",
+      "role": "stretch goal",
+      "guarantee": false
+    }
+  ],
+  "success_measurement": {
+    "default_analysis_measure": "net accessible after-tax wealth under a predeclared measurement-date valuation and liquidation policy, expressed in 2026 INR",
+    "success_rule": "success when measured real accessible wealth is greater than or equal to the named target",
+    "shortfall_rule": "shortfall_inr_2026 = max(target_inr_2026 - measured_real_accessible_wealth_inr_2026, 0)",
+    "shortfall_fraction_rule": "shortfall_fraction = shortfall_inr_2026 / target_inr_2026",
+    "event_distinctions": {
+      "valuation": "marked value before a sale; alone it is not settled proceeds and must retain a valuation source and tax/liquidation treatment",
+      "sale": "executed disposal; creates realized proceeds, transaction costs, and potentially taxable events; execution is not settlement",
+      "settled_access": "cleared proceeds and retained liquid assets after modeled costs and tax liabilities; the default success measurement unless the investor confirms another policy"
+    },
+    "tax_and_cost_accounting": "include taxes on earlier taxable income and the modeled exit; track whether taxes are paid from or outside the portfolio to avoid double counting",
+    "investor_confirmation_required": [
+      "exact initial contribution date",
+      "first SIP date and payment timing",
+      "2036 measurement month and permitted partial-liquidation policy",
+      "whether success requires settled cash or permits specified retained assets",
+      "drawdown and interim loss tolerance",
+      "actual account, product, and implementation constraints"
+    ]
+  },
+  "illustrative_cashflow_fixture": {
+    "source_csv": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+    "base_month": "2026-10",
+    "initial_contribution_inr_at_month_0": "4200000",
+    "first_monthly_contribution_inr": "25000",
+    "monthly_contribution_timing": "end of month",
+    "annual_step_up_fraction": "0.10",
+    "step_up_after_contributions_count": 12,
+    "primary_contribution_count": 120,
+    "primary_terminal_month": "2036-10",
+    "sensitivity_contribution_count": 122,
+    "sensitivity_terminal_month": "2036-12",
+    "date_status": "illustrative model convention; exact investor dates remain unconfirmed",
+    "rounding_status": "mathematical schedule precision from frozen CSV; actual bank/broker payment rounding remains unconfirmed"
+  },
+  "inflation_scenarios": {
+    "annual_compound_fractions": ["0.04", "0.06", "0.08"],
+    "planning_case_fraction": "0.06",
+    "status": "scenarios, not forecasts",
+    "base_cpi_month": "2026-10",
+    "base_cpi_status": "assumed reference month; observed investor CPI anchor not confirmed",
+    "fractional_year_convention": "annual_factor ^ (horizon_months / 12); monthly cashflows are deflated by the same compound path to the assumed base month"
+  },
+  "deterministic_hurdle_scope": {
+    "included": [
+      "constant monthly gross return needed to reach the nominalized target under the illustrative dated cashflows",
+      "equivalent effective annual nominal return",
+      "equivalent effective annual real return under each CPI scenario",
+      "independent solution in real purchasing-power cashflows",
+      "local derivatives of required hurdle versus target and CPI assumption"
+    ],
+    "excluded": [
+      "taxes, fees, spreads, and other costs",
+      "instrument availability, eligibility, and return feasibility",
+      "return volatility, sequence risk, probability, confidence intervals, and model uncertainty",
+      "investor-specific outcome or recommendation"
+    ],
+    "interpretation": "pre-tax/pre-cost arithmetic hurdle only; it is not an expected return, sufficient after-tax hurdle, or likelihood estimate",
+    "after_tax_hurdle_status": "requires strategy-specific instrument, cashflow, tax, fee, and exit-policy paths; no single investor-specific hurdle is asserted here"
+  },
+  "continuous_question_and_challenge_record": {
+    "claim_under_test": "A hurdle calculation can tell us what constant gross return the illustrative cashflow schedule would need to reach the nominalized amount corresponding to a real target.",
+    "material_question": "Would meeting that hurdle establish that the investor's after-tax real objective is likely or achievable with a suitable portfolio?",
+    "strongest_countercase": "No. The calculation assumes a constant return and excludes sequence risk, fees, taxes, instrument eligibility, future tax law, and investor-specific exit timing. A mark-to-market target may also differ from settled after-tax wealth.",
+    "falsification_checks": [
+      "independently solve the same hurdle from CPI-deflated dated cashflows and compare the real annual hurdle",
+      "reconstruct terminal nominal and real values independently at the solved rates",
+      "compare the planning-floor results with the existing deterministic baseline",
+      "finite-difference check the analytic target and CPI sensitivities"
+    ],
+    "disposition": "The result is an arithmetic requirement only. It cannot support a probability, forecast, recommendation, or investment authorization.",
+    "downstream_dependents": ["G4 action and allocation policy", "G6 strategy-specific after-tax deterministic path", "G7 experiment protocol", "G8 probability credibility", "G9 attainable allocation menu"],
+    "invalidation_triggers": ["investor changes either target", "initial or SIP dates/amounts/timing change", "CPI base month or scenario changes", "measurement or liquidation policy changes"]
+  },
+  "authorization": "NO-GO"
+}

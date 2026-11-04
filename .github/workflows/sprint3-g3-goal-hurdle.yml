@@ -1,0 +1,41 @@
+name: Sprint 3 G3 outcome and hurdle audit
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sprint3-g3-goal-hurdle.yml'
+      - 'decision/g3_goal_hurdle.py'
+      - 'decision/audit_g3_goal_hurdle.py'
+      - 'docs/G3_OUTCOME_AND_HURDLES.md'
+      - 'docs/DECISION_LOG.md'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-04/g3_deterministic_hurdles_v1.json'
+  push:
+    paths:
+      - '.github/workflows/sprint3-g3-goal-hurdle.yml'
+      - 'decision/g3_goal_hurdle.py'
+      - 'decision/audit_g3_goal_hurdle.py'
+      - 'docs/G3_OUTCOME_AND_HURDLES.md'
+      - 'docs/DECISION_LOG.md'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-04/g3_deterministic_hurdles_v1.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g3-outcome-and-hurdle-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently audit outcome semantics and nominal/real hurdles
+        run: python decision/audit_g3_goal_hurdle.py
+      - name: Compile G3 hurdle calculation and audit
+        run: python -m compileall -q decision/g3_goal_hurdle.py decision/audit_g3_goal_hurdle.py
