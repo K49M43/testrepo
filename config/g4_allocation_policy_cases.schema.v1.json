@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/K49M43/testrepo/blob/main/config/g4_allocation_policy_cases.schema.v1.json",
+  "title": "G4.2 bounded allocation-policy case set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "contract_version",
+    "contract_status",
+    "as_of",
+    "investment_authorization",
+    "content_sha256",
+    "input_contract_reference",
+    "relationship_to_g4_1",
+    "case_limit",
+    "asset_sleeves",
+    "common_action_rules",
+    "policy_cases",
+    "zero_return_arithmetic_control",
+    "known_limitations",
+    "invalidation_triggers"
+  ],
+  "properties": {
+    "contract_id": { "const": "g4-allocation-policy-cases" },
+    "contract_version": { "const": "1.0.0" },
+    "contract_status": { "enum": ["DRAFT", "AUDIT_PENDING", "ACCEPTED"] },
+    "as_of": { "type": "string", "format": "date" },
+    "investment_authorization": { "const": "NO_GO" },
+    "content_sha256": { "$ref": "#/$defs/sha256" },
+    "input_contract_reference": { "$ref": "#/$defs/inputContractReference" },
+    "relationship_to_g4_1": { "type": "string", "minLength": 1 },
+    "case_limit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_investable_research_cases", "maximum_investable_research_cases", "optimizer_allowed", "comparison_rule"],
+      "properties": {
+        "minimum_investable_research_cases": { "const": 3 },
+        "maximum_investable_research_cases": { "const": 5 },
+        "optimizer_allowed": { "const": false },
+        "comparison_rule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "asset_sleeves": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/assetSleeve" }
+    },
+    "common_action_rules": { "$ref": "#/$defs/commonActionRules" },
+    "policy_cases": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/policyCase" }
+    },
+    "zero_return_arithmetic_control": { "$ref": "#/$defs/zeroReturnControl" },
+    "known_limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "invalidation_triggers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "decimalString": { "type": "string", "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$" },
+    "inputContractReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "contract_version", "content_sha256"],
+      "properties": {
+        "path": { "const": "config/g4_action_allocation_policy_v1.json" },
+        "contract_version": { "const": "1.0.0" },
+        "content_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "assetSleeve": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sleeve_id", "description"],
+      "properties": {
+        "sleeve_id": { "enum": ["nifty500_equity", "rolling_gilt_fund_proxy", "gold", "silver", "strategic_cash"] },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "weightMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nifty500_equity", "rolling_gilt_fund_proxy", "gold", "silver", "strategic_cash"],
+      "properties": {
+        "nifty500_equity": { "$ref": "#/$defs/decimalString" },
+        "rolling_gilt_fund_proxy": { "$ref": "#/$defs/decimalString" },
+        "gold": { "$ref": "#/$defs/decimalString" },
+        "silver": { "$ref": "#/$defs/decimalString" },
+        "strategic_cash": { "$ref": "#/$defs/decimalString" }
+      }
+    },
+    "policyCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "label", "case_role", "design_origin", "research_question", "weights_fraction", "initial_allocation_fraction", "sip_allocation_fraction", "step_up_allocation_fraction", "common_action_rules_ref", "investment_decision_status", "blocked_dependencies", "case_status"],
+      "properties": {
+        "case_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "case_role": { "enum": ["REFERENCE_CHALLENGER", "LOWER_EQUITY_TEST", "GROWTH_SENSITIVITY_TEST"] },
+        "design_origin": { "enum": ["EXISTING_UNAPPROVED_RESEARCH_REFERENCE", "ANALYST_DESIGNED_NOT_INVESTOR_PREFERENCE"] },
+        "research_question": { "type": "string", "minLength": 1 },
+        "weights_fraction": { "$ref": "#/$defs/weightMap" },
+        "initial_allocation_fraction": { "$ref": "#/$defs/weightMap" },
+        "sip_allocation_fraction": { "$ref": "#/$defs/weightMap" },
+        "step_up_allocation_fraction": { "$ref": "#/$defs/weightMap" },
+        "common_action_rules_ref": { "const": "#/common_action_rules" },
+        "investment_decision_status": { "const": "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS" },
+        "blocked_dependencies": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "case_status": { "const": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION" }
+      }
+    },
+    "commonActionRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial_deployment", "capital_basis", "contribution_schedule", "rebalancing", "distribution_handling", "cash_and_reserve", "terminal_measurement_and_exit", "product_eligibility", "execution_precision"],
+      "properties": {
+        "initial_deployment": { "$ref": "#/$defs/initialDeployment" },
+        "capital_basis": { "$ref": "#/$defs/capitalBasis" },
+        "contribution_schedule": { "$ref": "#/$defs/contributionSchedule" },
+        "rebalancing": { "$ref": "#/$defs/rebalancing" },
+        "distribution_handling": { "$ref": "#/$defs/distributionHandling" },
+        "cash_and_reserve": { "$ref": "#/$defs/cashAndReserve" },
+        "terminal_measurement_and_exit": { "$ref": "#/$defs/terminalExit" },
+        "product_eligibility": { "$ref": "#/$defs/productEligibility" },
+        "execution_precision": { "$ref": "#/$defs/executionPrecision" }
+      }
+    },
+    "initialDeployment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "status", "investor_confirmation_required", "date_field_id", "staged_deployment", "decision_effect"],
+      "properties": {
+        "rule": { "const": "LUMP_SUM_ON_ACTUAL_CONFIRMED_DATE" },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "date_field_id": { "const": "capital.initial_corpus.date" },
+        "staged_deployment": { "const": false },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "capitalBasis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "initial_amount_field_id", "external_reserve_field_id", "external_reserve_amount_inr", "external_reserve_status", "must_not_infer_reserve_is_zero"],
+      "properties": {
+        "rule": { "type": "string", "minLength": 1 },
+        "initial_amount_field_id": { "const": "capital.initial_corpus.amount" },
+        "external_reserve_field_id": { "const": "capital.reserve.amount" },
+        "external_reserve_amount_inr": { "type": "null" },
+        "external_reserve_status": { "const": "UNRESOLVED" },
+        "must_not_infer_reserve_is_zero": { "const": true }
+      }
+    },
+    "contributionSchedule": {
+      "type": "object", "additionalProperties": false,
+      "required": ["starting_amount_field_id", "step_up_fraction_field_id", "step_up_interval_field_id", "step_up_fraction", "step_up_interval_contributions", "step_up_allocation_rule", "timing_field_id", "research_timing_value", "timing_status", "first_payment_date_field_id", "actual_first_payment_date_status", "fixture_horizons_in_contributions"],
+      "properties": {
+        "starting_amount_field_id": { "const": "contributions.starting_monthly_amount" },
+        "step_up_fraction_field_id": { "const": "contributions.step_up_fraction" },
+        "step_up_interval_field_id": { "const": "contributions.step_up_interval" },
+        "step_up_fraction": { "const": "0.10" },
+        "step_up_interval_contributions": { "const": 12 },
+        "step_up_allocation_rule": { "type": "string", "minLength": 1 },
+        "timing_field_id": { "const": "contributions.timing_convention" },
+        "research_timing_value": { "const": "END_OF_MONTH" },
+        "timing_status": { "const": "ANALYST_PROPOSED" },
+        "first_payment_date_field_id": { "const": "contributions.first_payment_date" },
+        "actual_first_payment_date_status": { "const": "UNRESOLVED" },
+        "fixture_horizons_in_contributions": { "const": [120, 122] }
+      }
+    },
+    "rebalancing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "cadence_contributions", "target_rule", "status", "investor_confirmation_required", "calendar_dates", "transaction_cost_and_tax"],
+      "properties": {
+        "rule": { "type": "string", "minLength": 1 },
+        "cadence_contributions": { "const": 12 },
+        "target_rule": { "type": "string", "minLength": 1 },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "calendar_dates": { "type": "string", "minLength": 1 },
+        "transaction_cost_and_tax": { "type": "string", "minLength": 1 }
+      }
+    },
+    "distributionHandling": {
+      "type": "object", "additionalProperties": false,
+      "required": ["field_id", "research_value", "status", "investor_confirmation_required", "rule"],
+      "properties": {
+        "field_id": { "const": "income_and_coupon_handling" },
+        "research_value": { "const": "REINVEST_AFTER_TAX" },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "rule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cashAndReserve": {
+      "type": "object", "additionalProperties": false,
+      "required": ["strategic_cash_weight_fraction", "strategic_cash_weight_status", "investor_confirmation_required", "external_reserve_field_id", "external_reserve_amount_inr", "external_reserve_status", "must_not_infer_no_reserve", "decision_effect"],
+      "properties": {
+        "strategic_cash_weight_fraction": { "const": "0" },
+        "strategic_cash_weight_status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "external_reserve_field_id": { "const": "capital.reserve.amount" },
+        "external_reserve_amount_inr": { "type": "null" },
+        "external_reserve_status": { "const": "UNRESOLVED" },
+        "must_not_infer_no_reserve": { "const": true },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "terminalExit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "dependency_issue", "outcome_field_id", "date_field_id", "investor_date_status", "forced_liquidation", "decision_effect"],
+      "properties": {
+        "status": { "const": "BLOCKED_PENDING_G3_AND_INVESTOR_DATE" },
+        "dependency_issue": { "const": 18 },
+        "outcome_field_id": { "const": "goals.success_and_shortfall_event" },
+        "date_field_id": { "const": "horizon.terminal_measurement_date" },
+        "investor_date_status": { "const": "UNRESOLVED" },
+        "forced_liquidation": { "const": "NOT_ASSUMED_PENDING_G3" },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "productEligibility": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "dependency", "security_identifiers", "security_eligible"],
+      "properties": {
+        "status": { "const": "BLOCKED_PENDING_G5" },
+        "dependency": { "type": "string", "minLength": 1 },
+        "security_identifiers": { "const": [] },
+        "security_eligible": { "const": false }
+      }
+    },
+    "executionPrecision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["research_allocation_precision", "execution_rounding_status"],
+      "properties": {
+        "research_allocation_precision": { "type": "string", "minLength": 1 },
+        "execution_rounding_status": { "const": "BLOCKED_PENDING_G5_AND_G4_3" }
+      }
+    },
+    "zeroReturnControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_id", "not_an_investable_case", "purpose", "source_fixture", "assumptions", "expected_terminal_values"],
+      "properties": {
+        "control_id": { "const": "ZERO_RETURN_ARITHMETIC_CONTROL" },
+        "not_an_investable_case": { "const": true },
+        "purpose": { "type": "string", "minLength": 1 },
+        "source_fixture": { "$ref": "#/$defs/sourceFixture" },
+        "assumptions": { "$ref": "#/$defs/zeroAssumptions" },
+        "expected_terminal_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/terminalValue" }
+        }
+      }
+    },
+    "sourceFixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "zeroAssumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nominal_return_fraction_per_month", "tax_inr", "fees_and_costs_inr", "inflation_fraction_per_month"],
+      "properties": {
+        "nominal_return_fraction_per_month": { "const": "0" },
+        "tax_inr": { "const": "0" },
+        "fees_and_costs_inr": { "const": "0" },
+        "inflation_fraction_per_month": { "const": "0" }
+      }
+    },
+    "terminalValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizon_contributions", "expected_nominal_value_inr_exact", "expected_nominal_value_inr_rounded_2dp"],
+      "properties": {
+        "horizon_contributions": { "enum": [120, 122] },
+        "expected_nominal_value_inr_exact": { "$ref": "#/$defs/decimalString" },
+        "expected_nominal_value_inr_rounded_2dp": { "type": "string", "pattern": "^[0-9]+\\.[0-9]{2}$" }
+      }
+    }
+  }
+}
