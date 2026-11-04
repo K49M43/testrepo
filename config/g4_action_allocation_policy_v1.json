@@ -1,0 +1,351 @@
+{
+  "contract_id": "g4-action-allocation-policy",
+  "contract_version": "1.0.0",
+  "contract_status": "DRAFT",
+  "as_of": "2026-11-04",
+  "investment_authorization": "NO_GO",
+  "mandate_reference": {
+    "path": "config/investment_mandate_2036.json",
+    "sha256": "0fc87c3ef238b2c4fde65acd52b42b90274af4740de36b7c98f08db30892032c"
+  },
+  "upstream_contracts": {
+    "g3_outcome_contract": {
+      "path": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "status": "PENDING_MERGE_AND_EXACT_HEAD_VERIFICATION",
+      "issue": 18,
+      "pull_request": 19,
+      "sha256": null
+    },
+    "g2_database_run_contract": {
+      "path": null,
+      "status": "PENDING_SPRINT_2_ACCEPTANCE",
+      "issue": 15,
+      "pull_request": 17,
+      "sha256": null
+    },
+    "cashflow_fixture": {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "status": "RESEARCH_FIXTURE_ONLY",
+      "sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    }
+  },
+  "field_status_definitions": {
+    "INVESTOR_CONFIRMED": "Explicitly supplied or confirmed by the investor; cite the confirmation record.",
+    "MANDATE_DERIVED": "Copied or mechanically derived from the controlling written mandate; this does not make an illustrative date convention confirmed.",
+    "ANALYST_PROPOSED": "A research comparison assumption, not an investor preference or recommendation.",
+    "UNRESOLVED": "No value is authorized or sufficiently supported; value must be null and must_not_infer must be true.",
+    "DEPENDENCY_BLOCKED": "Value depends on an upstream contract or acceptance gate; value must be null until that dependency is verified."
+  },
+  "field_register": [
+    {
+      "field_id": "capital.initial_corpus.amount",
+      "data_type": "decimal_string",
+      "unit": "INR",
+      "value": "4200000",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/initial_lump_sum_inr",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "Illustrative long-horizon investable corpus from the mandate; exact investment date remains separate and unresolved."
+    },
+    {
+      "field_id": "capital.reserve.amount",
+      "data_type": "decimal_string",
+      "unit": "INR",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/initial_lump_sum_inr",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "The mandate calls ₹42 lakh available for long-horizon investment but specifies no separate portfolio reserve amount. Do not deduct or invent one."
+    },
+    {
+      "field_id": "capital.initial_corpus.date",
+      "data_type": "iso_date",
+      "unit": "calendar_date",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/actual_initial_investment_date",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "A month-zero date is only a calculation fixture until the actual deployment date is confirmed."
+    },
+    {
+      "field_id": "contributions.starting_monthly_amount",
+      "data_type": "decimal_string",
+      "unit": "INR_per_month",
+      "value": "25000",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/starting_monthly_contribution_inr",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "Mandate amount; actual first payment date and execution rounding remain unresolved."
+    },
+    {
+      "field_id": "contributions.step_up_fraction",
+      "data_type": "decimal_string",
+      "unit": "fraction",
+      "value": "0.10",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/annual_sip_step_up_fraction",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "Increase the monthly contribution by 10% after each block of 12 contributions in the illustrative schedule."
+    },
+    {
+      "field_id": "contributions.step_up_interval",
+      "data_type": "positive_integer",
+      "unit": "contributions",
+      "value": 12,
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/months_between_step_ups",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "The step-up follows exactly 12 payments; it is not an arbitrary calendar-year boundary."
+    },
+    {
+      "field_id": "contributions.timing_convention",
+      "data_type": "enum",
+      "allowed_values": [
+        "BEGINNING_OF_MONTH",
+        "END_OF_MONTH"
+      ],
+      "unit": "payment_timing",
+      "value": "END_OF_MONTH",
+      "status": "ANALYST_PROPOSED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/modeled_contribution_timing",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "decision_effect": "Existing fixture convention only; actual payment timing is unconfirmed."
+    },
+    {
+      "field_id": "contributions.first_payment_date",
+      "data_type": "iso_date",
+      "unit": "calendar_date",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/cashflows/actual_first_contribution_date",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "Do not treat the fixture month as the investor's actual first SIP date."
+    },
+    {
+      "field_id": "goals.planning_floor.amount",
+      "data_type": "decimal_string",
+      "unit": "INR_2026_purchasing_power",
+      "value": "9000000",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/goals/real_after_tax_floor_inr",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "Planning objective, not a contractual guarantee or promised outcome."
+    },
+    {
+      "field_id": "goals.stretch_goal.amount",
+      "data_type": "decimal_string",
+      "unit": "INR_2026_purchasing_power",
+      "value": "10000000",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/goals/real_after_tax_stretch_inr",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "Separate stretch objective; do not combine with or replace the planning floor."
+    },
+    {
+      "field_id": "goals.success_and_shortfall_event",
+      "data_type": "string",
+      "unit": "outcome_definition",
+      "value": null,
+      "status": "DEPENDENCY_BLOCKED",
+      "source_ref": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": false,
+      "dependency_issue": 18,
+      "must_not_infer": true,
+      "decision_effect": "Consume the exact accepted G3 outcome and liquidation semantics; do not restate them in this G4 contract."
+    },
+    {
+      "field_id": "inflation.purchasing_power_anchor_date",
+      "data_type": "iso_date",
+      "unit": "calendar_date",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/goals/purchasing_power_base_specific_date",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "The mandate cites October 2026 as a historical reference but requests confirmation of the final CPI anchor date."
+    },
+    {
+      "field_id": "horizon.terminal_measurement_date",
+      "data_type": "iso_date",
+      "unit": "calendar_date",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/goals/target_measurement_dates_in_2036",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "The 120/122 month horizons remain fixture cases; the investor has not selected an exact 2036 date."
+    },
+    {
+      "field_id": "risk.interim_drawdown_tolerance",
+      "data_type": "decimal_string",
+      "unit": "fraction_of_peak_portfolio_value",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/modeling/require_investment_drawdown_tolerance_confirmation",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "No portfolio suitability or binding drawdown constraint can be asserted until the investor defines this preference."
+    },
+    {
+      "field_id": "implementation.account_and_product_constraints",
+      "data_type": "string",
+      "unit": "constraint_record",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/unknowns_for_final_signoff",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "Broker route is Groww; exact account, product eligibility, sizing, and operating constraints require later verification."
+    },
+    {
+      "field_id": "implementation.broker_route",
+      "data_type": "string",
+      "unit": "broker_name",
+      "value": "Groww",
+      "status": "MANDATE_DERIVED",
+      "source_ref": "config/investment_mandate_2036.json#/investor/broker",
+      "as_of": "2026-11-02",
+      "investor_confirmation_required": false,
+      "decision_effect": "A declared route to check; it does not establish that any particular instrument is available or eligible."
+    },
+    {
+      "field_id": "income_and_coupon_handling",
+      "data_type": "enum",
+      "allowed_values": [
+        "REINVEST_AFTER_TAX",
+        "HOLD_AS_CASH",
+        "WITHDRAW"
+      ],
+      "unit": "distribution_policy",
+      "value": "REINVEST_AFTER_TAX",
+      "status": "ANALYST_PROPOSED",
+      "source_ref": "docs/INVESTMENT_DECISION_MANDATE_2036.md",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "decision_effect": "Proposed comparison assumption based on no current income need; reinvest distributions net of applicable tax without double counting. Confirm this treatment before an investor-specific action policy is accepted."
+    },
+    {
+      "field_id": "policy.initial_deployment_rule",
+      "data_type": "enum",
+      "allowed_values": [
+        "LUMP_SUM",
+        "STAGED",
+        "CONDITIONAL"
+      ],
+      "unit": "deployment_policy",
+      "value": null,
+      "status": "DEPENDENCY_BLOCKED",
+      "source_ref": "GitHub issue #22 (G4.2 bounded action set)",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": false,
+      "dependency_issue": 22,
+      "must_not_infer": true,
+      "decision_effect": "Must be explicitly specified for each research policy; this contract does not choose one."
+    },
+    {
+      "field_id": "policy.allocation_schedule",
+      "data_type": "object",
+      "unit": "fraction_of_deployable_capital",
+      "value": null,
+      "status": "DEPENDENCY_BLOCKED",
+      "source_ref": "GitHub issue #22 (G4.2 bounded action set)",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": false,
+      "dependency_issue": 22,
+      "must_not_infer": true,
+      "decision_effect": "Asset weights and dates are defined in G4.2 candidate policies; no allocation is recommended here."
+    },
+    {
+      "field_id": "policy.rebalancing_rule",
+      "data_type": "string",
+      "unit": "rebalancing_policy",
+      "value": null,
+      "status": "DEPENDENCY_BLOCKED",
+      "source_ref": "GitHub issue #22 (G4.2 bounded action set)",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": false,
+      "dependency_issue": 22,
+      "must_not_infer": true,
+      "decision_effect": "Each candidate policy must state an explicit rule or mark it blocked."
+    },
+    {
+      "field_id": "policy.terminal_measurement_contract",
+      "data_type": "string",
+      "unit": "exit_policy",
+      "value": null,
+      "status": "DEPENDENCY_BLOCKED",
+      "source_ref": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": false,
+      "dependency_issue": 18,
+      "must_not_infer": true,
+      "decision_effect": "G3 must define the supported measurement event; do not duplicate or modify that contract here."
+    },
+    {
+      "field_id": "policy.investor_exit_choice",
+      "data_type": "string",
+      "unit": "exit_policy",
+      "value": null,
+      "status": "UNRESOLVED",
+      "source_ref": "config/investment_mandate_2036.json#/goals/target_measurement_dates_in_2036",
+      "as_of": "2026-11-04",
+      "investor_confirmation_required": true,
+      "must_not_infer": true,
+      "decision_effect": "The final measurement, sale, or settled-access date and liquidation choice remain for investor confirmation."
+    }
+  ],
+  "required_policy_dimensions": [
+    "capital_and_reserve",
+    "initial_deployment",
+    "dated_contributions_and_stepups",
+    "asset_allocation_by_date",
+    "implementation_and_cash_rounding",
+    "rebalance_or_hold_rule",
+    "income_and_coupon_reinvestment",
+    "liquidity_and_availability_constraints",
+    "terminal_measurement_and_exit",
+    "cost_and_tax_treatment_reference"
+  ],
+  "policy_case_set": {
+    "status": "NOT_STARTED_G4_2",
+    "cases": [],
+    "case_limit": {
+      "minimum_investable_research_cases": 3,
+      "maximum_investable_research_cases": 5,
+      "required_control": "ZERO_RETURN_ARITHMETIC_CONTROL",
+      "optimizer_allowed": false
+    }
+  },
+  "known_limitations": [
+    "This file defines required inputs and their status; it contains no selected or recommended portfolio.",
+    "G3 outcome semantics and G2 database run-manifest contract are pending exact-head acceptance and merge.",
+    "G4 action policies and investment Gate G4 portfolio feasibility are not complete.",
+    "No return, tax, cost, probability, suitability, speed, workbook-parity, or investment-readiness claim is made."
+  ],
+  "invalidation_triggers": [
+    "A change to the controlling investor mandate or capital amounts.",
+    "Acceptance or revision of the G3 outcome, cashflow, CPI-anchor, or exit contract.",
+    "Acceptance or revision of the G2 database snapshot/run identity contract.",
+    "Investor confirmation of dates, reserves, account limits, risk tolerance, or liquidation preferences.",
+    "A change to the permitted policy dimensions or source qualification status."
+  ],
+  "content_sha256": "941d2737e4ef3973a866f5888bf176e799a10af673fc9dbc0e90a6ca85cd7bda"
+}
