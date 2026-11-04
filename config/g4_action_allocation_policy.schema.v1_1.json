@@ -1,0 +1,428 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/K49M43/testrepo/blob/main/config/g4_action_allocation_policy.schema.v1_1.json",
+  "title": "G4 action and allocation policy input contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "contract_version",
+    "content_sha256",
+    "contract_status",
+    "as_of",
+    "investment_authorization",
+    "mandate_reference",
+    "upstream_contracts",
+    "field_status_definitions",
+    "field_register",
+    "required_policy_dimensions",
+    "policy_case_set",
+    "known_limitations",
+    "invalidation_triggers"
+  ],
+  "properties": {
+    "contract_id": {
+      "const": "g4-action-allocation-policy"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "content_sha256": {
+      "$ref": "#/$defs/sha256",
+      "description": "SHA-256 of canonical JSON excluding this property; sort keys, compact separators, UTF-8, no ASCII escaping."
+    },
+    "contract_status": {
+      "enum": [
+        "DRAFT",
+        "ACCEPTED"
+      ]
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "investment_authorization": {
+      "const": "NO_GO"
+    },
+    "mandate_reference": {
+      "$ref": "#/$defs/pinnedReference"
+    },
+    "upstream_contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "g3_outcome_contract",
+        "g2_database_run_contract",
+        "cashflow_fixture"
+      ],
+      "properties": {
+        "g3_outcome_contract": {
+          "$ref": "#/$defs/upstreamReference"
+        },
+        "g2_database_run_contract": {
+          "$ref": "#/$defs/upstreamReference"
+        },
+        "cashflow_fixture": {
+          "$ref": "#/$defs/pinnedReference"
+        }
+      }
+    },
+    "field_status_definitions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "field_register": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/registeredField"
+      }
+    },
+    "required_policy_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "policy_case_set": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "cases",
+        "case_limit"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_STARTED_G4_2",
+            "DRAFT",
+            "AUDIT_PENDING",
+            "ACCEPTED"
+          ]
+        },
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "case_limit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "minimum_investable_research_cases",
+            "maximum_investable_research_cases",
+            "required_control",
+            "optimizer_allowed"
+          ],
+          "properties": {
+            "minimum_investable_research_cases": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maximum_investable_research_cases": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "required_control": {
+              "const": "ZERO_RETURN_ARITHMETIC_CONTROL"
+            },
+            "optimizer_allowed": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "invalidation_triggers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pinnedReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "upstreamReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "status",
+        "issue",
+        "pull_request",
+        "sha256",
+        "accepted_commit_sha"
+      ],
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issue": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pull_request": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accepted_commit_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "contract_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "registeredField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field_id",
+        "data_type",
+        "unit",
+        "value",
+        "status",
+        "source_ref",
+        "as_of",
+        "investor_confirmation_required",
+        "decision_effect"
+      ],
+      "properties": {
+        "field_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]+$"
+        },
+        "data_type": {
+          "enum": [
+            "decimal_string",
+            "positive_integer",
+            "iso_date",
+            "enum",
+            "string",
+            "object"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "INVESTOR_CONFIRMED",
+            "MANDATE_DERIVED",
+            "ANALYST_PROPOSED",
+            "UNRESOLVED",
+            "DEPENDENCY_BLOCKED",
+            "UPSTREAM_ACCEPTED"
+          ]
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "investor_confirmation_required": {
+          "type": "boolean"
+        },
+        "decision_effect": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_values": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_not_infer": {
+          "type": "boolean"
+        },
+        "dependency_issue": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "UNRESOLVED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "must_not_infer": {
+                "const": true
+              },
+              "investor_confirmation_required": {
+                "const": true
+              }
+            },
+            "required": [
+              "must_not_infer"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "DEPENDENCY_BLOCKED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "must_not_infer": {
+                "const": true
+              }
+            },
+            "required": [
+              "must_not_infer",
+              "dependency_issue"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "INVESTOR_CONFIRMED",
+                  "MANDATE_DERIVED",
+                  "ANALYST_PROPOSED",
+                  "UPSTREAM_ACCEPTED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "not": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "data_type": {
+                "const": "enum"
+              }
+            },
+            "required": [
+              "data_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "allowed_values"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

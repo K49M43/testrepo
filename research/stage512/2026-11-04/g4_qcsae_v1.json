@@ -3,7 +3,7 @@
   "record_id": "g4-qcsae-2026-11-04-v1",
   "as_of": "2026-11-04",
   "claim": {
-    "statement": "G4 roadmap delivery is complete for the bounded policy-definition and G2 SQLite v1 integration scope.",
+    "statement": "G4 roadmap delivery is complete for bounded policy definition and G2 SQLite v1 integration, with G2/G3 acceptance identities pinned and the independent audit reproduced against committed evidence.",
     "disposition": "PASS_WITH_BOUNDED_SCOPE",
     "not_claimed": [
       "investment decision Gate G4 passed",
@@ -11,7 +11,7 @@
       "return, tax, fee, inflation, risk probability, or goal-success result"
     ]
   },
-  "strongest_counter_case": "None of the three allocation vectors is investor-confirmed. Reserve, actual dates, exit choice, drawdown tolerance, account/product constraints, G3 outcome semantics, and G5 eligibility are unresolved or blocked. Correct arithmetic does not establish useful or feasible investment outcomes.",
+  "strongest_counter_case": "None of the three allocation vectors is investor-confirmed. Reserve, actual dates, exit choice, drawdown tolerance, account/product constraints, and G5 eligibility remain unresolved or blocked. Accepted G3 semantics define outcome rules but do not establish calendar dates or investor exit choices. Correct arithmetic does not establish useful or feasible investment outcomes.",
   "falsification_checks": [
     {
       "check": "Independent policy contract hashes, cross-reference, and schema-validity",
@@ -30,6 +30,14 @@
       "result": "PASS"
     },
     {
+      "check": "G2/G3 accepted merge commits, versions, and contract hashes are pinned in inputs and run manifests",
+      "result": "PASS"
+    },
+    {
+      "check": "Committed audit evidence equals fresh regenerated audit output in CI --check mode",
+      "result": "PASS"
+    },
+    {
       "check": "Three SQLite v1 runs reconcile and run identities recompute independently",
       "result": "PASS"
     },
@@ -42,18 +50,18 @@
     "decision/audit_g4_independent_disposition.py",
     "decision/g4_allocation_database_adapter.py",
     "decision/audit_g4_allocation_database_adapter.py",
-    "config/g4_action_allocation_policy_v1.json",
-    "config/g4_allocation_policy_cases_v1.json",
+    "config/g4_action_allocation_policy_v1_1.json",
+    "config/g4_allocation_policy_cases_v1_1.json",
     "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
     "G2 SQLite migration v1 and per-run manifests",
     "research/stage512/2026-11-04/g4_independent_disposition_v1.json"
   ],
   "scope": {
     "included": [
-      "G4.1 action-policy contract",
-      "G4.2 three research-only allocation cases and zero-return cash control",
+      "G4.1 action-policy contract v1.1 pinned to accepted G2/G3 contracts",
+      "G4.2 v1.1 research-only allocation cases and zero-return cash control",
       "G4.3 database adapter integration with accepted G2 schema v1",
-      "independent arithmetic, invariant, negative-case, content-hash, and run-identity review"
+      "independent arithmetic, invariant, negative-case, content-hash, accepted-dependency, and run-identity review"
     ],
     "excluded": [
       "security eligibility, point-in-time tradability, price/NAV history qualification",
@@ -69,9 +77,9 @@
     "Independent re-execution fails a listed invariant or cannot reproduce run identities."
   ],
   "downstream_dependencies": {
-    "next_closure": "Accept G3 issue #18 / draft PR #19 after independent review.",
-    "next_candidate_work": "G5 instrument and evidence register with G0/G3 dependencies explicit.",
-    "blocked": "Deterministic investment-outcome comparison until accepted G3 semantics and qualified G5 evidence are available."
+    "next_closure": "G3 issue #18 / PR #19 is merged; no further G3 closure step is pending.",
+    "next_candidate_work": "G5 instrument and evidence qualification with G0/G3 dependencies explicit.",
+    "blocked": "Deterministic investment-outcome comparison until qualified G5 evidence and required investor inputs are available."
   },
   "investment_authorization": "NO_GO"
 }

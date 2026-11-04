@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import argparse
 import csv
 import hashlib
 import json
@@ -19,11 +20,13 @@ import sprint2_database_pilot as g2
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ACTION_PATH = ROOT / "config/g4_action_allocation_policy_v1.json"
-ACTION_SCHEMA_PATH = ROOT / "config/g4_action_allocation_policy.schema.v1.json"
-CASES_PATH = ROOT / "config/g4_allocation_policy_cases_v1.json"
-CASES_SCHEMA_PATH = ROOT / "config/g4_allocation_policy_cases.schema.v1.json"
+ACTION_PATH = ROOT / "config/g4_action_allocation_policy_v1_1.json"
+ACTION_SCHEMA_PATH = ROOT / "config/g4_action_allocation_policy.schema.v1_1.json"
+CASES_PATH = ROOT / "config/g4_allocation_policy_cases_v1_1.json"
+CASES_SCHEMA_PATH = ROOT / "config/g4_allocation_policy_cases.schema.v1_1.json"
 CASHFLOW_PATH = ROOT / "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv"
+EVIDENCE_PATH = ROOT / "research/stage512/2026-11-04/g4_independent_disposition_v1.json"
+G3_PATH = ROOT / "research/stage512/2026-11-04/g3_outcome_contract_v1.json"
 HORIZONS = (120, 122)
 ZERO = Decimal("0")
 
@@ -95,7 +98,7 @@ def _validate_independent(action: Mapping[str, Any], cases: Mapping[str, Any],
         if status in {"UNRESOLVED", "DEPENDENCY_BLOCKED"}:
             _require(value is None and row.get("must_not_infer") is True,
                      f"unknown field was silently filled: {row.get('field_id')}")
-        elif status in {"INVESTOR_CONFIRMED", "MANDATE_DERIVED", "ANALYST_PROPOSED"}:
+        elif status in {"INVESTOR_CONFIRMED", "MANDATE_DERIVED", "ANALYST_PROPOSED", "UPSTREAM_ACCEPTED"}:
             _require(value is not None, f"valued field has a null value: {row.get('field_id')}")
             if row.get("data_type") == "iso_date":
                 try:
@@ -108,10 +111,10 @@ def _validate_independent(action: Mapping[str, Any], cases: Mapping[str, Any],
 
     for field_id in (
         "capital.reserve.amount", "capital.initial_corpus.date", "contributions.first_payment_date",
-        "goals.success_and_shortfall_event", "inflation.purchasing_power_anchor_date",
+        "inflation.purchasing_power_anchor_date",
         "horizon.terminal_measurement_date", "risk.interim_drawdown_tolerance",
         "implementation.account_and_product_constraints", "policy.initial_deployment_rule",
-        "policy.allocation_schedule", "policy.rebalancing_rule", "policy.terminal_measurement_contract",
+        "policy.allocation_schedule", "policy.rebalancing_rule",
         "policy.investor_exit_choice",
     ):
         field = fields[field_id]
@@ -188,11 +191,11 @@ def _validate_independent(action: Mapping[str, Any], cases: Mapping[str, Any],
                  and case.get("sip_allocation_fraction") == base
                  and case.get("step_up_allocation_fraction") == base,
                  f"{case.get('case_id')} changes allocation across capital flows")
-        identity = tuple(base[sleeve] for sleeve in sleeves)
+        identity = tuple(weights)
         _require(identity not in identities, "duplicate-equivalent policy allocations found")
         identities.add(identity)
         _require(case.get("case_status") == "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
-                 and case.get("investment_decision_status") == "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS",
+                 and case.get("investment_decision_status") == "BLOCKED_PENDING_G5_AND_INVESTOR_CONFIRMATIONS",
                  f"{case.get('case_id')} lost its research-only/dependency-blocked status")
         _require(all(Decimal(row["monthly_contribution_inr"]) >= ZERO for row in rows[1:max(HORIZONS) + 1]),
                  "negative contribution cashflow found")
@@ -200,9 +203,22 @@ def _validate_independent(action: Mapping[str, Any], cases: Mapping[str, Any],
     _require(cases["common_action_rules"]["distribution_handling"]["research_value"] == "REINVEST_AFTER_TAX",
              "distribution policy must specify net-of-tax reinvestment")
     terminal = cases["common_action_rules"]["terminal_measurement_and_exit"]
-    _require(terminal["status"] == "BLOCKED_PENDING_G3_AND_INVESTOR_DATE"
-             and terminal["forced_liquidation"] == "NOT_ASSUMED_PENDING_G3",
-             "G3/terminal exit blocker was removed or liquidation was inferred")
+    g3 = action["upstream_contracts"]["g3_outcome_contract"]
+    g3_text = G3_PATH.read_bytes().decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    g3_document = json.loads(g3_text)
+    g3_hash = hashlib.sha256(g3_text.encode("utf-8")).hexdigest()
+    _require(g3["status"] == "ACCEPTED" and g3["contract_version"] == g3_document["contract_version"]
+             and g3["sha256"] == g3_hash and g3["accepted_commit_sha"] == "a241fddaa937bb21b721ee00cef3f1bfc8503ba8",
+             "G3 upstream contract must be accepted, versioned, hash-pinned, and tied to its merge commit")
+    g3_field_value = {"path": g3["path"], "contract_version": g3["contract_version"], "sha256": g3["sha256"]}
+    _require(fields["goals.success_and_shortfall_event"]["status"] == "UPSTREAM_ACCEPTED"
+             and fields["goals.success_and_shortfall_event"]["value"] == g3_field_value
+             and fields["policy.terminal_measurement_contract"]["status"] == "UPSTREAM_ACCEPTED"
+             and terminal["status"] == "BLOCKED_PENDING_INVESTOR_DATE_AND_EXIT_CHOICE"
+             and terminal["forced_liquidation"] == "NOT_ASSUMED_PENDING_INVESTOR_EXIT_CHOICE"
+             and terminal["g3_contract_version"] == g3["contract_version"]
+             and terminal["g3_contract_sha256"] == g3["sha256"],
+             "accepted G3 semantics must be pinned while date and investor exit choice remain unresolved")
     eligibility = cases["common_action_rules"]["product_eligibility"]
     _require(eligibility["status"] == "BLOCKED_PENDING_G5" and eligibility["security_eligible"] is False
              and eligibility["security_identifiers"] == [],
@@ -253,7 +269,10 @@ def _negative_cases(action: dict[str, Any], cases: dict[str, Any],
     for key in ("weights_fraction", "initial_allocation_fraction", "sip_allocation_fraction",
                 "step_up_allocation_fraction"):
         bad["policy_cases"][1][key] = copy.deepcopy(bad["policy_cases"][0][key])
-    _expect_rejected(lambda: _validate_independent(action, bad, rows), "duplicate-equivalent policy")
+    for key in ("weights_fraction", "initial_allocation_fraction", "sip_allocation_fraction",
+                "step_up_allocation_fraction"):
+        bad["policy_cases"][1][key] = {name: format(Decimal(value), ".3f") for name, value in bad["policy_cases"][0][key].items()}
+    _expect_rejected(lambda: _validate_independent(action, bad, rows), "numerically duplicate policy with different decimal formatting")
     count += 1
 
     bad = copy.deepcopy(cases)
@@ -272,6 +291,10 @@ def _negative_cases(action: dict[str, Any], cases: dict[str, Any],
     count += 1
 
     return count
+
+
+def _independent_run_key(identity: Mapping[str, Any]) -> str:
+    return hashlib.sha256(_canonical(identity).encode("utf-8")).hexdigest()
 
 
 def _database_runs(cases: dict[str, Any], rows: tuple[dict[str, str], ...],
@@ -300,12 +323,18 @@ def _database_runs(cases: dict[str, Any], rows: tuple[dict[str, str], ...],
                  "top-level G2 engine identity disagrees with G4 context")
         _require(manifest["integration_context"]["policy_case_sha256"] == _hash(case),
                  "policy case hash fails independent canonical recomputation")
+        context = manifest["integration_context"]
+        _require(context["accepted_dependency_commits"]["g2_sprint2_database_pilot"] == "af0e5b81db0745c9055e340fc94739a5200904bb"
+                 and context["accepted_dependency_commits"]["g3_outcome_contract"] == "a241fddaa937bb21b721ee00cef3f1bfc8503ba8"
+                 and context["g3_outcome_contract_version"] == "1.0.0"
+                 and context["g3_outcome_contract_sha256"] == "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873",
+                 "database run context does not pin the accepted G2/G3 contract identities")
         identity = {key: manifest[key] for key in (
             "snapshot_sha256", "input_file_sha256", "expected_file_sha256", "code_sha256",
             "migration_sha256", "git_revision", "runtime",
         )}
         identity["integration_context"] = manifest["integration_context"]
-        _require(g2.content_run_key(identity) == run["run_key_sha256"],
+        _require(_independent_run_key(identity) == run["run_key_sha256"],
                  "database run key fails independent manifest recomputation")
         weights = {key: Decimal(value) for key, value in case["weights_fraction"].items()}
         _require(result["investment_authorization"] == "NO_GO", "run output changed investment authorization")
@@ -321,7 +350,7 @@ def _database_runs(cases: dict[str, Any], rows: tuple[dict[str, str], ...],
                      "negative holdings allocation found")
             _require(horizon["calendar_terminal_date"] is None,
                      "relative cashflow horizon must not infer a calendar terminal date")
-    return {"cases": len(runs), "run_keys": [run["run_key_sha256"] for run in runs]}
+    return {"cases": len(runs)}
 
 
 def audit() -> dict[str, Any]:
@@ -338,17 +367,19 @@ def audit() -> dict[str, Any]:
         "evidence_hashes": {
             "g4_1_content_sha256": action["content_sha256"],
             "g4_2_content_sha256": cases["content_sha256"],
+            "g3_outcome_contract_sha256": action["upstream_contracts"]["g3_outcome_contract"]["sha256"],
             "cashflow_fixture_sha256": g43._load_inputs().source_texts["cashflow"].sha256,
             "g2_schema_version": g2.MIGRATION_VERSION,
             "g2_migration_sha256": g2.calculation_identity()["migration_sha256"],
+            "g4_adapter_sha256": g43._load_inputs().source_texts["adapter"].sha256,
         },
         "zero_return_cashflow_control_inr": {str(key): format(value, "f") for key, value in totals.items()},
         "database_run_cases": database["cases"],
-        "database_run_keys_sha256": database["run_keys"],
+        "database_run_identity_checks": database["cases"],
         "canonical_policy_hashes": "PASS; G4.1, G4.2, and selected-case fingerprints independently recomputed",
         "run_identity": "PASS; each database run identity independently recomputed from its manifest",
         "investor_unknowns": "PASS; reserve, dates, exit, drawdown, account/product constraints remain explicit",
-        "G3_terminal_exit": "BLOCKED pending accepted G3 semantics and investor date",
+        "G3_terminal_exit": "PASS; accepted G3 semantics are hash-pinned; investor date and exit choice remain unresolved",
         "G5_product_eligibility": "BLOCKED; no security identity is asserted eligible",
         "roadmap_G4_disposition": "PASS for bounded policy-definition and G2 integration deliverables",
         "investment_decision_G4": "BLOCKED; future return, tax, real-wealth, suitability, feasibility, and uncertainty gates remain open",
@@ -357,4 +388,18 @@ def audit() -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    print(json.dumps(audit(), indent=2, ensure_ascii=False))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--check", action="store_true", help="compare regenerated stable evidence to the committed artifact")
+    parser.add_argument("--write", action="store_true", help="write regenerated stable evidence to the committed artifact path")
+    args = parser.parse_args()
+    _require(not (args.check and args.write), "choose either --check or --write")
+    rendered = json.dumps(audit(), indent=2, ensure_ascii=False) + "\n"
+    if args.check:
+        _require(EVIDENCE_PATH.read_text(encoding="utf-8") == rendered,
+                 "committed G4.4 evidence differs from regenerated audit output")
+        print("G4.4 committed evidence matches the independently regenerated audit")
+    elif args.write:
+        EVIDENCE_PATH.write_text(rendered, encoding="utf-8", newline="\n")
+        print(f"Wrote regenerated G4.4 evidence to {EVIDENCE_PATH.relative_to(ROOT)}")
+    else:
+        print(rendered, end="")

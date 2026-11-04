@@ -61,4 +61,4 @@ jobs:
       - name: Re-audit G4.3 SQLite adapter boundary
         run: python decision/audit_g4_allocation_database_adapter.py
       - name: Independently audit policy invariants and G4 disposition
-        run: python decision/audit_g4_independent_disposition.py
+        run: python decision/audit_g4_independent_disposition.py --check

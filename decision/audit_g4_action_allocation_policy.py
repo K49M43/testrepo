@@ -15,16 +15,17 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACT_PATH = ROOT / "config" / "g4_action_allocation_policy_v1.json"
-SCHEMA_PATH = ROOT / "config" / "g4_action_allocation_policy.schema.v1.json"
+CONTRACT_PATH = ROOT / "config" / "g4_action_allocation_policy_v1_1.json"
+SCHEMA_PATH = ROOT / "config" / "g4_action_allocation_policy.schema.v1_1.json"
 STATUS_VALUES = {
     "INVESTOR_CONFIRMED",
     "MANDATE_DERIVED",
     "ANALYST_PROPOSED",
     "UNRESOLVED",
     "DEPENDENCY_BLOCKED",
+    "UPSTREAM_ACCEPTED",
 }
-VALUE_STATUSES = {"INVESTOR_CONFIRMED", "MANDATE_DERIVED", "ANALYST_PROPOSED"}
+VALUE_STATUSES = {"INVESTOR_CONFIRMED", "MANDATE_DERIVED", "ANALYST_PROPOSED", "UPSTREAM_ACCEPTED"}
 NULL_STATUSES = {"UNRESOLVED", "DEPENDENCY_BLOCKED"}
 EXPECTED_UNITS = {
     "capital.initial_corpus.amount": "INR",
@@ -61,7 +62,7 @@ EXPECTED_TYPES = {
     "contributions.first_payment_date": "iso_date",
     "goals.planning_floor.amount": "decimal_string",
     "goals.stretch_goal.amount": "decimal_string",
-    "goals.success_and_shortfall_event": "string",
+    "goals.success_and_shortfall_event": "object",
     "inflation.purchasing_power_anchor_date": "iso_date",
     "horizon.terminal_measurement_date": "iso_date",
     "risk.interim_drawdown_tolerance": "decimal_string",
@@ -71,7 +72,7 @@ EXPECTED_TYPES = {
     "policy.initial_deployment_rule": "enum",
     "policy.allocation_schedule": "object",
     "policy.rebalancing_rule": "string",
-    "policy.terminal_measurement_contract": "string",
+    "policy.terminal_measurement_contract": "object",
     "policy.investor_exit_choice": "string",
 }
 EXPECTED_SOURCES = {
@@ -92,9 +93,9 @@ EXPECTED_SOURCES = {
     "implementation.account_and_product_constraints": "config/investment_mandate_2036.json#/unknowns_for_final_signoff",
     "implementation.broker_route": "config/investment_mandate_2036.json#/investor/broker",
     "income_and_coupon_handling": "docs/INVESTMENT_DECISION_MANDATE_2036.md",
-    "policy.initial_deployment_rule": "GitHub issue #22 (G4.2 bounded action set)",
-    "policy.allocation_schedule": "GitHub issue #22 (G4.2 bounded action set)",
-    "policy.rebalancing_rule": "GitHub issue #22 (G4.2 bounded action set)",
+    "policy.initial_deployment_rule": "GitHub issue #22 (G4.2 research proposals; investor preference unconfirmed)",
+    "policy.allocation_schedule": "GitHub issue #22 (G4.2 research proposals; investor preference unconfirmed)",
+    "policy.rebalancing_rule": "GitHub issue #22 (G4.2 research proposals; investor preference unconfirmed)",
     "policy.terminal_measurement_contract": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
     "policy.investor_exit_choice": "config/investment_mandate_2036.json#/goals/target_measurement_dates_in_2036",
 }
@@ -109,17 +110,17 @@ EXPECTED_STATUSES = {
     "contributions.first_payment_date": "UNRESOLVED",
     "goals.planning_floor.amount": "MANDATE_DERIVED",
     "goals.stretch_goal.amount": "MANDATE_DERIVED",
-    "goals.success_and_shortfall_event": "DEPENDENCY_BLOCKED",
+    "goals.success_and_shortfall_event": "UPSTREAM_ACCEPTED",
     "inflation.purchasing_power_anchor_date": "UNRESOLVED",
     "horizon.terminal_measurement_date": "UNRESOLVED",
     "risk.interim_drawdown_tolerance": "UNRESOLVED",
     "implementation.account_and_product_constraints": "UNRESOLVED",
     "implementation.broker_route": "MANDATE_DERIVED",
     "income_and_coupon_handling": "ANALYST_PROPOSED",
-    "policy.initial_deployment_rule": "DEPENDENCY_BLOCKED",
-    "policy.allocation_schedule": "DEPENDENCY_BLOCKED",
-    "policy.rebalancing_rule": "DEPENDENCY_BLOCKED",
-    "policy.terminal_measurement_contract": "DEPENDENCY_BLOCKED",
+    "policy.initial_deployment_rule": "UNRESOLVED",
+    "policy.allocation_schedule": "UNRESOLVED",
+    "policy.rebalancing_rule": "UNRESOLVED",
+    "policy.terminal_measurement_contract": "UPSTREAM_ACCEPTED",
     "policy.investor_exit_choice": "UNRESOLVED",
 }
 EXPECTED_CONFIRMATION = {
@@ -127,6 +128,7 @@ EXPECTED_CONFIRMATION = {
     "ANALYST_PROPOSED": True,
     "UNRESOLVED": True,
     "DEPENDENCY_BLOCKED": False,
+    "UPSTREAM_ACCEPTED": False,
 }
 DECIMAL_RANGES = {
     "capital.initial_corpus.amount": (Decimal("0"), None),
@@ -203,7 +205,7 @@ def _check_hash_reference(reference: dict[str, Any], label: str) -> None:
     resolved = (ROOT / relative).resolve()
     _require(resolved.is_relative_to(ROOT), f"{label} path escapes the repository")
     _require(resolved.is_file(), f"{label} reference file is missing: {relative}")
-    _require(resolved.suffix.lower() in {".json", ".csv", ".md", ".py", ".yml", ".yaml"},
+    _require(resolved.suffix.lower() in {".json", ".csv", ".md", ".py", ".yml", ".yaml", ".sql"},
              f"{label} reference is not a supported tracked-text format")
     actual = _portable_text_sha256(resolved.read_bytes())
     _require(actual == expected, f"{label} normalized UTF-8/LF SHA-256 is stale: {relative}")
@@ -285,7 +287,7 @@ def _validate_field_semantics(field: dict[str, Any]) -> None:
 
 def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) -> None:
     _require(contract.get("contract_id") == "g4-action-allocation-policy", "wrong contract_id")
-    _require(contract.get("contract_version") == "1.0.0", "unexpected contract version")
+    _require(contract.get("contract_version") == "1.1.0", "unexpected contract version")
     _require(contract.get("content_sha256") == _contract_fingerprint(contract),
              "contract content_sha256 is stale; refresh identity after any contract change")
     _require(contract.get("contract_status") in {"DRAFT", "ACCEPTED"}, "invalid contract_status")
@@ -341,6 +343,30 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
     _require(indexed["goals.stretch_goal.amount"]["value"] == "10000000",
              "the ₹1 crore stretch goal must remain separate")
 
+    upstream = contract.get("upstream_contracts", {})
+    g3 = upstream.get("g3_outcome_contract", {})
+    g2 = upstream.get("g2_database_run_contract", {})
+    _require(g3.get("status") == "ACCEPTED" and g3.get("issue") == 18
+             and g3.get("pull_request") == 19
+             and g3.get("accepted_commit_sha") == "a241fddaa937bb21b721ee00cef3f1bfc8503ba8"
+             and g3.get("contract_version") == "1.0.0",
+             "G3 reference must identify its accepted contract version and merge commit")
+    _require(g2.get("status") == "ACCEPTED" and g2.get("issue") == 15
+             and g2.get("pull_request") == 17
+             and g2.get("accepted_commit_sha") == "af0e5b81db0745c9055e340fc94739a5200904bb"
+             and g2.get("schema_version") == 1,
+             "G2 reference must identify the accepted schema and merge commit")
+    _check_hash_reference(g3, "accepted G3 outcome contract")
+    _check_hash_reference(g2, "accepted G2 migration")
+    _require(_load_json(ROOT / g3["path"]).get("contract_version") == g3["contract_version"],
+             "G3 file version differs from the pinned upstream reference")
+    expected_g3_value = {"path": g3["path"], "contract_version": g3["contract_version"],
+                         "sha256": g3["sha256"]}
+    for field_id in ("goals.success_and_shortfall_event", "policy.terminal_measurement_contract"):
+        _require(indexed[field_id]["status"] == "UPSTREAM_ACCEPTED"
+                 and indexed[field_id]["value"] == expected_g3_value,
+                 f"{field_id} must pin accepted G3 semantics independently of investor choices")
+
     dimensions = contract.get("required_policy_dimensions")
     _require(isinstance(dimensions, list) and set(dimensions) == REQUIRED_DIMENSIONS,
              "required_policy_dimensions must cover the full action policy surface")
@@ -355,14 +381,6 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = False) 
     _require(limits.get("minimum_investable_research_cases") <= limits.get("maximum_investable_research_cases"),
              "G4.2 case-count limits are inconsistent")
     _require(limits.get("optimizer_allowed") is False, "G4.1 must not authorize an optimizer")
-
-    upstream = contract.get("upstream_contracts", {})
-    g3 = upstream.get("g3_outcome_contract", {})
-    _require(g3.get("status") == "PENDING_MERGE_AND_EXACT_HEAD_VERIFICATION" and g3.get("sha256") is None,
-             "G3 must not be represented as accepted before merge and exact-head verification")
-    g2 = upstream.get("g2_database_run_contract", {})
-    _require(g2.get("status") == "PENDING_SPRINT_2_ACCEPTANCE" and g2.get("path") is None,
-             "G2 database schema must not be invented or treated as accepted")
 
     for label in ("known_limitations", "invalidation_triggers"):
         _require(isinstance(contract.get(label), list) and contract[label], f"{label} must be explicit")
@@ -431,7 +449,12 @@ def audit() -> dict[str, Any]:
     bad["upstream_contracts"]["g3_outcome_contract"].update({
         "status": "ACCEPTED", "sha256": "0" * 64
     })
-    _expect_rejected(bad, "unverified G3 contract marked accepted")
+    _expect_rejected(bad, "accepted G3 reference with false contract hash")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["upstream_contracts"]["g2_database_run_contract"]["sha256"] = "0" * 64
+    _expect_rejected(bad, "accepted G2 reference with false migration hash", check_sources=True)
     negative_cases += 1
 
     bad = copy.deepcopy(contract)
@@ -472,7 +495,7 @@ def audit() -> dict[str, Any]:
 
     return {
         "audit": "PASS",
-        "contract": "g4-action-allocation-policy 1.0.0",
+        "contract": "g4-action-allocation-policy 1.1.0",
         "status": contract["contract_status"],
         "registered_fields": len(contract["field_register"]),
         "required_policy_dimensions": len(contract["required_policy_dimensions"]),
@@ -480,7 +503,7 @@ def audit() -> dict[str, Any]:
         "json_schema_2020_12": "PASS; schema validates and validates the contract instance",
         "source_hashes": "PASS; normalized UTF-8/LF hashes match mandate and cashflow fixture; mandate-derived field values resolve and match",
         "unresolved_investor_inputs_preserved": "PASS; reserve, dates, exit, product limits, and drawdown tolerance are not imputed",
-        "g2_g3_dependencies": "PASS; pending contracts remain blocked pending acceptance",
+        "g2_g3_dependencies": "PASS; accepted G2/G3 contract versions, hashes, and merge commits are pinned",
         "investment_authorization": contract["investment_authorization"],
     }
 
