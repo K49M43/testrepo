@@ -1,0 +1,29 @@
+name: G5.1 claim lineage audit
+
+on:
+  push:
+    paths:
+      - 'decision/audit_g5_1_claim_lineage.py'
+      - 'research/stage512/2026-11-02/**'
+      - 'research/stage512/2026-11-05/**'
+      - '.github/workflows/g5-1-claim-lineage.yml'
+  pull_request:
+    paths:
+      - 'decision/audit_g5_1_claim_lineage.py'
+      - 'research/stage512/2026-11-02/**'
+      - 'research/stage512/2026-11-05/**'
+      - '.github/workflows/g5-1-claim-lineage.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lineage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify G5.1 lineage record
+        run: python decision/audit_g5_1_claim_lineage.py --check

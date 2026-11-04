@@ -2,9 +2,12 @@
 Measures provisional full-liquidation equivalent value in 2026 rupees. All amounts INR lakh.
 Current tax rules are not forecasts of 2036 rules. No executable investment is represented.
 """
-import numpy as np, csv, json
+import argparse, numpy as np, csv, json
 from pathlib import Path
-OUT=Path('/mnt/data')
+parser=argparse.ArgumentParser(description='Reproduce synthetic Stage 5.12 risk assumptions; no historical return replay is performed.')
+parser.add_argument('--output-dir',required=True,help='New output directory; do not point at the preserved 2026-11-02 artifacts.')
+OUT=Path(parser.parse_args().output_dir)
+OUT.mkdir(parents=True,exist_ok=True)
 SEED=20261102
 N=25000
 MONTHS=122
@@ -35,7 +38,7 @@ SCENARIOS={
  'Adverse valuation':{'eps':.06,'terminal_pe':16.,'returns':[None,.065,.03,.02],'vol':[.22,.07,.18,.35], 'cpi':.07, 'cpi_vol':.03,'corr':CORR_STRESS},
  'Central assumptions':{'eps':.09,'terminal_pe':19.,'returns':[None,.07,.055,.06],'vol':[.17,.05,.16,.28], 'cpi':.06, 'cpi_vol':.02,'corr':CORR_BASE},
  'Strong equity':{'eps':.11,'terminal_pe':23.,'returns':[None,.075,.07,.09],'vol':[.17,.05,.16,.28], 'cpi':.045, 'cpi_vol':.02,'corr':CORR_BASE},
- 'Historical 11.8% replay':{'eps':None,'terminal_pe':None,'equity_geo':.118,'returns':[None,.07,.055,.06],'vol':[.17,.05,.16,.28], 'cpi':.06, 'cpi_vol':.02,'corr':CORR_BASE},
+ 'Synthetic 11.8% equity geometric-return assumption':{'eps':None,'terminal_pe':None,'equity_geo':.118,'returns':[None,.07,.055,.06],'vol':[.17,.05,.16,.28], 'cpi':.06, 'cpi_vol':.02,'corr':CORR_BASE},
  'Central fat tails':{'eps':.09,'terminal_pe':19.,'returns':[None,.07,.055,.06],'vol':[.17,.05,.16,.28], 'cpi':.06, 'cpi_vol':.02,'corr':CORR_BASE, 'shock_dist':'student_t_5'},
  'Stagflation stress':{'eps':.06,'terminal_pe':16.,'returns':[None,.05,.09,.03],'vol':[.25,.08,.22,.35], 'cpi':.08, 'cpi_vol':.04,'corr':CORR_STRESS},
 }
@@ -99,7 +102,10 @@ def simulate(s):
             miss=real<90
             p5=np.percentile(real,5)
             row={
-             'scenario':s['name'],'portfolio':name,'month':month,'gross_median_L':round(float(np.median((prices[:,month,:]*units*w).sum(axis=1))),3),
+             'scenario':s['name'],
+             'scenario_classification':('SYNTHETIC_ASSUMPTION_NOT_HISTORICAL_REPLAY' if s['name'].startswith('Synthetic 11.8%') else 'SYNTHETIC_MODEL_SCENARIO'),
+             'equity_return_provenance_status':('UNVERIFIED_THIRD_PARTY_REPORTED_CAGR_USED_AS_SYNTHETIC_ASSUMPTION' if s['name'].startswith('Synthetic 11.8%') else 'MODEL_ASSUMPTION_NOT_INDEPENDENTLY_VALIDATED'),
+             'portfolio':name,'month':month,'gross_median_L':round(float(np.median((prices[:,month,:]*units*w).sum(axis=1))),3),
              'tax_median_L':round(float(np.median(tax)),3),'net_median_L':round(float(np.median(net)),3),
              'real_median_L':round(float(np.median(real)),3),'real_p05_L':round(float(p5),3),'real_p15_L':round(float(np.percentile(real,15)),3),
              'real_p95_L':round(float(np.percentile(real,95)),3),'model_floor_hit_pct':round(float(100*(~miss).mean()),2),
@@ -123,7 +129,9 @@ def simulate(s):
 rows=[];assumptions=[]
 for name,s0 in SCENARIOS.items():
  s={**s0,'name':name};r,ret=simulate(s);rows.extend(r)
- assumptions.append({'scenario':name,'equity_return_geometric_assumed':round(float(ret[0]),5),'gilt_return_assumed':ret[1],
+ assumptions.append({'scenario':name,'scenario_classification':('SYNTHETIC_ASSUMPTION_NOT_HISTORICAL_REPLAY' if name.startswith('Synthetic 11.8%') else 'SYNTHETIC_MODEL_SCENARIO'),
+ 'equity_return_provenance_status':('UNVERIFIED_THIRD_PARTY_REPORTED_CAGR_USED_AS_SYNTHETIC_ASSUMPTION' if name.startswith('Synthetic 11.8%') else 'MODEL_ASSUMPTION_NOT_INDEPENDENTLY_VALIDATED'),
+ 'equity_return_geometric_assumed':round(float(ret[0]),5),'gilt_return_assumed':ret[1],
  'gold_return_assumed':ret[2],'silver_return_assumed':ret[3], 'cpi_drift':s['cpi'], 'vol_equity':s['vol'][0],
  'vol_gilt':s['vol'][1], 'vol_gold':s['vol'][2], 'vol_silver':s['vol'][3], 'cpi_vol':s['cpi_vol'],
  'max_corr_eigenvalue':float(np.linalg.eigvalsh(s['corr']).max()),'min_corr_eigenvalue':float(np.linalg.eigvalsh(s['corr']).min()), 'shock_dist':s.get('shock_dist','normal')})
@@ -144,7 +152,9 @@ assert np.isclose((1.06)**10/(1.05)**10,1.0994,atol=.001)
 with (OUT/'stage512_risk_scenarios.csv').open('w',newline='') as f:
  writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
 with (OUT/'stage512_assumption_register.json').open('w') as f:
- json.dump({'source_evidence':'See research notes; source numbers are observations, not forecasts',
+ json.dump({'source_evidence':'The 0.118 equity input is a third-party reported historical CAGR used only as a synthetic model parameter; its exact as-of calculation and raw 1995-to-2026 TRI path are not independently verified. It is not a forecast or historical replay.',
+ 'model_run_type':'SYNTHETIC_ASSUMPTION_SCENARIOS_ONLY_NO_HISTORICAL_REPLAY',
+ 'g5_1_correction_record':'research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json',
  'return_caveat':'Hypothetical valuation-sensitive geometric returns, forward risk distributions uncalibrated.',
  'tax':'Simplified current-law terminal liquidation, no gains/loss cross offset and no future rate changes',
  'correlation':'Hypothetical positive definite matrices; not history fitted.',

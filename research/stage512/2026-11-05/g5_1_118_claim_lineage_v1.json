@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-1-118-claim-lineage-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "base_main_commit_before_correction": "765b4c84cc006c98dd374b49b9dd324f82187123",
+  "claim": {
+    "former_label": "Historical 11.8% replay",
+    "corrected_label": "Synthetic 11.8% equity geometric-return assumption",
+    "classification": "SYNTHETIC_ASSUMPTION_MISLABELED_AS_HISTORICAL_REPLAY",
+    "equity_geometric_return_fraction": "0.118",
+    "current_input_provenance": "UNVERIFIED_THIRD_PARTY_REPORTED_CAGR",
+    "forecast_status": "NOT_A_FORECAST",
+    "decision_evidence_status": "QUARANTINED_NOT_FOR_INVESTMENT_DECISION"
+  },
+  "method_trace": {
+    "model_path": "research/stage512/2026-11-02/stage512_risk_audit.py",
+    "scenario_paths": 25000,
+    "monthly_steps": 122,
+    "seed": 20261102,
+    "equity_parameter_use": "The scalar 0.118 is inserted as the assumed geometric equity return; simulated monthly shocks are generated from a seeded normal distribution.",
+    "observed_historical_path_loaded": false,
+    "portfolio_results_rebalanced_from_observed_holdings": false
+  },
+  "official_and_reported_source_assessment": {
+    "original_report_source": "https://tipsheet.markets/indices/nifty-500/",
+    "original_source_snapshot_hash": null,
+    "original_report_value_status": "UNVERIFIED; exact source version and 30 October 2026 endpoint were not archived.",
+    "live_third_party_page_as_of_2026_11_03": "11.9% annualized since 1995; live value is not an as-of-2026-11-02 snapshot.",
+    "official_nifty_indices_whitepaper": "https://www.niftyindices.com/docs/default-source/indices/nifty-500/nifty-500-whitepaper_2025.pdf",
+    "official_reported_tri_return": "12.39% annualized from 1995-01-01 through 2025-09-30",
+    "official_repo_series_coverage": "129 published monthly TRI anchors from 2015-01 through 2025-09; no complete official daily since-1995 path is qualified in this repository.",
+    "comparison_limit": "Different end dates prevent treating the third-party 11.8% claim and official 12.39% report as like-for-like or as proof of the exact 0.118 input."
+  },
+  "affected_artifacts": [
+    {
+      "path": "research/stage512/2026-11-02/stage512_assumption_register.json",
+      "impact": "scenario assumption name and provenance status corrected; numeric input remains 0.118"
+    },
+    {
+      "path": "research/stage512/2026-11-02/stage512_risk_audit.py",
+      "impact": "future runs use corrected label, require a new output directory, and emit provenance metadata"
+    },
+    {
+      "path": "research/stage512/2026-11-02/stage512_risk_scenarios.csv",
+      "impact": "six affected scenario rows relabeled and tagged; numeric results unchanged"
+    },
+    {
+      "path": "research/stage512/2026-11-02/stage512_blocker_resolution_report.md",
+      "impact": "visible correction notice and corrected source/interpretation text; numeric table values retained"
+    }
+  ],
+  "reproduction": {
+    "command": "python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir research/stage512/2026-11-05/g5_1_118_assumption_rerun",
+    "corrected_scenario_rows": 6,
+    "exact_numeric_reproduction_against_saved_output": true,
+    "pre_correction_source_hashes": {
+      "research/stage512/2026-11-02/stage512_assumption_register.json": "e5d1af01137b14d7a17336af89cee8f6b5c3e1490e4cd9b5c619e512116c6c47",
+      "research/stage512/2026-11-02/stage512_risk_audit.py": "99e624f1b093bc7cf81f297c922b092534ca860a3731534d2beeb5b4994b50e2",
+      "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "4c642f6b691138fd9836162a42f96288bab5e518c5586fccef7fad30ec8cc243",
+      "research/stage512/2026-11-02/stage512_blocker_resolution_report.md": "6378d289762355472353f145b9f89180ebc7901acbd58f7728fd334f8ba5e483"
+    }
+  },
+  "current_source_hashes_sha256_utf8_lf": {
+    "research/stage512/2026-11-02/stage512_assumption_register.json": "6cf6ae6691107dd48fafc96e8336175bbfc433259ad7d385bacbb7cce03b383f",
+    "research/stage512/2026-11-02/stage512_risk_audit.py": "b38b9e3b50201945ffb9463ca5277ee41864aba6df30b939ccea6e3e47357e99",
+    "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "77e3c8dbe6eff9f6e89fc32a1b31cee24a10d30881fe9b6e8e92713e3cf8cbc6",
+    "research/stage512/2026-11-02/stage512_blocker_resolution_report.md": "9545731b08ff7588570cdd9e05dae6181e2de05fc4db0bbb098df90d06e77610",
+    "research/stage512/2026-11-02/README.md": "3ae6007a62534b5d32fabe7f79e5e557c6c25eb1f63e40d3ef90252841e39918",
+    "research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e",
+    "research/stage512/data/nse500_tri_validation_R8.json": "e0c98c73b0ca53759634836e2d9ce62ce4b6b22f12c5424e0ae5e2bd86e3dad6",
+    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_assumption_register.json": "6cf6ae6691107dd48fafc96e8336175bbfc433259ad7d385bacbb7cce03b383f",
+    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_risk_scenarios.csv": "77e3c8dbe6eff9f6e89fc32a1b31cee24a10d30881fe9b6e8e92713e3cf8cbc6"
+  },
+  "qcsae_record": "research/stage512/2026-11-05/g5_1_qcsae_v1.json",
+  "g5_1_disposition": "PASS_FOR_LINEAGE_AND_LABEL_CORRECTION; INPUT_VALUE_REMAINS_UNVERIFIED; ALL_SCENARIO_OUTPUTS_REMAIN_RESEARCH_ONLY",
+  "investment_authorization": "NO_GO"
+}
