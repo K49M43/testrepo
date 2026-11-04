@@ -7,7 +7,7 @@
 
 The former “Historical 11.8% replay” case did not replay historical returns. `stage512_risk_audit.py` assigns `0.118` as a fixed geometric equity-return assumption and generates monthly shocks from a seeded normal distribution. It does not load a dated Nifty 500 total-return series. The run contains 25,000 synthetic paths, 122 monthly steps, seed `20261102`, hypothetical asset means/volatilities/correlations, and simplified tax mechanics. Its path hit rates describe this model only.
 
-The case and all six dependent outputs (three illustrative allocations × two horizons) now identify the case as a synthetic assumption and flag its provenance as unverified. The numeric results were intentionally retained for traceability, reproduced exactly in a separately stored rerun, and quarantined. They must not be presented as historical performance, an empirical probability, forecast, or investment support.
+The case and all six dependent outputs (three illustrative allocations × two horizons) now identify the case as a synthetic assumption, flag its provenance as unverified, and carry a machine-readable `QUARANTINED_NOT_FOR_INVESTMENT_DECISION` status plus a direct link to this lineage record. The numeric results were intentionally retained for traceability, compared to the pinned pre-correction rows, reproduced in a separately stored rerun, and quarantined. They must not be presented as historical performance, an empirical probability, forecast, or investment support.
 
 ## Source and coverage audit
 
@@ -21,14 +21,15 @@ Sources: [NSE Indices October 2025 Nifty 500 whitepaper](https://www.niftyindice
 
 The active scenario label now reads “Synthetic 11.8% equity geometric-return assumption.” Scenario outputs include classification and input-provenance fields. The runner requires a separate `--output-dir` to prevent accidental replacement of the dated baseline. The preserved rerun is under `research/stage512/2026-11-05/g5_1_118_assumption_rerun/`.
 
-Reproduce with Python and NumPy:
+Reproduce with Python 3.13 and NumPy 2.3.2. The CI audit extracts the original four input artifacts from base commit `765b4c84cc006c98dd374b49b9dd324f82187123`, verifies their normalized SHA-256 hashes, regenerates the simulation into a fresh directory, and compares the six corrected result rows against the original and fresh outputs. The same audit scans repository text for the former claim outside this correction record.
 
 ```powershell
-python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir research/stage512/2026-11-05/g5_1_118_assumption_rerun
-python decision/audit_g5_1_claim_lineage.py --check
+python -m pip install numpy==2.3.2
+python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir <fresh-output-directory>
+python decision/audit_g5_1_claim_lineage.py --check --baseline-dir <pinned-baseline-directory> --reproduced-dir <fresh-output-directory>
 ```
 
-The machine-readable lineage record stores the pre-correction SHA-256 fingerprints, current artifact fingerprints, baseline main commit, source assessment, model trace, affected outputs, and exact numeric rerun comparison. `--write` regenerates that record; CI uses `--check` to enforce it.
+The machine-readable lineage record stores verified pre-correction SHA-256 fingerprints, current artifact fingerprints, baseline main commit, source assessment, model trace, affected outputs, exact baseline comparison, and rerun status. `--write` regenerates that record; CI uses `--check` to enforce it.
 
 ## Limits and downstream use
 

@@ -105,6 +105,8 @@ def simulate(s):
              'scenario':s['name'],
              'scenario_classification':('SYNTHETIC_ASSUMPTION_NOT_HISTORICAL_REPLAY' if s['name'].startswith('Synthetic 11.8%') else 'SYNTHETIC_MODEL_SCENARIO'),
              'equity_return_provenance_status':('UNVERIFIED_THIRD_PARTY_REPORTED_CAGR_USED_AS_SYNTHETIC_ASSUMPTION' if s['name'].startswith('Synthetic 11.8%') else 'MODEL_ASSUMPTION_NOT_INDEPENDENTLY_VALIDATED'),
+             'decision_evidence_status':('QUARANTINED_NOT_FOR_INVESTMENT_DECISION' if s['name'].startswith('Synthetic 11.8%') else 'RESEARCH_ONLY_NOT_CALIBRATED'),
+             'claim_lineage_record':('research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json' if s['name'].startswith('Synthetic 11.8%') else ''),
              'portfolio':name,'month':month,'gross_median_L':round(float(np.median((prices[:,month,:]*units*w).sum(axis=1))),3),
              'tax_median_L':round(float(np.median(tax)),3),'net_median_L':round(float(np.median(net)),3),
              'real_median_L':round(float(np.median(real)),3),'real_p05_L':round(float(p5),3),'real_p15_L':round(float(np.percentile(real,15)),3),
@@ -131,6 +133,8 @@ for name,s0 in SCENARIOS.items():
  s={**s0,'name':name};r,ret=simulate(s);rows.extend(r)
  assumptions.append({'scenario':name,'scenario_classification':('SYNTHETIC_ASSUMPTION_NOT_HISTORICAL_REPLAY' if name.startswith('Synthetic 11.8%') else 'SYNTHETIC_MODEL_SCENARIO'),
  'equity_return_provenance_status':('UNVERIFIED_THIRD_PARTY_REPORTED_CAGR_USED_AS_SYNTHETIC_ASSUMPTION' if name.startswith('Synthetic 11.8%') else 'MODEL_ASSUMPTION_NOT_INDEPENDENTLY_VALIDATED'),
+ 'decision_evidence_status':('QUARANTINED_NOT_FOR_INVESTMENT_DECISION' if name.startswith('Synthetic 11.8%') else 'RESEARCH_ONLY_NOT_CALIBRATED'),
+ 'claim_lineage_record':('research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json' if name.startswith('Synthetic 11.8%') else ''),
  'equity_return_geometric_assumed':round(float(ret[0]),5),'gilt_return_assumed':ret[1],
  'gold_return_assumed':ret[2],'silver_return_assumed':ret[3], 'cpi_drift':s['cpi'], 'vol_equity':s['vol'][0],
  'vol_gilt':s['vol'][1], 'vol_gold':s['vol'][2], 'vol_silver':s['vol'][3], 'cpi_vol':s['cpi_vol'],

@@ -6,12 +6,18 @@ on:
       - 'decision/audit_g5_1_claim_lineage.py'
       - 'research/stage512/2026-11-02/**'
       - 'research/stage512/2026-11-05/**'
+      - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'docs/DECISION_LOG.md'
       - '.github/workflows/g5-1-claim-lineage.yml'
   pull_request:
     paths:
       - 'decision/audit_g5_1_claim_lineage.py'
       - 'research/stage512/2026-11-02/**'
       - 'research/stage512/2026-11-05/**'
+      - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'docs/DECISION_LOG.md'
       - '.github/workflows/g5-1-claim-lineage.yml'
 
 permissions:
@@ -22,8 +28,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Verify G5.1 lineage record
-        run: python decision/audit_g5_1_claim_lineage.py --check
+          python-version: '3.13'
+      - name: Install pinned simulation runtime
+        run: python -m pip install numpy==2.3.2
+      - name: Reproduce the seeded risk scenarios
+        run: python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir "$RUNNER_TEMP/g5-1-reproduction"
+      - name: Materialize the pinned pre-correction baseline
+        env:
+          BASE_COMMIT: 765b4c84cc006c98dd374b49b9dd324f82187123
+        run: |
+          mkdir -p "$RUNNER_TEMP/g5-1-baseline"
+          while IFS= read -r path; do
+            mkdir -p "$RUNNER_TEMP/g5-1-baseline/$(dirname "$path")"
+            git show "$BASE_COMMIT:$path" > "$RUNNER_TEMP/g5-1-baseline/$path"
+          done <<'EOF'
+          research/stage512/2026-11-02/stage512_assumption_register.json
+          research/stage512/2026-11-02/stage512_risk_audit.py
+          research/stage512/2026-11-02/stage512_risk_scenarios.csv
+          research/stage512/2026-11-02/stage512_blocker_resolution_report.md
+          EOF
+      - name: Verify G5.1 lineage, baseline preservation, and rerun
+        run: >-
+          python decision/audit_g5_1_claim_lineage.py --check
+          --baseline-dir "$RUNNER_TEMP/g5-1-baseline"
+          --reproduced-dir "$RUNNER_TEMP/g5-1-reproduction"

@@ -10,7 +10,8 @@
     "equity_geometric_return_fraction": "0.118",
     "current_input_provenance": "UNVERIFIED_THIRD_PARTY_REPORTED_CAGR",
     "forecast_status": "NOT_A_FORECAST",
-    "decision_evidence_status": "QUARANTINED_NOT_FOR_INVESTMENT_DECISION"
+    "decision_evidence_status": "QUARANTINED_NOT_FOR_INVESTMENT_DECISION",
+    "correction_record": "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json"
   },
   "method_trace": {
     "model_path": "research/stage512/2026-11-02/stage512_risk_audit.py",
@@ -34,26 +35,36 @@
   "affected_artifacts": [
     {
       "path": "research/stage512/2026-11-02/stage512_assumption_register.json",
-      "impact": "scenario assumption name and provenance status corrected; numeric input remains 0.118"
+      "impact": "scenario relabeled; unverified provenance, quarantine status and correction link are explicit"
     },
     {
       "path": "research/stage512/2026-11-02/stage512_risk_audit.py",
-      "impact": "future runs use corrected label, require a new output directory, and emit provenance metadata"
+      "impact": "future runs emit corrected labels and row-level quarantine metadata; separate output directory is required"
     },
     {
       "path": "research/stage512/2026-11-02/stage512_risk_scenarios.csv",
-      "impact": "six affected scenario rows relabeled and tagged; numeric results unchanged"
+      "impact": "six affected scenario rows relabeled and tagged; numeric results match the pinned original"
     },
     {
       "path": "research/stage512/2026-11-02/stage512_blocker_resolution_report.md",
-      "impact": "visible correction notice and corrected source/interpretation text; numeric table values retained"
+      "impact": "visible correction notice, source interpretation and quarantine links; numeric table values retained"
+    },
+    {
+      "path": "research/stage512/2026-11-05/G5_1_118_CLAIM_LINEAGE.md",
+      "impact": "dated human-readable correction and reproduction record"
+    },
+    {
+      "path": "research/stage512/2026-11-05/g5_1_qcsae_v1.json",
+      "impact": "counter-case, falsification checks, reopening evidence and NO-GO disposition"
     }
   ],
   "reproduction": {
-    "command": "python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir research/stage512/2026-11-05/g5_1_118_assumption_rerun",
+    "runtime": "Python 3.13; NumPy 2.3.2",
+    "command": "python research/stage512/2026-11-02/stage512_risk_audit.py --output-dir <fresh-output-directory>",
     "corrected_scenario_rows": 6,
-    "exact_numeric_reproduction_against_saved_output": true,
-    "pre_correction_source_hashes": {
+    "numeric_values_match_pinned_original": true,
+    "fresh_rerun_matches_committed_output_exactly": true,
+    "pre_correction_source_hashes_verified_at_pinned_commit": {
       "research/stage512/2026-11-02/stage512_assumption_register.json": "e5d1af01137b14d7a17336af89cee8f6b5c3e1490e4cd9b5c619e512116c6c47",
       "research/stage512/2026-11-02/stage512_risk_audit.py": "99e624f1b093bc7cf81f297c922b092534ca860a3731534d2beeb5b4994b50e2",
       "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "4c642f6b691138fd9836162a42f96288bab5e518c5586fccef7fad30ec8cc243",
@@ -61,15 +72,24 @@
     }
   },
   "current_source_hashes_sha256_utf8_lf": {
-    "research/stage512/2026-11-02/stage512_assumption_register.json": "6cf6ae6691107dd48fafc96e8336175bbfc433259ad7d385bacbb7cce03b383f",
-    "research/stage512/2026-11-02/stage512_risk_audit.py": "b38b9e3b50201945ffb9463ca5277ee41864aba6df30b939ccea6e3e47357e99",
-    "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "77e3c8dbe6eff9f6e89fc32a1b31cee24a10d30881fe9b6e8e92713e3cf8cbc6",
+    ".github/workflows/g5-1-claim-lineage.yml": "1743b2346e5a1f8f897f376abff3edfd5b88eb820cc80f2c46f946dc89c54b27",
+    "decision/audit_g5_1_claim_lineage.py": "36d58e33c4d2fb650b8893d755c1ebca0014861902fa426160fbfc13b78b0602",
+    "docs/DECISION_LOG.md": "ad6b4a492fcfee49500c33860204c1d9dd0e40772492d6e37cd0ecd7ba384cce",
+    "research/stage512/2026-11-02/stage512_assumption_register.json": "02f89458e06b07ff175d3207afb0e87b46f66baf68651c7446292f459d29f697",
+    "research/stage512/2026-11-02/stage512_risk_audit.py": "302a75baef9832e95e71d83fa0276232bed98ce211ea8244426a121957d56ac4",
+    "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "1de2131a151d1d149da3842b9c51e3711e114a8f56d3ee1a625f1e037b29fa5e",
     "research/stage512/2026-11-02/stage512_blocker_resolution_report.md": "9545731b08ff7588570cdd9e05dae6181e2de05fc4db0bbb098df90d06e77610",
     "research/stage512/2026-11-02/README.md": "3ae6007a62534b5d32fabe7f79e5e557c6c25eb1f63e40d3ef90252841e39918",
     "research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e",
     "research/stage512/data/nse500_tri_validation_R8.json": "e0c98c73b0ca53759634836e2d9ce62ce4b6b22f12c5424e0ae5e2bd86e3dad6",
-    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_assumption_register.json": "6cf6ae6691107dd48fafc96e8336175bbfc433259ad7d385bacbb7cce03b383f",
-    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_risk_scenarios.csv": "77e3c8dbe6eff9f6e89fc32a1b31cee24a10d30881fe9b6e8e92713e3cf8cbc6"
+    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_assumption_register.json": "02f89458e06b07ff175d3207afb0e87b46f66baf68651c7446292f459d29f697",
+    "research/stage512/2026-11-05/g5_1_118_assumption_rerun/stage512_risk_scenarios.csv": "1de2131a151d1d149da3842b9c51e3711e114a8f56d3ee1a625f1e037b29fa5e",
+    "research/stage512/2026-11-05/G5_1_118_CLAIM_LINEAGE.md": "d55649b55787389594d1fe33163bb9cb56c1a61e8bc9e1eb16b0796e15c359ac",
+    "research/stage512/2026-11-05/g5_1_qcsae_v1.json": "5001e0a71c9517c45caf5904feb0e52109477d895c211396f93345bbc2b16493"
+  },
+  "repository_wide_former_claim_scan": {
+    "status": "PASS",
+    "offenders_outside_correction_records": []
   },
   "qcsae_record": "research/stage512/2026-11-05/g5_1_qcsae_v1.json",
   "g5_1_disposition": "PASS_FOR_LINEAGE_AND_LABEL_CORRECTION; INPUT_VALUE_REMAINS_UNVERIFIED; ALL_SCENARIO_OUTPUTS_REMAIN_RESEARCH_ONLY",
