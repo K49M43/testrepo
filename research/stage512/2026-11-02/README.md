@@ -4,6 +4,8 @@
 
 **Status: RESEARCH ONLY — INVESTMENT NO-GO.** This archive contains scenario models, historical-proxy analysis, calibration reports, source-reconciliation work, and preliminary validation. Neither an 85% real-world success probability nor a contractual inflation-adjusted ₹90 lakh floor has been established.
 
+**G5.1 evidence correction:** The former 11.8% scenario is now classified as a synthetic fixed-return assumption, not a historical path replay. The 2 November numeric results are unchanged and quarantined from decision evidence; see the [G5.1 lineage and correction report](../2026-11-05/G5_1_118_CLAIM_LINEAGE.md) and [machine-readable dependency map](../2026-11-05/g5_1_118_claim_lineage_v1.json) before using the blocker report, assumption register, or scenario CSV.
+
 ## Scope and conventions
 - Historical mandate: ₹42 lakh upfront; ₹25,000 monthly SIP increasing 10% annually; flexible target year 2036.
 - Reporting: gross nominal wealth → taxes and costs → net nominal wealth → real after-tax wealth → floor/target success analysis.

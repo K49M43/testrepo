@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-1-qcsae-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "claim_under_review": "The former 11.8% scenario is a historical replay and its hit rate evidences the investor's real-world probability of reaching the 2036 floor.",
+  "current_disposition": "REJECTED_AS_STATED; SYNTHETIC_SCENARIO_ONLY; INPUT_UNVERIFIED; OUTPUTS_QUARANTINED",
+  "strongest_counter_case": "A third-party index page may have reported a long-run annualized Nifty 500 TRI near 11.8%, and seeded synthetic paths can illustrate outcomes conditional on that assumed geometric return.",
+  "why_counter_case_does_not_resolve_claim": [
+    "The exact source snapshot and 30 October 2026 calculation endpoint were not preserved.",
+    "The implementation uses a fixed 0.118 parameter and generated normal shocks rather than a dated historical return path.",
+    "A conditional model hit fraction is not a validated real-world probability.",
+    "The available 129 official-published monthly anchors begin in January 2015 and cannot verify a since-1995 path."
+  ],
+  "falsification_tests": [
+    {
+      "test": "Inspect model inputs and transformations for the 11.8% scenario.",
+      "result": "Fixed geometric-return scalar is used; shocks are generated synthetically; no observed return path is loaded.",
+      "status": "PASS_FOR_IDENTIFYING_SYNTHETIC_METHOD"
+    },
+    {
+      "test": "Re-run seeded outputs and compare all dependent scenario rows.",
+      "result": "Six rows across three portfolios and two horizons reproduce exactly after relabeling.",
+      "status": "PASS_FOR_REPRODUCIBILITY_ONLY"
+    },
+    {
+      "test": "Verify official source coverage suffices to reproduce since-1995 return claim.",
+      "result": "Only 129 monthly anchors from 2015-01 through 2025-09 are qualified; full official daily history is not qualified.",
+      "status": "FAIL_SOURCE_COVERAGE_GATE"
+    },
+    {
+      "test": "Verify original 11.8% snapshot and exact observation endpoint.",
+      "result": "No immutable original source snapshot or calculation endpoint is preserved.",
+      "status": "FAIL_PROVENANCE_GATE"
+    }
+  ],
+  "required_evidence_to_reopen": [
+    "Immutable primary-source TRI observations spanning the claim period with documented index variant and corporate-action convention.",
+    "Independent calculation of CAGR using explicit start/end dates and matching source-defined endpoints.",
+    "Separate forward model calibration, out-of-sample validation, and uncertainty analysis before interpreting simulated frequencies as decision probabilities."
+  ],
+  "downstream_dependency": "G5.2 candidate/evidence register must not use the quarantined scenario to rank or qualify products; it must include dated holdings look-through evidence and explicit data-coverage gaps.",
+  "investment_authorization": "NO_GO"
+}
