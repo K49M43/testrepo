@@ -90,6 +90,8 @@
     },
     "cash_and_reserve": {
       "strategic_cash_weight_fraction": "0",
+      "strategic_cash_weight_status": "ANALYST_PROPOSED",
+      "investor_confirmation_required": true,
       "external_reserve_field_id": "capital.reserve.amount",
       "external_reserve_amount_inr": null,
       "external_reserve_status": "UNRESOLVED",
@@ -156,7 +158,8 @@
       "blocked_dependencies": [
         "G3 issue #18 outcome and exit contract",
         "G5 product identity, availability, fee, tax, and execution",
-        "Investor confirmation of unresolved G4.1 inputs"
+        "G4.1: reserve, initial/SIP dates, drawdown tolerance, account/product constraints, terminal date, and exit choice",
+        "Investor confirmation of proposed deployment, timing, rebalancing, and distribution assumptions"
       ],
       "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
     },
@@ -199,7 +202,8 @@
       "blocked_dependencies": [
         "G3 issue #18 outcome and exit contract",
         "G5 product identity, availability, fee, tax, and execution",
-        "Investor confirmation of unresolved G4.1 inputs"
+        "G4.1: reserve, initial/SIP dates, drawdown tolerance, account/product constraints, terminal date, and exit choice",
+        "Investor confirmation of proposed deployment, timing, rebalancing, and distribution assumptions"
       ],
       "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
     },
@@ -242,7 +246,8 @@
       "blocked_dependencies": [
         "G3 issue #18 outcome and exit contract",
         "G5 product identity, availability, fee, tax, and execution",
-        "Investor confirmation of unresolved G4.1 inputs"
+        "G4.1: reserve, initial/SIP dates, drawdown tolerance, account/product constraints, terminal date, and exit choice",
+        "Investor confirmation of proposed deployment, timing, rebalancing, and distribution assumptions"
       ],
       "case_status": "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION"
     }
@@ -288,5 +293,5 @@
     "Investor confirmation of reserve, initial/SIP dates, timing, drawdown tolerance, distribution treatment, or exit choice.",
     "A change to the sleeve definitions, case weights, rebalancing rule, policy limits, or product eligibility evidence."
   ],
-  "content_sha256": "33c951848e0adf3ca4d9045869a787833e87d83f1aa1cd62b7e01f8f014518df"
+  "content_sha256": "65eccd45beced5404189cc38a4d9e348f593bc82c0843a5275be8943632a3cdf"
 }

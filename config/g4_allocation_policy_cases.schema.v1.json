@@ -117,15 +117,126 @@
       "additionalProperties": false,
       "required": ["initial_deployment", "capital_basis", "contribution_schedule", "rebalancing", "distribution_handling", "cash_and_reserve", "terminal_measurement_and_exit", "product_eligibility", "execution_precision"],
       "properties": {
-        "initial_deployment": { "type": "object" },
-        "capital_basis": { "type": "object" },
-        "contribution_schedule": { "type": "object" },
-        "rebalancing": { "type": "object" },
-        "distribution_handling": { "type": "object" },
-        "cash_and_reserve": { "type": "object" },
-        "terminal_measurement_and_exit": { "type": "object" },
-        "product_eligibility": { "type": "object" },
-        "execution_precision": { "type": "object" }
+        "initial_deployment": { "$ref": "#/$defs/initialDeployment" },
+        "capital_basis": { "$ref": "#/$defs/capitalBasis" },
+        "contribution_schedule": { "$ref": "#/$defs/contributionSchedule" },
+        "rebalancing": { "$ref": "#/$defs/rebalancing" },
+        "distribution_handling": { "$ref": "#/$defs/distributionHandling" },
+        "cash_and_reserve": { "$ref": "#/$defs/cashAndReserve" },
+        "terminal_measurement_and_exit": { "$ref": "#/$defs/terminalExit" },
+        "product_eligibility": { "$ref": "#/$defs/productEligibility" },
+        "execution_precision": { "$ref": "#/$defs/executionPrecision" }
+      }
+    },
+    "initialDeployment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "status", "investor_confirmation_required", "date_field_id", "staged_deployment", "decision_effect"],
+      "properties": {
+        "rule": { "const": "LUMP_SUM_ON_ACTUAL_CONFIRMED_DATE" },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "date_field_id": { "const": "capital.initial_corpus.date" },
+        "staged_deployment": { "const": false },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "capitalBasis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "initial_amount_field_id", "external_reserve_field_id", "external_reserve_amount_inr", "external_reserve_status", "must_not_infer_reserve_is_zero"],
+      "properties": {
+        "rule": { "type": "string", "minLength": 1 },
+        "initial_amount_field_id": { "const": "capital.initial_corpus.amount" },
+        "external_reserve_field_id": { "const": "capital.reserve.amount" },
+        "external_reserve_amount_inr": { "type": "null" },
+        "external_reserve_status": { "const": "UNRESOLVED" },
+        "must_not_infer_reserve_is_zero": { "const": true }
+      }
+    },
+    "contributionSchedule": {
+      "type": "object", "additionalProperties": false,
+      "required": ["starting_amount_field_id", "step_up_fraction_field_id", "step_up_interval_field_id", "step_up_fraction", "step_up_interval_contributions", "step_up_allocation_rule", "timing_field_id", "research_timing_value", "timing_status", "first_payment_date_field_id", "actual_first_payment_date_status", "fixture_horizons_in_contributions"],
+      "properties": {
+        "starting_amount_field_id": { "const": "contributions.starting_monthly_amount" },
+        "step_up_fraction_field_id": { "const": "contributions.step_up_fraction" },
+        "step_up_interval_field_id": { "const": "contributions.step_up_interval" },
+        "step_up_fraction": { "const": "0.10" },
+        "step_up_interval_contributions": { "const": 12 },
+        "step_up_allocation_rule": { "type": "string", "minLength": 1 },
+        "timing_field_id": { "const": "contributions.timing_convention" },
+        "research_timing_value": { "const": "END_OF_MONTH" },
+        "timing_status": { "const": "ANALYST_PROPOSED" },
+        "first_payment_date_field_id": { "const": "contributions.first_payment_date" },
+        "actual_first_payment_date_status": { "const": "UNRESOLVED" },
+        "fixture_horizons_in_contributions": { "const": [120, 122] }
+      }
+    },
+    "rebalancing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule", "cadence_contributions", "target_rule", "status", "investor_confirmation_required", "calendar_dates", "transaction_cost_and_tax"],
+      "properties": {
+        "rule": { "type": "string", "minLength": 1 },
+        "cadence_contributions": { "const": 12 },
+        "target_rule": { "type": "string", "minLength": 1 },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "calendar_dates": { "type": "string", "minLength": 1 },
+        "transaction_cost_and_tax": { "type": "string", "minLength": 1 }
+      }
+    },
+    "distributionHandling": {
+      "type": "object", "additionalProperties": false,
+      "required": ["field_id", "research_value", "status", "investor_confirmation_required", "rule"],
+      "properties": {
+        "field_id": { "const": "income_and_coupon_handling" },
+        "research_value": { "const": "REINVEST_AFTER_TAX" },
+        "status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "rule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cashAndReserve": {
+      "type": "object", "additionalProperties": false,
+      "required": ["strategic_cash_weight_fraction", "strategic_cash_weight_status", "investor_confirmation_required", "external_reserve_field_id", "external_reserve_amount_inr", "external_reserve_status", "must_not_infer_no_reserve", "decision_effect"],
+      "properties": {
+        "strategic_cash_weight_fraction": { "const": "0" },
+        "strategic_cash_weight_status": { "const": "ANALYST_PROPOSED" },
+        "investor_confirmation_required": { "const": true },
+        "external_reserve_field_id": { "const": "capital.reserve.amount" },
+        "external_reserve_amount_inr": { "type": "null" },
+        "external_reserve_status": { "const": "UNRESOLVED" },
+        "must_not_infer_no_reserve": { "const": true },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "terminalExit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "dependency_issue", "outcome_field_id", "date_field_id", "investor_date_status", "forced_liquidation", "decision_effect"],
+      "properties": {
+        "status": { "const": "BLOCKED_PENDING_G3_AND_INVESTOR_DATE" },
+        "dependency_issue": { "const": 18 },
+        "outcome_field_id": { "const": "goals.success_and_shortfall_event" },
+        "date_field_id": { "const": "horizon.terminal_measurement_date" },
+        "investor_date_status": { "const": "UNRESOLVED" },
+        "forced_liquidation": { "const": "NOT_ASSUMED_PENDING_G3" },
+        "decision_effect": { "type": "string", "minLength": 1 }
+      }
+    },
+    "productEligibility": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "dependency", "security_identifiers", "security_eligible"],
+      "properties": {
+        "status": { "const": "BLOCKED_PENDING_G5" },
+        "dependency": { "type": "string", "minLength": 1 },
+        "security_identifiers": { "const": [] },
+        "security_eligible": { "const": false }
+      }
+    },
+    "executionPrecision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["research_allocation_precision", "execution_rounding_status"],
+      "properties": {
+        "research_allocation_precision": { "type": "string", "minLength": 1 },
+        "execution_rounding_status": { "const": "BLOCKED_PENDING_G5_AND_G4_3" }
       }
     },
     "zeroReturnControl": {

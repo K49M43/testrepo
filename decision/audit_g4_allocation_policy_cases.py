@@ -38,8 +38,33 @@ EXPECTED_ROLES = {
 EXPECTED_BLOCKERS = [
     "G3 issue #18 outcome and exit contract",
     "G5 product identity, availability, fee, tax, and execution",
-    "Investor confirmation of unresolved G4.1 inputs",
+    "G4.1: reserve, initial/SIP dates, drawdown tolerance, account/product constraints, terminal date, and exit choice",
+    "Investor confirmation of proposed deployment, timing, rebalancing, and distribution assumptions",
 ]
+EXPECTED_LABELS = {
+    "existing_65_20_10_5_challenger": "Existing 65/20/10/5 research challenger",
+    "lower_equity_cashflow_matched": "Lower-equity, cashflow-matched comparison",
+    "equity_forward_diversified_growth": "Equity-forward diversified-growth comparison",
+}
+EXPECTED_QUESTIONS = {
+    "existing_65_20_10_5_challenger": "What does the already-studied 65/20/10/5 mix show under common assumptions? It remains an unapproved research challenger, not a default or preferred portfolio.",
+    "lower_equity_cashflow_matched": "What changes when equity is reduced by 15 percentage points and government fixed income and gold receive the difference, while the cashflow schedule and silver weight stay matched?",
+    "equity_forward_diversified_growth": "What changes when equity rises by 10 percentage points, funded from the government fixed-income sleeve, while gold and silver remain represented?",
+}
+EXPECTED_RULES = {
+    "comparison_rule": "Predeclare the cases; compare them later under the same inputs; retain no-winner and insufficient-evidence outcomes.",
+    "capital_basis": "Apply weights to capital later designated for this investment goal after any reserve decision.",
+    "initial_deployment": "Use one initial deployment for like-for-like asset-allocation comparison. This is a research convention, not an investor-confirmed deployment instruction.",
+    "step_up_allocation": "Same sleeve fractions as the case SIP allocation.",
+    "rebalancing": "At each 12-contribution anniversary in the fixture schedule, rebalance to the case's target weights; between anniversaries, direct new contributions by those target weights.",
+    "rebalancing_target": "Restore holdings to the case target weights at the stated cadence.",
+    "distribution_handling": "Reinvest net distributions into the sleeve that generated them; do not count pre-tax distributions as reinvested.",
+    "cash_reserve": "Zero strategic cash is a comparison dimension only. It does not set an emergency, brokerage, or off-portfolio reserve to zero.",
+    "terminal_exit": "Consume the accepted G3 outcome and liquidation semantics when available; no terminal success event or executable exit is defined here.",
+    "g5_dependency": "G5 identity, availability, source, fee, tax, and execution checks",
+    "execution_precision": "Exact decimal fractions; no whole-unit or order-lot rounding is simulated.",
+    "control_purpose": "Reconcile gross mandate initial capital plus scheduled contributions before any separately confirmed reserve when return, tax, fees, and inflation are all zero; this is not deployable portfolio value, a forecast, or performance evidence.",
+}
 EXPECTED_CONTROL_VALUES = {
     120: "8981227.380300000",
     122: "9110914.503305000",
@@ -76,6 +101,8 @@ def _field(contract: dict[str, Any], field_id: str) -> dict[str, Any]:
 def _validate_control(control: dict[str, Any], input_contract: dict[str, Any], *, check_sources: bool) -> dict[int, Decimal]:
     _require(control.get("control_id") == "ZERO_RETURN_ARITHMETIC_CONTROL", "required zero-return control is missing")
     _require(control.get("not_an_investable_case") is True, "arithmetic control must not be counted as an investable case")
+    _require(control.get("purpose") == EXPECTED_RULES["control_purpose"],
+             "zero-return control purpose must not be presented as a forecast or deployable wealth")
     _require(control.get("assumptions") == {
         "nominal_return_fraction_per_month": "0",
         "tax_inr": "0",
@@ -154,6 +181,8 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
     _require(limits.get("minimum_investable_research_cases") == 3 and limits.get("maximum_investable_research_cases") == 5,
              "case count limits must remain 3 to 5")
     _require(limits.get("optimizer_allowed") is False, "G4.2 must not authorize an optimizer")
+    _require(limits.get("comparison_rule") == EXPECTED_RULES["comparison_rule"],
+             "case comparison must preserve predeclaration, no-winner, and insufficient-evidence outcomes")
 
     input_contract = _load_json(INPUT_PATH)
     ref = contract.get("input_contract_reference", {})
@@ -185,6 +214,9 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
     distinct_weights: set[tuple[str, ...]] = set()
     for case in cases:
         case_id = case["case_id"]
+        _require(case.get("label") == EXPECTED_LABELS[case_id] and
+                 case.get("research_question") == EXPECTED_QUESTIONS[case_id],
+                 f"{case_id} rationale or non-recommendation language changed")
         _require(case.get("case_role") == EXPECTED_ROLES[case_id], f"{case_id} has the wrong comparison role")
         expected_origin = ("EXISTING_UNAPPROVED_RESEARCH_REFERENCE" if case_id == "existing_65_20_10_5_challenger"
                            else "ANALYST_DESIGNED_NOT_INVESTOR_PREFERENCE")
@@ -219,8 +251,11 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
              "each case must use the same explicit lump-sum research convention")
     _require(initial.get("status") == "ANALYST_PROPOSED" and initial.get("investor_confirmation_required") is True,
              "deployment convention must remain an unconfirmed comparison assumption")
+    _require(initial.get("decision_effect") == EXPECTED_RULES["initial_deployment"],
+             "deployment must not be described as an investor instruction")
+    initial_date = _field(input_contract, "capital.initial_corpus.date")
     _require(initial.get("date_field_id") == "capital.initial_corpus.date" and
-             _field(input_contract, "capital.initial_corpus.date")["status"] == "UNRESOLVED",
+             initial_date["status"] == "UNRESOLVED" and initial_date["value"] is None,
              "initial deployment date must remain unresolved")
 
     capital = common.get("capital_basis", {})
@@ -229,62 +264,93 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
     _require(capital.get("initial_amount_field_id") == "capital.initial_corpus.amount" and
              initial_amount["status"] == "MANDATE_DERIVED" and initial_amount["value"] == "4200000",
              "capital basis must trace to the mandate-derived initial corpus")
+    _require(capital.get("rule") == EXPECTED_RULES["capital_basis"] and
+             capital.get("external_reserve_field_id") == "capital.reserve.amount",
+             "capital basis must not imply an unconfirmed zero reserve")
     _require(capital.get("external_reserve_amount_inr") is None and
              capital.get("external_reserve_status") == "UNRESOLVED" and
              capital.get("must_not_infer_reserve_is_zero") is True and reserve["value"] is None,
              "do not infer an external reserve amount or presume it is zero")
+    for field_id in ("risk.interim_drawdown_tolerance", "implementation.account_and_product_constraints"):
+        unknown = _field(input_contract, field_id)
+        _require(unknown["status"] == "UNRESOLVED" and unknown["value"] is None and
+                 unknown.get("must_not_infer") is True,
+                 f"G4.2 must preserve {field_id} as unresolved")
     contribution = common.get("contribution_schedule", {})
     _require(_field(input_contract, contribution["starting_amount_field_id"])["value"] == "25000",
              "contribution schedule must use the mandate's starting monthly amount")
     _require(_field(input_contract, contribution["step_up_fraction_field_id"])["value"] == "0.10" and
              _field(input_contract, contribution["step_up_interval_field_id"])["value"] == 12,
              "step-up schedule must preserve +10% after each 12 contributions")
+    _require(contribution.get("starting_amount_field_id") == "contributions.starting_monthly_amount" and
+             contribution.get("step_up_fraction_field_id") == "contributions.step_up_fraction" and
+             contribution.get("step_up_interval_field_id") == "contributions.step_up_interval" and
+             contribution.get("timing_field_id") == "contributions.timing_convention" and
+             contribution.get("first_payment_date_field_id") == "contributions.first_payment_date",
+             "cashflow references must point to the corresponding G4.1 fields")
     _require(contribution.get("step_up_fraction") == "0.10" and
              contribution.get("step_up_interval_contributions") == 12 and
-             contribution.get("step_up_allocation_rule") == "Same sleeve fractions as the case SIP allocation.",
+             contribution.get("step_up_allocation_rule") == EXPECTED_RULES["step_up_allocation"],
              "G4.2 step-up must be explicitly structured and cashflow-matched")
     timing = _field(input_contract, contribution["timing_field_id"])
     _require(contribution.get("research_timing_value") == timing["value"] == "END_OF_MONTH" and
              contribution.get("timing_status") == "ANALYST_PROPOSED" and timing["status"] == "ANALYST_PROPOSED",
              "end-of-month timing must remain a disclosed research convention")
     _require(contribution.get("fixture_horizons_in_contributions") == [120, 122] and
-             _field(input_contract, contribution["first_payment_date_field_id"])["status"] == "UNRESOLVED",
+             _field(input_contract, contribution["first_payment_date_field_id"])["status"] == "UNRESOLVED" and
+             _field(input_contract, contribution["first_payment_date_field_id"])["value"] is None,
              "fixture horizons are allowed, but actual first contribution date must stay unresolved")
 
     rebalance = common.get("rebalancing", {})
     _require(rebalance.get("status") == "ANALYST_PROPOSED" and rebalance.get("investor_confirmation_required") is True,
              "rebalancing rule must be labeled analyst-proposed pending confirmation")
-    _require("each 12-contribution anniversary" in rebalance.get("rule", ""),
+    _require(rebalance.get("rule") == EXPECTED_RULES["rebalancing"],
              "rebalance schedule must be explicit and anchored to contribution counts")
     _require(rebalance.get("cadence_contributions") == 12 and
-             rebalance.get("target_rule") == "Restore holdings to the case target weights at the stated cadence.",
+             rebalance.get("target_rule") == EXPECTED_RULES["rebalancing_target"] and
+             rebalance.get("calendar_dates") == "Relative contribution counts only until actual dates are confirmed." and
+             rebalance.get("transaction_cost_and_tax") == "Not estimated in G4.2; account for them in downstream deterministic and instrument-level work.",
              "rebalance cadence and target restoration must be explicit")
     distribution = common.get("distribution_handling", {})
     income = _field(input_contract, distribution.get("field_id", ""))
-    _require(distribution.get("research_value") == "REINVEST_AFTER_TAX" and
+    _require(distribution.get("field_id") == "income_and_coupon_handling" and
+             distribution.get("rule") == EXPECTED_RULES["distribution_handling"] and
+             distribution.get("research_value") == income["value"] == "REINVEST_AFTER_TAX" and
              distribution.get("status") == income["status"] == "ANALYST_PROPOSED" and
              distribution.get("investor_confirmation_required") is True,
              "after-tax reinvestment must remain a disclosed proposed assumption")
 
     cash_rules = common.get("cash_and_reserve", {})
     _require(cash_rules.get("strategic_cash_weight_fraction") == "0" and
+             cash_rules.get("strategic_cash_weight_status") == "ANALYST_PROPOSED" and
+             cash_rules.get("investor_confirmation_required") is True and
+             cash_rules.get("external_reserve_field_id") == "capital.reserve.amount" and
              cash_rules.get("external_reserve_amount_inr") is None and
              cash_rules.get("external_reserve_status") == "UNRESOLVED" and
-             cash_rules.get("must_not_infer_no_reserve") is True,
+             cash_rules.get("must_not_infer_no_reserve") is True and
+             cash_rules.get("decision_effect") == EXPECTED_RULES["cash_reserve"],
              "zero strategic cash must not be presented as zero external reserve")
     terminal = common.get("terminal_measurement_and_exit", {})
     g3 = input_contract["upstream_contracts"]["g3_outcome_contract"]
     _require(terminal.get("status") == "BLOCKED_PENDING_G3_AND_INVESTOR_DATE" and
              terminal.get("dependency_issue") == 18 and
+             terminal.get("outcome_field_id") == "goals.success_and_shortfall_event" and
+             _field(input_contract, terminal["outcome_field_id"])["status"] == "DEPENDENCY_BLOCKED" and
+             terminal.get("date_field_id") == "horizon.terminal_measurement_date" and
              g3["status"] == "PENDING_MERGE_AND_EXACT_HEAD_VERIFICATION" and
              _field(input_contract, terminal["date_field_id"])["status"] == "UNRESOLVED" and
-             terminal.get("forced_liquidation") == "NOT_ASSUMED_PENDING_G3",
+             _field(input_contract, terminal["date_field_id"])["value"] is None and
+             terminal.get("investor_date_status") == "UNRESOLVED" and
+             terminal.get("forced_liquidation") == "NOT_ASSUMED_PENDING_G3" and
+             terminal.get("decision_effect") == EXPECTED_RULES["terminal_exit"],
              "terminal measurement and exit must remain blocked until G3 and investor date acceptance")
     eligibility = common.get("product_eligibility", {})
     _require(eligibility.get("status") == "BLOCKED_PENDING_G5" and
+             eligibility.get("dependency") == EXPECTED_RULES["g5_dependency"] and
              eligibility.get("security_identifiers") == [] and eligibility.get("security_eligible") is False,
              "G4.2 must not imply security eligibility before G5")
-    _require(common.get("execution_precision", {}).get("execution_rounding_status") == "BLOCKED_PENDING_G5_AND_G4_3",
+    _require(common.get("execution_precision", {}).get("research_allocation_precision") == EXPECTED_RULES["execution_precision"] and
+             common.get("execution_precision", {}).get("execution_rounding_status") == "BLOCKED_PENDING_G5_AND_G4_3",
              "execution rounding must remain blocked pending instrument/account checks")
 
     values = _validate_control(contract.get("zero_return_arithmetic_control", {}), input_contract,
@@ -351,6 +417,11 @@ def audit() -> dict[str, Any]:
     negative_cases += 1
 
     bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["cash_and_reserve"]["strategic_cash_weight_status"] = "INVESTOR_CONFIRMED"
+    _expect_rejected(bad, "zero strategic cash treated as investor-confirmed")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
     bad["common_action_rules"]["terminal_measurement_and_exit"]["status"] = "ACCEPTED"
     _expect_rejected(bad, "exit semantics promoted before G3")
     negative_cases += 1
@@ -407,6 +478,56 @@ def audit() -> dict[str, Any]:
     bad = copy.deepcopy(contract)
     bad["case_limit"]["optimizer_allowed"] = True
     _expect_rejected(bad, "optimizer enabled")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["distribution_handling"]["rule"] = "Withdraw gross distributions before tax."
+    _expect_rejected(bad, "distribution action contradicts its after-tax reinvestment label")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["distribution_handling"]["field_id"] = "contributions.timing_convention"
+    _expect_rejected(bad, "distribution provenance points at an unrelated field")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["contribution_schedule"]["starting_amount_field_id"] = "capital.initial_corpus.amount"
+    _expect_rejected(bad, "contribution amount reference points at corpus")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["capital_basis"]["external_reserve_field_id"] = "capital.initial_corpus.amount"
+    _expect_rejected(bad, "capital-basis reserve reference points at corpus")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["cash_and_reserve"]["external_reserve_field_id"] = "capital.initial_corpus.amount"
+    _expect_rejected(bad, "cash-policy reserve reference points at corpus")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["capital_basis"]["rule"] = "Assume reserve is zero and deploy the full lump sum."
+    _expect_rejected(bad, "capital basis narrative infers zero reserve")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["common_action_rules"]["terminal_measurement_and_exit"]["outcome_field_id"] = "risk.interim_drawdown_tolerance"
+    _expect_rejected(bad, "terminal outcome reference points at an unrelated field")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["policy_cases"][1]["research_question"] = "This is the best and suitable portfolio for the investor."
+    _expect_rejected(bad, "case is rewritten as a best/suitable recommendation")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["case_limit"]["comparison_rule"] = "Optimize all weights to reach the 85% target and select the best case."
+    _expect_rejected(bad, "comparison rule optimizes or selects a winner")
+    negative_cases += 1
+
+    bad = copy.deepcopy(contract)
+    bad["zero_return_arithmetic_control"]["purpose"] = "This is a forecast of deployable wealth."
+    _expect_rejected(bad, "arithmetic control is relabeled as a forecast")
     negative_cases += 1
 
     rounded = {str(horizon): str(value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
