@@ -5,26 +5,24 @@
   "independent_policy_cases": 3,
   "negative_cases_rejected": 9,
   "evidence_hashes": {
-    "g4_1_content_sha256": "941d2737e4ef3973a866f5888bf176e799a10af673fc9dbc0e90a6ca85cd7bda",
-    "g4_2_content_sha256": "65eccd45beced5404189cc38a4d9e348f593bc82c0843a5275be8943632a3cdf",
+    "g4_1_content_sha256": "13de1bf517a3e924ec6fb3965502d28e0a33bb972e9607d0bbd73eaafcea7c99",
+    "g4_2_content_sha256": "84144d1458097e4aa29d212d648c8c4fa0cef57ad8e42b263da84195cb73d96f",
+    "g3_outcome_contract_sha256": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873",
     "cashflow_fixture_sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec",
     "g2_schema_version": 1,
-    "g2_migration_sha256": "c2b6fd16bad1fccc481ee89b060e2a033f4f88172a8fe04c4e533568bbf2150f"
+    "g2_migration_sha256": "c2b6fd16bad1fccc481ee89b060e2a033f4f88172a8fe04c4e533568bbf2150f",
+    "g4_adapter_sha256": "48b68f3af5cfb246beb153ced84add1a1744dcd228175428d2d1d5ad15cfc618"
   },
   "zero_return_cashflow_control_inr": {
     "120": "8981227.380300000",
     "122": "9110914.503305000"
   },
   "database_run_cases": 3,
-  "database_run_keys_sha256": [
-    "7af8f7a27df9f769642e8c38fd9a1872f29df63fac5a8efb7c4186e96c3c5edf",
-    "9062879edd6ced29cc199f6022d5ee5e9c7e81c6f6e2240fe6aae25a01e83292",
-    "e275861d1a72844ad0ff9ae973deb36c0282dac5bbdbad74931a83b1eb5d3974"
-  ],
+  "database_run_identity_checks": 3,
   "canonical_policy_hashes": "PASS; G4.1, G4.2, and selected-case fingerprints independently recomputed",
   "run_identity": "PASS; each database run identity independently recomputed from its manifest",
   "investor_unknowns": "PASS; reserve, dates, exit, drawdown, account/product constraints remain explicit",
-  "G3_terminal_exit": "BLOCKED pending accepted G3 semantics and investor date",
+  "G3_terminal_exit": "PASS; accepted G3 semantics are hash-pinned; investor date and exit choice remain unresolved",
   "G5_product_eligibility": "BLOCKED; no security identity is asserted eligible",
   "roadmap_G4_disposition": "PASS for bounded policy-definition and G2 integration deliverables",
   "investment_decision_G4": "BLOCKED; future return, tax, real-wealth, suitability, feasibility, and uncertainty gates remain open",

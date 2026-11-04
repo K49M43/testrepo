@@ -26,10 +26,10 @@ from audit_g4_allocation_policy_cases import audit as audit_g4_policy_cases
 
 
 ROOT = Path(__file__).resolve().parents[1]
-G4_ACTION_PATH = ROOT / "config/g4_action_allocation_policy_v1.json"
-G4_ACTION_SCHEMA_PATH = ROOT / "config/g4_action_allocation_policy.schema.v1.json"
-G4_CASES_PATH = ROOT / "config/g4_allocation_policy_cases_v1.json"
-G4_CASES_SCHEMA_PATH = ROOT / "config/g4_allocation_policy_cases.schema.v1.json"
+G4_ACTION_PATH = ROOT / "config/g4_action_allocation_policy_v1_1.json"
+G4_ACTION_SCHEMA_PATH = ROOT / "config/g4_action_allocation_policy.schema.v1_1.json"
+G4_CASES_PATH = ROOT / "config/g4_allocation_policy_cases_v1_1.json"
+G4_CASES_SCHEMA_PATH = ROOT / "config/g4_allocation_policy_cases.schema.v1_1.json"
 CASHFLOW_PATH = ROOT / "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv"
 ZERO = Decimal("0")
 SUPPORTED_HORIZONS = (120, 122)
@@ -232,7 +232,7 @@ def calculate_allocation_arithmetic(inputs: AdapterInputs, case: Mapping[str, An
     _require(isinstance(case_id, str) and case_id, "policy case id is required")
     _require(case.get("case_status") == "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION",
              "only non-recommendation research cases are accepted")
-    _require(case.get("investment_decision_status") == "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS",
+    _require(case.get("investment_decision_status") == "BLOCKED_PENDING_G5_AND_INVESTOR_CONFIRMATIONS",
              "policy case must retain its G3/G5/investor blocks")
     sleeves = tuple(row["sleeve_id"] for row in inputs.case_contract["asset_sleeves"])
     initial_weights = _allocation_vector(case.get("initial_allocation_fraction"), sleeves, "initial allocation")
@@ -310,7 +310,7 @@ def calculate_allocation_arithmetic(inputs: AdapterInputs, case: Mapping[str, An
             "Contribution calendar dates are unresolved; fixture month indices are relative only.",
             "Returns, taxes, fees, inflation, security rounding, eligibility, availability, and probabilities are not calculated.",
             "The underlying G2 ledger result in this run is a separate synthetic fixture validation and is not a G4 policy result.",
-            "G3 terminal outcome/exit semantics, G5 product checks, and investor confirmations remain blocked.",
+            "G3 outcome semantics are accepted and hash-pinned; the investor terminal date and exit choice, G5 product checks, and remaining investor confirmations are unresolved or blocked.",
         ],
         "horizons": horizons,
     }
@@ -323,7 +323,7 @@ def _integration_context(inputs: AdapterInputs, case: Mapping[str, Any]) -> dict
     action_contract = inputs.action_contract
     return {
         "adapter_id": "g4-policy-to-g2-sqlite",
-        "adapter_version": "1.0.0",
+        "adapter_version": "1.1.0",
         "policy_case_id": case["case_id"],
         "policy_case_sha256": hashlib.sha256(_canonical(case).encode("utf-8")).hexdigest(),
         "g4_action_contract_version": action_contract["contract_version"],
@@ -334,10 +334,11 @@ def _integration_context(inputs: AdapterInputs, case: Mapping[str, Any]) -> dict
         "g2_engine_code_sha256": g2_identity["engine_code_sha256"],
         "g2_accepted_schema_version": g2_identity["schema_version"],
         "g2_migration_sha256": g2_identity["migration_sha256"],
+        "g3_outcome_contract_version": action_contract["upstream_contracts"]["g3_outcome_contract"]["contract_version"],
+        "g3_outcome_contract_sha256": action_contract["upstream_contracts"]["g3_outcome_contract"]["sha256"],
         "accepted_dependency_commits": {
-            "g2_sprint2_database_pilot": "af0e5b81db0745c9055e340fc94739a5200904bb",
-            "g4_1_action_policy": "e8ac909d9bd665f4b4c263679d0bcc2951361621",
-            "g4_2_allocation_cases": "4bad5ac0adec63814ae4b94cb06aeac3e95c06dc",
+            "g2_sprint2_database_pilot": action_contract["upstream_contracts"]["g2_database_run_contract"]["accepted_commit_sha"],
+            "g3_outcome_contract": action_contract["upstream_contracts"]["g3_outcome_contract"]["accepted_commit_sha"],
         },
         "cashflow_source_sha256": inputs.source_texts["cashflow"].sha256,
         "result_domain": "G4_DETERMINISTIC_GROSS_ALLOCATION_ARITHMETIC",
@@ -439,7 +440,7 @@ def audit_case_contract() -> dict[str, Any]:
                    for case in inputs.case_contract["policy_cases"]]
     return {
         "audit": "PASS",
-        "adapter": "g4-policy-to-g2-sqlite 1.0.0",
+        "adapter": "g4-policy-to-g2-sqlite 1.1.0",
         "g2_schema_version": g2.MIGRATION_VERSION,
         "policy_cases": len(projections),
         "cashflow_horizons": list(SUPPORTED_HORIZONS),

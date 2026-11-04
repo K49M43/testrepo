@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import sqlite3
 import uuid
@@ -26,6 +27,11 @@ def _expect_rejected(action: Any, label: str) -> None:
     except (ValueError, RuntimeError):
         return
     raise AssertionError(f"negative case was accepted: {label}")
+
+
+def _independent_run_key(identity: dict[str, Any]) -> str:
+    canonical = json.dumps(identity, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _attempts(database: Path) -> list[sqlite3.Row]:
@@ -101,6 +107,12 @@ def audit() -> dict[str, Any]:
             manifest = output["run_manifest"]
             if context["g2_accepted_schema_version"] != 1 or context["policy_case_id"] != g4_result["policy_case_id"]:
                 raise AssertionError("run manifest does not pin accepted G2 schema and G4 case identity")
+            if context["accepted_dependency_commits"].get("g2_sprint2_database_pilot") != "af0e5b81db0745c9055e340fc94739a5200904bb":
+                raise AssertionError("run manifest does not pin the accepted G2 merge commit")
+            if context.get("g3_outcome_contract_version") != "1.0.0" or context.get("g3_outcome_contract_sha256") != "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873":
+                raise AssertionError("run manifest does not pin the accepted G3 outcome contract version and hash")
+            if context["accepted_dependency_commits"].get("g3_outcome_contract") != "a241fddaa937bb21b721ee00cef3f1bfc8503ba8":
+                raise AssertionError("run manifest does not pin the accepted G3 merge commit")
             if g4_result["source_links"]["cashflow"]["sha256"] != inputs.source_manifest["cashflow"]["sha256"]:
                 raise AssertionError("immutable cashflow source link changed in a run result")
             if g4_result["investment_authorization"] != "NO_GO":
@@ -117,15 +129,15 @@ def audit() -> dict[str, Any]:
             "runtime": manifest["runtime"],
             "integration_context": manifest["integration_context"],
         }
-        if g2.content_run_key(identity_payload) != first["run_key_sha256"]:
+        if _independent_run_key(identity_payload) != first["run_key_sha256"]:
             raise AssertionError("run key does not reproduce from its persisted identity manifest")
         changed_code_identity = copy.deepcopy(identity_payload)
         changed_code_identity["integration_context"]["adapter_code_sha256"] = "0" * 64
-        if g2.content_run_key(changed_code_identity) == first["run_key_sha256"]:
+        if _independent_run_key(changed_code_identity) == first["run_key_sha256"]:
             raise AssertionError("material adapter-code identity change did not change the run key")
         changed_config_identity = copy.deepcopy(identity_payload)
         changed_config_identity["integration_context"]["g4_policy_contract_fingerprint"] = "0" * 64
-        if g2.content_run_key(changed_config_identity) == first["run_key_sha256"]:
+        if _independent_run_key(changed_config_identity) == first["run_key_sha256"]:
             raise AssertionError("material policy-contract change did not change the run key")
 
         for point, failed_db in zip(("inputs", "compute"), failure_databases, strict=True):

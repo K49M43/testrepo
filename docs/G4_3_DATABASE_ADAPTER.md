@@ -38,4 +38,8 @@ Historical research fixtures remain immutable and are linked by hash; the adapte
 
 ## Interpretation limits
 
-The ₹42 lakh figure is mandate-derived gross initial capital before the unresolved external reserve decision. It is not labeled deployable capital. The calendar dates are unresolved; horizons are relative contribution counts only. G3 terminal outcome/exit semantics, G5 instrument/fee/tax/availability evidence, and investor confirmations remain blocked. Investment authorization remains **NO-GO**.
+The ₹42 lakh figure is mandate-derived gross initial capital before the unresolved external reserve decision. It is not labeled deployable capital. The calendar dates are unresolved; horizons are relative contribution counts only. G3 outcome semantics are accepted and hash-pinned; the investor's terminal date and exit/access choice remain unresolved. G5 instrument/fee/tax/availability evidence and investor confirmations remain blocked. Investment authorization remains **NO-GO**.
+
+## G4.4 corrective integration note — 4 November 2026
+
+G4.1/G4.2 v1.1 supersede the active contracts while preserving v1.0 files as historical snapshots. They pin accepted G2 schema v1 and G3 outcome contract v1.0.0, including merge commits and normalized hashes. The adapter uses the v1.1 schemas and includes G3 version/hash and both accepted dependency commits in each run context. The independent G4.4 audit recomputes run keys without calling G2's run-key helper and verifies the run-manifest dependency identities. This does not resolve investor date/exit choices or G5 eligibility.

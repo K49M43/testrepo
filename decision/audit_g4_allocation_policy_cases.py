@@ -14,9 +14,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CASE_PATH = ROOT / "config" / "g4_allocation_policy_cases_v1.json"
-SCHEMA_PATH = ROOT / "config" / "g4_allocation_policy_cases.schema.v1.json"
-INPUT_PATH = ROOT / "config" / "g4_action_allocation_policy_v1.json"
+CASE_PATH = ROOT / "config" / "g4_allocation_policy_cases_v1_1.json"
+SCHEMA_PATH = ROOT / "config" / "g4_allocation_policy_cases.schema.v1_1.json"
+INPUT_PATH = ROOT / "config" / "g4_action_allocation_policy_v1_1.json"
 TOLERANCE = Decimal("0.000000000001")
 SLEEVE_IDS = ["nifty500_equity", "rolling_gilt_fund_proxy", "gold", "silver", "strategic_cash"]
 EXPECTED_SLEEVE_DESCRIPTIONS = {
@@ -43,7 +43,6 @@ EXPECTED_ROLES = {
     "equity_forward_diversified_growth": "GROWTH_SENSITIVITY_TEST",
 }
 EXPECTED_BLOCKERS = [
-    "G3 issue #18 outcome and exit contract",
     "G5 product identity, availability, fee, tax, and execution",
     "G4.1: reserve, initial/SIP dates, drawdown tolerance, account/product constraints, terminal date, and exit choice",
     "Investor confirmation of proposed deployment, timing, rebalancing, and distribution assumptions",
@@ -67,16 +66,16 @@ EXPECTED_RULES = {
     "rebalancing_target": "Restore holdings to the case target weights at the stated cadence.",
     "distribution_handling": "Reinvest net distributions into the sleeve that generated them; do not count pre-tax distributions as reinvested.",
     "cash_reserve": "Zero strategic cash is a comparison dimension only. It does not set an emergency, brokerage, or off-portfolio reserve to zero.",
-    "terminal_exit": "Consume the accepted G3 outcome and liquidation semantics when available; no terminal success event or executable exit is defined here.",
+    "terminal_exit": "G3 success/shortfall and access semantics are accepted and hash-pinned; the actual terminal date and investor-selected exit/access choice remain unresolved.",
     "g5_dependency": "G5 identity, availability, source, fee, tax, and execution checks",
     "execution_precision": "Exact decimal fractions; no whole-unit or order-lot rounding is simulated.",
     "control_purpose": "Reconcile gross mandate initial capital plus scheduled contributions before any separately confirmed reserve when return, tax, fees, and inflation are all zero; this is not deployable portfolio value, a forecast, or performance evidence.",
 }
-EXPECTED_G4_1_RELATIONSHIP = "Additive G4.2 case-set artifact. The pinned G4.1 contract and its empty NOT_STARTED_G4_2 placeholder remain an immutable snapshot of the G4.1 milestone; this file defines the subsequent case set without rewriting that accepted milestone artifact."
+EXPECTED_G4_1_RELATIONSHIP = "G4.2 v1.1 pins the superseding G4.1 v1.1 contract, which now records accepted G2 and G3 contracts. Original G4.1/G4.2 v1.0 artifacts remain unchanged historical snapshots."
 EXPECTED_LIMITATIONS = [
     "The three cases are allocation hypotheses only; they are not ranked, recommended, optimized, suitability-assessed, or shown to meet either goal.",
     "The zero-return control is arithmetic only and provides no return, risk, tax, fee, or purchasing-power estimate.",
-    "Actual terminal outcome and exit remain blocked by G3 and the investor's unresolved measurement date.",
+    "G3 outcome semantics are accepted and pinned; the actual terminal measurement date and investor exit choice remain unresolved.",
     "No sleeve maps to an eligible security until G5 identity, availability, source, fee, tax, and execution checks pass.",
     "External reserve, actual funding dates, account constraints, and execution rounding remain unresolved or blocked.",
 ]
@@ -195,7 +194,7 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
         _require(not errors, f"G4.2 contract schema validation failed: {errors[0].message if errors else ''}")
 
     _require(contract.get("contract_id") == "g4-allocation-policy-cases", "wrong G4.2 contract id")
-    _require(contract.get("contract_version") == "1.0.0", "unexpected G4.2 contract version")
+    _require(contract.get("contract_version") == "1.1.0", "unexpected G4.2 contract version")
     _require(contract.get("content_sha256") == _fingerprint(contract), "G4.2 content fingerprint is stale")
     _require(contract.get("contract_status") in {"DRAFT", "AUDIT_PENDING", "ACCEPTED"}, "invalid contract status")
     _require(contract.get("investment_authorization") == "NO_GO", "G4.2 must fail closed to NO_GO")
@@ -208,7 +207,7 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
 
     input_contract = _load_json(INPUT_PATH)
     ref = contract.get("input_contract_reference", {})
-    _require(ref.get("path") == "config/g4_action_allocation_policy_v1.json", "wrong G4.1 input contract path")
+    _require(ref.get("path") == "config/g4_action_allocation_policy_v1_1.json", "wrong G4.1 input contract path")
     _require(ref.get("contract_version") == input_contract.get("contract_version"), "G4.1 contract version does not match")
     _require(ref.get("content_sha256") == input_contract.get("content_sha256"), "G4.1 contract fingerprint does not match")
     _require(contract.get("relationship_to_g4_1") == EXPECTED_G4_1_RELATIONSHIP,
@@ -262,7 +261,7 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
                  f"{case_id} must inherit explicit common cashflow, deployment, rebalance, distribution, exit, and reserve rules")
         _require(case.get("case_status") == "RESEARCH_COMPARISON_ONLY_NOT_RECOMMENDATION",
                  f"{case_id} must remain an unapproved research comparison")
-        _require(case.get("investment_decision_status") == "BLOCKED_PENDING_G3_G5_AND_INVESTOR_CONFIRMATIONS" and
+        _require(case.get("investment_decision_status") == "BLOCKED_PENDING_G5_AND_INVESTOR_CONFIRMATIONS" and
                  case.get("blocked_dependencies") == EXPECTED_BLOCKERS,
                  f"{case_id} must state its exact downstream and investor-confirmation blockers")
         _require(isinstance(case.get("research_question"), str) and case["research_question"].strip(),
@@ -355,18 +354,19 @@ def validate_contract(contract: dict[str, Any], *, check_sources: bool = True, c
              "zero strategic cash must not be presented as zero external reserve")
     terminal = common.get("terminal_measurement_and_exit", {})
     g3 = input_contract["upstream_contracts"]["g3_outcome_contract"]
-    _require(terminal.get("status") == "BLOCKED_PENDING_G3_AND_INVESTOR_DATE" and
-             terminal.get("dependency_issue") == 18 and
+    _require(terminal.get("status") == "BLOCKED_PENDING_INVESTOR_DATE_AND_EXIT_CHOICE" and
              terminal.get("outcome_field_id") == "goals.success_and_shortfall_event" and
-             _field(input_contract, terminal["outcome_field_id"])["status"] == "DEPENDENCY_BLOCKED" and
+             _field(input_contract, terminal["outcome_field_id"])["status"] == "UPSTREAM_ACCEPTED" and
              terminal.get("date_field_id") == "horizon.terminal_measurement_date" and
-             g3["status"] == "PENDING_MERGE_AND_EXACT_HEAD_VERIFICATION" and
+             g3["status"] == "ACCEPTED" and
+             terminal.get("g3_contract_version") == g3["contract_version"] and
+             terminal.get("g3_contract_sha256") == g3["sha256"] and
              _field(input_contract, terminal["date_field_id"])["status"] == "UNRESOLVED" and
              _field(input_contract, terminal["date_field_id"])["value"] is None and
              terminal.get("investor_date_status") == "UNRESOLVED" and
-             terminal.get("forced_liquidation") == "NOT_ASSUMED_PENDING_G3" and
+             terminal.get("forced_liquidation") == "NOT_ASSUMED_PENDING_INVESTOR_EXIT_CHOICE" and
              terminal.get("decision_effect") == EXPECTED_RULES["terminal_exit"],
-             "terminal measurement and exit must remain blocked until G3 and investor date acceptance")
+             "accepted G3 semantics must be pinned while investor date/exit remain unresolved")
     eligibility = common.get("product_eligibility", {})
     _require(eligibility.get("status") == "BLOCKED_PENDING_G5" and
              eligibility.get("dependency") == EXPECTED_RULES["g5_dependency"] and
@@ -573,7 +573,7 @@ def audit() -> dict[str, Any]:
         "zero_return_arithmetic_control": "PASS; 120- and 122-contribution cashflow fixtures reconcile exactly",
         "rounded_zero_return_values_inr": rounded,
         "negative_cases_rejected": negative_cases,
-        "g3_terminal_exit": "BLOCKED pending accepted G3 contract and investor terminal date",
+        "g3_terminal_exit": "ACCEPTED G3 semantics pinned; terminal date and investor exit/access choice remain unresolved",
         "g5_security_eligibility": "BLOCKED; no security is represented as eligible",
         "investment_authorization": contract["investment_authorization"],
     }
