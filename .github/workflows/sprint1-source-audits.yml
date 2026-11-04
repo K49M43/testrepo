@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - '.github/workflows/sprint1-source-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'research/stage512/2026-11-02/audit_cpi_linked_series.py'
       - 'research/stage512/2026-11-02/audit_cpi_esankhyiki_back_capture.py'
       - 'research/stage512/2026-11-02/audit_cpi_pib_sep2026_annexure_iv.py'
@@ -16,6 +20,10 @@ on:
   push:
     paths:
       - '.github/workflows/sprint1-source-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'research/stage512/2026-11-02/audit_cpi_linked_series.py'
       - 'research/stage512/2026-11-02/audit_cpi_esankhyiki_back_capture.py'
       - 'research/stage512/2026-11-02/audit_cpi_pib_sep2026_annexure_iv.py'

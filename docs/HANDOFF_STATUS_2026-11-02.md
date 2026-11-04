@@ -2,6 +2,42 @@
 
 **Investor-facing program status: NO-GO / decision not yet supportable.** This is **not** a declaration that any proposed asset is unsuitable; the present evidence is not yet sufficient for an investment-ready ranked decision.
 
+## Latest development update — 3 November 2026 (section 516 total-income integration)
+
+- **Finding:** section 516 deems rounded total income to be total income. Official predecessor-Act ITR instructions show the total-income field rounded at the end of the computation and normal-rate tax calculated separately from special-rate income. The Department says TY 2026–27 forms under the new Rules 2026 will be notified before filing; the predecessor workflow is evidence for a provisional interpretation, not direct validation of the new form.
+- **Implementation:** the tax component now preserves raw and rounded total income; uses rounded total for section 156, surcharge and marginal-relief thresholds; preserves reported dividend and special-rate components; and assigns the rounding residual to ordinary income. It fails closed if ordinary income would become negative. This mixed-bucket ordering remains unreviewed.
+- **Validation:** section 516 component, event-ledger, loss-schedule and terminal-case audits pass locally. The synthetic no-loss event result changed to ₹473.564 incremental tax, ₹323.564 remaining after withholding, and ₹2,109.436 net fixture wealth. Terminal-case evidence was regenerated with rounded income bases. These are synthetic results, not an investor tax estimate.
+- **Remaining gates:** qualified tax review, actual TY 2026–27 return-form confirmation, integrated capital-loss tax application, mixed-income surcharge review, investor-specific inputs, CPI anchor, and final remote CI on the published head. Sprint 1 remains **IN PROGRESS**; authorization remains **NO-GO**.
+
+## Latest development update — 3 November 2026 (loss disposal economic reconciliation)
+
+- **Executed:** the event ledger now records each non-zero disposal as a signed event/lot record including proceeds, basis removed, deductible transfer expenses, statutory bucket, holding character, and eligibility flags. A classified loss now completes cash, units, basis, ending valuation, and portfolio conservation instead of aborting before the sale is recorded.
+- **Tax boundary:** when any realized loss is present, the ledger returns `ECONOMIC_PASS_TAX_UNQUALIFIED`; tax, incremental-tax, and after-tax-accessible-wealth fields are null. An audited adapter now consumes the ledger's source-linked gain/loss records and demonstrates an explicit offset while keeping coupons/dividends outside the schedule. The main ledger does not invoke that adapter and annual tax still does not consume the candidate schedule.
+- **Validation:** the loss fixture reconciles to ₹490 gross terminal wealth, zero conservation residual, two units, and ₹200 remaining tax basis. Existing no-loss terminal economics and tax outputs are unchanged; its artifact was regenerated to include source-linked signed-disposal traces and the updated code hash. All four source/cashflow audits and the loss schedule, tax component, event/lot, and terminal reproducibility audits pass locally; module compilation passes.
+- **Remaining closure gates:** allocation policy/review, the integrated taxpayer-year loss pipeline, statutory total-income rounding, qualified review of mixed surcharge/basic-exemption cases, actual investor instruments/dates/fees/tax facts/CPI anchor, and remote CI acceptance. GitHub CLI remains unauthenticated. Sprint 1 remains **IN PROGRESS**; authorization remains **NO-GO**.
+
+## Latest development update — 3 November 2026 (Sprint 1 residual audit hardening)
+
+- **Executed:** added a second same-lot partial-disposal case to `decision/audit_after_tax_event_ledger.py`. It sells two units from a three-unit lot in separate events and verifies ₹50 realized gain, ₹450 ending cash, ₹100 remaining market value/basis, and zero reconciliation residual within the declared ₹1e-12 arithmetic tolerance. The audit also asserts that a realized loss fails closed. The tax-component audit now asserts that ambiguous basic-exemption allocation and unqualified mixed-income surcharge marginal relief fail closed.
+- **Local validation:** the tax-component, event/lot, and terminal-case audits passed; the 120/122 terminal artifact remains byte/reconciliation-consistent and original fixture totals did not change. The input-contract audit and all three CPI structure/source-capture audits also passed (123 schedule rows; 144 linked CPI values; 21 direct CPI values; 165 monthly levels). CPI investor-base alignment remains open. Relevant module compilation passed.
+- **Limits:** Sprint 1 is still open. Capital-loss set-off/carry-forward, statutory rounding under section 516, mixed special-income surcharge relief and ambiguous basic-exemption allocation are not fully implemented. Independent tax-professional review is still required and no external reviewer was contacted. Investor-specific security/date/cost/tax/CPI inputs remain open.
+- **Remote status:** GitHub CLI v2.103.3 is installed at `C:\Program Files\GitHub CLI\gh.exe`, but `gh auth status` has no authenticated host. Current PR/review/Actions checks were not verified. No push or merge was performed; investment authorization remains **NO-GO**.
+
+## Latest development update — 3 November 2026 (Sprint 1 tax-source trace hardening)
+
+- After Increment 4, an acceptance review found that annual tax-category inputs needed an explicit link back to taxable source events. `decision/after_tax_event_ledger.py` now emits event-level source records and per-tax-year event IDs by category; sale and lot-linked coupon records include acquisition dates, and withholding remains a separate credit. Annual tax remains calculated per year and is not fabricated as an event-specific amount.
+- Input contract v1.3 and `research/stage512/2026-11-03/terminal_case_reconciliation.json` record the trace contract and reproducible source evidence. Local audits pass; on PR #12 head `7c8dacb`, source/cashflow run [41568107162](https://github.com/K49M43/testrepo/actions/runs/41568107162) and tax/ledger run [41568107287](https://github.com/K49M43/testrepo/actions/runs/41568107287) both succeeded, for 4/4 passing PR checks.
+- PR #12 remains a draft, stacked on PR #11, and must not be merged until its review and base-PR state are resolved and the user decides. Sprint 1 remains open; actual investor inputs, CPI alignment, future-law validation, and qualified tax-professional review remain gates. Authorization stays **NO-GO**.
+- `docs/SPRINT_01_INVESTOR_INPUT_WORKSHEET.md` is prepared as a blank, privacy-conscious intake template. It does not contain new investor values and does not close the open dates, holdings, costs, tax, CPI, risk-tolerance, or independent-review gates.
+
+## Prior development update — 3 November 2026 (Sprint 1 Increment 4)
+
+- Sprint 1 Increments 0–4 now pass only at their recorded fixture or research-source scope. Increment 4 reconciles the frozen 120/122-month schedules across one-year synthetic fund exit, staged liquidation, and direct-bond coupon/maturity cases. The independently audited artifact is `research/stage512/2026-11-03/terminal_case_reconciliation.json`; source/code/rule SHA256 values are pinned in its run manifest.
+- Exact 120/122 contributions reconcile to ₹89,81,227.3803 / ₹91,10,914.503305. Outputs use invented 5% simple annual fund NAV appreciation and a 5% bond coupon, explicit synthetic ₹30 lakh other income, zero fixture fees, and TY 2026–27 tax rules held constant into the future. No real-wealth or investor tax conclusion follows.
+- PR #12 (`https://github.com/K49M43/testrepo/pull/12`) contains the Sprint 1 tax/ledger work and is stacked on PR #11. Check its current review and Actions status before treating the submitted Increment 4 changes as accepted; neither PR is authorized for merge by this handoff.
+- Remaining Sprint 1 gates: actual security identifiers and dates, actual fees and tax facts, an aligned CPI base, future tax-law revalidation at decision time, and independent qualified tax-professional review. No reviewer has been contacted. Until these are satisfied, no investor-specific after-tax/real-wealth output is qualified and authorization remains **NO-GO**.
+- The detailed historical sections below predate this update and are retained as evidence snapshots; the current tracker is `docs/SPRINT_01_AFTER_TAX_LEDGER.md`.
+
 ## Latest development update — 2 November 2026 (after PR #8)
 
 This section supersedes the old “where to begin” and blocker snapshots below wherever they conflict; earlier failure records remain historical.
@@ -73,3 +109,21 @@ Review `AGENTS.md` and `docs/INVESTMENT_DECISION_MANDATE_2036.md`. The existing 
 **Investor GO:** **NO-GO**.
 
 Never erase the failed manifests. Write a new dated audit for new findings and update the gate ledger only with verified results.
+
+## 2026-11-03 — Sprint 1 section 516 rounding primitive
+- **Executed:** added `section516_round_rupees` as an isolated Decimal helper implementing the statutory rule to ignore paise and round total income/payable/refundable to the nearest ₹10, with ₹5 upward. Boundary cases and negative-input rejection pass in `decision/audit_ty2026_27_tax_components.py`.
+- **Integration boundary:** tax outputs remain unrounded. Do not describe statutory rounding as implemented in the calculator; the order of total-income rounding and handling of mixed ordinary/special-income components remain to be audited before integration.
+- **Validation:** tax-component and event-ledger audits passed; terminal reconciliation artifact regenerated and its `--check` passed with updated rule-source hashes; Python compilation and `git diff --check` passed. Terminal fixture economics did not change.
+- **Next:** resolve mixed special-income surcharge relief and loss set-off/carry-forward with official-source worked cases, then integrate rounding and re-audit. External professional review, investor-specific facts, and remote GitHub checks remain open. Sprint 1 is **IN PROGRESS**; investment authorization remains **NO-GO**.
+
+## 2026-11-03 — Sprint 1 tax-source and completion-gate audit
+- **Official rules checked:** sections 108, 111 and 121 define same-year capital-loss set-off, carry-forward character limits, the eight-succeeding-year limit, and loss-return determination prerequisite. Section 536 preserves eligible pre-2026 loss character and old-law eligibility. Added the source review and required worked-case matrix in `decision/capital_loss_and_marginal_relief_review.md`.
+- **Critical implementation boundary:** the calculator has multiple special-rate capital-gain buckets. Netting losses among them can change the tax rate, annual section 198 allowance, surcharge and tax relief; the official text alone does not establish a reviewed allocation convention for the model. Finance Act section 3(5) mixed-income relief likewise lacks a validated mixed-composition worked case in our evidence set. Both paths remain fail-closed.
+- **Completion audit:** section 516 helper remains isolated; actual security/date/fee/tax/CPI confirmations are absent; future law through 2036 is unknown; no professional review is recorded or authorized; GitHub CLI is unauthenticated. These are open Sprint 1 gates, so Sprint 1 cannot be marked complete or produce an investor-specific qualified tax result.
+- **Decision:** continue NO-GO. Next technical gate is reviewed worked-case specification for loss allocation, mixed surcharge relief, and rounding order; external signoff and investor inputs remain distinct gates.
+
+## 2026-11-03 — Sprint 1 provisional mixed relief and settlement rounding
+- **Implemented:** Finance Act section 3(5) marginal relief now calculates a reference tax composition at the active ₹50L/₹1Cr/₹2Cr threshold by holding dividends and special-rate gains fixed and reducing ordinary income to the threshold. This convention is explicit and provisional; if those components exceed the threshold, the calculator fails closed. New boundary fixtures at ₹50L and ₹1Cr pass.
+- **Section 516:** final payable/refundable balances after credits now round to the nearest ₹10; pre-credit analytical tax remains precise for counterfactual portfolio-tax comparisons. Statutory total-income rounding and its effect on mixed-rate thresholds remain open.
+- **Validation:** tax-component audit passes, including mixed relief and payment/refund rounding cases. Full ledger and terminal audits are being rerun against the updated component.
+- **Limits:** no qualified tax professional reviewed the provisional composition method. Capital-loss bucket allocation remains unimplemented; personal inputs, CPI anchor, future-year law, and remote checks remain open. Sprint 1 stays **IN PROGRESS**; authorization remains **NO-GO**.

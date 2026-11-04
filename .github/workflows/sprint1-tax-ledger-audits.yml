@@ -1,0 +1,67 @@
+name: Sprint 1 tax and ledger audits
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/audit_independent_loss_tax_reconciliation.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/audit_capital_gain_loss_schedule.py'
+      - 'decision/terminal_case_reconciliation.py'
+      - 'decision/audit_terminal_case_reconciliation.py'
+      - 'decision/tax_rules_asof.md'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+      - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
+  push:
+    paths:
+      - '.github/workflows/sprint1-tax-ledger-audits.yml'
+      - 'docs/SPRINT_01_AFTER_TAX_LEDGER.md'
+      - 'docs/DECISION_LOG.md'
+      - 'docs/HANDOFF_STATUS_2026-11-02.md'
+      - 'docs/CODEX_EXECUTION_PLAN.md'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/audit_independent_loss_tax_reconciliation.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/audit_after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/audit_capital_gain_loss_schedule.py'
+      - 'decision/terminal_case_reconciliation.py'
+      - 'decision/audit_terminal_case_reconciliation.py'
+      - 'decision/tax_rules_asof.md'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+      - 'research/stage512/2026-11-03/terminal_case_reconciliation.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tax-ledger-audits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit TY 2026-27 tax components
+        run: python decision/audit_ty2026_27_tax_components.py
+      - name: Independently hand-reconcile tax and loss cases
+        run: python decision/audit_independent_loss_tax_reconciliation.py
+      - name: Audit synthetic event and lot ledger
+        run: python decision/audit_after_tax_event_ledger.py
+      - name: Audit explicit capital gain/loss allocations
+        run: python decision/audit_capital_gain_loss_schedule.py
+      - name: Audit 120/122-month terminal cases against hand calculations
+        run: python decision/audit_terminal_case_reconciliation.py --check
+      - name: Compile tax and ledger modules
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/audit_independent_loss_tax_reconciliation.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py
