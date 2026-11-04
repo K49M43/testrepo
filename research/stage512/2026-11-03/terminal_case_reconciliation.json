@@ -7,9 +7,9 @@
     "source_sha256": {
       "decision/terminal_case_reconciliation.py": "bb13cf479000d7b009ec00b84fe4433b042a293661873fd400a697795c5a0a44",
       "decision/audit_terminal_case_reconciliation.py": "adf25c9902b65f8cb673d9892ac12278d8474cd0059ad91944b136d2a9c99025",
-      "decision/after_tax_event_ledger.py": "b3fb535b7357a6075cd6363b5b1a28cc0944bedd83cdbcd729bc45bc0ffb0ac7",
-      "decision/ty2026_27_tax_components.py": "f16d6963643cdc5f934ce1266d7363077e2d40a8dc3a9922150abceb59f8d277",
-      "decision/tax_rules_asof.md": "a190ade7f4e96f25232a8ad7f924c15006efd754e5c81c6e8f21d3301edca2cd",
+      "decision/after_tax_event_ledger.py": "a6f16393612e270f0cb1f563c1fa4eeba7351347af0951bd7f4690aa2aef579b",
+      "decision/ty2026_27_tax_components.py": "476a071003f78856c6a2b16e1bd776a479b194981139190dc85d9eff3b6beffa",
+      "decision/tax_rules_asof.md": "bcbc30aac8042c0671bf6a8420dfa5de33ae2ae026d177e87be3bd12c61cfe23",
       "research/stage512/2026-11-02/after_tax_ledger_input_contract.json": "fd7c1a5eeb3eb929c0738d5cc7ccc6c181c41bff83491ed5d61b87e9392444ec",
       "research/stage512/2026-11-02/cashflow_hurdle_baseline.py": "b302e4fa6f51a66026e2efbd78053f2fd8f6ae795ea2128635abbb2e2a7ccc9c",
       "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
@@ -34,6 +34,7 @@
       "event_count": 363,
       "tax_years": {
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "2945390.295350327684553629766",
             "dividend": "0",
@@ -3718,6 +3719,7 @@
       "event_count": 484,
       "tax_years": {
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "1472695.147675163842276814883",
             "dividend": "0",
@@ -3858,6 +3860,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2037-38": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "1572083.628305583239648095135",
             "dividend": "0",
@@ -11022,6 +11025,7 @@
       "event_count": 913,
       "tax_years": {
         "2027-28": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "216250.00000000000",
             "dividend": "0",
@@ -11048,6 +11052,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2028-29": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "231875.00000000000",
             "dividend": "0",
@@ -11086,6 +11091,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2029-30": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "249062.50000000000",
             "dividend": "0",
@@ -11136,6 +11142,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2030-31": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "267968.75000000000",
             "dividend": "0",
@@ -11198,6 +11205,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2031-32": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "288765.62500000000",
             "dividend": "0",
@@ -11272,6 +11280,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2032-33": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "311642.18750000000",
             "dividend": "0",
@@ -11358,6 +11367,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2033-34": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "336806.40625000000",
             "dividend": "0",
@@ -11456,6 +11466,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2034-35": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "364487.04687500000",
             "dividend": "0",
@@ -11566,6 +11577,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2035-36": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "394935.75156250000",
             "dividend": "0",
@@ -11688,6 +11700,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "328820.42296250000",
             "dividend": "0",
@@ -23906,6 +23919,7 @@
       "event_count": 369,
       "tax_years": {
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "3011828.904491297495174187787",
             "dividend": "0",
@@ -27650,6 +27664,7 @@
       "event_count": 492,
       "tax_years": {
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "1505914.452245648747587093895",
             "dividend": "0",
@@ -27792,6 +27807,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2037-38": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "1572890.935161650391206840793",
             "dividend": "0",
@@ -35074,6 +35090,7 @@
       "event_count": 939,
       "tax_years": {
         "2027-28": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "216250.00000000000",
             "dividend": "0",
@@ -35100,6 +35117,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2028-29": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "231875.00000000000",
             "dividend": "0",
@@ -35138,6 +35156,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2029-30": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "249062.50000000000",
             "dividend": "0",
@@ -35188,6 +35207,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2030-31": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "267968.75000000000",
             "dividend": "0",
@@ -35250,6 +35270,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2031-32": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "288765.62500000000",
             "dividend": "0",
@@ -35324,6 +35345,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2032-33": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "311642.18750000000",
             "dividend": "0",
@@ -35410,6 +35432,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2033-34": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "336806.40625000000",
             "dividend": "0",
@@ -35508,6 +35531,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2034-35": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "364487.04687500000",
             "dividend": "0",
@@ -35618,6 +35642,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2035-36": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "394935.75156250000",
             "dividend": "0",
@@ -35740,6 +35765,7 @@
           "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
         },
         "2036-37": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
           "portfolio_income": {
             "ordinary": "368663.98446500000",
             "dividend": "0",

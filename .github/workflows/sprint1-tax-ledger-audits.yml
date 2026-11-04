@@ -10,6 +10,7 @@ on:
       - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'decision/ty2026_27_tax_components.py'
       - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/audit_independent_loss_tax_reconciliation.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
       - 'decision/capital_gain_loss_schedule.py'
@@ -28,6 +29,7 @@ on:
       - 'docs/CODEX_EXECUTION_PLAN.md'
       - 'decision/ty2026_27_tax_components.py'
       - 'decision/audit_ty2026_27_tax_components.py'
+      - 'decision/audit_independent_loss_tax_reconciliation.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/audit_after_tax_event_ledger.py'
       - 'decision/capital_gain_loss_schedule.py'
@@ -53,6 +55,8 @@ jobs:
           python-version: '3.12'
       - name: Audit TY 2026-27 tax components
         run: python decision/audit_ty2026_27_tax_components.py
+      - name: Independently hand-reconcile tax and loss cases
+        run: python decision/audit_independent_loss_tax_reconciliation.py
       - name: Audit synthetic event and lot ledger
         run: python decision/audit_after_tax_event_ledger.py
       - name: Audit explicit capital gain/loss allocations
@@ -60,4 +64,4 @@ jobs:
       - name: Audit 120/122-month terminal cases against hand calculations
         run: python decision/audit_terminal_case_reconciliation.py --check
       - name: Compile tax and ledger modules
-        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py
+        run: python -m compileall -q decision/ty2026_27_tax_components.py decision/audit_ty2026_27_tax_components.py decision/audit_independent_loss_tax_reconciliation.py decision/after_tax_event_ledger.py decision/audit_after_tax_event_ledger.py decision/capital_gain_loss_schedule.py decision/audit_capital_gain_loss_schedule.py decision/terminal_case_reconciliation.py decision/audit_terminal_case_reconciliation.py

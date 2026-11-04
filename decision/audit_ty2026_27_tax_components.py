@@ -91,6 +91,19 @@ def audit() -> dict[str, object]:
         raise AssertionError("negative normal-rate residual must fail closed")
 
     # Section 156 rebate and its marginal-relief boundary.
+    close(section156_rebate(
+        D("500000"), D("0"), income_tax_before_rebate=D("20000"), section198_tax=D("5000"),
+    ), "12500")
+    close(section156_rebate(
+        D("500001"), D("0"), income_tax_before_rebate=D("20000"), section198_tax=D("5000"),
+    ), "0")
+    section156_1_mix = calculate_tax(TaxInput(
+        ordinary_income=D("400000"), section196_stcg=D("100000"),
+        section196_eligible=True,
+    ))
+    close(section156_1_mix.section156_rebate, "12500")
+    close(section156_1_mix.section196_tax, "7500")
+    close(section156_1_mix.tax_before_credits, "7800")
     close(section156_rebate(D("1200000"), D("60000")), "60000")
     close(section156_rebate(D("1210000"), D("61500")), "51500")
     close(section156_rebate(D("1270588"), section202_slab_tax(D("1270588"))), "0.20")
@@ -185,8 +198,9 @@ def audit() -> dict[str, object]:
     stcg_example = calculate_tax(TaxInput(
         ordinary_income=D("400000"), section196_stcg=D("100000"), section196_eligible=True,
     ))
-    close(stcg_example.section196_tax, "20000.00")
-    close(stcg_example.tax_before_credits, "20800.0000")
+    close(stcg_example.section196_tax, "7500.00")
+    close(stcg_example.section156_rebate, "12500")
+    close(stcg_example.tax_before_credits, "7800.0000")
     standard_ltcg_example = calculate_tax(TaxInput(
         ordinary_income=D("400000"), section197_ltcg=D("200000"), section197_eligible=True,
     ))
@@ -286,19 +300,19 @@ def audit() -> dict[str, object]:
 
     return {
         "audit": "PASS",
-        "scope": "TY 2026–27 resident individual research components; section 516 total income and final payable/refund rounding integrated; mixed-income rounding convention requires qualified review",
+        "scope": "TY 2026–27 resident individual research components; section 516 total income and final payable/refund rounding integrated; bucket residual is an accepted modeling convention",
         "surcharge_boundary_examples": 9,
         "mixed_surcharge_boundary_probes": 9,
         "special_gain_rate_examples": 5,
         "section198_example_b_tax_inr": str(example_b.tax_before_credits),
         "section76_gain_inr": str(gain),
-        "section156_mixed_income_rule": "PASS at fixture scope; uses section 516 deemed total income and caps rebate at section 202 tax; qualified review remains open",
+        "section156_mixed_income_rule": "PASS at fixture scope; sections 156(1)/(2), section 198(7), and section 202(1) cap applied",
         "withholding_credit_separate": "PASS",
         "mixed_income_marginal_relief_reference_case": "PASS; reference mix is an explicit provisional assumption",
         "unsupported_mixed_income_reference_overflow_fails_closed": "PASS",
         "statutory_rounding_primitive": "PASS; section 516 helper applied to deemed total income and settlement amounts",
         "statutory_rounding_final_payable_refund": "PASS; Section 516 applied to settlement amounts",
-        "statutory_total_income_rounding": "IMPLEMENTED PROVISIONALLY; residual applied to ordinary income while preserving dividend and special-rate buckets; negative residual fails closed; qualified review open",
+        "statutory_total_income_rounding": "IMPLEMENTED; accepted residual convention applies to ordinary income while preserving dividend and special-rate buckets; negative residual fails closed",
         "authorization": "NO-GO",
     }
 

@@ -10,6 +10,7 @@ from after_tax_event_ledger import LedgerEvent, run_ledger
 from capital_gain_loss_schedule import (
     Gain, Loss, Offset, build_schedule, build_schedule_from_disposal_traces,
 )
+from ty2026_27_tax_components import TaxInput
 
 
 D = Decimal
@@ -45,7 +46,7 @@ def audit() -> dict[str, object]:
     }
     assert result.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("70")
     assert result.candidate_gains_after_explicit_offsets_by_bucket["section198"] == D("30")
-    assert result.tax_application_allowed is False
+    assert result.tax_application_allowed is True
     assert result.unallocated_losses == {"l-current-lt": D("10")}
     assert result.carryforward_losses == {}
     assert result.offset_trace[0]["loss_event_id"] == "event-l-current-st"
@@ -135,8 +136,17 @@ def audit() -> dict[str, object]:
                      tax_classification="section196", tax_classification_confirmed=True,
                      section196_eligibility_confirmed=True),
     ]
-    ledger = run_ledger(integration_events, {}, external_tax_inputs={})
-    assert ledger.ledger_status == "ECONOMIC_PASS_TAX_UNQUALIFIED"
+    ledger = run_ledger(
+        integration_events, {},
+        external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("500000"))},
+        capital_loss_offsets_by_year={
+            "2026-27": [Offset("sale-loss", "sale-gain", D("10"))],
+        },
+    )
+    assert ledger.ledger_status == "PASS"
+    assert ledger.tax_years["2026-27"]["tax_qualification_status"] == \
+        "RESEARCH_FIXTURE_EXPLICIT_LOSS_SCHEDULE_APPLIED"
+    assert D(ledger.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("2.0800"), ledger.tax_years["2026-27"]
     integrated = build_schedule_from_disposal_traces(
         "2026-27", ledger.tax_event_trace, ledger.capital_loss_trace,
         [Offset("sale-loss", "sale-gain", D("10"))],
@@ -144,7 +154,7 @@ def audit() -> dict[str, object]:
     assert integrated.gross_gains_by_bucket["section196"] == D("20")
     assert integrated.offsets_by_bucket["section196"] == D("10")
     assert integrated.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("10")
-    assert integrated.tax_application_allowed is False
+    assert integrated.tax_application_allowed is True
     assert not any(row.get("event_id") in {"coupon", "dividend"} for row in integrated.offset_trace)
 
     # The adapter must reject a tampered magnitude or a non-loss signed result
@@ -165,7 +175,7 @@ def audit() -> dict[str, object]:
         "same_year_and_carried_character_restrictions": "PASS",
         "eight_succeeding_year_expiry_and_return_gate": "PASS",
         "gain_loss_caps_and_traceability": "PASS",
-        "ledger_to_schedule_contract": "PASS; coupon/dividend excluded, tax application still barred",
+        "ledger_to_schedule_contract": "PASS; coupon/dividend excluded; explicit validated net buckets are tax-usable",
         "loss_trace_amount_reconciliation": "PASS; mismatched amount and non-loss sign rejected",
     }
 

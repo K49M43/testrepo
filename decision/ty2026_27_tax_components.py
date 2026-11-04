@@ -32,6 +32,8 @@ SECTION202_SLABS = (
 
 REBATE_LIMIT = Decimal("1200000")
 REBATE_CAP = Decimal("60000")
+SECTION156_1_INCOME_LIMIT = Decimal("500000")
+SECTION156_1_REBATE_CAP = Decimal("12500")
 BASIC_EXEMPTION_202 = Decimal("400000")
 SECTION198_ANNUAL_DEDUCTION = Decimal("125000")
 CESS_RATE = Decimal("0.04")
@@ -99,6 +101,8 @@ def section156_rebate(
     )
     section198_amount = _amount(section198_tax, "section198_tax")
     rebate_base = max(ZERO, total_tax - section198_amount)
+    if income <= SECTION156_1_INCOME_LIMIT:
+        return min(rebate_base, SECTION156_1_REBATE_CAP)
     if income <= REBATE_LIMIT:
         return min(tax, REBATE_CAP, rebate_base)
     marginal_relief = max(ZERO, rebate_base - (income - REBATE_LIMIT))
@@ -133,8 +137,9 @@ def section76_specified_fund_gain(
 class TaxInput:
     """Annual aggregated taxable income for the supported TY 2026–27 fixture."""
 
-    ordinary_income: Decimal = ZERO  # includes interest/coupons and section 76 gains
+    ordinary_income: Decimal = ZERO  # excludes section 76 gains when separately identified
     dividend_income: Decimal = ZERO
+    section76_stcg: Decimal = ZERO  # deemed short-term capital gain taxed at rates in force
     section196_stcg: Decimal = ZERO
     section197_ltcg: Decimal = ZERO
     section198_ltcg: Decimal = ZERO
@@ -143,6 +148,7 @@ class TaxInput:
     section196_eligible: bool = False
     section197_eligible: bool = False
     section198_eligible: bool = False
+    section76_eligible: bool = False
 
 
 @dataclass(frozen=True)
@@ -187,12 +193,14 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
     if not inputs.resident_individual:
         raise NotImplementedError("this component supports resident individuals only")
     names = (
-        "ordinary_income", "dividend_income", "section196_stcg", "section197_ltcg",
+        "ordinary_income", "dividend_income", "section76_stcg", "section196_stcg", "section197_ltcg",
         "section198_ltcg", "tax_withheld_credit",
     )
     values = {name: _amount(getattr(inputs, name), name) for name in names}
     if values["section196_stcg"] and not inputs.section196_eligible:
         raise ValueError("section 196 rate requires confirmed STT and asset eligibility")
+    if values["section76_stcg"] and not inputs.section76_eligible:
+        raise ValueError("section 76 treatment requires confirmed specified-fund eligibility")
     if values["section197_ltcg"] and not inputs.section197_eligible:
         raise ValueError("section 197 rate requires confirmed long-term asset eligibility")
     if values["section198_ltcg"] and not inputs.section198_eligible:
@@ -200,11 +208,12 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
 
     ordinary = values["ordinary_income"]
     dividends = values["dividend_income"]
+    section76 = values["section76_stcg"]
     stcg = values["section196_stcg"]
     other_ltcg = values["section197_ltcg"]
     equity_ltcg = values["section198_ltcg"]
     special_gains = [gain for gain in (stcg, other_ltcg, equity_ltcg) if gain > ZERO]
-    raw_normal_income = ordinary + dividends
+    raw_normal_income = ordinary + dividends + section76
     raw_total_income = raw_normal_income + sum(special_gains, ZERO)
     total_income = section516_round_rupees(raw_total_income)
     # Section 516 deems the rounded total to be total income. The predecessor
@@ -249,7 +258,12 @@ def _calculate_tax(inputs: TaxInput, *, apply_marginal_relief: bool) -> TaxResul
         income_tax_before_rebate=income_tax_before_rebate,
         section198_tax=section198_tax,
     ) if inputs.resident_individual else ZERO
-    normal_tax_after_rebate = ordinary_tax_before_rebate - rebate
+    normal_tax_after_rebate = max(ZERO, ordinary_tax_before_rebate - rebate)
+    rebate_remaining = max(ZERO, rebate - ordinary_tax_before_rebate)
+    section196_tax = max(ZERO, section196_tax - rebate_remaining)
+    rebate_remaining = max(ZERO, rebate_remaining - (income_tax_before_rebate - ordinary_tax_before_rebate
+                                                       - section198_tax - section197_tax))
+    section197_tax = max(ZERO, section197_tax - rebate_remaining)
 
     # Section 3(4)(b), Table row 10: only the incremental slab tax attributable
     # to dividend income is subject to the special-income 15% surcharge cap.

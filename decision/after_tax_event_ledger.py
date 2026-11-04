@@ -139,18 +139,29 @@ class EventLedgerResult:
         return convert(result)
 
 
-def _merge_tax_inputs(external: TaxInput, portfolio: YearIncome) -> TaxInput:
+def _merge_tax_inputs(
+    external: TaxInput,
+    portfolio: YearIncome,
+    capital_loss_offsets: Mapping[str, Decimal] | None = None,
+) -> TaxInput:
+    offsets = capital_loss_offsets or {}
     return TaxInput(
-        ordinary_income=amount(external.ordinary_income, "external ordinary income") + portfolio.ordinary_income,
+        ordinary_income=(amount(external.ordinary_income, "external ordinary income") + portfolio.ordinary_income
+                         - offsets.get("section76", ZERO)),
         dividend_income=amount(external.dividend_income, "external dividend income") + portfolio.dividend_income,
-        section196_stcg=amount(external.section196_stcg, "external section196 gains") + portfolio.section196_stcg,
-        section197_ltcg=amount(external.section197_ltcg, "external section197 gains") + portfolio.section197_ltcg,
-        section198_ltcg=amount(external.section198_ltcg, "external section198 gains") + portfolio.section198_ltcg,
+        section76_stcg=amount(external.section76_stcg, "external section76 gains"),
+        section196_stcg=(amount(external.section196_stcg, "external section196 gains") + portfolio.section196_stcg
+                         - offsets.get("section196", ZERO)),
+        section197_ltcg=(amount(external.section197_ltcg, "external section197 gains") + portfolio.section197_ltcg
+                         - offsets.get("section197", ZERO)),
+        section198_ltcg=(amount(external.section198_ltcg, "external section198 gains") + portfolio.section198_ltcg
+                         - offsets.get("section198", ZERO)),
         tax_withheld_credit=amount(external.tax_withheld_credit, "external withholding") + portfolio.withholding_credit,
         resident_individual=external.resident_individual,
         section196_eligible=external.section196_eligible or portfolio.section196_eligible,
         section197_eligible=external.section197_eligible or portfolio.section197_eligible,
         section198_eligible=external.section198_eligible or portfolio.section198_eligible,
+        section76_eligible=external.section76_eligible,
     )
 
 
@@ -167,6 +178,9 @@ def run_ledger(
     External income/credits are required explicitly for each tax year in which
     the taxpayer-level tax result is requested. Pass an explicit zero-valued
     ``TaxInput`` for a synthetic year; actual personal facts must not default.
+    When capital-loss schedules are supplied, external capital gains must be
+    source-traced in the same event ledger; aggregate-only external gains fail
+    closed because they cannot be matched to explicit loss allocations.
     """
     event_list = list(events)
     if not event_list:
@@ -485,8 +499,10 @@ def run_ledger(
         for lot in sorted(lots.values(), key=lambda item: (item.acquired, item.lot_id))
     ]
 
-    # Preserve a reconciled economic ledger while preventing unqualified loss
-    # treatment from leaking into annual tax or accessible-wealth results.
+    # A supplied schedule contains explicit offsets only. The adapter validates
+    # source traces, character restrictions, caps, tax year and carry-forward
+    # evidence before the resulting net gain buckets reach the tax component.
+    capital_loss_schedules: dict[str, Any] = {}
     if has_realized_loss or supplied_schedule_years:
         known_years = (set(external_tax_inputs)
                        | {row["tax_year"] for row in tax_event_trace}
@@ -494,9 +510,13 @@ def run_ledger(
         unknown_schedule_years = supplied_schedule_years - known_years
         if unknown_schedule_years:
             raise ValueError(f"capital-loss schedules reference unknown tax years: {sorted(unknown_schedule_years)}")
-        unqualified_years = sorted(known_years | {row["tax_year"] for row in capital_loss_trace})
-        candidate_schedules: dict[str, dict[str, Any]] = {}
-        for year in unqualified_years:
+        for year in sorted(known_years | {row["tax_year"] for row in capital_loss_trace}):
+            external = external_tax_inputs.get(year)
+            if external is not None and any((external.section76_stcg, external.section196_stcg,
+                                             external.section197_ltcg, external.section198_ltcg)):
+                raise NotImplementedError(
+                    "capital-loss integration requires source-linked external capital-gain traces"
+                )
             schedule = build_schedule_from_disposal_traces(
                 year,
                 [row for row in tax_event_trace if row["tax_year"] == year],
@@ -504,7 +524,9 @@ def run_ledger(
                 offsets_by_year.get(year, []),
                 carried_losses=carried_by_year.get(year, []),
             )
-            candidate_schedules[year] = {
+            if not schedule.tax_application_allowed:
+                raise AssertionError("validated explicit loss schedule was not authorized for tax application")
+            capital_loss_schedules[year] = {
                 "tax_application_allowed": schedule.tax_application_allowed,
                 "gross_gains_by_bucket": {key: str(value) for key, value in schedule.gross_gains_by_bucket.items()},
                 "offsets_by_bucket": {key: str(value) for key, value in schedule.offsets_by_bucket.items()},
@@ -516,32 +538,6 @@ def run_ledger(
                 "unallocated_losses": {key: str(value) for key, value in schedule.unallocated_losses.items()},
                 "carryforward_losses": {key: str(value) for key, value in schedule.carryforward_losses.items()},
             }
-        return EventLedgerResult(
-            ledger_status="ECONOMIC_PASS_TAX_UNQUALIFIED",
-            event_count=len(event_list),
-            tax_years={year: {"tax_qualification_status": "UNQUALIFIED_CAPITAL_LOSS_SET_OFF_NOT_APPLIED"}
-                       for year in unqualified_years},
-            cash_contributions_inr=contributions,
-            gross_income_inr=gross_income,
-            portfolio_withholding_inr=withholding,
-            transaction_costs_inr=transaction_costs,
-            other_fees_inr=other_fees,
-            withdrawals_inr=withdrawals,
-            ending_cash_inr=cash,
-            ending_market_value_inr=ending_market_value,
-            realized_economic_gain_inr=realized_economic_gain,
-            unrealized_gain_inr=unrealized_gain,
-            gross_terminal_wealth_inr=gross_terminal,
-            incremental_portfolio_tax_inr=None,
-            remaining_incremental_tax_after_withholding_inr=None,
-            excess_portfolio_withholding_not_valued_inr=None,
-            net_accessible_fixture_wealth_inr=None,
-            reconciliation_residual_inr=reconciliation_residual,
-            open_lots=open_lot_rows,
-            tax_event_trace=tax_event_trace,
-            capital_loss_trace=capital_loss_trace,
-            capital_loss_candidate_schedules=candidate_schedules,
-        )
 
     all_years = sorted(set(incomes) | set(external_tax_inputs))
     tax_year_results: dict[str, dict[str, Any]] = {}
@@ -552,7 +548,12 @@ def run_ledger(
         portfolio = incomes.get(year, YearIncome())
         external = external_tax_inputs[year]
         external_only_tax = calculate_tax(external).tax_before_credits
-        total_tax_input = _merge_tax_inputs(external, portfolio)
+        schedule = capital_loss_schedules.get(year)
+        bucket_offsets = (
+            {key: Decimal(value) for key, value in schedule["offsets_by_bucket"].items()}
+            if schedule else None
+        )
+        total_tax_input = _merge_tax_inputs(external, portfolio, bucket_offsets)
         total_tax = calculate_tax(total_tax_input)
         year_incremental_tax = total_tax.tax_before_credits - external_only_tax
         if year_incremental_tax < ZERO:
@@ -563,6 +564,10 @@ def run_ledger(
         remaining_incremental_tax += year_net_after_tds
         excess_withholding_not_valued += year_excess_withholding
         tax_year_results[year] = {
+            "tax_qualification_status": (
+                "RESEARCH_FIXTURE_EXPLICIT_LOSS_SCHEDULE_APPLIED" if schedule
+                else "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE"
+            ),
             "portfolio_income": {
                 "ordinary": str(portfolio.ordinary_income),
                 "dividend": str(portfolio.dividend_income),
@@ -581,6 +586,8 @@ def run_ledger(
             "excess_portfolio_withholding_not_valued_as_refund": str(year_excess_withholding),
             "tax_component_scope": total_tax.calculation_scope,
         }
+        if schedule:
+            tax_year_results[year]["capital_loss_schedule"] = schedule
 
     fixture_wealth = gross_terminal - remaining_incremental_tax
 
@@ -607,5 +614,5 @@ def run_ledger(
         open_lots=open_lot_rows,
         tax_event_trace=tax_event_trace,
         capital_loss_trace=capital_loss_trace,
-        capital_loss_candidate_schedules={},
+        capital_loss_candidate_schedules=capital_loss_schedules,
     )

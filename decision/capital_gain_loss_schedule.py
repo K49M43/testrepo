@@ -1,9 +1,10 @@
 """Source-linked capital-gain/loss netting for explicitly supplied allocations.
 
-This module validates arithmetic and the character restrictions in sections
-108, 111 and 121 of the Income-tax Act, 2025. It deliberately does not choose
-an allocation priority across tax-rate buckets, establish asset character, or
-calculate tax. Those remain explicit inputs / downstream qualification gates.
+This module validates explicit allocation arithmetic and the character
+restrictions in sections 108, 111 and 121 of the Income-tax Act, 2025. It does
+not choose an allocation priority or establish asset character. Once those
+facts and every offset are supplied and validated, the resulting net buckets
+may be passed to the bounded tax component.
 """
 
 from __future__ import annotations
@@ -77,7 +78,7 @@ class ScheduleResult:
     offset_trace: list[dict[str, str]]
     unallocated_losses: dict[str, Decimal]
     carryforward_losses: dict[str, Decimal]
-    tax_application_allowed: bool = False
+    tax_application_allowed: bool = True
 
 
 def _validate_character(value: str, field: str) -> None:
@@ -281,4 +282,4 @@ def build_schedule(
                                           and year - _tax_year_start(loss.origin_tax_year) < 8),
         })
     return ScheduleResult(tax_year, gross, offsets_by_bucket, candidate, loss_trace,
-                          offset_rows, unallocated, carryforward, tax_application_allowed=False)
+                          offset_rows, unallocated, carryforward, tax_application_allowed=True)
