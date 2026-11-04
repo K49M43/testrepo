@@ -8,6 +8,7 @@ from decimal import Decimal
 
 from after_tax_event_ledger import LedgerEvent, run_ledger, tax_year_for
 from capital_gain_loss_schedule import Loss, Offset
+from sprint2_database_pilot import assert_expected, load_fixture, run_fixture
 from ty2026_27_tax_components import TaxInput
 
 
@@ -67,22 +68,11 @@ def event(
 def audit() -> dict[str, object]:
     assert tax_year_for(date(2027, 3, 31)) == "2026-27"
     assert tax_year_for(date(2027, 4, 1)) == "2027-28"
-    events = [
-        event("cash-1", date(2026, 10, 31), 1, "initial_contribution", "1000"),
-        event("buy-a", date(2026, 10, 31), 2, "acquisition", "505", lot="lot-a", units="5", price="100", fee="5", basis_addition="5"),
-        event("coupon", date(2027, 3, 31), 1, "coupon", "1000", lot="lot-a", gross_income="1000", tax_class="ordinary", confirmed=True),
-        event("coupon-tds", date(2027, 3, 31), 2, "withholding", "100", withholding="100"),
-        event("dividend", date(2027, 4, 1), 1, "distribution", "500", gross_income="500", tax_class="dividend", confirmed=True),
-        event("dividend-tds", date(2027, 4, 1), 2, "withholding", "50", withholding="50"),
-        event("reinvest", date(2027, 4, 1), 3, "reinvestment", "450", lot="lot-b", units="1", price="450"),
-        event("sell-a", date(2027, 9, 30), 1, "partial_disposal", "240", lot="lot-a", units="2", price="120", fee="2", tax_class="section197", confirmed=True, section197_eligible=True),
-        event("custody-fee", date(2027, 9, 30), 2, "fee", "10"),
-    ]
-    external = {
-        "2026-27": TaxInput(ordinary_income=D("3000000")),
-        "2027-28": TaxInput(ordinary_income=D("3000000")),
-    }
-    result = run_ledger(events, {"lot-a": D("120"), "lot-b": D("450")}, external_tax_inputs=external)
+    fixture = load_fixture()
+    events = fixture.events
+    external = fixture.external_tax_inputs
+    result = run_fixture(fixture)
+    assert_expected(result)
     assert result.ledger_status == "PASS"
     assert result.event_count == 9
     assert result.cash_contributions_inr == D("1000")
