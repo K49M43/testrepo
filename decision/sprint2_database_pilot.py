@@ -48,10 +48,15 @@ def canonical_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def normalized_text_sha256(path: Path) -> str:
-    text = path.read_text(encoding="utf-8")
+def normalized_text_and_sha256(path: Path) -> tuple[str, str]:
+    """Read UTF-8 text once and return the normalized content and its hash."""
+    text = path.read_bytes().decode("utf-8")
     normalized = text.replace("\r\n", "\n").replace("\r", "\n")
-    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+    return normalized, hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def normalized_text_sha256(path: Path) -> str:
+    return normalized_text_and_sha256(path)[1]
 
 
 def sha256_text(text: str) -> str:
@@ -220,7 +225,12 @@ def fixture_from_mapping(raw: Mapping[str, Any]) -> FixtureData:
 
 
 def load_fixture(input_path: Path = DEFAULT_INPUT_PATH) -> FixtureData:
-    raw = json.loads(input_path.read_text(encoding="utf-8"))
+    input_text, _ = normalized_text_and_sha256(input_path)
+    return load_fixture_text(input_text)
+
+
+def load_fixture_text(input_text: str) -> FixtureData:
+    raw = json.loads(input_text)
     return fixture_from_mapping(raw)
 
 
@@ -272,8 +282,11 @@ def result_summary(result: Any) -> dict[str, Any]:
     return summary
 
 
-def assert_expected(result: Any, expected_path: Path = DEFAULT_EXPECTED_PATH) -> dict[str, Any]:
-    expected_data = json.loads(expected_path.read_text(encoding="utf-8"))
+def assert_expected(result: Any, expected_path: Path = DEFAULT_EXPECTED_PATH, *,
+                    expected_data: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    if expected_data is None:
+        expected_text, _ = normalized_text_and_sha256(expected_path)
+        expected_data = json.loads(expected_text)
     summary = result_summary(result)
     expected = expected_data["expected_outputs"]
 
@@ -461,14 +474,14 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
     if inject_failure_after not in (None, "inputs", "compute"):
         raise ValueError("inject_failure_after must be None, 'inputs', or 'compute'")
     load_started = time.perf_counter()
-    fixture = load_fixture(input_path)
-    expected_data = json.loads(expected_path.read_text(encoding="utf-8"))
+    input_text, input_file_hash = normalized_text_and_sha256(input_path)
+    expected_text, expected_file_hash = normalized_text_and_sha256(expected_path)
+    fixture = load_fixture_text(input_text)
+    expected_data = json.loads(expected_text)
     if expected_data.get("fixture_id") != fixture.raw["fixture_id"] or expected_data.get("fixture_version") != fixture.raw["fixture_version"]:
         raise ValueError("expected-output fixture identity does not match input fixture")
     canonical_payload = canonical_json(fixture.raw)
     snapshot_hash = sha256_text(canonical_payload)
-    input_file_hash = normalized_text_sha256(input_path)
-    expected_file_hash = normalized_text_sha256(expected_path)
     load_ms = (time.perf_counter() - load_started) * 1000
 
     code_hash, migration_hash = _hash_code_and_migration()
@@ -524,7 +537,7 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
 
             compute_started = time.perf_counter()
             ledger_result = run_fixture(persisted_fixture)
-            assert_expected(ledger_result, expected_path)
+            assert_expected(ledger_result, expected_path, expected_data=expected_data)
             compute_ms = (time.perf_counter() - compute_started) * 1000
             if inject_failure_after == "compute":
                 raise RuntimeError("injected failure after calculation before result persistence")
@@ -570,6 +583,8 @@ def execute_pilot(database_path: Path, input_path: Path = DEFAULT_INPUT_PATH,
                 (canonical_json(timings), attempt_id),
             )
             conn.commit()
+            # Commit duration is only measurable after this transaction has
+            # committed; return it to the caller without implying it is stored.
             timings["result_persist_commit_ms"] = (time.perf_counter() - persist_started) * 1000
             return {
                 "attempt_id": attempt_id,

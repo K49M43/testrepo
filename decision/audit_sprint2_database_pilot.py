@@ -29,14 +29,17 @@ def audit() -> dict[str, object]:
     token = uuid.uuid4().hex
     database_a = folder / f".audit-{token}-a.sqlite"
     database_b = folder / f".audit-{token}-b.sqlite"
+    database_c = folder / f".audit-{token}-c.sqlite"
     failed_input_path = folder / f".audit-{token}-input.json"
     failed_expected_path = folder / f".audit-{token}-expected.json"
-    files = [database_a, database_b, failed_input_path, failed_expected_path]
+    files = [database_a, database_b, database_c, failed_input_path, failed_expected_path]
 
     try:
         fixture = load_fixture()
         assert fixture.raw["fixture_id"] == "after-tax-ledger-two-lot-two-tax-year"
         assert len(fixture.events) == 9
+        original_input = json.loads(DEFAULT_INPUT_PATH.read_text(encoding="utf-8"))
+        original_expected = json.loads(DEFAULT_EXPECTED_PATH.read_text(encoding="utf-8"))
 
         # Date/year, type, and decimal-string constraints reject malformed input
         # before it can become a persisted snapshot.
@@ -84,8 +87,43 @@ def audit() -> dict[str, object]:
             assert conn.execute(
                 "SELECT COUNT(*) FROM calculation_attempts WHERE status = 'COMPLETE' AND output_json IS NOT NULL"
             ).fetchone()[0] == 2
+            stored_timings = json.loads(conn.execute(
+                "SELECT timings_json FROM calculation_attempts "
+                "WHERE status = 'COMPLETE' LIMIT 1"
+            ).fetchone()[0])
+            assert "result_persist_precommit_ms" in stored_timings
+            assert "result_persist_commit_ms" not in stored_timings
+            assert "result_persist_commit_ms" in first["timings_ms"]
         finally:
             conn.close()
+
+        # Changed source fixture and changed expected-output configuration must
+        # produce distinct run identities even when the ledger math is equal.
+        identity_input = copy.deepcopy(original_input)
+        identity_input["fixture_version"] = "identity-input-v2"
+        identity_expected = copy.deepcopy(original_expected)
+        identity_expected["fixture_version"] = "identity-input-v2"
+        failed_input_path.write_text(
+            json.dumps(identity_input, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
+        failed_expected_path.write_text(
+            json.dumps(identity_expected, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
+        input_variant = execute_pilot(database_a, failed_input_path, failed_expected_path)
+        assert input_variant["snapshot_sha256"] != first["snapshot_sha256"]
+        assert input_variant["run_key_sha256"] != first["run_key_sha256"]
+
+        config_expected = copy.deepcopy(original_expected)
+        config_expected["scope"] += "; identity probe"
+        failed_input_path.write_text(
+            json.dumps(original_input, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
+        failed_expected_path.write_text(
+            json.dumps(config_expected, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
+        config_variant = execute_pilot(database_a, failed_input_path, failed_expected_path)
+        assert config_variant["snapshot_sha256"] == first["snapshot_sha256"]
+        assert config_variant["run_key_sha256"] != first["run_key_sha256"]
 
         # A structurally present but altered normalized auxiliary row must not
         # be silently ignored in favor of the canonical snapshot payload.
@@ -116,13 +154,54 @@ def audit() -> dict[str, object]:
         finally:
             conn.close()
 
+        # Invalid lot references and disposal units are rejected through the
+        # database-backed execution path and cannot publish a result.
+        for version, invalid_case in (
+            ("invalid-lot-reference-v1", "lot_reference"),
+            ("invalid-disposal-units-v1", "disposal_units"),
+        ):
+            invalid_input = copy.deepcopy(original_input)
+            invalid_input["fixture_version"] = version
+            disposal = next(row for row in invalid_input["events"] if row["event_id"] == "sell-a")
+            if invalid_case == "lot_reference":
+                disposal["lot_id"] = "missing-lot"
+            else:
+                disposal["units"] = "0"
+            invalid_expected = copy.deepcopy(original_expected)
+            invalid_expected["fixture_version"] = version
+            failed_input_path.write_text(
+                json.dumps(invalid_input, indent=2) + "\n", encoding="utf-8", newline="\n"
+            )
+            failed_expected_path.write_text(
+                json.dumps(invalid_expected, indent=2) + "\n", encoding="utf-8", newline="\n"
+            )
+            snapshot_hash = sha256_text(canonical_json(invalid_input))
+            try:
+                execute_pilot(database_c, failed_input_path, failed_expected_path)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError(f"invalid {invalid_case} must be rejected")
+            conn = connect_database(database_c)
+            try:
+                attempt = conn.execute(
+                    "SELECT status, output_json, output_sha256 FROM calculation_attempts "
+                    "WHERE snapshot_sha256 = ?",
+                    (snapshot_hash,),
+                ).fetchone()
+                assert attempt is not None and tuple(attempt) == ("FAILED", None, None)
+                assert conn.execute(
+                    "SELECT COUNT(*) FROM ledger_events WHERE snapshot_sha256 = ?", (snapshot_hash,)
+                ).fetchone()[0] == 9
+                assert conn.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+            finally:
+                conn.close()
+
         # A changed code fingerprint creates a different deterministic identity.
         context = {"snapshot_sha256": first["snapshot_sha256"], "code_sha256": "a" * 64}
         changed_context = {**context, "code_sha256": "b" * 64}
         assert content_run_key(context) != content_run_key(changed_context)
 
-        original_input = json.loads(DEFAULT_INPUT_PATH.read_text(encoding="utf-8"))
-        original_expected = json.loads(DEFAULT_EXPECTED_PATH.read_text(encoding="utf-8"))
         for version, failure_point in (("failure-inputs-v1", "inputs"), ("failure-compute-v1", "compute")):
             changed_input = copy.deepcopy(original_input)
             changed_input["fixture_version"] = version
@@ -161,9 +240,9 @@ def audit() -> dict[str, object]:
 
         final_state = database_state(database_a)
         assert final_state["integrity_check"] == "ok"
-        assert final_state["counts"]["calculation_attempts"] == 4
-        assert final_state["counts"]["fixture_snapshots"] == 3
-        assert final_state["counts"]["ledger_events"] == 27
+        assert final_state["counts"]["calculation_attempts"] == 6
+        assert final_state["counts"]["fixture_snapshots"] == 4
+        assert final_state["counts"]["ledger_events"] == 36
         assert final_state["counts"]["schema_migrations"] == 1
         assert all(value >= 0 for value in first["timings_ms"].values())
 
@@ -172,6 +251,7 @@ def audit() -> dict[str, object]:
             "scope": "one frozen synthetic nine-event fixture; no investor result",
             "clean_migrations_and_repeatability": "PASS",
             "canonical_snapshot_and_run_identity": "PASS",
+            "changed_input_config_and_code_identity": "PASS",
             "exact_output_parity_across_runs_and_clean_databases": "PASS",
             "expected_golden_values": {
                 "gross_terminal_wealth_inr": "2433",
@@ -179,6 +259,7 @@ def audit() -> dict[str, object]:
                 "net_accessible_fixture_wealth_inr": "2109.4360",
             },
             "failed_run_atomicity": "PASS; complete inputs retained, failed attempts have no result payload",
+            "timing_persistence": "PASS; pre-commit timing is stored, post-commit duration is returned to the caller",
             "database_integrity": "PASS",
             "timing_stages_ms": first["timings_ms"],
             "investment_authorization": "NO-GO",
