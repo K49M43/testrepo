@@ -76,6 +76,13 @@ def _load_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def _portable_text_sha256(raw: bytes) -> str:
+    """Hash tracked UTF-8 text consistently across LF and CRLF checkouts."""
+    text = raw.decode("utf-8")
+    canonical = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
+
+
 def _check_hash_reference(reference: dict[str, Any], label: str) -> None:
     relative = reference.get("path")
     expected = reference.get("sha256")
@@ -84,8 +91,10 @@ def _check_hash_reference(reference: dict[str, Any], label: str) -> None:
     resolved = (ROOT / relative).resolve()
     _require(resolved.is_relative_to(ROOT), f"{label} path escapes the repository")
     _require(resolved.is_file(), f"{label} reference file is missing: {relative}")
-    actual = hashlib.sha256(resolved.read_bytes()).hexdigest()
-    _require(actual == expected, f"{label} source hash is stale: {relative}")
+    _require(resolved.suffix.lower() in {".json", ".csv", ".md", ".py", ".yml", ".yaml"},
+             f"{label} reference is not a supported tracked-text format")
+    actual = _portable_text_sha256(resolved.read_bytes())
+    _require(actual == expected, f"{label} normalized UTF-8/LF SHA-256 is stale: {relative}")
 
 
 def _validate_typed_value(field: dict[str, Any]) -> None:
@@ -262,7 +271,7 @@ def audit() -> dict[str, Any]:
         "required_policy_dimensions": len(contract["required_policy_dimensions"]),
         "negative_cases_rejected": negative_cases,
         "json_schema_2020_12": "PASS; schema validates and validates the contract instance",
-        "source_hashes": "PASS; mandate and frozen cashflow fixture match pinned SHA-256",
+        "source_hashes": "PASS; normalized UTF-8/LF hashes match mandate and cashflow fixture",
         "unresolved_investor_inputs_preserved": "PASS; reserve, dates, exit, product limits, and drawdown tolerance are not imputed",
         "g2_g3_dependencies": "PASS; pending contracts remain blocked pending acceptance",
         "investment_authorization": contract["investment_authorization"],

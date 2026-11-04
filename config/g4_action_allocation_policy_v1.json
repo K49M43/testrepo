@@ -6,7 +6,7 @@
   "investment_authorization": "NO_GO",
   "mandate_reference": {
     "path": "config/investment_mandate_2036.json",
-    "sha256": "e2c7ea9718cf67345741220dd2d16589f03b96bbdac809b96024ca8f1893263f"
+    "sha256": "0fc87c3ef238b2c4fde65acd52b42b90274af4740de36b7c98f08db30892032c"
   },
   "upstream_contracts": {
     "g3_outcome_contract": {
@@ -26,7 +26,7 @@
     "cashflow_fixture": {
       "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
       "status": "RESEARCH_FIXTURE_ONLY",
-      "sha256": "dd4ae98bf0c66ca779a0c2aa655e536bb7655d7591132a0871e460baa8f85618"
+      "sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
     }
   },
   "field_status_definitions": {
@@ -108,7 +108,10 @@
     {
       "field_id": "contributions.timing_convention",
       "data_type": "enum",
-      "allowed_values": ["BEGINNING_OF_MONTH", "END_OF_MONTH"],
+      "allowed_values": [
+        "BEGINNING_OF_MONTH",
+        "END_OF_MONTH"
+      ],
       "unit": "payment_timing",
       "value": "END_OF_MONTH",
       "status": "ANALYST_PROPOSED",
@@ -226,7 +229,11 @@
     {
       "field_id": "income_and_coupon_handling",
       "data_type": "enum",
-      "allowed_values": ["REINVEST_AFTER_TAX", "HOLD_AS_CASH", "WITHDRAW"],
+      "allowed_values": [
+        "REINVEST_AFTER_TAX",
+        "HOLD_AS_CASH",
+        "WITHDRAW"
+      ],
       "unit": "distribution_policy",
       "value": "REINVEST_AFTER_TAX",
       "status": "MANDATE_DERIVED",
@@ -238,7 +245,11 @@
     {
       "field_id": "policy.initial_deployment_rule",
       "data_type": "enum",
-      "allowed_values": ["LUMP_SUM", "STAGED", "CONDITIONAL"],
+      "allowed_values": [
+        "LUMP_SUM",
+        "STAGED",
+        "CONDITIONAL"
+      ],
       "unit": "deployment_policy",
       "value": null,
       "status": "DEPENDENCY_BLOCKED",
