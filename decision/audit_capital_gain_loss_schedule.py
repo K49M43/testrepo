@@ -37,7 +37,7 @@ def audit() -> dict[str, object]:
     allocations = [
         Offset("l-current-st", "g-st", D("30")),
         Offset("l-current-st", "g-lt", D("50")),
-        Offset("l-current-lt", "g-lt", D("40")),
+        Offset("l-current-lt", "g-lt", D("50")),
     ]
     result = build_schedule("2026-27", gains, losses, allocations)
     assert result.gross_gains_by_bucket == {
@@ -45,9 +45,9 @@ def audit() -> dict[str, object]:
         "section197": D("0"), "section198": D("120"),
     }
     assert result.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("70")
-    assert result.candidate_gains_after_explicit_offsets_by_bucket["section198"] == D("30")
+    assert result.candidate_gains_after_explicit_offsets_by_bucket["section198"] == D("20")
     assert result.tax_application_allowed is True
-    assert result.unallocated_losses == {"l-current-lt": D("10")}
+    assert result.unallocated_losses == {}
     assert result.carryforward_losses == {}
     assert result.offset_trace[0]["loss_event_id"] == "event-l-current-st"
     assert result.offset_trace[0]["gain_event_id"] == "event-g-st"
@@ -66,10 +66,10 @@ def audit() -> dict[str, object]:
     carried_st = Loss("carry-st", "event-carry-st", "lot-carry-st", "2026-27", D("10"), "short", True, "fixture:return-263-1")
     carried_lt = Loss("carry-lt", "event-carry-lt", "lot-carry-lt", "2026-27", D("10"), "long", True, "fixture:return-263-1")
     carry_result = build_schedule("2026-27", gains, [carried_st, carried_lt],
-                                  [Offset("carry-st", "g-st", D("5")),
-                                   Offset("carry-lt", "g-lt", D("5"))])
-    assert carry_result.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("95")
-    assert carry_result.candidate_gains_after_explicit_offsets_by_bucket["section198"] == D("115")
+                                  [Offset("carry-st", "g-st", D("10")),
+                                   Offset("carry-lt", "g-lt", D("10"))])
+    assert carry_result.candidate_gains_after_explicit_offsets_by_bucket["section196"] == D("90")
+    assert carry_result.candidate_gains_after_explicit_offsets_by_bucket["section198"] == D("110")
 
     rejects(lambda: build_schedule("2035-36", [],
                                    [Loss("late", "event-late", "lot-late", "2026-27", D("1"), "short", True,
@@ -102,8 +102,14 @@ def audit() -> dict[str, object]:
     rejects(lambda: build_schedule("2035-36", [], [year8_loss], []),
             "not eligible for carry-forward")
 
-    # Empty allocation schedule cannot silently net gains or erase losses.
-    untouched = build_schedule("2026-27", gains, losses, [])
+    # Compatible gains cannot pass tax application with eligible losses left
+    # unallocated. Residual losses are allowed when no compatible gains remain.
+    rejects(lambda: build_schedule("2026-27", gains, losses, []),
+            "explicit offsets must apply the required set-off")
+    long_loss_against_short_gain = build_schedule("2026-27", [gains[0]], [losses[1]], [])
+    assert long_loss_against_short_gain.tax_application_allowed is True
+    assert long_loss_against_short_gain.unallocated_losses == {"l-current-lt": D("50")}
+    untouched = build_schedule("2026-27", [], losses, [])
     assert untouched.candidate_gains_after_explicit_offsets_by_bucket == untouched.gross_gains_by_bucket
     assert untouched.unallocated_losses == {"l-current-st": D("80"), "l-current-lt": D("50")}
 

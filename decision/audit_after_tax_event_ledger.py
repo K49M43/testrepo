@@ -231,12 +231,23 @@ def audit() -> dict[str, object]:
     assert candidate["tax_application_allowed"] is True
     assert D(loss_result.tax_years["2026-27"]["total_tax_before_credits"]) == D("2.0800")
     assert not any(row["event_id"] == "loss-sale" for row in loss_result.tax_event_trace)
+    gain_only_events = [item for item in loss_events if item.event_id not in {"loss-buy", "loss-sale"}]
     gross_gain_result = run_ledger(
-        loss_events, {"loss-lot": D("100")},
+        gain_only_events, {},
         external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("500000"))},
     )
     assert gross_gain_result.incremental_portfolio_tax_inr == D("4.1600")
     assert loss_result.incremental_portfolio_tax_inr == gross_gain_result.incremental_portfolio_tax_inr / 2
+
+    try:
+        run_ledger(
+            loss_events, {"loss-lot": D("100")},
+            external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("500000"))},
+        )
+    except ValueError as error:
+        assert "explicit offsets must apply the required set-off" in str(error)
+    else:
+        raise AssertionError("compatible capital loss and gain must not pass without mandatory offset")
 
     try:
         run_ledger(
@@ -276,8 +287,10 @@ def audit() -> dict[str, object]:
     assert s76_schedule["candidate_gains_after_explicit_offsets_by_bucket"]["section76"] == "10"
     assert s76_net_result.tax_years["2026-27"]["portfolio_income"]["ordinary"] == "20"
     assert D(s76_net_result.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("10.40000")
+    s76_gain_only = [item for item in section76_events
+                     if item.event_id not in {"s76-loss-buy", "s76-loss-sale"}]
     s76_gross_result = run_ledger(
-        section76_events, {}, external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("1200000"))},
+        s76_gain_only, {}, external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("1200000"))},
     )
     assert s76_gross_result.incremental_portfolio_tax_inr == D("20.80000")
 
@@ -308,8 +321,10 @@ def audit() -> dict[str, object]:
     assert s198_schedule["offsets_by_bucket"]["section198"] == "10000"
     assert s198_schedule["candidate_gains_after_explicit_offsets_by_bucket"]["section198"] == "190000"
     assert D(s198_net_result.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("8450.00000")
+    s198_gain_only = [item for item in section198_events
+                      if item.event_id not in {"s198-loss-buy", "s198-loss-sale"}]
     s198_gross_result = run_ledger(
-        section198_events, {}, external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("3000000"))},
+        s198_gain_only, {}, external_tax_inputs={"2026-27": TaxInput(ordinary_income=D("3000000"))},
     )
     assert D(s198_gross_result.tax_years["2026-27"]["incremental_portfolio_tax"]) == D("9750.00000")
 
