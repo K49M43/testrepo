@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "record_id": "g4-qcsae-2026-11-04-v1",
+  "as_of": "2026-11-04",
+  "claim": {
+    "statement": "G4 roadmap delivery is complete for the bounded policy-definition and G2 SQLite v1 integration scope.",
+    "disposition": "PASS_WITH_BOUNDED_SCOPE",
+    "not_claimed": [
+      "investment decision Gate G4 passed",
+      "any policy is investor-approved, suitable, or implementable",
+      "return, tax, fee, inflation, risk probability, or goal-success result"
+    ]
+  },
+  "strongest_counter_case": "None of the three allocation vectors is investor-confirmed. Reserve, actual dates, exit choice, drawdown tolerance, account/product constraints, G3 outcome semantics, and G5 eligibility are unresolved or blocked. Correct arithmetic does not establish useful or feasible investment outcomes.",
+  "falsification_checks": [
+    {
+      "check": "Independent policy contract hashes, cross-reference, and schema-validity",
+      "result": "PASS"
+    },
+    {
+      "check": "Exact Decimal contribution schedule and 120/122 payment gross totals",
+      "result": "PASS"
+    },
+    {
+      "check": "Three unique allocation vectors reconcile all sleeves to 100 percent and preserve unknowns",
+      "result": "PASS"
+    },
+    {
+      "check": "Nine malformed/unsafe negative cases reject",
+      "result": "PASS"
+    },
+    {
+      "check": "Three SQLite v1 runs reconcile and run identities recompute independently",
+      "result": "PASS"
+    },
+    {
+      "check": "Investment decision Gate G4 and authorization",
+      "result": "BLOCKED / NO_GO"
+    }
+  ],
+  "evidence": [
+    "decision/audit_g4_independent_disposition.py",
+    "decision/g4_allocation_database_adapter.py",
+    "decision/audit_g4_allocation_database_adapter.py",
+    "config/g4_action_allocation_policy_v1.json",
+    "config/g4_allocation_policy_cases_v1.json",
+    "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+    "G2 SQLite migration v1 and per-run manifests",
+    "research/stage512/2026-11-04/g4_independent_disposition_v1.json"
+  ],
+  "scope": {
+    "included": [
+      "G4.1 action-policy contract",
+      "G4.2 three research-only allocation cases and zero-return cash control",
+      "G4.3 database adapter integration with accepted G2 schema v1",
+      "independent arithmetic, invariant, negative-case, content-hash, and run-identity review"
+    ],
+    "excluded": [
+      "security eligibility, point-in-time tradability, price/NAV history qualification",
+      "return estimation, tax, costs, inflation, portfolio risk, uncertainty, probability, or ranking",
+      "investor confirmation, suitability, trade instructions, or authorization"
+    ]
+  },
+  "invalidation_triggers": [
+    "Any source fixture, policy contract, schema, G2 migration, adapter, or run manifest changes without the audit and evidence being regenerated.",
+    "Any investor confirmation changes reserve, dates, contribution timing, exit, allocation, or account constraints.",
+    "G3 changes the success/shortfall event or terminal exit semantics.",
+    "G5 identifies product, identifier, trading, tax, cost, or data-convention evidence that makes a policy assumption invalid.",
+    "Independent re-execution fails a listed invariant or cannot reproduce run identities."
+  ],
+  "downstream_dependencies": {
+    "next_closure": "Accept G3 issue #18 / draft PR #19 after independent review.",
+    "next_candidate_work": "G5 instrument and evidence register with G0/G3 dependencies explicit.",
+    "blocked": "Deterministic investment-outcome comparison until accepted G3 semantics and qualified G5 evidence are available."
+  },
+  "investment_authorization": "NO_GO"
+}

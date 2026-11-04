@@ -5,7 +5,8 @@ from __future__ import annotations
 import copy
 import json
 import sqlite3
-import tempfile
+import uuid
+from contextlib import closing
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -28,7 +29,7 @@ def _expect_rejected(action: Any, label: str) -> None:
 
 
 def _attempts(database: Path) -> list[sqlite3.Row]:
-    with g2.connect_database(database) as conn:
+    with closing(g2.connect_database(database)) as conn:
         return conn.execute(
             "SELECT status, output_json, output_sha256 FROM calculation_attempts ORDER BY started_at_utc, attempt_id"
         ).fetchall()
@@ -64,13 +65,15 @@ def audit() -> dict[str, Any]:
     bad_case = copy.deepcopy(cases[0])
     bad_case["investment_decision_status"] = "APPROVED"
     _expect_rejected(lambda: calculate_allocation_arithmetic(inputs, bad_case), "approved case")
-    _expect_rejected(lambda: run_policy_case(Path(tempfile.gettempdir()) / "unused.sqlite", "unknown"),
+    _expect_rejected(lambda: run_policy_case(ROOT / ".g43-unknown-case-unused.sqlite", "unknown"),
                       "unknown policy id")
 
-    with tempfile.TemporaryDirectory(prefix="g43-audit-") as temp_dir:
-        folder = Path(temp_dir)
-        database_a = folder / "same-database.sqlite"
-        database_b = folder / "clean-database.sqlite"
+    token = uuid.uuid4().hex
+    database_a = ROOT / f".g43-audit-{token}-same.sqlite"
+    database_b = ROOT / f".g43-audit-{token}-clean.sqlite"
+    failure_databases = [ROOT / f".g43-audit-{token}-failure-{point}.sqlite" for point in ("inputs", "compute")]
+    audit_databases = [database_a, database_b, *failure_databases]
+    try:
         source_hashes_before = {key: source.sha256 for key, source in inputs.source_texts.items()}
 
         first = run_policy_case(database_a, _require_ids[0], inputs=inputs)
@@ -125,8 +128,7 @@ def audit() -> dict[str, Any]:
         if g2.content_run_key(changed_config_identity) == first["run_key_sha256"]:
             raise AssertionError("material policy-contract change did not change the run key")
 
-        for point in ("inputs", "compute"):
-            failed_db = folder / f"failure-{point}.sqlite"
+        for point, failed_db in zip(("inputs", "compute"), failure_databases, strict=True):
             _expect_rejected(
                 lambda p=point, db=failed_db: run_policy_case(
                     db, _require_ids[0], inject_failure_after=p, inputs=inputs
@@ -142,7 +144,7 @@ def audit() -> dict[str, Any]:
         for key, source in inputs.source_texts.items():
             if g2.normalized_text_sha256(source.path) != source_hashes_before[key]:
                 raise AssertionError(f"source artifact was modified during run: {source.path}")
-        with g2.connect_database(database_a) as conn:
+        with closing(g2.connect_database(database_a)) as conn:
             version = conn.execute("PRAGMA user_version").fetchone()[0]
             migration_count = conn.execute("SELECT COUNT(*) FROM schema_migrations").fetchone()[0]
             integrity = conn.execute("PRAGMA integrity_check").fetchone()[0]
@@ -151,6 +153,11 @@ def audit() -> dict[str, Any]:
             ).fetchone()[0]
         if version != 1 or migration_count != 1 or integrity != "ok" or complete_count != 4:
             raise AssertionError("G2 schema, transaction, or SQLite integrity acceptance failed")
+    finally:
+        for database in audit_databases:
+            database.unlink(missing_ok=True)
+            Path(f"{database}-wal").unlink(missing_ok=True)
+            Path(f"{database}-shm").unlink(missing_ok=True)
 
     return {
         "audit": "PASS",

@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import uuid
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -405,12 +406,11 @@ def run_policy_case(database_path: Path, case_id: str, *,
     # Use the exact source bytes loaded and hashed above, through a private
     # transient fixture pair. G2 reads each snapshot file once; source evidence
     # remains untouched and is only linked by path/hash.
-    import tempfile
-
-    with tempfile.TemporaryDirectory(prefix="g43-snapshot-") as directory:
-        temp_root = Path(directory)
-        input_path = temp_root / "input.json"
-        expected_path = temp_root / "expected.json"
+    database_path.parent.mkdir(parents=True, exist_ok=True)
+    token = uuid.uuid4().hex
+    input_path = database_path.parent / f".{database_path.name}.{token}.input.json"
+    expected_path = database_path.parent / f".{database_path.name}.{token}.expected.json"
+    try:
         input_path.write_text(inputs.source_texts["g2_input"].text, encoding="utf-8", newline="\n")
         expected_path.write_text(inputs.source_texts["g2_expected"].text, encoding="utf-8", newline="\n")
         return g2.execute_pilot(
@@ -422,6 +422,9 @@ def run_policy_case(database_path: Path, case_id: str, *,
             run_context_extension=context,
             result_calculator=calculate_from_persisted_snapshot,
         )
+    finally:
+        input_path.unlink(missing_ok=True)
+        expected_path.unlink(missing_ok=True)
 
 
 def run_all(database_path: Path) -> list[dict[str, Any]]:
