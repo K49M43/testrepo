@@ -40,12 +40,12 @@ Primary sources: [Income-tax Act, 2025 (official Income Tax Department PDF)](htt
 - `python decision/audit_terminal_case_reconciliation.py` — PASS; six synthetic cases and 120/122 month contribution totals reconcile.
 - `python decision/audit_terminal_case_reconciliation.py --check` — PASS; committed terminal artifact matches regeneration.
 
-These are software and arithmetic checks. They do not replace the Act text or establish investor-specific facts. The four listed GitHub Actions checks passed on earlier PR #12 head `b2943707c3367c49a4efc73f3642a97f3f5ab72f`; they do not verify the current uncommitted implementation update. PR #12 remains draft and unmerged.
+These are software and arithmetic checks. They do not replace the Act text or establish investor-specific facts. The implementation and hand-reconciliation audit were pushed to PR #12 head `06c077a242a222489cca91c76579268e266ccee8`. Its source/cashflow PR run [41777179259](https://github.com/K49M43/testrepo/actions/runs/41777179259), tax/ledger push run [41777173912](https://github.com/K49M43/testrepo/actions/runs/41777173912), and tax/ledger PR run [41777179227](https://github.com/K49M43/testrepo/actions/runs/41777179227) all passed. PR #12 remains draft and unmerged with no review decision.
 
 ## Required next gates
 
 1. Retain fail-closed behavior for pre-2026 transition losses and untraced outside gains; add those only as separately specified features with source evidence and tests.
 2. Confirm applicable TY 2026–27 return forms/instructions and security-level facts before producing any investor-specific estimate.
-3. Publish the current implementation, run and verify the complete GitHub Actions suite on that exact PR head, complete PR review, and merge the PR. The bounded independent reconciliation is complete; Sprint 1 delivery remains open until this remote acceptance gate closes.
+3. Complete PR review and merge the PR. The bounded independent reconciliation and exact-head CI are complete; Sprint 1 delivery remains open until review and merge.
 
 No investor-specific tax result is qualified. Investment authorization remains **NO-GO**.
