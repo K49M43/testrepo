@@ -1,0 +1,49 @@
+name: Sprint 1 source and cashflow audits
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sprint1-source-audits.yml'
+      - 'research/stage512/2026-11-02/audit_cpi_linked_series.py'
+      - 'research/stage512/2026-11-02/audit_cpi_esankhyiki_back_capture.py'
+      - 'research/stage512/2026-11-02/audit_cpi_pib_sep2026_annexure_iv.py'
+      - 'research/stage512/2026-11-02/reconcile_after_tax_input_contract.py'
+      - 'research/stage512/2026-11-02/stage512_cpi_official_linked_2013_2026.csv'
+      - 'research/stage512/2026-11-02/cpi_mospi_esankhyiki_back_combined_ui_capture.csv'
+      - 'research/stage512/2026-11-02/cpi_pib_sep2026_annexure_iv_capture.csv'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+  push:
+    paths:
+      - '.github/workflows/sprint1-source-audits.yml'
+      - 'research/stage512/2026-11-02/audit_cpi_linked_series.py'
+      - 'research/stage512/2026-11-02/audit_cpi_esankhyiki_back_capture.py'
+      - 'research/stage512/2026-11-02/audit_cpi_pib_sep2026_annexure_iv.py'
+      - 'research/stage512/2026-11-02/reconcile_after_tax_input_contract.py'
+      - 'research/stage512/2026-11-02/stage512_cpi_official_linked_2013_2026.csv'
+      - 'research/stage512/2026-11-02/cpi_mospi_esankhyiki_back_combined_ui_capture.csv'
+      - 'research/stage512/2026-11-02/cpi_pib_sep2026_annexure_iv_capture.csv'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-02/after_tax_ledger_input_contract.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-cashflow-audits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile CPI series structure and derived rates
+        run: python research/stage512/2026-11-02/audit_cpi_linked_series.py
+      - name: Compare historical CPI back-series to MoSPI capture
+        run: python research/stage512/2026-11-02/audit_cpi_esankhyiki_back_capture.py
+      - name: Compare current CPI series to PIB Annexure IV capture
+        run: python research/stage512/2026-11-02/audit_cpi_pib_sep2026_annexure_iv.py
+      - name: Reconcile 120 and 122 month input fixtures
+        run: python research/stage512/2026-11-02/reconcile_after_tax_input_contract.py
