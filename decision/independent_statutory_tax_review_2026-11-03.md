@@ -40,12 +40,12 @@ Primary sources: [Income-tax Act, 2025 (official Income Tax Department PDF)](htt
 - `python decision/audit_terminal_case_reconciliation.py` — PASS; six synthetic cases and 120/122 month contribution totals reconcile.
 - `python decision/audit_terminal_case_reconciliation.py --check` — PASS; committed terminal artifact matches regeneration.
 
-These are software and arithmetic checks. They do not replace the Act text or establish investor-specific facts. The implementation and hand-reconciliation audit were pushed to PR #12 head `06c077a242a222489cca91c76579268e266ccee8`. Its source/cashflow PR run [41777179259](https://github.com/K49M43/testrepo/actions/runs/41777179259), tax/ledger push run [41777173912](https://github.com/K49M43/testrepo/actions/runs/41777173912), and tax/ledger PR run [41777179227](https://github.com/K49M43/testrepo/actions/runs/41777179227) all passed. PR #12 remains draft and unmerged with no review decision.
+These are software and arithmetic checks. They do not replace the Act text or establish investor-specific facts. PR #11 merged to `main` as `6f74c7650997074a8abd03c922e26964ae33f03a`; PR #12 merged as `92d0b343813204044618bec3bc5b0e7f4e7326e9` on 4 November 2026. All four PR-head checks passed on `f627f45cfcb6e63d81c8178e7045f45fc1389387`; both post-merge Actions workflows also passed on the merge commit ([41779493950](https://github.com/K49M43/testrepo/actions/runs/41779493950), [41779494260](https://github.com/K49M43/testrepo/actions/runs/41779494260)). GitHub records no review decision on either PR; the merges followed the investor's explicit closeout direction.
 
 ## Required next gates
 
 1. Retain fail-closed behavior for pre-2026 transition losses and untraced outside gains; add those only as separately specified features with source evidence and tests.
 2. Confirm applicable TY 2026–27 return forms/instructions and security-level facts before producing any investor-specific estimate.
-3. Complete PR review and merge the PR. The bounded independent reconciliation and exact-head CI are complete; Sprint 1 delivery remains open until review and merge.
+3. Sprint 1 delivery is complete for the bounded synthetic scope. Confirm taxpayer inputs, security eligibility, transaction records, and CPI dates before any personal tax or real-wealth estimate.
 
 No investor-specific tax result is qualified. Investment authorization remains **NO-GO**.
