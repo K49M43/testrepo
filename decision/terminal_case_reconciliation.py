@@ -252,8 +252,11 @@ def reconcile() -> dict[str, Any]:
         "run_manifest": {
             "rule_vintage": "Act 2025 / Finance Act 2026 component mapping as recorded in tax_rules_asof.md; TY 2026-27 calculator held constant",
             "contract_version": "1.3",
+            "source_hash_normalization": "UTF-8 text normalized to LF before SHA-256",
             "source_sha256": {
-                relative: hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+                relative: hashlib.sha256(
+                    (ROOT / relative).read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+                ).hexdigest()
                 for relative in manifest_paths
             },
         },

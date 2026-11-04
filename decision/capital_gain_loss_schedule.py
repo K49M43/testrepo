@@ -3,8 +3,9 @@
 This module validates explicit allocation arithmetic and the character
 restrictions in sections 108, 111 and 121 of the Income-tax Act, 2025. It does
 not choose an allocation priority or establish asset character. Once those
-facts and every offset are supplied and validated, the resulting net buckets
-may be passed to the bounded tax component.
+facts and explicit offsets are supplied, offsets are validated, and no
+compatible gain/loss pair remains unresolved, the resulting net buckets may
+be passed to the bounded tax component.
 """
 
 from __future__ import annotations
@@ -179,9 +180,10 @@ def build_schedule(
 ) -> ScheduleResult:
     """Validate caller-selected offsets and return traceable net gain buckets.
 
-    No allocation is inferred. Every offset must be supplied and must satisfy
-    the statutory holding-period compatibility. Carried losses must have a
-    timely section 263(1) return and be used within eight succeeding years.
+    No allocation priority is inferred. Every supplied offset must satisfy
+    statutory holding-period compatibility, and eligible losses must be used
+    to the extent compatible gains remain. Carried losses require a timely
+    section 263(1) return and must be used within eight succeeding years.
     """
     year = _tax_year_start(tax_year)
     if year < 2026:
@@ -254,6 +256,33 @@ def build_schedule(
                             "loss_event_id": loss.source_event_id, "loss_lot_id": loss.lot_id,
                             "gain_event_id": gain.source_event_id, "gain_lot_id": gain.lot_id,
                             "amount_inr": str(amount), "tax_bucket": gain.tax_bucket})
+
+    # Sections 108(2) and 111 require eligible current-year and carried
+    # capital losses to be set off against compatible gains. Explicit
+    # allocations may choose among eligible buckets, but may not leave a
+    # compatible gain/loss pair outstanding and still authorize tax use.
+    remaining_short_gains = sum(
+        (gain.amount_inr - used_by_gain.get(gain_id, ZERO)
+         for gain_id, gain in gain_by_id.items() if gain.character == "short"), ZERO
+    )
+    remaining_long_gains = sum(
+        (gain.amount_inr - used_by_gain.get(gain_id, ZERO)
+         for gain_id, gain in gain_by_id.items() if gain.character == "long"), ZERO
+    )
+    remaining_short_losses = sum(
+        (loss.amount_inr - used_by_loss.get(loss_id, ZERO)
+         for loss_id, loss in loss_by_id.items() if loss.character == "short"), ZERO
+    )
+    remaining_long_losses = sum(
+        (loss.amount_inr - used_by_loss.get(loss_id, ZERO)
+         for loss_id, loss in loss_by_id.items() if loss.character == "long"), ZERO
+    )
+    if ((remaining_short_losses > ZERO and (remaining_short_gains > ZERO or remaining_long_gains > ZERO))
+            or (remaining_long_losses > ZERO and remaining_long_gains > ZERO)):
+        raise ValueError(
+            "eligible capital losses remain while compatible gains remain; "
+            "explicit offsets must apply the required set-off before tax application"
+        )
 
     buckets = ("section76", "section196", "section197", "section198")
     gross = {bucket: sum((g.amount_inr for g in gain_by_id.values() if g.tax_bucket == bucket), ZERO)

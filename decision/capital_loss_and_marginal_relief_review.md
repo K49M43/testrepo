@@ -3,6 +3,8 @@
 **Reviewed:** 3 November 2026  
 **Scope:** TY 2026–27 resident-individual component model; research specification only. No personal tax result is qualified.
 
+**Implementation status update — 4 November 2026:** the schedule described below has since been integrated with the bounded synthetic tax path. Eligible losses must be allocated against compatible gains to the extent available; an unresolved compatible pair now blocks tax application. The unresolved rate-bucket allocation policy remains explicit and caller supplied. This update supersedes the earlier statements below that the schedule was candidate-only or that no loss could reach the calculator. No investor-specific tax result is qualified.
+
 ## Capital losses — statutory rules established
 
 The official Income-tax Act, 2025 distinguishes loss netting in the same year from carry-forward:
@@ -39,7 +41,7 @@ Compatibility invariants for that change:
 - External-only taxpayer tax remains a separate calculation; portfolio incremental tax is still full-tax-with-portfolio minus external-only tax.
 - The calculation does not choose an offset priority when law leaves a choice. It requires an explicit, auditable policy (or produces a clearly labeled sensitivity range once that range algorithm is independently validated).
 
-The isolated schedule is implemented in `decision/capital_gain_loss_schedule.py` and audited by `decision/audit_capital_gain_loss_schedule.py`. Its trace adapter consumes the event ledger's gain and loss disposal records while excluding coupon/dividend rows. It accepts only source-linked, caller-selected offsets; validates same-year/carry-forward character, gain/loss caps, the eight-year window, and a declared section 263(1) return evidence reference; then returns separate gross, explicit-offset, candidate remaining-gain, and residual balances for each rate bucket. Its result explicitly sets `tax_application_allowed=false`. The main ledger does not yet invoke the adapter, and annual tax components do not consume its result. It does not select a priority, infer gain character, qualify tax inputs, or support pre-2026 transition losses. The integration gate remains closed until an independently reviewed allocation worked case establishes how offsets should be attributed among differently taxed gain buckets. The existing no-loss tax path and terminal-case builder remain untouched.
+The schedule is implemented in `decision/capital_gain_loss_schedule.py` and audited by `decision/audit_capital_gain_loss_schedule.py`. Its trace adapter consumes the event ledger's gain and loss disposal records while excluding coupon/dividend rows. It validates source-linked allocations, same-year/carry-forward character, gain/loss caps, the eight-year window, and declared section 263(1) return evidence. Any compatible gain/loss amount left unmatched causes rejection. Once remaining losses have no compatible gains, the validated net buckets flow into bounded taxpayer-year tax; the result still does not select an allocation priority, infer gain character, qualify external tax inputs, or support pre-2026 transition losses. Tax-rate-sensitive allocation among legally compatible buckets remains a separate modeling/legal question.
 
 ## Required loss-engine acceptance cases
 
@@ -79,7 +81,7 @@ These cases intentionally do not calculate tax. For each question, record the st
 4. The implementation validates the return and determination evidence needed for section 121 and the section 536 transition for legacy losses.
 5. One independent hand calculation covers the full tax year with external income, portfolio gains, portfolio losses, credits, and a full-tax versus external-only comparison.
 
-Until those five checks are signed off, the next implementation gate may validate arithmetic and candidate schedules but must not feed losses into the tax calculator.
+These cases remain a review matrix for unresolved allocation-order and section 76/198 questions. Explicitly selected, fully netted allocations can support bounded synthetic mechanics, but unresolved statutory interpretation and personal facts still block investor-specific tax use.
 
 ## Mixed special-income surcharge marginal relief — source review
 

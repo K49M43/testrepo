@@ -4,8 +4,9 @@
   "run_manifest": {
     "rule_vintage": "Act 2025 / Finance Act 2026 component mapping as recorded in tax_rules_asof.md; TY 2026-27 calculator held constant",
     "contract_version": "1.3",
+    "source_hash_normalization": "UTF-8 text normalized to LF before SHA-256",
     "source_sha256": {
-      "decision/terminal_case_reconciliation.py": "bb13cf479000d7b009ec00b84fe4433b042a293661873fd400a697795c5a0a44",
+      "decision/terminal_case_reconciliation.py": "ad217c7e916c7a4373e736192c1cc905d699ef96bc68c2a5ebfe526a0b365c31",
       "decision/audit_terminal_case_reconciliation.py": "adf25c9902b65f8cb673d9892ac12278d8474cd0059ad91944b136d2a9c99025",
       "decision/after_tax_event_ledger.py": "a6f16393612e270f0cb1f563c1fa4eeba7351347af0951bd7f4690aa2aef579b",
       "decision/ty2026_27_tax_components.py": "476a071003f78856c6a2b16e1bd776a479b194981139190dc85d9eff3b6beffa",
