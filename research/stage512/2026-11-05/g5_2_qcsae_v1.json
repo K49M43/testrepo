@@ -4,7 +4,7 @@
   "as_of": "2026-11-05",
   "claim": "This version identifies evidence-backed candidate hypotheses and describes point-in-time product exposures sufficiently to support later deterministic comparison without conflating benchmarks, direct bonds, fund NAVs, ETF traded prices, bullion and cash rolling policies.",
   "strongest_counter_case": "Only a narrow set of actual products is represented; gold/silver snapshots are stale, one equity weight per fund is suppressed, and direct sovereign availability/platform access is unknown. The register may create false completeness if used as selection or suitability evidence.",
-  "current_disposition": "PASS_BOUNDED_REGISTER_AND_SOURCE_IDENTITY; BLOCKED_FOR_CONTINUOUS_METAL_NAV_HISTORY,CURRENT_METAL_HOLDINGS,TAX,EXECUTION,INVESTOR_ACCESS; NO_RECOMMENDATION",
+  "current_disposition": "PASS_BOUNDED_REGISTER_AFTER_G5_3_FEE_CORRECTION; BLOCKED_FOR_10_PLUS_UNIVERSE_AND_CURRENT_EXECUTION; NO_RECOMMENDATION",
   "scope": "Candidate identity, dated source holdings, same-date equity holdings overlap and concentration; no forecasts, optimization, probability, or investment authorization.",
   "falsification_tests": [
     {
@@ -41,6 +41,11 @@
       "test": "Verify ICICI gold/silver stable identifiers, allotment dates and AMFI data-window metadata directly against first-party artifacts.",
       "result": "Factsheet identity/date assertions are now encoded in the audit; AMFI sample observations have exact row dates and manifest retrieval events; TER export uses the Actions-log acquisition interval and source-response hash.",
       "status": "PASS_AFTER_UPDATED_AUDIT; TER HTTP completion is interval-bounded, not point-timestamped"
+    },
+    {
+      "test": "Reconcile Motilal Nifty 500 ETF and Index Fund fee claims to official AMFI Total TER, including brokerage and statutory levies.",
+      "result": "G5.3 detected the previous draft had labeled BER as TER. Corrected the ETF Regular Plan Total TER to 0.39%, and Index Fund Direct/Regular Total TER to 0.23%/0.97% as of 2026-10-30; component sums now reproduce from the official export.",
+      "status": "PASS_AFTER_G5_3_CORRECTION; ORIGINAL_XLSX_NOT_RETAINED"
     }
   ],
   "invalidation_triggers": [
@@ -49,8 +54,9 @@
     "A downstream analysis treats stale holdings as current or substitutes benchmark weights for product holdings.",
     "Investor account/access, suitability, tax law or execution assumptions differ from this record.",
     "A proxy is treated as equivalent to a direct sovereign or bullion exposure.",
-    "AMC factsheet or official exchange product record changes the ICICI symbol, ISIN or allotment date."
+    "AMC factsheet or official exchange product record changes the ICICI symbol, ISIN or allotment date.",
+    "An official TER export or later AMFI data revises a published total TER or its component reconciliation."
   ],
-  "next_dependency": "G5.3 independently re-extracts holdings, validates identity/status and correction of 11.8% claim, challenges stale/blocked fields, and records G5 disposition. G6 remains blocked pending G5.3 plus required tax, cashflow and G3 exit gates.",
+  "next_dependency": "G5.3 independently verifies this correction and records G5 disposition. G5 parent remains blocked until a 10+ decision-relevant candidate/strategy screen and source/execution evidence gaps are resolved or explicitly accepted by the gate owner; G6 remains blocked pending G5.3 plus tax, cashflow and G3 exit gates.",
   "investment_authorization": "NO_GO"
 }

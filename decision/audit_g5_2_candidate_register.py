@@ -115,9 +115,27 @@ def main()->int:
  interval=te['retrieval_window_utc']
  require(interval['workflow_run_id']==41284958349 and interval['workflow_url']=='https://github.com/K49M43/testrepo/actions/runs/41284958349' and interval['precision'].startswith('Bounded by the Actions log; exact HTTP response completion timestamp was not recorded.'),'TER acquisition interval overstated or unlinked')
  normalized=loadcsv(ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv')
- for nsdl,expected in [('ICIC/O/O/GET/10/04/0038','0.49'),('ICIC/O/O/OET/21/12/0137','0.4')]:
+ for nsdl,expected in [('ICIC/O/O/GET/10/04/0038','0.49'),('ICIC/O/O/OET/21/12/0137','0.4'),('MOTO/O/O/EET/23/09/0043','0.39'),('MOTO/O/O/EIN/19/06/0014','0.97')]:
   rr=[r for r in normalized if r['NSDL Scheme Code']==nsdl]
-  require(len(rr)==1 and rr[0]['Regular Plan - Total TER (%)']==expected and rr[0]['TER Date']=='46324',f'AMFI official normalized TER row mismatch for {nsdl}')
+  require(len(rr)==1 and rr[0]['Regular Plan - Total TER (%)']==expected and rr[0]['TER Date']=='46324' if nsdl.startswith('ICIC/') else len(rr)==1 and rr[0]['Regular Plan - Total TER (%)']==expected and rr[0]['TER Date']=='46325',f'AMFI official normalized TER row mismatch for {nsdl}')
+ motilal_etf=next(c for c in reg['candidates'] if c['candidate_id']=='MOTILAL_NIFTY500_ETF')
+ motilal_index=next(c for c in reg['candidates'] if c['candidate_id']=='MOTILAL_NIFTY500_INDEX_FUND')
+ etfrow=next(r for r in normalized if r['NSDL Scheme Code']=='MOTO/O/O/EET/23/09/0043')
+ indexrow=next(r for r in normalized if r['NSDL Scheme Code']=='MOTO/O/O/EIN/19/06/0014')
+ require(motilal_etf['fees_tax_liquidity_execution_settlement']['ter_components_pct']['total_ter']==etfrow['Regular Plan - Total TER (%)']=='0.39','Motilal ETF Total TER mismatch')
+ require(motilal_index['fees_tax_liquidity_execution_settlement']['ter_components_pct']['direct']['total_ter']==indexrow['Direct Plan - Total TER (%)']=='0.23','Motilal Index Fund direct Total TER mismatch')
+ require(motilal_index['fees_tax_liquidity_execution_settlement']['ter_components_pct']['regular']['total_ter']==indexrow['Regular Plan - Total TER (%)']=='0.97','Motilal Index Fund regular Total TER mismatch')
+ component_columns={'ber':'Base Expense Ratio (BER) (%)','brokerage':'Brokerage cost (%)','transaction_cost':'Transaction Cost incurred for the purpose of execution of trade (%)','statutory_levies':'Statutory Levies (including GST) (%)'}
+ for plan,row,record in [('Regular',etfrow,motilal_etf['fees_tax_liquidity_execution_settlement']['ter_components_pct']),('Direct',indexrow,motilal_index['fees_tax_liquidity_execution_settlement']['ter_components_pct']['direct']),('Regular',indexrow,motilal_index['fees_tax_liquidity_execution_settlement']['ter_components_pct']['regular'])]:
+  total=float(row[f'{plan} Plan - Total TER (%)'])
+  parts={k:float(row[f'{plan} Plan - {v}']) for k,v in component_columns.items()}
+  require(abs(sum(parts.values())-total)<1e-9,f'AMFI TER component sum mismatch for {plan} plan')
+  require(all(abs(float(record[k])-parts[k])<1e-9 for k in parts),f'registered TER components mismatch for {plan} plan')
+ mapped=[r for r in ter if r['scheme_code']=='147625' and r['ter_date']=='2026-10-30']
+ require(len(mapped)==1 and mapped[0]['nsdl_code']=='MOTO/O/O/EIN/19/06/0014' and mapped[0]['D_TER']=='0.23' and mapped[0]['R_TER']=='0.97' and mapped[0]['TER_TOTAL_MATH_CHECK']=='PASS','AMFI scheme-to-TER map mismatch for Motilal Index Fund')
+ for product,nsdl in [(motilal_etf,'MOTO/O/O/EET/23/09/0043'),(motilal_index,'MOTO/O/O/EIN/19/06/0014')]:
+  ev=next(e for e in product['primary_evidence'] if e.get('nsdl_scheme_code')==nsdl)
+  require(ev['normalized_export_sha256']==sha(ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv') and ev['source_diagnostic_sha256']==sha(ROOT/'research/stage59/amfi_ter_export_diagnostic.json') and ev['raw_export_retained'] is False,'Motilal TER provenance mismatch')
  for isin,code,tervalue in [('INF109KC1NT3','113076','0.49'),('INF109KC1Y56','149464','0.4')]:
   sample=[r for r in amfi if r['isin']==isin and r['source_window']=='latest' and r['date']=='2026-10-30']
   require(len(sample)==1 and sample[0]['source_sha256']=='584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a',f'AMFI latest sample mismatch for {isin}')

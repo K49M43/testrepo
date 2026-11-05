@@ -66,11 +66,21 @@
       },
       "return_convention": "Fund NAV total-return convention requires distribution/reinvestment validation; exchange ETF traded price is separate and not represented by NAV.",
       "fees_tax_liquidity_execution_settlement": {
-        "ter_latest_verified": "0.18% in 2026-09 AMC statement (regular plan; current fee may change)",
+        "ter_latest_verified": "AMFI Regular Plan Total TER 0.39% as of 2026-10-30; BER 0.18% plus brokerage 0.02%, transaction cost 0.00%, statutory levies 0.19%.",
         "tax": null,
         "liquidity": "BLOCKED; traded volume/spread/premium not measured",
         "execution": null,
-        "settlement": null
+        "settlement": null,
+        "ter_components_pct": {
+          "plan": "Regular Plan as published by AMFI",
+          "as_of": "2026-10-30",
+          "ber": "0.18",
+          "brokerage": "0.02",
+          "transaction_cost": "0.00",
+          "statutory_levies": "0.19",
+          "total_ter": "0.39",
+          "reconciliation": "0.18 + 0.02 + 0.00 + 0.19 = 0.39"
+        }
       },
       "primary_evidence": [
         {
@@ -84,6 +94,31 @@
           "content_sha256": "aa2e3ee0d9a698f6741750a4e947dc9b7c9093bf63c8aff5b53d3003bf61d88c",
           "retrieved_at": "2026-11-05T12:28:41+05:30",
           "note": "Official dated holdings workbook preserved in source_raw."
+        },
+        {
+          "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+          "content_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
+          "repository_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
+          "nsdl_scheme_code": "MOTO/O/O/EET/23/09/0043",
+          "as_of": "2026-10-30",
+          "retrieved_at": null,
+          "retrieval_window_utc": {
+            "workflow_run_id": 41284958349,
+            "workflow_url": "https://github.com/K49M43/testrepo/actions/runs/41284958349",
+            "workflow_step": "Download single AMFI official Oct 2026 expense export",
+            "step_invocation_seen_utc": "2026-11-01T07:29:12.8943873Z",
+            "export_processing_completed_utc": "2026-11-01T07:29:40.5144635Z",
+            "precision": "Bounded by the Actions log; exact HTTP response completion timestamp was not recorded."
+          },
+          "source_export_url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true",
+          "source_export_sha256": "ec512c338263e41f3d8c520d764965758817a670edce8e4a92caad26d9fc46b2",
+          "source_export_bytes": 4397825,
+          "source_diagnostic_path": "research/stage59/amfi_ter_export_diagnostic.json",
+          "source_diagnostic_sha256": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297",
+          "normalized_export_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
+          "normalized_export_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
+          "raw_export_retained": false,
+          "note": "AMFI official Total TER source row; total reconciles to BER + brokerage + transaction cost + statutory levies. Original XLSX response bytes were not retained; exact HTTP completion time is unavailable and the Actions-log interval is recorded."
         }
       ],
       "holdings_snapshot": "g5_2_holdings_overlap_v1.json; normalized position CSV listed there.",
@@ -110,11 +145,30 @@
       },
       "return_convention": "Mutual fund NAV; Direct Growth. Benchmark is Nifty 500 TRI. Do not substitute ETF traded-price returns.",
       "fees_tax_liquidity_execution_settlement": {
-        "ter_latest_verified": "0.13% direct plan; 0.79% regular plan in 2026-09 AMC statement",
+        "ter_latest_verified": "AMFI Direct Plan Total TER 0.23% and Regular Plan Total TER 0.97% as of 2026-10-30; quoted direct/regular BER values are 0.13%/0.79%.",
         "tax": null,
         "liquidity": "Redemption dealing terms and exit load not qualified here",
         "execution": null,
-        "settlement": null
+        "settlement": null,
+        "ter_components_pct": {
+          "as_of": "2026-10-30",
+          "direct": {
+            "ber": "0.13",
+            "brokerage": "0.02",
+            "transaction_cost": "0.00",
+            "statutory_levies": "0.08",
+            "total_ter": "0.23",
+            "reconciliation": "0.13 + 0.02 + 0.00 + 0.08 = 0.23"
+          },
+          "regular": {
+            "ber": "0.79",
+            "brokerage": "0.02",
+            "transaction_cost": "0.00",
+            "statutory_levies": "0.16",
+            "total_ter": "0.97",
+            "reconciliation": "0.79 + 0.02 + 0.00 + 0.16 = 0.97"
+          }
+        }
       },
       "primary_evidence": [
         {
@@ -128,6 +182,33 @@
           "content_sha256": "1614a16f1a3ee6d19512f1a31373f4478636c18988d5bc62e721309248b944c0",
           "retrieved_at": "2026-11-05T12:28:41+05:30",
           "note": "Official dated holdings workbook preserved in source_raw."
+        },
+        {
+          "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+          "content_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
+          "repository_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
+          "nsdl_scheme_code": "MOTO/O/O/EIN/19/06/0014",
+          "as_of": "2026-10-30",
+          "retrieved_at": null,
+          "retrieval_window_utc": {
+            "workflow_run_id": 41284958349,
+            "workflow_url": "https://github.com/K49M43/testrepo/actions/runs/41284958349",
+            "workflow_step": "Download single AMFI official Oct 2026 expense export",
+            "step_invocation_seen_utc": "2026-11-01T07:29:12.8943873Z",
+            "export_processing_completed_utc": "2026-11-01T07:29:40.5144635Z",
+            "precision": "Bounded by the Actions log; exact HTTP response completion timestamp was not recorded."
+          },
+          "source_export_url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true",
+          "source_export_sha256": "ec512c338263e41f3d8c520d764965758817a670edce8e4a92caad26d9fc46b2",
+          "source_export_bytes": 4397825,
+          "source_diagnostic_path": "research/stage59/amfi_ter_export_diagnostic.json",
+          "source_diagnostic_sha256": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297",
+          "normalized_export_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
+          "normalized_export_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
+          "raw_export_retained": false,
+          "note": "AMFI official Total TER source row; total reconciles to BER + brokerage + transaction cost + statutory levies. Original XLSX response bytes were not retained; exact HTTP completion time is unavailable and the Actions-log interval is recorded.",
+          "scheme_mapping_path": "research/stage59/amfi_ter_matched_96_v14.csv",
+          "scheme_mapping_sha256": "8606de60e951eb8716aad18932d6ad0e3a838125a9ab5d06bb78384b67fb9bdf"
         }
       ],
       "holdings_snapshot": "g5_2_holdings_overlap_v1.json; normalized position CSV listed there.",

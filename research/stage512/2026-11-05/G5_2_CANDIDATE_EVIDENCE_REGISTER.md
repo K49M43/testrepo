@@ -25,11 +25,13 @@ This is a candidate hypothesis register for later decision analysis. It does not
 
 Official AMC spreadsheets are retained byte-for-byte. Each lists 498 equity rows with 498 ISINs; 497 rows have numeric weights. MMTC is shown as “<$0.005%”; its weight remains null. No synthetic zero is assigned.
 
-- ETF: equity 99.68%, net receivables 0.32%, grand total 100%; regular TER 0.18%. Top-10/top-20 reported equity weights are 28.49% / 38.74%.
-- Index fund: equity 99.74%, Triparty Repo 0.28%, net receivables −0.02%, grand total 100%; direct TER 0.13%, regular TER 0.79%. Top-10/top-20 reported equity weights are 28.52% / 38.77%.
+- ETF: equity 99.68%, net receivables 0.32%, grand total 100%; AMFI Regular Plan Total TER 0.39% on 2026-10-30 (BER 0.18% + brokerage 0.02% + transaction cost 0.00% + statutory levies 0.19%). Top-10/top-20 reported equity weights are 28.49% / 38.74%.
+- Index fund: equity 99.74%, Triparty Repo 0.28%, net receivables −0.02%, grand total 100%; AMFI Direct Plan Total TER 0.23% and Regular Plan Total TER 0.97% on 2026-10-30. These reconcile from BER 0.13% / 0.79%, brokerage 0.02% each, transaction cost 0.00%, and statutory levies 0.08% / 0.16%. Top-10/top-20 reported equity weights are 28.52% / 38.77%.
 - Both name Nifty 500 TRI as primary benchmark. Product holdings remain distinct from benchmark constituents; ETF traded-price return remains distinct from mutual-fund NAV return.
 
 All 498 equity ISINs are shared. Exact-ISIN overlap is 99.68% of numeric reported equity weights, calculated as Σ min(ETF weightᵢ, index-fund weightᵢ) over matched IDs with reported numeric weights. Source weights are rounded to 0.01 percentage point, and MMTC has no numeric weight, so this is approximate. It is holdings overlap, not return correlation. Actual AMFI industry weights are separately calculated and retained in [holdings diagnostics](g5_2_holdings_overlap_v1.json).
+
+**G5.3 fee-label correction (5 November 2026):** the earlier draft treated the Motilal products' BER as Total TER. The dated AMFI October export reports additional brokerage and statutory levies; the register now records Total TER and its component arithmetic. The prior values were understated for fee-comparison purposes and must not be used. Source export hash, normalized row, mapping where present, and the bounded retrieval interval are recorded in the machine-readable register; original XLSX bytes and exact HTTP completion time were not retained.
 
 ### LIC MF Nifty 8–13 Year G-Sec ETF — 2026-09-30
 
