@@ -10,7 +10,7 @@ Five first-party product hypotheses were appended without rewriting the accepted
 
 The refreshed official AMFI NAV snapshots were parsed against the existing named sample register. **44 of 44** matched by AMFI scheme code, ISO-normalized date, and decimal NAV. The 19–23 October raw response has a different SHA-256 from the prior snapshot. Sample values reconcile; the bytes are retained as a separate snapshot and neither the old hash nor source record is overwritten. This proves bounded sample consistency only.
 
-The October AMFI TER workbook and three official factsheets are retained with byte lengths, hashes, source URLs and approximate local retrieval timestamps in `source_reacquisition_manifest.json`. TER values in the candidate descriptions are documented as source observations; an independent workbook parser/checksum audit is still required before those values can be treated as an accepted normalized fee ledger. The workbook opens as ZIP/XLSX but its worksheet dimension is absent to the existing read-only parser, so this pass does not pretend that independent row-level reconciliation succeeded.
+The October AMFI TER workbook and three official factsheets are retained with byte lengths, hashes, source URLs and approximate local retrieval timestamps in `source_reacquisition_manifest.json`. The XLSX worksheet omits its dimension tag, so the existing read-only spreadsheet parser yielded no rows. A separate ZIP/XML streaming parser now identifies the latest exact NSDL scheme-code row for all ten product hypotheses, including baseline rows, and independently reconciles regular/direct component sums with Decimal arithmetic. See `ter_row_audit.json` (10/10 candidate identities, 20/20 component totals). It verifies published fund TER components only, not personal all-in transaction cost.
 
 ## Candidate breadth
 
@@ -29,7 +29,7 @@ The products are not interchangeable. In particular, a G-Sec ETF or gilt mutual 
 |---|---|---|
 | Candidate screen breadth (10+) | **PASS, breadth only** | Ten identified product hypotheses; full comparable screening still pending |
 | Candidate identity and dated evidence | **PARTIAL** | Complete identity, plan/option, holdings, fee and benchmark reconciliation for all candidates |
-| TER raw source retention | **PASS, retained** | Independent robust parser and exact scheme/plan/date component reconciliation remains open |
+| TER raw source retention and component audit | **PASS, 10/10 candidates; 20/20 totals** | Does not represent complete investor transaction cost or tax |
 | AMFI bounded NAV observations | **PASS, 44/44 re-reconciled** | Does not substitute for continuous point-in-time history |
 | Qualified comparable historical return series | **BLOCKED** | Source-complete, date-aligned returns for all decision-relevant asset classes, with total-return treatment and survivorship/launch-date limits explicit; direct-GSec and bullion bridge especially unresolved |
 | Equity–bond/gold/silver covariance and uncertainty | **BLOCKED** | Qualified common-date series, regime/subperiod sensitivity, uncertainty and stress validation |

@@ -6,7 +6,7 @@
   "gates": {
     "candidate_breadth_10_plus": "PASS_BREADTH_ONLY",
     "candidate_identity_dated_evidence": "PARTIAL",
-    "ter_raw_retention": "PASS_INDEPENDENT_PARSER_OPEN",
+    "ter_raw_retention": "PASS_10_CANDIDATES_20_COMPONENT_TOTALS",
     "bounded_nav_sample_reconciliation": "PASS_44_OF_44",
     "qualified_comparable_history": "BLOCKED",
     "multi_asset_dependence_and_uncertainty": "BLOCKED",

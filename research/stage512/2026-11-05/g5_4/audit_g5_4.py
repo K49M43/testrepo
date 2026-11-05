@@ -13,8 +13,11 @@ ext=json.loads((add/"candidate_expansion_v1.json").read_text())
 assert len(reg["candidates"])==8
 assert len(ext["candidates"])==5
 assert ext["universe_count"]["investable_product_hypotheses"]==10
+ter=json.loads((add/"ter_row_audit.json").read_text())
+assert ter["rows_reconciled"]==10 and ter["regular_component_sums_pass"]==10 and ter["direct_component_sums_pass"]==10
+assert ter["source_sha256"]==hashlib.sha256((root/"research/stage512/2026-11-05/source_retrieval_followup/amfi_ter_oct2026_original.xlsx").read_bytes()).hexdigest()
 recon=json.loads((add/"nav_sample_reconciliation.json").read_text())
 assert recon["comparisons"]==44 and recon["exact_matches"]==44 and not recon["mismatches"]
 gates=json.loads((add/"g6_entry_readiness.json").read_text())
 assert gates["decision"]=="NOT_READY" and gates["investment_authorization"]=="NO_GO"
-print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product hypotheses; 44/44 bounded NAV observations; G6 remains fail-closed")
+print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product hypotheses; 44/44 bounded NAV observations; 10/10 TER rows and 20/20 sums; G6 remains fail-closed")
