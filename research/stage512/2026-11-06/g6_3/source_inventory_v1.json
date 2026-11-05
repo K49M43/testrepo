@@ -6,7 +6,12 @@
   "g5_source_evidence": {
     "manifest_record_id": "g5-4-source-reacquisition-2026-11-05-v3",
     "manifest_files": 94,
-    "retained_bytes": 22481950,
+    "immutable_source_files": 92,
+    "regenerated_audit_artifacts_excluded_from_byte_hashing": [
+      "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
+      "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json"
+    ],
+    "retained_immutable_source_bytes": 22452710,
     "missing_files": 0,
     "hash_or_byte_mismatches": 0,
     "reported_candidate_history_counts": {

@@ -7,13 +7,13 @@
 
 This increment reconciles source identity, retained raw bytes, normalized histories, candidate dispositions, date overlap, and external source leads. It does not estimate portfolio outcomes or probability. The reproducible entry point is `decision/audit_g6_3_source_inventory.py`; the frozen record is `research/stage512/2026-11-06/g6_3/source_inventory_v1.json`.
 
-The audit independently re-hashes every file listed in the G5.4 source-reacquisition manifest; reconciles five AMFI scheme NAV histories and their date bounds; checks the official monthly NSE Nifty 500 TRI anchor coverage; reconstructs the retained R9 LIC scheme 133307 NAV series from all 24 AMFI raw segments; verifies normalized daily/monthly outputs and factsheet CAGR checks; and intersects month-end returns only where all listed candidate histories overlap. No data are downloaded or silently filled by this audit.
+The audit re-hashes the 92 immutable source/evidence assets listed in the G5.4 source-reacquisition manifest; reconciles five AMFI scheme NAV histories and their date bounds; checks the official monthly NSE Nifty 500 TRI anchor coverage; reconstructs the retained R9 LIC scheme 133307 NAV series from all 24 AMFI raw segments; verifies normalized daily/monthly outputs and factsheet CAGR checks; and intersects month-end returns only where all listed candidate histories overlap. The manifest also lists two generated audit JSON reports. Their upstream writers use platform-native newlines, so this audit excludes their bytes from source hashing and instead verifies their regenerated semantic PASS/NO-GO fields. No data are downloaded or silently filled by this audit.
 
 ## Reproduced coverage
 
 | Evidence set | Reproduced result | Interpretation |
 |---|---:|---|
-| G5.4 raw source manifest | 94 files, 22,481,950 bytes; 0 missing and 0 hash/byte mismatches | Retained bytes match the manifest. This verifies integrity, not each source's investment suitability. |
+| G5.4 manifest | 94 entries: 92 immutable source/evidence assets totaling 22,452,710 bytes, plus two regenerated audit reports; 0 missing and 0 immutable-source hash/byte mismatches | Raw/evidence bytes match their manifest. The reports are semantically revalidated after regeneration because their Windows/Linux newline bytes differ. This verifies integrity, not each source's investment suitability. |
 | Continuous G5 candidate NAV series | Five series; 7,353 observations total | Official AMFI scheme NAVs. NAVs are not ETF traded prices. Coverage begins between 2015 and 2024 depending on product. |
 | LIC 8–13 Yr G-Sec scheme (AMFI code 133307) | 24/24 raw segments; 2,867 daily NAV observations from 2014-12-26 to 2026-10-30; 142 monthly returns; maximum observed date gap 12 days or less | Reproduces a long official fund-NAV history. It is a fund proxy, not ETF market price, a G-Sec total-return index, or direct sovereign-bond cashflow. |
 | LIC normalized outputs | Daily and monthly CSV hashes and rows exactly reconcile to raw segments | Reproducibility of this source transformation only. |
