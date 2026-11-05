@@ -15,6 +15,12 @@
 - The prior third-party CPI history was challenged and superseded by a reconstructed official-linked historical series, which retains explicit source/provisional flags.
 - Statistical tests challenged a Gaussian-only downside model; the Student-t variant is a research challenger rather than a qualified 2036 probability forecast.
 
+## G5 instrument evidence
+
+- [G5.2 point-in-time candidate/evidence register](../2026-11-05/G5_2_CANDIDATE_EVIDENCE_REGISTER.md) and [machine-readable candidate records](../2026-11-05/g5_2_candidate_evidence_register_v1.json).
+- [Dated holdings, NAV reconciliation, concentration and same-date holdings overlap](../2026-11-05/g5_2_holdings_overlap_v1.json); raw official AMC workbooks/factsheets are in `../2026-11-05/source_raw/`.
+- [G5.2 QCSAE](../2026-11-05/g5_2_qcsae_v1.json), [audit script](../../../decision/audit_g5_2_candidate_register.py), and [GitHub Actions workflow](../../../.github/workflows/g5-2-candidate-register.yml).
+
 ## Reports in chronological research order
 1. [Blocker resolution](stage512_blocker_resolution_report.md)
 2. [Independent historical calibration](stage512_independent_calibration_report.md)
