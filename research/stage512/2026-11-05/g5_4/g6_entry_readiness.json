@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_id": "g6-entry-readiness-2026-11-05-v4",
+  "record_id": "g6-entry-readiness-2026-11-05-v5",
   "decision": "DECISION_GRADE_NOT_READY",
   "investment_authorization": "NO_GO",
   "gates": {
@@ -16,14 +16,14 @@
     "official_cpi_real_value": "PROVISIONAL_SOURCE_VALUE_PASS; PERSONAL_BASE_MONTH_AND_RAW_RELEASE_BYTES_OPEN",
     "g3_outcome_exit_integration": "PASS_G6_1_ONE_YEAR_SYNTHETIC_FULL_EXIT; MULTIYEAR_AND_FLEXIBLE_EXIT_OPEN",
     "independent_reproducibility_adverse_cases": "PASS_G6_1_INDEPENDENT_ARITHMETIC_AND_FAIL_CLOSED_MUTATIONS; FULL_HORIZON_ADVERSE_CASES_OPEN",
-    "g6_1_fixture_bridge": "PASS_LOCAL_SYNTHETIC_TWO_SCENARIOS; PR_CI_PENDING",
+    "g6_1_fixture_bridge": "PASS_LOCAL_AND_EXACT_HEAD_CI_ON_36B3A78; DRAFT_PR_UNMERGED",
     "strict_calendar_month_overlap": "PASS_DESCRIPTIVE_ALIGNMENT_TO_129_NSE_TRI_MONTHS; SHORT_PRODUCT_WINDOWS_REMAIN_LIMITING",
     "candidate_disposition_10": "PASS_10_PRODUCT_HYPOTHESES_DISPOSED; NO_RANKING_OR_WEIGHTS"
   },
   "rule": "Decision-grade G6 requires selected source histories and a joined deterministic path. A bounded fixture-first engineering increment may start now; this is not an investment decision or permission to publish investor-specific results.",
-  "engineering_start": "IN_PROGRESS_G6_1_FIXTURE_BRIDGE_PR_CI_PENDING",
+  "engineering_start": "READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE",
   "readiness_levels": {
-    "engineering_start": "G6.1 implemented locally with explicitly synthetic fixtures; PR CI pending; no probability or personal-result claims",
+    "engineering_start": "G6.1 bridge and strengthened independent audit pass locally; all exact-head Actions passed on implementation commit 36b3a78; PR #41 remains draft/unmerged; no probability or personal-result claims",
     "decision_grade_G6": "NOT_READY until selected histories and joined deterministic path pass",
     "investment_decision": "NO_GO"
   },

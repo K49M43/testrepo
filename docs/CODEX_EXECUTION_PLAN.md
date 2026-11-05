@@ -22,7 +22,7 @@ The controlling close record is [Sprint 1 — Deterministic after-tax ledger](SP
 
 G5 is **CLOSED**. PR #39 merged on 5 November 2026 as `99c93aeee43b685ae43abcbbfffbc888f0803b9e`; issues #38 and #29 are closed. Its five official AMFI Growth-option NAV windows, 10-row product disposition, holdings snapshots, and eight-criterion exit audit are merged. These are bounded declared-window product histories, not proof of full-universe investability, long-run dependence, or probability.
 
-G6.1 is tracked in [issue #40](https://github.com/K49M43/testrepo/issues/40) on branch `codex/g6-1-deterministic-after-tax-bridge-20261105`. The first increment connects the frozen G3 schedule, Sprint 1 event/lot ledger, explicit synthetic costs and tax inputs, full liquidation, and a synthetic CPI ratio. Local independent arithmetic and mutation audits pass; exact-head GitHub CI and review remain pending.
+G6.1 is tracked in [issue #40](https://github.com/K49M43/testrepo/issues/40) on draft PR [#41](https://github.com/K49M43/testrepo/pull/41), branch `codex/g6-1-deterministic-after-tax-bridge-20261105`. The bounded bridge connects the frozen G3 schedule, Sprint 1 event/lot ledger, explicit synthetic costs and tax inputs, full liquidation, and a synthetic CPI ratio. The strengthened audit makes residency explicit, independently checks the fixture's ordinary slab/cess arithmetic, and reconciles every disposal lot including zero-gain lots. All workflows passed on implementation commit `36b3a7872eb8643436061ada20ae4c11ca4bcd5d`; the PR remains draft/unmerged and its live checks track subsequent metadata updates. The 120/122-month multi-year path remains the next G6 implementation increment.
 
 ### Source and model status
 

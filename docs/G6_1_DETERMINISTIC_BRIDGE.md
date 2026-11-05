@@ -45,3 +45,12 @@ The workflow reruns both commands and requires committed `result.json` and `audi
 ## What remains open
 
 This does not model the complete 120/122-month horizon, a qualified product NAV/ETF market-price path, multiple asset classes, direct sovereign cashflows, distributions, rolling/flexible exits, transaction-cost schedules by product, investor-specific income/losses, actual CPI source bytes or a confirmed investor CPI base month. The loss mutation is deliberately blocked pending explicit G6 loss-allocation integration. Cross-asset uncertainty and probability remain unqualified. Investment authorization remains **NO-GO**.
+
+## Audit follow-up — 2026-11-05
+
+The review findings were resolved in implementation commit `36b3a7872eb8643436061ada20ae4c11ca4bcd5d`:
+
+- `resident_individual: true` is explicit in the synthetic tax assumptions; missing and unsupported nonresident values fail closed.
+- The audit uses an independent section 516 rounding, ordinary slab, and cess calculation for this fixture's explicit income band. It rejects inputs requiring rebate, surcharge, dividend, or special-rate treatment. This cross-check verifies the bounded arithmetic path, not the full tax law.
+- The bridge now emits a complete disposal trace for every lot, including the terminal-month zero-gain lot. The audit independently checks dates, units, prices, proceeds, basis, realized result, and each positive-gain lot's corresponding tax event.
+- Local audit and all PR workflow checks passed on the implementation commit. PR #41 remains draft and unmerged; G6 decision-grade remains NOT READY and investment authorization remains NO-GO.
