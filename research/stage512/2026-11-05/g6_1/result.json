@@ -4,7 +4,7 @@
   "experiment_id": "G6-1-SYNTHETIC-SCHEDULE-TO-EXIT-2026-11-05-v1",
   "classification": "SYNTHETIC_FIXTURE_ONLY",
   "scenario_count": 2,
-  "run_key": "3f1c2c57676764b8acd2e678bf225469c2b3a8e627cb06c204345acaece44fd7",
+  "run_key": "325f595a378b0c671a216f15c9624dfe690477382defab0e7c9e22ea2ba8ad53",
   "source_hashes": {
     "input_fixture": {
       "path": "research/stage512/2026-11-05/g6_1/input.json",
@@ -20,7 +20,7 @@
     },
     "bridge_code": {
       "path": "decision/g6_deterministic_bridge.py",
-      "sha256": "0daff25fff21450e9e925beba30242c4d07402edc269f1c5d14ff6d340e041c6"
+      "sha256": "e5995228bad07d7dd2b9229999d3626ea9ae99eb1c0c0bc5340a8cc32cc844b1"
     },
     "event_ledger_code": {
       "path": "decision/after_tax_event_ledger.py",

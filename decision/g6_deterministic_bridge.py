@@ -335,7 +335,7 @@ def run_fixture(path: Path = DEFAULT_FIXTURE) -> dict[str, Any]:
 def main() -> None:
     output = run_fixture()
     DEFAULT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    DEFAULT_OUTPUT.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    DEFAULT_OUTPUT.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({
         "record_id": output["record_id"],
         "scenario_count": output["scenario_count"],

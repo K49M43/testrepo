@@ -11,6 +11,7 @@ on:
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
       - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-05/g5_4/audit_g5_4.py'
       - 'research/stage512/2026-11-05/g6_1/**'
       - 'docs/G6_1_DETERMINISTIC_BRIDGE.md'
       - '.github/workflows/g6-1-deterministic-bridge.yml'
@@ -24,6 +25,7 @@ on:
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
       - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-05/g5_4/audit_g5_4.py'
       - 'research/stage512/2026-11-05/g6_1/**'
       - 'docs/G6_1_DETERMINISTIC_BRIDGE.md'
       - '.github/workflows/g6-1-deterministic-bridge.yml'
@@ -43,5 +45,7 @@ jobs:
         run: python decision/g6_deterministic_bridge.py
       - name: Audit independent arithmetic and fail-closed mutations
         run: python decision/audit_g6_deterministic_bridge.py
+      - name: Preserve G5 closure and G6 readiness gates
+        run: python research/stage512/2026-11-05/g5_4/audit_g5_4.py
       - name: Require committed result and audit to be current
         run: git diff --exit-code -- research/stage512/2026-11-05/g6_1/result.json research/stage512/2026-11-05/g6_1/audit.json

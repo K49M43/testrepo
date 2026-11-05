@@ -19,7 +19,7 @@ assert ter["source_sha256"]==hashlib.sha256((root/"research/stage512/2026-11-05/
 recon=json.loads((add/"nav_sample_reconciliation.json").read_text())
 assert recon["comparisons"]==44 and recon["exact_matches"]==44 and not recon["mismatches"]
 gates=json.loads((add/"g6_entry_readiness.json").read_text())
-assert gates["decision"]=="DECISION_GRADE_NOT_READY" and gates["engineering_start"]=="READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE" and gates["investment_authorization"]=="NO_GO"
+assert gates["decision"]=="DECISION_GRADE_NOT_READY" and gates["engineering_start"] in {"READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE", "IN_PROGRESS_G6_1_FIXTURE_BRIDGE_PR_CI_PENDING"} and gates["investment_authorization"]=="NO_GO"
 import subprocess, sys
 history_result=subprocess.run([sys.executable,str(add/"audit_g5_candidate_nav_history.py")],capture_output=True,text=True)
 assert history_result.returncode==0,history_result.stdout+history_result.stderr

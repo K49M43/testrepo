@@ -184,7 +184,7 @@ def audit() -> dict:
         "independent_formula_results": formula_results,
     }
     AUDIT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    AUDIT_OUTPUT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    AUDIT_OUTPUT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return report
 
 
