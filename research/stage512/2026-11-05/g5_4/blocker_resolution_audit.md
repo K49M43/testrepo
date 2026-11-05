@@ -35,4 +35,14 @@ A single scheme-specific official AMFI NAV API request for SBI Nifty 500 (scheme
 - **G6 decision-grade model / full candidate source gate:** BLOCKED on continuous selected histories and joined path validation.
 - **Investment authorization:** NO-GO.
 
-The next smallest substantive item is the bounded, checkpointed AMFI source-history acquisition for the explicitly selected candidate subset, then the deterministic ledger bridge. The CPI/source and investor input limits remain visible; no assumptions are promoted to confirmed facts.
+At the time of the original blocker audit, the next smallest item was bounded AMFI source-history acquisition. The follow-up section below records the subsequent acquisition and narrows the remaining work. CPI/source and investor input limits remain visible; no assumptions are promoted to confirmed facts.
+
+## Source-history re-investigation — 2026-11-05
+
+The acquisition and strict-month-join blocker is now **partially resolved**. Four AMFI Growth-option product histories pass raw-to-normalized lineage: 5,592 NAV observations across 48 retained windows for HDFC Gold, ICICI Silver, SBI Nifty 500 index fund, and SBI June 2036 target-maturity gilt fund. The independent audit checks hashes, exact identities, non-overlapping windows, dates, positive Decimal NAV, duplicates, normalized CSV equality, and calendar gaps. It also reconciles the SBI Nifty 500 exploratory response exactly across 122 observations.
+
+The published-NSE-TRI calendar-month joins are descriptive only: 128 months for HDFC Gold (2015-02–2025-09), 44 for ICICI Silver (2022-02–2025-09), 11 for SBI Nifty 500 fund (2024-11–2025-09), and 35 for SBI June 2036 gilt fund (2022-11–2025-09). Fund NAV and ETF traded price remain different. NSE values are rounded monthly anchors; these joins do not establish continuous daily benchmark paths, long-run cross-asset dependence, covariance, or probability.
+
+The first target-maturity AMFI parse identified a product-name alias and a fetcher defect that failed to preserve a rejected HTTP 200 body. The parser was corrected using the exact official AMFI name already present in retained raw samples; the fetcher now writes the raw body before validating it. The unretained initial response is excluded. The corrected nine-window acquisition and independent audit pass.
+
+Current residual blockers are smaller and explicit: (1) make a disposition for every candidate row and select the minimal evidence-backed comparison set; (2) qualify the sovereign bond return or dated-cashflow representation and any ETF market-price execution series required for that set; (3) implement the synthetic fixture-first G6 tax/cashflow/exit adapter and independently reconcile it; (4) preserve provisional CPI status and keep personal inputs unconfirmed; (5) defer probabilistic claims until adverse/regime/parameter checks are supportable. G6 engineering start is READY; decision-grade G6 remains blocked; investment authorization remains NO-GO. Full evidence is in `CANDIDATE_HISTORY_BLOCKER_RESOLUTION.md` and `candidate_nav_history_audit.json`.
