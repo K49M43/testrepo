@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-3-independent-candidate-evidence-audit-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "audited_subject": {
+    "pull_request": 36,
+    "branch": "codex/g5-2-candidate-evidence-register-20261105",
+    "head_commit": "85e0157a964164f8423e2eda4bcc3635fecdcc44",
+    "independence_rule": "The G5.3 script imports no G5.2 audit code and re-extracts retained source workbooks and factsheets independently."
+  },
+  "claim": "The corrected G5.2 register reproduces the retained holdings evidence, product identities and Total TER rows within its bounded historical scope; the G5.1 11.8% correction lineage remains intact. This does not establish a complete eligible candidate universe, current investor access, or decision readiness.",
+  "strongest_counter_case": "The G5.2 draft materially understated the Motilal products' latest reported Total TER by using September source values that match October AMFI BER fields. The register contains only eight hypotheses against the mandate's 10+ candidate-screen requirement, and raw AMFI response bodies needed for byte-level source re-parsing were not preserved. Current access, trading, tax and suitability also remain unverified.",
+  "g5_3_disposition": "PASS_BOUNDED_INDEPENDENT_AUDIT_WITH_CORRECTION_VERIFIED",
+  "g5_disposition": "BLOCKED_INSUFFICIENT_EVIDENCE_FOR_COMPLETE_CANDIDATE_UNIVERSE_AND_RAW_SOURCE_REPRODUCIBILITY",
+  "scope": [
+    "Independent source hash and raw-to-normalized holdings re-extraction.",
+    "Independent exact-ISIN coverage, top concentration and overlap recalculation.",
+    "Official factsheet identity, allotment and dated holdings re-extraction.",
+    "AMFI NAV sample-to-manifest lineage consistency; raw-response reproducibility limitation.",
+    "AMFI Total TER component arithmetic and scheme mapping.",
+    "G5.1 synthetic 11.8% claim correction lineage, affected output quarantine and reproducibility.",
+    "Fail-closed negative cases for unknown access, benchmark/product conflation, pre-inception rows, stale hashes and missing return convention."
+  ],
+  "findings": [
+    {
+      "finding_id": "G5.3-F01",
+      "severity": "P1_FINANCIAL_INPUT",
+      "status": "RESOLVED_IN_G5_2_HEAD_85E0157",
+      "finding": "The prior candidate register used September AMC figures of 0.18% / 0.13% / 0.79% as latest TER without reconciling the October AMFI Total TER fields. The prior figures match BER fields; October Total TER also includes brokerage and statutory levies.",
+      "verified_values": {
+        "motilal_nifty500_etf_regular_ter_pct": "0.39",
+        "motilal_nifty500_index_fund_direct_ter_pct": "0.23",
+        "motilal_nifty500_index_fund_regular_ter_pct": "0.97"
+      },
+      "evidence": [
+        "research/stage59/amfi_ter_oct2026_export_latest.csv",
+        "research/stage59/amfi_ter_matched_96_v14.csv",
+        "research/stage59/amfi_ter_export_diagnostic.json",
+        "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json"
+      ],
+      "counterfactual_impact": "If the earlier figures were used as all-in fees, modeled costs would be understated by 0.21 percentage point for the ETF, 0.10 point for Index Fund Direct, and 0.18 point for Index Fund Regular as compared with the 30-Oct AMFI export."
+    },
+    {
+      "finding_id": "G5.3-F02",
+      "severity": "P1_GATE_COMPLETENESS",
+      "status": "OPEN_BLOCKER",
+      "finding": "The register has 8 candidate hypotheses. The investor mandate and execution plan require a first screen of at least 10 serious investable securities or strategies. This register is a useful category-complete evidence increment, not the complete decision universe.",
+      "evidence": [
+        "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json",
+        "docs/INVESTMENT_DECISION_MANDATE_2036.md",
+        "docs/CODEX_EXECUTION_PLAN.md",
+        "https://github.com/K49M43/testrepo/issues/29"
+      ],
+      "decision_implication": "Overall G5 stays blocked; do not enter G6 ranking/selection on this universe."
+    },
+    {
+      "finding_id": "G5.3-F03",
+      "severity": "P1_SOURCE_REPRODUCIBILITY",
+      "status": "OPEN_BLOCKER_FOR_RETURN_OR_FEE_CALCULATION",
+      "finding": "AMFI sample response bodies and the original TER XLSX are absent. Stored hashes and manifest rows can be internally linked, but raw source bytes cannot be re-hashed or reparsed into the reported normalized observations.",
+      "evidence": [
+        "research/stage512/data/amfi_pilot/manifest.json",
+        "research/stage512/data/amfi_pilot/named_scheme_observations.csv",
+        "research/stage59/amfi_ter_export_diagnostic.json",
+        "research/stage59/amfi_ter_oct2026_export_latest.csv"
+      ],
+      "decision_implication": "Do not use the sample NAVs or TER export as fully byte-reproducible source series until archived raw bytes are restored or fetched and preserved in a bounded official-source retrieval."
+    },
+    {
+      "finding_id": "G5.3-F04",
+      "severity": "P2_IMPLEMENTATION_EVIDENCE",
+      "status": "BLOCKED_AND_EXPLICIT",
+      "finding": "Product identity and historical allotment are supported, but current exchange availability, Groww route, spread/depth, settlement, tax and investor-specific suitability remain unverified. Dynamic Motilal product pages lack archived response hashes/timestamps.",
+      "evidence": [
+        "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json",
+        "research/stage512/2026-11-05/G5_3_INDEPENDENT_AUDIT.md"
+      ],
+      "decision_implication": "The INVESTABLE labels identify actual candidate products; they do not establish current investor access or suitability."
+    }
+  ],
+  "independent_checks": [
+    {
+      "check": "Motilal holdings raw-to-normalized extraction",
+      "result": "498 unique equity ISINs per workbook; 497 numeric weights; MMTC suppressed weight remains null; top-10 and top-20 match."
+    },
+    {
+      "check": "Same-date exact-ISIN overlap",
+      "result": "99.68% independently recomputed from 497 shared numeric weights; rounded source weights; not return correlation."
+    },
+    {
+      "check": "ICICI and LIC first-party PDF identity/holding extraction",
+      "result": "ICICI symbols, ISINs and allotment dates reproduced; LIC identifier, benchmark, inception and dated portfolio reproduced; no omitted ISIN inferred."
+    },
+    {
+      "check": "AMFI Total TER reconciliation",
+      "result": "Four official AMFI scheme rows re-read; five applicable plan totals independently reconciled component-by-component, including the Index Fund Direct-plan 0.23% sum; corrected Motilal values match the candidate register."
+    },
+    {
+      "check": "G5.1 11.8% claim lineage",
+      "result": "14 current fingerprints match; all 6 dependent output rows preserve synthetic assumption, unverified provenance, quarantine and lineage; rows equal the preserved rerun."
+    },
+    {
+      "check": "Negative cases",
+      "result": "5 of 5 rejected: unknown access promoted, benchmark/product conflation, pre-inception metal observation, mismatched source hash, missing return convention."
+    }
+  ],
+  "known_limitations": [
+    "Raw AMFI NAV sample response bodies are absent; sample rows were checked against manifest metadata, not independently reparsed from source bytes.",
+    "Original AMFI TER XLSX bytes and exact HTTP completion timestamp are unavailable; only response hash/size, diagnostic, normalized export and bounded Actions interval are retained.",
+    "Nifty 500 benchmark code/current full history beyond 2025-09 is not qualified in this increment.",
+    "The register is short of the mandate's 10+ candidate screen.",
+    "Current market execution, investor access/suitability, candidate-specific tax, and settlement remain unverified."
+  ],
+  "invalidation_triggers": [
+    "A retained source hash or AMFI Total TER component changes.",
+    "An official product record conflicts with the candidate's stable identity, allotment, benchmark or status.",
+    "A downstream model treats the 8-row category register as the required 10+ candidate screen or uses blocked candidates as executable.",
+    "A downstream return or fee calculation consumes missing raw AMFI source bytes as independently reproduced data.",
+    "Any quarantined synthetic 11.8% output is relabeled historical, empirical, forecast or decision-qualified."
+  ],
+  "next_dependency": "Expand and qualify the 10+ decision-relevant candidate/strategy universe; retain raw official AMFI responses and TER XLSX (or conduct bounded official re-retrieval); then re-audit G5 before G6. G6 also requires accepted tax, dated cashflow/source and G3 exit inputs.",
+  "investment_authorization": "NO_GO",
+  "audit_artifact_hashes_sha256": {
+    "decision/audit_g5_3_independent_candidate_evidence.py": "6b464c5fcce6e8e0c01d869942aeac4584492b3793bc1f790657cfc41ff18a0c",
+    "research/stage512/2026-11-05/G5_3_INDEPENDENT_AUDIT.md": "39b2a33a5e973620fe20143de50c2640569cda8c1b512389228467716d9202fe",
+    "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json": "e562c7a6554f16b81cd8f9a02d6bb5170f92a5831033476acdd93da8f6c3c9fa",
+    "research/stage512/2026-11-05/g5_2_holdings_overlap_v1.json": "cda8d5aeb710b4f4b966140b3fc61fcc0c520e15520d8f5a9c9c6cc026980116",
+    "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json": "9efe9a2b53ae1bd4a10a10b1392b1867222436c41948da6d6161a0178f251e52",
+    "docs/DECISION_LOG.md": "fae69ae6ddf08345c6b8416bc1db9947b541dad6392103cbb19503dc3a3e4a37",
+    "research/stage59/amfi_ter_oct2026_export_latest.csv": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
+    "research/stage59/amfi_ter_export_diagnostic.json": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297"
+  },
+  "local_validation": {
+    "g5_3_independent_audit": "PASS",
+    "g5_2_candidate_register_audit": "PASS",
+    "g5_1_claim_lineage_audit": "PASS",
+    "negative_cases_rejected": 5,
+    "g5_2_subject_github_actions": "ALL_REPORTED_CHECKS_PASS_AT_85e0157a964164f8423e2eda4bcc3635fecdcc44",
+    "g5_3_github_actions": "PASS_ON_INITIAL_PUBLISHED_HEAD_f7e7f00b43e0207aac435fbf26b8763d157a5078",
+    "github_actions_run_ids": {
+      "independent_candidate_audit": 41994653239,
+      "candidate_register": 41994653219,
+      "lineage": 41994653419,
+      "g3_outcome_and_hurdle": 41994653262,
+      "g4_disposition": 41994653195,
+      "source_and_cashflow": 41994653064,
+      "tax_ledger_and_database": 41994653212
+    }
+  }
+}
