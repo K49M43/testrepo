@@ -29,7 +29,7 @@ The ledger residual is at most ₹1e-12 (observed maximum magnitude 1e-42). Ever
 
 ## Independent checks
 
-The audit separately rebuilds the exact contribution totals, each monthly price mark, units, basis, disposal proceeds, costs, exit-year tax and CPI deflator. It confirms that only the terminal year has incremental portfolio tax, and that all lots reconcile to the tax-event trace within the ledger's ₹1e-12 arithmetic tolerance. Eleven mutation cases reject actual-data labels, unsupported horizons, missing/extra tax-year input, missing or nonresident assumptions, future-law promotion, wrong CPI base, invalid inflation, missing scenario growth, and unallocated loss paths.
+The independent audit separately rebuilds the exact contribution totals, each monthly price mark, units, basis, disposal proceeds, costs, exit-year tax and CPI deflator. It independently maps each acquisition and disposal date to an Indian FY, including the March/April boundary, confirms that only the terminal year has incremental portfolio tax, and checks all lots against tax-event traces within the ledger's ₹1e-12 arithmetic tolerance. The result manifest hashes the transitive capital-loss schedule module used by the loss-path gate. Thirteen mutation cases reject actual data through both loader and direct scenario entry points, unsupported horizons, missing/extra tax-year input, missing or nonresident assumptions, future-law promotion, wrong CPI base, invalid inflation, missing scenario growth, and unallocated loss paths.
 
 Reproduce from repository root:
 

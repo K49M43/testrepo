@@ -10,7 +10,6 @@ from decimal import Decimal, ROUND_DOWN, localcontext
 from pathlib import Path
 from typing import Any
 
-from after_tax_event_ledger import tax_year_for
 from g3_goal_hurdle import DEFAULT_SCHEDULE_PATH, CONTRACT_PATH, read_schedule, validate_schedule_contract
 from g6_2_full_horizon_bridge import (
     DEFAULT_FIXTURE, DEFAULT_OUTPUT, FIXTURE_LABEL, _validate_fixture,
@@ -30,6 +29,12 @@ def _month_end(base_month: str, offset: int) -> date:
     out_year,month0=divmod(absolute,12)
     out_month=month0+1
     return date(out_year,out_month,monthrange(out_year,out_month)[1])
+
+
+def independent_tax_year(event_date: date) -> str:
+    """Independently map a date to an Indian FY without the ledger helper."""
+    start_year=event_date.year if event_date.month>=4 else event_date.year-1
+    return f"{start_year}-{str(start_year+1)[-2:]}"
 
 
 def _section516_round(value: Decimal) -> Decimal:
@@ -78,9 +83,12 @@ def independent_expected(raw: dict[str,Any],horizon: int,scenario: dict[str,Any]
             gain=sale-principal
             acquired=_month_end(schedule.base_month,month)
             lot_id=f"{scenario['scenario_id']}-h{horizon}-lot-{month:03d}"
+            disposed=_month_end(schedule.base_month,horizon)
             expected_lots.append({
                 "lot_id":lot_id,"acquired_date":acquired.isoformat(),
-                "disposed_date":_month_end(schedule.base_month,horizon).isoformat(),
+                "disposed_date":disposed.isoformat(),
+                "acquired_tax_year":independent_tax_year(acquired),
+                "disposal_tax_year":independent_tax_year(disposed),
                 "units_disposed":str(units),"unit_price_inr":str(terminal),
                 "proceeds_inr":str(sale),"tax_basis_removed_inr":str(principal),
                 "deductible_transfer_expenses_inr":"0","signed_realized_result_inr":str(gain),
@@ -88,7 +96,7 @@ def independent_expected(raw: dict[str,Any],horizon: int,scenario: dict[str,Any]
             total_units+=units; basis+=principal; proceeds+=sale
         gains=proceeds-basis
         external=D(raw["tax_assumptions"]["external_ordinary_income_by_tax_year"][
-            tax_year_for(_month_end(schedule.base_month,horizon))])
+            independent_tax_year(_month_end(schedule.base_month,horizon))])
         external_tax=independent_ordinary_tax(external)
         combined_tax=independent_ordinary_tax(external+gains)
         incremental=combined_tax-external_tax
@@ -113,8 +121,13 @@ def audit()->dict[str,Any]:
     raw=load_fixture()
     schedule,_,years=_validate_fixture(raw)
     assert raw["input_classification"]==FIXTURE_LABEL
-    assert years==[f"{year}-{str(year+1)[-2:]}" for year in range(2026,2037)]
+    independent_years=sorted({independent_tax_year(_month_end(schedule.base_month,month)) for month in range(123)})
+    assert years==independent_years==[f"{year}-{str(year+1)[-2:]}" for year in range(2026,2037)]
+    assert independent_tax_year(date(2027,3,31))=="2026-27"
+    assert independent_tax_year(date(2027,4,1))=="2027-28"
     actual=run_fixture()
+    assert actual["source_hashes"]["capital_loss_schedule_code"]["path"]=="decision/capital_gain_loss_schedule.py"
+    assert actual["source_hashes"]["capital_loss_schedule_code"]["sha256"]==hashlib.sha256((ROOT/"decision/capital_gain_loss_schedule.py").read_bytes()).hexdigest()
     assert len(actual["scenarios"])==4
     committed=json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
     assert actual==committed
@@ -154,12 +167,14 @@ def audit()->dict[str,Any]:
         assert set(actual_lots)==set(expected_lots) and len(actual_lots)==horizon+1
         for lot_id,want in expected_lots.items():
             got=actual_lots[lot_id]
-            for field in ("acquired_date","disposed_date"):
+            for field in ("acquired_date","disposed_date","acquired_tax_year","disposal_tax_year"):
                 assert got[field]==want[field],(horizon,lot_id,field)
             for field in ("units_disposed","unit_price_inr","proceeds_inr","tax_basis_removed_inr","deductible_transfer_expenses_inr","signed_realized_result_inr"):
                 assert abs(D(got[field])-D(want[field]))<=TOL,(horizon,lot_id,field)
-        exit_year=tax_year_for(_month_end(schedule.base_month,horizon))
+        exit_year=independent_tax_year(_month_end(schedule.base_month,horizon))
         assert list(row["tax_year_trace"])==years
+        for event in row["tax_event_trace"]:
+            assert event["tax_year"]==independent_tax_year(date.fromisoformat(event["event_date"]))
         for year in years:
             tax=row["tax_year_trace"][year]
             income=D(raw["tax_assumptions"]["external_ordinary_income_by_tax_year"][year])
@@ -186,10 +201,13 @@ def audit()->dict[str,Any]:
         bad=copy.deepcopy(raw); mutate(bad)
         try:
             if stage=="load": load_fixture_text(json.dumps(bad))
+            elif stage=="scenario": run_scenario(bad,120,bad["scenarios"][0])
             else: _validate_fixture(bad)
         except (ValueError,KeyError): failures[label]="PASS"
         else: raise AssertionError(f"mutation unexpectedly passed: {label}")
     rejected("actual_data_label_rejected",lambda x:x.__setitem__("input_classification","ACTUAL_MARKET_DATA"),"load")
+    rejected("direct_scenario_rejects_actual_label",lambda x:x.__setitem__("input_classification","ACTUAL_MARKET_DATA"),"scenario")
+    rejected("direct_scenario_rejects_nonsynthetic_price_basis",lambda x:x.__setitem__("price_path_basis","Official sourced returns"),"scenario")
     rejected("unsupported_121_month_horizon_rejected",lambda x:x.__setitem__("horizons_months",[120,121]),"load")
     rejected("missing_tax_year_input_rejected",lambda x:x["tax_assumptions"]["external_ordinary_income_by_tax_year"].pop("2036-37"))
     rejected("extra_tax_year_input_rejected",lambda x:x["tax_assumptions"]["external_ordinary_income_by_tax_year"].__setitem__("2037-38","1500000"))
@@ -208,7 +226,11 @@ def audit()->dict[str,Any]:
         "audit":"PASS","record_id":"g6-2-independent-full-horizon-audit-v1",
         "scope":"120/122-month synthetic full liquidation; four horizon/path runs; eleven modeled FYs; no market or personal data",
         "scenario_count":4,"modeled_tax_years":years,
+        "source_manifest_includes_loss_schedule": bool(
+            run_fixture()["source_hashes"].get("capital_loss_schedule_code",{}).get("path")=="decision/capital_gain_loss_schedule.py"
+        ),
         "independent_cashflow_unit_cost_cpi_reconciliation":"PASS",
+        "independent_tax_year_mapping_and_boundaries":"PASS",
         "independent_fixture_tax_slab_cess_reconciliation":"PASS; fixture arithmetic only, not tax-law forecast",
         "complete_per_lot_and_tax_year_trace_reconciliation":"PASS",
         "cash_ledger_residuals_within_1e_12_inr":all(abs(D(row["reconciliation_residual_inr"]))<=D("0.000000000001") for row in actual["scenarios"]),

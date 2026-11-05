@@ -54,8 +54,7 @@ def _month_end(base_month: str, offset: int) -> date:
     return date(year, month, monthrange(year, month)[1])
 
 
-def load_fixture_text(text: str) -> dict[str, Any]:
-    raw = json.loads(text)
+def _validate_fixture_schema(raw: Any) -> dict[str, Any]:
     required = {
         "schema_version", "experiment_id", "input_classification", "horizons_months",
         "instrument", "price_path_basis", "starting_mark_inr", "scenarios", "costs",
@@ -76,11 +75,16 @@ def load_fixture_text(text: str) -> dict[str, Any]:
     return raw
 
 
+def load_fixture_text(text: str) -> dict[str, Any]:
+    return _validate_fixture_schema(json.loads(text))
+
+
 def load_fixture(path: Path = DEFAULT_FIXTURE) -> dict[str, Any]:
     return load_fixture_text(path.read_text(encoding="utf-8"))
 
 
 def _validate_fixture(raw: Mapping[str, Any]):
+    _validate_fixture_schema(raw)
     with localcontext() as ctx:
         ctx.prec = PRECISION
         schedule = read_schedule(DEFAULT_SCHEDULE_PATH)
@@ -271,6 +275,7 @@ def run_scenario(raw: Mapping[str, Any], horizon: int, scenario: Mapping[str, An
             disposal_trace.append({
                 "event_id": event.event_id, "lot_id": event.lot_id,
                 "acquired_date": acquisition.event_date.isoformat(), "disposed_date": event.event_date.isoformat(),
+                "acquired_tax_year": acquisition.tax_year, "disposal_tax_year": event.tax_year,
                 "units_disposed": str(event.units), "unit_price_inr": str(event.unit_price_inr),
                 "proceeds_inr": str(event.cash_amount_inr), "tax_basis_removed_inr": str(basis_removed),
                 "deductible_transfer_expenses_inr": str(event.deductible_transfer_expenses_inr),
@@ -327,6 +332,7 @@ def run_fixture(path: Path = DEFAULT_FIXTURE) -> dict[str, Any]:
         "g3_contract": CONTRACT_PATH,
         "bridge_code": Path(__file__).resolve(),
         "event_ledger_code": Path(__file__).resolve().with_name("after_tax_event_ledger.py"),
+        "capital_loss_schedule_code": Path(__file__).resolve().with_name("capital_gain_loss_schedule.py"),
         "tax_component_code": Path(__file__).resolve().with_name("ty2026_27_tax_components.py"),
         "g3_hurdle_code": Path(__file__).resolve().with_name("g3_goal_hurdle.py"),
     }
