@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-4-nav-reconciliation-2026-11-05-v1",
+  "comparison": "AMFI code/date identity and Decimal NAV equality across the existing named-sample register and newly downloaded raw snapshots.",
+  "comparisons": 44,
+  "exact_matches": 44,
+  "mismatches": [],
+  "limitation": "Bounded samples only; raw October snapshot hash differs from prior file. No continuous daily history or total-return qualification."
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-4-factsheet-holdings-2026-11-05-v1",
+  "source_cutoff": "2026-11-05",
+  "extracted_text_path": "research/stage512/2026-11-05/g5_4/g5_4_factsheet_holdings_pages.txt",
+  "extracted_text_sha256": "b891ac762e6ae2f851ba555a0e989704fdefe17b6595ae117a24a17ac65c19ab",
+  "snapshots": [
+    {
+      "candidate_id": "SBI_NIFTY10Y_GSEC_ETF",
+      "as_of": "2026-03-31",
+      "source_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/sbi_passives_factsheet_2026-03.pdf",
+      "source_sha256": "f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365",
+      "pdf_page": 28,
+      "extraction_method": "PyMuPDF 1.28.2; manually transcribed labeled source rows and independently reconciled Decimal sums",
+      "rows": [
+        {
+          "label": "Government of India",
+          "reported_pct": "96.83"
+        },
+        {
+          "label": "Cash, cash equivalents and others",
+          "reported_pct": "3.17"
+        }
+      ],
+      "coverage_and_limitations": "Asset allocation total; top-holdings table names Government of India but does not identify individual bond securities.",
+      "arithmetic_check": {
+        "reported_allocation_sum_pct": "100.00",
+        "expected_sum_pct": "100.00",
+        "passes": true
+      }
+    },
+    {
+      "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+      "as_of": "2026-03-31",
+      "source_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/sbi_passives_factsheet_2026-03.pdf",
+      "source_sha256": "f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365",
+      "pdf_page": 34,
+      "extraction_method": "PyMuPDF 1.28.2; manually transcribed labeled source rows and independently reconciled Decimal sums",
+      "rows": [
+        {
+          "label": "HDFC BANK LTD.",
+          "reported_pct": "6.39"
+        },
+        {
+          "label": "RELIANCE INDUSTRIES LTD.",
+          "reported_pct": "5.18"
+        },
+        {
+          "label": "ICICI BANK LTD.",
+          "reported_pct": "4.92"
+        },
+        {
+          "label": "BHARTI AIRTEL LTD.",
+          "reported_pct": "3.12"
+        },
+        {
+          "label": "INFOSYS LTD.",
+          "reported_pct": "2.50"
+        },
+        {
+          "label": "LARSEN & TOUBRO LTD.",
+          "reported_pct": "2.35"
+        },
+        {
+          "label": "STATE BANK OF INDIA",
+          "reported_pct": "2.32"
+        },
+        {
+          "label": "AXIS BANK LTD.",
+          "reported_pct": "1.90"
+        },
+        {
+          "label": "ITC LTD.",
+          "reported_pct": "1.58"
+        },
+        {
+          "label": "MAHINDRA & MAHINDRA LTD.",
+          "reported_pct": "1.51"
+        },
+        {
+          "label": "Top-ten reported total",
+          "reported_pct": "31.77"
+        },
+        {
+          "label": "Cash, cash equivalents and others",
+          "reported_pct": "-0.09"
+        }
+      ],
+      "coverage_and_limitations": "Top ten equity positions only, plus reported cash line; mechanically unreported portfolio residual is 68.32% (100 - 31.77 - (-0.09)); do not assign residual to individual securities.",
+      "arithmetic_check": {
+        "top10_sum_pct": "31.77",
+        "cash_pct": "-0.09",
+        "unreported_residual_pct": "68.32",
+        "total_pct": "100.00"
+      }
+    },
+    {
+      "candidate_id": "SBI_GILT_JUNE2036_FUND",
+      "as_of": "2026-03-31",
+      "source_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/sbi_passives_factsheet_2026-03.pdf",
+      "source_sha256": "f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365",
+      "pdf_page": 46,
+      "extraction_method": "PyMuPDF 1.28.2; manually transcribed labeled source rows and independently reconciled Decimal sums",
+      "rows": [
+        {
+          "label": "Government securities",
+          "reported_pct": "96.27"
+        },
+        {
+          "label": "Cash, cash equivalents and others",
+          "reported_pct": "3.73"
+        }
+      ],
+      "coverage_and_limitations": "Asset-allocation total; top-holdings row is generic Government of India at 96.27%; individual ISINs are not shown.",
+      "arithmetic_check": {
+        "reported_allocation_sum_pct": "100.00",
+        "expected_sum_pct": "100.00",
+        "passes": true
+      }
+    },
+    {
+      "candidate_id": "SBI_GILT_FUND",
+      "as_of": "2026-02-28",
+      "source_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/sbi_gilt_fund_factsheet_2026-02.pdf",
+      "source_sha256": "825773283d5bba69bcb23c0eec1ac31a487bf07de02678174a2adcab25ad739a",
+      "pdf_page": 1,
+      "extraction_method": "PyMuPDF 1.28.2; manually transcribed labeled source rows and independently reconciled Decimal sums",
+      "rows": [
+        {
+          "label": "GOI 7.24% 18.08.2055",
+          "reported_pct": "29.50"
+        },
+        {
+          "label": "GOI 6.01% 21.07.2030",
+          "reported_pct": "9.56"
+        },
+        {
+          "label": "GOI 7.18% 14.08.2033",
+          "reported_pct": "6.57"
+        },
+        {
+          "label": "GOI 6.48% 06.10.2035",
+          "reported_pct": "5.70"
+        },
+        {
+          "label": "GOI 6.9% 15.04.2065",
+          "reported_pct": "4.31"
+        },
+        {
+          "label": "GOI 6.79% 07.10.2034",
+          "reported_pct": "3.16"
+        },
+        {
+          "label": "GOI 7.02% 18.06.2031",
+          "reported_pct": "1.91"
+        },
+        {
+          "label": "GOI 6.68% 07.07.2040",
+          "reported_pct": "0.95"
+        },
+        {
+          "label": "GOI 6.28% 14.07.2032",
+          "reported_pct": "0.36"
+        },
+        {
+          "label": "State Government of Karnataka 7.47% 25.08.2036 SDL",
+          "reported_pct": "4.82"
+        },
+        {
+          "label": "State Government of Kerala 7.66% 18.02.2039 SDL",
+          "reported_pct": "3.12"
+        },
+        {
+          "label": "State Government of Bihar 7.86% 11.02.2039 SDL",
+          "reported_pct": "1.50"
+        },
+        {
+          "label": "State Government of Haryana 7.83% 11.02.2043 SDL",
+          "reported_pct": "1.05"
+        },
+        {
+          "label": "State Government of Mizoram 7.85% 11.02.2042 SDL",
+          "reported_pct": "0.10"
+        },
+        {
+          "label": "91 Day T-Bill 27.03.26",
+          "reported_pct": "7.03"
+        },
+        {
+          "label": "91 Day T-Bill 23.04.26",
+          "reported_pct": "5.73"
+        },
+        {
+          "label": "182 Day T-Bill 16.04.26",
+          "reported_pct": "4.14"
+        },
+        {
+          "label": "182 Day T-Bill 05.03.26",
+          "reported_pct": "3.43"
+        },
+        {
+          "label": "364 Day T-Bill 07.05.26",
+          "reported_pct": "2.91"
+        },
+        {
+          "label": "91 Day T-Bill 05.03.26",
+          "reported_pct": "1.96"
+        },
+        {
+          "label": "Cash, cash equivalents and others",
+          "reported_pct": "2.19"
+        }
+      ],
+      "coverage_and_limitations": "Factsheet itemized coupon/maturity labels and issue names, but no ISINs. The AMC reports totals of Government Securities 62.02%, SDL 10.59%, T-Bills 25.20%, cash/others 2.19%; no identifier is inferred.",
+      "arithmetic_check": {
+        "reported_allocation_sum_pct": "100.00",
+        "expected_sum_pct": "100.00",
+        "passes": true
+      }
+    },
+    {
+      "candidate_id": "HDFC_GOLD_ETF",
+      "as_of": "2026-08-31",
+      "source_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/hdfc_gold_etf_factsheet_2026-09.pdf",
+      "source_sha256": "1bd813d93af20114648889f5cb93d7ce7ae8c65382500fcc08ef7c2351bf05fc",
+      "pdf_page": 2,
+      "extraction_method": "PyMuPDF 1.28.2; manually transcribed labeled source rows and independently reconciled Decimal sums",
+      "rows": [
+        {
+          "label": "Gold and gold related: Gold",
+          "reported_pct": "98.59"
+        },
+        {
+          "label": "Cash, cash equivalents and net current assets",
+          "reported_pct": "1.41"
+        }
+      ],
+      "coverage_and_limitations": "Reported portfolio allocation totals 100.00%; gold purity stated as 0.995 in product labelling.",
+      "arithmetic_check": {
+        "reported_allocation_sum_pct": "100.00",
+        "expected_sum_pct": "100.00",
+        "passes": true
+      }
+    }
+  ],
+  "boundary": "Dated snapshots only. No historical holdings are inferred. ETF/fund weight snapshots are not benchmark weights and do not establish executable returns."
+}

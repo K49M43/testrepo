@@ -1,5 +1,5 @@
 {
-  "contract_version": "1.3",
+  "contract_version": "1.4",
   "purpose": "Deterministic research fixture; not an investor-specific tax result or return forecast.",
   "currency": "INR",
   "cashflow_fixture": {
@@ -10,11 +10,24 @@
     "annual_step_up": "0.10",
     "step_every_months": 12,
     "contribution_timing": "Illustrative end-of-month schedule; actual payment dates unconfirmed.",
-    "horizons_months": [120, 122],
+    "horizons_months": [
+      120,
+      122
+    ],
     "transaction_rounding": "Not assumed; fixture retains decimal schedule values."
   },
   "ledger_event_fields": {
-    "required": ["event_id", "event_date", "tax_year", "event_sequence", "event_type", "instrument_id", "cash_amount_inr", "source_or_assumption", "qualification_status"],
+    "required": [
+      "event_id",
+      "event_date",
+      "tax_year",
+      "event_sequence",
+      "event_type",
+      "instrument_id",
+      "cash_amount_inr",
+      "source_or_assumption",
+      "qualification_status"
+    ],
     "conventions": {
       "cash_amount_inr": "Finite non-negative magnitude; event_type determines direction. Contributions and income add cash; acquisitions, fees, withholding, and withdrawals use cash; disposals add proceeds less fee.",
       "event_sequence": "Unique integer within each date; controls same-day processing order.",
@@ -22,21 +35,64 @@
       "tax_withholding_inr": "Record withholding as a separate withholding event and credit in its event tax year; do not net it against gross income.",
       "tax_classification": "Income needs confirmed ordinary/dividend classification. Positive realized gains need confirmed section76/196/197/198 classification and corresponding eligibility predicate. Unrealized gains are valuation only.",
       "tax_source_trace": "Each portfolio tax-year category and withholding credit must list source event IDs. Each source record carries date, tax year, instrument, classification, rule reference, and lot/acquisition date when lot-linked. Annual tax is calculated at tax-year level and is not allocated across events.",
-      "amount_precision": "Decimal arithmetic; no statutory rupee or transaction rounding is applied. Derived unit-price multiplication may retain a computation-only residual up to ₹0.000000000001; residuals above this fail reconciliation."
+      "amount_precision": "Decimal arithmetic; no statutory rupee or transaction rounding is applied. Derived unit-price multiplication may retain a computation-only residual up to ₹0.000000000001; residuals above this fail reconciliation.",
+      "capital_gain_loss_trace": "Realized capital losses and gains must have source event IDs, lot IDs, tax year, supported tax-bucket/holding character and confirmed eligibility. Every offset is caller-selected and explicitly linked by loss ID to gain ID; no allocation priority is inferred.",
+      "statutory_rounding": "The TY 2026-27 tax component applies section 516 total-income and final settlement rounding as implemented and audited. Ledger amounts, unit calculations and transaction costs retain Decimal precision; no investor transaction rounding is inferred."
     },
     "conditional": {
-      "acquisition_or_reinvestment": ["lot_id", "units", "unit_price_inr", "transaction_cost_inr", "tax_basis_addition_inr"],
-      "coupon_or_distribution": ["gross_income_inr", "tax_classification", "tax_classification_confirmed"],
-      "withholding": ["tax_withheld_inr"],
-      "disposal_or_maturity": ["lot_id", "units", "unit_price_inr", "transaction_cost_inr", "deductible_transfer_expenses_inr", "tax_classification", "tax_classification_confirmed", "applicable_section_eligibility_confirmation"]
+      "acquisition_or_reinvestment": [
+        "lot_id",
+        "units",
+        "unit_price_inr",
+        "transaction_cost_inr",
+        "tax_basis_addition_inr"
+      ],
+      "coupon_or_distribution": [
+        "gross_income_inr",
+        "tax_classification",
+        "tax_classification_confirmed"
+      ],
+      "withholding": [
+        "tax_withheld_inr"
+      ],
+      "disposal_or_maturity": [
+        "lot_id",
+        "units",
+        "unit_price_inr",
+        "transaction_cost_inr",
+        "deductible_transfer_expenses_inr",
+        "tax_classification",
+        "tax_classification_confirmed",
+        "applicable_section_eligibility_confirmation"
+      ]
     },
-    "allowed_event_types": ["initial_contribution", "sip_contribution", "acquisition", "fee", "coupon", "distribution", "withholding", "withdrawal", "reinvestment", "partial_disposal", "maturity", "terminal_disposal"],
-    "implemented_ledger_scope": "Synthetic event/lot fixture supports positive gains and explicit eligible sections only. Capital losses, set-off/carry-forward, investor-specific facts, and statutory rupee rounding are not implemented; reject or keep unqualified rather than infer."
+    "allowed_event_types": [
+      "initial_contribution",
+      "sip_contribution",
+      "acquisition",
+      "fee",
+      "coupon",
+      "distribution",
+      "withholding",
+      "withdrawal",
+      "reinvestment",
+      "partial_disposal",
+      "maturity",
+      "terminal_disposal"
+    ],
+    "implemented_ledger_scope": "Synthetic event/lot fixtures support positive and negative realized gains, explicitly allocated current-year and evidenced carried-loss offsets within supported tax buckets, and section 516 income/settlement rounding. Unknown classifications, unmatched eligible offsets, aggregate-only external capital gains, pre-2026 transition losses, personal tax facts and future-law assumptions remain blocked/fail-closed."
   },
   "terminal_case_fixture": {
     "source_schedule": "cashflow_hurdle_monthly_2026-10_base.csv",
-    "horizons_months": [120, 122],
-    "cases": ["fund one-year liquidation", "50% staged liquidation across tax years", "direct-bond annual coupon and par maturity"],
+    "horizons_months": [
+      120,
+      122
+    ],
+    "cases": [
+      "fund one-year liquidation",
+      "50% staged liquidation across tax years",
+      "direct-bond annual coupon and par maturity"
+    ],
     "fund_assumption": "Synthetic specified-fund lot; 5% per year simple NAV appreciation applied linearly by month, with no distribution stream; positive terminal gain classified under section 76 solely for mechanics testing.",
     "bond_assumption": "Synthetic direct bond purchased at par, annual 5% cash coupon, principal returned at par; no secondary-market sale or accrued-interest price is modeled.",
     "external_tax_fixture": "₹30 lakh ordinary income explicitly supplied in every tax year containing portfolio income.",
@@ -65,5 +121,37 @@
     "Withholding is a tax credit and is not subtracted as final tax expense.",
     "Unrealized gains are not realized taxable disposals.",
     "Do not publish final real wealth until CPI base and observation alignment are qualified."
+  ],
+  "capital_loss_schedule": {
+    "source": "decision/capital_gain_loss_schedule.py; sections 108, 111, 121 within the bounded TY 2026-27 review",
+    "offset_fields": [
+      "loss_id",
+      "gain_id",
+      "amount_inr"
+    ],
+    "requirements": [
+      "source-trace gain and loss to event and lot",
+      "explicit caller allocation; no inferred priority",
+      "enforce short/long character restrictions and source-gain caps",
+      "carried losses require section 263(1) return evidence and use within eight succeeding tax years",
+      "apply all mandatory compatible loss offsets before tax"
+    ],
+    "fail_closed": [
+      "pre-2026 transition losses until a separate section 536 representation is qualified",
+      "aggregate-only external capital-gain amounts without event/lot traces",
+      "unsupported character/eligibility, missing evidence, invalid/expired carry-forward, incompatible or incomplete eligible allocations"
+    ]
+  },
+  "contract_change_log": [
+    {
+      "version": "1.3",
+      "status": "historical",
+      "note": "Pre-loss-integration synthetic event/lot contract."
+    },
+    {
+      "version": "1.4",
+      "as_of": "2026-11-05",
+      "note": "Reconciled contract to merged Sprint 1 loss-offset schedule, section 516 tax rounding, and current fail-closed boundaries. Cashflow fixture values unchanged."
+    }
   ]
 }

@@ -1,0 +1,1058 @@
+===== sbi_passives_factsheet_2026-03.pdf | PDF page 28 | SBI_NIFTY10Y_GSEC_ETF | source SHA-256 f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365 =====
+NIFTY 10 YR BENCHMARK G-SEC ETF
+An open-ended Exchange Traded Scheme tracking Nifty 10-year Bench-
+mark G-Sec Index. A relatively high interest rate risk and relatively low 
+credit risk.
+Investment Objective: 
+The investment objective of the scheme is to provide returns that closely correspond to the total returns of the securities as represented by the underlying index, subject to tracking 
+error. However, there is no guarantee or assurance that the investment objective of the scheme will be achieved.
+Product Labelling:
+This product is suitable for investors who are 
+seeking^:
+•	Medium to long-term investment
+•	Investment in securities covered by Nifty 10-year 
+Benchmark G-Sec Index
+^Investors should consult their financial 
+advisers if in doubt about whether the product 
+is suitable for them.
+Portfolio Turnover*:
+Total Turnover:   1.98
+*Portfolio Turnover = lower of total sale or total purchase for the last 12 months
+(including equity derivatives) upon Avg. AUM of trailing twelve months.
+Total Expense Ratio:
+0.14%
+Note: All expense ratios are inclusive of GST on Management Fees
+Portfolio Classification by
+Asset Allocation (in %)
+Portfolio Classification by
+Rating Class (in %)
+Top Holdings:
+Stock Name
+(%) Of Total AUM
+GOVERNMENT OF INDIA
+ 96.83 
+Grand Total
+ 96.83 
+Sovereign
+ 96.83 
+Cash, Cash Equivalents 
+And Others#
+ 3.17 
+Grand Total
+100.00 
+Scheme Details:
+a.  Point-to-Point (PTP) returns are provided on a standard investment of Rs 10,000/- and 
+are rounded off in the tables above.
+b. The total number of schemes managed by Mr. Jignesh Shah is 3.
+c. The performance of the schemes is benchmarked to the Total Return variant of the Index
+Inception Date:
+Exchange Listed:
+ISIN:
+Bloomberg Code:
+Exchange Symbol/Scrip Code:
+Minimum Investment:
+Benchmark/Underlying Index:
+Creation Unit Size:
+Fund Managers
+09/06/2016
+NSE
+INF200KA1JT1
+Directly with the Mutual Fund
+For Market Makers: The Scheme offers units for subscription / redemption 
+directly with the Mutual Fund on all business days in creation unit size to Market 
+Makers at intraday NAV based on the actual execution price of the underlying 
+portfolio.
+For other investors: Other investors can subscribe/redeem the units directly 
+with the Mutual Fund on all business days at intraday NAV based on the actual 
+execution price of the underlying portfolio, provided the executed value of the 
+units is greater than Rs. 25 crores and units are in multiples of creation unit size 
+(Not applicable to Employee Provident Fund Organisation, Recognised Provident 
+Funds, approved Gratuity Funds, approved Superannuation Funds till February 
+28, 2025).
+Directly with exchange: The units of the Scheme can be purchase / redeem in 
+minimum lot of 1 unit and in multiples thereof.
+SBIGILT IS
+SETF10GILT
+NIFTY 10-Yr Benchmark G-Sec 
+5,000 units
+Mr Jignesh Shah:
+Managing this Fund: w.e.f July 1st ,2025
+Total experience: Over 23 Years
+ISIN
+Potential Risk Class of Scheme
+Credit Risk
+Relatively Low 
+(Class A)
+Moderate
+(Class B)
+Relatively High 
+(Class C)
+Interest Rate Risk
+Relatively Low 
+(Class I)
+Moderate
+(Class II)
+Relatively
+High (Class III)
+A-III
+Net Asset Value:
+SBI Nifty 10 yr Benchmark G-Sec ETF
+`  256.0160     
+Fund Performance
+1 Year
+3 Years
+5 Years
+Since Inception
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+SBI Nifty 10 yr 
+Benchmark G-Sec 
+ETF
+2.40
+10,240
+6.90
+12,219
+4.90
+12,702
+5.93
+17,590
+Scheme Benchmark: 
+Nifty 10 yr Bench-
+mark G-Sec
+2.57
+10,257
+7.06
+12,273
+5.05
+12,796
+6.01
+17,733
+Additional 
+Benchmark: CRISIL 
+10 Year Gilt Index
+2.11
+10,211
+6.79
+12,180
+4.95
+12,734
+6.05
+17,790
+Tracking Error:
+1-year:
+0.0320%
+3-years:
+0.0206%
+Tracking Difference:
+-0.1730%
+Tracking Error is computed using Total Returns Index for 1-Year and 3-Year Period ending 
+March 31, 2026, based on day-end and month-end NAV respectively.
+Tracking Difference is computed for 1 Year Period from 31st March 2025 to 31st March 2026, based 
+on day-end NAV respectively.
+All data as of March 31, 2026
+Quantitative Data:
+Standard Deviation
+:
+2.86%
+Beta
+:
+1.00
+Sharpe Ratio
+:
+-0.08
+ 
+AAUM for the Month of March 2026:
+` 3,252.67 crores
+AUM as on March 31, 2026:
+` 3,201.45 crores
+Basket Value (Rs. in Lacs):
+12.83
+#Includes TREPS/CBLO Deposits
+21
+The risk of the Scheme is Moderate
+96.83 
+3.17 
+Sovereign
+Cash, Cash Equivalents And Others#
+
+
+===== sbi_passives_factsheet_2026-03.pdf | PDF page 34 | SBI_NIFTY500_INDEX_FUND | source SHA-256 f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365 =====
+NIFTY 500 INDEX FUND
+An open-ended scheme replicating/ tracking Nifty 500 
+Index
+Investment Objective: 
+The investment objective of the scheme is to provide returns that correspond to the total returns of the securities as represented by the underlying index, subject to tracking error.
+However, there is no guarantee or assurance that the investment objective of the scheme will be achieved.
+Bloomberg Code:
+Scheme Details:
+SBN5IRG:IN
+Product Labelling:
+This product is suitable for investors who are 
+seeking^:
+• Long term capital appreciation
+• Investment in securities covered by Nifty 500 Index
+^Investors should consult their financial advis-
+ers if in doubt about whether the product is 
+suitable for them.
+Portfolio Turnover*:
+Equity Turnover: 0.11
+Total Turnover: 0.11
+*Portfolio Turnover = lower of total sale or total purchase for the last 12 months (including equity 
+derivatives) upon Avg. AUM of trailing twelve months.
+Top 10 Holdings:
+Stock Name
+(%) Of Total AUM
+HDFC BANK LTD.
+ 6.39 
+RELIANCE INDUSTRIES LTD.
+ 5.18 
+ICICI BANK LTD.
+ 4.92 
+BHARTI AIRTEL LTD.
+ 3.12 
+INFOSYS LTD.
+ 2.50 
+LARSEN & TOUBRO LTD.
+ 2.35 
+STATE BANK OF INDIA
+ 2.32 
+AXIS BANK LTD.
+ 1.90 
+ITC LTD.
+ 1.58 
+MAHINDRA & MAHINDRA LTD.
+ 1.51 
+Grand Total
+ 31.77 
+Comparative Performance of Scheme Regular Plan
+1 Year
+3 Years
+5 Years
+Since Inception
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+SBI Nifty 500 Index 
+Fund
+-3.68
+9,632
+N.A.
+N.A.
+N.A.
+N.A.
+-10.51
+8,466
+Scheme Benchmark: 
+Nifty 500 TRI
+-2.87
+9,712
+N.A.
+N.A.
+N.A.
+N.A.
+-9.76
+8,576
+Additional 
+Benchmark: BSE 
+Sensex TRI
+-5.98
+9,399
+N.A.
+N.A.
+N.A.
+N.A.
+-9.18
+8,659
+Sectoral Breakdown (in %)
+CASH, CASH EQUIVALENTS AND OTHERS: -0.09 
+Inception Date:
+Plans Available:
+Options
+Minimum Investment:
+Additional Investment:
+Benchmark/Underlying Index:
+Load Structure:
+Fund Managers
+30/09/2024
+Regular & Direct
+Growth & IDCW
+`5,000 & in multiples of `1
+`1,000 & in multiples of `1
+Nifty 500 TRI
+• For exit on or before 15 days from 
+the date of allotment – 0.25%,
+• For exit after 15 days from the date 
+of allotment – Nil
+Mr. Viral Chhadva 
+Managing this Fund: Since September 2024 
+Total experience: Over 19 Years
+`
+`
+Net Asset Value:
+REG PLAN - IDCW
+ `  8.4663     
+REG PLAN - GROWTH
+ `  8.4665    
+DIR PLAN - IDCW
+ `  8.5286    
+DIR PLAN - GROWTH
+ `  8.5286     
+Total Expense Ratio:
+Regular: 0.79%
+Direct: 0.31%
+Note: All expense ratios are inclusive of GST on Management Fees
+Nifty 500 Index Fund
+Facts
+Dividend Yield:
+1.25%
+(Source: www.bseindia.com)
+a.  Point-to-Point (PTP) returns are provided on a standard investment of Rs 10,000/- and are rounded 
+off in the tables above.
+b. The total number of schemes managed by Mr. Viral Chhadva is 30.
+c. The performance of the schemes is benchmarked to the Total Return variant of the Index 
+SIP: 'Any Day SIP' Facility is available for Monthly, Quarterly, Semi-Annual and Annual
+frequencies through electronic mode like OTM/Debit Mandate. Default SIP date will be
+10th. In case the SIP due date is a Non Business Day, then the immediate following
+Business Day will be considered for SIP processing.
+• Daily - Minimum `500 & in multiples of `1 thereafter for minimum 12 installments
+• Weekly - Minimum `1,000 & in multiples of `1 thereafter for a minimum of 6 installments
+or minimum `500 & in multiples of `1 thereafter for a minimum of 12 installments
+• Monthly - Minimum `1,000 & in multiples of `1 thereafter for minimum six months (or)
+minimum `500 & in multiples of `1 thereafter for minimum one year
+• Quarterly - Minimum `1,500 & in multiples of `1 thereafter for minimum one year
+• Semi Annual - Minimum `3,000 & in multiples of `1 thereafter for a minimum of 4
+installments
+• Annual - Minimum `5,000 & in multiples of `1 thereafter for a minimum of 4 installments
+All data as of March 31, 2026
+Comparative Performance of Scheme Direct Plan
+1 Year
+3 Years
+5 Years
+Since Inception
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+SBI Nifty 500 Index 
+Fund
+-3.22
+9,678
+N.A.
+N.A.
+N.A.
+N.A.
+-10.08
+8,529
+Scheme Benchmark: 
+Nifty 500 TRI
+-2.87
+9,712
+N.A.
+N.A.
+N.A.
+N.A.
+-9.76
+8,576
+Additional 
+Benchmark: BSE 
+Sensex TRI
+-5.98
+9,399
+N.A.
+N.A.
+N.A.
+N.A.
+-9.18
+8,659
+AAUM for the Month of March 2026:
+` 733.00 crores
+AUM as on March 31, 2026:
+` 701.91 crores
+Tracking Error:
+Regular Plan
+Direct Plan
+1-year:
+0.0342%
+0.0205%
+Tracking Difference:
+-0.8008%
+-0.3343%
+Tracking Error and Tracking difference is computed using Total Returns Index for 1-Year Period ending 
+March 31, 2026, based on day-end NAV
+27
+The risk of the Scheme is Very High
+0.10 
+0.12 
+0.23 
+0.95 
+1.76 
+1.92 
+1.97 
+2.72 
+2.80 
+3.45 
+3.56 
+3.80 
+4.36 
+5.76 
+6.64 
+6.92 
+7.04 
+7.08 
+8.01 
+30.90 
+0
+5
+10
+15
+20
+25
+30
+35
+DIVERSIFIED
+MEDIA, ENTERTAINMENT & PUBLICATION
+TEXTILES
+REALTY
+SERVICES
+CHEMICALS
+CONSTRUCTION MATERIALS
+CONSUMER DURABLES
+CONSTRUCTION
+CONSUMER SERVICES
+POWER
+TELECOMMUNICATION
+METALS & MINING
+FAST MOVING CONSUMER GOODS
+CAPITAL GOODS
+HEALTHCARE
+AUTOMOBILE AND AUTO COMPONENTS
+INFORMATION TECHNOLOGY
+OIL, GAS & CONSUMABLE FUELS
+FINANCIAL SERVICES
+
+
+===== sbi_passives_factsheet_2026-03.pdf | PDF page 46 | SBI_GILT_JUNE2036_FUND | source SHA-256 f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365 =====
+Investment Objective: 
+The investment objective of the scheme is to provide returns that closely correspond to the total returns of the securities as represented by the underlying index, subject to tracking 
+error. However, there is no guarantee or assurance that the investment objective of the scheme will be achieved.
+Quantitative Data:
+Modified Duration
+6.80 years
+Average Maturity
+10.03 years
+Macaulay Duration
+7.04 years
+Yield to Maturity
+7.25%
+Product Labelling:
+This product is suitable for investors who are 
+seeking^:
+•	Income over the target maturity period
+•	An open-ended Target Maturity Index Fund 
+investing in constituents of CRISIL IBX Gilt Index 
+– June 2036
+^Investors should consult their financial advisers if in 
+doubt about whether the product is suitable for them.
+Total Expense Ratio:
+Regular: 0.50%
+Direct: 0.28%
+Note: All expense ratios are inclusive of GST on Management Fees
+Portfolio Classification by
+Asset Allocation (in %)
+Portfolio Classification by
+Rating Allocation (in %)
+Government Securities
+96.27
+Cash, Cash Equivalents And 
+Others#
+3.73
+Grand Total
+ 100.00 
+AAUM for the Month of March 2026:
+` 2,682.32 crores
+AUM as on March 31, 2026:
+` 2,628.68 crores
+#Includes TREPS/CBLO Deposits
+Top Holdings:
+Stock Name
+(%) Of Total AUM
+GOVERNMENT OF INDIA
+ 96.27 
+Grand Total
+ 96.27 
+Potential Risk Class of Scheme
+Credit Risk
+Relatively Low 
+(Class A)
+Moderate
+(Class B)
+Relatively High 
+(Class C)
+Interest Rate Risk
+Relatively Low 
+(Class I)
+Moderate
+(Class II)
+Relatively
+High (Class III)
+A-III
+CRISIL IBX GILT INDEX-JUNE 2036 
+FUND
+An open-ended Target Maturity Index Fund investing in constituents of CRISIL IBX Gilt 
+Index – June 2036 Index. A relatively high interest rate risk and relatively low credit risk.
+Scheme Details:
+Inception Date:
+Plans Available:
+Indicative Investment Horizon:
+Options
+Minimum Investment:
+Additional Investment:
+Benchmark/Underlying Index:
+Load Structure:
+Fund Managers
+04/10/2022
+3 years+
+Growth & IDCW
+`5,000/- and in multiples of `1
+`1,000 & in multiples of `1
+CRISIL IBX Gilt Index – June 2036
+Regular & Direct
+• 0.15% if redeemed on or before 30
+	 days from the date of allotment
+• Nil – after 30 days from the date of
+	 allotment
+Ms. Ranjana Gupta:
+Managing this Fund: Since December 2023 
+Total experience: Over 29 Years
+`
+`
+`
+`
+`
+Net Asset Value:
+REG PLAN - IDCW
+ `  12.9057      
+REG PLAN - GROWTH
+ `  12.9053     
+DIR PLAN - IDCW
+ `  13.0154     
+DIR PLAN - GROWTH
+ `  13.0155     
+Comparative Performance of Scheme Regular Plan
+1 Year
+3 Years
+5 Years
+Since Inception
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+SBI CRISIL IBX Gilt 
+Index- June 2036 
+Fund
+2.83
+10,283
+7.27
+12,347
+N.A.
+N.A.
+7.58
+12,905
+Scheme Benchmark: 
+CRISIL IBX Gilt Index  
+June 2036
+3.30
+10,330
+7.84
+12,545
+N.A.
+N.A.
+7.99
+13,076
+Additional 
+Benchmark: CRISIL 
+10 Year Gilt Index
+2.11
+10,211
+6.79
+12,180
+N.A.
+N.A.
+7.00
+12,665
+Tracking Error:
+Regular Plan
+Direct Plan
+1-year:
+1.2008%
+1.2011%
+Tracking Difference:
+-0.4768%
+-0.2524%
+Tracking Error and Tracking Difference is computed using Total Returns Index for 1-Year Period end-
+ing March 31, 2026, based on day-end NAV respectively
+a.  Point-to-Point (PTP) returns are provided on a standard investment of Rs 10,000/- and 
+are rounded off in the tables above.
+b. The total number of schemes managed by Ms. Ranjana Gupta is 5.
+c. The performance of the schemes is benchmarked to the Total Return variant of the Index
+SIP: The Scheme offers Daily, Weekly, Monthly and
+Quarterly SIPs with following requirements.
+Daily SIP - Minimum Rs. 500 and in multiples of Re. 1thereafter.
+Weekly SIP – Minimum Rs. 500 and in multiples of Re. 1 thereafter.
+Monthly SIP – Minimum Rs. 1000 and in multiples of Re. 1 thereafter.
+Quarterly SIP - Minimum Rs. 1500 & in multiples of Re. 1 thereafter
+The Scheme being a target maturity fund, investors may enroll for any 
+of the above frequencies. The last instalment would be for the tenure 
+as opted by the investor or till suspension of subscription (prior to the
+targeted maturity of the scheme), whichever is earlier. 
+All data as of March 31, 2026
+Comparative Performance of Scheme Direct Plan
+1 Year
+3 Years
+5 Years
+Since Inception
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+CAGR 
+Returns 
+( % )
+PTP 
+Returns 
+( INR )
+SBI CRISIL IBX Gilt 
+Index- June 2036 
+Fund
+3.05
+10,305
+7.53
+12,436
+N.A.
+N.A.
+7.84
+13,016
+Scheme Benchmark: 
+CRISIL IBX Gilt Index  
+June 2036
+3.30
+10,330
+7.84
+12,545
+N.A.
+N.A.
+7.99
+13,076
+Additional 
+Benchmark: CRISIL 
+10 Year Gilt Index
+2.11
+10,211
+6.79
+12,180
+N.A.
+N.A.
+7.00
+12,665
+39
+The risk of the Scheme is Moderate
+96.27 
+3.73 
+Sovereign
+Cash, Cash Equivalents And Others
+
+
+===== sbi_gilt_fund_factsheet_2026-02.pdf | PDF page 1 | SBI_GILT_FUND | source SHA-256 825773283d5bba69bcb23c0eec1ac31a487bf07de02678174a2adcab25ad739a =====
+49
+DEBT- GILT FUND
+Investment Objective
+Quantitative Data
+To provide returns to the investors generated 
+through investments in Government securities 
+issued by the Central Government and/or State 
+Government(s).
+Fund Details
+Modified Duration
+: 5.18 
+Average Maturity
+: 13.82 years
+Macaulay Duration
+: 5.37 years
+Yield to Maturity^
+: 6.60%
+^in case of semi-annual convention , the YTM is annualised
+years
+• Type of Scheme
+An open ended Debt Scheme investing in 
+government securities across maturity. A 
+relatively high interest rate risk and relatively 
+low credit risk
+• Date of Allotment: 30/12/2000
+• Report As On: 28/02/2026
+• AAUM for the Month of February 2026
+` 10,335.43 Crores
+• AUM as on February 28, 2026
+` 10,210.84 Crores
+• Fund Manager: Mr Sudhir Agarwal
+Managing Since: 
+Mr Sudhir Agarwal (w.e.f. July 2025)
+Total Experience: 
+Mr Sudhir Agarwal Over 20 years
+First Tier Benchmark: 
+Nifty All Duration G-Sec Index 
+• Exit Load: NIL
+• Entry Load: N.A.
+• Plans Available: Regular, Direct
+• Options: Growth, IDCW
+• SIP 
+Any Day SIP’ Facility is available for Monthly, 
+Quarterly, Semi-Annual and Annual frequencies 
+through electronic mode like OTM / Debit 
+Mandate. Default SIP date will be 10th. In case 
+the SIP due date is a Non Business Day, then 
+the immediate following Business Day will be 
+considered for SIP processing.
+Daily - Minimum 500 & in multiples of 1 
+thereafter for a minimum of 12 instalments. 
+(Kindly refer notice cum addendum dated June 
+02, 2020 for further details)
+Weekly - Minimum ` 1000 & in multiples of `1 
+thereafter for a minimum of 6 instalments. (or) 
+Minimum 500 & in multiples of 1 thereafter for 
+a minimum of 12 instalments.
+Monthly - Minimum `1000 & in multiples of `1 
+thereafter for minimum six months (or) 
+minimum `500 & in multiples of `1 thereafter 
+for minimum one year
+Quarterly - Minimum `1500 & in multiples of `1 
+thereafter for minimum one year.
+Semi Annual - Minimum ` 3000 & in multiples 
+of `1 thereafter for a minimum of 4 
+installments.
+Annual - Minimum ` 5000 & in multiples of `1 
+thereafter for a minimum of 4 installments.
+• Minimum Investment
+` 5,000 & in multiples of ` 1
+• Additional Investment
+` 1,000 & in multiples of ` 1
+Option
+NAV (`)
+NET ASSET VALUE
+Option
+NAV (`)
+PORTFOLIO CLASSIFICATION BY 
+RATING CLASS (%)
+PORTFOLIO CLASSIFICATION BY 
+ASSET ALLOCATION (%)
+PORTFOLIO
+Government Securities
+Grand Total
+ 100.00
+GOI 7.24% 18.08.2055 GOV
+SOVEREIGN
+29.50
+GOI 6.01% 21.07.2030 GOV
+SOVEREIGN
+9.56
+GOI 7.18% 14.08.2033 GOV
+SOVEREIGN
+6.57
+GOI 6.48% 06.10.2035 GOV
+SOVEREIGN
+5.70
+GOI 6.9% 15.04.2065 GOV
+SOVEREIGN
+4.31
+GOI 6.79% 07.10.2034 GOV
+SOVEREIGN
+3.16
+GOI 7.02% 18.06.2031 GOV
+SOVEREIGN
+1.91
+GOI 6.68% 07.07.2040 GOV
+SOVEREIGN
+0.95
+GOI 6.28% 14.07.2032 GOV
+SOVEREIGN
+0.36
+State Government of Karnataka 7.47% 25.08.2036 SDL
+SOVEREIGN
+4.82
+State Government of Kerala 7.66% 18.02.2039 SDL
+SOVEREIGN
+3.12
+State Government of Bihar 7.86% 11.02.2039 SDL
+SOVEREIGN
+1.50
+State Government of Haryana 7.83% 11.02.2043 SDL
+SOVEREIGN
+1.05
+State Government of Mizoram 7.85% 11.02.2042 SDL
+SOVEREIGN
+0.10
+91 Day T-Bill 27.03.26
+SOVEREIGN
+7.03
+91 Day T-Bill 23.04.26
+SOVEREIGN
+5.73
+182 Day T-Bill 16.04.26
+SOVEREIGN
+4.14
+182 Day T-Bill 05.03.26
+SOVEREIGN
+3.43
+364 Day T-Bill 07.05.26
+SOVEREIGN
+2.91
+91 Day T-Bill 05.03.26
+SOVEREIGN
+1.96
+Total
+62.02
+Total
+10.59
+Total
+25.20
+State Development Loans
+Treasury Bills
+Cash, Cash Equivalents And Others
+2.19
+Issuer Name 
+Rating 
+(%) Of Total 
+AUM
+PF-Fixed Period-1 Year-IDCW                   
+PF-Fixed Period-2 Year-IDCW                   
+PF-Fixed Period-3 Year-IDCW                  
+PF 3 Year - Growth                   
+PF Regular - Growth                  
+Government Securities
+ 62.02 
+Treasury Bills
+ 25.20 
+State Development Loans
+ 10.59 
+Cash, Cash Equivalents And Others
+ 2.19
+Regular 
+                               
+Reg-Plan-Growth
+Dir-Plan-IDCW 
+Dir-Plan-Growth
+IDCW
+Sovereign
+Cash, Cash Equivalents, And Others
+• Regular income and capital growth for medium to long-term 
+• Investment in government securities.
+SBI Gilt Fund 
+This product is suitable for investors who are seeking^:
+^Investors should consult their financial advisers if in 
+doubt about whether the product is suitable for them.
+ 20.6876 
+ 20.9351 
+ 20.2982 
+ 40.1646 
+ 42.9975 
+ 20.5905 
+ 66.9615 
+ 22.7063 
+ 71.1447
+(Previously known as SBI Magnum Gilt Fund)
+GILT FUND
+97.81 
+2.19 
+
+
+===== hdfc_gold_etf_factsheet_2026-09.pdf | PDF page 2 | HDFC_GOLD_ETF | source SHA-256 1bd813d93af20114648889f5cb93d7ce7ae8c65382500fcc08ef7c2351bf05fc =====
+Product Labelling
+Since inception returns are computed on the allotment price. Returns greater than 1 year period are compounded annualized (CAGR). The Scheme does not offer any 
+Plans/Options. Load is not taken into consideration for computation of performance. ^Past performance may or may not be sustained in future and is not a guarantee of 
+any future returns.
+#BENCHMARK INDEX : Domestic Price of Physical Gold
+For Performance of Other Schemes Managed by the Fund Managers, please click here.
+^Performance (as on 31st August, 2026)
+NAV as at August 31, 2026 ` 131.8080 (Per Unit) 
+This product is suitable for investors who are seeking*:
+  Returns that are commensurate with the performance of gold,
+subject to tracking errors, over long term.
+  Investment in Gold bullion of 0.995 ﬁneness
+Riskometer#
+Benchmark Riskometer#
+Domestic Price of 
+Physical Gold
+*Investors should consult their ﬁnancial advisers, if in doubt about whether the product is suitable for them.
+#For latest Riskometer, investors may refer to the Monthly Portfolios disclosed on the website of the Fund  viz. www.hdfcfund.com
+Stocks/Sectors referred should not be construed as an investment advice or a recommendation by HDFC Mutual Fund (“the Fund”) / HDFC AMC to buy or sell the stock or any other security covered under the 
+respective sector/s. The Fund may or may not have any present or future positions in these stocks/sectors.
+Index Solutions also include passively managed fund of funds and commodity(ies) based schemes.
+Scheme and Benchmark Riskometer as on 31st August, 2026
+Date
+Period
+Scheme
+Returns (%)
+Scheme
+(`)
+Benchmark
+(`) #
+Benchmark
+Returns (%) #
+Value of ` 10,000 invested
+Aug 29, 25 
+Last 1 Year 
+49.99 
+51.13 
+ 15,032  
+ 15,148 
+Aug 31, 23 
+Last 3 Years 
+36.34 
+37.65 
+ 25,367  
+ 26,103 
+Aug 31, 21 
+Last 5 Years 
+25.66 
+26.80 
+ 31,357  
+ 32,800 
+Aug 31, 16 
+Last 10 Years 
+16.19 
+17.29 
+ 44,865  
+ 49,303 
+Aug 13, 10 
+Since Inception 
+13.20 
+14.14 
+ 73,213  
+ 83,620 
+Name of Instrument  
+% To Nav
+Gold & Gold Related 
+Gold 
+98.59
+Sub Total  
+98.59
+Cash, Cash Equivalents 
+and Net Current Assets  
+1.41
+Grand Total  
+100.00
+Portfolio
+Annualised tracking error is calculated 
+based on daily rolling returns for the last 
+12 months: 0.39%
+Tracking Error
+MUTUAL FUND INVESTMENTS ARE SUBJECT TO MARKET RISKS, READ ALL SCHEME RELATED DOCUMENTS CAREFULLY.
+2/2
+Mission: To be the wealth creator for every Indian
+Vision: To be the most respected asset manager in the world
+BSE Scrip Code / NSE Symbol
+BSE: 533230 / NSE: HDFCGOLD
+HDFC Gold ETF
+An open-ended scheme replicating/tracking performance of Gold
+September 2026
+$$ Exit Load: (i) No Exit Load shall be levied for switching between Plans / Options within the Scheme. However, exit load will be applicable if the units are switched-out / redeemed from the Scheme within the exit 
+load period from the initial date of purchase. (ii) No Exit load will be levied on bonus Units and on units allotted on Re-investment of Income Distribution cum Capital Withdrawal. (iii) No Exit load will be levied on 
+Units allotted in the Target Scheme under the Transfer of Income Distribution cum Capital Withdrawal (IDCW) Plan Facility (TIP Facility). (iv) In case of Systematic Transactions such as Systematic Investment Plan 
+(SIP), Flex Systematic (Flex STP), HDFC Swing Systematic Transfer Plan (Swing STP), HDFC Flexindex Plan (Flexindex) etc., Exit Load, if any, prevailing on the date of registration / enrolment shall be levied.
+

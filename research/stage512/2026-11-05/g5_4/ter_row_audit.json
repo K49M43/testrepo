@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-4-amfi-ter-row-audit-2026-11-05-v1",
+  "source_path": "research/stage512/2026-11-05/source_retrieval_followup/amfi_ter_oct2026_original.xlsx",
+  "source_url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true",
+  "source_sha256": "bc8293cafa6a96eed40389afaa5845d116a5c9dafaf0c46fdd7efd2c9df4a01f",
+  "source_bytes": 4544770,
+  "parser": "Python zipfile + XML iterparse of xl/worksheets/sheet1.xml; cells mapped by A:O column; date uses Excel 1900 serial; selects latest date per exact NSDL scheme code; Decimal arithmetic. No worksheet dimension required.",
+  "rows_reconciled": 10,
+  "regular_component_sums_pass": 10,
+  "direct_component_sums_pass": 10,
+  "records": [
+    {
+      "nsdl_scheme_code": "HDFC/O/O/GET/10/06/0019",
+      "candidate": "HDFC Gold ETF",
+      "scheme_name": "HDFC Gold ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.5",
+        "G": "0",
+        "H": "0",
+        "I": "0.09"
+      },
+      "regular_total_pct": "0.59",
+      "regular_sum_pct": "0.59",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "ICIC/O/O/GET/10/04/0038",
+      "candidate": "ICICI Gold ETF",
+      "scheme_name": "ICICI Prudential Gold ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.42",
+        "G": "0",
+        "H": "0",
+        "I": "0.07"
+      },
+      "regular_total_pct": "0.49",
+      "regular_sum_pct": "0.49",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "ICIC/O/O/OET/21/12/0137",
+      "candidate": "ICICI Silver ETF",
+      "scheme_name": "ICICI Prudential Silver ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.34",
+        "G": "0",
+        "H": "0",
+        "I": "0.06"
+      },
+      "regular_total_pct": "0.4",
+      "regular_sum_pct": "0.40",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "LICM/O/O/DET/14/11/0015",
+      "candidate": "LIC GSec ETF",
+      "scheme_name": "LIC MF Nifty 8-13 yr G-Sec ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.14",
+        "G": "0.01",
+        "H": "0",
+        "I": "0.02"
+      },
+      "regular_total_pct": "0.17",
+      "regular_sum_pct": "0.17",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "MOTO/O/O/EET/23/09/0043",
+      "candidate": "MOTO ETF",
+      "scheme_name": "Motilal Oswal Nifty 500 ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.18",
+        "G": "0.02",
+        "H": "0",
+        "I": "0.19"
+      },
+      "regular_total_pct": "0.39",
+      "regular_sum_pct": "0.39",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "MOTO/O/O/EIN/19/06/0014",
+      "candidate": "Motilal index fund",
+      "scheme_name": "Motilal Oswal Nifty 500 Index Fund",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.79",
+        "G": "0.02",
+        "H": "0",
+        "I": "0.16"
+      },
+      "regular_total_pct": "0.97",
+      "regular_sum_pct": "0.97",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0.13",
+        "L": "0.02",
+        "M": "0",
+        "N": "0.08"
+      },
+      "direct_total_pct": "0.23",
+      "direct_sum_pct": "0.23",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "SBIM/O/D/GIL/00/11/0015",
+      "candidate": "SBI Gilt Fund",
+      "scheme_name": "SBI Gilt Fund",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.82",
+        "G": "0.01",
+        "H": "0.01",
+        "I": "0.15"
+      },
+      "regular_total_pct": "0.99",
+      "regular_sum_pct": "0.99",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0.4",
+        "L": "0.01",
+        "M": "0.01",
+        "N": "0.07"
+      },
+      "direct_total_pct": "0.49",
+      "direct_sum_pct": "0.49",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "SBIM/O/O/DET/15/12/0047",
+      "candidate": "SBI 10yr GSec ETF",
+      "scheme_name": "SBI Nifty 10 yr Benchmark G-Sec ETF",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.12",
+        "G": "0",
+        "H": "0",
+        "I": "0.02"
+      },
+      "regular_total_pct": "0.14",
+      "regular_sum_pct": "0.14",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0",
+        "L": "0",
+        "M": "0",
+        "N": "0"
+      },
+      "direct_total_pct": "0",
+      "direct_sum_pct": "0",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "SBIM/O/O/DIN/22/09/0155",
+      "candidate": "SBI June 2036 Gilt",
+      "scheme_name": "SBI CRISIL IBX Gilt Index - June 2036 Fund",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.42",
+        "G": "0",
+        "H": "0",
+        "I": "0.07"
+      },
+      "regular_total_pct": "0.49",
+      "regular_sum_pct": "0.49",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0.24",
+        "L": "0",
+        "M": "0",
+        "N": "0.04"
+      },
+      "direct_total_pct": "0.28",
+      "direct_sum_pct": "0.28",
+      "direct_reconciles": true
+    },
+    {
+      "nsdl_scheme_code": "SBIM/O/O/EIN/24/07/0183",
+      "candidate": "SBI Nifty 500",
+      "scheme_name": "SBI Nifty 500 Index Fund",
+      "ter_date": "2026-10-31",
+      "regular_components_pct": {
+        "F": "0.66",
+        "G": "0",
+        "H": "0",
+        "I": "0.15"
+      },
+      "regular_total_pct": "0.81",
+      "regular_sum_pct": "0.81",
+      "regular_reconciles": true,
+      "direct_components_pct": {
+        "K": "0.26",
+        "L": "0",
+        "M": "0",
+        "N": "0.08"
+      },
+      "direct_total_pct": "0.34",
+      "direct_sum_pct": "0.34",
+      "direct_reconciles": true
+    }
+  ],
+  "limitation": "AMFI publishes daily Total TER snapshots; this records latest row present per candidate in this export (2026-10-31), not a tax or all-in investor cost. ETF brokerage components/market execution costs are not equivalent to complete personal trading cost."
+}

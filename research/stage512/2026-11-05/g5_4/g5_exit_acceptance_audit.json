@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-parent-exit-acceptance-audit-2026-11-05-v1",
+  "source_cutoff": "2026-11-05",
+  "acceptance_criteria": [
+    {
+      "criterion": 1,
+      "status": "PASS",
+      "evidence": [
+        "research/stage512/2026-11-05/G5_1_118_CLAIM_LINEAGE.md",
+        "research/stage512/2026-11-05/g5_1_qcsae_v1.json"
+      ],
+      "boundary": "11.8% remains an unverified synthetic assumption; dependent results are quarantined."
+    },
+    {
+      "criterion": 2,
+      "status": "PASS",
+      "evidence": [
+        "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json",
+        "research/stage512/2026-11-05/g5_4/candidate_expansion_v1.json",
+        "research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json"
+      ],
+      "result": {
+        "product_hypotheses": 10,
+        "classified_product_rows": 10,
+        "all_identity_currency_inception_availability_convention_fields_present": true
+      }
+    },
+    {
+      "criterion": 3,
+      "status": "PASS_WITH_EXPLICIT_BLOCKED_FIELDS",
+      "result": {
+        "all_products_have_fee_tax_liquidity_execution_settlement_access_suitability_source_fields": true,
+        "all_10_have_latest_ter_snapshot": true,
+        "investor_access_suitability_tax_authorization": "BLOCKED / NOT ASSESSED / NO-GO"
+      }
+    },
+    {
+      "criterion": 4,
+      "status": "PASS",
+      "boundary": "The disposition distinguishes TRI benchmark, product NAV, ETF execution price, changing-duration fund proxy, direct sovereign cashflows, bullion reference, and synthetic assumptions."
+    },
+    {
+      "criterion": 5,
+      "status": "PASS_WITH_EXPLICIT_COVERAGE_LIMITS",
+      "result": {
+        "all_product_rows_have_dated_holdings_and_cash_derivative_residual_fields": true,
+        "new_factsheet_snapshots": 5,
+        "explicit_unmatched_ids_and_stale_or_top10_limits": true
+      },
+      "boundary": "No zero-imputation, historical holdings inference, or concentration calculation is made where identifiers/coverage are incomplete."
+    },
+    {
+      "criterion": 6,
+      "status": "PASS",
+      "result": {
+        "required_categories_present": true,
+        "blocked_direct_goi": true,
+        "blocked_cash_comparator": true
+      }
+    },
+    {
+      "criterion": 7,
+      "status": "PASS",
+      "result": {
+        "history_audit": "{\n  \"overall\": \"PASS\",\n  \"candidates\": [\n    {\n      \"candidate_id\": \"MOTILAL_NIFTY500_INDEX_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 1761,\n      \"first_observation\": \"2019-09-11\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"SBI_GILT_JUNE2036_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 994,\n      \"first_observation\": \"2022-10-10\",\n      \"last_observation\": \"2026-10-31\",\n      \"max_gap_days\": 4\n    },\n    {\n      \"candidate_id\": \"HDFC_GOLD_ETF\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 2918,\n      \"first_observation\": \"2015-01-01\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"ICICI_SILVER_ETF\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 1160,\n      \"first_observation\": \"2022-01-25\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"SBI_NIFTY500_INDEX_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 520,\n      \"first_observation\": \"2024-10-04\",\n      \"last_observation\": \"2026-10-31\",\n      \"max_gap_days\": 4\n    }\n  ],\n  \"exploratory_overlap\": {\n    \"artifact\": \"nav_152908_2024-09-30_2025-03-31.json\",\n    \"classification\": \"EXPLORATORY_OVERLAP_ONLY_NOT_CANONICAL_PARTITION\",\n    \"sha256\": \"014f1344f28c0947858f879d67fd4e4d754bbb789c535b2c7daa752f4231f222\",\n    \"overlap_observations\": 122,\n    \"exact_match\": true\n  }\n}",
+        "disposition_audit": "PASS: 10/10 product hypotheses exactly reconcile to G5.2 + G5.4; 13/13 rows classified; every product has source, fee, holdings, tax, liquidity, execution, settlement, access and suitability fields; five official factsheet holdings snapshots and arithmetic checks reproduce; evidence hashes reproduce; no ranking/weights/authorization.",
+        "QCSAE_claim_record_present": true,
+        "source_manifest_reproduced_by_parent_audit": true
+      }
+    },
+    {
+      "criterion": 8,
+      "status": "PASS_WITH_BLOCKED_OUTCOMES",
+      "result": {
+        "ranking_or_weights": "NOT_PRODUCED",
+        "success_probability": "NOT_QUALIFIED",
+        "recommendation": "NOT_PRODUCED",
+        "investment_authorization": "NO-GO",
+        "explicitly_blocked_rows": [
+          "GOI_DIRECT_DATED_GSEC_718_2033",
+          "CASH_HOLD_91D_TBILL_ROLLING"
+        ]
+      }
+    }
+  ],
+  "overall": "PASS_WITH_EXPLICIT_INSUFFICIENT_EVIDENCE_AND_BLOCKED_CANDIDATES",
+  "g5_acceptance_evidence_complete": true,
+  "g5_issue_close_recommendation": "READY_FOR_REVIEW_AFTER_PR_39_MERGE",
+  "g6_engineering_start": "READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE",
+  "g6_decision_grade": "NOT_READY",
+  "investment_authorization": "NO_GO",
+  "caution": "A G5 close means the candidate evidence screen is audited, including explicit blocked candidates. It does not close the G6 integrated decision path or authorize investment."
+}
