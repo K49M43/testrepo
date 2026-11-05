@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-4-candidate-expansion-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "append_only_from": "g5_2_candidate_evidence_register_v1.json",
+  "candidates": [
+    {
+      "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+      "category": "equity",
+      "instrument": "SBI Nifty 500 Index Fund Direct Growth",
+      "identity": "AMFI 152908; ISIN INF200KB1381; inception 2024-09-30",
+      "benchmark_or_exposure": "Nifty 500 TRI",
+      "classification": "INVESTABLE_PRODUCT_HYPOTHESIS; investor availability/suitability unverified",
+      "ter_evidence": "AMFI direct TER 0.34% as of 2026-10-31; latest raw workbook retained; not independently reparsed in this artifact",
+      "evidence": "SBI official March 2026 passive factsheet; bounded AMFI samples 2026-10-19/21/22/23. 4 observations only; full history unqualified.",
+      "key_risks_and_open_questions": "Broad Indian equity index; shorter fund history than benchmark; index TRI is not product NAV.",
+      "full_history_qualification": "NOT_QUALIFIED",
+      "investor_access": "BLOCKED_NOT_VERIFIED",
+      "tax_and_execution": "BLOCKED_NOT_VERIFIED",
+      "decision_use": "Eligible for further source and deterministic comparison only; no ranking or recommendation."
+    },
+    {
+      "candidate_id": "SBI_NIFTY10Y_GSEC_ETF",
+      "category": "government_bond",
+      "instrument": "SBI Nifty 10 Year Benchmark G-Sec ETF",
+      "identity": "ISIN INF200KA1JT1; NSE SETF10GILT; inception 2016-06-10",
+      "benchmark_or_exposure": "Nifty 10-Yr Benchmark G-Sec Index",
+      "classification": "INVESTABLE_PRODUCT_HYPOTHESIS; investor availability/suitability unverified",
+      "ter_evidence": "AMFI ETF TER 0.14% as of 2026-10-31; raw workbook retained; not independently reparsed in this artifact",
+      "evidence": "SBI official March 2026 passive factsheet; bounded identity/NAV checks. No continuous series qualification.",
+      "key_risks_and_open_questions": "Interest-rate duration and ETF traded-price liquidity/premium risk; government-security ETF is not held-to-maturity sovereign cashflows.",
+      "full_history_qualification": "NOT_QUALIFIED",
+      "investor_access": "BLOCKED_NOT_VERIFIED",
+      "tax_and_execution": "BLOCKED_NOT_VERIFIED",
+      "decision_use": "Eligible for further source and deterministic comparison only; no ranking or recommendation."
+    },
+    {
+      "candidate_id": "SBI_GILT_JUNE2036_FUND",
+      "category": "government_bond",
+      "instrument": "SBI CRISIL IBX Gilt Index - June 2036 Fund Direct Growth",
+      "identity": "AMFI 150681; ISIN INF200KA12Q9; inception 2022-10-04",
+      "benchmark_or_exposure": "CRISIL IBX Gilt Index - June 2036",
+      "classification": "INVESTABLE_PRODUCT_HYPOTHESIS; investor availability/suitability unverified",
+      "ter_evidence": "AMFI direct TER 0.28% as of 2026-10-31; raw workbook retained; not independently reparsed in this artifact",
+      "evidence": "SBI official February 2026 factsheet: modified duration 6.80, YTM 7.25% snapshot; bounded AMFI samples include 2024 and 2026. Full history unqualified.",
+      "key_risks_and_open_questions": "Target-maturity index fund; maturity date is not a principal guarantee; exit load and tracking/roll-down matter.",
+      "full_history_qualification": "NOT_QUALIFIED",
+      "investor_access": "BLOCKED_NOT_VERIFIED",
+      "tax_and_execution": "BLOCKED_NOT_VERIFIED",
+      "decision_use": "Eligible for further source and deterministic comparison only; no ranking or recommendation."
+    },
+    {
+      "candidate_id": "HDFC_GOLD_ETF",
+      "category": "gold",
+      "instrument": "HDFC Gold ETF",
+      "identity": "AMFI 113049; ISIN INF179KC1981; inception 2010-08-13",
+      "benchmark_or_exposure": "Domestic price of physical gold",
+      "classification": "INVESTABLE_PRODUCT_HYPOTHESIS; investor availability/suitability unverified",
+      "ter_evidence": "AMFI TER 0.59% as of 2026-10-31; HDFC September factsheet reports 0.59% as of August 2026",
+      "evidence": "Official HDFC September 2026 factsheet; bounded AMFI snapshots 2024-01, 2026-10-19/21/22/23 and 2026-10-30. Full history unqualified.",
+      "key_risks_and_open_questions": "Gold-price exposure; ETF execution, premium/discount, custody, tax and suitability unverified.",
+      "full_history_qualification": "NOT_QUALIFIED",
+      "investor_access": "BLOCKED_NOT_VERIFIED",
+      "tax_and_execution": "BLOCKED_NOT_VERIFIED",
+      "decision_use": "Eligible for further source and deterministic comparison only; no ranking or recommendation."
+    },
+    {
+      "candidate_id": "SBI_GILT_FUND",
+      "category": "government_bond",
+      "instrument": "SBI Gilt Fund Direct Growth",
+      "identity": "AMFI 119707; ISIN INF200K01SH3; inception 2000-12-30",
+      "benchmark_or_exposure": "Nifty All Duration G-Sec Index",
+      "classification": "INVESTABLE_PRODUCT_HYPOTHESIS; investor availability/suitability unverified",
+      "ter_evidence": "AMFI direct TER 0.49% as of 2026-10-31; raw workbook retained; not independently reparsed in this artifact",
+      "evidence": "Official SBI February 2026 factsheet: duration 5.18y, average maturity 13.82y, YTM 6.60% snapshot; bounded AMFI samples only. Full history unqualified.",
+      "key_risks_and_open_questions": "Actively managed duration exposure; snapshot YTM is not a forecast or guaranteed yield; NAV series/benchmark history alignment pending.",
+      "full_history_qualification": "NOT_QUALIFIED",
+      "investor_access": "BLOCKED_NOT_VERIFIED",
+      "tax_and_execution": "BLOCKED_NOT_VERIFIED",
+      "decision_use": "Eligible for further source and deterministic comparison only; no ranking or recommendation."
+    }
+  ],
+  "universe_count": {
+    "baseline_rows": 8,
+    "new_hypotheses": 5,
+    "total_rows": 13,
+    "benchmark_rows": 1,
+    "cash_comparator_rows": 1,
+    "blocked_direct_security_rows": 1,
+    "investable_product_hypotheses": 10,
+    "qualification_note": "10 is screen breadth only. It does not establish access, comparable full-history evidence, suitability or recommendation."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-entry-readiness-2026-11-05-v1",
+  "decision": "NOT_READY",
+  "investment_authorization": "NO_GO",
+  "gates": {
+    "candidate_breadth_10_plus": "PASS_BREADTH_ONLY",
+    "candidate_identity_dated_evidence": "PARTIAL",
+    "ter_raw_retention": "PASS_INDEPENDENT_PARSER_OPEN",
+    "bounded_nav_sample_reconciliation": "PASS_44_OF_44",
+    "qualified_comparable_history": "BLOCKED",
+    "multi_asset_dependence_and_uncertainty": "BLOCKED",
+    "investor_suitability_access_execution": "BLOCKED_UNCONFIRMED",
+    "tax_lot_liquidation": "BLOCKED_PROVISIONAL_SPRINT1",
+    "dated_cashflow_integration": "BLOCKED",
+    "official_cpi_real_value": "BLOCKED",
+    "g3_outcome_exit_integration": "PARTIAL",
+    "independent_reproducibility_adverse_cases": "BLOCKED"
+  },
+  "rule": "No G6 start until required source, tax/cashflow, CPI, G3-interface and independent validation gates are explicitly accepted. Candidate breadth is insufficient by itself."
+}
