@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "record_id": "g6-entry-readiness-2026-11-05-v2",
+  "record_id": "g6-entry-readiness-2026-11-05-v3",
   "decision": "DECISION_GRADE_NOT_READY",
   "investment_authorization": "NO_GO",
   "gates": {
     "candidate_breadth_10_plus": "PASS_BREADTH_ONLY",
-    "candidate_identity_dated_evidence": "PARTIAL",
+    "candidate_identity_dated_evidence": "PASS_10_ROW_DISPOSITIONS; INVESTOR_ACCESS_AND_TRADABILITY_REMAIN_BLOCKED",
     "ter_raw_retention": "PASS_10_CANDIDATES_20_COMPONENT_TOTALS",
     "bounded_nav_sample_reconciliation": "PASS_44_OF_44",
-    "qualified_comparable_history": "PARTIAL_4_CONTINUOUS_AMFI_NAV_HISTORIES; DECISION_GRADE_COMPARABILITY_BLOCKED",
+    "qualified_comparable_history": "PARTIAL_5_CONTINUOUS_AMFI_NAV_HISTORIES; DIRECT_GOI_AND_TBILL_CASHFLOW_INPUTS_BLOCKED",
     "multi_asset_dependence_and_uncertainty": "BLOCKED_NOT_YET_VALIDATED",
     "investor_suitability_access_execution": "FOLLOW_ON_BLOCK_FOR_PERSONAL_RECOMMENDATION_NOT_ENGINEERING_START",
     "tax_lot_liquidation": "PASS_BOUNDED_SYNTHETIC; PERSONAL_RESULT_REQUIRES_ACTUAL_INPUTS",
@@ -16,7 +16,8 @@
     "official_cpi_real_value": "PROVISIONAL_SOURCE_VALUE_PASS; PERSONAL_BASE_MONTH_AND_RAW_RELEASE_BYTES_OPEN",
     "g3_outcome_exit_integration": "G3_ARITHMETIC_PASS; AFTER_TAX_EVENT_LEDGER_BRIDGE_OPEN",
     "independent_reproducibility_adverse_cases": "COMPONENT_AUDITS_PASS; JOINED_PATH_AND_ADVERSE_CASES_OPEN",
-    "strict_calendar_month_overlap": "PASS_DESCRIPTIVE_ALIGNMENT_TO_129_NSE_TRI_MONTHS; SHORT_PRODUCT_WINDOWS_REMAIN_LIMITING"
+    "strict_calendar_month_overlap": "PASS_DESCRIPTIVE_ALIGNMENT_TO_129_NSE_TRI_MONTHS; SHORT_PRODUCT_WINDOWS_REMAIN_LIMITING",
+    "candidate_disposition_10": "PASS_10_PRODUCT_HYPOTHESES_DISPOSED; NO_RANKING_OR_WEIGHTS"
   },
   "rule": "Decision-grade G6 requires selected source histories and a joined deterministic path. A bounded fixture-first engineering increment may start now; this is not an investment decision or permission to publish investor-specific results.",
   "engineering_start": "READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE",
@@ -38,8 +39,8 @@
       "G5_bounded_NAV_sample_reconciliation"
     ],
     "open": [
-      "complete_g5_disposition_for_all_10_candidate_hypotheses_and_remaining_decision_relevant_histories",
-      "qualified_government_bond_total_return_or_explicit_cashflow_proxy_and_etf_market_price_execution_evidence",
+      "direct_goi_price_cashflow_and_91_day_tbill_roll_series",
+      "etf_market_price_liquidity_premium_and_execution_inputs_where_selected",
       "joined_deterministic_after_tax_path_with_selected_candidate_and_exit",
       "CPI_raw_release_bytes_and_personal_base_month",
       "investor_access_suitability_tax_inputs_for_personal_output",
@@ -48,6 +49,13 @@
   },
   "source_history_progress": {
     "independently_qualified_product_nav_histories": [
+      {
+        "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+        "observations": 1761,
+        "first": "2019-09-11",
+        "last": "2026-10-30",
+        "max_gap_days": 5
+      },
       {
         "candidate_id": "SBI_GILT_JUNE2036_FUND",
         "observations": 994,
@@ -78,6 +86,17 @@
       }
     ],
     "calendar_month_overlap_with_official_nse_nifty500_tri": [
+      {
+        "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+        "benchmark": "NIFTY 500 TRI",
+        "product_measure": "AMFI Growth-option NAV; calendar-month return between the last available AMFI NAV in adjacent months",
+        "benchmark_measure": "official NSE-published monthly TRI return, rounded as published",
+        "common_months": 72,
+        "first_common_month": "2019-10",
+        "last_common_month": "2025-09",
+        "interior_missing_months": [],
+        "use_limit": "date-aligned descriptive evidence only; not a complete daily benchmark path, not market-price execution evidence, and not a probability or recommendation"
+      },
       {
         "candidate_id": "SBI_GILT_JUNE2036_FUND",
         "benchmark": "NIFTY 500 TRI",
@@ -124,5 +143,13 @@
       }
     ],
     "caution": "AMFI product NAV is not ETF market price or a sovereign total-return index. Published NSE monthly TRI returns are rounded. Alignment is descriptive and does not qualify full daily covariance or probability."
+  },
+  "candidate_disposition": {
+    "product_hypotheses": 10,
+    "all_10_have_disposition": true,
+    "benchmark_rows_excluded_from_product_count": true,
+    "direct_government_and_cash_comparator_preserved_as_blocked": true,
+    "ranking_or_weights": "NOT_PRODUCED",
+    "investor_suitability_or_trade_authorization": "NOT_ASSESSED_NO_GO"
   }
 }

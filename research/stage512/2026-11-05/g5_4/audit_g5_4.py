@@ -24,6 +24,18 @@ import subprocess, sys
 history_result=subprocess.run([sys.executable,str(add/"audit_g5_candidate_nav_history.py")],capture_output=True,text=True)
 assert history_result.returncode==0,history_result.stdout+history_result.stderr
 history_audit=json.loads((add/"candidate_nav_history_audit.json").read_text())
-assert history_audit["overall"]=="PASS" and len(history_audit["results"])==4
+assert history_audit["overall"]=="PASS" and len(history_audit["results"])==5
 assert all(x["status"]=="PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY" for x in history_audit["results"])
-print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product hypotheses; 44/44 bounded NAV samples; 10/10 TER rows and 20/20 sums; 4 AMFI raw-to-normalized histories and strict monthly joins; G6 decision-grade remains blocked; bounded engineering start is ready")
+disposition=json.loads((add/"g5_candidate_disposition_v1.json").read_text())
+assert disposition["acceptance"]["all_10_have_disposition"] is True
+product_rows=[x for x in disposition["candidates"] if x["product_hypothesis"]]
+assert len(product_rows)==10 and len({x["candidate_id"] for x in product_rows})==10
+assert all(x["classification"] in {"INVESTABLE","PROXY_ONLY","BLOCKED"} and x["screen_disposition"] and x["decision_reason"] and x["source_status"] and x["open_gates"] for x in product_rows)
+assert set(disposition["initial_comparison_set"]).issubset({x["candidate_id"] for x in disposition["candidates"]})
+assert disposition["acceptance"]["ranking_or_weights"]=="NOT_PRODUCED"
+assert disposition["acceptance"]["investor_suitability_or_trade_authorization"]=="NOT_ASSESSED_NO_GO"
+disposition_result=subprocess.run([sys.executable,str(add/"audit_g5_candidate_disposition.py")],capture_output=True,text=True)
+assert disposition_result.returncode==0,disposition_result.stdout+disposition_result.stderr
+exit_result=subprocess.run([sys.executable,str(add/"audit_g5_exit_acceptance.py")],capture_output=True,text=True)
+assert exit_result.returncode==0,exit_result.stdout+exit_result.stderr
+print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product dispositions; 44/44 bounded NAV samples; 10/10 TER rows and 20/20 sums; 5 AMFI raw-to-normalized histories; dated holdings snapshots; all 8 G5 exit criteria independently mapped with explicit blocked evidence; G6 decision-grade remains blocked; bounded engineering start is ready")

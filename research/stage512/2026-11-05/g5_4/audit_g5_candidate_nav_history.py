@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1] / "source_retrieval_followup" / "cand
 OUT = Path(__file__).with_name("candidate_nav_history_audit.json")
 TRI_PATH = Path(__file__).resolve().parents[2] / "data" / "nse500_official_tri_monthly_2015_2025q3_R8.csv"
 SPECS = {
+    "147625": {"candidate": "MOTILAL_NIFTY500_INDEX_FUND", "isin": "INF247L01957", "scheme": "Motilal Oswal Nifty 500 Index Fund", "nav_tokens": ("Motilal Oswal Nifty 500 Index Fund", "Direct Plan"), "start": "2019-09-06", "end": "2026-10-31", "rows_key": "records"},
     "150681": {"candidate": "SBI_GILT_JUNE2036_FUND", "isin": "INF200KA12Q9", "scheme": "SBI CRISIL IBX Gilt Index - June 2036 Fund", "nav_tokens": ("CRISIL IBX Gilt Index - June 2036 Fund", "Direct Plan", "Growth"), "start": "2022-10-04", "end": "2026-10-31", "rows_key": "records"},
     "113049": {"candidate": "HDFC_GOLD_ETF", "isin": "INF179KC1981", "scheme": "HDFC Gold ETF", "nav_tokens": ("HDFC Gold ETF", "Growth Option"), "start": "2015-01-01", "end": "2026-10-31", "rows_key": "records"},
     "149464": {"candidate": "ICICI_SILVER_ETF", "isin": "INF109KC1Y56", "scheme": "ICICI PRUDENTIAL SILVER ETF", "nav_tokens": ("ICICI PRUDENTIAL SILVER ETF",), "start": "2022-01-24", "end": "2026-10-31", "rows_key": "records"},
@@ -151,7 +152,7 @@ def monthly_alignment() -> list[dict]:
 def main() -> None:
     results = [audit(code, spec) for code, spec in SPECS.items()]
     exploratory = audit_sbi_exploratory()
-    report = {"schema_version": 1, "record_id": "g5-4-candidate-nav-history-independent-audit-2026-11-05-v1", "audit_method": "offline reconstruction from retained raw AMFI JSON; SHA-256, scheme/ISIN/plan/option, date bounds, Decimal NAV, duplicate, normalized CSV equality, request partition and >12-day calendar-gap checks", "results": results, "exploratory_overlap": exploratory, "strict_calendar_month_alignment_to_nse_tri": monthly_alignment(), "overall": "PASS"}
+    report = {"schema_version": 1, "record_id": "g5-4-candidate-nav-history-independent-audit-2026-11-05-v2", "audit_method": "offline reconstruction from retained raw AMFI JSON; SHA-256, scheme/ISIN/plan/option, date bounds, Decimal NAV, duplicate, normalized CSV equality, request partition and >12-day calendar-gap checks", "results": results, "exploratory_overlap": exploratory, "strict_calendar_month_alignment_to_nse_tri": monthly_alignment(), "overall": "PASS"}
     OUT.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"overall": report["overall"], "candidates": [{k:r[k] for k in ("candidate_id","status","observations","first_observation","last_observation","max_gap_days")} for r in results], "exploratory_overlap": exploratory}, indent=2))
 

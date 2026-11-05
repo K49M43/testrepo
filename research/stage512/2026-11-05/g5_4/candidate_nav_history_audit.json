@@ -1,8 +1,143 @@
 {
   "schema_version": 1,
-  "record_id": "g5-4-candidate-nav-history-independent-audit-2026-11-05-v1",
+  "record_id": "g5-4-candidate-nav-history-independent-audit-2026-11-05-v2",
   "audit_method": "offline reconstruction from retained raw AMFI JSON; SHA-256, scheme/ISIN/plan/option, date bounds, Decimal NAV, duplicate, normalized CSV equality, request partition and >12-day calendar-gap checks",
   "results": [
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "scheme_code": "147625",
+      "isin": "INF247L01957",
+      "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+      "request_windows": 15,
+      "observations": 1761,
+      "first_observation": "2019-09-11",
+      "last_observation": "2026-10-30",
+      "max_gap_days": 5,
+      "gaps_over_12_days": [],
+      "raw_segment_checks": [
+        {
+          "start": "2019-09-06",
+          "end": "2020-02-29",
+          "rows": 116,
+          "sha256": "46044f69abe7c113ea554bf932711e1060bc1bb37c0a6880c4a7bb7a955d3535",
+          "first": "2019-09-11",
+          "last": "2020-02-28"
+        },
+        {
+          "start": "2020-03-01",
+          "end": "2020-08-31",
+          "rows": 124,
+          "sha256": "bc4eeb1ab18913cee30dfe5c18e90c9b4f814a12b3fc1da487a5ee3d8e8e6925",
+          "first": "2020-03-02",
+          "last": "2020-08-31"
+        },
+        {
+          "start": "2020-09-01",
+          "end": "2021-02-28",
+          "rows": 124,
+          "sha256": "4acbcccf6125488d0ed542ace2df18cea3182de265d555cb2ff5c01e54e5bafe",
+          "first": "2020-09-01",
+          "last": "2021-02-26"
+        },
+        {
+          "start": "2021-03-01",
+          "end": "2021-08-31",
+          "rows": 124,
+          "sha256": "e62f44856d5770797f8bc9ca132a8dba6ec90935bbb1de00cc2a9e4507e6a5b6",
+          "first": "2021-03-01",
+          "last": "2021-08-31"
+        },
+        {
+          "start": "2021-09-01",
+          "end": "2022-02-28",
+          "rows": 123,
+          "sha256": "368214c77f30454ed682c09bb772d6d71f068f0167c52fb837cb3951f6fabe6f",
+          "first": "2021-09-01",
+          "last": "2022-02-28"
+        },
+        {
+          "start": "2022-03-01",
+          "end": "2022-08-31",
+          "rows": 124,
+          "sha256": "f1ef0779da64114dcb491d702b1e096f12511b0a4a381b19a165e43cb928801d",
+          "first": "2022-03-02",
+          "last": "2022-08-30"
+        },
+        {
+          "start": "2022-09-01",
+          "end": "2023-02-28",
+          "rows": 124,
+          "sha256": "fc8d890e30d93f0748ce5f8647ff1bc0adf48f879a512c4fa71959337c8af374",
+          "first": "2022-09-01",
+          "last": "2023-02-28"
+        },
+        {
+          "start": "2023-03-01",
+          "end": "2023-08-31",
+          "rows": 124,
+          "sha256": "e31d21425d82eeda65df9108f7b4514110f86f648721b12576a5d6ee42fefc18",
+          "first": "2023-03-01",
+          "last": "2023-08-31"
+        },
+        {
+          "start": "2023-09-01",
+          "end": "2024-02-29",
+          "rows": 121,
+          "sha256": "8b0f37e1c25f9d47a27ed7aacb4635c3a007c16310fbcab79fb1010ffa72bd01",
+          "first": "2023-09-01",
+          "last": "2024-02-29"
+        },
+        {
+          "start": "2024-03-01",
+          "end": "2024-08-31",
+          "rows": 122,
+          "sha256": "ae5177f3a5d9ef4675056717cf4093b25ae7898b1fdcd8f1d70766794d308783",
+          "first": "2024-03-01",
+          "last": "2024-08-30"
+        },
+        {
+          "start": "2024-09-01",
+          "end": "2025-02-28",
+          "rows": 124,
+          "sha256": "3715b7105db8e2eef856a12d2d0eb3ae37d2c9fc1836d64713f5e48bcb66de04",
+          "first": "2024-09-02",
+          "last": "2025-02-28"
+        },
+        {
+          "start": "2025-03-01",
+          "end": "2025-08-31",
+          "rows": 123,
+          "sha256": "9668328bfa289f8183cd365cf48a867c6df90e86ea3fd2bbc47e14b55083fc1e",
+          "first": "2025-03-03",
+          "last": "2025-08-29"
+        },
+        {
+          "start": "2025-09-01",
+          "end": "2026-02-28",
+          "rows": 123,
+          "sha256": "a1fe9c91348a5014d657fa12210b5d0f79c82ab381894e33f3567f8a9bd85587",
+          "first": "2025-09-01",
+          "last": "2026-02-27"
+        },
+        {
+          "start": "2026-03-01",
+          "end": "2026-08-31",
+          "rows": 124,
+          "sha256": "6f4799999f80f5db945bd4aea7114917f000479c69fb6953740b891d9d3a2fed",
+          "first": "2026-03-02",
+          "last": "2026-08-31"
+        },
+        {
+          "start": "2026-09-01",
+          "end": "2026-10-31",
+          "rows": 41,
+          "sha256": "ae0332905e0361f1b8c92f4d98c88dfeb36f60b6fd306802ffd0bfe09a875537",
+          "first": "2026-09-01",
+          "last": "2026-10-30"
+        }
+      ],
+      "normalized_csv_sha256": "2bbd9f09d0ac9dcd4e78c2e8dbbb69d84eb7879df2e7287b8e90ffabb6808412"
+    },
     {
       "candidate_id": "SBI_GILT_JUNE2036_FUND",
       "scheme_code": "150681",
@@ -456,6 +591,17 @@
     "exact_match": true
   },
   "strict_calendar_month_alignment_to_nse_tri": [
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "benchmark": "NIFTY 500 TRI",
+      "product_measure": "AMFI Growth-option NAV; calendar-month return between the last available AMFI NAV in adjacent months",
+      "benchmark_measure": "official NSE-published monthly TRI return, rounded as published",
+      "common_months": 72,
+      "first_common_month": "2019-10",
+      "last_common_month": "2025-09",
+      "interior_missing_months": [],
+      "use_limit": "date-aligned descriptive evidence only; not a complete daily benchmark path, not market-price execution evidence, and not a probability or recommendation"
+    },
     {
       "candidate_id": "SBI_GILT_JUNE2036_FUND",
       "benchmark": "NIFTY 500 TRI",

@@ -3,6 +3,7 @@ import argparse,csv,datetime as dt,decimal,hashlib,json,pathlib,time,urllib.erro
 from urllib.parse import urlencode
 D=decimal.Decimal
 CANDIDATES={
+ 'MOTILAL_NIFTY500_INDEX_FUND':{'scheme_code':'147625','isin':'INF247L01957','scheme_name':'Motilal Oswal Nifty 500 Index Fund','nav_name_tokens':['Motilal Oswal Nifty 500 Index Fund','Direct Plan'],'start':'2019-09-06','end':'2026-10-31','analysis_scope':'from stated product allotment 2019-09-06 through 2026-10-31; no pre-inception rows'},
  'SBI_GILT_JUNE2036_FUND':{'scheme_code':'150681','isin':'INF200KA12Q9','scheme_name':'SBI CRISIL IBX Gilt Index - June 2036 Fund','nav_name_tokens':['CRISIL IBX Gilt Index - June 2036 Fund','Direct Plan','Growth'],'start':'2022-10-04','end':'2026-10-31','analysis_scope':'from product inception 2022-10-04 through 2026-10-31; no pre-inception rows'},
  'HDFC_GOLD_ETF':{'scheme_code':'113049','isin':'INF179KC1981','scheme_name':'HDFC Gold ETF','nav_name_tokens':['HDFC Gold ETF','Growth Option'],'start':'2015-01-01','end':'2026-10-31','analysis_scope':'2015-01 through 2026-10 common-analysis window; not full product lifetime (inception 2010-08-13)'},
  'ICICI_SILVER_ETF':{'scheme_code':'149464','isin':'INF109KC1Y56','scheme_name':'ICICI Prudential Silver ETF','nav_name_tokens':['ICICI Prudential Silver ETF'],'start':'2022-01-24','end':'2026-10-31','analysis_scope':'from product allotment 2022-01-24 through 2026-10-31; no pre-inception rows'}
