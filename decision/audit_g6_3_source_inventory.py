@@ -1,0 +1,318 @@
+#!/usr/bin/env python3
+"""Reproduce the G6.3 source-coverage inventory from retained official evidence."""
+from __future__ import annotations
+
+import argparse
+import csv
+import datetime as dt
+import hashlib
+import json
+import math
+from decimal import Decimal
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+G5_DIR = ROOT / "research/stage512/2026-11-05/g5_4"
+G5_SOURCE_MANIFEST = G5_DIR / "source_reacquisition_manifest.json"
+G5_HISTORY_AUDIT = G5_DIR / "candidate_nav_history_audit.json"
+G5_DISPOSITION = G5_DIR / "g5_candidate_disposition_v1.json"
+G6_READINESS = G5_DIR / "g6_entry_readiness.json"
+R9_DIR = ROOT / "research/stage512/data/r9_lic_gsec_etf"
+R9_MANIFEST = R9_DIR / "qualification_manifest.json"
+NSE_TRI = ROOT / "research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv"
+OUT = ROOT / "research/stage512/2026-11-06/g6_3/source_inventory_v1.json"
+NAV_DIR = ROOT / "research/stage512/2026-11-05/source_retrieval_followup/candidates"
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def require(ok: bool, message: str) -> None:
+    if not ok:
+        raise ValueError(message)
+
+
+def rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
+def monthly_returns(path: Path, nav_field: str) -> dict[str, float]:
+    month_ends: dict[str, tuple[dt.date, float]] = {}
+    for row in rows(path):
+        day = dt.date.fromisoformat(row["date"])
+        value = float(row[nav_field])
+        require(math.isfinite(value) and value > 0, f"invalid NAV in {path}: {day}")
+        month = day.strftime("%Y-%m")
+        if month not in month_ends or day > month_ends[month][0]:
+            month_ends[month] = (day, value)
+    months = sorted(month_ends)
+    result: dict[str, float] = {}
+    for prior, current in zip(months, months[1:]):
+        pday, pnav = month_ends[prior]
+        cday, cnav = month_ends[current]
+        delta = (cday.year * 12 + cday.month) - (pday.year * 12 + pday.month)
+        if delta == 1:
+            result[current] = cnav / pnav - 1.0
+    return result
+
+
+def audit_g5_sources() -> dict[str, Any]:
+    manifest = read_json(G5_SOURCE_MANIFEST)
+    expected_files = manifest["files"]
+    missing: list[str] = []
+    mismatches: list[str] = []
+    retained_bytes = 0
+    for item in expected_files:
+        rel = Path(item["path"])
+        path = (ROOT / rel).resolve()
+        require(path.is_relative_to(ROOT), f"manifest path escapes repository: {rel}")
+        if not path.is_file():
+            missing.append(rel.as_posix())
+            continue
+        data = path.read_bytes()
+        retained_bytes += len(data)
+        if len(data) != item["bytes"] or sha256(data) != item["sha256"]:
+            mismatches.append(rel.as_posix())
+    require(not missing, f"G5 source files missing: {missing[:5]}")
+    require(not mismatches, f"G5 source hashes or byte counts differ: {mismatches[:5]}")
+
+    history_audit = read_json(G5_HISTORY_AUDIT)
+    require(history_audit["overall"] == "PASS", "G5.4 NAV audit is not PASS")
+    require(len(history_audit["results"]) == 5, "expected five independently audited G5 NAV histories")
+    history_rows: list[dict[str, Any]] = []
+    candidate_returns: dict[str, dict[str, float]] = {}
+    for audit in history_audit["results"]:
+        require(audit["status"] == "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+                f"G5 history not qualified: {audit['candidate_id']}")
+        code = audit["scheme_code"]
+        data_path = NAV_DIR / f"nav_{code}_daily.csv"
+        data_rows = rows(data_path)
+        dates = [dt.date.fromisoformat(row["date"]) for row in data_rows]
+        require(len(dates) == audit["observations"], f"observation count differs: {audit['candidate_id']}")
+        require(dates[0].isoformat() == audit["first_observation"]
+                and dates[-1].isoformat() == audit["last_observation"],
+                f"date coverage differs: {audit['candidate_id']}")
+        require(all(row["scheme_code"] == code and row["isin"] == audit["isin"] for row in data_rows),
+                f"scheme or ISIN mismatch: {audit['candidate_id']}")
+        max_gap = max((b - a).days for a, b in zip(dates, dates[1:]))
+        require(max_gap == audit["max_gap_days"], f"maximum date gap differs: {audit['candidate_id']}")
+        history_rows.append({
+            "candidate_id": audit["candidate_id"], "scheme_code": code, "isin": audit["isin"],
+            "observations": len(data_rows), "first": dates[0].isoformat(), "last": dates[-1].isoformat(),
+            "max_gap_days": max_gap, "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+            "normalized_csv_sha256": sha256(data_path.read_bytes()),
+        })
+        candidate_returns[audit["candidate_id"]] = monthly_returns(data_path, "nav")
+
+    nse_rows = rows(NSE_TRI)
+    nse_months = {row["month"] for row in nse_rows}
+    require(len(nse_rows) == 129 and nse_rows[0]["month"] == "2015-01"
+            and nse_rows[-1]["month"] == "2025-09", "NSE TRI anchor coverage changed")
+    observed_overlap = []
+    for audit in history_audit["strict_calendar_month_alignment_to_nse_tri"]:
+        common = sorted(set(candidate_returns[audit["candidate_id"]]) & nse_months)
+        require(len(common) == audit["common_months"], f"NSE overlap differs: {audit['candidate_id']}")
+        require(common[0] == audit["first_common_month"] and common[-1] == audit["last_common_month"],
+                f"NSE overlap endpoints differ: {audit['candidate_id']}")
+        observed_overlap.append({"candidate_id": audit["candidate_id"], "months": len(common),
+                                "first": common[0], "last": common[-1], "use": "DESCRIPTIVE_ONLY"})
+    return {
+        "manifest_record_id": manifest["record_id"],
+        "manifest_files": len(expected_files), "retained_bytes": retained_bytes,
+        "missing_files": len(missing), "hash_or_byte_mismatches": len(mismatches),
+        "reported_candidate_history_counts": manifest["candidate_history_counts"],
+        "independently_reconciled_histories": history_rows,
+        "official_nse_tri": {"months": len(nse_rows), "first": nse_rows[0]["month"], "last": nse_rows[-1]["month"]},
+        "strict_nse_tri_overlaps": observed_overlap,
+    }, candidate_returns
+
+
+def audit_r9() -> tuple[dict[str, Any], dict[str, float]]:
+    manifest = read_json(R9_MANIFEST)
+    require(manifest["scheme_code"] == "133307" and manifest["isin"] == "INF767K01MV5",
+            "R9 scheme identity differs")
+    require(manifest["status"] == "PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
+            "R9 source gate is not the documented research-only PASS")
+    combined: dict[dt.date, Decimal] = {}
+    raw_bytes = 0
+    for segment in manifest["segments"]:
+        name = f"{segment['start']}_{segment['end']}.json"
+        path = R9_DIR / "raw" / name
+        require(path.is_file(), f"R9 raw segment missing: {name}")
+        raw = path.read_bytes()
+        raw_bytes += len(raw)
+        require(len(raw) == segment["bytes"] and sha256(raw) == segment["sha256"],
+                f"R9 raw byte/hash mismatch: {name}")
+        payload = json.loads(raw)
+        body = payload.get("data") if isinstance(payload, dict) else None
+        require(isinstance(body, dict), f"R9 AMFI payload missing data object: {name}")
+        scheme = str(body.get("scheme_name", ""))
+        groups = body.get("nav_groups", [])
+        require("nifty" in scheme.lower() and "8-13" in scheme.lower() and len(groups) == 1,
+                f"R9 scheme/group mismatch: {name}")
+        group = groups[0]
+        require("nifty" in str(group.get("nav_name", "")).lower()
+                and "8-13" in str(group.get("nav_name", "")).lower(), f"R9 NAV option mismatch: {name}")
+        records = group.get("historical_records")
+        require(isinstance(records, list) and len(records) == segment["n"], f"R9 record count mismatch: {name}")
+        segment_days: list[dt.date] = []
+        for record in records:
+            day = dt.date.fromisoformat(record["date"])
+            nav = Decimal(str(record["nav"]))
+            require(segment["start"] <= day.isoformat() <= segment["end"] and nav.is_finite() and nav > 0,
+                    f"R9 invalid date/NAV: {name} {day}")
+            option = record.get("Option")
+            require(not option or "growth" in str(option).lower(), f"R9 non-growth option: {name}")
+            require(day not in combined or combined[day] == nav, f"R9 conflicting duplicate date: {day}")
+            combined[day] = nav
+            segment_days.append(day)
+        require(min(segment_days).isoformat() == segment["first"]
+                and max(segment_days).isoformat() == segment["last"], f"R9 segment date bounds mismatch: {name}")
+
+    ordered = sorted(combined.items())
+    require(len(ordered) == manifest["observations"], "R9 total row count differs from manifest")
+    require(ordered[0][0].isoformat() == manifest["first"] and ordered[-1][0].isoformat() == manifest["last"],
+            "R9 full-history endpoints differ from manifest")
+    max_gap_days = max((b[0] - a[0]).days for a, b in zip(ordered, ordered[1:]))
+    require(max_gap_days <= 12, f"R9 has an unexplained NAV gap over 12 days: {max_gap_days}")
+
+    daily_path = R9_DIR / "lic_gsec_133307_amfi_daily.csv"
+    daily_rows = rows(daily_path)
+    require(len(daily_rows) == len(ordered) and sha256(daily_path.read_bytes()) == manifest["daily_source_sha256"],
+            "R9 normalized daily CSV hash or row count differs")
+    for row, (day, nav) in zip(daily_rows, ordered):
+        require(row["date"] == day.isoformat() and row["amfi_scheme_code"] == "133307"
+                and Decimal(row["nav_inr"]) == nav.quantize(Decimal("0.00000001")),
+                f"R9 normalized daily row differs at {day}")
+        require(row["source_type"] == "AMFI_OFFICIAL_NAV", f"R9 source label differs at {day}")
+
+    monthly_path = R9_DIR / "lic_gsec_133307_monthly_returns.csv"
+    monthly_rows = rows(monthly_path)
+    require(len(monthly_rows) == manifest["months_of_return"]
+            and sha256(monthly_path.read_bytes()) == manifest["monthly_source_sha256"],
+            "R9 monthly CSV hash or row count differs")
+    month_ends: dict[str, tuple[dt.date, Decimal]] = {}
+    for day, value in ordered:
+        key = day.strftime("%Y-%m")
+        month_ends[key] = (day, value)
+    months = sorted(month_ends)
+    reconstructed_monthly = []
+    for prior, current in zip(months, months[1:]):
+        pday, pnav = month_ends[prior]
+        cday, cnav = month_ends[current]
+        require((cday.year * 12 + cday.month) - (pday.year * 12 + pday.month) == 1,
+                f"R9 missing calendar month: {prior} to {current}")
+        reconstructed_monthly.append(current)
+    require([row["month"] for row in monthly_rows] == reconstructed_monthly,
+            "R9 monthly return dates differ from reconstructed contiguous NAV calendar")
+
+    factsheet = manifest["official_lic_factsheet_cagr_comparisons"]
+    require([x["period_years"] for x in factsheet] == [1, 3, 5]
+            and max(x["abs_difference_pp"] for x in factsheet) < 0.14,
+            "R9 LIC 1/3/5-year factsheet comparison fails its declared tolerance")
+    r9_returns: dict[str, float] = {}
+    for prior, current in zip(months, months[1:]):
+        r9_returns[current] = float(month_ends[current][1] / month_ends[prior][1] - Decimal(1))
+    return ({
+        "status": manifest["status"], "scheme_code": manifest["scheme_code"], "isin": manifest["isin"],
+        "raw_segments": len(manifest["segments"]), "raw_bytes": raw_bytes,
+        "raw_hash_or_byte_mismatches": 0, "observations": len(ordered),
+        "first": ordered[0][0].isoformat(), "last": ordered[-1][0].isoformat(),
+        "monthly_returns": len(monthly_rows), "max_gap_days": max_gap_days,
+        "daily_csv_sha256": sha256(daily_path.read_bytes()),
+        "monthly_csv_sha256": sha256(monthly_path.read_bytes()),
+        "factsheet_cagr_comparisons": factsheet,
+        "classification": "OFFICIAL_FUND_NAV_PROXY_NOT_ETF_MARKET_PRICE_OR_GSEC_TOTAL_RETURN_INDEX",
+    }, r9_returns)
+
+
+def build_record() -> dict[str, Any]:
+    g5, product_returns = audit_g5_sources()
+    r9, lic_returns = audit_r9()
+    disposition = read_json(G5_DISPOSITION)
+    hypotheses = [c for c in disposition["candidates"] if c.get("product_hypothesis")]
+    require(len(hypotheses) == disposition["product_hypothesis_count"] == 10,
+            "G5 ten-hypothesis count does not reconcile")
+    complete = {x["candidate_id"]: x for x in g5["independently_reconciled_histories"]}
+    candidate_rows = []
+    for candidate in hypotheses:
+        cid = candidate["candidate_id"]
+        history = complete.get(cid)
+        if cid == "LIC_GSEC_8_13_ETF":
+            history = {"observations": r9["observations"], "first": r9["first"], "last": r9["last"],
+                       "monthly_returns": r9["monthly_returns"], "type": r9["classification"]}
+        elif history:
+            history = {"observations": history["observations"], "first": history["first"],
+                       "last": history["last"], "type": history["history_type"]}
+        candidate_rows.append({
+            "candidate_id": cid, "classification": candidate["classification"],
+            "screen_disposition": candidate["screen_disposition"],
+            "source_status": candidate["source_status"], "qualified_continuous_history": history,
+            "open_gates": candidate["open_gates"],
+        })
+
+    common_sets = [
+        ["MOTILAL_NIFTY500_INDEX_FUND", "LIC_GSEC_8_13_ETF", "HDFC_GOLD_ETF", "ICICI_SILVER_ETF"],
+        ["MOTILAL_NIFTY500_INDEX_FUND", "SBI_GILT_JUNE2036_FUND", "HDFC_GOLD_ETF", "ICICI_SILVER_ETF"],
+        ["MOTILAL_NIFTY500_INDEX_FUND", "SBI_GILT_JUNE2036_FUND", "HDFC_GOLD_ETF",
+         "ICICI_SILVER_ETF", "SBI_NIFTY500_INDEX_FUND"],
+    ]
+    returns_by_candidate = dict(product_returns)
+    returns_by_candidate["LIC_GSEC_8_13_ETF"] = lic_returns
+    overlaps = []
+    for group in common_sets:
+        common = sorted(set.intersection(*(set(returns_by_candidate[cid]) for cid in group)))
+        require(common, f"no common monthly returns for {group}")
+        overlaps.append({"candidates": group, "common_months": len(common),
+                         "first": common[0], "last": common[-1],
+                         "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"})
+
+    readiness = read_json(G6_READINESS)
+    return {
+        "schema_version": 1,
+        "record_id": "g6-3-source-coverage-audit-2026-11-06-v1",
+        "as_of": "2026-11-06",
+        "result": "PASS_SOURCE_INVENTORY_ONLY_G6_DECISION_GRADE_NOT_READY",
+        "g5_source_evidence": g5,
+        "r9_lic_source_evidence": r9,
+        "ten_candidate_dispositions": candidate_rows,
+        "product_nav_joint_monthly_overlap": overlaps,
+        "existing_open_g6_readiness_gates": readiness["blocker_summary"]["open"],
+        "new_source_leads_not_yet_acquired": {
+            "rbi_91_day_tbill": "Official RBI Handbook Table 218 provides auction/issue dates and cutoff prices/yields through 2026-06-24 in the 2025-26 edition; actual retail NCB weighted-average allocation price and complete rolling issue schedule still require source confirmation.",
+            "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
+            "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
+            "cpi": "Original MoSPI release bytes and investor-confirmed purchasing-power base month remain unavailable.",
+        },
+        "decision_status": "NO_GO",
+        "investment_authorization": "NO_GO",
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--write", action="store_true")
+    mode.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    rendered = json.dumps(build_record(), indent=2, ensure_ascii=False) + "\n"
+    if args.write:
+        OUT.parent.mkdir(parents=True, exist_ok=True)
+        OUT.write_text(rendered, encoding="utf-8", newline="\n")
+        print(f"Wrote {OUT.relative_to(ROOT)}")
+        return 0
+    require(OUT.is_file(), "source inventory artifact missing")
+    require(OUT.read_text(encoding="utf-8") == rendered, "committed source inventory differs from reconstructed evidence")
+    print("PASS: G5 raw and normalized source lineage, 10 dispositions, R9 24-segment source-to-NAV bridge, and observed joint-history coverage reconcile; no decision-grade probability is qualified")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

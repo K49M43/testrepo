@@ -1,0 +1,45 @@
+name: G6.3 WP1 source inventory
+
+on:
+  push:
+    paths:
+      - 'decision/audit_g6_3_source_inventory.py'
+      - 'research/stage512/2026-11-05/g5_4/**'
+      - 'research/stage512/2026-11-05/source_retrieval_followup/**'
+      - 'research/stage512/data/r9_lic_gsec_etf/**'
+      - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/2026-11-06/g6_3/**'
+      - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
+      - '.github/workflows/g6-3-source-inventory.yml'
+  pull_request:
+    paths:
+      - 'decision/audit_g6_3_source_inventory.py'
+      - 'research/stage512/2026-11-05/g5_4/**'
+      - 'research/stage512/2026-11-05/source_retrieval_followup/**'
+      - 'research/stage512/data/r9_lic_gsec_etf/**'
+      - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/2026-11-06/g6_3/**'
+      - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
+      - '.github/workflows/g6-3-source-inventory.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Recheck G5 raw-source integrity and decision gates
+        run: python research/stage512/2026-11-05/g5_4/audit_g5_4.py
+      - name: Recheck candidate NAV date continuity
+        run: python research/stage512/2026-11-05/g5_4/audit_g5_candidate_nav_history.py --check
+      - name: Recheck G5 exit acceptance and evidence blocks
+        run: python research/stage512/2026-11-05/g5_4/audit_g5_exit_acceptance.py --check
+      - name: Reconstruct official LIC AMFI history
+        run: python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
+      - name: Reconcile candidate and LIC source coverage
+        run: python decision/audit_g6_3_source_inventory.py --check

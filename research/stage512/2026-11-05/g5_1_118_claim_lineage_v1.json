@@ -76,7 +76,7 @@
   "current_source_hashes_sha256_utf8_lf": {
     ".github/workflows/g5-1-claim-lineage.yml": "1743b2346e5a1f8f897f376abff3edfd5b88eb820cc80f2c46f946dc89c54b27",
     "decision/audit_g5_1_claim_lineage.py": "6e013a17519b4a1df6b50a47a1a340f92536f25215eca207e75b21dfb75542ea",
-    "docs/DECISION_LOG.md": "639745b672273f7b1bb19950b4757c411556a6edb16ac038435ee73416e11e46",
+    "docs/DECISION_LOG.md": "9359a7ea88baf7e84e563389357890be1fe925089d3d8110085dd37a5201edf1",
     "research/stage512/2026-11-02/stage512_assumption_register.json": "02f89458e06b07ff175d3207afb0e87b46f66baf68651c7446292f459d29f697",
     "research/stage512/2026-11-02/stage512_risk_audit.py": "302a75baef9832e95e71d83fa0276232bed98ce211ea8244426a121957d56ac4",
     "research/stage512/2026-11-02/stage512_risk_scenarios.csv": "1de2131a151d1d149da3842b9c51e3711e114a8f56d3ee1a625f1e037b29fa5e",

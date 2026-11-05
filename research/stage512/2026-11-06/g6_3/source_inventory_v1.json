@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-3-source-coverage-audit-2026-11-06-v1",
+  "as_of": "2026-11-06",
+  "result": "PASS_SOURCE_INVENTORY_ONLY_G6_DECISION_GRADE_NOT_READY",
+  "g5_source_evidence": {
+    "manifest_record_id": "g5-4-source-reacquisition-2026-11-05-v3",
+    "manifest_files": 94,
+    "retained_bytes": 22481950,
+    "missing_files": 0,
+    "hash_or_byte_mismatches": 0,
+    "reported_candidate_history_counts": {
+      "independently_audited_candidates": 5,
+      "raw_amfi_windows": 63,
+      "product_nav_observations": 7353
+    },
+    "independently_reconciled_histories": [
+      {
+        "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+        "scheme_code": "147625",
+        "isin": "INF247L01957",
+        "observations": 1761,
+        "first": "2019-09-11",
+        "last": "2026-10-30",
+        "max_gap_days": 5,
+        "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+        "normalized_csv_sha256": "2bbd9f09d0ac9dcd4e78c2e8dbbb69d84eb7879df2e7287b8e90ffabb6808412"
+      },
+      {
+        "candidate_id": "SBI_GILT_JUNE2036_FUND",
+        "scheme_code": "150681",
+        "isin": "INF200KA12Q9",
+        "observations": 994,
+        "first": "2022-10-10",
+        "last": "2026-10-31",
+        "max_gap_days": 4,
+        "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+        "normalized_csv_sha256": "971150a46162dd7b20afc784b5a005026d1533ece1ca3f340a47b0bd8b634ac7"
+      },
+      {
+        "candidate_id": "HDFC_GOLD_ETF",
+        "scheme_code": "113049",
+        "isin": "INF179KC1981",
+        "observations": 2918,
+        "first": "2015-01-01",
+        "last": "2026-10-30",
+        "max_gap_days": 5,
+        "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+        "normalized_csv_sha256": "66b5253e897a89fb0bfff1a44e83bc909c31373040389a32a561b5dbddd3ef0b"
+      },
+      {
+        "candidate_id": "ICICI_SILVER_ETF",
+        "scheme_code": "149464",
+        "isin": "INF109KC1Y56",
+        "observations": 1160,
+        "first": "2022-01-25",
+        "last": "2026-10-30",
+        "max_gap_days": 5,
+        "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+        "normalized_csv_sha256": "bf60e3abb80296b72e787d4d33eaa21d1154a10761dfd855ad8040208afb224d"
+      },
+      {
+        "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+        "scheme_code": "152908",
+        "isin": "INF200KB1381",
+        "observations": 520,
+        "first": "2024-10-04",
+        "last": "2026-10-31",
+        "max_gap_days": 4,
+        "history_type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE",
+        "normalized_csv_sha256": "8faa2e97cbb1d2bd04782320e2f9c787284bbb493ad9d7fbe98024e79ae754ff"
+      }
+    ],
+    "official_nse_tri": {
+      "months": 129,
+      "first": "2015-01",
+      "last": "2025-09"
+    },
+    "strict_nse_tri_overlaps": [
+      {
+        "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+        "months": 72,
+        "first": "2019-10",
+        "last": "2025-09",
+        "use": "DESCRIPTIVE_ONLY"
+      },
+      {
+        "candidate_id": "SBI_GILT_JUNE2036_FUND",
+        "months": 35,
+        "first": "2022-11",
+        "last": "2025-09",
+        "use": "DESCRIPTIVE_ONLY"
+      },
+      {
+        "candidate_id": "HDFC_GOLD_ETF",
+        "months": 128,
+        "first": "2015-02",
+        "last": "2025-09",
+        "use": "DESCRIPTIVE_ONLY"
+      },
+      {
+        "candidate_id": "ICICI_SILVER_ETF",
+        "months": 44,
+        "first": "2022-02",
+        "last": "2025-09",
+        "use": "DESCRIPTIVE_ONLY"
+      },
+      {
+        "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+        "months": 11,
+        "first": "2024-11",
+        "last": "2025-09",
+        "use": "DESCRIPTIVE_ONLY"
+      }
+    ]
+  },
+  "r9_lic_source_evidence": {
+    "status": "PASS_OFFICIAL_NAV_11YR_RESEARCH_ONLY",
+    "scheme_code": "133307",
+    "isin": "INF767K01MV5",
+    "raw_segments": 24,
+    "raw_bytes": 512313,
+    "raw_hash_or_byte_mismatches": 0,
+    "observations": 2867,
+    "first": "2014-12-26",
+    "last": "2026-10-30",
+    "monthly_returns": 142,
+    "max_gap_days": 6,
+    "daily_csv_sha256": "7359b20c11de05b7cf0a86ca473f6e83b471d2b416793655bc43c6f0c14ca846",
+    "monthly_csv_sha256": "f5bb135e0fac756f4b3dc09a2b8625ff99ee800a6ca88686d9cb9d6da8574240",
+    "factsheet_cagr_comparisons": [
+      {
+        "period_years": 1,
+        "source_start": "2025-03-31",
+        "source_end": "2026-03-31",
+        "calculated_nav_cagr_pct": 3.1753,
+        "lic_factsheet_cagr_pct": 3.18,
+        "abs_difference_pp": 0.0047,
+        "published_gsec_benchmark_cagr_pct": 3.32
+      },
+      {
+        "period_years": 3,
+        "source_start": "2023-03-31",
+        "source_end": "2026-03-31",
+        "calculated_nav_cagr_pct": 7.157973,
+        "lic_factsheet_cagr_pct": 7.15,
+        "abs_difference_pp": 0.007973,
+        "published_gsec_benchmark_cagr_pct": 7.33
+      },
+      {
+        "period_years": 5,
+        "source_start": "2021-03-31",
+        "source_end": "2026-03-31",
+        "calculated_nav_cagr_pct": 5.495434,
+        "lic_factsheet_cagr_pct": 5.49,
+        "abs_difference_pp": 0.005434,
+        "published_gsec_benchmark_cagr_pct": 5.75
+      }
+    ],
+    "classification": "OFFICIAL_FUND_NAV_PROXY_NOT_ETF_MARKET_PRICE_OR_GSEC_TOTAL_RETURN_INDEX"
+  },
+  "ten_candidate_dispositions": [
+    {
+      "candidate_id": "MOTILAL_NIFTY500_ETF",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_AS_ALTERNATIVE; NOT_IN_INITIAL_NAV_PATH",
+      "source_status": "2026-09-30 official holdings; AMFI TER 2026-10-30; continuous product NAV/market-price history not independently qualified in this increment.",
+      "qualified_continuous_history": null,
+      "open_gates": [
+        "official scheme identity mapping and dated current status",
+        "historical ETF traded price and benchmark on same timestamps",
+        "bid/ask, volume, premium/discount, charges and settlement",
+        "candidate-specific tax and investor access/suitability"
+      ]
+    },
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; independent audit in candidate_nav_history_audit.json.",
+      "qualified_continuous_history": {
+        "observations": 1761,
+        "first": "2019-09-11",
+        "last": "2026-10-30",
+        "type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE"
+      },
+      "open_gates": [
+        "only 72 common months to qualified monthly benchmark; no daily NSE TRI path",
+        "historical TER/fees over the same period not established",
+        "redemption terms, exit load, investor platform access and tax inputs unverified"
+      ]
+    },
+    {
+      "candidate_id": "LIC_GSEC_8_13_ETF",
+      "classification": "PROXY_ONLY",
+      "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET_AS_PROXY",
+      "source_status": "R9 qualified official AMFI NAV history; 2026-09-30 official factsheet; bond ISINs remain unresolved in the holdings snapshot.",
+      "qualified_continuous_history": {
+        "observations": 2867,
+        "first": "2014-12-26",
+        "last": "2026-10-30",
+        "monthly_returns": 142,
+        "type": "OFFICIAL_FUND_NAV_PROXY_NOT_ETF_MARKET_PRICE_OR_GSEC_TOTAL_RETURN_INDEX"
+      },
+      "open_gates": [
+        "qualify a government-security total-return reference or explicit dated-bond cashflow path",
+        "ETF traded-price/liquidity/premium evidence",
+        "tax and investor access"
+      ]
+    },
+    {
+      "candidate_id": "ICICI_GOLD_ETF",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
+      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here.",
+      "qualified_continuous_history": null,
+      "open_gates": [
+        "newer dated official holdings disclosure",
+        "continuous official NAV history if retained in quantitative comparison",
+        "ETF traded-price, spread/premium, tax and access evidence"
+      ]
+    },
+    {
+      "candidate_id": "ICICI_SILVER_ETF",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09.",
+      "qualified_continuous_history": {
+        "observations": 1160,
+        "first": "2022-01-25",
+        "last": "2026-10-30",
+        "type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE"
+      },
+      "open_gates": [
+        "only 44 common months; no long-run covariance claim",
+        "official holdings snapshot in G5.2 is dated 2026-03-31",
+        "ETF traded-price/liquidity, tax and access evidence"
+      ]
+    },
+    {
+      "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_AS_ALTERNATIVE; SHORT_HISTORY",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 520 observations 2024-10-04 to 2026-10-31.",
+      "qualified_continuous_history": {
+        "observations": 520,
+        "first": "2024-10-04",
+        "last": "2026-10-31",
+        "type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE"
+      },
+      "open_gates": [
+        "short common history",
+        "historical TER/fees and tracking difference",
+        "redemption terms, tax and investor access"
+      ]
+    },
+    {
+      "candidate_id": "SBI_NIFTY10Y_GSEC_ETF",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
+      "source_status": "Official factsheet and AMFI TER row; continuous NAV and traded-price history not independently qualified here.",
+      "qualified_continuous_history": null,
+      "open_gates": [
+        "exact AMFI scheme code mapping and continuous product history",
+        "index total-return identity/history",
+        "ETF traded price, premium/discount, depth and settlement",
+        "tax/access/suitability"
+      ]
+    },
+    {
+      "candidate_id": "SBI_GILT_JUNE2036_FUND",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET_AS_PROXY",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 994 observations; 35 common calendar-month returns with NSE Nifty 500 TRI through 2025-09.",
+      "qualified_continuous_history": {
+        "observations": 994,
+        "first": "2022-10-10",
+        "last": "2026-10-31",
+        "type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE"
+      },
+      "open_gates": [
+        "benchmark total-return identity and matched historical path",
+        "maturity/exit/roll-down and any extension risk",
+        "historical TER, exit load, tax and access",
+        "not a direct GoI bond cashflow substitute"
+      ]
+    },
+    {
+      "candidate_id": "HDFC_GOLD_ETF",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.",
+      "qualified_continuous_history": {
+        "observations": 2918,
+        "first": "2015-01-01",
+        "last": "2026-10-30",
+        "type": "OFFICIAL_AMFI_GROWTH_NAV_NOT_ETF_MARKET_PRICE"
+      },
+      "open_gates": [
+        "product inception-to-2014 history not in selected window",
+        "ETF traded-price, premium/discount, spread and liquidity",
+        "tax, account access and suitability"
+      ]
+    },
+    {
+      "candidate_id": "SBI_GILT_FUND",
+      "classification": "INVESTABLE",
+      "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
+      "source_status": "Official SBI February 2026 factsheet and AMFI Oct 2026 TER; bounded NAV samples only.",
+      "qualified_continuous_history": null,
+      "open_gates": [
+        "continuous official NAV history and benchmark lineage",
+        "time-varying duration/holdings and historical fees",
+        "tax, exit load and investor access"
+      ]
+    }
+  ],
+  "product_nav_joint_monthly_overlap": [
+    {
+      "candidates": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "LIC_GSEC_8_13_ETF",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "common_months": 57,
+      "first": "2022-02",
+      "last": "2026-10",
+      "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
+    },
+    {
+      "candidates": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "common_months": 48,
+      "first": "2022-11",
+      "last": "2026-10",
+      "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
+    },
+    {
+      "candidates": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "common_months": 24,
+      "first": "2024-11",
+      "last": "2026-10",
+      "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
+    }
+  ],
+  "existing_open_g6_readiness_gates": [
+    "direct_goi_price_cashflow_and_91_day_tbill_roll_series",
+    "etf_market_price_liquidity_premium_and_execution_inputs_where_selected",
+    "full_horizon_selected_candidate_after_tax_cost_exit_and_CPI_path",
+    "CPI_raw_release_bytes_and_personal_base_month",
+    "investor_access_suitability_tax_inputs_for_personal_output",
+    "cross_asset_uncertainty_and_probability"
+  ],
+  "new_source_leads_not_yet_acquired": {
+    "rbi_91_day_tbill": "Official RBI Handbook Table 218 provides auction/issue dates and cutoff prices/yields through 2026-06-24 in the 2025-26 edition; actual retail NCB weighted-average allocation price and complete rolling issue schedule still require source confirmation.",
+    "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
+    "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
+    "cpi": "Original MoSPI release bytes and investor-confirmed purchasing-power base month remain unavailable."
+  },
+  "decision_status": "NO_GO",
+  "investment_authorization": "NO_GO"
+}
