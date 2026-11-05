@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "G6-1-SYNTHETIC-SCHEDULE-TO-EXIT-2026-11-05-v1",
+  "input_classification": "SYNTHETIC_FIXTURE_ONLY",
+  "terminal_month_index": 5,
+  "instrument": {
+    "instrument_id": "SYNTHETIC-SECTION76-FUND",
+    "tax_classification": "section76",
+    "section76_specified_fund_confirmed": true
+  },
+  "price_path_basis": "Synthetic monthly marks; no market history, distributions, fund expenses, or forecast claim",
+  "scenarios": [
+    {
+      "scenario_id": "flat-price",
+      "price_by_month_inr": ["100", "100", "100", "100", "100", "100"]
+    },
+    {
+      "scenario_id": "one-percent-monthly-price-rise",
+      "price_by_month_inr": ["100", "101", "102.01", "103.0301", "104.060401", "105.10100501"]
+    }
+  ],
+  "costs": {
+    "account_fee_per_contribution_inr": "10",
+    "terminal_transaction_cost_inr": "25",
+    "terminal_cost_deductible_for_tax": false
+  },
+  "tax_assumptions": {
+    "model_tax_year": "2026-27",
+    "resident_individual": true,
+    "external_ordinary_income_inr": "3000000",
+    "rule_set": "TY 2026-27 research component; fixture only"
+  },
+  "cpi": {
+    "classification": "SYNTHETIC_FIXTURE_ONLY",
+    "base_month": "2026-10",
+    "base_index": "100",
+    "terminal_month": "2027-03",
+    "terminal_index": "102"
+  }
+}

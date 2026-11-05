@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-1-deterministic-bridge-v1",
+  "experiment_id": "G6-1-SYNTHETIC-SCHEDULE-TO-EXIT-2026-11-05-v1",
+  "classification": "SYNTHETIC_FIXTURE_ONLY",
+  "scenario_count": 2,
+  "run_key": "fd1fbe3bd0cdd0f8bafa229c9db83800f7b34e0a0944ae8858950922edb223eb",
+  "source_hashes": {
+    "input_fixture": {
+      "path": "research/stage512/2026-11-05/g6_1/input.json",
+      "sha256": "6c40fefbf9d750145dbb09df08e9fdb6d418e206cf1527b60e8cbd8293456911"
+    },
+    "cashflow_schedule": {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    },
+    "g3_contract": {
+      "path": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "sha256": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873"
+    },
+    "bridge_code": {
+      "path": "decision/g6_deterministic_bridge.py",
+      "sha256": "4fd1b3b9ec699b410a1ed0082f585331d35b366a57bcadf5cddbe923a71a4eb1"
+    },
+    "event_ledger_code": {
+      "path": "decision/after_tax_event_ledger.py",
+      "sha256": "a6f16393612e270f0cb1f563c1fa4eeba7351347af0951bd7f4690aa2aef579b"
+    },
+    "tax_component_code": {
+      "path": "decision/ty2026_27_tax_components.py",
+      "sha256": "476a071003f78856c6a2b16e1bd776a479b194981139190dc85d9eff3b6beffa"
+    },
+    "g3_hurdle_code": {
+      "path": "decision/g3_goal_hurdle.py",
+      "sha256": "4e599de319a4337f2ce6d9daafa6d1e8ef0a95939bd1b055cd890b76600df96a"
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "flat-price",
+      "classification": "SYNTHETIC_FIXTURE_ONLY",
+      "instrument_id": "SYNTHETIC-SECTION76-FUND",
+      "start_date": "2026-10-31",
+      "terminal_date": "2027-03-31",
+      "tax_year": "2026-27",
+      "contribution_months_including_initial": 6,
+      "contributions_inr": "4325000.000000000",
+      "gross_terminal_sale_proceeds_before_terminal_cost_and_tax_inr": "4324940.000000000",
+      "gross_terminal_wealth_after_recorded_costs_before_tax_inr": "4324915.000000000",
+      "recorded_account_fees_inr": "60",
+      "recorded_transaction_costs_inr": "25",
+      "incremental_fixture_tax_inr": "0.00000",
+      "net_nominal_after_costs_and_incremental_fixture_tax_inr": "4324915.000000000",
+      "cpi": {
+        "classification": "SYNTHETIC_FIXTURE_ONLY",
+        "base_month": "2026-10",
+        "base_index": "100",
+        "terminal_month": "2027-03",
+        "terminal_index": "102",
+        "factor": "1.02"
+      },
+      "net_real_2026_base_fixture_value_inr": "4240112.7450980392156862745098039215686274509803922",
+      "event_count": 24,
+      "reconciliation_residual_inr": "0E-9",
+      "tax_year_trace": {
+        "2026-27": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
+          "portfolio_income": {
+            "ordinary": "0",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "portfolio_income_source_event_ids": {},
+          "total_tax_before_credits": "499200.00000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "0.00000",
+          "remaining_incremental_tax_after_portfolio_withholding": "0",
+          "excess_portfolio_withholding_not_valued_as_refund": "0",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "tax_event_trace": [],
+      "lot_disposal_trace": [
+        {
+          "event_id": "flat-price-terminal-sale",
+          "lot_id": "flat-price-lot-005",
+          "acquired_date": "2027-03-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-004",
+          "lot_id": "flat-price-lot-004",
+          "acquired_date": "2027-02-28",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-003",
+          "lot_id": "flat-price-lot-003",
+          "acquired_date": "2027-01-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-002",
+          "lot_id": "flat-price-lot-002",
+          "acquired_date": "2026-12-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-001",
+          "lot_id": "flat-price-lot-001",
+          "acquired_date": "2026-11-30",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-000",
+          "lot_id": "flat-price-lot-000",
+          "acquired_date": "2026-10-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "41999.9",
+          "unit_price_inr": "100",
+          "proceeds_inr": "4199990.0",
+          "tax_basis_removed_inr": "4199990",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0.0"
+        }
+      ],
+      "qualification_limits": [
+        "Synthetic price paths and synthetic CPI levels are not market history or an inflation forecast.",
+        "TY 2026-27 component tax is held fixed for this one synthetic tax year only.",
+        "No withholding, returns, investor tax profile, or future-law assumptions are inferred.",
+        "Recorded account/transaction costs are fixture assumptions; tax deductibility is not inferred.",
+        "Full forced liquidation is a mechanics case, not a 2036 exit recommendation.",
+        "No probability, portfolio ranking, suitability or investment authorization is produced."
+      ],
+      "investment_authorization": "NO_GO"
+    },
+    {
+      "scenario_id": "one-percent-monthly-price-rise",
+      "classification": "SYNTHETIC_FIXTURE_ONLY",
+      "instrument_id": "SYNTHETIC-SECTION76-FUND",
+      "start_date": "2026-10-31",
+      "terminal_date": "2027-03-31",
+      "tax_year": "2026-27",
+      "contribution_months_including_initial": 6,
+      "contributions_inr": "4325000.000000000",
+      "gross_terminal_sale_proceeds_before_terminal_cost_and_tax_inr": "4541705.8155193990000000000000000000000000000000000",
+      "gross_terminal_wealth_after_recorded_costs_before_tax_inr": "4541680.8155193990000000000000000000000000000000000",
+      "recorded_account_fees_inr": "60",
+      "recorded_transaction_costs_inr": "25",
+      "incremental_fixture_tax_inr": "67632.24000",
+      "net_nominal_after_costs_and_incremental_fixture_tax_inr": "4474048.5755193990000000000000000000000000000000000",
+      "cpi": {
+        "classification": "SYNTHETIC_FIXTURE_ONLY",
+        "base_month": "2026-10",
+        "base_index": "100",
+        "terminal_month": "2027-03",
+        "terminal_index": "102",
+        "factor": "1.02"
+      },
+      "net_real_2026_base_fixture_value_inr": "4386322.1328621558823529411764705882352941176470588",
+      "event_count": 24,
+      "reconciliation_residual_inr": "0E-43",
+      "tax_year_trace": {
+        "2026-27": {
+          "tax_qualification_status": "RESEARCH_FIXTURE_NO_LOSS_SCHEDULE",
+          "portfolio_income": {
+            "ordinary": "216765.81551939900000000000000000000000000000000000",
+            "dividend": "0",
+            "section196_stcg": "0",
+            "section197_ltcg": "0",
+            "section198_ltcg": "0",
+            "withholding_credit": "0"
+          },
+          "portfolio_income_source_event_ids": {
+            "ordinary": [
+              "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-004",
+              "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-003",
+              "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-002",
+              "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-001",
+              "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-000"
+            ]
+          },
+          "total_tax_before_credits": "566832.24000",
+          "external_only_tax_before_credits": "499200.00000",
+          "incremental_portfolio_tax": "67632.24000",
+          "remaining_incremental_tax_after_portfolio_withholding": "67632.24000",
+          "excess_portfolio_withholding_not_valued_as_refund": "0",
+          "tax_component_scope": "RESEARCH_COMPONENT_ONLY; not a personal tax result"
+        }
+      },
+      "tax_event_trace": [
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-004",
+          "event_date": "2027-03-31",
+          "tax_year": "2026-27",
+          "instrument_id": "SYNTHETIC-SECTION76-FUND",
+          "event_type": "terminal_disposal",
+          "lot_id": "one-percent-monthly-price-rise-lot-004",
+          "lot_acquired": "2027-02-28",
+          "tax_category": "ordinary",
+          "taxable_amount_inr": "249.900000000000000000000000000000000000000000000",
+          "tax_classification": "section76",
+          "tax_classification_confirmed": true,
+          "eligibility_confirmed": {
+            "section76_specified_fund": true,
+            "section196": false,
+            "section197": false,
+            "section198": false
+          },
+          "rule_reference": "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income",
+          "source_or_assumption": "Synthetic terminal price mark; full forced liquidation fixture",
+          "qualification_status": "SYNTHETIC_FIXTURE_ONLY",
+          "realized_disposal": {
+            "units_disposed": "240.14898808625578907772996185167497096229717584886",
+            "proceeds_inr": "25239.900000000000000000000000000000000000000000000",
+            "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+            "deductible_transfer_expenses_inr": "0",
+            "signed_realized_result_inr": "249.900000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-003",
+          "event_date": "2027-03-31",
+          "tax_year": "2026-27",
+          "instrument_id": "SYNTHETIC-SECTION76-FUND",
+          "event_type": "terminal_disposal",
+          "lot_id": "one-percent-monthly-price-rise-lot-003",
+          "lot_acquired": "2027-01-31",
+          "tax_category": "ordinary",
+          "taxable_amount_inr": "502.299000000000000000000000000000000000000000000",
+          "tax_classification": "section76",
+          "tax_classification_confirmed": true,
+          "eligibility_confirmed": {
+            "section76_specified_fund": true,
+            "section196": false,
+            "section197": false,
+            "section198": false
+          },
+          "rule_reference": "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income",
+          "source_or_assumption": "Synthetic terminal price mark; full forced liquidation fixture",
+          "qualification_status": "SYNTHETIC_FIXTURE_ONLY",
+          "realized_disposal": {
+            "units_disposed": "242.55047796711834696850726147019172067192014760735",
+            "proceeds_inr": "25492.299000000000000000000000000000000000000000000",
+            "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+            "deductible_transfer_expenses_inr": "0",
+            "signed_realized_result_inr": "502.299000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-002",
+          "event_date": "2027-03-31",
+          "tax_year": "2026-27",
+          "instrument_id": "SYNTHETIC-SECTION76-FUND",
+          "event_type": "terminal_disposal",
+          "lot_id": "one-percent-monthly-price-rise-lot-002",
+          "lot_acquired": "2026-12-31",
+          "tax_category": "ordinary",
+          "taxable_amount_inr": "757.221990000000000000000000000000000000000000000",
+          "tax_classification": "section76",
+          "tax_classification_confirmed": true,
+          "eligibility_confirmed": {
+            "section76_specified_fund": true,
+            "section196": false,
+            "section197": false,
+            "section198": false
+          },
+          "rule_reference": "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income",
+          "source_or_assumption": "Synthetic terminal price mark; full forced liquidation fixture",
+          "qualification_status": "SYNTHETIC_FIXTURE_ONLY",
+          "realized_disposal": {
+            "units_disposed": "244.97598274678953043819233408489363787863934908342",
+            "proceeds_inr": "25747.221990000000000000000000000000000000000000000",
+            "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+            "deductible_transfer_expenses_inr": "0",
+            "signed_realized_result_inr": "757.221990000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-001",
+          "event_date": "2027-03-31",
+          "tax_year": "2026-27",
+          "instrument_id": "SYNTHETIC-SECTION76-FUND",
+          "event_type": "terminal_disposal",
+          "lot_id": "one-percent-monthly-price-rise-lot-001",
+          "lot_acquired": "2026-11-30",
+          "tax_category": "ordinary",
+          "taxable_amount_inr": "1014.694209900000000000000000000000000000000000000",
+          "tax_classification": "section76",
+          "tax_classification_confirmed": true,
+          "eligibility_confirmed": {
+            "section76_specified_fund": true,
+            "section196": false,
+            "section197": false,
+            "section198": false
+          },
+          "rule_reference": "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income",
+          "source_or_assumption": "Synthetic terminal price mark; full forced liquidation fixture",
+          "qualification_status": "SYNTHETIC_FIXTURE_ONLY",
+          "realized_disposal": {
+            "units_disposed": "247.42574257425742574257425742574257425742574257426",
+            "proceeds_inr": "26004.694209900000000000000000000000000000000000000",
+            "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+            "deductible_transfer_expenses_inr": "0",
+            "signed_realized_result_inr": "1014.694209900000000000000000000000000000000000000"
+          }
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-000",
+          "event_date": "2027-03-31",
+          "tax_year": "2026-27",
+          "instrument_id": "SYNTHETIC-SECTION76-FUND",
+          "event_type": "terminal_disposal",
+          "lot_id": "one-percent-monthly-price-rise-lot-000",
+          "lot_acquired": "2026-10-31",
+          "tax_category": "ordinary",
+          "taxable_amount_inr": "214241.700319499",
+          "tax_classification": "section76",
+          "tax_classification_confirmed": true,
+          "eligibility_confirmed": {
+            "section76_specified_fund": true,
+            "section196": false,
+            "section197": false,
+            "section198": false
+          },
+          "rule_reference": "TY 2026-27 component model: section 76 specified-fund gain treated as ordinary income",
+          "source_or_assumption": "Synthetic terminal price mark; full forced liquidation fixture",
+          "qualification_status": "SYNTHETIC_FIXTURE_ONLY",
+          "realized_disposal": {
+            "units_disposed": "41999.9",
+            "proceeds_inr": "4414231.700319499",
+            "tax_basis_removed_inr": "4199990",
+            "deductible_transfer_expenses_inr": "0",
+            "signed_realized_result_inr": "214241.700319499"
+          }
+        }
+      ],
+      "lot_disposal_trace": [
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale",
+          "lot_id": "one-percent-monthly-price-rise-lot-005",
+          "acquired_date": "2027-03-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "237.77127533292652383933659589274749600227443153353",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "24990.000000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-45"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-004",
+          "lot_id": "one-percent-monthly-price-rise-lot-004",
+          "acquired_date": "2027-02-28",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "240.14898808625578907772996185167497096229717584886",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25239.900000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "249.900000000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-003",
+          "lot_id": "one-percent-monthly-price-rise-lot-003",
+          "acquired_date": "2027-01-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "242.55047796711834696850726147019172067192014760735",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25492.299000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "502.299000000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-002",
+          "lot_id": "one-percent-monthly-price-rise-lot-002",
+          "acquired_date": "2026-12-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "244.97598274678953043819233408489363787863934908342",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25747.221990000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "757.221990000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-001",
+          "lot_id": "one-percent-monthly-price-rise-lot-001",
+          "acquired_date": "2026-11-30",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "247.42574257425742574257425742574257425742574257426",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "26004.694209900000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000000000000000000000000000000000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "1014.694209900000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-000",
+          "lot_id": "one-percent-monthly-price-rise-lot-000",
+          "acquired_date": "2026-10-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "41999.9",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "4414231.700319499",
+          "tax_basis_removed_inr": "4199990",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "214241.700319499"
+        }
+      ],
+      "qualification_limits": [
+        "Synthetic price paths and synthetic CPI levels are not market history or an inflation forecast.",
+        "TY 2026-27 component tax is held fixed for this one synthetic tax year only.",
+        "No withholding, returns, investor tax profile, or future-law assumptions are inferred.",
+        "Recorded account/transaction costs are fixture assumptions; tax deductibility is not inferred.",
+        "Full forced liquidation is a mechanics case, not a 2036 exit recommendation.",
+        "No probability, portfolio ranking, suitability or investment authorization is produced."
+      ],
+      "investment_authorization": "NO_GO"
+    }
+  ],
+  "decision_scope": "G6.1 deterministic integration mechanics only; not decision-grade G6",
+  "investment_authorization": "NO_GO"
+}

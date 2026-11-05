@@ -69,3 +69,11 @@ Reproduce using `python research/stage512/2026-11-05/g5_4/audit_g5_candidate_nav
 
 **Current distinction:** the 10 product hypotheses now have a documented disposition, and G6 fixture-first deterministic engineering remains READY. Decision-grade G6 and investment authorization remain NOT READY / NO-GO. Remaining source gates are direct GoI/T-Bill dated cashflows and ETF market-price execution where selected, followed by the joined after-tax cashflow path.
 
+## G6.1 synthetic bridge update — 2026-11-05
+
+G5 is now officially closed: PR #39 merged as `99c93aeee43b685ae43abcbbfffbc888f0803b9e`; issues #29 and #38 are closed.
+
+G6.1 joins the validated G3 contribution schedule to the Sprint 1 lot/tax ledger, explicit synthetic account/terminal costs, full lot-level liquidation, and an explicitly synthetic CPI ratio. The strengthened audit now checks all six lot disposals, including zero-gain lots, matches positive tax events to their lots, explicitly requires the synthetic resident-individual assumption, and independently recomputes section 516 rounding, ordinary slabs, and cess inside the fixture's fail-closed income envelope. The local audit passes; all exact-head Actions passed on implementation commit `36b3a7872eb8643436061ada20ae4c11ca4bcd5d`. PR #41 remains draft/unmerged. The tax arithmetic cross-check is limited to the synthetic fixture and is not an independent tax-law opinion. G6 decision-grade remains blocked.
+
+This closes the **one-year fixture integration sub-gate only**. The full 120/122-month multi-year path, candidate-specific tax classification, distributions, loss allocation, selected source prices, flexible liquidation, original CPI bytes and investor CPI base month remain open. G6 decision-grade remains NOT READY; investment authorization remains NO-GO.
+

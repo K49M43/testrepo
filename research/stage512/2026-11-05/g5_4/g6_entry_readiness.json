@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_id": "g6-entry-readiness-2026-11-05-v3",
+  "record_id": "g6-entry-readiness-2026-11-05-v5",
   "decision": "DECISION_GRADE_NOT_READY",
   "investment_authorization": "NO_GO",
   "gates": {
@@ -12,17 +12,18 @@
     "multi_asset_dependence_and_uncertainty": "BLOCKED_NOT_YET_VALIDATED",
     "investor_suitability_access_execution": "FOLLOW_ON_BLOCK_FOR_PERSONAL_RECOMMENDATION_NOT_ENGINEERING_START",
     "tax_lot_liquidation": "PASS_BOUNDED_SYNTHETIC; PERSONAL_RESULT_REQUIRES_ACTUAL_INPUTS",
-    "dated_cashflow_integration": "PARTIAL_123_ROW_SCHEDULE_AND_G3_HURDLE_PASS_END_TO_END_PATH_OPEN",
+    "dated_cashflow_integration": "PASS_G6_1_SIX_MONTH_SYNTHETIC_ADAPTER; FULL_120_122_MONTH_MULTIYEAR_PATH_OPEN",
     "official_cpi_real_value": "PROVISIONAL_SOURCE_VALUE_PASS; PERSONAL_BASE_MONTH_AND_RAW_RELEASE_BYTES_OPEN",
-    "g3_outcome_exit_integration": "G3_ARITHMETIC_PASS; AFTER_TAX_EVENT_LEDGER_BRIDGE_OPEN",
-    "independent_reproducibility_adverse_cases": "COMPONENT_AUDITS_PASS; JOINED_PATH_AND_ADVERSE_CASES_OPEN",
+    "g3_outcome_exit_integration": "PASS_G6_1_ONE_YEAR_SYNTHETIC_FULL_EXIT; MULTIYEAR_AND_FLEXIBLE_EXIT_OPEN",
+    "independent_reproducibility_adverse_cases": "PASS_G6_1_INDEPENDENT_ARITHMETIC_AND_FAIL_CLOSED_MUTATIONS; FULL_HORIZON_ADVERSE_CASES_OPEN",
+    "g6_1_fixture_bridge": "PASS_LOCAL_AND_EXACT_HEAD_CI_ON_36B3A78; DRAFT_PR_UNMERGED",
     "strict_calendar_month_overlap": "PASS_DESCRIPTIVE_ALIGNMENT_TO_129_NSE_TRI_MONTHS; SHORT_PRODUCT_WINDOWS_REMAIN_LIMITING",
     "candidate_disposition_10": "PASS_10_PRODUCT_HYPOTHESES_DISPOSED; NO_RANKING_OR_WEIGHTS"
   },
   "rule": "Decision-grade G6 requires selected source histories and a joined deterministic path. A bounded fixture-first engineering increment may start now; this is not an investment decision or permission to publish investor-specific results.",
   "engineering_start": "READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE",
   "readiness_levels": {
-    "engineering_start": "READY with explicitly synthetic fixtures; no probability or personal-result claims",
+    "engineering_start": "G6.1 bridge and strengthened independent audit pass locally; all exact-head Actions passed on implementation commit 36b3a78; PR #41 remains draft/unmerged; no probability or personal-result claims",
     "decision_grade_G6": "NOT_READY until selected histories and joined deterministic path pass",
     "investment_decision": "NO_GO"
   },
@@ -41,7 +42,7 @@
     "open": [
       "direct_goi_price_cashflow_and_91_day_tbill_roll_series",
       "etf_market_price_liquidity_premium_and_execution_inputs_where_selected",
-      "joined_deterministic_after_tax_path_with_selected_candidate_and_exit",
+      "full_horizon_selected_candidate_after_tax_cost_exit_and_CPI_path",
       "CPI_raw_release_bytes_and_personal_base_month",
       "investor_access_suitability_tax_inputs_for_personal_output",
       "cross_asset_uncertainty_and_probability"
