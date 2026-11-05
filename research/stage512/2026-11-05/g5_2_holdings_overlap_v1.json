@@ -16,7 +16,7 @@
       "normalized_csv_sha256": "4bf8320f1ff61abb1e0a3b07c652126d288679f8a05c7cfc2455c5b065e86dcb",
       "as_of": "2026-09-30",
       "publication_date": null,
-      "retrieved_at": "2026-11-05T12:28:00+05:30 (workspace file timestamp; HTTP response timestamp not preserved)",
+      "retrieved_at": "2026-11-05T12:28:41+05:30 (local file timestamp; HTTP response headers not preserved)",
       "inception_or_allotment_date": "2023-09-29",
       "primary_benchmark": "Nifty 500 TRI",
       "equity_constituent_rows": 498,
@@ -60,7 +60,8 @@
       ],
       "derivatives": "Source workbook note says Nil at 2026-09-30",
       "geography": "India equity exposure; foreign securities note says Nil",
-      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred."
+      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred.",
+      "publication_date_status": "Exact publication date is not in workbook and was not verified; as-of is 2026-09-30."
     },
     {
       "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
@@ -75,7 +76,7 @@
       "normalized_csv_sha256": "7ed58ebad2cbe2e939a53ffcf48d603420fcf6965cbb00e804996956c1297814",
       "as_of": "2026-09-30",
       "publication_date": null,
-      "retrieved_at": "2026-11-05T12:28:00+05:30 (workspace file timestamp; HTTP response timestamp not preserved)",
+      "retrieved_at": "2026-11-05T12:28:41+05:30 (local file timestamp; HTTP response headers not preserved)",
       "inception_or_allotment_date": "2019-09-06",
       "primary_benchmark": "Nifty 500 TRI",
       "equity_constituent_rows": 498,
@@ -150,7 +151,8 @@
       ],
       "derivatives": "Source workbook note says Nil at 2026-09-30",
       "geography": "India equity exposure; foreign securities note says Nil",
-      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred."
+      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred.",
+      "publication_date_status": "Exact publication date is not in workbook and was not verified; as-of is 2026-09-30."
     },
     {
       "candidate_id": "LIC_GSEC_8_13_ETF",
@@ -203,7 +205,10 @@
         "grand_total": 100.0
       },
       "identifier_coverage": "0 of 3 sovereign constituents have ISIN in the factsheet; security names preserved verbatim; no ISIN inferred.",
-      "caveat": "The ETF is a changing portfolio and remains a proxy for direct G-Sec ownership."
+      "caveat": "The ETF is a changing portfolio and remains a proxy for direct G-Sec ownership.",
+      "retrieved_at": "2026-11-05T12:37:59+05:30 (local file timestamp; HTTP response headers not preserved)",
+      "publication_date": null,
+      "publication_date_status": "Factsheet labels September 2026; exact publication date not stated or independently verified."
     },
     {
       "candidate_id": "ICICI_GOLD_ETF",
@@ -232,7 +237,10 @@
       ],
       "stated_nav_coverage_pct": 100.0,
       "identifier_coverage": "Underlying physical metal is not an ISIN-identified security; short-term debt/current-assets are an aggregate, not itemized.",
-      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history."
+      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history.",
+      "retrieved_at": "2026-11-05T12:36:48+05:30 (local file timestamp; HTTP response headers not preserved)",
+      "publication_date": "2026-04-10 release; 2026-04-14 filing",
+      "publication_date_status": "Dates taken from official PDF URL path."
     },
     {
       "candidate_id": "ICICI_SILVER_ETF",
@@ -261,7 +269,10 @@
       ],
       "stated_nav_coverage_pct": 100.0,
       "identifier_coverage": "Underlying physical metal is not an ISIN-identified security; short-term debt/current-assets are an aggregate, not itemized.",
-      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history."
+      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history.",
+      "retrieved_at": "2026-11-05T12:36:48+05:30 (local file timestamp; HTTP response headers not preserved)",
+      "publication_date": "2026-04-10 release; 2026-04-14 filing",
+      "publication_date_status": "Dates taken from official PDF URL path."
     }
   ],
   "exposure_diagnostics": {

@@ -28,6 +28,7 @@ def main()->int:
   require(src.exists() and norm.exists(),f"missing holdings source for {prod['candidate_id']}")
   require(sha(src)==prod['source_sha256'],f"raw source hash mismatch: {src.name}")
   require(sha(norm)==prod['normalized_csv_sha256'],f"normalized holdings hash mismatch: {norm.name}")
+  require(prod.get('retrieved_at') and 'publication_date_status' in prod,f"retrieval/publication metadata missing for {prod['candidate_id']}")
  # Independently parse the two official xlsx files and compare normalized rows.
  import openpyxl
  specs=[('motilal_nifty500_etf_2026-09.xlsx','MOTILAL_NIFTY500_ETF'),('motilal_nifty500_indexfund_2026-09.xlsx','MOTILAL_NIFTY500_INDEX_FUND')]
