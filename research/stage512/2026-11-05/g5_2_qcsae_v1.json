@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-2-qcsae-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "claim": "This version identifies evidence-backed candidate hypotheses and describes point-in-time product exposures sufficiently to support later deterministic comparison without conflating benchmarks, direct bonds, fund NAVs, ETF traded prices, bullion and cash rolling policies.",
+  "strongest_counter_case": "Only a narrow set of actual products is represented; gold/silver snapshots are stale, one equity weight per fund is suppressed, and direct sovereign availability/platform access is unknown. The register may create false completeness if used as selection or suitability evidence.",
+  "current_disposition": "PASS_BOUNDED_REGISTER_AND_DATED_HOLDINGS; BLOCKED_FOR_CURRENT_METAL_HOLDINGS,TAX,EXECUTION,INVESTOR_ACCESS; NO_RECOMMENDATION",
+  "scope": "Candidate identity, dated source holdings, same-date equity holdings overlap and concentration; no forecasts, optimization, probability, or investment authorization.",
+  "falsification_tests": [
+    {
+      "test": "Verify source hashes and source/product identities.",
+      "result": "Two Motilal workbooks plus LIC/ICICI factsheets preserved; SHA-256 values in holdings JSON.",
+      "status": "PASS_AFTER_AUDIT_SCRIPT"
+    },
+    {
+      "test": "Reconcile Nifty 500 product holdings and calculate matched-date overlap.",
+      "result": "498 ISINs each; 497 numeric weights; suppressed MMTC weight remains null; NAV residuals and formula disclosed.",
+      "status": "PASS_AFTER_AUDIT_SCRIPT"
+    },
+    {
+      "test": "Check LIC September bond ETF snapshot.",
+      "result": "Three sovereign holdings, repo and receivables captured; AMC omitted ISINs and no identifiers inferred.",
+      "status": "PASS_WITH_IDENTIFIER_GAP"
+    },
+    {
+      "test": "Check gold/silver current holdings.",
+      "result": "Official March snapshots preserved; 219 days stale; latest monthly holdings not included.",
+      "status": "BLOCKED_FOR_CURRENT_EXPOSURE"
+    },
+    {
+      "test": "Verify current direct security availability and suitability.",
+      "result": "Historical issue evidence only; current quotes, liquidity, tax, purchase route and investor constraints unverified.",
+      "status": "BLOCKED"
+    },
+    {
+      "test": "Ensure no forecast/ranking/authorization output.",
+      "result": "All candidate records remain evidence hypotheses; G6 and authorization explicitly blocked.",
+      "status": "PASS"
+    }
+  ],
+  "invalidation_triggers": [
+    "A source hash changes.",
+    "Later official source conflicts with holdings, identifiers, fees, dates or benchmark identity.",
+    "A downstream analysis treats stale holdings as current or substitutes benchmark weights for product holdings.",
+    "Investor account/access, suitability, tax law or execution assumptions differ from this record.",
+    "A proxy is treated as equivalent to a direct sovereign or bullion exposure."
+  ],
+  "next_dependency": "G5.3 independently re-extracts holdings, validates identity/status and correction of 11.8% claim, challenges stale/blocked fields, and records G5 disposition. G6 remains blocked pending G5.3 plus required tax, cashflow and G3 exit gates.",
+  "investment_authorization": "NO_GO"
+}

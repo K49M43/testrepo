@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-2-candidate-evidence-register-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "purpose": "Candidate hypotheses and evidence qualification for later decision analysis; not a ranking, forecast, suitability assessment, recommendation, or authorization.",
+  "null_policy": "Unknown/unverified fields are null or BLOCKED; never imputed as zero.",
+  "investor_access": {
+    "platform_named_in_mandate": "Groww",
+    "account_entitlement_or_product_availability": "BLOCKED_NOT_VERIFIED",
+    "investor_suitability": "BLOCKED_UNCONFIRMED",
+    "reason": "No account or live execution checks performed; investor constraints remain unconfirmed."
+  },
+  "candidates": [
+    {
+      "candidate_id": "NIFTY500_TRI_BENCHMARK",
+      "category": "equity",
+      "instrument_or_benchmark_id": "Nifty 500 TRI (index identifier as in official source files; exact vendor code not separately asserted)",
+      "issuer_or_source": "NSE Indices",
+      "market_jurisdiction_currency": "India; INR",
+      "classification": "PROXY_ONLY",
+      "classification_reason": "Benchmark total-return series, not an investable product or traded price.",
+      "exact_as_of": "2025-09-30 (last qualified repository monthly anchor)",
+      "inception_date": null,
+      "point_in_time_availability": "Monthly official-published anchors qualified only for 2015-01 through 2025-09; do not infer before or after.",
+      "history_coverage": {
+        "start": "2015-01",
+        "end": "2025-09",
+        "observations": 129,
+        "qualification": "official published monthly anchors; see existing source-resolution report"
+      },
+      "return_convention": "Total Return Index (TRI); benchmark only.",
+      "fee_tax_liquidity_execution_settlement": {
+        "fees": null,
+        "tax": null,
+        "liquidity": null,
+        "execution": null,
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.niftyindices.com/Index_Dashboard/Index_Dashboard.aspx",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "Official index source; repository’s qualified 129 monthly observations and provenance are linked in stage512 source-resolution report."
+        }
+      ],
+      "gaps": [
+        "Exact current index identifier/code and current history beyond September 2025 not qualified in this increment.",
+        "No holdings file for benchmark included; product holdings remain separate."
+      ]
+    },
+    {
+      "candidate_id": "MOTILAL_NIFTY500_ETF",
+      "category": "equity",
+      "instrument_or_benchmark_id": "ISIN INF247L01BU1; AMFI 152106; scheme CMT 44332",
+      "issuer_or_source": "Motilal Oswal Asset Management Company",
+      "market_jurisdiction_currency": "India NSE/BSE; INR",
+      "classification": "INVESTABLE",
+      "classification_reason": "Identified actual ETF product with official AMC statement; investor-specific access remains blocked.",
+      "exact_as_of": "2026-09-30 holdings",
+      "inception_date": "2023-09-29 allotment date",
+      "point_in_time_availability": "Product existed by stated allotment date; 2026-09 holdings snapshot available. Current purchase/trading status not verified.",
+      "history_coverage": {
+        "product_nav_history": "AMFI identity established; full point-in-time history not qualified here.",
+        "benchmark_history": "Nifty 500 TRI anchors 2015-01 to 2025-09, separate benchmark series."
+      },
+      "return_convention": "Fund NAV total-return convention requires distribution/reinvestment validation; exchange ETF traded price is separate and not represented by NAV.",
+      "fees_tax_liquidity_execution_settlement": {
+        "ter_latest_verified": "0.18% in 2026-09 AMC statement (regular plan; current fee may change)",
+        "tax": null,
+        "liquidity": "BLOCKED; traded volume/spread/premium not measured",
+        "execution": null,
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.motilaloswalmf.com/mutual-funds/motilal-oswal-nifty-500-etf",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "AMC product page; contains product identifiers and date metadata."
+        },
+        {
+          "url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/sheets/fund-csvs/Month_End_Portfolio_September_2026/YO45.xlsx",
+          "content_sha256": "aa2e3ee0d9a698f6741750a4e947dc9b7c9093bf63c8aff5b53d3003bf61d88c",
+          "retrieved_at": "2026-11-05T12:28:00+05:30",
+          "note": "Official dated holdings workbook preserved in source_raw."
+        }
+      ],
+      "holdings_snapshot": "g5_2_holdings_overlap_v1.json; normalized position CSV listed there.",
+      "gaps": [
+        "AMC page includes conflicting template content; official workbook and exact product identifiers govern holdings facts, while fee/page fields need independent current check.",
+        "No current bid/ask, traded volume, tracking difference, settlement or investor platform access verified.",
+        "Holdings have a 0.32% receivables residual; 498th MMTC row weight shown <$0.005% and is null."
+      ]
+    },
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "category": "equity",
+      "instrument_or_benchmark_id": "ISIN INF247L01957; AMFI 147625; CMT 40785; Direct Growth",
+      "issuer_or_source": "Motilal Oswal Asset Management Company",
+      "market_jurisdiction_currency": "India mutual fund; INR",
+      "classification": "INVESTABLE",
+      "classification_reason": "Identified actual direct-growth mutual fund scheme with dated official AMC holdings; investor access/suitability not verified.",
+      "exact_as_of": "2026-09-30 holdings",
+      "inception_date": "2019-09-06 allotment date",
+      "point_in_time_availability": "Product existed by stated allotment date; 2026-09 holdings snapshot available. Current subscription status not verified.",
+      "history_coverage": {
+        "product_nav_history": "AMFI identity established; complete return-series qualification not in this increment.",
+        "benchmark_history": "Nifty 500 TRI 2015-01 to 2025-09 separate series."
+      },
+      "return_convention": "Mutual fund NAV; Direct Growth. Benchmark is Nifty 500 TRI. Do not substitute ETF traded-price returns.",
+      "fees_tax_liquidity_execution_settlement": {
+        "ter_latest_verified": "0.13% direct plan; 0.79% regular plan in 2026-09 AMC statement",
+        "tax": null,
+        "liquidity": "Redemption dealing terms and exit load not qualified here",
+        "execution": null,
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.motilaloswalmf.com/mutual-funds/motilal-oswal-nifty-500-index-fund",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "AMC scheme page; product metadata and page-template inconsistency noted."
+        },
+        {
+          "url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/sheets/fund-csvs/Month_End_Portfolio_September_2026/YO18.xlsx",
+          "content_sha256": "1614a16f1a3ee6d19512f1a31373f4478636c18988d5bc62e721309248b944c0",
+          "retrieved_at": "2026-11-05T12:28:00+05:30",
+          "note": "Official dated holdings workbook preserved in source_raw."
+        }
+      ],
+      "holdings_snapshot": "g5_2_holdings_overlap_v1.json; normalized position CSV listed there.",
+      "gaps": [
+        "AMC page has contradictory copied marketing/risk text; rely on official statement for the exact dated holdings, resolve metadata from scheme information document.",
+        "Current exit load, taxation, transaction/dealing availability and account access not confirmed.",
+        "Statement includes 0.28% triparty repo and −0.02% net receivables; MMTC weight <$0.005% is null."
+      ]
+    },
+    {
+      "candidate_id": "GOI_DIRECT_DATED_GSEC_718_2033",
+      "category": "direct_government_security",
+      "instrument_or_benchmark_id": "RBI security identifier IN0020230085; 7.18% Government of India dated security; maturity 2033-08-14",
+      "issuer_or_source": "Government of India; RBI security database / primary auctions and secondary market",
+      "market_jurisdiction_currency": "India; INR",
+      "classification": "BLOCKED",
+      "classification_reason": "Security identity/issuance evidence exists, but a current quote, outstanding tradable amount, investor route, lot/settlement, cashflow and tax treatment are not qualified. Historical CCIL candidate list did not verify current availability.",
+      "exact_as_of": "2026-11-05 evidence review; price/availability date unavailable",
+      "inception_date": "2023-08-14 issue date",
+      "point_in_time_availability": "Historical issuance evidence only; current purchase availability unknown.",
+      "history_coverage": {
+        "security_cashflows": "Not modeled in G5.2.",
+        "market_prices_and_yields": null
+      },
+      "return_convention": "Direct sovereign cashflows and mark-to-market price/yield return; not comparable to a bond-fund NAV without explicit cashflow and reinvestment convention.",
+      "fees_tax_liquidity_execution_settlement": {
+        "fees": null,
+        "tax": null,
+        "liquidity": "BLOCKED; no current secondary-market depth",
+        "execution": "BLOCKED; investor route not verified",
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://systemhealth.rbi.org.in/Scripts/bs_viewcontent.aspx_Id%3D1956.html",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "RBI security listing supports historical identifier/coupon/maturity; page as-of/current market status not established."
+        },
+        {
+          "url": "https://www.rbi.org.in/commonperson/english/Scripts/FAQs.aspx?Id=3550",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "RBI Retail Direct route overview; current rules and investor-specific route not checked."
+        }
+      ],
+      "gaps": [
+        "No current clean/dirty price, accrued interest, yield, bid/ask, outstanding balance vintage, or auction calendar.",
+        "Maturity 2033 precedes objective horizon 2036; roll/reinvestment or sale assumptions required.",
+        "Security’s current operational eligibility on investor’s platform is unverified."
+      ]
+    },
+    {
+      "candidate_id": "LIC_GSEC_8_13_ETF",
+      "category": "sovereign_bond_fund_or_etf_proxy",
+      "instrument_or_benchmark_id": "AMFI 133307; ISIN INF767K01MV5; NSE LICNETFGSC",
+      "issuer_or_source": "LIC Mutual Fund",
+      "market_jurisdiction_currency": "India NSE ETF; INR",
+      "classification": "PROXY_ONLY",
+      "classification_reason": "Bond ETF NAV holds a changing sovereign-bond portfolio; it is not a directly held sovereign bond with fixed maturity cashflows.",
+      "exact_as_of": "2026-09-30 holdings",
+      "inception_date": "2014-12-24 allotment",
+      "point_in_time_availability": "Official historical product identity and NAV history; current quote/liquidity not verified.",
+      "history_coverage": {
+        "AMFI_NAV": "Existing repository R9 source qualification records full history acquisition; that history is a fund NAV proxy, not bond TRI."
+      },
+      "return_convention": "Mutual fund/ETF NAV; G-Sec portfolio duration and roll risk; separate from direct G-Sec cashflows and clean-price/index series.",
+      "fees_tax_liquidity_execution_settlement": {
+        "ter": "0.14% as of 2026-09-30",
+        "tax": null,
+        "liquidity": "BLOCKED; current spread/depth not checked",
+        "execution": null,
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.licmf.com/assets/downloads/monthly_fact_sheet/2026-2027/10/lic-mf-factsheet-30th-September-2026.pdf",
+          "content_sha256": "b751a451fb78e403ed0d48826a8c3955baf69a8f7fc687af41e8a6e8d1dcf0c6",
+          "retrieved_at": "2026-11-05T12:55:00+05:30",
+          "note": "Official September 2026 factsheet; exact holdings preserved and normalized."
+        }
+      ],
+      "holdings_snapshot": "g5_2_holdings_overlap_v1.json",
+      "gaps": [
+        "Three sovereign holdings are reported by coupon/redemption date but factsheet omits ISINs; identifiers left null and no external mapping inferred.",
+        "No market spread, traded liquidity, tax or investor platform access verified.",
+        "YTM 7.24% is a snapshot, not a guaranteed realized return."
+      ]
+    },
+    {
+      "candidate_id": "ICICI_GOLD_ETF",
+      "category": "gold",
+      "instrument_or_benchmark_id": "ISIN INF109KC1NT3; AMFI 113076; NSE GOLDIETF",
+      "issuer_or_source": "ICICI Prudential Asset Management Company",
+      "market_jurisdiction_currency": "India NSE/BSE ETF; INR; gold exposure",
+      "classification": "INVESTABLE",
+      "classification_reason": "Identified actual gold ETF and official AMFI NAV history; account access and execution suitability remain unverified.",
+      "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
+      "inception_date": "2010-08-26 (AMFI product history start)",
+      "point_in_time_availability": "Official AMFI NAV through 2026-10-30 and product identity.",
+      "history_coverage": {
+        "official_AMFI_samples": "Dated pilot windows include 2024-01-02 to 2024-01-05 and 2026-10-19 to 2026-10-30; these are samples, not complete product history.",
+        "unqualified_mirror_summary": "Repository stage58 metrics are based on third-party mfapi.in mirror data and are not promoted as official/qualified full-history returns.",
+        "benchmark_or_bullion_reference": "No benchmark/bullion source series qualified in this G5.2 register."
+      },
+      "return_convention": "AMFI mutual-fund NAV; bullion exposure after costs; exchange-traded price and domestic bullion spot/reference are separate.",
+      "fees_tax_liquidity_execution_settlement": {
+        "ter": "0.49% AMFI dated 2026-10-29; fees may change",
+        "tax": null,
+        "liquidity": "BLOCKED; current traded spread/depth not measured",
+        "execution": null,
+        "settlement": null,
+        "fee_evidence_status": "AMFI dated TER row is preserved in the referenced repository CSV; current fee can change."
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.amfiindia.com/nav-history-download",
+          "content_sha256": "6B08B10F469FFEB9523B0F4C06F2BE87CDBD0FC50F931234D180B0FEFB8D0005",
+          "repository_path": "research/stage512/data/amfi_pilot/named_scheme_observations.csv",
+          "note": "Official AMFI named-scheme sample observations; source hashes for returned windows are recorded row-by-row. Exact late-Oct window raw response SHA-256 is 584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a; no complete history claim."
+        },
+        {
+          "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+          "content_sha256": "8606DE60E951EB8716AAD18932D6AD0E3A838125A9AB5D06BB78384B67FB9BDF",
+          "repository_path": "research/stage59/amfi_ter_matched_96_v14.csv",
+          "note": "Dated scheme TER row 2026-10-29; value is AMFI register data."
+        },
+        {
+          "url": "https://www.icicipruamc.com/blob/sebi-repo/Advertisements/2026/April/Filing%20date%2014-04-2026/Release%20date%2010-04-2026/Advertisements/Annexure%203%20-%20Passive%20Factsheet.pdf",
+          "content_sha256": "6c5f511f35bb5fd156316d4eee3372de5909d9422609065b2b04cef9d84956ef",
+          "note": "Official March 2026 factsheet; dated aggregate holdings."
+        },
+        {
+          "url": "https://api.mfapi.in/mf/113076",
+          "content_sha256": "9C5BB3678FDE02BD35D67CDDFBBEB667D7F73A356F0CF8B984B76B92F07A89ED",
+          "repository_path": "research/stage58/public_nav_metrics.csv",
+          "note": "Third-party mirror summary only; not official source, not qualified return history; retained solely as a source limitation."
+        }
+      ],
+      "gaps": [
+        "Holdings snapshot is 219 days old as of 2026-11-05; acquire newer monthly disclosure before use.",
+        "Physical gold and aggregate cash/debt rows do not have underlying security identifiers in this factsheet.",
+        "Historical NAV split-adjustment anomaly remains unresolved; affected unadjusted return is not qualified.",
+        "Current spread/depth, tax and account access unverified.",
+        "Full product NAV history is not qualified from first-party AMFI in this register; repository mirror summary is third-party and remains unqualified for return calculations.",
+        "Current market execution spread/depth, investor account access, tax and suitability remain unverified."
+      ],
+      "holdings_snapshot": "g5_2_holdings_overlap_v1.json"
+    },
+    {
+      "candidate_id": "ICICI_SILVER_ETF",
+      "category": "silver",
+      "instrument_or_benchmark_id": "ISIN INF109KC1Y56; AMFI 149464; NSE SILVERETF",
+      "issuer_or_source": "ICICI Prudential Asset Management Company",
+      "market_jurisdiction_currency": "India NSE/BSE ETF; INR; silver exposure",
+      "classification": "INVESTABLE",
+      "classification_reason": "Identified actual silver ETF and official AMFI NAV history; investor access and execution suitability remain unverified.",
+      "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
+      "inception_date": "2022-01-25 (AMFI first qualified NAV; allotment 2022-01-24 in factsheet)",
+      "point_in_time_availability": "Official AMFI NAV through 2026-10-30 and product identity.",
+      "history_coverage": {
+        "official_AMFI_samples": "Dated pilot windows include 2024-01-02 to 2024-01-05 and 2026-10-19 to 2026-10-30; these are samples, not complete product history.",
+        "unqualified_mirror_summary": "Repository stage58 metrics are based on third-party mfapi.in mirror data and are not promoted as official/qualified full-history returns.",
+        "benchmark_or_bullion_reference": "No benchmark/bullion source series qualified in this G5.2 register."
+      },
+      "return_convention": "AMFI mutual-fund NAV; silver exposure after costs; exchange traded price is distinct.",
+      "fees_tax_liquidity_execution_settlement": {
+        "ter": "0.40% AMFI dated 2026-10-29; fees may change",
+        "tax": null,
+        "liquidity": "BLOCKED; current traded spread/depth not measured",
+        "execution": null,
+        "settlement": null,
+        "fee_evidence_status": "AMFI dated TER row is preserved in the referenced repository CSV; current fee can change."
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.amfiindia.com/nav-history-download",
+          "content_sha256": "6B08B10F469FFEB9523B0F4C06F2BE87CDBD0FC50F931234D180B0FEFB8D0005",
+          "repository_path": "research/stage512/data/amfi_pilot/named_scheme_observations.csv",
+          "note": "Official AMFI named-scheme sample observations; source hashes for returned windows are recorded row-by-row. Exact late-Oct window raw response SHA-256 is 584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a; no complete history claim."
+        },
+        {
+          "url": "https://www.amfiindia.com/ter-of-mf-schemes",
+          "content_sha256": "8606DE60E951EB8716AAD18932D6AD0E3A838125A9AB5D06BB78384B67FB9BDF",
+          "repository_path": "research/stage59/amfi_ter_matched_96_v14.csv",
+          "note": "Dated scheme TER row 2026-10-29; value is AMFI register data."
+        },
+        {
+          "url": "https://www.icicipruamc.com/blob/sebi-repo/Advertisements/2026/April/Filing%20date%2014-04-2026/Release%20date%2010-04-2026/Advertisements/Annexure%203%20-%20Passive%20Factsheet.pdf",
+          "content_sha256": "6c5f511f35bb5fd156316d4eee3372de5909d9422609065b2b04cef9d84956ef",
+          "note": "Official March 2026 factsheet; dated aggregate holdings."
+        },
+        {
+          "url": "https://api.mfapi.in/mf/149464",
+          "content_sha256": "9C5BB3678FDE02BD35D67CDDFBBEB667D7F73A356F0CF8B984B76B92F07A89ED",
+          "repository_path": "research/stage58/public_nav_metrics.csv",
+          "note": "Third-party mirror summary only; not official source, not qualified return history; retained solely as a source limitation."
+        }
+      ],
+      "gaps": [
+        "Holdings snapshot is 219 days old as of 2026-11-05; acquire newer monthly disclosure before use.",
+        "Physical silver and aggregate cash/debt rows do not have underlying security identifiers in this factsheet.",
+        "Current spread/depth, tax and account access unverified.",
+        "Full product NAV history is not qualified from first-party AMFI in this register; repository mirror summary is third-party and remains unqualified for return calculations.",
+        "Current market execution spread/depth, investor account access, tax and suitability remain unverified."
+      ],
+      "holdings_snapshot": "g5_2_holdings_overlap_v1.json"
+    },
+    {
+      "candidate_id": "CASH_HOLD_91D_TBILL_ROLLING",
+      "category": "cash_hold_comparator",
+      "instrument_or_benchmark_id": "Policy comparator: successive RBI 91-day Treasury Bills, auction/reinvestment strategy; no single stable ISIN",
+      "issuer_or_source": "Government of India / RBI auction results",
+      "market_jurisdiction_currency": "India; INR",
+      "classification": "BLOCKED",
+      "classification_reason": "Comparator policy is identifiable but no dated 2036 horizon-matched auction/roll series, current rate, taxes or investor route are qualified in this register.",
+      "exact_as_of": "2026-11-05 comparator definition; rate as-of unavailable",
+      "inception_date": null,
+      "point_in_time_availability": "Issue-specific; each bill and reinvestment date must be preserved.",
+      "history_coverage": {
+        "cashflow_and_rate_history": null
+      },
+      "return_convention": "Auction discount yield converted to realized investor cashflows with maturity reinvestment; not a fixed-rate cash deposit or zero-risk real return.",
+      "fees_tax_liquidity_execution_settlement": {
+        "fees": null,
+        "tax": null,
+        "liquidity": "Sovereign maturity cashflows; secondary sale access unqualified",
+        "execution": "BLOCKED; investor purchase channel unverified",
+        "settlement": null
+      },
+      "primary_evidence": [
+        {
+          "url": "https://www.rbi.org.in/Scripts/BS_ViewTbill.aspx",
+          "content_sha256": null,
+          "retrieved_at": null,
+          "note": "RBI source family for Treasury Bill auctions; no dated auction observations included in this candidate register."
+        }
+      ],
+      "gaps": [
+        "No exact bill ISINs, auction cutoffs or reinvestment schedule collected.",
+        "Nominal principal timing does not eliminate inflation, reinvestment, tax or liquidity risks.",
+        "Cash-hold comparator remains blocked until dated issue-level source data is obtained."
+      ]
+    }
+  ],
+  "cross_candidate_gaps": [
+    "Tax law/tax lots are not attached to each candidate in G5.2; current qualified tax treatment is required before G6.",
+    "Investor-specific Groww access, risk tolerance and suitability remain blocked.",
+    "No common-date current holdings exist for all six categories; cross-asset holdings overlap/concentration is not computed.",
+    "No candidate rankings, forecasts, probabilities, or recommendations."
+  ],
+  "holdings_overlap_file": "g5_2_holdings_overlap_v1.json",
+  "investment_authorization": "NO_GO"
+}

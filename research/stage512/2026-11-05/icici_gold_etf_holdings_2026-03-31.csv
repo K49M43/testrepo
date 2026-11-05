@@ -1,0 +1,3 @@
+candidate_id,as_of,security_id,name,classification,weight_pct_source,asset_class,notes
+ICICI_GOLD_ETF,2026-03-31,,Gold (995 Purity),PHYSICAL_GOLD,98.21,PHYSICAL_GOLD,AMC factsheet aggregate; no bar-level serials/weights published in factsheet.
+ICICI_GOLD_ETF,2026-03-31,,Short Term Debt and net current assets,CASH_DEBT_AGGREGATE,1.79,CASH_DEBT_AGGREGATE,Aggregate disclosure only; underlying instruments not itemized in factsheet.

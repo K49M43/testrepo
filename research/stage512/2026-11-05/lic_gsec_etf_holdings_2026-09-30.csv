@@ -1,0 +1,6 @@
+candidate_id,as_of,security_id,name,classification,weight_pct_source,asset_class,notes
+LIC_GSEC_8_13_ETF,2026-09-30,,6.94% GOVT OF INDIA RED 11-05-2036,SOVEREIGN,58.87,SOVEREIGN,ISIN not printed in factsheet; left null.
+LIC_GSEC_8_13_ETF,2026-09-30,,6.48% GOVT OF INDIA RED 06-10-2035,SOVEREIGN,25.51,SOVEREIGN,ISIN not printed in factsheet; left null.
+LIC_GSEC_8_13_ETF,2026-09-30,,7.18% GOVT OF INDIA RED 24-07-2037,SOVEREIGN,15.11,SOVEREIGN,ISIN not printed in factsheet; left null.
+LIC_GSEC_8_13_ETF,2026-09-30,,TREPS / Repo,CASH_REPO,0.16,CASH_REPO,No security identifier in factsheet table.
+LIC_GSEC_8_13_ETF,2026-09-30,,Net Receivables/(Payables),RECEIVABLES,0.35,RECEIVABLES,Aggregate net value; source total rounds 0.50%.

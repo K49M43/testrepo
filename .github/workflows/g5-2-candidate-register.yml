@@ -1,0 +1,31 @@
+name: G5.2 candidate evidence register audit
+
+on:
+  push:
+    paths:
+      - 'decision/audit_g5_2_candidate_register.py'
+      - 'research/stage512/2026-11-05/**'
+      - 'docs/DECISION_LOG.md'
+      - '.github/workflows/g5-2-candidate-register.yml'
+  pull_request:
+    paths:
+      - 'decision/audit_g5_2_candidate_register.py'
+      - 'research/stage512/2026-11-05/**'
+      - 'docs/DECISION_LOG.md'
+      - '.github/workflows/g5-2-candidate-register.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned spreadsheet parser
+        run: python -m pip install openpyxl==3.1.5 pymupdf==1.28.2
+      - name: Verify source hashes, holdings extraction, reconciliation, overlap, and status gates
+        run: python decision/audit_g5_2_candidate_register.py --check

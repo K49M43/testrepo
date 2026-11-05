@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "record_id": "g5-2-holdings-overlap-2026-11-05-v1",
+  "as_of": "2026-11-05",
+  "products": [
+    {
+      "candidate_id": "MOTILAL_NIFTY500_ETF",
+      "label": "Motilal Oswal Nifty 500 ETF",
+      "isin": "INF247L01BU1",
+      "market": "NSE/BSE ETF, INR",
+      "source_url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/sheets/fund-csvs/Month_End_Portfolio_September_2026/YO45.xlsx",
+      "source_file": "motilal_nifty500_etf_2026-09.xlsx",
+      "source_sha256": "aa2e3ee0d9a698f6741750a4e947dc9b7c9093bf63c8aff5b53d3003bf61d88c",
+      "source_bytes": 241668,
+      "normalized_csv": "motilal_nifty500_etf_holdings_2026-09-30.csv",
+      "normalized_csv_sha256": "4bf8320f1ff61abb1e0a3b07c652126d288679f8a05c7cfc2455c5b065e86dcb",
+      "as_of": "2026-09-30",
+      "publication_date": null,
+      "retrieved_at": "2026-11-05T12:28:00+05:30 (workspace file timestamp; HTTP response timestamp not preserved)",
+      "inception_or_allotment_date": "2023-09-29",
+      "primary_benchmark": "Nifty 500 TRI",
+      "equity_constituent_rows": 498,
+      "equity_rows_with_ISIN": 498,
+      "equity_rows_with_numeric_weight": 497,
+      "equity_weight_sum_reported_pct": 99.68,
+      "top10_equity_weight_pct_reported": 28.49,
+      "top20_equity_weight_pct_reported": 38.74,
+      "non_equity_and_nav_reconciliation_rows": [],
+      "source_totals_fees": [
+        {
+          "label": "Total",
+          "market_value_inr_lakh": 29781.49,
+          "weight_pct_source": 99.68,
+          "ter_decimal": null
+        },
+        {
+          "label": "Net Receivables / (Payables)",
+          "market_value_inr_lakh": 109.11,
+          "weight_pct_source": 0.32,
+          "ter_decimal": null
+        },
+        {
+          "label": "GRAND TOTAL",
+          "market_value_inr_lakh": 29890.6,
+          "weight_pct_source": 100.0,
+          "ter_decimal": null
+        },
+        {
+          "label": "Total Expense Ratio",
+          "market_value_inr_lakh": null,
+          "weight_pct_source": null,
+          "ter_decimal": null
+        },
+        {
+          "label": "Regular Plan :",
+          "market_value_inr_lakh": null,
+          "weight_pct_source": null,
+          "ter_decimal": 0.0018
+        }
+      ],
+      "derivatives": "Source workbook note says Nil at 2026-09-30",
+      "geography": "India equity exposure; foreign securities note says Nil",
+      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred."
+    },
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "label": "Motilal Oswal Nifty 500 Index Fund (Direct Growth)",
+      "isin": "INF247L01957",
+      "market": "Indian mutual fund, INR",
+      "source_url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/sheets/fund-csvs/Month_End_Portfolio_September_2026/YO18.xlsx",
+      "source_file": "motilal_nifty500_indexfund_2026-09.xlsx",
+      "source_sha256": "1614a16f1a3ee6d19512f1a31373f4478636c18988d5bc62e721309248b944c0",
+      "source_bytes": 243316,
+      "normalized_csv": "motilal_nifty500_index_fund_holdings_2026-09-30.csv",
+      "normalized_csv_sha256": "7ed58ebad2cbe2e939a53ffcf48d603420fcf6965cbb00e804996956c1297814",
+      "as_of": "2026-09-30",
+      "publication_date": null,
+      "retrieved_at": "2026-11-05T12:28:00+05:30 (workspace file timestamp; HTTP response timestamp not preserved)",
+      "inception_or_allotment_date": "2019-09-06",
+      "primary_benchmark": "Nifty 500 TRI",
+      "equity_constituent_rows": 498,
+      "equity_rows_with_ISIN": 498,
+      "equity_rows_with_numeric_weight": 497,
+      "equity_weight_sum_reported_pct": 99.74,
+      "top10_equity_weight_pct_reported": 28.52,
+      "top20_equity_weight_pct_reported": 38.77,
+      "non_equity_and_nav_reconciliation_rows": [
+        {
+          "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+          "as_of": "2026-09-30",
+          "security_id": null,
+          "name": "Triparty Repo",
+          "classification": null,
+          "quantity": null,
+          "market_value_inr_lakh": 875.0,
+          "weight_pct_source": 0.28,
+          "weight_fraction_source": 0.0028000000000000004,
+          "position_type": "MONEY_MARKET"
+        }
+      ],
+      "source_totals_fees": [
+        {
+          "label": "Total",
+          "market_value_inr_lakh": 307696.3,
+          "weight_pct_source": 99.74,
+          "ter_decimal": null
+        },
+        {
+          "label": "Triparty Repo",
+          "market_value_inr_lakh": 875.0,
+          "weight_pct_source": 0.28,
+          "ter_decimal": null
+        },
+        {
+          "label": "Total",
+          "market_value_inr_lakh": 875.0,
+          "weight_pct_source": 0.28,
+          "ter_decimal": null
+        },
+        {
+          "label": "Net Receivables / (Payables)",
+          "market_value_inr_lakh": 22.47,
+          "weight_pct_source": -0.02,
+          "ter_decimal": null
+        },
+        {
+          "label": "GRAND TOTAL",
+          "market_value_inr_lakh": 308593.77,
+          "weight_pct_source": 100.0,
+          "ter_decimal": null
+        },
+        {
+          "label": "Total Expense Ratio",
+          "market_value_inr_lakh": null,
+          "weight_pct_source": null,
+          "ter_decimal": null
+        },
+        {
+          "label": "Regular Plan :",
+          "market_value_inr_lakh": null,
+          "weight_pct_source": null,
+          "ter_decimal": 0.0079
+        },
+        {
+          "label": "Direct Plan :",
+          "market_value_inr_lakh": null,
+          "weight_pct_source": null,
+          "ter_decimal": 0.0013
+        }
+      ],
+      "derivatives": "Source workbook note says Nil at 2026-09-30",
+      "geography": "India equity exposure; foreign securities note says Nil",
+      "benchmark_vs_product_history": "Product inception shown separately; no pre-inception product observations inferred."
+    },
+    {
+      "candidate_id": "LIC_GSEC_8_13_ETF",
+      "label": "LIC MF Nifty 8-13 Yr G-Sec ETF",
+      "isin": "INF767K01MV5",
+      "source_url": "https://www.licmf.com/assets/downloads/monthly_fact_sheet/2026-2027/10/lic-mf-factsheet-30th-September-2026.pdf",
+      "source_file": "lic_gsec_factsheet_2026-09.pdf",
+      "source_sha256": "b751a451fb78e403ed0d48826a8c3955baf69a8f7fc687af41e8a6e8d1dcf0c6",
+      "source_bytes": 7168363,
+      "normalized_csv": "lic_gsec_etf_holdings_2026-09-30.csv",
+      "normalized_csv_sha256": "64344fff907797a9f8ce702e53c531e8b0e32ec73f04b57537c486f56d565cfc",
+      "as_of": "2026-09-30",
+      "equity_constituent_rows": null,
+      "point_in_time_holdings": [
+        {
+          "security_id": null,
+          "name": "6.94% Government of India redemption 2036-05-11",
+          "weight_pct": 58.87,
+          "classification": "SOVEREIGN"
+        },
+        {
+          "security_id": null,
+          "name": "6.48% Government of India redemption 2035-10-06",
+          "weight_pct": 25.51,
+          "classification": "SOVEREIGN"
+        },
+        {
+          "security_id": null,
+          "name": "7.18% Government of India redemption 2037-07-24",
+          "weight_pct": 15.11,
+          "classification": "SOVEREIGN"
+        },
+        {
+          "security_id": null,
+          "name": "TREPS / Repo",
+          "weight_pct": 0.16,
+          "classification": "CASH_REPO"
+        },
+        {
+          "security_id": null,
+          "name": "Net Receivables/(Payables)",
+          "weight_pct": 0.35,
+          "classification": "RECEIVABLES"
+        }
+      ],
+      "stated_nav_coverage_pct": 100.0,
+      "source_reported_sums_pct": {
+        "sovereign": 99.5,
+        "cash_and_other_receivables": 0.5,
+        "grand_total": 100.0
+      },
+      "identifier_coverage": "0 of 3 sovereign constituents have ISIN in the factsheet; security names preserved verbatim; no ISIN inferred.",
+      "caveat": "The ETF is a changing portfolio and remains a proxy for direct G-Sec ownership."
+    },
+    {
+      "candidate_id": "ICICI_GOLD_ETF",
+      "label": "ICICI Prudential Gold ETF",
+      "source_url": "https://www.icicipruamc.com/blob/sebi-repo/Advertisements/2026/April/Filing%20date%2014-04-2026/Release%20date%2010-04-2026/Advertisements/Annexure%203%20-%20Passive%20Factsheet.pdf",
+      "source_file": "icici_passive_factsheet_2026-03.pdf",
+      "source_sha256": "6c5f511f35bb5fd156316d4eee3372de5909d9422609065b2b04cef9d84956ef",
+      "source_bytes": 7440289,
+      "normalized_csv": "icici_gold_etf_holdings_2026-03-31.csv",
+      "normalized_csv_sha256": "3b4ae042e9fec3b812a238beacc7b12516bb1795601dbfd4dabeda68eb11854f",
+      "as_of": "2026-03-31",
+      "staleness_days_as_of_register": 219,
+      "point_in_time_holdings": [
+        {
+          "security_id": null,
+          "name": "Gold (995 Purity)",
+          "weight_pct": 98.21,
+          "classification": "PHYSICAL_GOLD"
+        },
+        {
+          "security_id": null,
+          "name": "Short Term Debt and net current assets",
+          "weight_pct": 1.79,
+          "classification": "CASH_DEBT_AGGREGATE"
+        }
+      ],
+      "stated_nav_coverage_pct": 100.0,
+      "identifier_coverage": "Underlying physical metal is not an ISIN-identified security; short-term debt/current-assets are an aggregate, not itemized.",
+      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history."
+    },
+    {
+      "candidate_id": "ICICI_SILVER_ETF",
+      "label": "ICICI Prudential Silver ETF",
+      "source_url": "https://www.icicipruamc.com/blob/sebi-repo/Advertisements/2026/April/Filing%20date%2014-04-2026/Release%20date%2010-04-2026/Advertisements/Annexure%203%20-%20Passive%20Factsheet.pdf",
+      "source_file": "icici_passive_factsheet_2026-03.pdf",
+      "source_sha256": "6c5f511f35bb5fd156316d4eee3372de5909d9422609065b2b04cef9d84956ef",
+      "source_bytes": 7440289,
+      "normalized_csv": "icici_silver_etf_holdings_2026-03-31.csv",
+      "normalized_csv_sha256": "f207494ebe23d2e85fc818da1af0006d03a90d4cd1f3b74c74e32615a3974105",
+      "as_of": "2026-03-31",
+      "staleness_days_as_of_register": 219,
+      "point_in_time_holdings": [
+        {
+          "security_id": null,
+          "name": "Silver",
+          "weight_pct": 99.08,
+          "classification": "PHYSICAL_SILVER"
+        },
+        {
+          "security_id": null,
+          "name": "Short Term Debt and net current assets",
+          "weight_pct": 0.92,
+          "classification": "CASH_DEBT_AGGREGATE"
+        }
+      ],
+      "stated_nav_coverage_pct": 100.0,
+      "identifier_coverage": "Underlying physical metal is not an ISIN-identified security; short-term debt/current-assets are an aggregate, not itemized.",
+      "caveat": "Stale snapshot. Newer monthly holdings are required for current exposure; do not infer them from NAV history."
+    }
+  ],
+  "exposure_diagnostics": {
+    "as_of": "2026-09-30",
+    "method": "Only same-date AMC statements; compare actual product holdings by exact ISIN.",
+    "equity_id_counts": {
+      "ETF": 498,
+      "index_fund": 498,
+      "matched": 498,
+      "unmatched_etf": 0,
+      "unmatched_index_fund": 0
+    },
+    "numeric_weight_matched_id_count": 497,
+    "overlap_pct_reported_weight_subset": 99.68,
+    "overlap_formula": "sum_i min(w_ETF,i, w_Fund,i) across matched ISINs with numeric published weights; source weights are percentage points rounded to 0.01.",
+    "weight_coverage_pct": {
+      "ETF": 99.68,
+      "index_fund": 99.74
+    },
+    "concentration_top10_top20_pct": {
+      "MOTILAL_NIFTY500_ETF": {
+        "top10": 28.49,
+        "top20": 38.74
+      },
+      "MOTILAL_NIFTY500_INDEX_FUND": {
+        "top10": 28.52,
+        "top20": 38.77
+      }
+    },
+    "limits": [
+      "MMTC Limited appears as an equity row but its source weight is printed <$0.005%; weight retained null, never replaced with zero.",
+      "Displayed individual weights are rounded; overlap and concentration are approximate.",
+      "NAV weights reconcile only to the statement’s displayed precision; negative receivables retained as source data.",
+      "Only two products from one AMC, both tracking the same benchmark; not an all-market comparison.",
+      "No sector aggregates calculated in this version; row-level AMFI industry label is preserved.",
+      "No benchmark holdings substituted for actual product holdings; no return correlation calculated."
+    ],
+    "bond_and_metal_snapshots": {
+      "LIC_GSEC_8_13_ETF": "2026-09-30; three sovereign lines 99.50%, TREPS 0.16%, receivables 0.35%; identifiers absent in report.",
+      "ICICI_GOLD_ETF": "2026-03-31; gold 98.21%, short-term debt/current assets 1.79%; stale.",
+      "ICICI_SILVER_ETF": "2026-03-31; silver 99.08%, short-term debt/current assets 0.92%; stale."
+    },
+    "industry_concentration_pct": {
+      "MOTILAL_NIFTY500_ETF": {
+        "reported_industry_weight_pct": {
+          "Banks": 19.299999999999997,
+          "Finance": 6.49,
+          "Pharmaceuticals & Biotechnology": 5.75,
+          "IT - Software": 5.6499999999999995,
+          "Petroleum Products": 4.999999999999999,
+          "Automobiles": 4.859999999999999,
+          "Telecom - Services": 3.5199999999999996,
+          "Power": 3.39,
+          "Retailing": 3.32,
+          "Consumer Durables": 2.7999999999999994,
+          "Construction": 2.7199999999999993,
+          "Electrical Equipment": 2.669999999999999,
+          "Auto Components": 2.549999999999999,
+          "Capital Markets": 2.5200000000000005,
+          "Industrial Products": 2.1999999999999993,
+          "Diversified FMCG": 2.19,
+          "Ferrous Metals": 1.9800000000000002,
+          "Cement & Cement Products": 1.8900000000000003,
+          "Insurance": 1.62,
+          "Healthcare Services": 1.5200000000000005,
+          "Chemicals & Petrochemicals": 1.5100000000000005,
+          "Non - Ferrous Metals": 1.4699999999999998,
+          "Aerospace & Defense": 1.37,
+          "Realty": 1.1300000000000001,
+          "Transport Infrastructure": 1.01,
+          "Transport Services": 0.8999999999999999,
+          "Food Products": 0.8700000000000001,
+          "Agricultural, Commercial & Construction Vehicles": 0.8100000000000002,
+          "Agricultural Food & other Products": 0.7700000000000002,
+          "Beverages": 0.76,
+          "Leisure Services": 0.7200000000000002,
+          "Oil": 0.6400000000000001,
+          "Financial Technology (Fintech)": 0.6300000000000001,
+          "Personal Products": 0.6300000000000001,
+          "Gas": 0.61,
+          "Consumable Fuels": 0.54,
+          "Metals & Minerals Trading": 0.51,
+          "Industrial Manufacturing": 0.49,
+          "Fertilizers & Agrochemicals": 0.4800000000000001,
+          "IT - Services": 0.37,
+          "Minerals & Mining": 0.31000000000000005,
+          "Textiles & Apparels": 0.26,
+          "Diversified Metals": 0.25,
+          "Commercial Services & Supplies": 0.24000000000000002,
+          "Telecom - Equipment & Accessories": 0.17,
+          "Entertainment": 0.13999999999999999,
+          "Cigarettes & Tobacco Products": 0.04,
+          "Other Consumer Services": 0.04,
+          "Healthcare Equipment & Supplies": 0.03,
+          "Diversified": 0.02,
+          "Household Products": 0.02
+        },
+        "unreported_weight_security_ids": [
+          "INE123F01029"
+        ]
+      },
+      "MOTILAL_NIFTY500_INDEX_FUND": {
+        "reported_industry_weight_pct": {
+          "Banks": 19.32,
+          "Finance": 6.49,
+          "Pharmaceuticals & Biotechnology": 5.760000000000001,
+          "IT - Software": 5.659999999999999,
+          "Petroleum Products": 5.009999999999999,
+          "Automobiles": 4.859999999999999,
+          "Telecom - Services": 3.5199999999999996,
+          "Power": 3.39,
+          "Retailing": 3.32,
+          "Consumer Durables": 2.7999999999999994,
+          "Construction": 2.7199999999999993,
+          "Electrical Equipment": 2.669999999999999,
+          "Auto Components": 2.549999999999999,
+          "Capital Markets": 2.5200000000000005,
+          "Industrial Products": 2.2099999999999995,
+          "Diversified FMCG": 2.19,
+          "Ferrous Metals": 1.9800000000000002,
+          "Cement & Cement Products": 1.8900000000000003,
+          "Insurance": 1.62,
+          "Healthcare Services": 1.5200000000000005,
+          "Chemicals & Petrochemicals": 1.5100000000000005,
+          "Non - Ferrous Metals": 1.4699999999999998,
+          "Aerospace & Defense": 1.37,
+          "Realty": 1.1300000000000001,
+          "Transport Infrastructure": 1.01,
+          "Transport Services": 0.8999999999999999,
+          "Food Products": 0.8700000000000001,
+          "Agricultural, Commercial & Construction Vehicles": 0.8100000000000002,
+          "Agricultural Food & other Products": 0.7700000000000002,
+          "Beverages": 0.76,
+          "Leisure Services": 0.7200000000000002,
+          "Oil": 0.6400000000000001,
+          "Financial Technology (Fintech)": 0.6300000000000001,
+          "Personal Products": 0.6300000000000001,
+          "Gas": 0.61,
+          "Consumable Fuels": 0.54,
+          "Metals & Minerals Trading": 0.51,
+          "Industrial Manufacturing": 0.49,
+          "Fertilizers & Agrochemicals": 0.4800000000000001,
+          "IT - Services": 0.37,
+          "Minerals & Mining": 0.31000000000000005,
+          "Textiles & Apparels": 0.26,
+          "Diversified Metals": 0.25,
+          "Commercial Services & Supplies": 0.24000000000000002,
+          "Telecom - Equipment & Accessories": 0.17,
+          "Entertainment": 0.13999999999999999,
+          "Cigarettes & Tobacco Products": 0.04,
+          "Other Consumer Services": 0.04,
+          "Healthcare Equipment & Supplies": 0.03,
+          "Diversified": 0.02,
+          "Household Products": 0.02
+        },
+        "unreported_weight_security_ids": [
+          "INE123F01029"
+        ]
+      }
+    }
+  }
+}
