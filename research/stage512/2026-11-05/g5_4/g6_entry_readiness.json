@@ -1,21 +1,47 @@
 {
   "schema_version": 1,
   "record_id": "g6-entry-readiness-2026-11-05-v1",
-  "decision": "NOT_READY",
+  "decision": "DECISION_GRADE_NOT_READY",
   "investment_authorization": "NO_GO",
   "gates": {
     "candidate_breadth_10_plus": "PASS_BREADTH_ONLY",
     "candidate_identity_dated_evidence": "PARTIAL",
     "ter_raw_retention": "PASS_10_CANDIDATES_20_COMPONENT_TOTALS",
     "bounded_nav_sample_reconciliation": "PASS_44_OF_44",
-    "qualified_comparable_history": "BLOCKED",
-    "multi_asset_dependence_and_uncertainty": "BLOCKED",
-    "investor_suitability_access_execution": "BLOCKED_UNCONFIRMED",
-    "tax_lot_liquidation": "BLOCKED_PROVISIONAL_SPRINT1",
-    "dated_cashflow_integration": "BLOCKED",
-    "official_cpi_real_value": "BLOCKED",
-    "g3_outcome_exit_integration": "PARTIAL",
-    "independent_reproducibility_adverse_cases": "BLOCKED"
+    "qualified_comparable_history": "BLOCKED_SMALLEST_SUBSTANTIVE_DATA_GATE",
+    "multi_asset_dependence_and_uncertainty": "BLOCKED_NOT_YET_VALIDATED",
+    "investor_suitability_access_execution": "FOLLOW_ON_BLOCK_FOR_PERSONAL_RECOMMENDATION_NOT_ENGINEERING_START",
+    "tax_lot_liquidation": "PASS_BOUNDED_SYNTHETIC; PERSONAL_RESULT_REQUIRES_ACTUAL_INPUTS",
+    "dated_cashflow_integration": "PARTIAL_123_ROW_SCHEDULE_AND_G3_HURDLE_PASS_END_TO_END_PATH_OPEN",
+    "official_cpi_real_value": "PROVISIONAL_SOURCE_VALUE_PASS; PERSONAL_BASE_MONTH_AND_RAW_RELEASE_BYTES_OPEN",
+    "g3_outcome_exit_integration": "G3_ARITHMETIC_PASS; AFTER_TAX_EVENT_LEDGER_BRIDGE_OPEN",
+    "independent_reproducibility_adverse_cases": "COMPONENT_AUDITS_PASS; JOINED_PATH_AND_ADVERSE_CASES_OPEN"
   },
-  "rule": "No G6 start until required source, tax/cashflow, CPI, G3-interface and independent validation gates are explicitly accepted. Candidate breadth is insufficient by itself."
+  "rule": "Decision-grade G6 requires selected source histories and a joined deterministic path. A bounded fixture-first engineering increment may start now; this is not an investment decision or permission to publish investor-specific results.",
+  "engineering_start": "READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE",
+  "readiness_levels": {
+    "engineering_start": "READY with explicitly synthetic fixtures; no probability or personal-result claims",
+    "decision_grade_G6": "NOT_READY until selected histories and joined deterministic path pass",
+    "investment_decision": "NO_GO"
+  },
+  "blocker_summary": {
+    "closed_in_synthetic_scope": [
+      "tax_components",
+      "explicit_loss_schedule",
+      "event_lot_ledger",
+      "120_122_month_cashflow_contract",
+      "G3_deterministic_hurdles",
+      "CPI_published_value_mapping",
+      "G5_candidate_breadth",
+      "G5_TER_row_and_component_audit",
+      "G5_bounded_NAV_sample_reconciliation"
+    ],
+    "open": [
+      "selected_candidate_continuous_histories",
+      "joined_deterministic_after_tax_path",
+      "CPI_raw_release_bytes_and_personal_base_month",
+      "investor_access_suitability_tax_inputs_for_personal_output",
+      "cross_asset_uncertainty_and_probability"
+    ]
+  }
 }

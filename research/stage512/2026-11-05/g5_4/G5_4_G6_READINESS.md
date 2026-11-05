@@ -1,52 +1,59 @@
-# G5.4 candidate breadth and G6 entry assessment — 2026-11-05
+# G5.4 blocker investigation and G6 readiness — 2026-11-05
 
-## Decision
+## Disposition
 
-**G5 parent remains OPEN / BLOCKED. G6 is NOT READY TO START. Investment decision remains NO-GO.** This increment expands the screen to ten actual product/strategy hypotheses after excluding the benchmark, cash comparator and one specifically identified but currently blocked direct sovereign security. It establishes screen breadth only. It does not establish ten comparable, fully qualified investments or investor suitability.
+- **G5 parent #29:** OPEN. The breadth and TER issues are resolved by this increment; source-history qualification and end-to-end candidate evidence are not.
+- **G6 engineering start:** READY for a bounded deterministic after-tax cashflow bridge using explicitly synthetic inputs and existing contracts.
+- **Decision-grade G6 output:** NOT READY. Continuous candidate histories and the joined path validation still fail the original entry gate.
+- **Investment authorization:** NO-GO.
 
-## What changed
+This separation prevents a closed synthetic tax gate from being described as a personal tax result, and prevents a sample-data pass from being described as a qualified return history.
 
-Five first-party product hypotheses were appended without rewriting the accepted G5.2/G5.3 registers: SBI Nifty 500 Index Fund Direct Growth; SBI Nifty 10 Year Benchmark G-Sec ETF; SBI CRISIL IBX Gilt Index – June 2036 Fund Direct Growth; HDFC Gold ETF; and SBI Gilt Fund Direct Growth. They broaden domestic equity, government-bond duration/target-maturity, active gilt, and gold exposure. Existing register remains the historical baseline. `candidate_expansion_v1.json` carries identity, exposure, dated evidence, known risks and explicit unknowns.
+## Root-cause finding
 
-The refreshed official AMFI NAV snapshots were parsed against the existing named sample register. **44 of 44** matched by AMFI scheme code, ISO-normalized date, and decimal NAV. The 19–23 October raw response has a different SHA-256 from the prior snapshot. Sample values reconcile; the bytes are retained as a separate snapshot and neither the old hash nor source record is overwritten. This proves bounded sample consistency only.
+The apparent long blocker list combined four different conditions: (1) acceptance criteria already met in Sprint 1's synthetic scope; (2) incomplete source series; (3) personal values that are intentionally unconfirmed; and (4) final recommendation gates. The first category was carried forward incorrectly in the prior readiness matrix. Current `CODEX_EXECUTION_PLAN.md` now points to the controlling Sprint 1 close and records the new status.
 
-The October AMFI TER workbook and three official factsheets are retained with byte lengths, hashes, source URLs and approximate local retrieval timestamps in `source_reacquisition_manifest.json`. The XLSX worksheet omits its dimension tag, so the existing read-only spreadsheet parser yielded no rows. A separate ZIP/XML streaming parser now identifies the latest exact NSDL scheme-code row for all ten product hypotheses, including baseline rows, and independently reconciles regular/direct component sums with Decimal arithmetic. See `ter_row_audit.json` (10/10 candidate identities, 20/20 component totals). It verifies published fund TER components only, not personal all-in transaction cost.
+### Independent re-runs from `main`
 
-## Candidate breadth
-
-| Screen component | Count | Disposition |
-|---|---:|---|
-| Existing G5.2 register rows | 8 | Includes benchmark, cash comparator and one blocked direct security |
-| New product hypotheses | 5 | Added in this append-only increment |
-| Total register rows | 13 | Includes comparators and blocked direct security |
-| Product hypotheses after the three exclusions | 10 | Meets the breadth floor; qualification is incomplete |
-
-The products are not interchangeable. In particular, a G-Sec ETF or gilt mutual fund is not equivalent to owning a sovereign bond to maturity; NAV is not an ETF exchange execution price; an index TRI is not an investable product; and a factsheet YTM is a dated metric, not a forecast.
-
-## G6 entry gate matrix
-
-| Gate | Current status | Evidence needed to pass |
+| Audit | Result | What it proves / does not prove |
 |---|---|---|
-| Candidate screen breadth (10+) | **PASS, breadth only** | Ten identified product hypotheses; full comparable screening still pending |
-| Candidate identity and dated evidence | **PARTIAL** | Complete identity, plan/option, holdings, fee and benchmark reconciliation for all candidates |
-| TER raw source retention and component audit | **PASS, 10/10 candidates; 20/20 totals** | Does not represent complete investor transaction cost or tax |
-| AMFI bounded NAV observations | **PASS, 44/44 re-reconciled** | Does not substitute for continuous point-in-time history |
-| Qualified comparable historical return series | **BLOCKED** | Source-complete, date-aligned returns for all decision-relevant asset classes, with total-return treatment and survivorship/launch-date limits explicit; direct-GSec and bullion bridge especially unresolved |
-| Equity–bond/gold/silver covariance and uncertainty | **BLOCKED** | Qualified common-date series, regime/subperiod sensitivity, uncertainty and stress validation |
-| Investor-specific access/suitability/execution | **BLOCKED / UNCONFIRMED** | Current platform/product availability, executable prices/spreads/liquidity, constraints and suitability inputs; no account credentials or trades |
-| Tax engine and lot-level liquidation | **BLOCKED / PROVISIONAL** | Close Sprint 1 unresolved loss allocation/surcharge composition convention; validate investor-year flows, lots, holding periods, fees and 2036 liquidation cases |
-| Dated cashflow integration | **BLOCKED** | Mandate cashflow schedule integrated with candidate return paths and timing conventions; reconcile pre-tax/fee, after-tax nominal and real results |
-| CPI base and real purchasing power | **BLOCKED / NOT INTEGRATED** | Audited linked official CPI, exact base-month/index linkage, forecast uncertainty and purchasing-power reporting |
-| G3 hurdle/outcome and exit contracts | **PARTIAL** | Reconcile G3 pre-tax/fee outcome interface to after-tax/real cashflows, forced/flexible exit behavior, and shortfall definition |
-| Independent end-to-end reproducibility and adverse cases | **BLOCKED** | Rerunnable evidence manifest/code/seeds, independent audit, stress/parameter/sequence/tax sensitivity, no fabricated probabilities |
+| 120/122-month cashflow contract | PASS; 123 rows | The illustrative ₹42 lakh + stepped-SIP schedule reconciles. Payment dates remain placeholders. |
+| Income-tax components and independent loss/tax reconciliation | PASS | Bounded TY 2026–27 synthetic calculations, source-traced offsets and settlement checks. No personal tax answer or 2036-law forecast. |
+| Event/lot ledger | PASS; 9 events, 2 tax years | Synthetic contributions, units, gains/losses, withholding and incremental tax reconcile. No investor-specific lot schedule. |
+| CPI linked-series audit | PASS; 165 contiguous months | 144/144 linked and 21/21 direct values match official published precision; transformation and rates reproduce. Original official bytes were not retained; personal CPI base month is unknown. |
+| G3 deterministic hurdle audit | PASS; 12 cases | Independent pre-tax/fee nominal/real hurdle reconstruction and sensitivities. No return prediction or probability. |
+| G5.4 source checks | PASS | 10 product hypotheses, 10/10 latest TER rows, 20/20 component sums, 44/44 bounded NAV samples; CI checks pass on PR #39. None of these sample checks creates continuous history. |
 
-## Minimum work before G6 starts
+### Remaining blockers, with smallest acceptance actions
 
-1. Independently parse the retained AMFI TER workbook, identify each candidate’s exact AMFI/NSDL code and plan, and reconcile BER + brokerage + transaction cost + statutory levies to Total TER.
-2. Decide the G5 candidate universe and create candidate-by-candidate evidence disposition: qualified history, proxy-only, comparator, or excluded with reason. Do not count a name as a qualified history.
-3. Close the unresolved Sprint 1 tax composition/loss-allocation defects and run dated investor cashflows through taxes/fees and plausible 2036 exit cases. Preserve any statutory uncertainty as an explicit model limitation.
-4. Complete the official CPI base/linkage audit and quantify nominal versus real values.
-5. Define and verify multi-asset source bridges and strict common-date return conventions before any covariance or probability calculation. Keep the government bond and bullion proxy limits visible.
-6. Reconcile all of the above with G3 hurdle/outcome/exit contracts and pass independent rerun plus adverse-case review.
+| Blocker | Status | Root cause | Smallest next action / acceptance |
+|---|---|---|---|
+| Continuous candidate histories | **OPEN — primary G5 blocker** | Ten product hypotheses exist, but newly added candidates have bounded sample NAV only. Existing qualified market inputs cover Nifty 500 TRI monthly anchors (129 observations through 2025-09) and LIC G-Sec ETF NAV (2,867 days, a rolling-duration fund proxy). Gold/silver have a 437-month RBI-origin secondary mirror with limited first-party-published anchors. Continuous NSE G-Sec TRI is not qualified. | Choose a decision-relevant Growth-plan subset; acquire AMFI scheme-specific NAV from each product's true inception, retain URL/UTC/bytes/hash and stop-on-429 checkpoints, validate identifier/date continuity, then strict-common-date join. Keep ETF NAV distinct from market price; never backfill before launch. If no first-party G-Sec TRI, retain LIC only as proxy and direct bonds as dated-cashflow instruments. |
+| Joined deterministic after-tax path | **OPEN — G6 implementation increment** | Passing tax/event and G3 modules have separate contracts; no strategy-path adapter ties candidate prices/fees, lots, tax years, exit, and CPI together. | Implement a fixture-first adapter; independently reconcile one lot, one annual tax result and terminal gross→fees/tax→net→provisional real. Fail closed on unknown product tax classification. |
+| CPI byte provenance and personal anchor | **PARTIAL, not a synthetic-engine blocker** | Published values match; source captures are transcriptions, and the investor's measurement/base month is not confirmed. | Preserve available official release/export bytes and hash them; retain provisional CPI status until byte provenance is improved. Keep personal real wealth blocked until actual base/measurement dates are confirmed. |
+| Access, suitability and personal tax facts | **FOLLOW-ON — blocks personal result/recommendation** | Account availability, risk constraints, tax-year income/losses/regime, actual dates/fees and exit choice are not supplied. | Collect only at investor-specific decision stage; no credentials or trade activity. Do not invent defaults. |
+| Cross-asset uncertainty and probability | **NOT STARTED / BLOCKED ON HISTORY** | No qualified common-date multi-asset dataset or validated walk-forward/sequence/tail calibration. | Start only after source series and deterministic bridge pass; then pre-register methods, use adverse/regime and parameter uncertainty, and publish no probability until calibration is supported. |
 
-**G6 entry rule:** G6 may begin only after the required input contracts and validation gates above are explicitly accepted. This report does not authorize probabilistic success claims or investment implementation. No allocation recommendation is produced.
+## G6 entry levels
+
+| Level | Status | Allowed scope |
+|---|---|---|
+| G6 engineering start | **READY** | Deterministic fixture-first bridge only, with synthetic dates/taxes/returns clearly labeled; use component contracts and fail closed on unknown fields. |
+| G6 decision-grade output | **NOT READY** | Requires selected continuous source histories, joined after-tax event path, CPI source/base disposition, and independent end-to-end/adverse-case audit. |
+| Investor-specific recommendation / trading | **NO-GO** | Requires actual investor facts, current instrument access/execution/suitability and separate investor approval. No trading is authorized. |
+
+## Next execution sequence
+
+1. G5 source-history lane: qualify a bounded set of actual AMFI Growth products from inception; do not retrieve an unbounded universe. Use published official source endpoints and respect 429 by pausing/checkpointing.
+2. G6 deterministic bridge lane: start from the 120/122-month synthetic schedule and passed Sprint 1 ledger; map one qualified candidate path and explicitly modeled fee/tax/exit events; use provisional CPI only with its status attached.
+3. Independent audit the joined result and mutation cases (date misalignment, pre-inception fill, wrong plan, duplicate fee/tax, missing classification, unknown CPI base).
+4. Only after these pass, reassess decision-grade G6 entry. Probabilistic work remains a later gate, not implied by G6 start.
+
+## Evidence
+
+- [Sprint 1 closure record](https://github.com/K49M43/testrepo/blob/main/docs/SPRINT_01_AFTER_TAX_LEDGER.md)
+- [Execution plan status](https://github.com/K49M43/testrepo/blob/codex/g5-4-candidate-screen-g6-readiness-20261105/docs/CODEX_EXECUTION_PLAN.md)
+- [G5.4 candidate and TER evidence](candidate_expansion_v1.json), [TER audit](ter_row_audit.json), [NAV reconciliation](nav_sample_reconciliation.json)
+- [R9 source-resolution report](https://github.com/K49M43/testrepo/blob/main/research/stage512/2026-11-02/stage512_source_resolution_report.md)
+- [G3 outcome contract](https://github.com/K49M43/testrepo/blob/main/research/stage512/2026-11-04/g3_outcome_contract_v1.json)
+

@@ -19,5 +19,5 @@ assert ter["source_sha256"]==hashlib.sha256((root/"research/stage512/2026-11-05/
 recon=json.loads((add/"nav_sample_reconciliation.json").read_text())
 assert recon["comparisons"]==44 and recon["exact_matches"]==44 and not recon["mismatches"]
 gates=json.loads((add/"g6_entry_readiness.json").read_text())
-assert gates["decision"]=="NOT_READY" and gates["investment_authorization"]=="NO_GO"
-print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product hypotheses; 44/44 bounded NAV observations; 10/10 TER rows and 20/20 sums; G6 remains fail-closed")
+assert gates["decision"]=="DECISION_GRADE_NOT_READY" and gates["engineering_start"]=="READY_BOUNDED_SYNTHETIC_DETERMINISTIC_BRIDGE" and gates["investment_authorization"]=="NO_GO"
+print("PASS: raw hash/byte integrity; append-only counts 8+5; 10 product hypotheses; 44/44 bounded NAV observations; 10/10 TER rows and 20/20 sums; G6 decision-grade remains blocked; bounded engineering start is ready")

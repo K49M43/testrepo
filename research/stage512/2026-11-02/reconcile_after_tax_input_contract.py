@@ -17,6 +17,11 @@ FIXTURE = ROOT / "cashflow_hurdle_monthly_2026-10_base.csv"
 
 def reconcile() -> dict[str, object]:
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    assert contract["contract_version"] == "1.4", "stale ledger contract version"
+    loss_contract = contract["capital_loss_schedule"]
+    assert "explicit caller allocation; no inferred priority" in loss_contract["requirements"]
+    assert "pre-2026 transition losses until a separate section 536 representation is qualified" in loss_contract["fail_closed"]
+    assert "section 516 total-income and final settlement rounding" in contract["ledger_event_fields"]["conventions"]["statutory_rounding"]
     fixture = list(csv.DictReader(FIXTURE.open(encoding="utf-8", newline="")))
     horizons = contract["cashflow_fixture"]["horizons_months"]
     expected = contribution_schedule(max(horizons))
@@ -39,6 +44,9 @@ def reconcile() -> dict[str, object]:
     }
     return {
         "status": "PASS",
+        "contract_version": contract["contract_version"],
+        "capital_loss_contract": "PASS; explicit allocations and unsupported transition cases fail closed",
+        "statutory_rounding_contract": "PASS; section 516 income/settlement rounding is implemented; transaction rounding remains unassumed",
         "fixture_rows": len(fixture),
         "horizon_months": horizons,
         "total_contributions_inr": horizon_totals,
