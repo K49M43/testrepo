@@ -1,0 +1,51 @@
+{
+  "audit": "PASS",
+  "record_id": "g6-1-independent-bridge-audit-v1",
+  "scope": "one synthetic instrument; one tax year; two deterministic paths; no market or personal data",
+  "scenario_count": 2,
+  "independent_formula_reconciliation": "PASS",
+  "zero_cash_ledger_residuals": true,
+  "mutation_cases": {
+    "actual_input_rejected": "PASS",
+    "non_synthetic_price_basis_rejected": "PASS",
+    "incomplete_price_path_rejected": "PASS",
+    "zero_cpi_rejected": "PASS",
+    "missing_external_tax_input_rejected": "PASS",
+    "cross_tax_year_rejected": "PASS",
+    "unallocated_loss_blocks_result": "PASS"
+  },
+  "tax_year": "2026-27",
+  "terminal_date": "2027-03-31",
+  "decision_grade_g6": "NOT_READY",
+  "investment_authorization": "NO_GO",
+  "audit_code_sha256": "b8345b4dc82f75997bb6bf28fb916140b287dce1e098fe57df7073796dc887c8",
+  "result_sha256": "6aacada69b9ea7c70c2a7fc466d4e00001d628a722fc5ed106bd44c470aed010",
+  "independent_formula_results": {
+    "flat-price": {
+      "contributions_inr": "4325000.000000000",
+      "deployed_basis_inr": "4324940.000000000",
+      "units_at_exit": "43249.400000000",
+      "gross_sale_proceeds_inr": "4324940.000000000",
+      "recorded_costs_inr": "85",
+      "gross_terminal_after_costs_before_tax_inr": "4324915.000000000",
+      "taxable_gain_inr": "0E-9",
+      "incremental_fixture_tax_inr": "0.00000",
+      "net_nominal_inr": "4324915.000000000",
+      "cpi_factor": "1.02",
+      "net_real_inr": "4240112.7450980392156862745098039215686274509803922"
+    },
+    "one-percent-monthly-price-rise": {
+      "contributions_inr": "4325000.000000000",
+      "deployed_basis_inr": "4324940.000000000",
+      "units_at_exit": "43212.772466707347616066340410725250399772556846647",
+      "gross_sale_proceeds_inr": "4541705.8155193990000000000000000000000000000000000",
+      "recorded_costs_inr": "85",
+      "gross_terminal_after_costs_before_tax_inr": "4541680.8155193990000000000000000000000000000000000",
+      "taxable_gain_inr": "216765.8155193990000000000000000000000000000000000",
+      "incremental_fixture_tax_inr": "67632.24000",
+      "net_nominal_inr": "4474048.5755193990000000000000000000000000000000000",
+      "cpi_factor": "1.02",
+      "net_real_inr": "4386322.1328621558823529411764705882352941176470588"
+    }
+  }
+}
