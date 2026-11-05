@@ -1,0 +1,55 @@
+name: G6.2 full-horizon synthetic bridge audit
+
+on:
+  push:
+    paths:
+      - 'decision/g6_2_full_horizon_bridge.py'
+      - 'decision/audit_g6_2_full_horizon_bridge.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-05/g5_4/audit_g5_4.py'
+      - 'research/stage512/2026-11-05/g6_2/**'
+      - 'docs/G6_2_FULL_HORIZON_BRIDGE.md'
+      - '.github/workflows/g6-2-full-horizon-bridge.yml'
+  pull_request:
+    paths:
+      - 'decision/g6_2_full_horizon_bridge.py'
+      - 'decision/audit_g6_2_full_horizon_bridge.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'decision/ty2026_27_tax_components.py'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-05/g5_4/audit_g5_4.py'
+      - 'research/stage512/2026-11-05/g6_2/**'
+      - 'docs/G6_2_FULL_HORIZON_BRIDGE.md'
+      - '.github/workflows/g6-2-full-horizon-bridge.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  full-horizon-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Regenerate full-horizon fixtures
+        run: python decision/g6_2_full_horizon_bridge.py
+      - name: Independently reconcile cashflows, lots, tax years, CPI and mutations
+        run: python decision/audit_g6_2_full_horizon_bridge.py
+      - name: Regress G6.1 bounded bridge
+        run: |
+          python decision/g6_deterministic_bridge.py
+          python decision/audit_g6_deterministic_bridge.py
+      - name: Preserve G5 decision gates
+        run: python research/stage512/2026-11-05/g5_4/audit_g5_4.py
+      - name: Require committed G6.2 artifacts to remain current
+        run: git diff --exit-code -- research/stage512/2026-11-05/g6_2/result.json research/stage512/2026-11-05/g6_2/audit.json
