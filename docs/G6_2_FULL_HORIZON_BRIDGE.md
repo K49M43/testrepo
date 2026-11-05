@@ -1,6 +1,6 @@
 # G6.2 — Full-horizon synthetic deterministic bridge
 
-**Status:** implemented locally on stacked branch `codex/g6-2-full-horizon-synthetic-bridge-20261105`; issue #42; PR pending publication. It depends on G6.1 draft PR #41 and must be reviewed after that parent is accepted.
+**Status:** implemented in draft [PR #43](https://github.com/K49M43/testrepo/pull/43), tracked by [issue #42](https://github.com/K49M43/testrepo/issues/42), on stacked branch `codex/g6-2-full-horizon-synthetic-bridge-20261105`. It depends on G6.1 draft PR #41 and must be reviewed after that parent is accepted. Exact-head checks are shown on PR #43.
 
 ## Objective and scope
 
