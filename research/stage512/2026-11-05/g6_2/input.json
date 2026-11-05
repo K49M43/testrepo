@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "experiment_id": "G6-2-SYNTHETIC-FULL-HORIZON-2026-11-05-v1",
+  "input_classification": "SYNTHETIC_FIXTURE_ONLY",
+  "horizons_months": [120, 122],
+  "instrument": {
+    "instrument_id": "SYNTHETIC-SECTION76-FUND",
+    "tax_classification": "section76",
+    "section76_specified_fund_confirmed": true
+  },
+  "price_path_basis": "Synthetic geometric monthly marks; mechanics only, not market history or forecast",
+  "starting_mark_inr": "100",
+  "scenarios": [
+    {"scenario_id": "flat-mark", "monthly_mark_growth_rate": "0"},
+    {"scenario_id": "positive-0.3pct-monthly-mark", "monthly_mark_growth_rate": "0.003"}
+  ],
+  "costs": {
+    "account_fee_per_contribution_inr": "10",
+    "terminal_transaction_cost_inr": "25",
+    "terminal_cost_deductible_for_tax": false
+  },
+  "tax_assumptions": {
+    "source_component_tax_year": "2026-27",
+    "resident_individual": true,
+    "external_ordinary_income_by_tax_year": {
+      "2026-27": "1500000",
+      "2027-28": "1500000",
+      "2028-29": "1500000",
+      "2029-30": "1500000",
+      "2030-31": "1500000",
+      "2031-32": "1500000",
+      "2032-33": "1500000",
+      "2033-34": "1500000",
+      "2034-35": "1500000",
+      "2035-36": "1500000",
+      "2036-37": "1500000"
+    },
+    "rule_set": "TY 2026-27 component repeated for fixture mechanics only; not future law"
+  },
+  "cpi": {
+    "classification": "SYNTHETIC_FIXTURE_ONLY",
+    "base_month": "2026-10",
+    "annual_inflation_fraction": "0.06"
+  }
+}
