@@ -285,7 +285,7 @@
           "url": "https://www.amfiindia.com/nav-history-download",
           "content_sha256": "6B08B10F469FFEB9523B0F4C06F2BE87CDBD0FC50F931234D180B0FEFB8D0005",
           "repository_path": "research/stage512/data/amfi_pilot/named_scheme_observations.csv",
-          "note": "Official AMFI named-scheme samples only; exact observation dates and each response URL, retrieval time, response byte count and hash are recorded here. No continuous-history claim.",
+          "note": "Official AMFI named-scheme samples only; exact observation dates and each response URL, retrieval time, response byte count and hash are in the cited manifest. No continuous-history claim.",
           "retrieved_at": null,
           "retrieval_events": [
             {
@@ -309,7 +309,9 @@
               "response_sha256": "cceb34cff86617f2c0925aaaf9c20a11687ea636ae175c079de6df4e5ae04d24",
               "response_bytes": 4660562
             }
-          ]
+          ],
+          "manifest_path": "research/stage512/data/amfi_pilot/manifest.json",
+          "manifest_sha256": "3c3305e8ccb410df025c8a00ac570db3dfaf33a88b44d660deee336b3f51293f"
         },
         {
           "url": "https://www.amfiindia.com/ter-of-mf-schemes",
@@ -330,7 +332,7 @@
           "source_export_sha256": "ec512c338263e41f3d8c520d764965758817a670edce8e4a92caad26d9fc46b2",
           "source_export_bytes": 4397825,
           "source_diagnostic_path": "research/stage59/amfi_ter_export_diagnostic.json",
-          "source_diagnostic_sha256": "c74f07e8d042f4c06ef0a8c665f775ae2e065c610df49880d77e45a10e5a0d36",
+          "source_diagnostic_sha256": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297",
           "normalized_export_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
           "normalized_export_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77"
         },
@@ -426,7 +428,7 @@
           "url": "https://www.amfiindia.com/nav-history-download",
           "content_sha256": "6B08B10F469FFEB9523B0F4C06F2BE87CDBD0FC50F931234D180B0FEFB8D0005",
           "repository_path": "research/stage512/data/amfi_pilot/named_scheme_observations.csv",
-          "note": "Official AMFI named-scheme samples only; exact observation dates and each response URL, retrieval time, response byte count and hash are recorded here. No continuous-history claim.",
+          "note": "Official AMFI named-scheme samples only; exact observation dates and each response URL, retrieval time, response byte count and hash are in the cited manifest. No continuous-history claim.",
           "retrieved_at": null,
           "retrieval_events": [
             {
@@ -450,7 +452,9 @@
               "response_sha256": "cceb34cff86617f2c0925aaaf9c20a11687ea636ae175c079de6df4e5ae04d24",
               "response_bytes": 4660562
             }
-          ]
+          ],
+          "manifest_path": "research/stage512/data/amfi_pilot/manifest.json",
+          "manifest_sha256": "3c3305e8ccb410df025c8a00ac570db3dfaf33a88b44d660deee336b3f51293f"
         },
         {
           "url": "https://www.amfiindia.com/ter-of-mf-schemes",
@@ -471,7 +475,7 @@
           "source_export_sha256": "ec512c338263e41f3d8c520d764965758817a670edce8e4a92caad26d9fc46b2",
           "source_export_bytes": 4397825,
           "source_diagnostic_path": "research/stage59/amfi_ter_export_diagnostic.json",
-          "source_diagnostic_sha256": "c74f07e8d042f4c06ef0a8c665f775ae2e065c610df49880d77e45a10e5a0d36",
+          "source_diagnostic_sha256": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297",
           "normalized_export_path": "research/stage59/amfi_ter_oct2026_export_latest.csv",
           "normalized_export_sha256": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77"
         },

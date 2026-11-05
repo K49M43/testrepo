@@ -66,10 +66,10 @@ def main()->int:
  # Verify G5.1-era official AMFI sample and TER source files reused by G5.2.
  supporting={
   ROOT/'research/stage512/data/amfi_pilot/named_scheme_observations.csv':'6b08b10f469ffeb9523b0f4c06f2be87cdbd0fc50f931234d180b0fefb8d0005',
-  ROOT/'research/stage512/data/amfi_pilot/manifest.json':'8df56254c5351ea155f188e0a295a697f65375badcf4f1ffe5f2a3a48009cac9',
+  ROOT/'research/stage512/data/amfi_pilot/manifest.json':'3c3305e8ccb410df025c8a00ac570db3dfaf33a88b44d660deee336b3f51293f',
   ROOT/'research/stage58/public_nav_metrics.csv':'9c5bb3678fde02bd35d67cddfbbeb667d7f73a356f0cf8b984b76b92f07a89ed',
   ROOT/'research/stage59/amfi_ter_matched_96_v14.csv':'8606de60e951eb8716aad18932d6ad0e3a838125a9ab5d06bb78384b67fb9bdf',
-  ROOT/'research/stage59/amfi_ter_export_diagnostic.json':'c74f07e8d042f4c06ef0a8c665f775ae2e065c610df49880d77e45a10e5a0d36',
+  ROOT/'research/stage59/amfi_ter_export_diagnostic.json':'845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297',
   ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv':'5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77',
  }
  for path,expected in supporting.items():require(path.exists() and sha(path)==expected,f'upstream G5.1 evidence hash mismatch: {path}')
@@ -78,6 +78,7 @@ def main()->int:
  # Independently join sample rows to the first-party AMFI retrieval manifest.
  manifest=json.loads((ROOT/'research/stage512/data/amfi_pilot/manifest.json').read_text(encoding='utf-8'))
  windows={w['label']:w for w in manifest['windows']}
+ require(sha(ROOT/'research/stage512/data/amfi_pilot/manifest.json')=='3c3305e8ccb410df025c8a00ac570db3dfaf33a88b44d660deee336b3f51293f','AMFI manifest repository-byte hash mismatch')
  expected_events={
   'latest':('https://portal.amfiindia.com/spages/NAVAll.txt','2026-11-02T11:19:52.484200+00:00','584d0519e605b2aba0d1a218eb3099f18b7592e933fa712ab4b07062e9cec73a',1528600),
   'history_2024-01-02_2024-01-05':('https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=02-Jan-2024&todt=05-Jan-2024','2026-11-02T11:20:03.976661+00:00','00d367d0d760beab6c7380c92357e8fd071c8742b6666fc7ae5957066cf55dd3',3687487),
@@ -110,7 +111,7 @@ def main()->int:
  require(diagnostic['export_url']=='https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true' and diagnostic['sha256']=='ec512c338263e41f3d8c520d764965758817a670edce8e4a92caad26d9fc46b2' and diagnostic['download_size']==4397825,'AMFI TER raw-export diagnostic mismatch')
  ter_evidence=next(c for c in reg['candidates'] if c['candidate_id']=='ICICI_GOLD_ETF')['primary_evidence']
  te=next(x for x in ter_evidence if x.get('source_export_url'))
- require(te['source_export_sha256']==diagnostic['sha256'] and te['source_export_bytes']==diagnostic['download_size'] and te['source_diagnostic_sha256']==sha(ROOT/'research/stage59/amfi_ter_export_diagnostic.json') and te['normalized_export_sha256']==sha(ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv'),'candidate TER provenance/hash mismatch')
+ require(te['source_export_sha256']==diagnostic['sha256'] and te['source_export_bytes']==diagnostic['download_size'] and te['source_diagnostic_sha256']==sha(ROOT/'research/stage59/amfi_ter_export_diagnostic.json')=='845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297' and te['normalized_export_sha256']==sha(ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv'),'candidate TER provenance/hash mismatch')
  interval=te['retrieval_window_utc']
  require(interval['workflow_run_id']==41284958349 and interval['workflow_url']=='https://github.com/K49M43/testrepo/actions/runs/41284958349' and interval['precision'].startswith('Bounded by the Actions log; exact HTTP response completion timestamp was not recorded.'),'TER acquisition interval overstated or unlinked')
  normalized=loadcsv(ROOT/'research/stage59/amfi_ter_oct2026_export_latest.csv')
