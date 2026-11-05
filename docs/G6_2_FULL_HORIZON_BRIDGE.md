@@ -1,6 +1,6 @@
 # G6.2 — Full-horizon synthetic deterministic bridge
 
-**Status:** implemented in draft [PR #43](https://github.com/K49M43/testrepo/pull/43), tracked by [issue #42](https://github.com/K49M43/testrepo/issues/42), on stacked branch `codex/g6-2-full-horizon-synthetic-bridge-20261105`. It depends on G6.1 draft PR #41 and must be reviewed after that parent is accepted. Exact-head checks are shown on PR #43.
+**Status:** COMPLETE. PR #43 merged to `main` as `1a6a473f911cb136b45490964318971fa15a7499`; issue #42 closed. Implementation head: `2c7fa49243ad8580253ebcb97b4bc3a9e6aa4af8`. All eight Actions workflows passed on both exact PR head and the merge commit. The G6.3 continuation is tracked in [issue #44](https://github.com/K49M43/testrepo/issues/44).
 
 ## Objective and scope
 
@@ -43,3 +43,4 @@ GitHub Actions reruns G6.2, G6.1 regression audits and the G5.4 decision-gate au
 ## Decision limits and next work
 
 This is a full-horizon cashflow and deterministic integration test, not an investment result. It has no sourced asset returns, official CPI bytes, validated future tax law, portfolio selection, probability, recommendation or transaction authorization. G6 remains **NOT READY** and authorization remains **NO-GO**. Next, qualify candidate-specific historical price/return paths and actual product cost/tax treatment, then add distributions, reinvestment, applicable loss allocation and flexible exit rules before any uncertainty or probability work.
+

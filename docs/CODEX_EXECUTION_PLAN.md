@@ -6,40 +6,37 @@
 
 
 
-## Current status — 5 November 2026
-
-
+## Current status — 6 November 2026
 
 ### Sprint 1 — closed for the bounded research and synthetic-fixture scope
 
+The controlling close record is [Sprint 1 — Deterministic after-tax ledger](SPRINT_01_AFTER_TAX_LEDGER.md), closed 4 November 2026. Its bounded tax-component, loss-allocation, event/lot and 120/122-month cashflow checks pass; the source-based review against the enacted Income-tax Act was accepted for this research scope. This does not establish an investor-specific tax result, actual transaction schedule, 2036 law, or final real-wealth outcome.
 
+### G5 — closed at its declared evidence scope
 
-The controlling close record is [Sprint 1 — Deterministic after-tax ledger](SPRINT_01_AFTER_TAX_LEDGER.md), closed 4 November 2026. Its bounded tax-component, loss-allocation, event/lot and 120/122-month cashflow checks pass; the source-based review against the enacted Income-tax Act was accepted for this research scope. The independent Decimal loss/tax reconciliation, event-ledger audit and input-contract audit were rerun from `main` during the G5.4 blocker investigation and passed. This does not establish an investor-specific tax result, actual transaction schedule, 2036 law, or final real-wealth outcome. Those facts remain explicit inputs, not Sprint 1 closure conditions.
+PR #39 merged as `99c93aeee43b685ae43abcbbfffbc888f0803b9e`; issues #38 and #29 are closed. The merged screen contains ten candidate hypotheses and five declared-window AMFI Growth-option NAV histories (7,353 observations across 63 request windows), plus holdings snapshots and an eight-criterion exit audit. This is not proof that ten products are fully investable, that their histories are complete or comparable, or that long-run probability is qualified. See the G5 evidence record and retain its source limitations.
 
+### G6 — synthetic integration increments closed; decision-grade work remains open
 
+- **G6.1:** issue #40 and PR #41 are closed/merged. Merge commit: `3deebbc781c562fd681dfc559742c4fd620177bb`; implementation head: `33168343e87e9136341eb22d2fbf04f11630d978`. Its deterministic after-tax bridge is a fixture contract, not an investor result.
+- **G6.2:** issue #42 and PR #43 are closed/merged. Merge commit: `1a6a473f911cb136b45490964318971fa15a7499`; implementation head: `2c7fa49243ad8580253ebcb97b4bc3a9e6aa4af8`. Eight workflows passed on the merge commit; G6.2 also passed all eight workflows on its exact PR head. See [G6.2 scope and closure record](G6_2_FULL_HORIZON_BRIDGE.md).
+- **G6.3:** umbrella issue [#44](https://github.com/K49M43/testrepo/issues/44) tracks the decision-grade strategy comparison. Its first work package corrects status records and freezes a sourced decision-input register; later gates qualify candidate evidence, economics/tax/cashflows, statistical uncertainty, and an independent decision pack.
+- **Decision status:** G6 is **NOT READY** and investment authorization is **NO-GO**. The two merged increments only exercised synthetic marks, costs, CPI and a deliberately repeated tax fixture. They did not qualify candidate-specific returns or taxes, original CPI release bytes and base month, product distributions/reinvestment, actual exit rules, cross-asset adverse cases, or probability.
 
-### Current work — Sprint 6 / G6 deterministic integration
+### Current evidence boundary
 
-G5 is **CLOSED**. PR #39 merged on 5 November 2026 as `99c93aeee43b685ae43abcbbfffbc888f0803b9e`; issues #38 and #29 are closed. Its five official AMFI Growth-option NAV windows, 10-row product disposition, holdings snapshots, and eight-criterion exit audit are merged. These are bounded declared-window product histories, not proof of full-universe investability, long-run dependence, or probability.
+- **CPI:** 165 contiguous linked/direct observations passed source-value and mechanical checks (144 historical linked values and 21 direct values). They remain source-linked transcriptions without original release bytes; the purchasing-power base month still requires confirmation. Use only as a provisional research deflator.
+- **Candidate data:** five declared-window fund NAV histories and the ten-hypothesis screen are bounded G5 evidence. Raw AMFI response bodies are absent for some artifacts; source coverage, tradeability, tax and suitability are not universally qualified. Do not treat a hypothesis as an eligible investment.
+- **Taxes and cashflows:** Sprint 1 bounded tax/lot fixtures and G6.1/G6.2 deterministic schedules pass their documented scopes. Specific instrument treatment, actual transaction dates and amounts, personal tax facts, and future tax law remain separate requirements.
+- **Statistical assurance:** no decision-grade cross-asset probability or 85% floor-success claim is established. Do not use the quarantined synthetic 11.8% scenario as historical evidence.
 
-G6.1 is tracked in [issue #40](https://github.com/K49M43/testrepo/issues/40) on draft PR [#41](https://github.com/K49M43/testrepo/pull/41), branch `codex/g6-1-deterministic-after-tax-bridge-20261105`. Its strengthened audit makes synthetic residency explicit, independently checks the fixture's ordinary slab/cess arithmetic, and reconciles every disposal lot including zero-gain lots. All workflows passed on implementation commit `36b3a7872eb8643436061ada20ae4c11ca4bcd5d`; PR #41 remains draft/unmerged.
+The authoritative current/open-input inventory is [G6.3 Decision Input Register](G6_3_DECISION_INPUT_REGISTER.md). Do not block source qualification or independent model work while investor confirmations are open; do block exact personal outputs and a final allocation recommendation when they depend on those confirmations.
 
-G6.2 is tracked by [issue #42](https://github.com/K49M43/testrepo/issues/42) and draft [stacked PR #43](https://github.com/K49M43/testrepo/pull/43), based on PR #41. It implements the frozen 120-month and 122-month schedules with 121/123 synthetic lots, four deterministic full-liquidation cases, explicit inputs for eleven FYs, and a clearly non-statutory repeated TY 2026–27 fixture rule. The review findings were fixed: the direct scenario entry point now enforces synthetic provenance; FY assignment is independently reconstructed at each date; and the run manifest pins the transitive loss-schedule module. Local independent reconciliation and 13 fail-closed mutations pass; exact-head Actions are tracked on PR #43. This validates full-horizon plumbing only.
+### Next work
 
-### Source and model status
+Complete G6.3 in dependency order under issue #44. WP0 reconciles the status records and classifies confirmed, provisional, and unconfirmed inputs. WP1 then qualifies candidate-specific sources and CPI evidence. Do not feed unqualified or pre-inception observations into a risk model. Continue through instrument economics/tax, portfolio exits, statistical assurance, and independent decision review. A defensible NO-GO is acceptable; no gate may be weakened to force a GO.
 
-- CPI: 165 contiguous linked/direct observations pass source-value checks (144/144 historical linked values and 21/21 direct values) plus mechanical continuity/link/rate checks. They remain source-linked transcriptions without original release bytes; the investor base month is unconfirmed. Use only as a provisional research deflator.
-- Equity/bond/precious metals: five declared-window AMFI Growth NAV histories pass raw-to-normalized lineage (7,353 observations in 63 request windows). Strict month joins to rounded monthly NSE Nifty 500 TRI are descriptive only. Direct GoI/T-bill cashflows and relevant ETF market-price execution inputs remain blocked.
-- Tax/cashflows: Sprint 1 bounded synthetic tax and event/lot fixtures pass. G6.1 links six dated contributions in a single tax year to explicit synthetic prices, costs, liquidation, incremental tax, and CPI deflation. This does not qualify actual product tax rules or 2036 law.
-- G3: deterministic pre-tax/fee hurdle and independent reconstruction audits pass. G6.1 demonstrates one bounded bridge scenario family, not target feasibility or forecast accuracy.
-- G6 decision-grade status: **NOT READY**. G6.2 exercises the full schedule only with synthetic marks, costs, inflation, and a repeated tax-component fixture. Candidate-specific source returns, applicable future tax rules, distributions/loss allocation, flexible exits, original CPI bytes/base month, and full-horizon adverse-case review remain open. Cross-asset probability remains unqualified.
-
-### Next concrete work
-
-Review exact-head checks on stacked PR #43, then accept its G6.1 parent PR #41 before merging the dependent increment. Next, qualify candidate-specific dated price/return inputs and actual product tax/cost treatment; then add distributions, reinvestment, applicable loss allocation, and forced/flexible exit rules. Keep future-law claims, investor-specific results, probability, recommendations, and transactions blocked until their independent evidence gates pass.
-
-**Decision status:** NO-GO. Nothing in this status authorizes transactions.
-
+**Nothing in this plan authorizes transactions.**
 ## Completed on 2 November 2026 — P0 Tasks 1–2
 
 - **Task 1:** official AMFI scheme 133307 NAV history passed for research use: 2,867 observations across 24 source segments, 26 Dec 2014–30 Oct 2026; raw segment bytes and hashes independently audited; LIC 1/3/5-year factsheet arithmetic reconciled. Evidence: `research/stage512/2026-11-02/stage512_R93_live_backfill_and_129m_audit.md` and `research/stage512/data/r9_lic_gsec_etf/qualification_manifest.json`.
@@ -149,4 +146,5 @@ Review exact-head checks on stacked PR #43, then accept its G6.1 parent PR #41 b
 
 
 An acceptable **conditional** result may be "the real aftertax target is not achievable at suitably bounded risk"; do not assume a portfolio must exist that hits 85%.
+
 
