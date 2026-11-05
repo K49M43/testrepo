@@ -1,9 +1,12 @@
 {
   "audit": "PASS",
   "record_id": "g6-1-independent-bridge-audit-v1",
-  "scope": "one synthetic instrument; one tax year; two deterministic paths; no market or personal data",
+  "scope": "one synthetic instrument; one tax year; two deterministic paths; no market or investor-specific data",
+  "independent_tax_check_scope": "independent section 516 rounding, ordinary slab, and cess arithmetic within the fixture's explicit resident-only, >rebate-threshold, <=surcharge-threshold envelope; not an independent tax-law opinion",
   "scenario_count": 2,
   "independent_formula_reconciliation": "PASS",
+  "independent_tax_slab_and_cess_reconciliation": "PASS",
+  "complete_per_lot_disposal_and_tax_trace_reconciliation": "PASS",
   "zero_cash_ledger_residuals": true,
   "mutation_cases": {
     "actual_input_rejected": "PASS",
@@ -11,6 +14,8 @@
     "incomplete_price_path_rejected": "PASS",
     "zero_cpi_rejected": "PASS",
     "missing_external_tax_input_rejected": "PASS",
+    "missing_synthetic_residency_rejected": "PASS",
+    "unsupported_nonresident_assumption_rejected": "PASS",
     "cross_tax_year_rejected": "PASS",
     "unallocated_loss_blocks_result": "PASS"
   },
@@ -18,8 +23,8 @@
   "terminal_date": "2027-03-31",
   "decision_grade_g6": "NOT_READY",
   "investment_authorization": "NO_GO",
-  "audit_code_sha256": "afa306dc77bfa9d6f9371ba1a56f9b883200fd06bc1ccb25d81bf43460835c14",
-  "result_sha256": "cfc66887e7bf20087ce9bbfce03a663e947f03562e049ae27cdcb7c021a2ba57",
+  "audit_code_sha256": "f995a8ae0a381714cae394f692932477d7f9e312469fd7fca7a45ddac32a92a5",
+  "result_sha256": "e22ed477b82b95de92750f2a1773818b03b29d5393bde3243f2ea824a805f01f",
   "independent_formula_results": {
     "flat-price": {
       "contributions_inr": "4325000.000000000",
@@ -29,8 +34,84 @@
       "recorded_costs_inr": "85",
       "gross_terminal_after_costs_before_tax_inr": "4324915.000000000",
       "taxable_gain_inr": "0E-9",
-      "incremental_fixture_tax_inr": "0.00000",
+      "external_tax_before_credits_inr": "499200.0000",
+      "combined_tax_before_credits_inr": "499200.0000",
+      "incremental_fixture_tax_inr": "0.0000",
       "net_nominal_inr": "4324915.000000000",
+      "lot_disposal_trace": [
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-000",
+          "lot_id": "flat-price-lot-000",
+          "acquired_date": "2026-10-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "41999.9",
+          "unit_price_inr": "100",
+          "proceeds_inr": "4199990.0",
+          "tax_basis_removed_inr": "4199990",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0.0"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-001",
+          "lot_id": "flat-price-lot-001",
+          "acquired_date": "2026-11-30",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-002",
+          "lot_id": "flat-price-lot-002",
+          "acquired_date": "2026-12-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-003",
+          "lot_id": "flat-price-lot-003",
+          "acquired_date": "2027-01-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale-flat-price-lot-004",
+          "lot_id": "flat-price-lot-004",
+          "acquired_date": "2027-02-28",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        },
+        {
+          "event_id": "flat-price-terminal-sale",
+          "lot_id": "flat-price-lot-005",
+          "acquired_date": "2027-03-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "249.900000000",
+          "unit_price_inr": "100",
+          "proceeds_inr": "24990.000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-9"
+        }
+      ],
       "cpi_factor": "1.02",
       "net_real_inr": "4240112.7450980392156862745098039215686274509803922"
     },
@@ -42,8 +123,84 @@
       "recorded_costs_inr": "85",
       "gross_terminal_after_costs_before_tax_inr": "4541680.8155193990000000000000000000000000000000000",
       "taxable_gain_inr": "216765.8155193990000000000000000000000000000000000",
-      "incremental_fixture_tax_inr": "67632.24000",
+      "external_tax_before_credits_inr": "499200.0000",
+      "combined_tax_before_credits_inr": "566832.2400",
+      "incremental_fixture_tax_inr": "67632.2400",
       "net_nominal_inr": "4474048.5755193990000000000000000000000000000000000",
+      "lot_disposal_trace": [
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-000",
+          "lot_id": "one-percent-monthly-price-rise-lot-000",
+          "acquired_date": "2026-10-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "41999.9",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "4414231.700319499",
+          "tax_basis_removed_inr": "4199990",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "214241.700319499"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-001",
+          "lot_id": "one-percent-monthly-price-rise-lot-001",
+          "acquired_date": "2026-11-30",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "247.42574257425742574257425742574257425742574257426",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "26004.694209900000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "1014.694209900000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-002",
+          "lot_id": "one-percent-monthly-price-rise-lot-002",
+          "acquired_date": "2026-12-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "244.97598274678953043819233408489363787863934908342",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25747.221990000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "757.221990000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-003",
+          "lot_id": "one-percent-monthly-price-rise-lot-003",
+          "acquired_date": "2027-01-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "242.55047796711834696850726147019172067192014760735",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25492.299000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "502.299000000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale-one-percent-monthly-price-rise-lot-004",
+          "lot_id": "one-percent-monthly-price-rise-lot-004",
+          "acquired_date": "2027-02-28",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "240.14898808625578907772996185167497096229717584886",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "25239.900000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "249.900000000000000000000000000000000000000000000"
+        },
+        {
+          "event_id": "one-percent-monthly-price-rise-terminal-sale",
+          "lot_id": "one-percent-monthly-price-rise-lot-005",
+          "acquired_date": "2027-03-31",
+          "disposed_date": "2027-03-31",
+          "units_disposed": "237.77127533292652383933659589274749600227443153353",
+          "unit_price_inr": "105.10100501",
+          "proceeds_inr": "24990.000000000000000000000000000000000000000000000",
+          "tax_basis_removed_inr": "24990.000000000",
+          "deductible_transfer_expenses_inr": "0",
+          "signed_realized_result_inr": "0E-45"
+        }
+      ],
       "cpi_factor": "1.02",
       "net_real_inr": "4386322.1328621558823529411764705882352941176470588"
     }

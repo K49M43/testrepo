@@ -1,6 +1,6 @@
 # G6.1 — Fixture-first deterministic after-tax bridge
 
-**Status:** implementation and local independent audit pass; PR CI is pending. This is a first engineering increment, not decision-grade G6.
+**Status:** implementation and local audits pass. PR #41 remains draft and unmerged; consult its live checks for current CI status. This is a first engineering increment, not decision-grade G6.
 
 ## Purpose
 
@@ -16,11 +16,11 @@ The adapter creates contribution, fee, acquisition, and terminal-disposal events
 
 - One synthetic specified-debt-fund tax branch, one Indian tax year (2026–27), six dated schedule rows from October 2026 through March 2027.
 - Two deterministic mark paths: flat marks and a synthetic 1% monthly price rise.
-- Explicit account fees, terminal transaction cost, external fixture income, and synthetic CPI levels (100 to 102).
+- Explicit account fees, terminal transaction cost, synthetic external ordinary income of ₹30 lakh, an explicit synthetic resident-individual tax assumption, and synthetic CPI levels (100 to 102).
 - Full forced liquidation, one-year tax calculation, event/lot trace, ledger residual, net nominal value, and net real value.
 - No personal facts, sourced prices, official CPI, probability, candidate ranking, investment recommendation, or trade authority.
 
-The terminal fee is explicitly non-deductible in this fixture; account fees are kept separate from tax basis. These conventions are only mechanics inputs and must not be carried into a real product result without product-specific tax review.
+The terminal fee is explicitly non-deductible in this fixture; account fees are kept separate from tax basis. The synthetic tax input explicitly selects the resident-individual branch supported by the component. The independent audit separately recomputes section 516 rounding, ordinary-rate slabs, and cess only inside this fixture's income envelope (above the rebate threshold and at or below the surcharge threshold); it does not independently validate the full tax law. These conventions are mechanics inputs and must not be carried into a real product result without product-specific tax review.
 
 ## Measured fixture result
 
@@ -31,7 +31,7 @@ Each path uses ₹42,00,000 initial capital plus five scheduled ₹25,000 contri
 | Flat price | ₹43,24,940.00 | ₹85.00 | ₹43,24,915.00 | ₹0.00 | ₹43,24,915.00 | ₹42,40,112.75 |
 | 1% monthly price rise | ₹45,41,705.82 | ₹85.00 | ₹45,41,680.82 | ₹67,632.24 | ₹44,74,048.58 | ₹43,86,322.13 |
 
-Both event ledgers reconcile with zero residual. The independent audit reproduces units, sale proceeds, costs, the bounded incremental tax calculation, and CPI deflation using separate arithmetic. Mutations reject actual-data labels, non-synthetic price-basis labels, missing price marks, nonpositive CPI, missing taxpayer fixture input, a cross-tax-year path, and an unallocated realized-loss path.
+Both event ledgers reconcile with zero residual. The independent audit reproduces units, sale proceeds, costs, every lot disposal (including zero-gain lots), tax-event-to-lot mappings, the fixture-bounded tax increment using a separate slab/cess calculation, and CPI deflation. Mutations reject actual-data labels, non-synthetic price-basis labels, missing price marks, nonpositive CPI, missing external-income or residency assumptions, unsupported nonresident input, a cross-tax-year path, and an unallocated realized-loss path.
 
 ## Reproduction
 

@@ -26,6 +26,7 @@
   },
   "tax_assumptions": {
     "model_tax_year": "2026-27",
+    "resident_individual": true,
     "external_ordinary_income_inr": "3000000",
     "rule_set": "TY 2026-27 research component; fixture only"
   },

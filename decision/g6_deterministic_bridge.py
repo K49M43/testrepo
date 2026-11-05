@@ -117,10 +117,14 @@ def _validate_fixture(raw: Mapping[str, Any]) -> tuple[Any, dict[str, Any], date
             raise ValueError("tax deductibility is not inferred; this fixture explicitly excludes it")
 
         tax = raw["tax_assumptions"]
-        if not isinstance(tax, dict) or set(tax) != {"model_tax_year", "external_ordinary_income_inr", "rule_set"}:
+        if not isinstance(tax, dict) or set(tax) != {
+            "model_tax_year", "resident_individual", "external_ordinary_income_inr", "rule_set"
+        }:
             raise ValueError("tax assumptions do not match G6.1 fixture contract")
         if tax["model_tax_year"] != tax_year or tax["rule_set"] != "TY 2026-27 research component; fixture only":
             raise ValueError("tax year or rule-set is outside this bounded fixture")
+        if tax["resident_individual"] is not True:
+            raise ValueError("G6.1 requires an explicit synthetic resident-individual tax assumption")
         _d(tax["external_ordinary_income_inr"], "external_ordinary_income_inr")
 
         cpi = raw["cpi"]
@@ -242,7 +246,10 @@ def run_scenario(raw: Mapping[str, Any], scenario: Mapping[str, Any]) -> dict[st
             raise AssertionError("adapter generated duplicate event identifiers")
         external_income = _d(raw["tax_assumptions"]["external_ordinary_income_inr"], "external income")
         result = run_ledger(
-            events, {}, external_tax_inputs={tax_year: TaxInput(ordinary_income=external_income)},
+            events, {}, external_tax_inputs={tax_year: TaxInput(
+                ordinary_income=external_income,
+                resident_individual=raw["tax_assumptions"]["resident_individual"],
+            )},
         )
         if result.capital_loss_trace:
             raise ValueError("realized losses require an explicit, independently qualified G6 loss-allocation contract")
@@ -253,6 +260,31 @@ def run_scenario(raw: Mapping[str, Any], scenario: Mapping[str, Any]) -> dict[st
         if net_nominal is None:
             raise AssertionError("ledger did not produce bounded fixture net wealth")
         real_value = net_nominal / cpi_factor
+        acquisitions = {event.lot_id: event for event in events if event.event_type == "acquisition"}
+        lot_disposal_trace = []
+        for event in events:
+            if event.event_type != "terminal_disposal":
+                continue
+            acquisition = acquisitions[event.lot_id]
+            disposed_units = event.units
+            proceeds = event.cash_amount_inr
+            tax_basis = (
+                acquisition.cash_amount_inr - acquisition.transaction_cost_inr
+                + acquisition.tax_basis_addition_inr
+            ) * disposed_units / acquisition.units
+            deductible_expenses = event.deductible_transfer_expenses_inr
+            lot_disposal_trace.append({
+                "event_id": event.event_id,
+                "lot_id": event.lot_id,
+                "acquired_date": acquisition.event_date.isoformat(),
+                "disposed_date": event.event_date.isoformat(),
+                "units_disposed": str(disposed_units),
+                "unit_price_inr": str(event.unit_price_inr),
+                "proceeds_inr": str(proceeds),
+                "tax_basis_removed_inr": str(tax_basis),
+                "deductible_transfer_expenses_inr": str(deductible_expenses),
+                "signed_realized_result_inr": str(proceeds - tax_basis - deductible_expenses),
+            })
         total_contributions = sum(
             (schedule.initial_inr if month_index == 0 else schedule.monthly_contributions[month_index]
              for month_index in range(terminal_index + 1)), ZERO
@@ -285,7 +317,7 @@ def run_scenario(raw: Mapping[str, Any], scenario: Mapping[str, Any]) -> dict[st
             "reconciliation_residual_inr": str(result.reconciliation_residual_inr),
             "tax_year_trace": result.tax_years,
             "tax_event_trace": result.tax_event_trace,
-            "lot_disposal_trace": [row for row in result.tax_event_trace if "realized_disposal" in row],
+            "lot_disposal_trace": lot_disposal_trace,
             "qualification_limits": [
                 "Synthetic price paths and synthetic CPI levels are not market history or an inflation forecast.",
                 "TY 2026-27 component tax is held fixed for this one synthetic tax year only.",
