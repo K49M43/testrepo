@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "rbi-91day-tbill-official-result-route-probe-2026-11-06",
+  "as_of": "2026-11-06",
+  "qualification": "OFFICIAL_PER_AUCTION_RESULT_ROUTE_CONFIRMED_SINGLE_SAMPLE; RAW_BYTES_NOT_ARCHIVED; HISTORICAL_2025_2026_PANEL_NOT_QUALIFIED",
+  "purpose": "Determine whether RBI publishes the auction-method and weighted-average-price fields needed to qualify retail noncompetitive 91-day Treasury-bill acquisitions.",
+  "primary_sources": [
+    {
+      "role": "auction_notice",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895",
+      "title": "Auction of 91-Day, 182-Day and 364-Day Treasury Bills",
+      "release_no": "2026-2027/1417",
+      "notice_date": "2026-10-30",
+      "auction_date": "2026-11-04"
+    },
+    {
+      "role": "full_auction_result",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
+      "title": "Treasury Bills: Full Auction Result",
+      "release_no": "2026-2027/1440",
+      "result_date": "2026-11-04"
+    },
+    {
+      "role": "cutoff_result_crosscheck",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
+      "title": "91-Day, 182-Day and 364-Day T-Bill Auction Result: Cut-off",
+      "release_no": "2026-2027/1439",
+      "result_date": "2026-11-04"
+    },
+    {
+      "role": "retail_ncb_rule",
+      "url": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+      "title": "RBI Government Securities FAQ",
+      "relevant_rule": "Noncompetitive allotments are at the weighted-average price/yield of successful competitive bids; retail participation is through an authorized aggregator/facilitator, including Retail Direct as stated in the auction notice."
+    }
+  ],
+  "sample": {
+    "tenor_days": 91,
+    "notified_amount_crore": 8000,
+    "auction_type": "price based, multiple price method",
+    "auction_notice_says_retail_route": "RBI Retail Direct portal available for individuals; retail allocation capped at up to 5% of notified amount.",
+    "cutoff_price_per_100": {
+      "value": "98.5511",
+      "published_yield_actual_365_pct": "5.8970"
+    },
+    "weighted_average_price_per_100": {
+      "value": "98.5535",
+      "published_yield_actual_365_pct": "5.8871"
+    },
+    "settlement_date": "2026-11-05",
+    "ncb_price_basis": "weighted-average successful competitive price/yield under RBI FAQ; do not substitute the cutoff in a multiple-price auction.",
+    "arithmetic_reproduction": {
+      "formula": "((100 / price) - 1) * (365 / 91) * 100",
+      "cutoff_yield_pct": "5.8970",
+      "weighted_average_yield_pct": "5.8871",
+      "rounding": "four decimal places, ROUND_HALF_UP",
+      "result": "matches both RBI-published yields"
+    }
+  },
+  "retrieval_and_integrity": {
+    "review_method": "Official RBI page text opened through the web research interface on 2026-11-06; the three direct RBI URLs above are retained.",
+    "raw_bytes_retained": false,
+    "sha256": null,
+    "limitation": "Local Invoke-WebRequest to the official host failed because the configured local proxy at 127.0.0.1:9 refused the connection. No attempt was made to bypass the configured network path. Web-rendered source text is not represented as hash-retained raw evidence."
+  },
+  "decision_use": {
+    "route_feasible": "yes, per-auction notices can state method and full result releases publish weighted-average prices, auction acceptance and partial allotment fields.",
+    "historical_2025_2026_panel_qualified": false,
+    "retail_execution_path_qualified": false,
+    "remaining_work": [
+      "Acquire and hash each official notice and full result for the Table 218 auction dates (or an authoritative official bulk export).",
+      "Reconcile each notice/result pair to Table 218 auction and issue dates, tenor, notified/accepted amounts and price/yield fields.",
+      "Classify eligible NCB price using the contemporaneous rule and method; preserve rows without an exact pair as blocked.",
+      "Model subscription limits, partial allotment, minimum lot, settlement, maturity, reinvestment, fees, taxes and uninvested cash."
+    ]
+  }
+}

@@ -36,7 +36,7 @@ The official [RBI Handbook of Statistics 2025–26 page](https://www.rbi.org.in/
 
 The RBI document host returned HTTP 200 but `text/html` bodies for both the advertised XLSX and PDF download URLs. Their signatures were HTML, so they are recorded as failed acquisition metadata and deliberately not retained as table data. The official rendered table page was independently inspected. No interstitial, access control, or site protection was bypassed.
 
-RBI's [Government Securities FAQ](https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711) states that retail noncompetitive bids are allotted at the weighted-average price/yield emerging from competitive bidding. The same FAQ explains that a uniform-price auction allots successful bids at the cutoff, while a multiple-price auction allots each competitive bidder at its bid. The cutoff and NCB price are therefore conditionally equal only if that specific auction used uniform-price allocation. Table 218 does not state the auction method or publish the weighted-average successful competitive price. The retained evidence cannot establish which price applies row by row; the historic RBI statement that 91-day T-bills used uniform-price auctions is not enough to qualify 2025–26 auctions.
+RBI's [Government Securities FAQ](https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711) states that retail noncompetitive bids are allotted at the weighted-average price/yield emerging from competitive bidding. Table 218 does not state the auction method or publish the weighted-average successful competitive price, so its 2025–26 rows remain unqualified on those fields. The later single-sample probe below confirms that RBI publishes the method in the auction notice and the weighted-average result in a separate release; it does not establish those values for the Table 218 window.
 
 The RBI FAQ also limits retail NCB to select auctions and describes a 5% allocation cap and a service charge that may be recovered by an aggregator. Those operational details, funding/refund timing, partial allotment, and a continuous sequence of issue/maturity dates all affect an investor-specific rolling path. A cutoff price alone is not a realized investment return.
 
@@ -57,9 +57,16 @@ The exact source-path disposition and excluded acquisition hashes are in `resear
 | Investor CPI base month | **OPEN — investor confirmation required** |
 | RBI 91-day auction source identity and displayed fields | **PASS — source-page inspection only** |
 | Hash-retained RBI XLSX/PDF bytes | **FAIL — endpoint returned HTML, not the requested format** |
-| Retail T-bill executable price/return path | **OPEN — auction method/NCB price and full investor cashflow path not established** |
+| Retail T-bill executable price/return path | **OPEN — a later official notice/result sample confirms method and weighted-average fields; historical pairs and investor cashflow path not established** |
 | Direct dated GoI security total-return path | **OPEN — price/cashflow/reinvestment evidence incomplete** |
 | WP1 overall / G6.3 | **OPEN / NOT READY** |
 | Investment authorization | **NO-GO** |
 
 The source-inventory WP1 subtask remains passed. This update closes the historical CPI source gate and documents the verified RBI acquisition limitation; it does not make WP1 as a whole pass. The independent G6.3 audit found the fallback decision pack lacked a source-by-source evidence status ledger. The remediation is documented in `G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md`; rows marked not acquired remain open evidence work, so G6.3 is still incomplete and issue #44 is reopened.
+
+
+## Follow-up source-route probe — T-bill auction details (2026-11-06)
+
+A first-party route exists beyond the Handbook’s Table 218. RBI’s notice for the 4 November 2026 auction states a price-based, multiple-price method and the retail route via Retail Direct. The RBI Full Auction Result for that date reports the 91-day cut-off price/yield (98.5511 / 5.8970%) and weighted-average price/yield (98.5535 / 5.8871%). The FAQ’s noncompetitive-bid rule makes the weighted-average price the relevant auction price basis for NCB; the cutoff must not be substituted for this multiple-price auction. Applying RBI’s actual/365 formula reproduces both published yields to four decimals. Sources: [auction notice](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895), [Full Auction Result](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918), [cutoff result](https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917), [RBI FAQ](https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711).
+
+This postdates the Table 218 window. The pages were reviewed through the official rendered site, but local raw bytes could not be downloaded because the configured local proxy refused connection; no bypass was attempted and no hash is claimed. The method/weighted-average field gap is therefore reduced to a bounded source-acquisition task, not closed: all historical notice/result pairs must still be captured and reconciled, and retail allotment, lot sizing, settlement, reinvestment, fees and taxes must be modeled. Details and arithmetic are in `research/stage512/2026-11-06/g6_3/rbi_tbill_result_route_probe_v1.json`.

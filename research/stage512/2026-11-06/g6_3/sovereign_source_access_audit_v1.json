@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "qualification": "OFFICIAL_TABLE_IDENTITY_AND_FIELDS_VERIFIED; MACHINE_RAW_ACQUISITION_FAILED; AUCTION_METHOD_UNQUALIFIED; INVESTOR_RETURN_SERIES_NOT_QUALIFIED",
+  "qualification": "TABLE218_MACHINE_DOWNLOAD_FAILED; RBI_PER_AUCTION_METHOD_AND_WEIGHTED_AVERAGE_ROUTE_CONFIRMED_SINGLE_SAMPLE; HISTORICAL_RETAIL_TBILL_RETURN_SERIES_NOT_QUALIFIED",
   "official_handbook_page": "https://www.rbi.org.in/Scripts/AnnualPublications.aspx?head=Handbook%20of%20Statistics%20on%20Indian%20Economy",
   "official_table_page": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
   "publication_date": "2026-07-31",
@@ -45,13 +45,14 @@
     "RBI FAQ states retail NCB uses weighted-average successful competitive price/yield and explains uniform-price versus multiple-price auction allocation. Table 218 does not include auction method or weighted-average price, so equality with cutoff is unqualified row by row.",
     "A sample spanning 50 auctions does not establish a complete multi-year rolling T-bill total-return series; no investor-specific bid/allotment/funding/fees/tax path is reconstructed.",
     "Even a qualified cutoff/NCB acquisition price alone would omit investment cash timing, failed/partial allotment, holding to maturity, reinvestment, idle cash, service charges, eligibility and tax.",
-    "This source does not qualify dated GoI bond secondary-market total-return or reinvested coupon return."
+    "This source does not qualify dated GoI bond secondary-market total-return or reinvested coupon return.",
+    "A first-party 2026-11-04 auction notice/result pair confirms the fields are published: the notice states multiple-price method and the full result publishes 91-day weighted-average price. This is outside the retained Table 218 sample window, was reviewed through rendered official page text, and has no locally retained raw bytes/hash; it does not qualify the historical 2025-26 panel."
   ],
   "lawful_next_route": [
-    "Acquire Table 218 using the official RBI page/download or DBIE in a normally supported access path, and preserve original bytes/hash and source metadata.",
-    "For each auction, obtain an official auction notification/result identifying uniform or multiple pricing and the NCB weighted-average price; retain absent rows as blocked.",
-    "Construct rolling holdings only from dated auction, allotment, settlement, maturity/redemption and reinvestment cashflows; include lawful retail route charges and taxes.",
-    "For dated bonds, use public first-party price/cashflow data or a separately authorized private data license. CCIL public MTM may be used only within its published terms; distinguish trade prices from model marks and do not redistribute restricted data."
+    "Acquire official per-auction notices and Full Auction Result pages from RBI for every Table 218 date, retaining original bytes, URL, retrieval metadata and SHA-256.",
+    "Reconcile auction and settlement dates, tenor and all key fields against Table 218; retain unmatched or revised rows as blocked.",
+    "Use the contemporaneous official notice for auction pricing method and the RBI FAQ for NCB weighted-average allocation; do not use cutoff as retail price under multiple-price method.",
+    "Model retail allotment, subscription caps, partial fill, minimum lot, settlement, maturity, reinvestment, cash drag, costs and tax before calling the series investor-executable."
   ],
   "accessed_at_utc_date": "2026-11-06",
   "retail_ncb_rule_source": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
@@ -62,5 +63,6 @@
     "table_218_auction_method_field": false,
     "row_level_auction_method_verified": false,
     "conclusion": "Do not assume cutoff equals retail NCB price for any Table 218 row without row-level auction-method evidence."
-  }
+  },
+  "official_press_release_probe": "rbi_tbill_result_route_probe_v1.json"
 }

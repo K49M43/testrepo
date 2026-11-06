@@ -37,3 +37,8 @@ No defect was found in the bounded G6.1/G6.2 fixture reconciliations during this
 ## Post-merge verification
 
 PR #48 head `f08242ab6fb68b4387363338b7019a87262bdc31` merged as `a44d13f44a82c0ca91cd09bc9f3e5212e14d51d0`. The Git tree IDs match, so the reviewed code/data tree is the merged tree. All eight exact-head workflows passed on both PR events; all eight merged-main workflows passed. The post-merge local rerun repeated CPI normal/optimized checks, source inventory, G5.4/NAV/exit/R9 audits, G5.1 and G5.3 audits, and both G6 deterministic audits. Those were pre-follow-up checks and do not validate this remediation. G6 remains `NOT_READY`; investment authorization remains `NO_GO`.
+
+
+## Follow-up after PR #50 and bounded T-bill source investigation
+
+PR #50 merged as `09293f755074b22613736d266bf1cad28fee0615`; issue #44 remains open. A subsequent source probe found RBI’s separate auction-notice/Full Auction Result route and reproduced the 4 Nov 2026 91-day published cutoff and weighted-average yields from their prices using actual/365. The probe is one later sample only; raw bytes were not retained because the configured proxy refused the local request, so no hash or historical-panel qualification is claimed. The historical 2025–26 auction pairs and the retail cashflow/reinvestment/cost/tax path remain open.
