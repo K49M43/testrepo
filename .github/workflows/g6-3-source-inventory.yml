@@ -48,3 +48,5 @@ jobs:
         run: python decision/audit_g6_3_cpi_qualification.py --check
       - name: Verify archived RBI T-bill source bytes and identity anchors
         run: python decision/audit_g6_3_rbi_source_capture.py
+      - name: Rehash retained RBI 2025-26 T-bill panel
+        run: python decision/audit_g6_3_rbi_tbill_window.py research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026
