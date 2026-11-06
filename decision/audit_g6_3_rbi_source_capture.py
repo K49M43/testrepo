@@ -13,6 +13,8 @@ EXPECTED = {
     "auction_notice_20261030.html": ("retail direct", "individual investors"),
     "full_result_20261104.html": ("weighted average price", "98.5535"),
     "full_result_prid61683.html": ("treasury bills: full auction result", "nov 26, 2025", "weighted average price/yield", "98.6824", "97.3339", "94.7696"),
+    "auction_notice_prid61664.html": ("auction of 91-day", "november 26, 2025", "november 27, 2025", "price based using multiple price method", "retail investors"),
+    "cutoff_result_prid61682.html": ("nov 26, 2025", "t-bill auction result", "98.6805", "97.3192", "94.7692", "5.3633", "5.5244", "5.5347"),
     "cutoff_result_20261104.html": ("cut-off price", "98.5511"),
     "retail_ncb_faq.html": ("weighted average", "non-competitive"),
     "press_release_archive.html": ("press release", "treasury bills", "2025"),
@@ -61,7 +63,15 @@ def main() -> None:
         if missing:
             raise SystemExit(f"source identity/content anchor missing for {filename}: {missing}")
         results.append({"path": filename, "bytes": len(body), "sha256": actual_hash, "content_anchors": list(snippets)})
-    print(json.dumps({"result": "PASS_RBI_SOURCE_CAPTURE_INTEGRITY", "sources": results}, indent=2))
+    notice = visible_text((CAPTURE / "auction_notice_prid61664.html").read_bytes())
+    full = visible_text((CAPTURE / "full_result_prid61683.html").read_bytes())
+    cutoff = visible_text((CAPTURE / "cutoff_result_prid61682.html").read_bytes())
+    if "november 26, 2025" not in notice or "nov 26, 2025" not in full or "nov 26, 2025" not in cutoff:
+        raise SystemExit("historical notice/result auction-date pair mismatch")
+    for price in ("98.6805", "97.3192", "94.7692"):
+        if price not in full or price not in cutoff:
+            raise SystemExit(f"full-result/cut-off price cross-check mismatch: {price}")
+    print(json.dumps({"result": "PASS_RBI_SOURCE_CAPTURE_INTEGRITY_AND_HISTORICAL_PAIR", "sources": results}, indent=2))
 
 
 if __name__ == "__main__":
