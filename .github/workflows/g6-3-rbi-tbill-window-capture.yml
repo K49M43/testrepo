@@ -1,0 +1,34 @@
+name: G6.3 RBI T-bill 2025-26 auction window capture
+
+on:
+  pull_request:
+    paths:
+      - 'research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_window.py'
+      - 'decision/audit_g6_3_rbi_tbill_window.py'
+      - '.github/workflows/g6-3-rbi-tbill-window-capture.yml'
+      - 'research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/table218_20260731.html'
+
+permissions:
+  contents: read
+
+jobs:
+  capture-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Capture sequential official RBI auction notices and full results
+        run: python research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_window.py
+      - name: Independently rehash and reconcile the one-year panel
+        run: python decision/audit_g6_3_rbi_tbill_window.py
+      - name: Retain exact capture and normalized panel
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g6-3-rbi-tbill-2025-26-window
+          path: rbi_tbill_window_capture/
+          if-no-files-found: warn
+          retention-days: 30
