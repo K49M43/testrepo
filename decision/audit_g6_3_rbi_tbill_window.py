@@ -96,10 +96,17 @@ def result(body):
     if not d:
         raise ValueError("result date missing")
     out = {"result_date": datetime.strptime(d.group(1).title(), "%b %d, %Y").date().isoformat()}
-    c = re.search(r"cut-off price and implicit yield at cut-off price\s+([\d.]+)\s+\(ytm:\s*([\d.]+)%\)\s+([\d.]+)\s+\(ytm:\s*([\d.]+)%\)\s+([\d.]+)\s+\(ytm:\s*([\d.]+)%\)", t)
+    c_head = re.search(r"cut-off price(?: and implicit yield at cut-off price| / yield)\s+(.*?)(?=\s+iv\.\s)", t)
+    c = None
+    if c_head:
+        values = c_head.group(1)
+        yields = re.findall(r"ytm:\s*([\d.]+)%", values)
+        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{4}(?![\d.])", re.sub(r"\(ytm:\s*[\d.]+%\)", "", values))
+        if len(prices) == len(yields) == 3:
+            c = tuple(x for pair in zip(prices, yields) for x in pair)
     w = re.search(r"weighted average price/yield\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)", t)
     if c:
-        out.update({"cutoff_price_91": c.group(1), "cutoff_yield_91": c.group(2), "cutoff_price_182": c.group(3), "cutoff_yield_182": c.group(4), "cutoff_price_364": c.group(5), "cutoff_yield_364": c.group(6)})
+        out.update({"cutoff_price_91": c[0], "cutoff_yield_91": c[1], "cutoff_price_182": c[2], "cutoff_yield_182": c[3], "cutoff_price_364": c[4], "cutoff_yield_364": c[5]})
     if w:
         out.update({"weighted_price_91": w.group(1), "weighted_price_182": w.group(2), "weighted_price_364": w.group(3), "weighted_yield_91": w.group(4), "weighted_yield_182": w.group(5), "weighted_yield_364": w.group(6)})
     return out
