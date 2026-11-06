@@ -222,19 +222,23 @@ def result_data(body: bytes) -> dict[str, str]:
     if not release:
         raise RuntimeError("result publication date missing")
     result_date = datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat()
-    cutoff_head = re.search(r"cut-off price(?: and implicit yield at cut-off price| / yield)\s+(.*?)(?=\s+iv\.\s)", text)
+    cutoff_head = re.search(r"cut-off price(?:\s*\([^)]*\))?(?: and implicit yield at cut-off price|\s*/\s*yield)\s+(.*?)(?=\s+iv\.\s)", text)
     cutoff = None
     if cutoff_head:
         section = cutoff_head.group(1)
         yields = re.findall(r"ytm:\s*([\d.]+)%", section)
         prices_text = re.sub(r"\(ytm:\s*[\d.]+%\)", "", section)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{4}(?![\d.])", prices_text)
-        if len(prices) == 3 and len(yields) == 3:
-            cutoff = (*[value for pair in zip(prices, yields) for value in pair],)
+        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", prices_text)
+        if prices and yields:
+            cutoff = (prices[0], yields[0])
+            if len(prices) >= 3 and len(yields) >= 3:
+                cutoff = tuple(value for pair in zip(prices[:3], yields[:3]) for value in pair)
     weighted = re.search(r"weighted average price/yield\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)", text)
     out = {"result_date": result_date}
     if cutoff:
-        out.update({"cutoff_price_91": cutoff[0], "cutoff_yield_91": cutoff[1], "cutoff_price_182": cutoff[2], "cutoff_yield_182": cutoff[3], "cutoff_price_364": cutoff[4], "cutoff_yield_364": cutoff[5]})
+        out.update({"cutoff_price_91": cutoff[0], "cutoff_yield_91": cutoff[1]})
+        if len(cutoff) >= 6:
+            out.update({"cutoff_price_182": cutoff[2], "cutoff_yield_182": cutoff[3], "cutoff_price_364": cutoff[4], "cutoff_yield_364": cutoff[5]})
     if weighted:
         out.update({"weighted_price_91": weighted.group(1), "weighted_price_182": weighted.group(2), "weighted_price_364": weighted.group(3), "weighted_yield_91": weighted.group(4), "weighted_yield_182": weighted.group(5), "weighted_yield_364": weighted.group(6)})
     return out

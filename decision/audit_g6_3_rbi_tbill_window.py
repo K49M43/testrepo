@@ -96,17 +96,21 @@ def result(body):
     if not d:
         raise ValueError("result date missing")
     out = {"result_date": datetime.strptime(d.group(1).title(), "%b %d, %Y").date().isoformat()}
-    c_head = re.search(r"cut-off price(?: and implicit yield at cut-off price| / yield)\s+(.*?)(?=\s+iv\.\s)", t)
+    c_head = re.search(r"cut-off price(?:\s*\([^)]*\))?(?: and implicit yield at cut-off price|\s*/\s*yield)\s+(.*?)(?=\s+iv\.\s)", t)
     c = None
     if c_head:
         values = c_head.group(1)
         yields = re.findall(r"ytm:\s*([\d.]+)%", values)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{4}(?![\d.])", re.sub(r"\(ytm:\s*[\d.]+%\)", "", values))
-        if len(prices) == len(yields) == 3:
-            c = tuple(x for pair in zip(prices, yields) for x in pair)
+        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", re.sub(r"\(ytm:\s*[\d.]+%\)", "", values))
+        if prices and yields:
+            c = (prices[0], yields[0])
+            if len(prices) >= 3 and len(yields) >= 3:
+                c = tuple(x for pair in zip(prices[:3], yields[:3]) for x in pair)
     w = re.search(r"weighted average price/yield\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)", t)
     if c:
-        out.update({"cutoff_price_91": c[0], "cutoff_yield_91": c[1], "cutoff_price_182": c[2], "cutoff_yield_182": c[3], "cutoff_price_364": c[4], "cutoff_yield_364": c[5]})
+        out.update({"cutoff_price_91": c[0], "cutoff_yield_91": c[1]})
+        if len(c) >= 6:
+            out.update({"cutoff_price_182": c[2], "cutoff_yield_182": c[3], "cutoff_price_364": c[4], "cutoff_yield_364": c[5]})
     if w:
         out.update({"weighted_price_91": w.group(1), "weighted_price_182": w.group(2), "weighted_price_364": w.group(3), "weighted_yield_91": w.group(4), "weighted_yield_182": w.group(5), "weighted_yield_364": w.group(6)})
     return out
