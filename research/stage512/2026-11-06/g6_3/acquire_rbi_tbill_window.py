@@ -267,7 +267,14 @@ def main() -> None:
     all_items: list[dict[str, str]] = []
     for path in sorted((OUT / "archive").glob("archive_*.html")):
         all_items.extend(archive_items(path.read_bytes()))
-    notices = {x["prid"]: x for x in all_items if "auction of 91-day" in x["title"].casefold()}
+    notice_start = min(dates) - timedelta(days=7)
+    notice_end = max(dates)
+    notices = {
+        x["prid"]: x
+        for x in all_items
+        if "auction of 91-day" in x["title"].casefold()
+        and notice_start.isoformat() <= x["archive_date"] <= notice_end.isoformat()
+    }
     result_links = {x["prid"]: x for x in all_items if "full auction result" in x["title"].casefold() and x["archive_date"] in expected}
     if len(result_links) < 45:
         raise RuntimeError(f"too few full result links in Table 218 period: {len(result_links)}")
