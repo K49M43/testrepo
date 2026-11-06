@@ -409,3 +409,11 @@ This log records **actual investment authorization** separately from engineering
 - **Remote tracking:** issue #44 reopened because the fallback acceptance gate remains unmet for unacquired source paths and investor confirmations; NO-GO / NOT YET EVALUATED remains.
 - **Validation:** CPI qualification passes in normal and optimized Python; G6.3 source inventory, G5.1 lineage, and G5.3 independent candidate audits pass locally. PR #50 exact-head Actions passed all eight workflows on both PR events (run IDs 42186081975, 42186081988, 42186082016, 42186082019, 42186082034, 42186082073, 42186082114, 42186082149; and 42186128061, 42186128106, 42186128115, 42186128130, 42186128147, 42186128178, 42186128217, 42186128218). PR #50 remains draft and unmerged.
 - **Decision implication:** no investment candidate, return probability, allocation, investor-specific real value or implementation readiness is established.
+
+
+## 2026-11-06 — T-bill official result route identified (single-sample probe)
+- **Repository integration:** PR #50 merged as `09293f755074b22613736d266bf1cad28fee0615`; issue #44 remains open.
+- **Executed:** Reviewed RBI’s notice and result for the 4 Nov 2026 91-day T-bill auction. The official notice states price-based multiple-price method; the Full Auction Result reports 91-day cut-off price 98.5511 / yield 5.8970% and weighted-average price 98.5535 / yield 5.8871%. RBI’s noncompetitive scheme uses weighted-average successful price, not cutoff under a multiple-price auction.
+- **Reproduction:** actual/365 yield computed from both prices reproduces the published yields to four decimals. The source pages and fields are recorded in `research/stage512/2026-11-06/g6_3/rbi_tbill_result_route_probe_v1.json`.
+- **Limit:** this is a later, single auction outside the retained Table 218 window; local raw bytes could not be downloaded because the configured proxy refused connection. No raw hash is claimed. The historical per-auction panel and full retail cashflow path remain unqualified.
+- **Decision:** the official data route is feasible, but no T-bill return series or strategy is yet qualified; investment authorization remains NO-GO.
