@@ -15,6 +15,7 @@ EXPECTED = {
     "cutoff_result_20261104.html": ("cut-off price", "98.5511"),
     "retail_ncb_faq.html": ("weighted average", "non-competitive"),
     "press_release_archive.html": ("press release", "treasury bills", "2025"),
+    "archive_month_202511.html": ("treasury bills", "2025"),
 }
 
 
@@ -39,6 +40,13 @@ def main() -> None:
     records = {item["path"]: item for item in manifest["sources"]}
     if set(records) != set(EXPECTED):
         raise SystemExit(f"manifest file set mismatch: {sorted(records)}")
+    month = records["archive_month_202511.html"]
+    if month.get("method") != "POST" or month.get("parameters") != {"hdnYear": "2025", "hdnMonth": "11"}:
+        raise SystemExit("archive month request metadata mismatch")
+    month_text = visible_text((CAPTURE / "archive_month_202511.html").read_bytes())
+    dates = re.findall(r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+\d{1,2},\s+2025\b", month_text)
+    if not dates or not any(date.startswith("nov ") for date in dates) or any(not date.startswith("nov ") for date in dates):
+        raise SystemExit(f"archive month does not contain only November 2025 dates: {dates}")
     results = []
     for filename, snippets in EXPECTED.items():
         path = CAPTURE / filename
