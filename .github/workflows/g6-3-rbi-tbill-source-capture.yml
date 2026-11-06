@@ -1,0 +1,30 @@
+name: G6.3 RBI T-bill source capture
+
+on:
+  pull_request:
+    paths:
+      - 'research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_sample.py'
+      - '.github/workflows/g6-3-rbi-tbill-source-capture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Capture bounded official RBI sources
+        run: python research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_sample.py
+      - name: Retain exact source bytes and manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: g6-3-rbi-tbill-source-capture
+          path: rbi_tbill_capture/
+          if-no-files-found: error
+          retention-days: 30
