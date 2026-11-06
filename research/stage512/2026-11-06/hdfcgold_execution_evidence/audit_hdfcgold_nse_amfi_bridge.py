@@ -123,7 +123,7 @@ def main():
         'source_capture': {
             'source': 'NSE Security-wise Archives',
             'url': 'https://www.nseindia.com/report-detail/eq_security',
-            'query': {'selected_instrument': 'Equity', 'symbol_filter': 'HDFCGOLD', 'series_filter': 'ALL', 'window': '5Y', 'displayed_window': '2021-11-06 through 2026-11-06'},
+            'query': {'selected_instrument': 'Equity', 'symbol_filter': 'HDFCGOLD', 'series_filter': 'ALL', 'window': '5Y', 'displayed_window': '2021-11-06 through 2026-11-06'},\n            'workstation_file_creation_time_utc': '2026-11-06T17:39:43.9505271Z',
             'download_filename': '06-11-2021-TO-06-11-2026-HDFCGOLD-ALL-N.csv',
             'bytes': args.nse_csv.stat().st_size,
             'sha256': sha256(args.nse_csv),
@@ -147,7 +147,7 @@ def main():
             'max_calendar_gap_days': max(calendar_gaps) if calendar_gaps else None,
             'matched_exact_date_rows': len(joined),
             'unmatched_nse_dates': unmatched,
-            'unmatched_within_amfi_retained_coverage': [d for d in unmatched if min(nav_by_date) <= d <= max(nav_by_date)],
+            'unmatched_within_amfi_retained_coverage': [d for d in unmatched if min(nav_by_date) <= d <= max(nav_by_date)],\n            'unmatched_within_coverage_note': 'Seven NSE trade dates lack a same-date row in the retained AMFI snapshot; session-specific explanations are not source-audited in this package.',
             'nse_dates_after_amfi_retained_snapshot': [d for d in unmatched if d > max(nav_by_date)],
             'duplicate_amfi_dates_for_identity': sorted(set(duplicate_amfi_dates)),
         },
@@ -180,3 +180,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
