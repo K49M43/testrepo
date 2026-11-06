@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "rbi-source-access-recheck-2026-11-06",
+  "as_of_utc": "2026-11-06T09:00:28Z",
+  "scope": "Bounded retrieval recheck of official RBI 91-day T-bill auction notice/result routes and the official Table 218 XLSX endpoint.",
+  "result": "OFFICIAL_SOURCE_RETRIEVAL_BLOCKED_BY_CONFIGURED_LOCAL_PROXY; NO_RESPONSE_BYTES_RECEIVED; SERIES_NOT_QUALIFIED",
+  "network_path": {
+    "http_proxy_host": "127.0.0.1",
+    "http_proxy_port": 9,
+    "https_proxy_host": "127.0.0.1",
+    "https_proxy_port": 9,
+    "proxy_connection_result": "connection refused",
+    "proxy_bypass_attempted": false
+  },
+  "attempts": [
+    {
+      "role": "auction_notice_sample",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895",
+      "method": "PowerShell Invoke-WebRequest GET; 20-second timeout",
+      "response_received": false,
+      "http_status": null,
+      "content_type": null,
+      "response_bytes": 0,
+      "response_sha256": null,
+      "error": "No connection could be made because the target machine actively refused it."
+    },
+    {
+      "role": "full_auction_result_sample",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
+      "method": "PowerShell Invoke-WebRequest GET; 20-second timeout",
+      "response_received": false,
+      "http_status": null,
+      "content_type": null,
+      "response_bytes": 0,
+      "response_sha256": null,
+      "error": "No connection could be made because the target machine actively refused it."
+    },
+    {
+      "role": "official_table_download",
+      "url": "https://rbidocs.rbi.org.in/rdocs/Publications/DOCs/218T_HBIE31072026D5086AE4949E4B9E80DEE6FC431C0761.XLSX",
+      "method": "PowerShell Invoke-WebRequest GET; 20-second timeout",
+      "response_received": false,
+      "http_status": null,
+      "content_type": null,
+      "response_bytes": 0,
+      "response_sha256": null,
+      "error": "No connection could be made because the target machine actively refused it."
+    }
+  ],
+  "interpretation": [
+    "This recheck demonstrates a transport failure through the configured local proxy, not a denial or failure of the RBI origin servers.",
+    "No response content was received, so there is no response body to hash and no evidence row was added.",
+    "Previously rendered official RBI pages establish that relevant fields are published for at least one later sample; they do not replace retained original bytes and do not qualify the historical panel."
+  ],
+  "decision_consequence": "No row-level auction-method or NCB weighted-average price was independently acquired in this recheck. Do not use Table 218 cutoff as retail NCB price for any row without the contemporaneous method evidence. The historical retail T-bill return panel, executable cashflow path, and resulting sovereign strategy risk/return remain unqualified; no portfolio ranking, correlation, or probability may consume this series.",
+  "bounded_remediation": [
+    "Retry only after the configured proxy is restored through normal IT/network support, or when an authorized official RBI bulk export is available through an approved channel.",
+    "Then retrieve official auction notices and full results sequentially for each target date; retain original bytes, retrieval metadata, URL, and SHA-256.",
+    "Reconcile auction date, issue date, tenor, method, cutoff, weighted-average price/yield, accepted amounts, and revisions against RBI Table 218; preserve every unmatched date as blocked.",
+    "Do not bypass the configured network route, site protections, or source terms; do not substitute third-party mirrors for first-party evidence."
+  ]
+}
