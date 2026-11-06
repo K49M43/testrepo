@@ -1,0 +1,280 @@
+{
+  "audit_id": "hdfcgold_nse_amfi_date_label_bridge_2026-11-06_v1",
+  "classification": "bounded official-source capture and descriptive exact-date comparison; not execution-cost qualification",
+  "source_capture": {
+    "source": "NSE Security-wise Archives",
+    "url": "https://www.nseindia.com/report-detail/eq_security",
+    "query": {
+      "selected_instrument": "Equity",
+      "symbol_filter": "HDFCGOLD",
+      "series_filter": "ALL",
+      "window": "5Y",
+      "displayed_window": "2021-11-06 through 2026-11-06"
+    },
+    "download_filename": "06-11-2021-TO-06-11-2026-HDFCGOLD-ALL-N.csv",
+    "bytes": 179671,
+    "sha256": "B4F88AD9135F942DDD6E695E7B708C6A10AF1DA957AE3646C5474CF6E6A6C0D4",
+    "archive_identity": {
+      "isin": "INF179KC1981",
+      "scheme_code": "113049",
+      "historical_symbol": "HDFCMFGETF",
+      "current_symbol": "HDFCGOLD",
+      "identity_sources": [
+        "https://archives.nseindia.com/content/circulars/CML57054.pdf",
+        "https://nsearchives.nseindia.com/content/circulars/CML72944.pdf"
+      ]
+    },
+    "symbol_transitions_in_file": [
+      {
+        "effective_date_in_observed_rows": "2023-06-16",
+        "from": "HDFCMFGETF",
+        "to": "HDFCGOLD"
+      }
+    ]
+  },
+  "amfi_comparison_input": {
+    "source_class": "official AMFI scheme-specific historical NAV observations, normalized in retained repo artifact",
+    "repo_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_113049_daily.csv",
+    "sha256": "66B5253E897A89FB0BFFF1A44E83BC909C31373040389A32A561B5DBDDD3EF0B",
+    "scheme_code": "113049",
+    "isin": "INF179KC1981",
+    "coverage": {
+      "first_date": "2015-01-01",
+      "last_date": "2026-10-30",
+      "observations": 2918
+    },
+    "normalization_note": "The retained AMFI series shows a 100x level discontinuity between 2021-02-19 and 2021-02-22. Its corporate-action/normalization cause is not established by this audit. The NSE comparison begins 2021-11-08, after that discontinuity; no cross-discontinuity level comparison is performed here."
+  },
+  "data_quality": {
+    "nse_rows": 1241,
+    "unique_dates": 1241,
+    "duplicate_dates": [],
+    "symbol_row_counts": {
+      "HDFCGOLD": 842,
+      "HDFCMFGETF": 399
+    },
+    "series_row_counts": {
+      "EQ": 1241
+    },
+    "invalid_or_nonpositive_closes": [],
+    "max_calendar_gap_days": 5,
+    "matched_exact_date_rows": 1229,
+    "unmatched_nse_dates": [
+      "2022-10-24",
+      "2023-11-12",
+      "2024-01-20",
+      "2024-03-02",
+      "2024-05-18",
+      "2024-11-01",
+      "2025-10-21",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06"
+    ],
+    "unmatched_within_amfi_retained_coverage": [
+      "2022-10-24",
+      "2023-11-12",
+      "2024-01-20",
+      "2024-03-02",
+      "2024-05-18",
+      "2024-11-01",
+      "2025-10-21"
+    ],
+    "nse_dates_after_amfi_retained_snapshot": [
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06"
+    ],
+    "duplicate_amfi_dates_for_identity": []
+  },
+  "date_label_close_vs_reported_nav_difference": {
+    "definition": "(NSE close / same-calendar-date AMFI NAV - 1) * 100",
+    "interpretation_limit": "Dates are joined by date label only. This is not a synchronized intraday premium/discount, bid/ask spread, transaction cost, or executable price estimate.",
+    "matched_dates": 1229,
+    "median_pct": "0.058314424448178107263898800",
+    "median_absolute_pct": "0.315066332649894916758668000",
+    "p05_linear_interpolation_pct": "-1.163372223125299256942091162",
+    "p95_linear_interpolation_pct": "0.7626166678476540666091382200",
+    "min_pct": "-3.764458815989712608525926190",
+    "max_pct": "6.485328035388804582599944900",
+    "by_calendar_year": {
+      "2021": {
+        "matched_dates": 39,
+        "median_close_to_nav_difference_pct": "-0.2320511261029446165074434100",
+        "median_absolute_difference_pct": "0.2458969520215016869674615400",
+        "min_pct": "-0.6292273378424936986599452400",
+        "max_pct": "0.841758360580980163086274900"
+      },
+      "2022": {
+        "matched_dates": 247,
+        "median_close_to_nav_difference_pct": "-0.5190413139953011121641929700",
+        "median_absolute_difference_pct": "0.5396346719095386374497297500",
+        "min_pct": "-3.764458815989712608525926190",
+        "max_pct": "1.300653113830003099447674000"
+      },
+      "2023": {
+        "matched_dates": 245,
+        "median_close_to_nav_difference_pct": "-0.0693138692839992187829097300",
+        "median_absolute_difference_pct": "0.332795462882187365176024300",
+        "min_pct": "-1.900915985423027676548803310",
+        "max_pct": "1.587391437951836457440442500"
+      },
+      "2024": {
+        "matched_dates": 245,
+        "median_close_to_nav_difference_pct": "0.229638644797028468492610300",
+        "median_absolute_difference_pct": "0.296784098378489358213963400",
+        "min_pct": "-1.588418740671528595177711170",
+        "max_pct": "4.837263744033342241738018500"
+      },
+      "2025": {
+        "matched_dates": 248,
+        "median_close_to_nav_difference_pct": "0.249634178559427485020173900",
+        "median_absolute_difference_pct": "0.287223583896538301197249550",
+        "min_pct": "-1.084685635603560990998319500",
+        "max_pct": "1.258553274682306940371456500"
+      },
+      "2026": {
+        "matched_dates": 205,
+        "median_close_to_nav_difference_pct": "0.137726517034556429986049100",
+        "median_absolute_difference_pct": "0.190251656801180697989716300",
+        "min_pct": "-3.634987497671911964589285640",
+        "max_pct": "6.485328035388804582599944900"
+      }
+    },
+    "largest_absolute_differences": [
+      {
+        "date": "2026-01-21",
+        "symbol": "HDFCGOLD",
+        "close_inr": "139.57",
+        "amfi_nav_inr": "131.0697",
+        "difference_pct": "6.485328035388804582599944900",
+        "volume_units": 36645477,
+        "trade_count": 61209
+      },
+      {
+        "date": "2024-07-25",
+        "symbol": "HDFCGOLD",
+        "close_inr": "61.98",
+        "amfi_nav_inr": "59.1202",
+        "difference_pct": "4.837263744033342241738018500",
+        "volume_units": 3016091,
+        "trade_count": 5349
+      },
+      {
+        "date": "2022-03-10",
+        "symbol": "HDFCMFGETF",
+        "close_inr": "46.10",
+        "amfi_nav_inr": "47.9033",
+        "difference_pct": "-3.764458815989712608525926190",
+        "volume_units": 1617046,
+        "trade_count": 1929
+      },
+      {
+        "date": "2024-07-26",
+        "symbol": "HDFCGOLD",
+        "close_inr": "61.41",
+        "amfi_nav_inr": "59.2078",
+        "difference_pct": "3.719442370768716284003121200",
+        "volume_units": 2175845,
+        "trade_count": 6527
+      },
+      {
+        "date": "2026-02-02",
+        "symbol": "HDFCGOLD",
+        "close_inr": "121.59",
+        "amfi_nav_inr": "126.1765",
+        "difference_pct": "-3.634987497671911964589285640",
+        "volume_units": 34707705,
+        "trade_count": 122979
+      },
+      {
+        "date": "2022-03-09",
+        "symbol": "HDFCMFGETF",
+        "close_inr": "47.04",
+        "amfi_nav_inr": "48.7338",
+        "difference_pct": "-3.475616512564175172057175920",
+        "volume_units": 1516302,
+        "trade_count": 1939
+      },
+      {
+        "date": "2024-07-23",
+        "symbol": "HDFCGOLD",
+        "close_inr": "62.53",
+        "amfi_nav_inr": "60.4345",
+        "difference_pct": "3.467390315134567176033557000",
+        "volume_units": 1754082,
+        "trade_count": 5909
+      },
+      {
+        "date": "2022-03-14",
+        "symbol": "HDFCMFGETF",
+        "close_inr": "45.81",
+        "amfi_nav_inr": "47.405",
+        "difference_pct": "-3.364623984811728720599092920",
+        "volume_units": 828202,
+        "trade_count": 1591
+      },
+      {
+        "date": "2022-03-11",
+        "symbol": "HDFCMFGETF",
+        "close_inr": "46.42",
+        "amfi_nav_inr": "47.9484",
+        "difference_pct": "-3.187593329495874732003570500",
+        "volume_units": 421132,
+        "trade_count": 1148
+      },
+      {
+        "date": "2024-07-24",
+        "symbol": "HDFCGOLD",
+        "close_inr": "61.89",
+        "amfi_nav_inr": "60.0363",
+        "difference_pct": "3.087631982650496449647963000",
+        "volume_units": 6039697,
+        "trade_count": 10013
+      },
+      {
+        "date": "2026-01-20",
+        "symbol": "HDFCGOLD",
+        "close_inr": "129.40",
+        "amfi_nav_inr": "125.5364",
+        "difference_pct": "3.077673089239455647923630100",
+        "volume_units": 19181903,
+        "trade_count": 40612
+      },
+      {
+        "date": "2026-01-30",
+        "symbol": "HDFCGOLD",
+        "close_inr": "136.26",
+        "amfi_nav_inr": "140.0675",
+        "difference_pct": "-2.718332232673532404019490600",
+        "volume_units": 41711208,
+        "trade_count": 125050
+      }
+    ]
+  },
+  "qualification": {
+    "qualified": [
+      "raw NSE archive capture and byte hash",
+      "basic daily-row/date/price integrity for this five-year file",
+      "exact-date descriptive close-to-AMFI-NAV comparison over available retained overlap"
+    ],
+    "not_qualified": [
+      "historical bid/ask spread or market depth",
+      "execution costs or slippage",
+      "synchronized intraday premium/discount",
+      "investor-specific broker availability or suitability",
+      "full HDFCGOLD investability gate",
+      "G6.3 closure or investment authorization"
+    ],
+    "next_evidence_needed": [
+      "official historical quote/trade/order evidence with lawful access if execution-cost estimation is required",
+      "independent review of large close/NAV differences and their source timestamp conventions",
+      "capture/retention of official AMFI observations after 2026-10-30 if extending the matched-date window"
+    ],
+    "decision_state": "G6.3 OPEN; NO-GO / NOT YET EVALUATED"
+  }
+}
