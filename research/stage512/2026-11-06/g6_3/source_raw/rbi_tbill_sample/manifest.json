@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "captured_at_utc": "2026-11-06T12:41:37.956485+00:00",
+  "captured_at_utc": "2026-11-06T12:49:51.020412+00:00",
   "scope": "bounded official RBI source sample, archive index, and November 2025 archive form probe; not a historical series",
   "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap",
   "sources": [
@@ -17,40 +17,48 @@
       "path": "auction_notice_20261030.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 115840,
-      "sha256": "b06d7ac8d6222e2b574dfbd2a68cede1fbdf21299ec96dc5f481f4a2db5503be"
+      "bytes": 115846,
+      "sha256": "2b366c54009563f55f07e45d23b0a6b04248e0ff4c2727c9760873873c3ebd6e"
     },
     {
       "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
       "path": "full_result_20261104.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 114224,
-      "sha256": "1e6bb5b44ca71d35c011a794cfa2791b4eda0623e697370b1dd87f6bf73ca756"
+      "bytes": 114218,
+      "sha256": "304aadedab035e89e3c78bb2bb9b3714b2f00cb00c37c89f5d94ca0cc1e3c01d"
+    },
+    {
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=61683&fn=2757",
+      "path": "full_result_prid61683.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125596,
+      "sha256": "b981a61b21c1a16e28d0d7ba8cd763665acaf303c3b9a4be301aa1f395c30583"
     },
     {
       "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
       "path": "cutoff_result_20261104.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 112854,
-      "sha256": "d2fd6dce7e876f39721627aa57f03ed2a7aa829d0aa37ffd5e10fc6593aa3fa3"
+      "bytes": 111289,
+      "sha256": "b18c7a8971ca85aabaa4bc2cd3b374667734df53252c38ff0ca9fb064dc5131a"
     },
     {
       "url": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
       "path": "retail_ncb_faq.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 222080,
-      "sha256": "51c3315e8370ba13eddc4fd1154591d71033301adcd2572179eb4bb80d464b63"
+      "bytes": 222078,
+      "sha256": "d60cc90c42d5aabb7885f441fb08284fcd1dc2f6d5fcf4f4ed35fa3f7ac3592d"
     },
     {
       "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
       "path": "press_release_archive.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 154874,
-      "sha256": "c750d3a9f3b1ecba3a7b990a0be8ff928bacdcea0f358440d3af73cc67ebfd1d"
+      "bytes": 156433,
+      "sha256": "e1a030848d18708b689c09bab83ca709784a58b93913feac7f0ee8759482d384"
     },
     {
       "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
@@ -62,8 +70,8 @@
       "path": "archive_month_202511.html",
       "http_status": 200,
       "content_type": "text/html; charset=utf-8",
-      "bytes": 220667,
-      "sha256": "b538218210b1b0b0eaf0898cdc8d0f891339b169ab27521eab67eb68451ad49f"
+      "bytes": 220673,
+      "sha256": "8ee31c0440427876f91c3c19ec1e17e78f47a91c64ad61b38d1003165f261047"
     }
   ]
 }
