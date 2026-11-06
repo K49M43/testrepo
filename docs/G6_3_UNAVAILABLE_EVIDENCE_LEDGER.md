@@ -29,3 +29,7 @@ The ledger corrects the audit documentation gap but does **not** make every sour
 - CPI source manifest and raw files: `research/stage512/2026-11-06/g6_3/cpi_source_manifest_v1.json` and `source_raw/`
 - RBI acquisition audit: `research/stage512/2026-11-06/g6_3/sovereign_source_access_audit_v1.json`
 - Decision pack: `docs/G6_3_FINAL_DECISION_PACK.md`
+
+## Evidence-status update — 2026-11-06
+
+PRs #55–#58 have since captured and hash-verified the official RBI archive index, a November 2025 month response, one 26-Nov-2025 Full Auction Result, the 4-Nov-2026 auction notice/result/cut-off pages, and the relevant retail NCB FAQ/Table 218 sample. Therefore the existence of an official archive/result route is no longer classified as unacquired. The unresolved evidence item is now narrower and explicit: no complete exact-date historical notice/result panel has been acquired or reconciled to Table 218, and no dated-bond cashflow source or investor-specific retail rollover path is qualified. The retained sample and hash references are in `research/stage512/2026-11-06/g6_3/rbi_tbill_result_route_probe_v1.json` and the adjacent raw-source manifest. This update does not promote the partial sample to a continuous return series.

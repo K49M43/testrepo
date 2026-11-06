@@ -49,3 +49,7 @@ The source-by-source inventory, including exact retained failure metadata, evide
 - Official CPI and sovereign artifacts, their source URLs and hashes: `research/stage512/2026-11-06/g6_3/`.
 
 PR #48 merged as `a44d13f44a82c0ca91cd09bc9f3e5212e14d51d0`; its eight exact-head workflows passed on both PR events and eight workflows passed on merged main. The subsequent audit found that the closure pack did not include a source-by-source unavailable-evidence ledger and that the CPI checker did not parse the PIB monthly table. The issue is reopened for remediation; NO-GO remains in force. PR #49 metadata-only checks and the original merge record remain historical evidence, not acceptance of this remediation.
+
+## Evidence addendum — official RBI archive/result route (2026-11-06)
+
+After this decision-pack snapshot, PRs #55–#58 captured the RBI archive index, a November 2025 month page, and one November 26, 2025 T-bill full result with hash-verified raw bytes. This confirms a lawful official route and one historical auction-result data point. It does not supply the full Table 218 date-matched historical panel, direct GoI bond cashflows, ETF market execution inputs, personal tax/base-month confirmations, aligned joint-return history, or the required strategy comparison. Accordingly, the prior **NO-GO / NOT YET EVALUATED** disposition remains unchanged.
