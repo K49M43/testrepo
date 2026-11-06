@@ -65,5 +65,15 @@
       "bytes": 1448746,
       "sha256": "9cbc784240c92af7b34c4eafd3cd000bc479cc20c19be15fc4fb8a3f6ab4f9d1"
     }
+  ],
+  "supporting_captures": [
+    {
+      "path": "research/stage512/2026-11-02/cpi_pib_sep2026_annexure_iv_capture.csv",
+      "role": "derived_capture",
+      "source_file": "source_raw/pib_cpi_sep2026.html",
+      "bytes": 492,
+      "sha256": "06951ba930609c7b9439aafca37d9568f93b68fb9b38274133928a1a04df5777",
+      "description": "Normalized monthly combined CPI values transcribed from PIB Annexure IV, retained for independent machine comparison; not a raw source asset."
+    }
   ]
 }

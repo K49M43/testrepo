@@ -3,8 +3,8 @@
   "qualification": "PASS_SOURCE_SERIES_ONLY",
   "source_manifest": {
     "file": "cpi_source_manifest_v1.json",
-    "sha256": "1e96b4c284a64f3bbfb2990aef34773beb52eccf81d8055862c4371b4cfe66fb",
-    "bytes": 3187,
+    "sha256": "1d1864fb4d4439a743230131a1ccbb0b360accafbc431fe6678db8f46f7027af",
+    "bytes": 3754,
     "assets_verified": 7
   },
   "source": "MoSPI open CPI API, base_year 2024",
@@ -33,15 +33,15 @@
   "checks": {
     "monthly_contiguous": true,
     "duplicate_months": 0,
-    "back_series_matches_factor_0_5267_at_1_decimal": true,
-    "current_series_exactly_matches_existing_capture_at_source_precision": true,
-    "current_series_matches_pib_annexure_values": true,
+    "historical_api_back_series_directly_qualified": true,
+    "current_series_exactly_matches_pib_table_capture_and_api_at_source_precision": true,
+    "pib_html_table_copies_identical": true,
     "latest_month": "2026-09",
     "latest_is_provisional": true
   },
   "precision_and_use": {
-    "back_series_precision": "API returns a two-decimal string that matches the MoSPI linking-factor series when compared at one-decimal published CPI precision; do not treat the old-index multiplication's five decimal places as source accuracy.",
-    "current_series_precision": "two decimals as supplied by current API and MoSPI release",
+    "back_series_precision": "MoSPI API back-series values are qualified directly. The 0.5267 linking factor is a methodological cross-reference only; the prior staged legacy CSV is not used as independent numeric validation because its original observation-level source bytes were not retained in this evidence package.",
+    "current_series_precision": "two decimals as supplied by current API and MoSPI PIB release",
     "future_inflation": "not estimated; CPI observations are a historical deflator only",
     "investor_real_wealth": "blocked until investor confirms 2026 purchasing-power base month"
   },
@@ -50,13 +50,13 @@
       "file": "mospi_cpi_2024_base_linked_backseries_annexure_v.pdf",
       "bytes": 273029,
       "sha256": "7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4",
-      "manually_verified": "MoSPI Annexure V, PDF page 5: Combined linking factor 0.5267 and linked back series coverage Jan 2013-Dec 2024"
+      "manually_verified": "MoSPI Annexure V, PDF page 5: Combined linking factor 0.5267 and linked back series coverage Jan 2013-Dec 2024; method corroboration only"
     },
     {
       "file": "pib_cpi_sep2026.html",
       "bytes": 1448746,
       "sha256": "9cbc784240c92af7b34c4eafd3cd000bc479cc20c19be15fc4fb8a3f6ab4f9d1",
-      "machine_checked_anchor": "Sep 2026 combined CPI index 109.49; year-on-year inflation 5.54% (provisional)"
+      "machine_checked": "Parsed all 21 monthly combined-index values Jan 2025-Sep 2026 from each retained monthly table copy; identical copies and every value agrees with the manifest-listed comparison capture and MoSPI API"
     }
   ],
   "assets": [

@@ -1,5 +1,6 @@
 from __future__ import annotations
 import argparse, csv, hashlib, json, io
+from html.parser import HTMLParser
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from datetime import date
@@ -17,6 +18,63 @@ PIB_HTML = RAW / "pib_cpi_sep2026.html"
 OUTPUT = EVIDENCE / "cpi_qualification_v1.json"
 SOURCE_MANIFEST = EVIDENCE / "cpi_source_manifest_v1.json"
 FACTOR = Decimal("0.5267")
+
+class TableParser(HTMLParser):
+    """Extract table rows from the retained first-party PIB HTML without dependencies."""
+    def __init__(self):
+        super().__init__(); self.in_row = False; self.in_cell = False
+        self.cell = ""; self.cells = []; self.rows = []
+    def handle_starttag(self, tag, attrs):
+        if tag == "tr": self.in_row = True; self.cells = []
+        elif tag in ("td", "th") and self.in_row: self.in_cell = True; self.cell = ""
+    def handle_data(self, data):
+        if self.in_cell: self.cell += data
+    def handle_endtag(self, tag):
+        if tag in ("td", "th") and self.in_cell:
+            self.cells.append(" ".join(self.cell.split())); self.in_cell = False
+        elif tag == "tr" and self.in_row:
+            self.rows.append(self.cells); self.in_row = False
+
+class TextParser(HTMLParser):
+    def __init__(self): super().__init__(); self.parts = []
+    def handle_data(self, data):
+        if data.strip(): self.parts.append(" ".join(data.split()))
+
+MONTHS = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06",
+          "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
+
+def pib_monthly_combined_values(html: str) -> dict[str, str]:
+    parser = TableParser(); parser.feed(html)
+    copies = []; provisional_marks = []
+    rows = parser.rows
+    for i, row in enumerate(rows):
+        if len(row) < 3 or row[0] != "Rural" or row[1] != "Urban" or row[2] != "Combined":
+            continue
+        values = {}; latest_is_marked_provisional = False
+        for data in rows[i + 2:]:
+            if len(data) < 4 or not data[0]:
+                if values: break
+                continue
+            raw_label = data[0]; label = raw_label.rstrip("*")
+            try:
+                mon, year = label.split("-"); numeric_year = int(year)
+                if numeric_year < 100: numeric_year += 2000
+                key = f"{numeric_year:04d}-{MONTHS[mon]}"
+                Decimal(data[3])
+            except (ValueError, KeyError, ArithmeticError):
+                if values: break
+                continue
+            require(key not in values, f"duplicate month within PIB table: {key}")
+            values[key] = data[3]
+            if key == "2026-09": latest_is_marked_provisional = raw_label.endswith("*")
+        if values:
+            copies.append(values); provisional_marks.append(latest_is_marked_provisional)
+    require(len(copies) >= 1, "PIB monthly CPI table not found in archived HTML")
+    require(all(copy == copies[0] for copy in copies[1:]), "duplicate PIB table copies disagree")
+    require(all(provisional_marks), "PIB September 2026 monthly row lacks its provisional marker")
+    expected = list(months("2025-01", "2026-09"))
+    require(sorted(copies[0]) == expected, "PIB monthly CPI table does not cover Jan 2025-Sep 2026 contiguously")
+    return copies[0]
 
 def require(condition: bool, message: str) -> None:
     if not condition:
@@ -56,13 +114,29 @@ def validate_source_manifest() -> list[dict]:
         require(isinstance(asset.get("url"), str) and asset["url"].startswith("https://"),
                 f"source URL missing or not HTTPS: {name}")
         require(asset.get("http_status") == 200, f"source HTTP status not successful: {name}")
+    captures = manifest.get("supporting_captures", [])
+    require(isinstance(captures, list), "supporting_captures must be a list")
+    for asset in captures:
+        rel = Path(asset.get("path", ""))
+        require(rel.parts and not rel.is_absolute() and ".." not in rel.parts,
+                "supporting capture path must stay inside repository")
+        path = ROOT / rel
+        require(path.is_file(), f"supporting capture missing: {rel}")
+        require(path.stat().st_size == asset.get("bytes") and sha(path) == asset.get("sha256"),
+                f"supporting capture hash/byte mismatch: {rel}")
+        require(asset.get("role") == "derived_capture", f"supporting capture role missing: {rel}")
+    require(any(a.get("path") == str(PIB.relative_to(ROOT)).replace("\\", "/") for a in captures),
+            "PIB comparison capture is absent from the source manifest")
     return assets
 
 def make_result():
     source_assets = validate_source_manifest()
     require(LINK_PDF.read_bytes().startswith(b"%PDF-") and sha(LINK_PDF)=="7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4", "MoSPI linking annexure PDF hash/signature mismatch")
     pib_html=PIB_HTML.read_text(encoding="utf-8",errors="replace")
-    require("109.49" in pib_html and "5.54%(Provisional)" in pib_html, "PIB Sep 2026 primary release anchor missing")
+    pib_table = pib_monthly_combined_values(pib_html)
+    pib_text = TextParser(); pib_text.feed(pib_html); pib_text = " ".join(pib_text.parts)
+    require("September, 2026 (Provisional)" in pib_text and "5.54%(Provisional)" in pib_text,
+            "PIB release summary does not verify September 2026 provisional status and 5.54% YoY anchor")
     records=[]
     sources=[]
     for name in BACK_FILES + (CURRENT_FILE,):
@@ -80,23 +154,11 @@ def make_result():
     back=[indexed[k] for k in expected if k<="2024-12"]
     current=[indexed[k] for k in expected if k>="2025-01"]
     require(len(back)==144 and len(current)==21, "back/current partition count changed")
-    staged={r["month"]:r for r in csv.DictReader(STAGED.open(encoding="utf-8-sig",newline=""))}
-    require(set(staged)==set(expected), "staged CPI month coverage differs")
-    back_mismatches=[]
-    for r in back:
-        k=f"{int(r['year']):04d}-{int(r['month_code']):02d}"
-        linked=(Decimal(staged[k]["old_2012base"])*FACTOR).quantize(Decimal("0.1"),rounding=ROUND_HALF_UP)
-        if linked != Decimal(r["index"]): back_mismatches.append({"month":k,"factor_rounded_1dp":str(linked),"api_index":r["index"]})
-    require(not back_mismatches, f"back series mismatch at published 1dp precision: {back_mismatches[:4]}")
-    current_mismatches=[]
-    for r in current:
-        k=f"{int(r['year']):04d}-{int(r['month_code']):02d}"
-        if Decimal(staged[k]["index_2024base"]) != Decimal(r["index"]):
-            current_mismatches.append({"month":k,"staged":staged[k]["index_2024base"],"api":r["index"]})
-    require(not current_mismatches, f"direct current series mismatches: {current_mismatches[:4]}")
     pib={r["month"]:r for r in csv.DictReader(PIB.open(encoding="utf-8-sig",newline=""))}
-    require(set(pib)==set(k for k in expected if k>="2025-01"), "PIB CPI coverage differs from current series")
-    require(all(Decimal(pib[k]["index_2024base_combined_displayed"])==Decimal(indexed[k]["index"]) for k in pib), "PIB CPI anchor differs from API values")
+    current_keys = set(k for k in expected if k >= "2025-01")
+    require(set(pib)==current_keys, "PIB CPI capture coverage differs from current series")
+    require(set(pib_table)==current_keys, "PIB parsed table coverage differs from current series")
+    require(all(Decimal(pib[k]["index_2024base_combined_displayed"])==Decimal(indexed[k]["index"])==Decimal(pib_table[k]) for k in pib), "PIB table/capture/API CPI values disagree")
     require(pib["2026-09"]["provisional"].lower()=="true", "latest CPI release provisional flag changed")
     # Keep officially published precision explicit: history is one decimal, current is two.
     out=[]
@@ -109,9 +171,9 @@ def make_result():
     result={
         "schema_version":"1.0.0","qualification":"PASS_SOURCE_SERIES_ONLY","source_manifest":{"file":SOURCE_MANIFEST.name,"sha256":sha(SOURCE_MANIFEST),"bytes":SOURCE_MANIFEST.stat().st_size,"assets_verified":len(source_assets)},"source":"MoSPI open CPI API, base_year 2024","identity":{"state":"All India","sector":"Combined","division":"CPI (General)"},
         "coverage":{"observations":165,"start":"2013-01","end":"2026-09","back_series":{"observations":144,"start":"2013-01","end":"2024-12","identity":"Back"},"current_series":{"observations":21,"start":"2025-01","end":"2026-09","identity":"Current"}},
-        "checks":{"monthly_contiguous":True,"duplicate_months":0,"back_series_matches_factor_0_5267_at_1_decimal":True,"current_series_exactly_matches_existing_capture_at_source_precision":True,"current_series_matches_pib_annexure_values":True,"latest_month":"2026-09","latest_is_provisional":True},
-        "precision_and_use":{"back_series_precision":"API returns a two-decimal string that matches the MoSPI linking-factor series when compared at one-decimal published CPI precision; do not treat the old-index multiplication's five decimal places as source accuracy.","current_series_precision":"two decimals as supplied by current API and MoSPI release","future_inflation":"not estimated; CPI observations are a historical deflator only","investor_real_wealth":"blocked until investor confirms 2026 purchasing-power base month"},
-        "primary_release_crosschecks":[{"file":LINK_PDF.name,"bytes":LINK_PDF.stat().st_size,"sha256":sha(LINK_PDF),"manually_verified":"MoSPI Annexure V, PDF page 5: Combined linking factor 0.5267 and linked back series coverage Jan 2013-Dec 2024"},{"file":PIB_HTML.name,"bytes":PIB_HTML.stat().st_size,"sha256":sha(PIB_HTML),"machine_checked_anchor":"Sep 2026 combined CPI index 109.49; year-on-year inflation 5.54% (provisional)"}],
+        "checks":{"monthly_contiguous":True,"duplicate_months":0,"historical_api_back_series_directly_qualified":True,"current_series_exactly_matches_pib_table_capture_and_api_at_source_precision":True,"pib_html_table_copies_identical":True,"latest_month":"2026-09","latest_is_provisional":True},
+        "precision_and_use":{"back_series_precision":"MoSPI API back-series values are qualified directly. The 0.5267 linking factor is a methodological cross-reference only; the prior staged legacy CSV is not used as independent numeric validation because its original observation-level source bytes were not retained in this evidence package.","current_series_precision":"two decimals as supplied by current API and MoSPI PIB release","future_inflation":"not estimated; CPI observations are a historical deflator only","investor_real_wealth":"blocked until investor confirms 2026 purchasing-power base month"},
+        "primary_release_crosschecks":[{"file":LINK_PDF.name,"bytes":LINK_PDF.stat().st_size,"sha256":sha(LINK_PDF),"manually_verified":"MoSPI Annexure V, PDF page 5: Combined linking factor 0.5267 and linked back series coverage Jan 2013-Dec 2024; method corroboration only"},{"file":PIB_HTML.name,"bytes":PIB_HTML.stat().st_size,"sha256":sha(PIB_HTML),"machine_checked":"Parsed all 21 monthly combined-index values Jan 2025-Sep 2026 from each retained monthly table copy; identical copies and every value agrees with the manifest-listed comparison capture and MoSPI API"}],
         "assets":sources+[{"file":"cpi_mospi_api_combined_general_2013_2026.csv","sha256":hashlib.sha256(normalized_bytes).hexdigest(),"bytes":len(normalized_bytes),"observations":len(out)}]
     }
     return result, normalized_bytes
@@ -127,6 +189,6 @@ def main():
     else:
         NORMALIZED.write_bytes(normalized_bytes)
         OUTPUT.write_bytes(rendered)
-    print("PASS: 165 contiguous CPI observations; 144 linked back-series matches at one-decimal precision; 21 current-series records match capture exactly; latest Sep 2026 provisional")
+    print("PASS: 165 contiguous MoSPI API observations; 21 current-series values also match parsed PIB tables/capture; latest Sep 2026 provisional")
 if __name__=="__main__": main()
 
