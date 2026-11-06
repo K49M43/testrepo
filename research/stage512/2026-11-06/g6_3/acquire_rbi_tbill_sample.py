@@ -16,6 +16,7 @@ SOURCES = {
     "table218_20260731.html": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
     "auction_notice_20261030.html": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895",
     "full_result_20261104.html": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
+    "full_result_prid61683.html": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=61683&fn=2757",
     "cutoff_result_20261104.html": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
     "retail_ncb_faq.html": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
     "press_release_archive.html": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
