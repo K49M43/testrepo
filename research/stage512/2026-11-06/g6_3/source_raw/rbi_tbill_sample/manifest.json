@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-06T11:58:45.038170+00:00",
+  "scope": "bounded official RBI T-bill source sample; not a historical series",
+  "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap",
+  "sources": [
+    {
+      "url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
+      "path": "table218_20260731.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 82629,
+      "sha256": "ed8de2dc2e83363e40c1cbb3e8e025f50c451b555bd7cbd2810d456255723f3c"
+    },
+    {
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895",
+      "path": "auction_notice_20261030.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 114281,
+      "sha256": "10a4a7db64dbf071ed866ab38166834670d7fe0e35f16fc259d1d6fb1dde092d"
+    },
+    {
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
+      "path": "full_result_20261104.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 114224,
+      "sha256": "1e6bb5b44ca71d35c011a794cfa2791b4eda0623e697370b1dd87f6bf73ca756"
+    },
+    {
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
+      "path": "cutoff_result_20261104.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 112848,
+      "sha256": "b7741653b9d8aecafb0d951fd837c1d59023a5854c0ecdeb578e3aca5e26671a"
+    },
+    {
+      "url": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+      "path": "retail_ncb_faq.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 220519,
+      "sha256": "d5524283b86c200958586c645885cf5860bb2e58dc620ad2f5ebb28b04129a56"
+    }
+  ]
+}
