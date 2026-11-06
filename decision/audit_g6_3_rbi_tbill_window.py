@@ -106,13 +106,24 @@ def result(body):
             c = (prices[0], yields[0])
             if len(prices) >= 3 and len(yields) >= 3:
                 c = tuple(x for pair in zip(prices[:3], yields[:3]) for x in pair)
-    w = re.search(r"weighted average price/yield\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)", t)
+    w_head = re.search(r"weighted average price(?:\s*\([^)]*\))?\s*/\s*yield\s+(.*?)(?=\s+vii\.\s)", t)
+    w = None
+    if w_head:
+        values = w_head.group(1)
+        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", values.split("(way:", 1)[0])
+        yields = re.findall(r"way:\s*([\d.]+)%", values)
+        if prices and yields:
+            w = (prices[0], yields[0])
+            if len(prices) >= 3 and len(yields) >= 3:
+                w = tuple(v for pair in zip(prices[:3], yields[:3]) for v in pair)
     if c:
         out.update({"cutoff_price_91": c[0], "cutoff_yield_91": c[1]})
         if len(c) >= 6:
             out.update({"cutoff_price_182": c[2], "cutoff_yield_182": c[3], "cutoff_price_364": c[4], "cutoff_yield_364": c[5]})
     if w:
-        out.update({"weighted_price_91": w.group(1), "weighted_price_182": w.group(2), "weighted_price_364": w.group(3), "weighted_yield_91": w.group(4), "weighted_yield_182": w.group(5), "weighted_yield_364": w.group(6)})
+        out.update({"weighted_price_91": w[0], "weighted_yield_91": w[1]})
+        if len(w) >= 6:
+            out.update({"weighted_price_182": w[2], "weighted_yield_182": w[3], "weighted_price_364": w[4], "weighted_yield_364": w[5]})
     return out
 
 

@@ -233,14 +233,25 @@ def result_data(body: bytes) -> dict[str, str]:
             cutoff = (prices[0], yields[0])
             if len(prices) >= 3 and len(yields) >= 3:
                 cutoff = tuple(value for pair in zip(prices[:3], yields[:3]) for value in pair)
-    weighted = re.search(r"weighted average price/yield\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)\s+\(way:\s*([\d.]+)%\)", text)
+    weighted_head = re.search(r"weighted average price(?:\s*\([^)]*\))?\s*/\s*yield\s+(.*?)(?=\s+vii\.\s)", text)
+    weighted = None
+    if weighted_head:
+        section = weighted_head.group(1)
+        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", section.split("(way:", 1)[0])
+        yields = re.findall(r"way:\s*([\d.]+)%", section)
+        if prices and yields:
+            weighted = (prices[0], yields[0])
+            if len(prices) >= 3 and len(yields) >= 3:
+                weighted = tuple(value for pair in zip(prices[:3], yields[:3]) for value in pair)
     out = {"result_date": result_date}
     if cutoff:
         out.update({"cutoff_price_91": cutoff[0], "cutoff_yield_91": cutoff[1]})
         if len(cutoff) >= 6:
             out.update({"cutoff_price_182": cutoff[2], "cutoff_yield_182": cutoff[3], "cutoff_price_364": cutoff[4], "cutoff_yield_364": cutoff[5]})
     if weighted:
-        out.update({"weighted_price_91": weighted.group(1), "weighted_price_182": weighted.group(2), "weighted_price_364": weighted.group(3), "weighted_yield_91": weighted.group(4), "weighted_yield_182": weighted.group(5), "weighted_yield_364": weighted.group(6)})
+        out.update({"weighted_price_91": weighted[0], "weighted_yield_91": weighted[1]})
+        if len(weighted) >= 6:
+            out.update({"weighted_price_182": weighted[2], "weighted_yield_182": weighted[3], "weighted_price_364": weighted[4], "weighted_yield_364": weighted[5]})
     return out
 
 
