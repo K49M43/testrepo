@@ -15,6 +15,7 @@ EXPECTED = {
     "cutoff_result_20261104.html": ("cut-off price", "98.5511"),
     "retail_ncb_faq.html": ("weighted average", "non-competitive"),
     "press_release_archive.html": ("press release", "treasury bills", "2025"),
+    "archive_month_202511.html": ("treasury bills", "2025"),
 }
 
 
@@ -39,6 +40,9 @@ def main() -> None:
     records = {item["path"]: item for item in manifest["sources"]}
     if set(records) != set(EXPECTED):
         raise SystemExit(f"manifest file set mismatch: {sorted(records)}")
+    month = records["archive_month_202511.html"]
+    if month.get("method") != "POST" or month.get("parameters") != {"hdnYear": "2025", "hdnMonth": "10"}:
+        raise SystemExit("archive month request metadata mismatch")
     results = []
     for filename, snippets in EXPECTED.items():
         path = CAPTURE / filename

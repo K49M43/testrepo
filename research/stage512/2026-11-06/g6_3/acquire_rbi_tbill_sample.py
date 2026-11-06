@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import hashlib
+import http.cookiejar
 import json
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
+from html.parser import HTMLParser
 from pathlib import Path
 
 OUT = Path("rbi_tbill_capture")
@@ -37,9 +40,61 @@ def fetch(url: str) -> tuple[bytes, str, int]:
     raise RuntimeError(f"unreachable fetch state: {url}")
 
 
+
+class ArchiveForm(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.active = False
+        self.action = ""
+        self.fields = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "form" and not self.action:
+            self.active = True
+            self.action = a.get("action", "")
+        elif self.active and tag == "input":
+            name = a.get("name", "")
+            kind = (a.get("type", "text") or "text").lower()
+            if name and kind in {"hidden", "text", "submit"}:
+                self.fields.append((name, a.get("value", "")))
+
+    def handle_endtag(self, tag):
+        if tag == "form" and self.active:
+            self.active = False
+
+
+def capture_archive_month():
+    url = "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757"
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    headers = {"User-Agent": "G6.3-public-source-evidence/1.0", "Accept": "text/html,*/*"}
+    with opener.open(urllib.request.Request(url, headers=headers), timeout=30) as response:
+        initial = response.read(MAX_BYTES + 1)
+    if not initial or len(initial) > MAX_BYTES:
+        raise RuntimeError("invalid RBI archive form response")
+    form = ArchiveForm()
+    form.feed(initial.decode("utf-8", errors="replace"))
+    if not form.action or not any(k == "__VIEWSTATE" for k, _ in form.fields):
+        raise RuntimeError("RBI archive standard form state missing")
+    values = dict(form.fields)
+    values.update({"hdnYear": "2025", "hdnMonth": "10", "ddlGSA": "0", "ddlRDSSGB": "0"})
+    time.sleep(2)
+    action = urllib.parse.urljoin(url, form.action)
+    data = urllib.parse.urlencode(values).encode("ascii")
+    request = urllib.request.Request(action, data=data, headers={**headers, "Content-Type": "application/x-www-form-urlencoded", "Referer": url}, method="POST")
+    with opener.open(request, timeout=30) as response:
+        body = response.read(MAX_BYTES + 1)
+        content_type, status = response.headers.get("Content-Type", ""), response.status
+    if status != 200 or not body or len(body) > MAX_BYTES or body == initial:
+        raise RuntimeError("RBI archive month form failed or returned unfiltered page")
+    name = "archive_month_202511.html"
+    (OUT / name).write_bytes(body)
+    return {"url": action, "method": "POST", "parameters": {"hdnYear": "2025", "hdnMonth": "10"}, "path": name, "http_status": status, "content_type": content_type, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    manifest = {"schema_version": 1, "captured_at_utc": datetime.now(timezone.utc).isoformat(), "scope": "bounded official RBI T-bill source sample and archive index; not a historical series", "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap", "sources": []}
+    manifest = {"schema_version": 1, "captured_at_utc": datetime.now(timezone.utc).isoformat(), "scope": "bounded official RBI source sample, archive index, and November 2025 archive form probe; not a historical series", "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap", "sources": []}
     for index, (filename, url) in enumerate(SOURCES.items()):
         body, content_type, status = fetch(url)
         if status != 200 or not body:
@@ -52,6 +107,7 @@ def main() -> None:
         manifest["sources"].append({"url": url, "path": filename, "http_status": status, "content_type": content_type, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()})
         if index + 1 < len(SOURCES):
             time.sleep(2)
+    manifest["sources"].append(capture_archive_month())
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(manifest, indent=2, ensure_ascii=False))
 
