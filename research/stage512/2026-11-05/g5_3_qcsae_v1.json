@@ -125,8 +125,8 @@
     "research/stage512/2026-11-05/G5_3_INDEPENDENT_AUDIT.md": "39b2a33a5e973620fe20143de50c2640569cda8c1b512389228467716d9202fe",
     "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json": "e562c7a6554f16b81cd8f9a02d6bb5170f92a5831033476acdd93da8f6c3c9fa",
     "research/stage512/2026-11-05/g5_2_holdings_overlap_v1.json": "cda8d5aeb710b4f4b966140b3fc61fcc0c520e15520d8f5a9c9c6cc026980116",
-    "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json": "bb9c82320ff4db89a467aa0d315702e2f6c9bc2b61c5a4d9dab9690e758fa6a3",
-    "docs/DECISION_LOG.md": "6f5b0821da15ff5faccea1514bb4c5b527bd8e4331dd5e6020e17b2b4886f3da",
+    "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json": "6706a379fde8a93a748d87bd3737fe488ac9175ea5bf96460c0358c5f0d9d174",
+    "docs/DECISION_LOG.md": "3145af7f801ff6bbc44bddf8951b2eae1e0e1daf7816e9b0af20c7aea6e64af1",
     "research/stage59/amfi_ter_oct2026_export_latest.csv": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
     "research/stage59/amfi_ter_export_diagnostic.json": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297"
   },
@@ -149,8 +149,8 @@
   },
   "lineage_refresh_2026_11_06": {
     "reason": "G6.3 independent-audit remediation changed the dated decision log; G5.1 source fingerprints were regenerated and G5.3 artifact hashes refreshed. Historical G5 conclusions and PR evidence are preserved.",
-    "g5_1_lineage_sha256_utf8_lf": "bb9c82320ff4db89a467aa0d315702e2f6c9bc2b61c5a4d9dab9690e758fa6a3",
-    "decision_log_sha256_utf8_lf": "6f5b0821da15ff5faccea1514bb4c5b527bd8e4331dd5e6020e17b2b4886f3da",
+    "g5_1_lineage_sha256_utf8_lf": "6706a379fde8a93a748d87bd3737fe488ac9175ea5bf96460c0358c5f0d9d174",
+    "decision_log_sha256_utf8_lf": "3145af7f801ff6bbc44bddf8951b2eae1e0e1daf7816e9b0af20c7aea6e64af1",
     "g5_3_independent_audit_rerun": "PASS: decision/audit_g5_3_independent_candidate_evidence.py (2026-11-06 follow-up)"
   }
 }
