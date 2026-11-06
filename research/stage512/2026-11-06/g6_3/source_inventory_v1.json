@@ -374,7 +374,7 @@
     "cross_asset_uncertainty_and_probability"
   ],
   "new_source_leads_not_yet_acquired": {
-    "rbi_91_day_tbill": "Official RBI Table 218 and the public archive route are now captured with hashes; one 26-Nov-2025 full result confirms the 91/182/364-day weighted-average price/yield fields. A complete historical auction panel, paired contemporaneous method notices, retail allotment outcomes, and a continuous rolling issue/maturity schedule remain unqualified.",
+    "rbi_91_day_tbill": "Official RBI Table 218 is reconciled to one retained 26-Nov-2025 notice/full-result/cut-off auction pair: the 91-day cutoff yield matches at 5.3633% (Table 218 price 98.68 is the two-decimal rounding of 98.6805), while the full result reports 98.6824/5.3554% weighted-average price/yield under the notice stated multiple-price method and RBI NCB rule. This qualifies one rule-based sample price input, not an observed investor fill. The remaining historical panel, retail allotment outcomes, and continuous rolling issue/maturity schedule remain unqualified.",
     "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
     "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
     "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable."

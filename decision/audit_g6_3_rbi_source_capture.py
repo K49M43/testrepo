@@ -3,13 +3,14 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from decimal import Decimal, ROUND_HALF_UP
 from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CAPTURE = ROOT / "research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample"
 EXPECTED = {
-    "table218_20260731.html": ("table 218", "treasury bills"),
+    "table218_20260731.html": ("table 218", "treasury bills", "26-nov-2025", "27-nov-2025", "98.68", "5.3633"),
     "auction_notice_20261030.html": ("retail direct", "individual investors"),
     "full_result_20261104.html": ("weighted average price", "98.5535"),
     "full_result_prid61683.html": ("treasury bills: full auction result", "nov 26, 2025", "weighted average price/yield", "98.6824", "97.3339", "94.7696"),
@@ -36,6 +37,41 @@ def visible_text(body: bytes) -> str:
     parser.feed(body.decode("utf-8", errors="replace"))
     return re.sub(r"\s+", " ", " ".join(parser.parts)).casefold()
 
+
+
+class TableRows(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.rows: list[list[str]] = []
+        self.row: list[str] | None = None
+        self.cell: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        if tag == "tr":
+            self.row = []
+        elif tag == "td" and self.row is not None:
+            self.cell = []
+
+    def handle_data(self, data: str) -> None:
+        if self.cell is not None:
+            self.cell.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "td" and self.cell is not None and self.row is not None:
+            self.row.append(re.sub(r"\s+", " ", " ".join(self.cell)).strip())
+            self.cell = None
+        elif tag == "tr" and self.row is not None:
+            self.rows.append(self.row)
+            self.row = None
+
+
+def table_row(body: bytes, auction_date: str) -> list[str]:
+    parser = TableRows()
+    parser.feed(body.decode("utf-8", errors="replace"))
+    matches = [row for row in parser.rows if row and row[0] == auction_date]
+    if len(matches) != 1:
+        raise SystemExit(f"Table 218 must contain exactly one {auction_date} row; found {len(matches)}")
+    return matches[0]
 
 def main() -> None:
     manifest_path = CAPTURE / "manifest.json"
@@ -71,7 +107,15 @@ def main() -> None:
     for price in ("98.6805", "97.3192", "94.7692"):
         if price not in full or price not in cutoff:
             raise SystemExit(f"full-result/cut-off price cross-check mismatch: {price}")
-    print(json.dumps({"result": "PASS_RBI_SOURCE_CAPTURE_INTEGRITY_AND_HISTORICAL_PAIR", "sources": results}, indent=2))
+    t218 = table_row((CAPTURE / "table218_20260731.html").read_bytes(), "26-Nov-2025")
+    if t218[1] != "27-Nov-2025" or t218[-1] != "5.3633":
+        raise SystemExit(f"Table 218 date/yield mismatch for historical auction: {t218}")
+    rounded_cutoff = Decimal("98.6805").quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    if Decimal(t218[-2]) != rounded_cutoff or "5.3633" not in cutoff:
+        raise SystemExit(f"Table 218 and auction cut-off result mismatch: {t218}")
+    if "price based using multiple price method" not in notice or "weighted average" not in visible_text((CAPTURE / "retail_ncb_faq.html").read_bytes()):
+        raise SystemExit("historical multiple-price/retail weighted-average evidence mismatch")
+    print(json.dumps({"result": "PASS_RBI_SOURCE_CAPTURE_AND_TABLE218_HISTORICAL_PAIR", "table218_2025_11_26": t218, "sources": results}, indent=2))
 
 
 if __name__ == "__main__":
