@@ -13,6 +13,8 @@ EXPECTED = {
     "auction_notice_20261030.html": ("retail direct", "individual investors"),
     "full_result_20261104.html": ("weighted average price", "98.5535"),
     "full_result_prid61683.html": ("treasury bills: full auction result", "nov 26, 2025", "weighted average price/yield", "98.6824", "97.3339", "94.7696"),
+    "auction_notice_prid61664.html": ("auction of 91-day", "2025"),
+    "cutoff_result_prid61682.html": ("t-bill auction result", "2025"),
     "cutoff_result_20261104.html": ("cut-off price", "98.5511"),
     "retail_ncb_faq.html": ("weighted average", "non-competitive"),
     "press_release_archive.html": ("press release", "treasury bills", "2025"),
