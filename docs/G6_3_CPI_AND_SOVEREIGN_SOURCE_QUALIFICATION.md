@@ -36,10 +36,13 @@ The official [RBI Handbook of Statistics 2025–26 page](https://www.rbi.org.in/
 
 The RBI document host returned HTTP 200 but `text/html` bodies for both the advertised XLSX and PDF download URLs. Their signatures were HTML, so they are recorded as failed acquisition metadata and deliberately not retained as table data. The official rendered table page was independently inspected. No interstitial, access control, or site protection was bypassed.
 
-RBI's [Government Securities FAQ](https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711) states that retail noncompetitive bids are allotted at the weighted-average price/yield emerging from competitive bidding. Table 218 reports a cut-off price/yield, not that weighted-average allotment price. Therefore:
+RBI's [Government Securities FAQ](https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711) states that retail noncompetitive bids are allotted at the weighted-average price/yield emerging from competitive bidding. The same FAQ explains that a uniform-price auction allots successful bids at the cutoff, while a multiple-price auction allots each competitive bidder at its bid. The cutoff and NCB price are therefore conditionally equal only if that specific auction used uniform-price allocation. Table 218 does not state the auction method or publish the weighted-average successful competitive price. The retained evidence cannot establish which price applies row by row; the historic RBI statement that 91-day T-bills used uniform-price auctions is not enough to qualify 2025–26 auctions.
 
-- Table 218 is authoritative evidence about the displayed auction outcomes, but does not establish an investor's retail NCB execution price.
-- Cut-off yield cannot be substituted for the weighted-average price or treated as a realized retail return.
+The RBI FAQ also limits retail NCB to select auctions and describes a 5% allocation cap and a service charge that may be recovered by an aggregator. Those operational details, funding/refund timing, partial allotment, and a continuous sequence of issue/maturity dates all affect an investor-specific rolling path. A cutoff price alone is not a realized investment return.
+
+- Table 218 is authoritative evidence about the displayed auction outcomes, but does not establish an investor's retail NCB execution price without auction-method evidence.
+- Cutoff price may equal the NCB weighted-average price under uniform-price allocation; otherwise it must not be substituted. Table 218 alone does not identify the applicable method for its displayed rows.
+- Even a qualified auction acquisition price would not by itself establish a rolling 2036 strategy return: issue and maturity cash dates, failed/partial allotments, idle-cash funding, redemption and reinvestment, service costs, investor eligibility, and tax must also be modeled.
 - A one-year window of 50 auctions is not a long-history, fully executed 2036 rolling strategy.
 - Direct dated GoI bonds require security-specific purchase price, accrued interest, coupon dates and reinvestment, maturity/exit, tax and fees. This table does not provide those inputs.
 - Government-security fund NAV, an ETF's exchange price and a direct sovereign holding remain distinct return objects.
@@ -54,7 +57,7 @@ The exact source-path disposition and excluded acquisition hashes are in `resear
 | Investor CPI base month | **OPEN — investor confirmation required** |
 | RBI 91-day auction source identity and displayed fields | **PASS — source-page inspection only** |
 | Hash-retained RBI XLSX/PDF bytes | **FAIL — endpoint returned HTML, not the requested format** |
-| Retail T-bill executable price/return path | **OPEN — weighted-average NCB price absent from Table 218** |
+| Retail T-bill executable price/return path | **OPEN — auction method/NCB price and full investor cashflow path not established** |
 | Direct dated GoI security total-return path | **OPEN — price/cashflow/reinvestment evidence incomplete** |
 | WP1 overall / G6.3 | **OPEN / NOT READY** |
 | Investment authorization | **NO-GO** |

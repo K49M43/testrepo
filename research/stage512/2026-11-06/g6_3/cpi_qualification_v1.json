@@ -4,7 +4,8 @@
   "source_manifest": {
     "file": "cpi_source_manifest_v1.json",
     "sha256": "1e96b4c284a64f3bbfb2990aef34773beb52eccf81d8055862c4371b4cfe66fb",
-    "bytes": 3187
+    "bytes": 3187,
+    "assets_verified": 7
   },
   "source": "MoSPI open CPI API, base_year 2024",
   "identity": {

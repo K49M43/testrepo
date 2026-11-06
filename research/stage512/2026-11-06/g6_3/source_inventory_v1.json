@@ -331,6 +331,8 @@
       "common_months": 57,
       "first": "2022-02",
       "last": "2026-10",
+      "alignment_basis": "calendar-month labels only; exact observation-date endpoints are not checked",
+      "eligible_for_joint_return_statistics": false,
       "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
     },
     {
@@ -343,6 +345,8 @@
       "common_months": 48,
       "first": "2022-11",
       "last": "2026-10",
+      "alignment_basis": "calendar-month labels only; exact observation-date endpoints are not checked",
+      "eligible_for_joint_return_statistics": false,
       "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
     },
     {
@@ -356,6 +360,8 @@
       "common_months": 24,
       "first": "2024-11",
       "last": "2026-10",
+      "alignment_basis": "calendar-month labels only; exact observation-date endpoints are not checked",
+      "eligible_for_joint_return_statistics": false,
       "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"
     }
   ],
@@ -371,7 +377,7 @@
     "rbi_91_day_tbill": "Official RBI Handbook Table 218 provides auction/issue dates and cutoff prices/yields through 2026-06-24 in the 2025-26 edition; actual retail NCB weighted-average allocation price and complete rolling issue schedule still require source confirmation.",
     "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
     "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
-    "cpi": "Original MoSPI release bytes and investor-confirmed purchasing-power base month remain unavailable."
+    "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable."
   },
   "decision_status": "NO_GO",
   "investment_authorization": "NO_GO"
