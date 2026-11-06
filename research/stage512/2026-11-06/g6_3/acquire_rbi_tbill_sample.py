@@ -15,6 +15,7 @@ SOURCES = {
     "full_result_20261104.html": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
     "cutoff_result_20261104.html": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
     "retail_ncb_faq.html": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+    "press_release_archive.html": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
 }
 MAX_BYTES = 5_000_000
 
@@ -38,7 +39,7 @@ def fetch(url: str) -> tuple[bytes, str, int]:
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    manifest = {"schema_version": 1, "captured_at_utc": datetime.now(timezone.utc).isoformat(), "scope": "bounded official RBI T-bill source sample; not a historical series", "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap", "sources": []}
+    manifest = {"schema_version": 1, "captured_at_utc": datetime.now(timezone.utc).isoformat(), "scope": "bounded official RBI T-bill source sample and archive index; not a historical series", "request_policy": "sequential; 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB response cap", "sources": []}
     for index, (filename, url) in enumerate(SOURCES.items()):
         body, content_type, status = fetch(url)
         if status != 200 or not body:
