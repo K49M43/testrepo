@@ -46,4 +46,4 @@ As an explicitly illustrative sensitivity only, at 6% annual inflation for ten y
 - G6.1/G6.2: `python decision/audit_g6_deterministic_bridge.py` and `python decision/audit_g6_2_full_horizon_bridge.py`.
 - Official CPI and sovereign artifacts, their source URLs and hashes: `research/stage512/2026-11-06/g6_3/`.
 
-The exact code commit and GitHub Actions runs must be recorded after the closeout PR is merged. This pack itself does not claim that merge or any GitHub issue closure has occurred.
+PR #48 merged as `a44d13f44a82c0ca91cd09bc9f3e5212e14d51d0`; issue #44 is closed under the NO-GO fallback. Eight exact-head workflows passed on both PR events, and eight workflows passed on merged main. The merge commit has the same tree as validated PR head `f08242ab6fb68b4387363338b7019a87262bdc31`. Run IDs and post-merge audit commands are recorded in `docs/DECISION_LOG.md`.
