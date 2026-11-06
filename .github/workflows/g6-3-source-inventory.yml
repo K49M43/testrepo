@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_cpi_qualification.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_cpi_qualification.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
@@ -43,3 +45,5 @@ jobs:
         run: python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
       - name: Reconcile candidate and LIC source coverage
         run: python decision/audit_g6_3_source_inventory.py --check
+      - name: Requalify official CPI source series
+        run: python decision/audit_g6_3_cpi_qualification.py --check

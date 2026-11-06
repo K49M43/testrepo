@@ -1,0 +1,763 @@
+openapi: 3.0.1
+
+info:
+  title: API for Consumer Price Index (CPI)
+  description: >
+    Consumer Price Index (CPI) and inflation API for base years 2010, 2012 and
+    2024. Paginated records endpoint that returns a JSON envelope with a boolean
+    `statusCode` flag and a human-readable `msg`. This is an open API: the
+    bearer token is optional (requests without a token are served as guest).
+    Requests are rate-limited per IP.
+  version: 2.0.0
+
+servers:
+  - url: https://api.mospi.gov.in/
+    description: Production server
+  - url: http://10.24.89.9:5000
+    description: Internal server
+
+tags:
+  - name: Consumer Price Index and Inflation
+    description: CPI API for all base years
+
+paths:
+  /api/cpi/getCPIData:
+    get:
+      tags:
+        - Consumer Price Index and Inflation
+      summary: Get paginated CPI index and inflation records
+      operationId: getCPIData
+      description: |
+        * Required: `level` (Group or Item, case-sensitive) for base_year 2010 / 2012 or when base_year is not passed. For base_year 2024 nothing is required and `level` is not used
+        * Filters (optional) for 2010 / 2012, level=Group: series, year, month_code, state_code, sector_code, group_code, subgroup_code
+        * Filters (optional) for 2010 / 2012, level=Item: year, month_code, item_code
+        * Filters (optional) for 2024: series, year, month_code, state_code, sector_code, division_code, group_code, class_code, sub_class_code, item_code, imputation_code
+        * Without base_year, all base years 2010 / 2012 are returned together
+        * State codes and group/item codes are different for 2024 and for 2010 / 2012 (see each parameter). Codes are listed by `GET /api/cpi/getCpiFilterByLevelAndBaseYear?base_year=<year>&level=<Group|Item>`
+        * Filters accept a single code or comma-separated codes (e.g. `state_code=1,2`)
+        * Filter codes are not validated: a code that does not exist returns 200 with `No Data Found`
+      parameters:
+        - in: query
+          name: base_year
+          required: false
+          description: "Enter The Base Year (2010, 2012, 2024)"
+          schema:
+            type: string
+          example: "2024"
+
+        - in: query
+          name: level
+          required: false
+          description: "Enter The Level (Group, Item). Required for base year 2010 / 2012"
+          schema:
+            type: string
+
+        - in: query
+          name: series
+          required: false
+          description: "Enter The Series (Current, Back). Comma-separated for multiple values"
+          schema:
+            type: string
+          example: Current
+
+        - in: query
+          name: year
+          required: false
+          description: "Enter The Year. Base year 2010: 2011 - 2014, 2012: 2011 - 2025, 2024: 2013 - 2026. Comma-separated for multiple values"
+          schema:
+            type: string
+          example: "2025"
+
+        - in: query
+          name: month_code
+          required: false
+          description: "Enter The Month code (1 - 12). Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: state_code
+          required: false
+          description: "Enter The State code. Base year 2024: 1 - 37, 2010 / 2012: 1 - 36, 99. Not applied when level = Item. Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: sector_code
+          required: false
+          description: "Enter The Sector code (1 - 3). Not applied when level = Item. Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: group_code
+          required: false
+          description: "Enter The Group code. Base year 2010: 00 - 06, 2012: 0 - 7, 2024: 1 - 43. Not applied when level = Item. Comma-separated for multiple values"
+          schema:
+            type: string
+          example: "1"
+
+        - in: query
+          name: subgroup_code
+          required: false
+          description: "Enter The Subgroup code. Base year 2010: 00.99 - 06.99, 2012: 0.99 - 7.99. Not applied when level = Item. Comma-separated for multiple values"
+          schema:
+            type: string
+          example: "1.1.01"
+
+        - in: query
+          name: division_code
+          required: false
+          description: "Enter The Division code (0 - 12). Base year 2024 only. Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: class_code
+          required: false
+          description: "Enter The Class code (1 - 92). Base year 2024 only. Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: sub_class_code
+          required: false
+          description: "Enter The Sub Class code (1 - 162). Base year 2024 only. Comma-separated for multiple values"
+          schema:
+            type: string
+
+        - in: query
+          name: item_code
+          required: false
+          description: "Enter The Item code. Base year 2024: 1 - 358, 2010 / 2012: item code (e.g. 10101X, 1.1.01.1.1.01.P). Comma-separated for multiple values"
+          schema:
+            type: string
+          example: "1"
+
+        - in: query
+          name: imputation_code
+          required: false
+          description: "Enter The Imputation flag (Y, N). Base year 2024 only. Comma-separated for multiple values"
+          schema:
+            type: string
+          example: N
+
+        - in: query
+          name: limit
+          required: false
+          description: "Records per page (10 - 100). Defaults to 10"
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 100
+            default: 10
+
+        - in: query
+          name: page
+          required: false
+          description: "Page number (1-based). Defaults to 1"
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+
+        - in: query
+          name: viz_req
+          required: false
+          description: "Set to `true` to get the full filtered dataset for chart rendering"
+          schema:
+            type: boolean
+            default: false
+
+        - in: query
+          name: isView
+          required: false
+          description: "Enter `grouped` to sort rows by year, month, division, sector and state. Base year 2024 only"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: >
+            CPI records returned successfully.
+            For 2010/2012, when no rows match `data` is an empty array, `msg` is
+            `No Data Found` and `meta_data` is not returned. For 2024, `meta_data`
+            is always returned (with `totalPages` 1 when there is no data).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/CpiRecordsResponse"
+                  - $ref: "#/components/schemas/Cpi2024RecordsResponse"
+                  - $ref: "#/components/schemas/NoDataResponse"
+              examples:
+                group2012:
+                  summary: Base year 2012, Group level (base_year=2012&level=Group&series=Current&year=2025&month_code=1&state_code=99&sector_code=3&group_code=1&subgroup_code=1.1.01)
+                  value:
+                    requestId: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+                    data:
+                      - baseyear: "2012"
+                        year: 2025
+                        month: January
+                        state: All India
+                        sector: Combined
+                        group: Food and Beverages
+                        subgroup: Cereals and Products
+                        index: "199.1"
+                        inflation: "6.24"
+                        status: F
+                    meta_data:
+                      page: 1
+                      totalRecords: 1
+                      totalPages: 1
+                      recordPerPage: 10
+                    msg: Data fetched successfully
+                    statusCode: true
+                item2010:
+                  summary: Base year 2010, Item level (base_year=2010&level=Item&item_code=10101X)
+                  value:
+                    requestId: "f3a872666d99a9a8517460c353186c0fb7132a17716769aa"
+                    data:
+                      - baseyear: "2010"
+                        year: 2014
+                        month: December
+                        item: Rice
+                        index: "146.6"
+                        inflation: null
+                        status: F
+                      - baseyear: "2010"
+                        year: 2014
+                        month: November
+                        item: Rice
+                        index: "147.5"
+                        inflation: null
+                        status: F
+                    meta_data:
+                      page: 1
+                      totalRecords: 48
+                      totalPages: 5
+                      recordPerPage: 10
+                    msg: Data fetched successfully
+                    statusCode: true
+                item2024:
+                  summary: Base year 2024, item level (base_year=2024&series=Current&year=2026&month_code=1&state_code=1&sector_code=3&division_code=1&group_code=1&class_code=1&sub_class_code=1&item_code=1&imputation_code=N)
+                  value:
+                    requestId: "9edd7327e8afdf1888b5c7eea932a52462ae69f0be679fc6"
+                    data:
+                      - base_year: "2024"
+                        series: Current
+                        year: "2026"
+                        month: January
+                        state: All India
+                        sector: Combined
+                        division: Food and beverages
+                        group: Food
+                        class: Cereals and cereal products
+                        sub_class: Cereals
+                        item: Rice
+                        code: "01.1.1.1.1.01"
+                        index: "102.22"
+                        inflation: "-1.02"
+                        imputation: N
+                    meta_data:
+                      page: 1
+                      totalRecords: 1
+                      totalPages: 1
+                      recordPerPage: 10
+                    msg: Data fetched successfully
+                    statusCode: true
+                general2024:
+                  summary: Base year 2024, general index (base_year=2024)
+                  value:
+                    requestId: "1d3fd952d8f1b2d1731ce91a66e82da1393074b9f107e37a"
+                    data:
+                      - base_year: "2024"
+                        series: Current
+                        year: "2026"
+                        month: September
+                        state: All India
+                        sector: Rural
+                        division: CPI (General)
+                        group: null
+                        class: null
+                        sub_class: null
+                        item: null
+                        code: null
+                        index: "110.11"
+                        inflation: "6.08"
+                        imputation: null
+                    meta_data:
+                      page: 1
+                      totalRecords: 1445316
+                      totalPages: 144532
+                      recordPerPage: 10
+                    msg: Data fetched successfully
+                    statusCode: true
+                viz2024:
+                  summary: Base year 2024 with viz_req=true (adds month_code and weight)
+                  value:
+                    requestId: "cd08dc8fcd626fa5aa28f2b8452c742b70a1f5e0495f2e32"
+                    data:
+                      - base_year: "2024"
+                        month_code: 1
+                        series: Current
+                        year: "2026"
+                        month: January
+                        state: All India
+                        sector: Combined
+                        division: CPI (General)
+                        group: null
+                        class: null
+                        sub_class: null
+                        item: null
+                        code: null
+                        weight: "100"
+                        index: "104.45"
+                        inflation: "2.74"
+                        imputation: null
+                    meta_data:
+                      page: 1
+                      totalRecords: 13
+                      totalPages: 2
+                      recordPerPage: 10
+                    msg: Data fetched successfully
+                    statusCode: true
+                noData2012:
+                  summary: Base year 2010/2012, no matching rows (base_year=2012&level=Group&year=1999)
+                  value:
+                    requestId: "057e44eb1fe39ba1725e7051c208c37126653377e94dc74b"
+                    data: []
+                    msg: No Data Found
+                    statusCode: true
+                noData2024:
+                  summary: Base year 2024, no matching rows (base_year=2024&year=1999)
+                  value:
+                    requestId: "85532169a7d300af0a2c1eeb4f5a59e955b52c995552d827"
+                    data: []
+                    meta_data:
+                      page: 1
+                      totalRecords: 0
+                      totalPages: 1
+                      recordPerPage: 10
+                    msg: No Data Found
+                    statusCode: true
+        "400":
+          description: Missing level (2010/2012), invalid limit or page
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+                  - $ref: "#/components/schemas/LimitErrorResponse"
+              examples:
+                missingLevel:
+                  summary: level not passed for base year 2010/2012 (`received` echoes the query string)
+                  value:
+                    requestId: "beefc5763c267132035468242af0d9e5da4b7c0541f2b9d9"
+                    error: "Missing required parameters: Level"
+                    received:
+                      base_year: "2012"
+                minLimit:
+                  value:
+                    requestId: "3138ab716602f76d0ad6ef9b79a91db2a4bf22506f81016a"
+                    error: Invalid limit parameter. Minimum allowed is 10.
+                maxLimit:
+                  value:
+                    requestId: "b56045ed4bba58a4172eef2f1162db6a9f1d943559665c60"
+                    error: Limit parameter too large. Maximum allowed is 100.
+                invalidPage:
+                  summary: Negative page (page=0 is treated as 1)
+                  value:
+                    requestId: "cc69cd2523a691b44593e2f0aed66d4fa2bc1e75e7ea57d9"
+                    error: Invalid page parameter. Page must be a positive integer.
+                limitAbove200:
+                  summary: limit > 200 (global middleware, different body shape)
+                  value:
+                    success: false
+                    message: Limit cannot be greater than 200
+        "401":
+          description: >
+            A token was sent but is invalid, expired, revoked or belongs to an
+            inactive user. Omit the Authorization header to call the API as guest.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnauthorizedResponse"
+              examples:
+                invalidToken:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: Invalid token
+                    statusCode: false
+                expiredToken:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: Token expired. Please login again.
+                    statusCode: false
+                revokedToken:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: Token revoked. Please login again.
+                    statusCode: false
+                inactiveUser:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: Invalid or inactive user
+                    statusCode: false
+                invalidFormat:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: "Access Denied: Invalid Authorization format"
+                    statusCode: false
+                authenticationFailed:
+                  value:
+                    requestId: "188380ce40b32163928a67be30c993fdc36b0d54cefc3f69"
+                    msg: Authentication failed
+                    statusCode: false
+        "500":
+          description: >
+            Server error. For 2010/2012 this is also returned when `level` is not
+            exactly `Group` or `Item` (e.g. `level=group`). For 2024 the body is
+            `{ message: "Internal server error" }`.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ServerErrorResponse"
+                  - $ref: "#/components/schemas/ServerError2024Response"
+              examples:
+                invalidLevel:
+                  summary: Base year 2010/2012 with level=group (lowercase)
+                  value:
+                    requestId: "248f991cb18d4a30f619c096d97d0335b16d2783d270f28b"
+                    error: Please check the input parameters passed
+                error2024:
+                  summary: Base year 2024
+                  value:
+                    requestId: "248f991cb18d4a30f619c096d97d0335b16d2783d270f28b"
+                    message: Internal server error
+        "429":
+          description: Too many requests from the same IP (rate limit). Retry after `retryAfter` seconds.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RateLimitResponse"
+              example:
+                msg: Too many requests. Please try again after 1 minute.
+                statusCode: false
+                retryAfter: 60
+      security:
+        - {}
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Optional bearer token. Requests without a token are served as guest.
+
+  schemas:
+    MetaData:
+      type: object
+      description: >
+        Pagination details. With `viz_req=true` (2010/2012) all rows are returned,
+        but `totalPages` and `recordPerPage` are still calculated from `limit`.
+      properties:
+        page:
+          type: integer
+          example: 1
+        totalRecords:
+          type: integer
+          example: 48
+        totalPages:
+          type: integer
+          example: 5
+        recordPerPage:
+          type: integer
+          example: 10
+
+    CpiGroupRecord:
+      type: object
+      description: Base year 2010/2012, level=Group
+      properties:
+        baseyear:
+          type: string
+          example: "2012"
+        year:
+          type: string
+          example: "2025"
+        month_code:
+          type: integer
+          description: viz_req=true only
+          example: 1
+        month:
+          type: string
+          example: January
+        state:
+          type: string
+          example: All India
+        sector:
+          type: string
+          example: Combined
+        group:
+          type: string
+          example: Food and Beverages
+        subgroup:
+          type: string
+          example: Cereals and Products
+        index:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "199.1"
+        inflation:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "6.24"
+        status:
+          type: string
+          description: Release status (e.g. F = Final, P = Provisional)
+          example: F
+
+    CpiItemRecord:
+      type: object
+      description: Base year 2010/2012, level=Item
+      properties:
+        baseyear:
+          type: string
+          example: "2010"
+        year:
+          type: string
+          example: "2014"
+        month_code:
+          type: integer
+          description: viz_req=true only
+          example: 12
+        month:
+          type: string
+          example: December
+        item:
+          type: string
+          example: Rice
+        index:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "146.6"
+        inflation:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "4.25"
+        status:
+          type: string
+          example: F
+
+    Cpi2024Record:
+      type: object
+      description: >
+        Base year 2024. Levels below the row's level are null (e.g. a division
+        row has group/class/sub_class/item null). `code` is the code of the deepest
+        level. `month_code` and `weight` are returned only with `viz_req=true`.
+      properties:
+        base_year:
+          type: string
+          example: "2024"
+        month_code:
+          type: integer
+          description: viz_req=true only
+          example: 1
+        series:
+          type: string
+          example: Current
+        year:
+          type: string
+          example: "2026"
+        month:
+          type: string
+          example: January
+        state:
+          type: string
+          example: All India
+        sector:
+          type: string
+          example: Combined
+        division:
+          type: string
+          nullable: true
+          example: Food and beverages
+        group:
+          type: string
+          nullable: true
+          example: Food
+        class:
+          type: string
+          nullable: true
+          example: Cereals and cereal products
+        sub_class:
+          type: string
+          nullable: true
+          example: Cereals
+        item:
+          type: string
+          nullable: true
+          example: Rice
+        code:
+          type: string
+          nullable: true
+          example: "01.1.1.1.1.01"
+        weight:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string. viz_req=true only
+          example: "100"
+        index:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "102.22"
+        inflation:
+          type: string
+          nullable: true
+          description: Numeric value returned as a string
+          example: "-1.02"
+        imputation:
+          type: string
+          nullable: true
+          example: N
+
+    CpiRecordsResponse:
+      type: object
+      description: Base year 2010/2012
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        data:
+          type: array
+          items:
+            oneOf:
+              - $ref: "#/components/schemas/CpiGroupRecord"
+              - $ref: "#/components/schemas/CpiItemRecord"
+        meta_data:
+          $ref: "#/components/schemas/MetaData"
+        msg:
+          type: string
+          example: Data fetched successfully
+        statusCode:
+          type: boolean
+          example: true
+
+    Cpi2024RecordsResponse:
+      type: object
+      description: Base year 2024 (`meta_data` is returned even when there is no data)
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Cpi2024Record"
+        meta_data:
+          $ref: "#/components/schemas/MetaData"
+        msg:
+          type: string
+          example: Data fetched successfully
+        statusCode:
+          type: boolean
+          example: true
+
+    NoDataResponse:
+      type: object
+      description: Base year 2010/2012, no matching rows
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        data:
+          type: array
+          maxItems: 0
+          items:
+            $ref: "#/components/schemas/CpiGroupRecord"
+        msg:
+          type: string
+          example: No Data Found
+        statusCode:
+          type: boolean
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        error:
+          type: string
+          example: "Missing required parameters: Level"
+        received:
+          type: object
+          description: The query parameters that were received (missing level only)
+          additionalProperties: true
+
+    ServerErrorResponse:
+      type: object
+      description: Base year 2010/2012
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        error:
+          type: string
+          example: Please check the input parameters passed
+
+    ServerError2024Response:
+      type: object
+      description: Base year 2024
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        message:
+          type: string
+          example: Internal server error
+
+    LimitErrorResponse:
+      type: object
+      description: Returned by the global limit check when `limit` is greater than 200
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Limit cannot be greater than 200
+
+    RateLimitResponse:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: Too many requests. Please try again after 1 minute.
+        statusCode:
+          type: boolean
+          example: false
+        retryAfter:
+          type: integer
+          description: Seconds to wait before retrying
+          example: 60
+
+    UnauthorizedResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          example: "bb6d7a1ae8eac9ac32948a41e289599c33d2eeedc43ce0da"
+        msg:
+          type: string
+          example: Invalid token
+        statusCode:
+          type: boolean
+          example: false

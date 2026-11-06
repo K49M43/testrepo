@@ -1,4 +1,4 @@
-# G6.3 WP1 — Source coverage and candidate inventory
+# G6.3 WP1 â€” Source coverage and candidate inventory
 
 **As of:** 2026-11-06  
 **Disposition:** `PASS_SOURCE_INVENTORY_ONLY`; G6 decision-grade remains `NOT_READY`; investment authorization remains `NO_GO`.
@@ -15,7 +15,7 @@ The audit re-hashes the 92 immutable source/evidence assets listed in the G5.4 s
 |---|---:|---|
 | G5.4 manifest | 94 entries: 92 immutable source/evidence assets totaling 22,452,710 bytes, plus two regenerated audit reports; 0 missing and 0 immutable-source hash/byte mismatches | Raw/evidence bytes match their manifest. The reports are semantically revalidated after regeneration because their Windows/Linux newline bytes differ. This verifies integrity, not each source's investment suitability. |
 | Continuous G5 candidate NAV series | Five series; 7,353 observations total | Official AMFI scheme NAVs. NAVs are not ETF traded prices. Coverage begins between 2015 and 2024 depending on product. |
-| LIC 8–13 Yr G-Sec scheme (AMFI code 133307) | 24/24 raw segments; 2,867 daily NAV observations from 2014-12-26 to 2026-10-30; 142 monthly returns; maximum observed date gap 12 days or less | Reproduces a long official fund-NAV history. It is a fund proxy, not ETF market price, a G-Sec total-return index, or direct sovereign-bond cashflow. |
+| LIC 8â€“13 Yr G-Sec scheme (AMFI code 133307) | 24/24 raw segments; 2,867 daily NAV observations from 2014-12-26 to 2026-10-30; 142 monthly returns; maximum observed date gap 12 days or less | Reproduces a long official fund-NAV history. It is a fund proxy, not ETF market price, a G-Sec total-return index, or direct sovereign-bond cashflow. |
 | LIC normalized outputs | Daily and monthly CSV hashes and rows exactly reconcile to raw segments | Reproducibility of this source transformation only. |
 | LIC factsheet anchors | 1/3/5-year CAGR differences remain below the predeclared 0.14 percentage-point tolerance | A bounded cross-check, not proof that every NAV is correct. |
 | NSE Nifty 500 TRI | 129 monthly anchors, 2015-01 through 2025-09 | Monthly anchors are not a daily total-return path. |
@@ -39,9 +39,9 @@ The ten candidate hypotheses and their detailed statuses are embedded in `source
 
 - **ETF execution:** official NAV histories and holdings do not establish exchange traded prices, bid/ask spreads, premium/discount, depth, settlement, current availability or investor access through the stated platform.
 - **Direct GoI bonds:** a bond must be modeled by dated dirty price/accrued interest, coupon cashflows, reinvestment, maturity and executable availability. The retained 7.18% security `IN0020230085` matures 2033-08-14, before the 2036 objective, so it cannot be represented as a 2036 held-to-maturity position without a reinvestment policy and replacement evidence.
-- **91-day Treasury bills:** RBI Handbook Table 218 offers official auction and issue information, but the retained evidence does not establish a complete investor-executable rolling series or retail noncompetitive-allocation price path. Auction cut-off yields cannot automatically be treated as the investor's realized price.
+- **91-day Treasury bills:** the official RBI Table 218 page exposes 50 auction records through 2026-06-24, including cut-off prices/yields and allotment quantities. The XLSX/PDF download URLs returned HTML interstitials in this environment, so raw bytes were not accepted as data. The table has no weighted-average price; RBI says retail noncompetitive allotment is at the weighted average of successful competitive bids. A rolling investor-executable return path therefore remains unqualified.
 - **CCIL historical trades and marks:** the public MTM archive distinguishes traded prices from CCIL model marks for securities without qualifying trades. Historical trade access and redistribution terms remain unresolved; no sign-in, restricted dataset or permission request was used.
-- **Inflation:** the original official MoSPI release bytes and investor-selected 2026 purchasing-power base month remain open gates. The 6% planning assumption remains a sensitivity, not a forecast.
+- **Inflation:** official CPI source qualification now passes for 165 all-India combined CPI-General observations (Jan 2013–Sep 2026); 144 linked back-series values match the official 0.5267 factor at one-decimal published precision, and 21 current values match direct MoSPI API/PIB release observations. September 2026 remains provisional. The investor-selected 2026 purchasing-power base month is still open; 6% remains a scenario, not a forecast.
 - **Instrument economics and personal suitability:** taxes by event/lot, current TER and other fees, ETF spreads, distributions/coupons, loss treatment, investor dates, tax facts, drawdown tolerance and product access remain WP2 / investor-confirmation gates.
 
 ## Official-source leads retained for bounded follow-up
@@ -55,9 +55,9 @@ These are leads only; this WP did not acquire or normalize new data from them.
 
 ## Acceptance result and next dependency
 
-**WP1 source-inventory subtask passes** because all retained source hashes and transformations audited here reconcile, the ten hypotheses remain dispositioned, joint-history limits are explicit, and blocked evidence is not promoted. **WP1 as a whole does not pass.** ETF execution inputs, direct sovereign-bond economics, T-bill rollover, original CPI bytes/base month, and sufficient validated joint histories remain unqualified.
+**WP1 source-inventory subtask passes** because all retained source hashes and transformations audited here reconcile, the ten hypotheses remain dispositioned, joint-history limits are explicit, and blocked evidence is not promoted. The CPI historical series/source gate now passes, but its investor-selected purchasing-power base month remains unconfirmed. **WP1 as a whole does not pass.** ETF execution inputs, direct sovereign-bond economics, retail T-bill rollover prices, and sufficient validated joint histories remain unqualified.
 
-Next: build a source-specific acquisition decision for each strategy that could materially affect allocation. First prioritize evidence capable of changing the decision: (1) CPI primary release and base-date confirmation route; (2) lawful and reproducible direct-GoI/T-bill total-return construction; (3) ETF market-price/execution and cost series for any candidate retained after the screen. Do not start a probability model on these short joint samples. Any sensitivity using them must be explicitly descriptive and must not be presented as 2036 success odds.
+Next: (1) obtain a hashable RBI Table 218 export through its official download or DBIE route and locate a first-party weighted-average retail-allotment price series; (2) qualify lawful direct-GoI bond price/cashflow evidence with reinvestment rules; (3) source ETF traded-price, spread/premium and cost evidence for candidates retained after screening; (4) obtain investor confirmation of the 2026 CPI purchasing-power base month. The linked/current CPI data are now source-qualified. Do not start a probability model on short joint samples. Any sensitivity using them must be explicitly descriptive and must not be presented as 2036 success odds.
 
 ## Reproduction
 
@@ -69,6 +69,14 @@ python research/stage512/2026-11-05/g5_4/audit_g5_candidate_nav_history.py --che
 python research/stage512/2026-11-05/g5_4/audit_g5_exit_acceptance.py --check
 python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
 python decision/audit_g6_3_source_inventory.py --check
+python decision/audit_g6_3_cpi_qualification.py --check
 ```
 
 The G6.3 checker reconstructs the inventory and requires byte-identical JSON. The artifact records the audit version and source evidence; no random seed is used because this is a deterministic source-validation task.
+
+
+## WP1 addendum — CPI and sovereign source qualification (2026-11-06)
+
+The exact evidence, source URLs, retrieval metadata, SHA-256 hashes, normalized CPI file and deterministic checker are in `research/stage512/2026-11-06/g6_3/`; see [`G6_3_CPI_AND_SOVEREIGN_SOURCE_QUALIFICATION.md`](G6_3_CPI_AND_SOVEREIGN_SOURCE_QUALIFICATION.md). `decision/audit_g6_3_cpi_qualification.py --check` reproduces the CPI qualification.
+
+This closes the historical CPI source-data gate only. It does not select an investor purchasing-power anchor, forecast future inflation, or make an investor-specific real-wealth output available. The RBI table identity/contents are verified on the official page, but raw machine-readable table bytes and a retail NCB price path are not. Direct dated GoI security total-return evidence remains separate from T-bills and from government-security fund NAVs. **G6.3 remains open; WP1 as a whole is not complete.**

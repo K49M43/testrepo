@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "qualification": "PASS_SOURCE_SERIES_ONLY",
+  "source_manifest": {
+    "file": "cpi_source_manifest_v1.json",
+    "sha256": "1e96b4c284a64f3bbfb2990aef34773beb52eccf81d8055862c4371b4cfe66fb",
+    "bytes": 3187
+  },
+  "source": "MoSPI open CPI API, base_year 2024",
+  "identity": {
+    "state": "All India",
+    "sector": "Combined",
+    "division": "CPI (General)"
+  },
+  "coverage": {
+    "observations": 165,
+    "start": "2013-01",
+    "end": "2026-09",
+    "back_series": {
+      "observations": 144,
+      "start": "2013-01",
+      "end": "2024-12",
+      "identity": "Back"
+    },
+    "current_series": {
+      "observations": 21,
+      "start": "2025-01",
+      "end": "2026-09",
+      "identity": "Current"
+    }
+  },
+  "checks": {
+    "monthly_contiguous": true,
+    "duplicate_months": 0,
+    "back_series_matches_factor_0_5267_at_1_decimal": true,
+    "current_series_exactly_matches_existing_capture_at_source_precision": true,
+    "current_series_matches_pib_annexure_values": true,
+    "latest_month": "2026-09",
+    "latest_is_provisional": true
+  },
+  "precision_and_use": {
+    "back_series_precision": "API returns a two-decimal string that matches the MoSPI linking-factor series when compared at one-decimal published CPI precision; do not treat the old-index multiplication's five decimal places as source accuracy.",
+    "current_series_precision": "two decimals as supplied by current API and MoSPI release",
+    "future_inflation": "not estimated; CPI observations are a historical deflator only",
+    "investor_real_wealth": "blocked until investor confirms 2026 purchasing-power base month"
+  },
+  "primary_release_crosschecks": [
+    {
+      "file": "mospi_cpi_2024_base_linked_backseries_annexure_v.pdf",
+      "bytes": 273029,
+      "sha256": "7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4",
+      "manually_verified": "MoSPI Annexure V, PDF page 5: Combined linking factor 0.5267 and linked back series coverage Jan 2013-Dec 2024"
+    },
+    {
+      "file": "pib_cpi_sep2026.html",
+      "bytes": 1448746,
+      "sha256": "9cbc784240c92af7b34c4eafd3cd000bc479cc20c19be15fc4fb8a3f6ab4f9d1",
+      "machine_checked_anchor": "Sep 2026 combined CPI index 109.49; year-on-year inflation 5.54% (provisional)"
+    }
+  ],
+  "assets": [
+    {
+      "file": "mospi_back_general_p1.json",
+      "sha256": "e4fef5c52bc74d9259100374f0efe747424df59f34fabe846a262b53141798a6",
+      "bytes": 28697,
+      "total_records": 144,
+      "page": 1,
+      "total_pages": 2
+    },
+    {
+      "file": "mospi_back_general_p2.json",
+      "sha256": "a99301d26309fe4a99720769cb0b7fc955386684d60d2cf36f9cd4f3cf87ba18",
+      "bytes": 12664,
+      "total_records": 144,
+      "page": 2,
+      "total_pages": 2
+    },
+    {
+      "file": "mospi_current_general_2025_2026.json",
+      "sha256": "586fff080bcae9aa6bcb3f97c42b09d94dbf93d891d01602efe90a7be9a1626b",
+      "bytes": 6185,
+      "total_records": 21,
+      "page": 1,
+      "total_pages": 1
+    },
+    {
+      "file": "cpi_mospi_api_combined_general_2013_2026.csv",
+      "sha256": "a5014d28f9872955174482ca94891814c2c01bf6b96f5011b98e25ffbe62b101",
+      "bytes": 12615,
+      "observations": 165
+    }
+  ]
+}
