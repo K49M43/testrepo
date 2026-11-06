@@ -290,6 +290,8 @@ def build_record() -> dict[str, Any]:
         require(common, f"no common monthly returns for {group}")
         overlaps.append({"candidates": group, "common_months": len(common),
                          "first": common[0], "last": common[-1],
+                         "alignment_basis": "calendar-month labels only; exact observation-date endpoints are not checked",
+                         "eligible_for_joint_return_statistics": False,
                          "use_limit": "SHORT_DESCRIPTIVE_HISTORY_NOT_CALIBRATED_TAIL_PROBABILITY"})
 
     readiness = read_json(G6_READINESS)
@@ -307,7 +309,7 @@ def build_record() -> dict[str, Any]:
             "rbi_91_day_tbill": "Official RBI Handbook Table 218 provides auction/issue dates and cutoff prices/yields through 2026-06-24 in the 2025-26 edition; actual retail NCB weighted-average allocation price and complete rolling issue schedule still require source confirmation.",
             "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
             "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
-            "cpi": "Original MoSPI release bytes and investor-confirmed purchasing-power base month remain unavailable.",
+            "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable.",
         },
         "decision_status": "NO_GO",
         "investment_authorization": "NO_GO",

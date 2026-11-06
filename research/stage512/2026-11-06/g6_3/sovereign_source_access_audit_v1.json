@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "qualification": "OFFICIAL_TABLE_IDENTITY_AND_FIELDS_VERIFIED; MACHINE_RAW_ACQUISITION_FAILED; INVESTOR_RETURN_SERIES_NOT_QUALIFIED",
+  "qualification": "OFFICIAL_TABLE_IDENTITY_AND_FIELDS_VERIFIED; MACHINE_RAW_ACQUISITION_FAILED; AUCTION_METHOD_UNQUALIFIED; INVESTOR_RETURN_SERIES_NOT_QUALIFIED",
   "official_handbook_page": "https://www.rbi.org.in/Scripts/AnnualPublications.aspx?head=Handbook%20of%20Statistics%20on%20Indian%20Economy",
   "official_table_page": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
   "publication_date": "2026-07-31",
@@ -42,15 +42,25 @@
   ],
   "limitations": [
     "A 200 status and .XLSX/.PDF URL did not return the requested data; returned HTML is treated as an access/interstitial failure, not as evidence.",
-    "Table 218 publishes cut-off price/yield, not the weighted-average price for retail non-competitive allotment. RBI rules state retail NCB allocation uses the weighted-average successful competitive price, unavailable from this table alone.",
+    "RBI FAQ states retail NCB uses weighted-average successful competitive price/yield and explains uniform-price versus multiple-price auction allocation. Table 218 does not include auction method or weighted-average price, so equality with cutoff is unqualified row by row.",
     "A sample spanning 50 auctions does not establish a complete multi-year rolling T-bill total-return series; no investor-specific bid/allotment/funding/fees/tax path is reconstructed.",
+    "Even a qualified cutoff/NCB acquisition price alone would omit investment cash timing, failed/partial allotment, holding to maturity, reinvestment, idle cash, service charges, eligibility and tax.",
     "This source does not qualify dated GoI bond secondary-market total-return or reinvested coupon return."
   ],
   "lawful_next_route": [
-    "Use RBI published Table 218 via the official handbook page in a normal supported browser or DBIE near-real-time table; preserve original bytes/hash and source metadata.",
-    "Find a first-party official publication of weighted-average successful auction price (or actual anonymized investor allotment records); otherwise keep retail executable price path blocked.",
-    "For dated bonds, use only lawfully accessible first-party public price/cashflow evidence or a separately authorized private data license; do not redistribute restricted CCIL data."
+    "Acquire Table 218 using the official RBI page/download or DBIE in a normally supported access path, and preserve original bytes/hash and source metadata.",
+    "For each auction, obtain an official auction notification/result identifying uniform or multiple pricing and the NCB weighted-average price; retain absent rows as blocked.",
+    "Construct rolling holdings only from dated auction, allotment, settlement, maturity/redemption and reinvestment cashflows; include lawful retail route charges and taxes.",
+    "For dated bonds, use public first-party price/cashflow data or a separately authorized private data license. CCIL public MTM may be used only within its published terms; distinguish trade prices from model marks and do not redistribute restricted data."
   ],
   "accessed_at_utc_date": "2026-11-06",
-  "retail_ncb_rule_source": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711"
+  "retail_ncb_rule_source": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+  "retail_allocation_rule": {
+    "rbi_faq_rule": "Retail NCB allotment uses weighted-average price/yield of successful competitive bids.",
+    "uniform_price_condition": "For a uniform-price auction, successful competitive bids are allotted at the cutoff; cutoff may equal the NCB weighted average.",
+    "multiple_price_condition": "For a multiple-price auction, accepted competitive bidders pay their respective bids; the NCB weighted average need not equal cutoff.",
+    "table_218_auction_method_field": false,
+    "row_level_auction_method_verified": false,
+    "conclusion": "Do not assume cutoff equals retail NCB price for any Table 218 row without row-level auction-method evidence."
+  }
 }
