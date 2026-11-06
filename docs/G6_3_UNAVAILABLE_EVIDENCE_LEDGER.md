@@ -33,3 +33,7 @@ The ledger corrects the audit documentation gap but does **not** make every sour
 ## Evidence-status update — 2026-11-06
 
 PRs #55–#58 have since captured and hash-verified the official RBI archive index, a November 2025 month response, one 26-Nov-2025 Full Auction Result, the 4-Nov-2026 auction notice/result/cut-off pages, and the relevant retail NCB FAQ/Table 218 sample. Therefore the existence of an official archive/result route is no longer classified as unacquired. The unresolved evidence item is now narrower and explicit: no complete exact-date historical notice/result panel has been acquired or reconciled to Table 218, and no dated-bond cashflow source or investor-specific retail rollover path is qualified. The retained sample and hash references are in `research/stage512/2026-11-06/g6_3/rbi_tbill_result_route_probe_v1.json` and the adjacent raw-source manifest. This update does not promote the partial sample to a continuous return series.
+
+## Historical auction-pair status update — 2026-11-06
+
+The 26-Nov-2025 sample is now paired across the auction notice, full result, cut-off result, Table 218 and RBI NCB FAQ, with exact raw-byte hashes. The method is confirmed as price-based multiple-price; the rule-based 91-day NCB input is the published weighted-average 98.6824 / 5.3554%, and Table 218/cut-off evidence cross-checks 98.68 / 5.3633%. The remaining ledger item is the broader exact-date panel and investor-specific allocation/rollover path; a single confirmed sample does not close that row.

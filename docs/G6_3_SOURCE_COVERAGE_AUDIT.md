@@ -83,3 +83,7 @@ The CPI checker has since been strengthened: it parses the PIB monthly table and
 ## Post-audit evidence update — 2026-11-06
 
 The official RBI T-bill source lead is partially acquired since this source-coverage snapshot: the public archive month form was verified for November 2025, and one linked Full Auction Result was retained with exact bytes/hash and 91/182/364-day prices/yields. This proves a reproducible source route, not a long-run rolling strategy series. All other coverage conclusions in this audit remain unchanged; no joint covariance or tail-probability use is qualified. See `G6_3_CPI_AND_SOVEREIGN_SOURCE_QUALIFICATION.md` and the manifest under `source_raw/rbi_tbill_sample/`.
+
+## Historical pair cross-check — 2026-11-06
+
+The RBI T-bill evidence now includes one matched 26-Nov-2025 auction notice/full result/cut-off result and Table 218 reconciliation. Source hashes, paired dates, auction method, weighted-average price/yield, rounded Table 218 price and exact cutoff yield are verified by the G6.3 source capture audit. This remains a single descriptive auction sample; no long-run sovereign return series or joint risk use is qualified.

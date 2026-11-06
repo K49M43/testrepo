@@ -53,3 +53,7 @@ PR #48 merged as `a44d13f44a82c0ca91cd09bc9f3e5212e14d51d0`; its eight exact-hea
 ## Evidence addendum — official RBI archive/result route (2026-11-06)
 
 After this decision-pack snapshot, PRs #55–#58 captured the RBI archive index, a November 2025 month page, and one November 26, 2025 T-bill full result with hash-verified raw bytes. This confirms a lawful official route and one historical auction-result data point. It does not supply the full Table 218 date-matched historical panel, direct GoI bond cashflows, ETF market execution inputs, personal tax/base-month confirmations, aligned joint-return history, or the required strategy comparison. Accordingly, the prior **NO-GO / NOT YET EVALUATED** disposition remains unchanged.
+
+## Historical sovereign sample update — 2026-11-06
+
+PR #60 adds one matched RBI T-bill auction cycle: notice, method, auction/settlement dates, full result, cut-off result and Table 218 all reconcile for 26-Nov-2025. This verifies one sample rule-based weighted-average NCB price input and exact source lineage. It does not establish complete historical paired coverage, actual retail fills, direct dated-bond cashflows, the strategy comparison, or an investable rolling return. Therefore the **NO-GO / NOT YET EVALUATED** conclusion is unchanged.
