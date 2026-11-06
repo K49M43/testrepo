@@ -42,3 +42,9 @@ PR #48 head `f08242ab6fb68b4387363338b7019a87262bdc31` merged as `a44d13f44a82c0
 ## Follow-up after PR #50 and bounded T-bill source investigation
 
 PR #50 merged as `09293f755074b22613736d266bf1cad28fee0615`; issue #44 remains open. A subsequent source probe found RBI’s separate auction-notice/Full Auction Result route and reproduced the 4 Nov 2026 91-day published cutoff and weighted-average yields from their prices using actual/365. The probe is one later sample only; raw bytes were not retained because the configured proxy refused the local request, so no hash or historical-panel qualification is claimed. The historical 2025–26 auction pairs and the retail cashflow/reinvestment/cost/tax path remain open.
+
+## Post-audit evidence update — 2026-11-06
+
+The earlier follow-up paragraph describes the state before raw RBI captures were available. PR #55 added a bounded official-source capture workflow; PR #56 preserved the archive index; PR #57 verified the public November 2025 year/month form; and PR #58 captured one linked historical Full Auction Result. All three latter PRs merged and their post-merge source-inventory checks passed. The retained 26-Nov-2025 result includes 91/182/364-day weighted-average prices/yields and is checked against exact source bytes and SHA-256.
+
+This resolves the source-route/raw-byte limitation for the captured sample only. It does not resolve the historical 2025–26 pair panel, the 2014–2026 sovereign return series, direct dated GoI economics, retail T-bill execution/rollover, exact common-date cross-asset returns, or any WP2–WP4 gate. G6.3 remains open and the investment status remains **NO-GO / NOT YET EVALUATED**. Current evidence is summarized in `G6_3_CPI_AND_SOVEREIGN_SOURCE_QUALIFICATION.md` and `rbi_tbill_result_route_probe_v1.json`.

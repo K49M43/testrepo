@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "record_id": "rbi-91day-tbill-official-result-route-probe-2026-11-06",
   "as_of": "2026-11-06",
-  "qualification": "OFFICIAL_PER_AUCTION_RESULT_ROUTE_CONFIRMED_SINGLE_SAMPLE; RAW_BYTES_NOT_ARCHIVED; HISTORICAL_2025_2026_PANEL_NOT_QUALIFIED",
+  "qualification": "OFFICIAL_RBI_ROUTE_CAPTURED_AND_HASH_VERIFIED_WITH_ONE_2025_HISTORICAL_RESULT; HISTORICAL_PANEL_AND_RETAIL_ROLLOVER_NOT_QUALIFIED",
   "purpose": "Determine whether RBI publishes the auction-method and weighted-average-price fields needed to qualify retail noncompetitive 91-day Treasury-bill acquisitions.",
   "primary_sources": [
     {
@@ -58,20 +58,115 @@
     }
   },
   "retrieval_and_integrity": {
-    "review_method": "Official RBI page text opened through the web research interface on 2026-11-06; the three direct RBI URLs above are retained.",
-    "raw_bytes_retained": false,
-    "sha256": null,
-    "limitation": "Local Invoke-WebRequest to the official host failed because the configured local proxy at 127.0.0.1:9 refused the connection. No attempt was made to bypass the configured network path. Web-rendered source text is not represented as hash-retained raw evidence."
+    "review_method": "Official RBI source pages captured sequentially by the bounded GitHub Actions workflow, including the public year/month form using hdnYear=2025 and hdnMonth=11. Exact response bytes, retrieval time, URL, byte count, and SHA-256 are retained in the source manifest.",
+    "raw_bytes_retained": true,
+    "sha256": "b981a61b21c1a16e28d0d7ba8cd763665acaf303c3b9a4be301aa1f395c30583",
+    "limitation": "One historical result and one current auction source chain are captured. This does not constitute the complete Table 218 date-matched panel, a continuous 91-day bill return series, or an investor-specific retail acquisition/rollover record.",
+    "sha256_scope": "Historical result sample full_result_prid61683.html; all captured files have separate hashes in the source manifest."
   },
   "decision_use": {
-    "route_feasible": "yes, per-auction notices can state method and full result releases publish weighted-average prices, auction acceptance and partial allotment fields.",
+    "route_feasible": "yes; the official public archive form can be queried by year/month, and archive result links resolve to detailed per-auction HTML with weighted-average prices/yields.",
     "historical_2025_2026_panel_qualified": false,
     "retail_execution_path_qualified": false,
     "remaining_work": [
-      "Acquire and hash each official notice and full result for the Table 218 auction dates (or an authoritative official bulk export).",
-      "Reconcile each notice/result pair to Table 218 auction and issue dates, tenor, notified/accepted amounts and price/yield fields.",
-      "Classify eligible NCB price using the contemporaneous rule and method; preserve rows without an exact pair as blocked.",
-      "Model subscription limits, partial allotment, minimum lot, settlement, maturity, reinvestment, fees, taxes and uninvested cash."
+      "Capture the full historical set of official month pages and T-bill notice/full-result pairs for the dates used; reconcile each to Table 218 or an authoritative official export.",
+      "Qualify contemporaneous auction method and the applicable retail NCB price for each auction; preserve missing, revised, cancelled, and zero-allotment cases as explicit exceptions.",
+      "Model eligible subscription, partial allotments, settlement, maturity/redemption, reinvestment, idle cash, service charges, tax, and any applicable execution constraints.",
+      "Keep direct dated GoI bond price/coupon/reinvestment inputs separate from bill and fund NAV/index observations."
     ]
-  }
+  },
+  "historical_result_sample": {
+    "result_date": "2025-11-26",
+    "release_id": "2025-2026/1567",
+    "prid": 61683,
+    "title": "Treasury Bills: Full Auction Result",
+    "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=61683&fn=2757",
+    "auction_method": "Not established for this historical auction; the contemporaneous notice/result pair has not yet been captured.",
+    "amount_unit": "₹ crore; prices per ₹100 face value; yields as published by RBI",
+    "tenors": [
+      {
+        "days": 91,
+        "cutoff_price": "98.6805",
+        "cutoff_yield_actual_365_pct": "5.3633",
+        "weighted_average_price": "98.6824",
+        "weighted_average_yield_pct": "5.3554"
+      },
+      {
+        "days": 182,
+        "cutoff_price": "97.3192",
+        "cutoff_yield_actual_365_pct": "5.5244",
+        "weighted_average_price": "97.3339",
+        "weighted_average_yield_pct": "5.4933"
+      },
+      {
+        "days": 364,
+        "cutoff_price": "94.7692",
+        "cutoff_yield_actual_365_pct": "5.5347",
+        "weighted_average_price": "94.7696",
+        "weighted_average_yield_pct": "5.5342"
+      }
+    ],
+    "raw_capture_path": "research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/full_result_prid61683.html",
+    "raw_bytes": 125596,
+    "sha256": "b981a61b21c1a16e28d0d7ba8cd763665acaf303c3b9a4be301aa1f395c30583"
+  },
+  "retained_source_manifest": "research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/manifest.json",
+  "retained_source_files": [
+    {
+      "path": "table218_20260731.html",
+      "url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
+      "http_status": 200,
+      "bytes": 82629,
+      "sha256": "ed8de2dc2e83363e40c1cbb3e8e025f50c451b555bd7cbd2810d456255723f3c"
+    },
+    {
+      "path": "auction_notice_20261030.html",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895",
+      "http_status": 200,
+      "bytes": 115846,
+      "sha256": "2b366c54009563f55f07e45d23b0a6b04248e0ff4c2727c9760873873c3ebd6e"
+    },
+    {
+      "path": "full_result_20261104.html",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63918",
+      "http_status": 200,
+      "bytes": 114218,
+      "sha256": "304aadedab035e89e3c78bb2bb9b3714b2f00cb00c37c89f5d94ca0cc1e3c01d"
+    },
+    {
+      "path": "full_result_prid61683.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=61683&fn=2757",
+      "http_status": 200,
+      "bytes": 125596,
+      "sha256": "b981a61b21c1a16e28d0d7ba8cd763665acaf303c3b9a4be301aa1f395c30583"
+    },
+    {
+      "path": "cutoff_result_20261104.html",
+      "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63917",
+      "http_status": 200,
+      "bytes": 111289,
+      "sha256": "b18c7a8971ca85aabaa4bc2cd3b374667734df53252c38ff0ca9fb064dc5131a"
+    },
+    {
+      "path": "retail_ncb_faq.html",
+      "url": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+      "http_status": 200,
+      "bytes": 222078,
+      "sha256": "d60cc90c42d5aabb7885f441fb08284fcd1dc2f6d5fcf4f4ed35fa3f7ac3592d"
+    },
+    {
+      "path": "press_release_archive.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "http_status": 200,
+      "bytes": 156433,
+      "sha256": "e1a030848d18708b689c09bab83ca709784a58b93913feac7f0ee8759482d384"
+    },
+    {
+      "path": "archive_month_202511.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "http_status": 200,
+      "bytes": 220673,
+      "sha256": "8ee31c0440427876f91c3c19ec1e17e78f47a91c64ad61b38d1003165f261047"
+    }
+  ]
 }
