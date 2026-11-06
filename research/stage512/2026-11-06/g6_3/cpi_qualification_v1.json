@@ -3,8 +3,8 @@
   "qualification": "PASS_SOURCE_SERIES_ONLY",
   "source_manifest": {
     "file": "cpi_source_manifest_v1.json",
-    "sha256": "60cbc0397542defe7bc62cfe701799a91cc89ecb39dd3c9e2a3ec859680e67f5",
-    "bytes": 3256
+    "sha256": "1e96b4c284a64f3bbfb2990aef34773beb52eccf81d8055862c4371b4cfe66fb",
+    "bytes": 3187
   },
   "source": "MoSPI open CPI API, base_year 2024",
   "identity": {
