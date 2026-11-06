@@ -8,7 +8,7 @@
 - Query selected in the public UI: Equity, `HDFCGOLD`, series `ALL`, `5Y`; displayed date window 06-Nov-2021 to 06-Nov-2026.
 - Raw download: `hdfcgold_nse_5y.csv` (179,671 bytes; SHA-256 `B4F88AD9135F942DDD6E695E7B708C6A10AF1DA957AE3646C5474CF6E6A6C0D4`).
 - Local file creation timestamp recorded at capture: 2026-11-06T17:39:43.9505271Z. This is workstation filesystem metadata, not an NSE server timestamp.
-- The file has 1,241 observations, 1,241 unique dates, 0 duplicate dates, no non-positive closes, series `EQ` on every row, and a maximum five-calendar-day interval between trading rows. It contains 399 rows under legacy symbol `HDFCMFGETF` and 842 under `HDFCGOLD`.
+- The downloaded file creation time recorded on the workstation was 2026-11-06T17:39:43.9505271Z (local filesystem metadata, not an NSE server timestamp). The file has 1,241 observations, 1,241 unique dates, 0 duplicate dates, no non-positive closes, series `EQ` on every row, and a maximum five-calendar-day interval between trading rows. It contains 399 rows under legacy symbol `HDFCMFGETF` and 842 under `HDFCGOLD`.
 - NSE circular [NSE/CML/57054](https://archives.nseindia.com/content/circulars/CML57054.pdf) records the symbol change `HDFCMFGETF` → `HDFCGOLD` effective 16-Jun-2023 for ISIN `INF179KC1981`. The observed transition date agrees. NSE's [2026 circular](https://nsearchives.nseindia.com/content/circulars/CML72944.pdf) records the later scheme-name update; it does not change the security identity used here.
 
 ## AMFI comparison
@@ -17,7 +17,7 @@ The comparison input is the retained normalized AMFI series for scheme `113049`,
 
 The retained series has an observed 100x NAV-level discontinuity from 2021-02-19 to 2021-02-22. This audit does not establish whether the cause is a corporate action or a source/normalization issue. The NSE capture starts on 2021-11-08, after that point, so the reported overlap comparison does not cross the discontinuity.
 
-Exact calendar-date matching produced 1,229 pairs. There are 12 NSE dates without an AMFI row in the retained series: seven inside its coverage window (special NSE sessions) and five after its final date (02-Nov through 06-Nov-2026). No values were forward-filled, interpolated, or otherwise imputed.
+Exact calendar-date matching produced 1,229 pairs. There are 12 NSE dates without an AMFI row in the retained series: seven inside its coverage window and five after its final date (02-Nov through 06-Nov-2026). The seven in-window missing NAV dates are not classified individually in this package. No values were forward-filled, interpolated, or otherwise imputed.
 
 The descriptive statistic is `(NSE daily close / same-date AMFI NAV - 1) × 100`. Across 1,229 matches, the median is **+0.0583%**, median absolute difference **0.3151%**, linear-interpolated 5th/95th percentiles **-1.1634% / +0.7626%**, minimum **-3.7645%** (10-Mar-2022), and maximum **+6.4853%** (21-Jan-2026).
 
@@ -39,3 +39,4 @@ python research/stage512/2026-11-06/hdfcgold_execution_evidence/audit_hdfcgold_n
 ```
 
 The committed JSON is the generated output. The script records source hashes, exact-date coverage, row checks, unmatched dates, yearly summaries, and largest absolute differences. It is a source audit and must not be read as a portfolio return, calibrated premium model, or execution-cost model.
+
