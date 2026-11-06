@@ -14,6 +14,7 @@ EXPECTED = {
     "full_result_20261104.html": ("weighted average price", "98.5535"),
     "cutoff_result_20261104.html": ("cut-off price", "98.5511"),
     "retail_ncb_faq.html": ("weighted average", "non-competitive"),
+    "press_release_archive.html": ("press release", "treasury bills", "2025"),
 }
 
 
