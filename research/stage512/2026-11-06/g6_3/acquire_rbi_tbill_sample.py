@@ -78,7 +78,7 @@ def capture_archive_month():
     if not form.action or not any(k == "__VIEWSTATE" for k, _ in form.fields):
         raise RuntimeError("RBI archive standard form state missing")
     values = dict(form.fields)
-    values.update({"hdnYear": "2025", "hdnMonth": "10", "ddlGSA": "0", "ddlRDSSGB": "0"})
+    values.update({"hdnYear": "2025", "hdnMonth": "11", "ddlGSA": "0", "ddlRDSSGB": "0"})
     time.sleep(2)
     action = urllib.parse.urljoin(url, form.action)
     data = urllib.parse.urlencode(values).encode("ascii")
@@ -90,7 +90,7 @@ def capture_archive_month():
         raise RuntimeError("RBI archive month form failed or returned unfiltered page")
     name = "archive_month_202511.html"
     (OUT / name).write_bytes(body)
-    return {"url": action, "method": "POST", "parameters": {"hdnYear": "2025", "hdnMonth": "10"}, "path": name, "http_status": status, "content_type": content_type, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}
+    return {"url": action, "method": "POST", "parameters": {"hdnYear": "2025", "hdnMonth": "11"}, "path": name, "http_status": status, "content_type": content_type, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
