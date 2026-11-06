@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "qualification": "OFFICIAL_TABLE_IDENTITY_AND_FIELDS_VERIFIED; MACHINE_RAW_ACQUISITION_FAILED; INVESTOR_RETURN_SERIES_NOT_QUALIFIED",
+  "official_handbook_page": "https://www.rbi.org.in/Scripts/AnnualPublications.aspx?head=Handbook%20of%20Statistics%20on%20Indian%20Economy",
+  "official_table_page": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=24043",
+  "publication_date": "2026-07-31",
+  "table": "Table 218: Auctions of 91-Day Government of India Treasury Bills",
+  "coverage_displayed": "2025-07-02 through 2026-06-24",
+  "rows_displayed": 50,
+  "columns": [
+    "Date of Auction",
+    "Date of Issue",
+    "Notified Amount",
+    "Bids Received (competitive and non-competitive: bid count and total face value)",
+    "Bids Accepted (competitive and non-competitive: total face value)",
+    "Total Issue",
+    "Cut-off Price",
+    "Implicit Yield at Cut-off Price"
+  ],
+  "published_yield_day_count": "actual/365",
+  "machine_download_attempts": [
+    {
+      "format": "XLSX",
+      "url": "https://rbidocs.rbi.org.in/rdocs/Publications/DOCs/218T_HBIE31072026D5086AE4949E4B9E80DEE6FC431C0761.XLSX",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 47329,
+      "sha256": "cbcb9422bc03b1a192468d326c75219679c57274617bcc86a033906e216e880d",
+      "body_signature": "<!DOCTYPE html>",
+      "source_file_retained": false
+    },
+    {
+      "format": "PDF",
+      "url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/218T_HBIE31072026D5086AE4949E4B9E80DEE6FC431C0761.PDF",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 46221,
+      "sha256": "2136543b9a18504266e18afed747e5543719dd5fbb1486fbcd2818a2a251db76",
+      "body_signature": "<!DOCTYPE html>",
+      "source_file_retained": false
+    }
+  ],
+  "limitations": [
+    "A 200 status and .XLSX/.PDF URL did not return the requested data; returned HTML is treated as an access/interstitial failure, not as evidence.",
+    "Table 218 publishes cut-off price/yield, not the weighted-average price for retail non-competitive allotment. RBI rules state retail NCB allocation uses the weighted-average successful competitive price, unavailable from this table alone.",
+    "A sample spanning 50 auctions does not establish a complete multi-year rolling T-bill total-return series; no investor-specific bid/allotment/funding/fees/tax path is reconstructed.",
+    "This source does not qualify dated GoI bond secondary-market total-return or reinvested coupon return."
+  ],
+  "lawful_next_route": [
+    "Use RBI published Table 218 via the official handbook page in a normal supported browser or DBIE near-real-time table; preserve original bytes/hash and source metadata.",
+    "Find a first-party official publication of weighted-average successful auction price (or actual anonymized investor allotment records); otherwise keep retail executable price path blocked.",
+    "For dated bonds, use only lawfully accessible first-party public price/cashflow evidence or a separately authorized private data license; do not redistribute restricted CCIL data."
+  ],
+  "accessed_at_utc_date": "2026-11-06",
+  "retail_ncb_rule_source": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711"
+}
