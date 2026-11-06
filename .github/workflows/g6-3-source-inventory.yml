@@ -1,10 +1,10 @@
 name: G6.3 WP1 source inventory
-
 on:
   push:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
       - 'decision/audit_g6_3_cpi_qualification.py'
+      - 'decision/audit_g6_3_rbi_source_capture.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
@@ -16,6 +16,7 @@ on:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
       - 'decision/audit_g6_3_cpi_qualification.py'
+      - 'decision/audit_g6_3_rbi_source_capture.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
@@ -23,10 +24,8 @@ on:
       - 'research/stage512/2026-11-06/g6_3/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
-
 permissions:
   contents: read
-
 jobs:
   source-inventory:
     runs-on: ubuntu-latest
@@ -47,3 +46,5 @@ jobs:
         run: python decision/audit_g6_3_source_inventory.py --check
       - name: Requalify official CPI source series
         run: python decision/audit_g6_3_cpi_qualification.py --check
+      - name: Verify archived RBI T-bill source bytes and identity anchors
+        run: python decision/audit_g6_3_rbi_source_capture.py
