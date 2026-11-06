@@ -9,13 +9,13 @@ The qualified series is All India / Combined / CPI (General), base 2024=100:
 
 | Segment | Official source identity | Observations | Coverage | Finding |
 |---|---|---:|---|---|
-| Linked back series | `Back` | 144 | 2013-01–2024-12 | Every observation matches the 2012-base source value multiplied by the official Combined factor 0.5267 when compared at one-decimal CPI source precision. |
-| Direct current series | `Current` | 21 | 2025-01–2026-09 | Values match both the MoSPI API export and the retained PIB monthly-release capture exactly at the source's two-decimal precision. |
+| Linked back series | `Back` | 144 | 2013-01–2024-12 | All 144 observations are directly present in the retained official MoSPI API back-series responses. The 0.5267 factor is retained as methodological context from Annexure V, not asserted as an independently reproduced numeric cross-check: the staged legacy CSV did not retain its underlying historical source bytes in this source manifest. |
+| Direct current series | `Current` | 21 | 2025-01–2026-09 | The strengthened checker parses all 21 month rows from the retained PIB release HTML; the parsed values match both the manifest-listed comparison capture and MoSPI API exactly at the source's two-decimal precision. Repeated monthly-table copies in the HTML must agree. |
 | **Total** |  | **165** | **2013-01–2026-09** | Contiguous months; no duplicates or missing months. |
 
 The first-party [MoSPI CPI API specification](https://esankhyiki.mospi.gov.in/layout/swagger_user_cpi.yaml) documents the open API and required filters. Original responses are preserved under `research/stage512/2026-11-06/g6_3/source_raw/` with URLs, retrieval times, byte counts and SHA-256 in `cpi_source_manifest_v1.json`. The qualifying executable history is `cpi_mospi_api_combined_general_2013_2026.csv`.
 
-The primary [MoSPI CPI 2024 Annexure V](https://mospi.gov.in/uploads/documents/documents/1770891066052-Annexure_V.pdf) was downloaded as a PDF and independently inspected: page 5 documents the annual-overlap linking method, Combined factor 0.5267 and back-series scope. Its hash is `7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4` (273,029 bytes). The first-party [PIB September 2026 CPI release](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2322244&lang=1&reg=3) independently shows combined index 109.49 and YoY inflation 5.54%, provisional; those facts match the direct API observation.
+The primary [MoSPI CPI 2024 Annexure V](https://mospi.gov.in/uploads/documents/documents/1770891066052-Annexure_V.pdf) was downloaded as a PDF and independently inspected: page 5 documents the annual-overlap linking method, Combined factor 0.5267 and back-series scope. Its hash is `7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4` (273,029 bytes). The first-party [PIB September 2026 CPI release](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2322244&lang=1&reg=3) monthly table is parsed programmatically across Jan 2025–Sep 2026 and cross-checked row-by-row against the retained capture and direct API observation. September 2026 is provisional.
 
 **Precision correction:** the earlier reconstructed CSV displays some historical linked values to five decimal places because it multiplied the old index by 0.5267. That is derived calculation precision, not official CPI source precision. The new normalized series retains the official API values. Do not imply extra historic precision.
 
@@ -62,4 +62,4 @@ The exact source-path disposition and excluded acquisition hashes are in `resear
 | WP1 overall / G6.3 | **OPEN / NOT READY** |
 | Investment authorization | **NO-GO** |
 
-The source-inventory WP1 subtask remains passed. This update closes the historical CPI source gate and documents a source-verified sovereign acquisition/access limitation; it does not make WP1 as a whole pass. G6.3 requires the remaining WP0–WP4 gates or a complete, decision-useful NO-GO package with each unavailable item, lawful alternative and quantified consequence. That package is not yet complete.
+The source-inventory WP1 subtask remains passed. This update closes the historical CPI source gate and documents the verified RBI acquisition limitation; it does not make WP1 as a whole pass. The independent G6.3 audit found the fallback decision pack lacked a source-by-source evidence status ledger. The remediation is documented in `G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md`; rows marked not acquired remain open evidence work, so G6.3 is still incomplete and issue #44 is reopened.
