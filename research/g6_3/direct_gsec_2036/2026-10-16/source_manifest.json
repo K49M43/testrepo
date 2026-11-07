@@ -1,0 +1,37 @@
+{
+  "parsed_observations": {
+    "settlement_date": "2026-10-19",
+    "noncompetitive_bids_accepted": 5,
+    "competitive_cutoff_ytm_percent": 7.3955,
+    "competitive_weighted_average_ytm_percent": 7.3925,
+    "security_label": "6.94% GS 2036",
+    "notified_amount_crore": 34000,
+    "noncompetitive_amount_accepted_crore": 39.291,
+    "repayment_date": "2036-05-11",
+    "auction_date": "2026-10-16",
+    "noncompetitive_bids_received": 5,
+    "auction_type": "multiple-price",
+    "competitive_cutoff_price_per_100": 96.91,
+    "competitive_weighted_average_price_per_100": 96.93
+  },
+  "schema_version": "1.0",
+  "sha256": "4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF",
+  "attachment_label": "Government Stock - Full Auction Results",
+  "source_page_url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+  "timezone": "Asia/Kolkata",
+  "limitations": [
+    "Historical primary-auction result only; not an executable current quote or guaranteed future allotment.",
+    "No security-specific notification/ISIN/coupon schedule retained in this increment.",
+    "No accrued-interest, payment fee, tax, lot cashflow, coupon-reinvestment or early-sale computation qualified.",
+    "No secondary-market quote, spread, depth or liquidity series.",
+    "No forecast, probability, covariance or investment recommendation inferred."
+  ],
+  "preserved_file": "auction_result.pdf",
+  "status": "bounded_source_capture_pass_full_direct_bond_economic_gate_open",
+  "retrieved_date": "2026-11-07",
+  "normalization": "None. Original PDF bytes preserved.",
+  "issuer": "Reserve Bank of India",
+  "byte_length": 313110,
+  "evidence_id": "G6.3-DIRECT-GSEC-AUCTION-2026-10-16",
+  "source_class": "official_primary_source"
+}
