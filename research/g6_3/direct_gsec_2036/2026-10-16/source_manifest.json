@@ -27,11 +27,31 @@
     "No forecast, probability, covariance or investment recommendation inferred."
   ],
   "preserved_file": "auction_result.pdf",
-  "status": "bounded_source_capture_pass_full_direct_bond_economic_gate_open",
+  "status": "auction_result_capture_pass_supplementary_terms_reviewed_raw_capture_open_full_direct_bond_economic_gate_open",
   "retrieved_date": "2026-11-07",
   "normalization": "None. Original PDF bytes preserved.",
   "issuer": "Reserve Bank of India",
   "byte_length": 313110,
   "evidence_id": "G6.3-DIRECT-GSEC-AUCTION-2026-10-16",
-  "source_class": "official_primary_source"
+  "source_class": "official_primary_source",
+  "supplementary_source_review": {
+    "source": "Government of India Gazette, Extraordinary, Part I Section 1, notification F.No.4(1)-B(W&M)/2026 dated 2026-06-01",
+    "url": "https://egazette.gov.in/WriteReadData/2026/273050.pdf",
+    "facts_reviewed": {
+      "coupon_dates": [
+        "May 11",
+        "November 11"
+      ],
+      "original_issue_date": "2026-05-11",
+      "coupon_percent": 6.94,
+      "maturity_redemption": "at par",
+      "maturity_date": "2036-05-11",
+      "instrument": "6.94% GS 2036",
+      "auction_terms_date": "2026-06-05"
+    },
+    "raw_bytes_preserved": false,
+    "sha256": null,
+    "qualification": "terms reviewed through official indexed text; raw-byte/hash verification still open",
+    "boundary": "June 2026 accrued-interest cutoff is not applied to the October 2026 reissue"
+  }
 }
