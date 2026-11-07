@@ -910,18 +910,18 @@
       "identity": "AMFI 113049; ISIN INF179KC1981; NSE product HDFCGOLD",
       "role": "CORE_GOLD_PRODUCT_PATH",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "decision_reason": "Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.",
+      "decision_reason": "Provides gold exposure and the longest qualified official AMFI NAV history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.; PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_HISTORY_2021-11-08_TO_2026-11-06 (not execution-cost qualification).",
       "open_gates": [
         "product inception-to-2014 history not in selected window",
-        "ETF traded-price, premium/discount, spread and liquidity",
+        "current quote, synchronized premium/discount, spread/depth, liquidity, execution costs and slippage",
         "tax, account access and suitability"
       ],
       "issuer_or_source": "HDFC Asset Management Company Ltd.",
       "market_jurisdiction_currency": "India NSE; INR; ETF",
       "inception_date": "2010-08-13",
       "point_in_time_availability": "Official AMFI scheme and TER row present through 2026-10-31; current exchange quote and investor access unverified.",
-      "return_convention": "ETF market price is needed for executable returns; AMFI Growth-option NAV is fund-value proxy and is not market price. Gold exposure.",
+      "return_convention": "Official NSE daily close-to-close market-price return series is retained for 2021-11-08 through 2026-11-06; AMFI Growth NAV is a distinct fund-value series. Historical close returns are not investor execution returns after costs.",
       "latest_ter_evidence": {
         "as_of": "2026-10-31",
         "nsdl_scheme_code": "HDFC/O/O/GET/10/06/0019",
@@ -1007,13 +1007,48 @@
         {
           "repository_path": "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
           "note": "Independent offline raw-to-normalized history audit."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_5y.csv",
+          "sha256": "b4f88ad9135f942ddd6e695e7b708c6a10af1da957ae3646c5474cf6e6a6c0d4",
+          "as_of": "2026-11-06",
+          "note": "Official NSE five-year historical daily close archive; raw bytes retained."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_amfi_bridge_v2.json",
+          "sha256": "d563e674a373c9d81027bb98e3723b26a07cee856bad4fae31d121aecbdb1aa0",
+          "as_of": "2026-11-06",
+          "note": "Reproduced exact-date comparison and price diagnostics; not synchronized premium/discount or execution cost."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/audit_hdfcgold_nse_amfi_bridge.py",
+          "sha256": "d20a0df3864cbb96319a5ff301ecf431093172b00686617def670f7459fd64b0",
+          "as_of": "2026-11-06",
+          "note": "Standard-library reproduction script."
         }
       ],
       "category": "gold",
       "instrument_or_benchmark_id": "AMFI 113049; ISIN INF179KC1981; NSE product HDFCGOLD",
       "benchmark_or_exposure": "Domestic price of physical gold",
       "exact_as_of": "AMFI TER 2026-10-31; factsheet AMFI TER 2026-10-31; HDFC factsheet 2026-09",
-      "classification_reason": "INVESTABLE is an instrument-level research label only; Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09."
+      "classification_reason": "INVESTABLE is an instrument-level research label only; Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
+      "market_price_history_evidence": {
+        "status": "PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_SERIES",
+        "source": "NSE Security-wise Archives; Equity/HDFCGOLD/ALL/5Y; download window 2021-11-06 through 2026-11-06",
+        "observed_dates_start": "2021-11-08",
+        "observed_dates_end": "2026-11-06",
+        "observations": 1241,
+        "unique_dates": 1241,
+        "source_csv_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_5y.csv",
+        "source_csv_sha256": "b4f88ad9135f942ddd6e695e7b708c6a10af1da957ae3646c5474cf6e6a6c0d4",
+        "audit_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_amfi_bridge_v2.json",
+        "audit_sha256": "d563e674a373c9d81027bb98e3723b26a07cee856bad4fae31d121aecbdb1aa0",
+        "reproduction_script_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/audit_hdfcgold_nse_amfi_bridge.py",
+        "reproduction_script_sha256": "d20a0df3864cbb96319a5ff301ecf431093172b00686617def670f7459fd64b0",
+        "symbol_continuity": "399 rows symbol HDFCMFGETF and 842 rows HDFCGOLD; series EQ throughout; same ISIN INF179KC1981",
+        "same_date_AMFI_comparison": "1,229 exact-date matches; 12 NSE dates without same-date retained NAV (7 within AMFI date coverage and 5 after 2026-10-30). Date-label differences are not synchronized premium/discounts.",
+        "boundary": "Historical exchange close series only. It does not qualify current executable quotes, bid/ask, depth, spread, slippage, market impact, fees, taxes, account access, or suitability."
+      }
     },
     {
       "candidate_id": "SBI_GILT_FUND",
