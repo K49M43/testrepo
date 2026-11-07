@@ -1,6 +1,6 @@
 # ICICI Prudential Gold and Silver ETF holdings — 30 September 2026
 
-This evidence refreshes the stale 31 March 2026 portfolio snapshots in the earlier candidate register. It qualifies only the disclosed holdings composition as of 30 September 2026.
+This evidence adds a later 30 September 2026 holdings snapshot for ICICI Gold and Silver ETF. The earlier 31 March 2026 rows remain preserved as historical evidence in the candidate register; the newer snapshot is linked separately in `research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json` under `latest_holdings_snapshot`. This qualifies disclosed composition only.
 
 ## Source and byte integrity
 
