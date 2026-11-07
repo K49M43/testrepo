@@ -7,7 +7,7 @@
       "url": "https://www.amfiindia.com/api/populate-te-rdata-revised?MF_ID=All&Month=10-2026&strCat=-1&strType=-1&excel=true",
       "bytes": 4544770,
       "sha256": "bc8293cafa6a96eed40389afaa5845d116a5c9dafaf0c46fdd7efd2c9df4a01f",
-      "retrieved_at_utc": "2026-11-05T08:51:50.315306+00:00",
+      "retrieved_at_utc": "2026-11-05T14:21:50.315306+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -16,7 +16,7 @@
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=02-Jan-2024&todt=05-Jan-2024",
       "bytes": 3687487,
       "sha256": "00d367d0d760beab6c7380c92357e8fd071c8742b6666fc7ae5957066cf55dd3",
-      "retrieved_at_utc": "2026-11-05T08:52:46.898493+00:00",
+      "retrieved_at_utc": "2026-11-05T14:22:46.898493+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -25,7 +25,7 @@
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=19-Oct-2026&todt=23-Oct-2026",
       "bytes": 4660522,
       "sha256": "8d2047469ddccdb82fda2d5f25ffbb679454f0827de58db3751a53bda4d1984f",
-      "retrieved_at_utc": "2026-11-05T08:52:53.201138+00:00",
+      "retrieved_at_utc": "2026-11-05T14:22:53.201138+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -34,7 +34,7 @@
       "url": "https://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?tp=1&frmdt=30-Oct-2026&todt=30-Oct-2026",
       "bytes": 1171489,
       "sha256": "36fdfd3cb4942c48fd5f2aa7c9041d0129c2e84f4118fd3c5536a17741d79482",
-      "retrieved_at_utc": "2026-11-05T08:52:57.973917+00:00",
+      "retrieved_at_utc": "2026-11-05T14:22:57.973917+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -43,7 +43,7 @@
       "url": "https://files.hdfcfund.com/s3fs-public/Others/2026-09/Fund%20Facts%20-%20HDFC%20NIFTY%20Gold%20ETF_Sep%2026.pdf",
       "bytes": 987231,
       "sha256": "1bd813d93af20114648889f5cb93d7ce7ae8c65382500fcc08ef7c2351bf05fc",
-      "retrieved_at_utc": "2026-11-05T08:57:15.406557+00:00",
+      "retrieved_at_utc": "2026-11-05T14:27:15.406557+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -52,7 +52,7 @@
       "url": "https://www.sbimf.com/docs/default-source/scheme-factsheets/sbi-gilt-fund-factsheet-february-2026.pdf?sfvrsn=e20ebfd9_2",
       "bytes": 460977,
       "sha256": "825773283d5bba69bcb23c0eec1ac31a487bf07de02678174a2adcab25ad739a",
-      "retrieved_at_utc": "2026-11-05T09:04:03.470784+00:00",
+      "retrieved_at_utc": "2026-11-05T14:34:03.470784+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -61,7 +61,7 @@
       "url": "https://www.sbimf.com/docs/default-source/scheme-factsheets/sbi-mf-passives-%28index-etf-fof%29-factsheet-march-2026.pdf?sfvrsn=3344d274_4",
       "bytes": 4046524,
       "sha256": "f0f39ae93ae1db4ccf222ff0fe65bf13449c2bcf703145aa1d6e79eb1ec88365",
-      "retrieved_at_utc": "2026-11-05T08:57:11.136201+00:00",
+      "retrieved_at_utc": "2026-11-05T14:27:11.136201+05:30",
       "http_status": "200 (recorded at retrieval)",
       "scope_note": "Raw response retained unchanged; Windows creation time is approximate retrieval timestamp."
     },
@@ -439,8 +439,8 @@
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json",
-      "bytes": 89072,
-      "sha256": "c58f57b77d935bc3265ba7a9575da149042467a7733e9b5ddf071dbddf1aa78f",
+      "bytes": 94714,
+      "sha256": "cd1cefd7d879f364c7fd07b0b53af12d085005e37c34c59ed929fa1ce00034dd",
       "scope_note": "retained raw AMFI response, normalized evidence, acquisition code, or independent audit artifact; see candidate history audit for field-level checks"
     },
     {
