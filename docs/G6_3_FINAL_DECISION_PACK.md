@@ -57,3 +57,10 @@ After this decision-pack snapshot, PRs #55–#58 captured the RBI archive index,
 ## Historical sovereign sample update — 2026-11-06
 
 PR #60 adds one matched RBI T-bill auction cycle: notice, method, auction/settlement dates, full result, cut-off result and Table 218 all reconcile for 26-Nov-2025. This verifies one sample rule-based weighted-average NCB price input and exact source lineage. It does not establish complete historical paired coverage, actual retail fills, direct dated-bond cashflows, the strategy comparison, or an investable rolling return. Therefore the **NO-GO / NOT YET EVALUATED** conclusion is unchanged.
+
+
+## Evidence update — candidate holdings and HDFCGOLD price history (2026-11-07)
+
+Draft PR #64 consolidates an official HDFCGOLD daily-close archive (1,241 observations, 08-Nov-2021–06-Nov-2026) and official 30-Sep-2026 ICICI Gold/Silver holdings snapshots. The G5.4 candidate disposition now links the HDFCGOLD market-price history and the two later holdings snapshots separately from prior evidence. All reported candidate-register, independent-candidate-audit, lineage and source-inventory checks pass on PR #64 head `25be95f2c03ddd85cb6ecb27fcb71572509c2c89`; the PR remains draft and unmerged.
+
+This closes only those bounded evidence increments. It does not produce a comparable execution-cost panel, direct sovereign cashflow path, after-tax candidate comparison, exact date-aligned joint history, investor-specific CPI result or calibrated probability. Official October 6.94% GS 2036 notification bytes and accrued-interest cutoff remain unqualified. The decision remains **NO-GO / NOT YET EVALUATED**.
