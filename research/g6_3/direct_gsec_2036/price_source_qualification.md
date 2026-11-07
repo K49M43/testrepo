@@ -49,3 +49,11 @@ Official sources: [NSE WDM Historical report](https://www.nseindia.com/report-de
 ### Draft rights inquiries (not sent)
 
 `nse_wdm_data_access_inquiry_draft.md` requests limited non-commercial access terms for a narrowly scoped WDM history sample. `amfi_transaction_data_rights_inquiry_draft.md` asks whether AMFI would permit a limited private export and specified non-identifying derived summaries. Neither draft represents the investor or transmits personal data. Neither request has been sent.
+
+### Bounded CCIL live-source probe — 2026-11-07
+
+CCIL's public [Tenorwise Indicative Yields](https://www.ccilindia.com/tenorwise-indicative-yields) page showed the 9Y–10Y tenor on 06-Nov-2026 assigned to 6.94% GS 2036 at 7.1816% YTM. CCIL labels this a security of indicative tenor and describes the page as indicative yield movement. It is a dated market-context observation, not an executed trade, clean/dirty price, executable bid, investor fill, or guaranteed return. It is not used in the cashflow model.
+
+The official [Volumewise Outright Trade](https://www.ccilindia.com/volumewise-outright-trade) page describes a security-wise summary of outright trades reported to CCIL for settlement and exposes trade count, volume in ₹ crore, high/low price, weighted-average price and yields. This appears to be a candidate source for the observed-market-price-history gate. CCIL's pages state that CCIL does not authorize commercial use of website data without written permission. No trade series was downloaded, hashed, retained, or republished in this increment; no authenticated trade-by-trade access was used. Rights and permitted public-repository use remain unresolved.
+
+**Result:** a public first-party route exists for a summary of settled/reported outright trade activity, but it does not itself establish retail execution conditions, bid/ask depth, actual investor access, or rights to reproduce the series. Until lawful use and exact aggregation/price-basis semantics are resolved, do not add CCIL observations to public raw-source files or use a single indicative yield as the bond's price. The current indicative observation does not change the G6.3 decision gate.
