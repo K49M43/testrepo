@@ -1,11 +1,11 @@
 {
   "record_id": "G6.3-DIRECT-GSEC-2036-DAYCOUNT-RECONCILIATION-v1",
   "finding_id": "G6.3-FINDING-DAYCOUNT-001",
-  "status": "AUCTION_NOTICE_CUTOFF_CONFIRMED; 30_360_CONVENTION_SUPPORTED; FAQ_EXAMPLE_AND_SETTLEMENT_ROUNDING_OPEN",
+  "status": "AUCTION_NOTICE_CUTOFF_CONFIRMED; 30_360_CONFIRMED_BY_AUCTION_FAQ; Q22_EXAMPLE_CONFLICT_RECORDED; EXACT_SETTLEMENT_ROUNDING_OPEN",
   "settlement_date": "2026-10-19",
   "accrual_start_last_coupon_date": "2026-05-11",
-    "accrual_end_per_notice": "2026-10-18",
-    "specific_notification_accrued_interest_due_through": "2026-10-18",
+  "accrual_end_per_notice": "2026-10-18",
+  "specific_notification_accrued_interest_due_through": "2026-10-18",
   "market_convention": "30/360",
   "official_sources": [
     {
@@ -25,6 +25,12 @@
       "document": "General Notification for Sale and Issue of Government of India Securities, 26-Mar-2025, F.No.4(2)-B(W&M)/2018",
       "url": "https://egazette.gov.in/WriteReadData/2025/261972.pdf",
       "finding": "Governs issuance together with the security-specific notice; specifies coupon payment rounding to nearest whole rupee unless otherwise stated, but does not state the day-count formula for accrued interest."
+    },
+    {
+      "publisher": "Reserve Bank of India",
+      "document": "FAQs on Non-Competitive Bidding in Government Securities, Q23",
+      "url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=13",
+      "finding": "For a price-based reissue, RBI calculates accrued interest from 19-Oct-2001 to 06-Dec-2001 as 47 days and applies 47/360. This is a primary-auction example that independently confirms 30/360 for accrued interest on a reissued dated G-Sec. The separate FAQ Q22 example remains inconsistent by one day and is retained as a source discrepancy."
     }
   ],
   "calculations": {
@@ -43,6 +49,6 @@
     "difference_per_100_inr": "0.0578333333",
     "difference_per_10000_face_inr": "5.78333333"
   },
-  "interpretation": "The retained specific Gazette notice explicitly makes accrued interest due through 18-Oct-2026 for the 19-Oct settlement. Therefore 157 days is the auction-specific 30/360 day count, and ₹3.026611 per ₹100 is the correctly dated conditional calculation. The RBI FAQ Q22 worked example remains one day inconsistent with Q25, so the result is conditional on the general 30/360 convention; exact auction settlement rounding remains unverified. AMFI table data is not relied upon because its published Terms do not authorize public retention/publication absent written permission.",
+  "interpretation": "The specific Gazette notice sets accrued interest due through 18-Oct-2026 for 19-Oct settlement. RBI primary-auction FAQ Q23 gives an explicit 30/360 accrued-interest calculation for a price-based reissue (47 days from 19-Oct through 06-Dec), independently supporting the 157-day 30/360 calculation here. The separate RBI FAQ Q22 worked example remains one day inconsistent with its own general 30/360 statement, so that discrepancy is disclosed. ₹3.026611 per ₹100 is the date-correct calculated accrual under the RBI-supported convention, not a verified final retail debit; exact settlement rounding/operational treatment remains unverified. AMFI table data is not relied upon because its published Terms do not authorize public retention/publication absent written permission.",
   "next_evidence_needed": "If exact historical auction debit/rounding is required, obtain successful bidder/aggregator settlement advice or RBI/CCIL settlement calculation. For price history, obtain written permission for AMFI transaction evidence or qualify a licensed CCIL/NSE/alternative source before downloading or publishing data."
 }
