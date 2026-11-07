@@ -11,7 +11,7 @@
       "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
       "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json"
     ],
-    "retained_immutable_source_bytes": 22452710,
+    "retained_immutable_source_bytes": 22455655,
     "missing_files": 0,
     "hash_or_byte_mismatches": 0,
     "reported_candidate_history_counts": {
@@ -294,7 +294,7 @@
       "candidate_id": "HDFC_GOLD_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.; PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_HISTORY_2021-11-08_TO_2026-11-06 (not execution-cost qualification).",
       "qualified_continuous_history": {
         "observations": 2918,
         "first": "2015-01-01",
@@ -303,7 +303,7 @@
       },
       "open_gates": [
         "product inception-to-2014 history not in selected window",
-        "ETF traded-price, premium/discount, spread and liquidity",
+        "current quote, synchronized premium/discount, spread/depth, liquidity, execution costs and slippage",
         "tax, account access and suitability"
       ]
     },
