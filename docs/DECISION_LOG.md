@@ -417,3 +417,11 @@ This log records **actual investment authorization** separately from engineering
 - **Reproduction:** actual/365 yield computed from both prices reproduces the published yields to four decimals. The source pages and fields are recorded in `research/stage512/2026-11-06/g6_3/rbi_tbill_result_route_probe_v1.json`.
 - **Limit:** this is a later, single auction outside the retained Table 218 window; local raw bytes could not be downloaded because the configured proxy refused connection. No raw hash is claimed. The historical per-auction panel and full retail cashflow path remain unqualified.
 - **Decision:** the official data route is feasible, but no T-bill return series or strategy is yet qualified; investment authorization remains NO-GO.
+
+
+## 2026-11-07 — G6.3 candidate evidence consolidated
+- **Executed:** added HDFCGOLD five-year daily NSE closes (1,241 observations) and September 2026 ICICI Gold/Silver holdings snapshots to the G5.4 candidate evidence trail. Prior holdings snapshots remain preserved.
+- **Audit:** regenerated the G6.3 source inventory and verified it against the combined evidence tree. HDFCGOLD normalization and comparison artifacts reproduced byte-for-byte using the documented output basename; ICICI workbook byte hashes and composition totals reconcile.
+- **Integration:** candidate-register, independent-candidate-audit, lineage and source-inventory checks passed on PR #64 head `25be95f2c03ddd85cb6ecb27fcb71572509c2c89`. PR #66 was closed as superseded by consolidated PR #64; PR #64 remains draft/unmerged.
+- **Limit:** HDFCGOLD daily closes are historical return evidence only; they do not establish synchronized premium/discount, bid/ask, depth, execution cost or suitability. Gold/Silver holdings snapshots do not qualify returns or risk.
+- **Next gate:** direct GoI 2036 dated settlement/cashflows remain blocked on retained official October notification bytes and verified accrued-interest cutoff. Full WP1–WP4 gates remain open; decision remains NO-GO / NOT YET EVALUATED.

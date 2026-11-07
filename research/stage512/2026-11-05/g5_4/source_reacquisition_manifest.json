@@ -439,8 +439,8 @@
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json",
-      "bytes": 89072,
-      "sha256": "c58f57b77d935bc3265ba7a9575da149042467a7733e9b5ddf071dbddf1aa78f",
+      "bytes": 97659,
+      "sha256": "1248db4f463382ca5cdc419710f5841315fa2fed3a0fea5b3a8975a47f20e7f2",
       "scope_note": "retained raw AMFI response, normalized evidence, acquisition code, or independent audit artifact; see candidate history audit for field-level checks"
     },
     {
