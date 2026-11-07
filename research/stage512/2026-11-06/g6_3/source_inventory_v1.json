@@ -11,7 +11,7 @@
       "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
       "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json"
     ],
-    "retained_immutable_source_bytes": 22455655,
+    "retained_immutable_source_bytes": 22461297,
     "missing_files": 0,
     "hash_or_byte_mismatches": 0,
     "reported_candidate_history_counts": {
@@ -217,10 +217,9 @@
       "candidate_id": "ICICI_GOLD_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
-      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here.",
+      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "qualified_continuous_history": null,
       "open_gates": [
-        "newer dated official holdings disclosure",
         "continuous official NAV history if retained in quantitative comparison",
         "ETF traded-price, spread/premium, tax and access evidence"
       ]
@@ -229,7 +228,7 @@
       "candidate_id": "ICICI_SILVER_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "qualified_continuous_history": {
         "observations": 1160,
         "first": "2022-01-25",
@@ -238,7 +237,6 @@
       },
       "open_gates": [
         "only 44 common months; no long-run covariance claim",
-        "official holdings snapshot in G5.2 is dated 2026-03-31",
         "ETF traded-price/liquidity, tax and access evidence"
       ]
     },
