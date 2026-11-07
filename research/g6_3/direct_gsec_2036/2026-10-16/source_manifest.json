@@ -53,5 +53,12 @@
     "sha256": null,
     "qualification": "terms reviewed through official indexed text; raw-byte/hash verification still open",
     "boundary": "June 2026 accrued-interest cutoff is not applied to the October 2026 reissue"
+  },
+  "october_specific_notification_lead": {
+    "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "origin": "Official-source link surfaced by a third-party Gazette index",
+    "primary_fetch_status": "HTTP 502 from web fetch; raw bytes not captured",
+    "primary_bytes_preserved": false,
+    "secondary_text_claim_unverified": "Accrued-interest cutoff reportedly 2026-10-18; do not use for calculations until primary bytes are captured and audited."
   }
 }
