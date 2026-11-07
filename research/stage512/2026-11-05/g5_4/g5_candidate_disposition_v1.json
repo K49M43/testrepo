@@ -299,9 +299,8 @@
       "role": "ALTERNATIVE_GOLD_IMPLEMENTATION",
       "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
       "decision_reason": "Second issuer/product provides a fee and implementation cross-check against HDFC Gold. HDFC is the initial continuous-history gold representative.",
-      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here.",
+      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "open_gates": [
-        "newer dated official holdings disclosure",
         "continuous official NAV history if retained in quantitative comparison",
         "ETF traded-price, spread/premium, tax and access evidence"
       ],
@@ -421,13 +420,53 @@
           "sha256": "bc8293cafa6a96eed40389afaa5845d116a5c9dafaf0c46fdd7efd2c9df4a01f",
           "as_of": "2026-10-31",
           "note": "Official AMFI TER workbook; exact NSDL row and component sums audited."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+          "sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+          "sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI Prudential Gold ETF.xlsx",
+          "sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
         }
       ],
       "category": "gold",
       "instrument_or_benchmark_id": "ISIN INF109KC1NT3; AMFI 113076; NSE GOLDIETF",
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
-      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified."
+      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified.",
+      "latest_holdings_snapshot": {
+        "status": "PASS_DATED_COMPOSITION_SNAPSHOT_ONLY",
+        "as_of": "2026-09-30",
+        "source_manifest_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+        "source_manifest_sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+        "audit_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+        "audit_sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+        "source_workbook_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI Prudential Gold ETF.xlsx",
+        "source_workbook_sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a",
+        "values_inr_lakh_and_nav_pct": {
+          "exposure": "physical gold (995 purity)",
+          "amount_lakh": "2708993.78",
+          "weight_pct": "98.097201",
+          "treps_amount_lakh": "689.99",
+          "treps_weight_pct": "0.024986",
+          "net_current_assets_lakh": "51856.585795",
+          "net_current_assets_weight_pct": "1.877814",
+          "total_net_assets_lakh": "2761540.355795"
+        },
+        "previous_snapshot_preserved_in": "holdings_evidence (2026-03-31); no historical row overwritten",
+        "limitations": "Composition only. Does not qualify return history, market price, premium/discount, liquidity, costs, tax, access, suitability, or covariance. Quantity units and bar-level custody are not inferred."
+      }
     },
     {
       "candidate_id": "ICICI_SILVER_ETF",
@@ -437,10 +476,9 @@
       "role": "CORE_SILVER_PRODUCT_PATH",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
       "decision_reason": "Distinct precious-metal exposure, not a gold substitute. Official continuous Growth NAV history independently passes from 2022-01-25 to 2026-10-30.",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "open_gates": [
         "only 44 common months; no long-run covariance claim",
-        "official holdings snapshot in G5.2 is dated 2026-03-31",
         "ETF traded-price/liquidity, tax and access evidence"
       ],
       "issuer_or_source": "ICICI Prudential Asset Management Company",
@@ -532,13 +570,54 @@
         {
           "repository_path": "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
           "note": "Independent offline raw-to-normalized history audit."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+          "sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+          "sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI PRUDENTIAL SILVER ETF.xlsx",
+          "sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
         }
       ],
       "category": "silver",
       "instrument_or_benchmark_id": "ISIN INF109KC1Y56; AMFI 149464; NSE SILVERIETF",
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
-      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified."
+      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified.",
+      "latest_holdings_snapshot": {
+        "status": "PASS_DATED_COMPOSITION_SNAPSHOT_ONLY",
+        "as_of": "2026-09-30",
+        "source_manifest_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+        "source_manifest_sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+        "audit_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+        "audit_sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+        "source_workbook_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI PRUDENTIAL SILVER ETF.xlsx",
+        "source_workbook_sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8",
+        "values_inr_lakh_and_nav_pct": {
+          "exposure": "physical silver",
+          "amount_lakh": "1419233.84",
+          "weight_pct": "98.963952",
+          "treps_amount_lakh": "48.75",
+          "treps_weight_pct_source": "<0.01% absolute NAV (caret footnote)",
+          "treps_weight_pct_derived": "0.003399",
+          "net_current_assets_lakh": "14809.126552",
+          "net_current_assets_weight_pct": "1.032648",
+          "total_net_assets_lakh": "1434091.716552"
+        },
+        "previous_snapshot_preserved_in": "holdings_evidence (2026-03-31); no historical row overwritten",
+        "limitations": "Composition only. Does not qualify return history, market price, premium/discount, liquidity, costs, tax, access, suitability, or covariance. Quantity units and bar-level custody are not inferred."
+      }
     },
     {
       "candidate_id": "SBI_NIFTY500_INDEX_FUND",
