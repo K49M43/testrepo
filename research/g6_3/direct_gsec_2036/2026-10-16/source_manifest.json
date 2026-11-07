@@ -57,8 +57,13 @@
   "october_specific_notification_lead": {
     "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
     "origin": "Official-source link surfaced by a third-party Gazette index",
-    "primary_fetch_status": "HTTP 502 from web fetch; raw bytes not captured",
+    "primary_fetch_status": "Web fetch returned HTTP 502; certificate-validated direct PowerShell fetch failed during TLS handshake; Chrome PDF capture blocked by extension overlay. Raw bytes not captured.",
     "primary_bytes_preserved": false,
-    "secondary_text_claim_unverified": "Accrued-interest cutoff reportedly 2026-10-18; do not use for calculations until primary bytes are captured and audited."
+    "secondary_text_claim_unverified": "Accrued-interest cutoff reportedly 2026-10-18; do not use for calculations until primary bytes are captured and audited.",
+    "retrieval_attempts": [
+      "Official eGazette PDF URL opened through web retrieval; response 502.",
+      "Direct HTTPS retrieval from egazette.gov.in with certificate validation enabled; SSL handshake failed.",
+      "Chrome tab reached the PDF viewer but computer-use automation reported another extension UI open; no security warning was bypassed."
+    ]
   }
 }
