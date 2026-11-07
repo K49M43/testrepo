@@ -1,37 +1,39 @@
-# 6.94% GS 2036: archived primary-auction result
+# 6.94% GS 2036: October 2026 reissue evidence
 
-This bounded source increment preserves the Reserve Bank of India (RBI) full auction result published for 16 October 2026. It supplies one historical primary-market observation for a dated Government of India security with a stated repayment date of 11 May 2036.
+This bounded source package reconciles the official Government of India security-specific Gazette notification with the RBI full auction result for the 16-Oct-2026 reissue. It establishes one historical auction observation and nominal contractual cashflows. It does not qualify a long-run return series, an executable retail price, or an investment recommendation.
 
-## What the retained source says
+## Reconciled terms and auction outcome
 
-- Security label: 6.94% GS 2036.
-- Auction date: 16 October 2026; settlement date: 19 October 2026.
-- Notified amount: ₹34,000 crore.
-- Competitive cut-off: price ₹96.91 per ₹100 nominal; YTM 7.3955%.
-- Competitive weighted average: price ₹96.93 per ₹100 nominal; weighted-average yield 7.3925%.
-- Noncompetitive bids received and accepted: five bids, ₹39.291 crore total.
-- The announcement says this was a multiple-price auction. RBI's rules state noncompetitive allotment uses the weighted-average price/yield of successful competitive bids. The attached result itself reports the accepted noncompetitive amount, not its allotment advice to any particular investor.
+- Security: 6.94% GS 2036, ISIN `IN0020260025`.
+- Original issue: 11-May-2026; maturity: 11-May-2036; coupon: 6.94% p.a., payable half-yearly on 11-May and 11-Nov; principal redeemed at par.
+- Auction: 16-Oct-2026; issue/settlement date: 19-Oct-2026; multiple-price auction; notified amount ₹34,000 crore.
+- Competitive cutoff: clean price ₹96.91 per ₹100; YTM 7.3955%.
+- Competitive weighted-average: clean price ₹96.93 per ₹100; yield 7.3925%.
+- Noncompetitive bids: five accepted, ₹39.291 crore. The scheme uses the competitive weighted-average price for noncompetitive allotment; this is not an investor-specific allotment advice.
+- The specific Gazette says accrued interest for this reissue is due through **18-Oct-2026**.
 
-## Provenance
+## Conditional settlement arithmetic
 
-- RBI announcement page: <https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792>
-- The page labels the attachment “Government Stock - Full Auction Results” (318 kb). The downloaded original is retained as `auction_result.pdf`.
-- Retrieved: 2026-11-07 (Asia/Kolkata).
-- Original attachment SHA-256: `4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF`.
-- The full manifest is `source_manifest.json`.
+RBI FAQ Q25 and FBIL methodology state the general Indian G-Sec market day-count convention is 30/360. The specific notification fixes the accrual cutoff at 18-Oct. Applying 30/360 from the previous coupon date, 11-May, through 18-Oct gives 157 days:
 
-## Limits and next qualification work
+`6.94 × 157 / 360 = ₹3.026611 accrued interest per ₹100 face value`.
 
-This is an auction-history observation, not a current or future executable price, a guaranteed allotment, or an investor-specific trade record. The award is not a validated all-in purchase cost. The exact security-specific notification and its coupon schedule, ISIN, accrued-interest convention, fees/payment costs, individual allocation terms, and tax cashflows still need source-level reconciliation. A CAPTCHA was returned when the RBI-hosted linked specific-notification PDF was opened through the available public route; it was not solved or bypassed, so that document is not claimed as captured here.
+At the noncompetitive weighted-average clean price of ₹96.93, clean plus accrued is ₹99.956611 per ₹100 face value, or **₹9,995.66 per ₹10,000 face value**, before any applicable fee. The Gazette permits an aggregator/facilitator charge up to ₹0.06 per ₹100 (₹6 per ₹10,000 face). Actual investor route, fee and settlement rounding are not verified. RBI FAQ Q22's worked example reports one day more than the explicit 30/360 formula, so the amount remains labeled a conditional calculation pending settlement-level confirmation.
 
-No secondary-market quote series, bid/ask spread, depth, early-sale proceeds, or exit liquidity is qualified. This single auction cannot support a return forecast, covariance estimate, terminal-value probability, or a strategy ranking. Model work must not treat 7.3925% as a guaranteed holding-period return: future coupon reinvestment, price paid, holding date, taxes and exit choice matter.
+## Preserved sources and reproducibility
 
-No transaction was placed. This evidence closes only the historical auction-result capture subtask; it does not close the direct-sovereign candidate gate, WP1, or G6.3. Investment status remains NO-GO / NOT YET EVALUATED.
-## Additional official security terms located (source bytes not yet retained)
+- RBI full auction result: [`auction_result.pdf`](auction_result.pdf), SHA-256 `4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF`.
+- Government of India specific notification: [`specific_notification.pdf`](specific_notification.pdf), SHA-256 `D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB`.
+- [Source manifest](source_manifest.json) records URLs, identifiers, byte counts and hashes.
+- [Auction pair reconciliation](auction_pair_reconciliation_v1.json), [day-count review](day_count_reconciliation_v1.json), [nominal cashflow schedule](nominal_cashflows_v1.json) and [detailed source review](source_review.md) retain scope limits and arithmetic.
 
-A Government of India Gazette notification dated 1 June 2026 is available at <https://egazette.gov.in/WriteReadData/2026/273050.pdf>. Its text identifies the 6.94% GS 2036, original issue 11 May 2026, maturity 11 May 2036, 6.94% coupon, half-yearly coupon dates of 11 May and 11 November, and repayment at par on maturity. It is a June 2026 reissue notification, not the specific October reissue's settlement notice. The June notification's accrued-interest cutoff (7 June 2026) applies to its June auction and is not applied to the October 2026 result above.
+The deterministic audit is `decision/audit_g6_3_direct_gsec_2036.py`; it rechecks source hashes, security/date alignment, conditional calculation fields and the 20-event nominal coupon schedule. It does not validate a future price path or investor-specific return.
 
-The Gazette PDF was reviewed through the official-source indexed text, but its original bytes could not be retained and hashed in this increment because Chrome's PDF page was unavailable to the automation session. Therefore the raw-source/hash gate for this supplementary notification remains open. Before building cashflows, capture and hash the Gazette PDF and obtain the specific October reissue's accrued-interest/payment terms. The captured terms do not establish the security ISIN.
-## October-specific accrued-interest source route
+## Remaining G6.3 gates
 
-The official October reissue notification has been identified at <https://egazette.gov.in/WriteReadData/2026/277085.pdf>. The URL was exposed as the official-source link from an index page; a direct web fetch returned HTTP 502 and Chrome could not capture the PDF in this session. A third-party text index reports an accrued-interest cutoff of 18 October 2026, but this has not been checked against preserved official bytes and is not used in any calculation. Capture and hash this October notification before deriving the October settlement cash price or accrued interest. This is the immediate next source-qualification step.
+- Qualify lawful, reproducible post-issue acquisition and exit-price evidence. AMFI transaction data must not be retained or published in this public repository without written permission under its [Terms of Use](https://www.amfiindia.com/terms-of-use). The source assessment and unsent rights inquiries are in the parent directory.
+- Use separately labeled sovereign duration/yield proxies for longer early-exit stress history; this bond only has post-issue history since May 2026.
+- Model investor-specific acquisition dates, contributions, coupon reinvestment, tax, fees, terminal date, and early-exit or hold-to-maturity paths after the necessary inputs are confirmed.
+- Obtain settlement advice only if exact historical rounded auction debit is required.
+
+This evidence closes the October notice/result source-pair and contractual-schedule subtask only. It does not close the direct-sovereign candidate gate, WP1, or G6.3. Investment status remains **NO-GO / NOT YET EVALUATED**. No transaction was placed.

@@ -87,3 +87,11 @@ The official RBI T-bill source lead is partially acquired since this source-cove
 ## Historical pair cross-check — 2026-11-06
 
 The RBI T-bill evidence now includes one matched 26-Nov-2025 auction notice/full result/cut-off result and Table 218 reconciliation. Source hashes, paired dates, auction method, weighted-average price/yield, rounded Table 218 price and exact cutoff yield are verified by the G6.3 source capture audit. This remains a single descriptive auction sample; no long-run sovereign return series or joint risk use is qualified.
+
+## Direct GoI 2036 security update — 2026-11-07
+
+The official October 2026 specific reissue notice and RBI full auction result for 6.94% GS 2036 (`IN0020260025`) are now retained with byte counts and SHA-256 hashes in `research/g6_3/direct_gsec_2036/2026-10-16/`. The notice fixes accrued interest as due through 18-Oct-2026 for 19-Oct settlement. The 157-day 30/360 calculation produces ₹3.026611 accrued interest per ₹100 face and ₹9,995.66 clean-plus-accrued consideration per minimum ₹10,000 face lot at the historical ₹96.93 weighted-average clean price, before charges. This remains conditional because RBI FAQ Q22's example conflicts by one day with its explicit Q25 convention; exact settlement rounding/collection is not evidenced. A nominal 20-event coupon/redemption schedule is included, with holiday-adjusted dates unresolved.
+
+The new `decision/audit_g6_3_direct_gsec_2036.py` checks both official source hashes, the auction/security/cutoff match, the conditional arithmetic and nominal cashflow schedule. No security-specific secondary-price series, retail spread/depth, executable entry/exit, coupon reinvestment, tax, or investor-specific return is qualified. The exact bond was issued in 2026 and cannot provide a decade of instrument-specific history. AMFI's transaction table may be researched only after rights permit the intended repository retention and publication; its current terms do not authorize us to retain/publish its transaction data here without written permission.
+
+This update closes the October notice/result capture subtask only. Direct-sovereign economics and the G6.3/WP1 source gates remain open; investment authorization remains NO-GO / NOT YET EVALUATED.

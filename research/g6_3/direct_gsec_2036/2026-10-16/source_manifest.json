@@ -21,19 +21,50 @@
   "timezone": "Asia/Kolkata",
   "limitations": [
     "Historical primary-auction result only; not an executable current quote or guaranteed future allotment.",
-    "No security-specific notification/ISIN/coupon schedule retained in this increment.",
-    "No accrued-interest, payment fee, tax, lot cashflow, coupon-reinvestment or early-sale computation qualified.",
+    "The October-specific notice and auction result identify the security and reconcile; auction settlement rounding/actual debit to a particular investor are not verified.",
+    "The nominal coupon schedule does not qualify coupon reinvestment, investor tax, future price or early-sale proceeds.",
     "No secondary-market quote, spread, depth or liquidity series.",
     "No forecast, probability, covariance or investment recommendation inferred."
   ],
   "preserved_file": "auction_result.pdf",
-  "status": "auction_result_capture_pass_supplementary_terms_reviewed_raw_capture_open_full_direct_bond_economic_gate_open",
+  "status": "official_notification_result_pair_captured_and_reconciled; direct_bond_return_and_executable_price_gates_open",
   "retrieved_date": "2026-11-07",
   "normalization": "None. Original PDF bytes preserved.",
   "issuer": "Reserve Bank of India",
   "byte_length": 313110,
   "evidence_id": "G6.3-DIRECT-GSEC-AUCTION-2026-10-16",
   "source_class": "official_primary_source",
+  "specific_notification_source": {
+    "publisher": "Government of India, Ministry of Finance, Department of Economic Affairs",
+    "publication_id": "CG-DL-E-12102026-277085",
+    "document_date": "2026-10-12",
+    "source_url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "retained_file": "specific_notification.pdf",
+    "byte_length": 733198,
+    "sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+    "retrieved_date": "2026-11-07",
+    "timezone": "Asia/Kolkata",
+    "source_class": "official_primary_source",
+    "security_terms": {
+      "instrument": "6.94% GS 2036",
+      "isin": "IN0020260025",
+      "original_issue_date": "2026-05-11",
+      "maturity_date": "2036-05-11",
+      "coupon_dates_month_day": ["05-11", "11-11"],
+      "coupon_percent_per_annum": "6.94",
+      "auction_date": "2026-10-16",
+      "settlement_date": "2026-10-19",
+      "accrued_interest_due_through": "2026-10-18",
+      "minimum_bid_face_value_inr": "10000",
+      "auction_type": "multiple-price"
+    }
+  },
+  "reconciliation_artifacts": {
+    "auction_pair": "auction_pair_reconciliation_v1.json",
+    "day_count": "day_count_reconciliation_v1.json",
+    "nominal_cashflows": "nominal_cashflows_v1.json",
+    "source_review": "source_review.md"
+  },
   "supplementary_source_review": {
     "source": "Government of India Gazette, Extraordinary, Part I Section 1, notification F.No.4(1)-B(W&M)/2026 dated 2026-06-01",
     "url": "https://egazette.gov.in/WriteReadData/2026/273050.pdf",
@@ -54,16 +85,15 @@
     "qualification": "terms reviewed through official indexed text; raw-byte/hash verification still open",
     "boundary": "June 2026 accrued-interest cutoff is not applied to the October 2026 reissue"
   },
-  "october_specific_notification_lead": {
+  "october_specific_notification_capture": {
     "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
-    "origin": "Official-source link surfaced by a third-party Gazette index",
-    "primary_fetch_status": "Web fetch returned HTTP 502; certificate-validated direct PowerShell fetch failed during TLS handshake; Chrome PDF capture blocked by extension overlay. Raw bytes not captured.",
-    "primary_bytes_preserved": false,
-    "secondary_text_claim_unverified": "Accrued-interest cutoff reportedly 2026-10-18; do not use for calculations until primary bytes are captured and audited.",
-    "retrieval_attempts": [
-      "Official eGazette PDF URL opened through web retrieval; response 502.",
-      "Direct HTTPS retrieval from egazette.gov.in with certificate validation enabled; SSL handshake failed.",
-      "Chrome tab reached the PDF viewer but computer-use automation reported another extension UI open; no security warning was bypassed."
-    ]
+    "origin": "Official Gazette page/PDF",
+    "primary_bytes_preserved": true,
+    "retained_file": "specific_notification.pdf",
+    "byte_length": 733198,
+    "sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+    "retrieved_date": "2026-11-07",
+    "accrued_interest_due_through": "2026-10-18",
+    "qualification": "Official bytes retained and hash recorded; notice/result identity and terms are reconciled in auction_pair_reconciliation_v1.json."
   }
 }

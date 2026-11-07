@@ -1,0 +1,111 @@
+{
+  "audit_id": "g6_3_goi_2036_oct_2026_auction_pair_reconciliation_v1",
+  "status": "NOTICE_RESULT_PAIR_RECONCILED; 30_360_MARKET_CONVENTION_SUPPORTED; SETTLEMENT_AMOUNT_UNQUALIFIED",
+  "decision_status": "NO_GO_NOT_YET_EVALUATED",
+  "paired_sources": {
+    "specific_notification": {
+      "publication_id": "CG-DL-E-12102026-277085",
+      "date": "2026-10-12",
+      "retained_path": "research/g6_3/direct_gsec_2036/2026-10-16/specific_notification.pdf",
+      "bytes": 733198,
+      "sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB"
+    },
+    "full_auction_result": {
+      "issuer": "Reserve Bank of India",
+      "press_release_number": "2026-2027/1340",
+      "date": "2026-10-16",
+      "title": "Government Stock - Full Auction Results",
+      "official_source_page_locator": "RBI press release 2026-2027/1340, preserved byte-for-byte in PR #65",
+      "retained_path": "research/g6_3/direct_gsec_2036/2026-10-16/auction_result.pdf",
+      "bytes": 313110,
+      "sha256": "4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF",
+      "hash_matches_pr_65_archived_source_hash": true
+    }
+  },
+  "instrument_match": {
+    "notification_security": "6.94% GS 2036",
+    "result_security": "6.94% GS 2036",
+    "isin": "IN0020260025",
+    "auction_date": "2026-10-16",
+    "settlement_date": "2026-10-19",
+    "maturity_date": "2036-05-11",
+    "notification_notified_amount_inr_crore": "34000",
+    "result_notified_amount_inr_crore": "34000",
+    "notification_result_amounts_reconcile": true
+  },
+  "auction_result_values": {
+    "competitive_bids_received_count": 400,
+    "competitive_bids_received_inr_crore": "94072.116",
+    "competitive_bids_accepted_count": 113,
+    "competitive_bids_accepted_inr_crore": "33960.709",
+    "competitive_cutoff_clean_price_per_100": "96.91",
+    "competitive_cutoff_yield_percent": "7.3955",
+    "competitive_weighted_average_clean_price_per_100": "96.93",
+    "competitive_weighted_average_yield_percent": "7.3925",
+    "noncompetitive_bids_received_count": 5,
+    "noncompetitive_bids_received_inr_crore": "39.291",
+    "noncompetitive_bids_accepted_count": 5,
+    "noncompetitive_bids_accepted_inr_crore": "39.291",
+    "underwriting_accepted_inr_crore": "34000",
+    "devolvement_on_primary_dealers": "NIL"
+  },
+  "noncompetitive_settlement_arithmetic": {
+    "price_basis": "successful competitive bids weighted-average clean price, as specified by the official noncompetitive scheme",
+    "clean_price_per_100_face_value": "96.93",
+    "accrual_start_date": "2026-05-11",
+    "accrued_interest_cutoff_date": "2026-10-18",
+    "accrued_interest_cutoff_basis": "The retained specific Gazette notification explicitly states interest is due through 18-Oct-2026 for the 19-Oct-2026 reissue settlement.",
+    "settlement_date": "2026-10-19",
+    "day_count_basis": "30/360",
+    "day_count": 157,
+    "not_applicable_settlement_date_inclusive_sensitivity_30_360_day_count": 158,
+    "not_applicable_settlement_date_inclusive_accrued_interest_per_100_face_value": "6.94 * 158 / 360 = 3.045444444444444444444444444",
+    "not_applicable_reason": "The specific primary-auction notice explicitly sets the accrued-interest due-through date to 18-Oct-2026. Do not substitute a settlement-date-inclusive count for this auction.",
+    "accrued_interest_formula_per_100": "6.94 * 157 / 360",
+    "accrued_interest_per_100_face_value": "3.026611111111111111111111111",
+    "dirty_consideration_per_100_face_value": "99.95661111111111111111111111",
+    "minimum_face_value_inr": "10000",
+    "clean_consideration_per_minimum_lot_inr": "9693.00",
+    "accrued_interest_per_minimum_lot_inr": "302.6611111111111111111111111",
+    "dirty_consideration_per_minimum_lot_inr": "9995.661111111111111111111111",
+    "dirty_consideration_per_minimum_lot_inr_rounded_to_paise": "9995.66",
+    "aggregator_fee_max_per_100_face_value_inr": "0.06",
+    "aggregator_fee_max_per_minimum_lot_inr": "6.00",
+    "fees_included_in_dirty_consideration": false,
+    "rounding_and_collection_practice_at_settlement_verified": false,
+    "classification": "CONDITIONAL_30_360_SENSITIVITY_NOT_QUALIFIED_SETTLEMENT_AMOUNT",
+    "basis_conflict": {
+      "source": "RBI Government Securities Market in India FAQ, questions 22 and 25",
+      "q25_and_glossary_state": "Indian bond-market/G-Sec day count convention is 30/360",
+      "q22_worked_example_states": "65 broken-period days from 25-Nov-2013 through 29-Jan-2014",
+      "recomputed_30_360_days_for_q22_dates": 64,
+      "actual_elapsed_days_for_q22_dates": 65,
+      "disposition": "The official RBI FAQ's worked example uses actual elapsed days while its explicit convention definition says 30/360. For this notification, the 157-day 30/360 amount is retained as a conditional calculation; do not promote the dirty price to qualified until the applicable settlement convention is independently reconciled."
+    },
+    "alternative_actual_360_sensitivity": {
+      "actual_elapsed_days_2026_05_11_to_2026_10_18": 160,
+      "actual_elapsed_days_through_2026_10_19": 161,
+      "accrued_interest_per_100_face_value": "3.084444444444444444444444444",
+      "accrued_interest_per_100_face_value_through_settlement_date": "6.94 * 161 / 360 = 3.103722222222222222222222222",
+      "dirty_consideration_per_100_face_value": "100.0144444444444444444444444",
+      "dirty_consideration_per_minimum_lot_inr": "10001.44444444444444444444444",
+      "difference_vs_30_360_per_100_face_value": "0.057833333333333333333333333"
+    },
+    "amfi_source_rights_check": {
+      "source_url": "https://www.amfiindia.com/otherdata/transaction-in-debt",
+      "terms_url": "https://www.amfiindia.com/terms-of-use",
+      "observed_on": "2026-11-07",
+      "finding": "Public transaction table contains security-level MF debt transaction fields, but no transaction row values or exports were retained.",
+      "terms_finding": "Personal non-commercial access is permitted; publication and electronic retention of significant portions are prohibited absent written agreement.",
+      "limitations": "No AMFI price or accrued-interest observations are qualified or used in the calculation. The specific Gazette notice sets auction accrued interest due through 18-Oct-2026."
+    },
+    "convention_evidence_status": "The specific Gazette notice resolves the auction accrued-interest due-through date as 18-Oct-2026. RBI FAQ Q25 and FBIL methodology support 30/360 generally. RBI FAQ Q22 numeric worked example remains inconsistent by one day. AMFI transaction data is not relied upon because public retention/publication rights are unresolved. The 157-day auction calculation is correctly dated but settlement rounding is unverified."
+  },
+  "scope_limits": [
+    "The result establishes one historical auction outcome, not a current or future executable price.",
+    "The result does not prove that a specific retail investor submitted a bid, received allotment, or incurred a particular fee.",
+    "This pair does not supply subsequent contribution prices, secondary-market exit prices, coupon reinvestment outcomes, investor-specific tax, or an after-tax return path.",
+    "Do not interpret the auction weighted-average yield as a guaranteed realized investor return or forecast."
+  ],
+  "qualification_effect": "Closes source identity, notice/result reconciliation, and the auction-specific accrued-interest due-through date for this one October 2026 primary-auction observation. General 30/360 treatment is supported by official convention sources; the 157-day accrued-interest amount is a correctly dated conditional calculation, while settlement rounding is unqualified without settlement advice. No price history or investor-executable secondary-market path is established. Direct GoI long-horizon economics, WP1, G6.3, and investment authorization remain open."
+}
