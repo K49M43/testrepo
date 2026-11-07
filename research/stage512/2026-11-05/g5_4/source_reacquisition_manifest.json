@@ -439,9 +439,9 @@
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json",
-      "bytes": 89072,
-      "sha256": "c58f57b77d935bc3265ba7a9575da149042467a7733e9b5ddf071dbddf1aa78f",
-      "scope_note": "retained raw AMFI response, normalized evidence, acquisition code, or independent audit artifact; see candidate history audit for field-level checks"
+      "bytes": 102027,
+      "sha256": "e435388859ee5c62df332531bbeafcc022886a18a07b2c50b8aa8e0f525d426f",
+      "scope_note": "updated candidate-disposition record and its independent validation audit; provenance retained in the direct-G-Sec source manifest and candidate references"
     },
     {
       "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_147625_manifest.json",
@@ -553,9 +553,9 @@
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/audit_g5_candidate_disposition.py",
-      "bytes": 4334,
-      "sha256": "22d99b9dc018e0b888794114150a40d7a19bc3b17592a5af59f3a5357619be70",
-      "scope_note": "retained raw AMFI response, normalized evidence, acquisition code, or independent audit artifact; see candidate history audit for field-level checks"
+      "bytes": 5072,
+      "sha256": "df32feb5cc3ce10e7d1375767ba802102c76f1550825c20b8d5d6f67ac2f36aa",
+      "scope_note": "updated candidate-disposition record and its independent validation audit; provenance retained in the direct-G-Sec source manifest and candidate references"
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/extract_g5_4_factsheet_holdings.py",

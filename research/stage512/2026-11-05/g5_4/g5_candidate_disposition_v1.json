@@ -17,9 +17,10 @@
     "HDFC_GOLD_ETF",
     "ICICI_SILVER_ETF",
     "GOI_DIRECT_DATED_GSEC_718_2033",
+    "GOI_DIRECT_DATED_GSEC_694_2036",
     "CASH_HOLD_91D_TBILL_ROLLING"
   ],
-  "initial_comparison_boundary": "The five product histories with source evidence may enter the descriptive/fixture-first workbench as product NAV inputs. Direct dated G-Sec and 91-day T-bill remain blocked until dated price/cashflow evidence is acquired. No portfolio weights or ranking are selected. Benchmark-only and ETF traded-price inputs remain separate.",
+  "initial_comparison_boundary": "Five product histories with source evidence may enter the descriptive/fixture-first workbench as product NAV inputs. The 6.94% GS 2036 now has a hash-verified official notice/result pair, notice-specific accrued-interest cutoff and nominal schedule, but is still blocked from decision output pending current price, retail settlement, reinvestment, tax/fees, liquidity and access; the 7.18% GS 2033 also requires a 2033-to-2036 rollover path. The 91-day T-bill comparator remains blocked pending the exact-date auction/result panel and retail rollover assumptions. No portfolio weights or ranking are selected. Benchmark-only and ETF traded-price inputs remain separate.",
   "candidates": [
     {
       "candidate_id": "MOTILAL_NIFTY500_ETF",
@@ -299,9 +300,8 @@
       "role": "ALTERNATIVE_GOLD_IMPLEMENTATION",
       "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
       "decision_reason": "Second issuer/product provides a fee and implementation cross-check against HDFC Gold. HDFC is the initial continuous-history gold representative.",
-      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here.",
+      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "open_gates": [
-        "newer dated official holdings disclosure",
         "continuous official NAV history if retained in quantitative comparison",
         "ETF traded-price, spread/premium, tax and access evidence"
       ],
@@ -421,13 +421,53 @@
           "sha256": "bc8293cafa6a96eed40389afaa5845d116a5c9dafaf0c46fdd7efd2c9df4a01f",
           "as_of": "2026-10-31",
           "note": "Official AMFI TER workbook; exact NSDL row and component sums audited."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+          "sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+          "sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI Prudential Gold ETF.xlsx",
+          "sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
         }
       ],
       "category": "gold",
       "instrument_or_benchmark_id": "ISIN INF109KC1NT3; AMFI 113076; NSE GOLDIETF",
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
-      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified."
+      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified.",
+      "latest_holdings_snapshot": {
+        "status": "PASS_DATED_COMPOSITION_SNAPSHOT_ONLY",
+        "as_of": "2026-09-30",
+        "source_manifest_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+        "source_manifest_sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+        "audit_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+        "audit_sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+        "source_workbook_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI Prudential Gold ETF.xlsx",
+        "source_workbook_sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a",
+        "values_inr_lakh_and_nav_pct": {
+          "exposure": "physical gold (995 purity)",
+          "amount_lakh": "2708993.78",
+          "weight_pct": "98.097201",
+          "treps_amount_lakh": "689.99",
+          "treps_weight_pct": "0.024986",
+          "net_current_assets_lakh": "51856.585795",
+          "net_current_assets_weight_pct": "1.877814",
+          "total_net_assets_lakh": "2761540.355795"
+        },
+        "previous_snapshot_preserved_in": "holdings_evidence (2026-03-31); no historical row overwritten",
+        "limitations": "Composition only. Does not qualify return history, market price, premium/discount, liquidity, costs, tax, access, suitability, or covariance. Quantity units and bar-level custody are not inferred."
+      }
     },
     {
       "candidate_id": "ICICI_SILVER_ETF",
@@ -437,10 +477,9 @@
       "role": "CORE_SILVER_PRODUCT_PATH",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
       "decision_reason": "Distinct precious-metal exposure, not a gold substitute. Official continuous Growth NAV history independently passes from 2022-01-25 to 2026-10-30.",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "open_gates": [
         "only 44 common months; no long-run covariance claim",
-        "official holdings snapshot in G5.2 is dated 2026-03-31",
         "ETF traded-price/liquidity, tax and access evidence"
       ],
       "issuer_or_source": "ICICI Prudential Asset Management Company",
@@ -532,13 +571,54 @@
         {
           "repository_path": "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
           "note": "Independent offline raw-to-normalized history audit."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+          "sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+          "sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI PRUDENTIAL SILVER ETF.xlsx",
+          "sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8",
+          "as_of": "2026-09-30",
+          "note": "Official AMC holdings source and composition-only audit; prior dated snapshot retained separately."
         }
       ],
       "category": "silver",
       "instrument_or_benchmark_id": "ISIN INF109KC1Y56; AMFI 149464; NSE SILVERIETF",
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-10-30 latest sampled AMFI NAV; 2026-03-31 holdings snapshot",
-      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified."
+      "classification_reason": "Identified actual product and official dated AMFI sample observations; investor account access, current execution and suitability remain unverified.",
+      "latest_holdings_snapshot": {
+        "status": "PASS_DATED_COMPOSITION_SNAPSHOT_ONLY",
+        "as_of": "2026-09-30",
+        "source_manifest_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/source_manifest.json",
+        "source_manifest_sha256": "1449a2de10925883f92d90326358f65ec5a677cfc0aa450c6ad6798fa86e43d0",
+        "audit_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/holdings_audit.json",
+        "audit_sha256": "34fb222e39659545c73a04f2670dd39c2ad4d6c474f6af0159034ff536838a69",
+        "source_workbook_path": "research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/ICICI PRUDENTIAL SILVER ETF.xlsx",
+        "source_workbook_sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8",
+        "values_inr_lakh_and_nav_pct": {
+          "exposure": "physical silver",
+          "amount_lakh": "1419233.84",
+          "weight_pct": "98.963952",
+          "treps_amount_lakh": "48.75",
+          "treps_weight_pct_source": "<0.01% absolute NAV (caret footnote)",
+          "treps_weight_pct_derived": "0.003399",
+          "net_current_assets_lakh": "14809.126552",
+          "net_current_assets_weight_pct": "1.032648",
+          "total_net_assets_lakh": "1434091.716552"
+        },
+        "previous_snapshot_preserved_in": "holdings_evidence (2026-03-31); no historical row overwritten",
+        "limitations": "Composition only. Does not qualify return history, market price, premium/discount, liquidity, costs, tax, access, suitability, or covariance. Quantity units and bar-level custody are not inferred."
+      }
     },
     {
       "candidate_id": "SBI_NIFTY500_INDEX_FUND",
@@ -910,18 +990,18 @@
       "identity": "AMFI 113049; ISIN INF179KC1981; NSE product HDFCGOLD",
       "role": "CORE_GOLD_PRODUCT_PATH",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "decision_reason": "Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.",
+      "decision_reason": "Provides gold exposure and the longest qualified official AMFI NAV history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.; PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_HISTORY_2021-11-08_TO_2026-11-06 (not execution-cost qualification).",
       "open_gates": [
         "product inception-to-2014 history not in selected window",
-        "ETF traded-price, premium/discount, spread and liquidity",
+        "current quote, synchronized premium/discount, spread/depth, liquidity, execution costs and slippage",
         "tax, account access and suitability"
       ],
       "issuer_or_source": "HDFC Asset Management Company Ltd.",
       "market_jurisdiction_currency": "India NSE; INR; ETF",
       "inception_date": "2010-08-13",
       "point_in_time_availability": "Official AMFI scheme and TER row present through 2026-10-31; current exchange quote and investor access unverified.",
-      "return_convention": "ETF market price is needed for executable returns; AMFI Growth-option NAV is fund-value proxy and is not market price. Gold exposure.",
+      "return_convention": "Official NSE daily close-to-close market-price return series is retained for 2021-11-08 through 2026-11-06; AMFI Growth NAV is a distinct fund-value series. Historical close returns are not investor execution returns after costs.",
       "latest_ter_evidence": {
         "as_of": "2026-10-31",
         "nsdl_scheme_code": "HDFC/O/O/GET/10/06/0019",
@@ -1007,13 +1087,48 @@
         {
           "repository_path": "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
           "note": "Independent offline raw-to-normalized history audit."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_5y.csv",
+          "sha256": "b4f88ad9135f942ddd6e695e7b708c6a10af1da957ae3646c5474cf6e6a6c0d4",
+          "as_of": "2026-11-06",
+          "note": "Official NSE five-year historical daily close archive; raw bytes retained."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_amfi_bridge_v2.json",
+          "sha256": "d563e674a373c9d81027bb98e3723b26a07cee856bad4fae31d121aecbdb1aa0",
+          "as_of": "2026-11-06",
+          "note": "Reproduced exact-date comparison and price diagnostics; not synchronized premium/discount or execution cost."
+        },
+        {
+          "repository_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/audit_hdfcgold_nse_amfi_bridge.py",
+          "sha256": "d20a0df3864cbb96319a5ff301ecf431093172b00686617def670f7459fd64b0",
+          "as_of": "2026-11-06",
+          "note": "Standard-library reproduction script."
         }
       ],
       "category": "gold",
       "instrument_or_benchmark_id": "AMFI 113049; ISIN INF179KC1981; NSE product HDFCGOLD",
       "benchmark_or_exposure": "Domestic price of physical gold",
       "exact_as_of": "AMFI TER 2026-10-31; factsheet AMFI TER 2026-10-31; HDFC factsheet 2026-09",
-      "classification_reason": "INVESTABLE is an instrument-level research label only; Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09."
+      "classification_reason": "INVESTABLE is an instrument-level research label only; Provides gold exposure and the longest qualified gold history in this selected set: 2,918 official AMFI NAV observations in 2015-01 to 2026-10; 128 common months to NSE TRI through 2025-09.",
+      "market_price_history_evidence": {
+        "status": "PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_SERIES",
+        "source": "NSE Security-wise Archives; Equity/HDFCGOLD/ALL/5Y; download window 2021-11-06 through 2026-11-06",
+        "observed_dates_start": "2021-11-08",
+        "observed_dates_end": "2026-11-06",
+        "observations": 1241,
+        "unique_dates": 1241,
+        "source_csv_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_5y.csv",
+        "source_csv_sha256": "b4f88ad9135f942ddd6e695e7b708c6a10af1da957ae3646c5474cf6e6a6c0d4",
+        "audit_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_amfi_bridge_v2.json",
+        "audit_sha256": "d563e674a373c9d81027bb98e3723b26a07cee856bad4fae31d121aecbdb1aa0",
+        "reproduction_script_path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/audit_hdfcgold_nse_amfi_bridge.py",
+        "reproduction_script_sha256": "d20a0df3864cbb96319a5ff301ecf431093172b00686617def670f7459fd64b0",
+        "symbol_continuity": "399 rows symbol HDFCMFGETF and 842 rows HDFCGOLD; series EQ throughout; same ISIN INF179KC1981",
+        "same_date_AMFI_comparison": "1,229 exact-date matches; 12 NSE dates without same-date retained NAV (7 within AMFI date coverage and 5 after 2026-10-30). Date-label differences are not synchronized premium/discounts.",
+        "boundary": "Historical exchange close series only. It does not qualify current executable quotes, bid/ask, depth, spread, slippage, market impact, fees, taxes, account access, or suitability."
+      }
     },
     {
       "candidate_id": "SBI_GILT_FUND",
@@ -1374,6 +1489,77 @@
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-11-05 comparator definition; rate as-of unavailable",
       "classification_reason": "Comparator policy is identifiable but no dated 2036 horizon-matched auction/roll series, current rate, taxes or investor route are qualified in this register."
+    },
+    {
+      "candidate_id": "GOI_DIRECT_DATED_GSEC_694_2036",
+      "product_hypothesis": false,
+      "classification": "BLOCKED",
+      "identity": "6.94% GS 2036; ISIN IN0020260025; Government of India dated security",
+      "role": "DIRECT_SOVEREIGN_CASHFLOW_ALTERNATIVE_MATCHING_2036_HORIZON",
+      "screen_disposition": "RETAIN_AS_REQUIRED_ALTERNATIVE_BUT_BLOCK_OUTPUT",
+      "decision_reason": "The official October 2026 reissue notice/result and nominal coupon schedule are source-audited, and maturity aligns to May 2036. The candidate remains blocked for decision output until a current executable price, exact retail settlement debit, reinvestment/tax/fee treatment, market depth and investor access/suitability are qualified.",
+      "source_status": "Official Gazette notice and RBI full auction result bytes retained with SHA-256 in the source manifest; one primary-auction weighted-average price/yield and notice-specific accrual cutoff independently reconciled. This is not a current quote or continuous return history.",
+      "open_gates": [
+        "current timestamped clean/dirty secondary-market quote and accrued interest",
+        "retail settlement advice and exact amount rounding",
+        "current bid/ask, traded depth, liquidity, eligible purchase route and settlement",
+        "coupon reinvestment policy, acquisition/disposal fees and investor tax-lot treatment",
+        "investor account access, terminal-date flexibility and suitability confirmation",
+        "long-run sovereign risk proxy clearly separated from this security actual traded-price history"
+      ],
+      "issuer_or_source": "Government of India; RBI primary auction and official Gazette reissue notice",
+      "market_jurisdiction_currency": "India; INR",
+      "inception_date": "2026-05-11",
+      "point_in_time_availability": "Reissued at RBI auction on 2026-10-16 and settled 2026-10-19; current secondary-market availability and investor-specific purchase route remain unverified.",
+      "return_convention": "Direct dated-security coupon/principal cashflows with separately modeled reinvestment and mark-to-market exit proceeds; not a government-bond fund NAV or sovereign yield proxy.",
+      "latest_ter_evidence": null,
+      "history_coverage": {
+        "security_cashflows": "Official terms support a nominal 20-event schedule from 2026-11-11 to 2036-05-11; coupon reinvestment and tax/fees are not modeled.",
+        "market_prices_and_yields": "One 2026-10-16 primary-auction weighted-average clean price/yield; no continuous secondary-market price history or current executable quote."
+      },
+      "holdings_evidence": {
+        "source_register_reference": null,
+        "status": "NOT_APPLICABLE_DIRECT_GOVERNMENT_SECURITY",
+        "date": "2026-10-19 reissue",
+        "limitations": "Security terms and one primary-auction result do not establish current inventory, secondary liquidity, or investor execution."
+      },
+      "decision_evidence_gates": {
+        "fees": "BLOCKED_ACQUISITION_AND_EXIT_COSTS_UNVERIFIED",
+        "tax": "BLOCKED_NOT_QUALIFIED_FOR_CANDIDATE_AND_TERMINAL_TAX_YEAR",
+        "liquidity": "BLOCKED_CURRENT_DEPTH_AND_TRADE_ACTIVITY_NOT_MEASURED",
+        "execution": "BLOCKED_NO_CURRENT_EXECUTABLE_QUOTE",
+        "settlement": "PARTIAL_OFFICIAL_DATE_KNOWN_RETAIL_DEBIT_AND_ROUNDING_UNVERIFIED",
+        "account_platform_access": "BLOCKED_NOT_VERIFIED",
+        "investor_suitability": "BLOCKED_NOT_ASSESSED",
+        "source_quality": "PASS_FOR_RETAINED_OFFICIAL_NOTICE_RESULT_AND_NOMINAL_SCHEDULE_ONLY"
+      },
+      "evidence_references": [
+        {
+          "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+          "content_sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/specific_notification.pdf",
+          "note": "Official Gazette notice; identifies 6.94% GS 2036, ISIN, issue/maturity/coupon dates and accrued-interest cutoff."
+        },
+        {
+          "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+          "content_sha256": "4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF",
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/auction_result.pdf",
+          "note": "Official RBI October 16, 2026 full auction result PDF bytes retained; weighted-average and cutoff values are kept distinct."
+        },
+        {
+          "url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=13",
+          "note": "RBI non-competitive auction FAQ Q23 gives a 47/360 accrued-interest example for a price-based reissue, supporting 30/360; see day-count reconciliation."
+        },
+        {
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/nominal_cashflows_v1.json",
+          "note": "Audited nominal coupon/redemption schedule; not a reinvested or taxed return path."
+        }
+      ],
+      "category": "direct_government_security",
+      "instrument_or_benchmark_id": "ISIN IN0020260025; 6.94% GS 2036; maturity 2036-05-11",
+      "benchmark_or_exposure": null,
+      "exact_as_of": "2026-10-19 settlement source terms; current market price unavailable",
+      "classification_reason": "Official terms and one primary auction price point are evidenced, but current price, retail settlement rounding, secondary liquidity, reinvestment, tax, fees and investor access remain unqualified; not ready for decision output."
     }
   ],
   "acceptance": {
