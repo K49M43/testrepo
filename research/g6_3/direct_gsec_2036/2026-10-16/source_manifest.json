@@ -1,0 +1,99 @@
+{
+  "parsed_observations": {
+    "settlement_date": "2026-10-19",
+    "noncompetitive_bids_accepted": 5,
+    "competitive_cutoff_ytm_percent": 7.3955,
+    "competitive_weighted_average_ytm_percent": 7.3925,
+    "security_label": "6.94% GS 2036",
+    "notified_amount_crore": 34000,
+    "noncompetitive_amount_accepted_crore": 39.291,
+    "repayment_date": "2036-05-11",
+    "auction_date": "2026-10-16",
+    "noncompetitive_bids_received": 5,
+    "auction_type": "multiple-price",
+    "competitive_cutoff_price_per_100": 96.91,
+    "competitive_weighted_average_price_per_100": 96.93
+  },
+  "schema_version": "1.0",
+  "sha256": "4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF",
+  "attachment_label": "Government Stock - Full Auction Results",
+  "source_page_url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+  "timezone": "Asia/Kolkata",
+  "limitations": [
+    "Historical primary-auction result only; not an executable current quote or guaranteed future allotment.",
+    "The October-specific notice and auction result identify the security and reconcile; auction settlement rounding/actual debit to a particular investor are not verified.",
+    "The nominal coupon schedule does not qualify coupon reinvestment, investor tax, future price or early-sale proceeds.",
+    "No secondary-market quote, spread, depth or liquidity series.",
+    "No forecast, probability, covariance or investment recommendation inferred."
+  ],
+  "preserved_file": "auction_result.pdf",
+  "status": "official_notification_result_pair_captured_and_reconciled; direct_bond_return_and_executable_price_gates_open",
+  "retrieved_date": "2026-11-07",
+  "normalization": "None. Original PDF bytes preserved.",
+  "issuer": "Reserve Bank of India",
+  "byte_length": 313110,
+  "evidence_id": "G6.3-DIRECT-GSEC-AUCTION-2026-10-16",
+  "source_class": "official_primary_source",
+  "specific_notification_source": {
+    "publisher": "Government of India, Ministry of Finance, Department of Economic Affairs",
+    "publication_id": "CG-DL-E-12102026-277085",
+    "document_date": "2026-10-12",
+    "source_url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "retained_file": "specific_notification.pdf",
+    "byte_length": 733198,
+    "sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+    "retrieved_date": "2026-11-07",
+    "timezone": "Asia/Kolkata",
+    "source_class": "official_primary_source",
+    "security_terms": {
+      "instrument": "6.94% GS 2036",
+      "isin": "IN0020260025",
+      "original_issue_date": "2026-05-11",
+      "maturity_date": "2036-05-11",
+      "coupon_dates_month_day": ["05-11", "11-11"],
+      "coupon_percent_per_annum": "6.94",
+      "auction_date": "2026-10-16",
+      "settlement_date": "2026-10-19",
+      "accrued_interest_due_through": "2026-10-18",
+      "minimum_bid_face_value_inr": "10000",
+      "auction_type": "multiple-price"
+    }
+  },
+  "reconciliation_artifacts": {
+    "auction_pair": "auction_pair_reconciliation_v1.json",
+    "day_count": "day_count_reconciliation_v1.json",
+    "nominal_cashflows": "nominal_cashflows_v1.json",
+    "source_review": "source_review.md"
+  },
+  "supplementary_source_review": {
+    "source": "Government of India Gazette, Extraordinary, Part I Section 1, notification F.No.4(1)-B(W&M)/2026 dated 2026-06-01",
+    "url": "https://egazette.gov.in/WriteReadData/2026/273050.pdf",
+    "facts_reviewed": {
+      "coupon_dates": [
+        "May 11",
+        "November 11"
+      ],
+      "original_issue_date": "2026-05-11",
+      "coupon_percent": 6.94,
+      "maturity_redemption": "at par",
+      "maturity_date": "2036-05-11",
+      "instrument": "6.94% GS 2036",
+      "auction_terms_date": "2026-06-05"
+    },
+    "raw_bytes_preserved": false,
+    "sha256": null,
+    "qualification": "terms reviewed through official indexed text; raw-byte/hash verification still open",
+    "boundary": "June 2026 accrued-interest cutoff is not applied to the October 2026 reissue"
+  },
+  "october_specific_notification_capture": {
+    "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "origin": "Official Gazette page/PDF",
+    "primary_bytes_preserved": true,
+    "retained_file": "specific_notification.pdf",
+    "byte_length": 733198,
+    "sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+    "retrieved_date": "2026-11-07",
+    "accrued_interest_due_through": "2026-10-18",
+    "qualification": "Official bytes retained and hash recorded; notice/result identity and terms are reconciled in auction_pair_reconciliation_v1.json."
+  }
+}
