@@ -17,9 +17,10 @@
     "HDFC_GOLD_ETF",
     "ICICI_SILVER_ETF",
     "GOI_DIRECT_DATED_GSEC_718_2033",
+    "GOI_DIRECT_DATED_GSEC_694_2036",
     "CASH_HOLD_91D_TBILL_ROLLING"
   ],
-  "initial_comparison_boundary": "The five product histories with source evidence may enter the descriptive/fixture-first workbench as product NAV inputs. Direct dated G-Sec and 91-day T-bill remain blocked until dated price/cashflow evidence is acquired. No portfolio weights or ranking are selected. Benchmark-only and ETF traded-price inputs remain separate.",
+  "initial_comparison_boundary": "Five product histories with source evidence may enter the descriptive/fixture-first workbench as product NAV inputs. The 6.94% GS 2036 now has a hash-verified official notice/result pair, notice-specific accrued-interest cutoff and nominal schedule, but is still blocked from decision output pending current price, retail settlement, reinvestment, tax/fees, liquidity and access; the 7.18% GS 2033 also requires a 2033-to-2036 rollover path. The 91-day T-bill comparator remains blocked pending the exact-date auction/result panel and retail rollover assumptions. No portfolio weights or ranking are selected. Benchmark-only and ETF traded-price inputs remain separate.",
   "candidates": [
     {
       "candidate_id": "MOTILAL_NIFTY500_ETF",
@@ -1488,6 +1489,77 @@
       "benchmark_or_exposure": null,
       "exact_as_of": "2026-11-05 comparator definition; rate as-of unavailable",
       "classification_reason": "Comparator policy is identifiable but no dated 2036 horizon-matched auction/roll series, current rate, taxes or investor route are qualified in this register."
+    },
+    {
+      "candidate_id": "GOI_DIRECT_DATED_GSEC_694_2036",
+      "product_hypothesis": false,
+      "classification": "BLOCKED",
+      "identity": "6.94% GS 2036; ISIN IN0020260025; Government of India dated security",
+      "role": "DIRECT_SOVEREIGN_CASHFLOW_ALTERNATIVE_MATCHING_2036_HORIZON",
+      "screen_disposition": "RETAIN_AS_REQUIRED_ALTERNATIVE_BUT_BLOCK_OUTPUT",
+      "decision_reason": "The official October 2026 reissue notice/result and nominal coupon schedule are source-audited, and maturity aligns to May 2036. The candidate remains blocked for decision output until a current executable price, exact retail settlement debit, reinvestment/tax/fee treatment, market depth and investor access/suitability are qualified.",
+      "source_status": "Official Gazette notice and RBI full auction result bytes retained with SHA-256 in the source manifest; one primary-auction weighted-average price/yield and notice-specific accrual cutoff independently reconciled. This is not a current quote or continuous return history.",
+      "open_gates": [
+        "current timestamped clean/dirty secondary-market quote and accrued interest",
+        "retail settlement advice and exact amount rounding",
+        "current bid/ask, traded depth, liquidity, eligible purchase route and settlement",
+        "coupon reinvestment policy, acquisition/disposal fees and investor tax-lot treatment",
+        "investor account access, terminal-date flexibility and suitability confirmation",
+        "long-run sovereign risk proxy clearly separated from this security actual traded-price history"
+      ],
+      "issuer_or_source": "Government of India; RBI primary auction and official Gazette reissue notice",
+      "market_jurisdiction_currency": "India; INR",
+      "inception_date": "2026-05-11",
+      "point_in_time_availability": "Reissued at RBI auction on 2026-10-16 and settled 2026-10-19; current secondary-market availability and investor-specific purchase route remain unverified.",
+      "return_convention": "Direct dated-security coupon/principal cashflows with separately modeled reinvestment and mark-to-market exit proceeds; not a government-bond fund NAV or sovereign yield proxy.",
+      "latest_ter_evidence": null,
+      "history_coverage": {
+        "security_cashflows": "Official terms support a nominal 20-event schedule from 2026-11-11 to 2036-05-11; coupon reinvestment and tax/fees are not modeled.",
+        "market_prices_and_yields": "One 2026-10-16 primary-auction weighted-average clean price/yield; no continuous secondary-market price history or current executable quote."
+      },
+      "holdings_evidence": {
+        "source_register_reference": null,
+        "status": "NOT_APPLICABLE_DIRECT_GOVERNMENT_SECURITY",
+        "date": "2026-10-19 reissue",
+        "limitations": "Security terms and one primary-auction result do not establish current inventory, secondary liquidity, or investor execution."
+      },
+      "decision_evidence_gates": {
+        "fees": "BLOCKED_ACQUISITION_AND_EXIT_COSTS_UNVERIFIED",
+        "tax": "BLOCKED_NOT_QUALIFIED_FOR_CANDIDATE_AND_TERMINAL_TAX_YEAR",
+        "liquidity": "BLOCKED_CURRENT_DEPTH_AND_TRADE_ACTIVITY_NOT_MEASURED",
+        "execution": "BLOCKED_NO_CURRENT_EXECUTABLE_QUOTE",
+        "settlement": "PARTIAL_OFFICIAL_DATE_KNOWN_RETAIL_DEBIT_AND_ROUNDING_UNVERIFIED",
+        "account_platform_access": "BLOCKED_NOT_VERIFIED",
+        "investor_suitability": "BLOCKED_NOT_ASSESSED",
+        "source_quality": "PASS_FOR_RETAINED_OFFICIAL_NOTICE_RESULT_AND_NOMINAL_SCHEDULE_ONLY"
+      },
+      "evidence_references": [
+        {
+          "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+          "content_sha256": "D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB",
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/specific_notification.pdf",
+          "note": "Official Gazette notice; identifies 6.94% GS 2036, ISIN, issue/maturity/coupon dates and accrued-interest cutoff."
+        },
+        {
+          "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+          "content_sha256": "4AA2AB8428124182CF0E4D9A875FA29FEC7B666C8D39E85485B6DC2E8F9366AF",
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/auction_result.pdf",
+          "note": "Official RBI October 16, 2026 full auction result PDF bytes retained; weighted-average and cutoff values are kept distinct."
+        },
+        {
+          "url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=13",
+          "note": "RBI non-competitive auction FAQ Q23 gives a 47/360 accrued-interest example for a price-based reissue, supporting 30/360; see day-count reconciliation."
+        },
+        {
+          "repository_path": "research/g6_3/direct_gsec_2036/2026-10-16/nominal_cashflows_v1.json",
+          "note": "Audited nominal coupon/redemption schedule; not a reinvested or taxed return path."
+        }
+      ],
+      "category": "direct_government_security",
+      "instrument_or_benchmark_id": "ISIN IN0020260025; 6.94% GS 2036; maturity 2036-05-11",
+      "benchmark_or_exposure": null,
+      "exact_as_of": "2026-10-19 settlement source terms; current market price unavailable",
+      "classification_reason": "Official terms and one primary auction price point are evidenced, but current price, retail settlement rounding, secondary liquidity, reinvestment, tax, fees and investor access remain unqualified; not ready for decision output."
     }
   ],
   "acceptance": {
