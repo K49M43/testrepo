@@ -1,6 +1,7 @@
 # Draft: NSE WDM data access and permitted-use inquiry
 
-**Status:** DRAFT ONLY — NOT SENT`n**To:** marketdata@nse.co.in  
+**Status:** DRAFT ONLY — NOT SENT
+**To:** marketdata@nse.co.in  
 **Subject:** Request for terms/access to limited WDM historical price-volume data for personal investment research
 
 Hello NSE Data & Analytics team,
