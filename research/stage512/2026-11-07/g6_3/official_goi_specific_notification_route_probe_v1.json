@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "g6-3-goi-specific-notification-route-probe-2026-11-07-v1",
+  "as_of": "2026-11-07",
+  "purpose": "Identify and test an ordinary official source route for the specific October 2026 GoI notification for 6.94% GS 2036.",
+  "official_rbi_press_release": {
+    "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+    "release_date": "2026-10-12",
+    "observed_claims": [
+      "6.94% GS 2036",
+      "repayment date 2036-05-11",
+      "auction date 2026-10-16",
+      "settlement date 2026-10-19",
+      "links the GoI specific notification"
+    ],
+    "evidence_scope": "Rendered official RBI press-release content; establishes a source lead and basic dates only."
+  },
+  "exact_notification": {
+    "rbi_linked_pdf": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GSEC12102026_E.pdf",
+    "gazette_pdf": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "retrieval_attempts": [
+      {
+        "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GSEC12102026_E.pdf",
+        "method": "Official RBI page link opened through available web retrieval",
+        "outcome": "Returned human-verification challenge HTML instead of PDF",
+        "response_bytes_retained": false,
+        "sha256": null
+      },
+      {
+        "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+        "method": "Direct official PDF open through available web retrieval",
+        "outcome": "URL not accessible through available retrieval tool",
+        "response_bytes_retained": false,
+        "sha256": null
+      }
+    ]
+  },
+  "outcome": "OFFICIAL_NOTICE_URL_IDENTIFIED; SOURCE_BYTES_NOT_RETAINED; CONTRACT_TERMS_NOT_QUALIFIED",
+  "decision_consequence": "Do not infer coupon dates, accrued-interest cutoff, settlement conventions, or investor cashflows from the rendered press release or third-party transcription. Do not use the conditional accrued-interest calculation in investment analysis.",
+  "bounded_next_steps": [
+    "Retry only through ordinary authorized access when the configured network route is available.",
+    "Retain exact official source bytes with retrieval timestamp, URL, length and SHA-256.",
+    "Independently parse and verify instrument identity, coupon dates and accrued-interest cutoff from retained primary bytes.",
+    "Reconcile the 2026-10-16 RBI auction result and settlement terms before modeling dated cashflows.",
+    "Keep direct-bond returns and portfolio decision NO-GO until candidate economics, tax, access and suitability gates pass."
+  ],
+  "controls": [
+    "No CAPTCHA, proxy, or access control bypass attempted.",
+    "No nonofficial mirror used as decision evidence.",
+    "No source response bytes fabricated or reconstructed from rendered text."
+  ]
+}
