@@ -24,5 +24,11 @@ research/stage512/2026-11-02/cpi_pib_sep2026_annexure_iv_capture.csv text eol=lf
 # Keep the newly generated direct-bond yield reconciliation canonical LF JSON.
 research/g6_3/direct_gsec_2036/2026-10-16/auction_yield_reconciliation_v1.json text eol=lf
 
+# Preserve G5.3 hash-pinned AMFI pilot inputs byte-for-byte on Windows checkouts.
+research/stage512/data/amfi_pilot/manifest.json -text
+research/stage512/data/amfi_pilot/named_scheme_observations.csv -text
+research/stage59/amfi_ter_export_diagnostic.json -text
+research/stage512/2026-11-05/g5_3_qcsae_v1.json text eol=lf
+
 # Holdings source workbooks and their hashed evidence package are immutable bytes.
 research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/** -text
