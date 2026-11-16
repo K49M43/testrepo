@@ -64,7 +64,7 @@
       "status": "PASS",
       "result": {
         "history_audit": "{\n  \"overall\": \"PASS\",\n  \"candidates\": [\n    {\n      \"candidate_id\": \"MOTILAL_NIFTY500_INDEX_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 1761,\n      \"first_observation\": \"2019-09-11\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"SBI_GILT_JUNE2036_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 994,\n      \"first_observation\": \"2022-10-10\",\n      \"last_observation\": \"2026-10-31\",\n      \"max_gap_days\": 4\n    },\n    {\n      \"candidate_id\": \"HDFC_GOLD_ETF\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 2918,\n      \"first_observation\": \"2015-01-01\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"ICICI_SILVER_ETF\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 1160,\n      \"first_observation\": \"2022-01-25\",\n      \"last_observation\": \"2026-10-30\",\n      \"max_gap_days\": 5\n    },\n    {\n      \"candidate_id\": \"SBI_NIFTY500_INDEX_FUND\",\n      \"status\": \"PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY\",\n      \"observations\": 520,\n      \"first_observation\": \"2024-10-04\",\n      \"last_observation\": \"2026-10-31\",\n      \"max_gap_days\": 4\n    }\n  ],\n  \"exploratory_overlap\": {\n    \"artifact\": \"nav_152908_2024-09-30_2025-03-31.json\",\n    \"classification\": \"EXPLORATORY_OVERLAP_ONLY_NOT_CANONICAL_PARTITION\",\n    \"sha256\": \"014f1344f28c0947858f879d67fd4e4d754bbb789c535b2c7daa752f4231f222\",\n    \"overlap_observations\": 122,\n    \"exact_match\": true\n  }\n}",
-        "disposition_audit": "PASS: 10/10 product hypotheses exactly reconcile to G5.2 + G5.4; 13/13 rows classified; every product has source, fee, holdings, tax, liquidity, execution, settlement, access and suitability fields; five official factsheet holdings snapshots and arithmetic checks reproduce; evidence hashes reproduce; no ranking/weights/authorization.",
+        "disposition_audit": "PASS: 10/10 product hypotheses exactly reconcile to G5.2 + G5.4; 14/14 rows classified; every product has source, fee, holdings, tax, liquidity, execution, settlement, access and suitability fields; five official factsheet holdings snapshots and arithmetic checks reproduce; evidence hashes reproduce; no ranking/weights/authorization.",
         "QCSAE_claim_record_present": true,
         "source_manifest_reproduced_by_parent_audit": true
       }
@@ -79,7 +79,8 @@
         "investment_authorization": "NO-GO",
         "explicitly_blocked_rows": [
           "GOI_DIRECT_DATED_GSEC_718_2033",
-          "CASH_HOLD_91D_TBILL_ROLLING"
+          "CASH_HOLD_91D_TBILL_ROLLING",
+          "GOI_DIRECT_DATED_GSEC_694_2036"
         ]
       }
     }

@@ -63,6 +63,7 @@
     "auction_pair": "auction_pair_reconciliation_v1.json",
     "day_count": "day_count_reconciliation_v1.json",
     "nominal_cashflows": "nominal_cashflows_v1.json",
+    "auction_yield_reconciliation": "auction_yield_reconciliation_v1.json",
     "source_review": "source_review.md"
   },
   "supplementary_source_review": {

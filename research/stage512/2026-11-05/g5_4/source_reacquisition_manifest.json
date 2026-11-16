@@ -583,8 +583,8 @@
     },
     {
       "path": "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json",
-      "bytes": 5727,
-      "sha256": "b83a5dc00848b41eb1b8a4cef3964ea345c24d89c4f238134f66939f13896870",
+      "bytes": 5772,
+      "sha256": "f809773fdd4ca0724b1f77c1eff3d79e2d83b0d840dc95101efaae209567b8df",
       "scope_note": "retained raw AMFI response, normalized evidence, acquisition code, or independent audit artifact; see candidate history audit for field-level checks"
     }
   ],

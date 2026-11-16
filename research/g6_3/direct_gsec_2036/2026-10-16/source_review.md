@@ -34,7 +34,7 @@ Primary sources:
 
 ## Accrued-interest reconciliation
 
-The Gazette says successful bidders pay on 19-Oct-2026, specifies accrued interest through 18-Oct-2026, and identifies this as a new security originally issued on 11-May-2026. RBI's G-Sec FAQ says accrued interest runs through the day before settlement and defines the Indian bond-market convention as 30/360. Applying that explicit convention gives 157 days from 11-May through 18-Oct and `6.94 × 157 / 360 = ₹3.026611...` per ₹100 face value, or `₹302.6611...` per ₹10,000 face value. **This is currently a conditional sensitivity, not a qualified settlement amount:** the same RBI FAQ's worked example for 25-Nov-2013 through 29-Jan-2014 reports 65 days, equal to actual elapsed days; 30/360 gives 64 days for those dates. This internal source inconsistency must be resolved before promoting the exact accrued-interest amount.
+The Gazette says successful bidders pay on 19-Oct-2026, specifies accrued interest through 18-Oct-2026, and identifies this as a new security originally issued on 11-May-2026. RBI's G-Sec FAQ says accrued interest runs through the day before settlement and defines the Indian bond-market convention as 30/360. Applying that explicit convention gives 157 days from 11-May through 18-Oct and `6.94 × 157 / 360 = ₹3.026611...` per ₹100 face value, or `₹302.6611...` per ₹10,000 face value. RBI FAQ Q23 independently uses a 47/360 calculation for a price-based reissue, supporting 30/360 for this transaction type. The FAQ's separate Q22 worked example for 25-Nov-2013 through 29-Jan-2014 still reports 65 days, one more than the 30/360 result. Accordingly, the date convention is supported for this auction, but **the exact collected settlement amount remains conditional** because the published retail settlement rounding/collection advice has not been obtained.
 
 The matching RBI full auction result reports a weighted-average clean price of ₹96.93 per ₹100. The official retail noncompetitive rule uses this weighted-average price; it does not use the ₹96.91 cutoff price in this multiple-price auction. The resulting one-auction arithmetic is:
 
@@ -46,7 +46,7 @@ The matching RBI full auction result reports a weighted-average clean price of �
 | Alternative actual/360 sensitivity | ₹100.0144 | ₹10,001.4444 |
 | Maximum aggregator fee under the scheme | ₹0.0600 | ₹6.00 |
 
-The 30/360 calculation is conditional because RBI FAQ Q22's worked example reports one more day than the formula while Q25 states 30/360. The specific Gazette notice does resolve the October auction cutoff as 18-Oct-2026. The computed ₹9,995.66 dirty amount per minimum lot is a historical auction arithmetic result, not proof of an individual award or actual collected cash. The ₹6 fee cap applies to an aggregator/facilitator; the investor's route and fee are not confirmed. The dirty-price arithmetic excludes that fee and any other separately applicable charges. Settlement rounding/collection practice has not been independently verified.
+The 30/360 amount remains conditional because retail settlement rounding/collection has not been independently verified. RBI FAQ Q23 supports 30/360 for a price-based reissue; the separate Q22 worked-example discrepancy is retained as a source-quality caveat. The computed ₹9,995.66 dirty amount per minimum lot is historical auction arithmetic, not proof of an individual award or actual collected cash. The ₹6 fee cap applies to an aggregator/facilitator; the investor's route and fee are not confirmed. The dirty-price arithmetic excludes that fee and any other separately applicable charges.
 
 ## Financial interpretation and controls
 
@@ -61,7 +61,7 @@ The auction's settlement is 19-Oct-2026 and the instrument matures 11-May-2036. 
 3. Confirm the investor's terminal date and contribution dates before deciding whether this maturity is useful; later contributions and coupon reinvestment require separate dated assumptions/evidence.
 4. Obtain a lawful, reproducible price path for acquisitions after the primary auction and any pre-maturity exits. A yield curve/model mark is not an executable retail quote.
 
-The official notification-byte and auction-result pair are reconciled for this one reissue. RBI and FBIL sources support 30/360 as the general Indian G-Sec bond-market convention. The auction notice explicitly sets accrued interest as due through 18-Oct-2026 for the 19-Oct settlement; the 157-day amount is therefore correctly dated under 30/360. The RBI FAQ worked example remains inconsistent with the stated convention by one day, and exact settlement rounding is unverified. This is **not a qualified direct-bond return series** and does not close WP1, G6.3, or any investment decision gate.
+The official notification-byte and auction-result pair are reconciled for this one reissue. RBI FAQ Q23 and FBIL methodology support 30/360 for a price-based reissue / the general Indian G-Sec market convention; the auction notice sets the accrued-interest due-through date as 18-Oct-2026 for the 19-Oct settlement. The 157-day calculation is correctly dated under that supported convention, but exact settlement rounding remains unverified and the amount stays conditional. This is **not a qualified direct-bond return series** and does not close WP1, G6.3, or any investment decision gate.
 
 ## Nominal contractual cashflow schedule (new, bounded artifact)
 
@@ -71,11 +71,19 @@ This is a **contractual schedule skeleton**, not a price or return path. The RBI
 
 Schedule validation performed: JSON parses; 20 events are strictly chronological; first/last nominal dates are 11-Nov-2026 and 11-May-2036; each coupon amount is ₹3.47 per ₹100; only the last event includes ₹100 principal. This is a data-integrity check, not an investment return test.
 
+## Historical auction yield cross-check (2026-11-16)
+
+The independent audit now reconstructs the dated pre-tax cashflow IRR from the reported ₹96.93 weighted-average clean price, the conditional ₹3.026611 accrued-interest input, and all 20 nominal coupon/redemption events. Using actual calendar days divided by 365 gives a 7.52691963% annual-effective XIRR. Converting the auction's reported 7.3925% nominal yield with semiannual compounding gives 7.52912264% effective annual; RBI's G-Sec FAQ Q24 describes the semiannual YTM convention, and Q25 specifies 30/360 for the bond market. The difference is 0.2203 basis points. This small difference is consistent with comparing the actual/365 dated-XIRR convention to the RBI bond-yield convention and rounded published inputs; it is not proof that either is an investor's achieved return. RBI also defines YTM assuming coupon reinvestment at YTM; this artifact does not model or promise that reinvestment.
+
+For the hypothetical minimum ₹10,000 face-value lot, conditional dirty consideration is ₹9,995.6611 before fees, while nominal coupon plus redemption receipts total ₹16,940 over the schedule. The arithmetic difference of ₹6,944.3389 is **not** profit in present-value terms or a forecast: it ignores taxes, fees, coupon reinvestment, actual settlement rounding, and payment-date adjustments. It assumes the reported weighted-average price is the acquisition input and must not be confused with an actual allotment.
+
+The independent record and exact formulas are in `auction_yield_reconciliation_v1.json`; the CI audit recomputes the XIRR from source-linked inputs and checks the comparison remains within 0.5 bp. The result is limited to an arithmetic cross-check using nominal dates and conditional price inputs; it does not qualify future acquisition/exit prices or investor-specific taxed cashflows.
+
 RBI FAQ payment-date rule: [RBI G-Sec FAQ, questions on security terms and coupon/maturity dates](https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711) (lines 93–98 in the accessed page). The specific Gazette terms remain in the retained PDF and source manifest.
 
 ## Updated disposition
 
-**Completed in this increment:** official auction notice/result pair reconciliation; source-byte preservation and hashes; notice-specific accrued-interest due-through date; conditional 30/360 calculation; nominal coupon/redemption schedule skeleton; deterministic source/arithmetic audit.
+**Completed in this increment:** official auction notice/result pair reconciliation; source-byte preservation and hashes; notice-specific accrued-interest due-through date; conditional 30/360 calculation; nominal coupon/redemption schedule skeleton; independent nominal-cashflow XIRR versus reported auction-yield arithmetic cross-check.
 
 **Still open for G6.3:** resolve lawful data rights for a reproducible post-issue secondary-price series; if exact historical auction debit matters, obtain settlement advice to confirm amount rounding; qualify actual future acquisition and exit prices; compute investor-specific taxed, fee-adjusted cashflows after acquisition/contribution, terminal-date, tax, reinvestment and liquidation assumptions are confirmed. AMFI data must not be downloaded, retained, or published in this public repository unless written permission covers that use. This work does not qualify the direct-security lane or close G6.3.
 

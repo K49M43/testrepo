@@ -15,6 +15,7 @@ MANIFEST_PATH = EVIDENCE / "source_manifest.json"
 PAIR_PATH = EVIDENCE / "auction_pair_reconciliation_v1.json"
 DAYCOUNT_PATH = EVIDENCE / "day_count_reconciliation_v1.json"
 CASHFLOW_PATH = EVIDENCE / "nominal_cashflows_v1.json"
+YIELD_PATH = EVIDENCE / "auction_yield_reconciliation_v1.json"
 
 
 def fail(message: str) -> None:
@@ -52,11 +53,33 @@ def close(actual: str | Decimal, expected: Decimal, tolerance: Decimal, label: s
     require(abs(value - expected) <= tolerance, f"{label} mismatch: got {value}, expected {expected}")
 
 
+def xirr_actual_365(cashflows: list[tuple[float, date]]) -> float:
+    """Solve annual-effective XIRR using actual calendar days divided by 365."""
+    origin = cashflows[0][1]
+
+    def npv(rate: float) -> float:
+        return sum(
+            amount / (1.0 + rate) ** ((when - origin).days / 365.0)
+            for amount, when in cashflows
+        )
+
+    low, high = -0.99, 1.0
+    require(npv(low) > 0.0 and npv(high) < 0.0, "XIRR root is not bracketed in [-99%, 100%]")
+    for _ in range(200):
+        middle = (low + high) / 2.0
+        if npv(middle) > 0.0:
+            low = middle
+        else:
+            high = middle
+    return (low + high) / 2.0
+
+
 def main() -> None:
     manifest = load_json(MANIFEST_PATH)
     pair = load_json(PAIR_PATH)
     daycount = load_json(DAYCOUNT_PATH)
     cashflows = load_json(CASHFLOW_PATH)
+    yield_record = load_json(YIELD_PATH)
 
     result_path = EVIDENCE / manifest["preserved_file"]
     verify_hash(result_path, manifest["byte_length"], manifest["sha256"])
@@ -118,6 +141,34 @@ def main() -> None:
         expected_date = date(year, month, 11)
     require(events[-1]["nominal_coupon_date"] == "2036-05-11", "final maturity date mismatch")
     print("PASS: 20-event nominal coupon/redemption schedule and calendar labels")
+
+    # Independent cashflow-yield reconciliation. The initial dirty consideration
+    # remains conditional because retail settlement rounding is not qualified.
+    dirty = Decimal(settlement["dirty_consideration_per_100_face_value"])
+    initial = -float(dirty)
+    yield_cashflows = [(initial, date.fromisoformat(cashflows["modeled_acquisition_date"]))]
+    for event in events:
+        amount = Decimal(event["coupon_per_100_face_inr"]) + Decimal(event["redemption_per_100_face_inr"])
+        yield_cashflows.append((float(amount), date.fromisoformat(event["nominal_coupon_date"])))
+    xirr = xirr_actual_365(yield_cashflows)
+    quoted_nominal = Decimal(str(pair["auction_result_values"]["competitive_weighted_average_yield_percent"])) / Decimal(100)
+    quoted_effective = (Decimal(1) + quoted_nominal / Decimal(2)) ** 2 - Decimal(1)
+    difference_bps = (Decimal(str(xirr)) - quoted_effective) * Decimal(10000)
+    gross_receipts = sum(Decimal(str(amount)) for amount, _ in yield_cashflows[1:])
+    gross_excess = gross_receipts - dirty
+    min_lot_units = Decimal(settlement["minimum_face_value_inr"]) / Decimal(100)
+
+    close(yield_record["inputs"]["initial_dirty_consideration_per_100"], dirty, Decimal("1e-25"), "yield input dirty consideration")
+    close(yield_record["results"]["actual_365_xirr_effective_percent"], Decimal(str(xirr * 100)), Decimal("1e-10"), "actual/365 XIRR")
+    close(yield_record["results"]["quoted_yield_semiannual_effective_percent"], quoted_effective * Decimal(100), Decimal("1e-20"), "effective auction yield")
+    close(yield_record["results"]["difference_actual_365_xirr_minus_quoted_effective_bps"], difference_bps, Decimal("1e-9"), "yield convention difference")
+    close(yield_record["results"]["gross_nominal_receipts_per_100_face"], gross_receipts, Decimal("1e-20"), "nominal coupon and redemption receipts")
+    close(yield_record["results"]["gross_receipts_less_conditional_dirty_consideration_per_100_face"], gross_excess, Decimal("1e-20"), "nominal receipts less conditional outlay")
+    require(abs(difference_bps) < Decimal("0.5"), "cashflow XIRR differs from converted auction yield by 0.5 bp or more")
+    close(yield_record["results"]["minimum_lot_dirty_consideration_inr"], dirty * min_lot_units, Decimal("1e-20"), "minimum-lot dirty consideration")
+    close(yield_record["results"]["minimum_lot_nominal_receipts_inr"], gross_receipts * min_lot_units, Decimal("1e-18"), "minimum-lot nominal receipts")
+    require(yield_record["qualification"] == "ARITHMETIC_CROSSCHECK_ONLY_CONDITIONAL_INPUTS", "yield result must remain conditional and non-decision-grade")
+    print("PASS: conditional nominal cashflow XIRR reconciles to auction yield within 0.5 bp")
     print("LIMIT: no market-price history, exact settlement rounding, reinvestment, tax, or investor-specific return qualified")
 
 
