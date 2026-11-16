@@ -125,8 +125,8 @@
     "research/stage512/2026-11-05/G5_3_INDEPENDENT_AUDIT.md": "39b2a33a5e973620fe20143de50c2640569cda8c1b512389228467716d9202fe",
     "research/stage512/2026-11-05/g5_2_candidate_evidence_register_v1.json": "e562c7a6554f16b81cd8f9a02d6bb5170f92a5831033476acdd93da8f6c3c9fa",
     "research/stage512/2026-11-05/g5_2_holdings_overlap_v1.json": "cda8d5aeb710b4f4b966140b3fc61fcc0c520e15520d8f5a9c9c6cc026980116",
-    "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json": "c15765e6c48a16b80e9544f422433efd7d057c4698a7d69c3932fc9b6db308cb",
-    "docs/DECISION_LOG.md": "d435cbd5071d076e4f7ee5d31e0d6519d50c6be1486d4bfe01180d7102032dbf",
+    "research/stage512/2026-11-05/g5_1_118_claim_lineage_v1.json": "6438c621e95dec118d622ffae7e78aaddee206386ebb045d7484e9e35bb24bb2",
+    "docs/DECISION_LOG.md": "40b20716500e9f4df163eea72126cd649e8d15f0b09736830eb5847ff0bddbe0",
     "research/stage59/amfi_ter_oct2026_export_latest.csv": "5d4b0b4a6ee306cedddad0b4470c3efd5fe76ffcbdb0e96c7fd38455b8df8e77",
     "research/stage59/amfi_ter_export_diagnostic.json": "845940d19694207de0763a8243447ee11d8f256ece5961ea28f6daf1544fa297"
   },
@@ -152,5 +152,46 @@
     "g5_1_lineage_sha256_utf8_lf": "c15765e6c48a16b80e9544f422433efd7d057c4698a7d69c3932fc9b6db308cb",
     "decision_log_sha256_utf8_lf": "d435cbd5071d076e4f7ee5d31e0d6519d50c6be1486d4bfe01180d7102032dbf",
     "g5_3_independent_audit_rerun": "PASS: decision/audit_g5_3_independent_candidate_evidence.py (2026-11-06 follow-up)"
+  },
+  "lineage_refresh_2026_11_16": {
+    "reason": "PR #67 G6.3 direct-bond audit changed the dated log. CI identified stale G5.1/G5.3 fingerprints; Windows raw-byte checks identified CRLF conversion of hash-pinned AMFI JSON inputs. Coordinated lineage refresh and byte-preservation rules are now applied.",
+    "g5_1_lineage_sha256_utf8_lf": "6438c621e95dec118d622ffae7e78aaddee206386ebb045d7484e9e35bb24bb2",
+    "decision_log_sha256_utf8_lf": "40b20716500e9f4df163eea72126cd649e8d15f0b09736830eb5847ff0bddbe0",
+    "g5_1_claim_lineage_rerun": "PASS against pinned pre-correction baseline and seeded reproduction",
+    "g5_3_independent_candidate_audit_rerun": "PASS; five negative cases rejected",
+    "exact_head_github_actions": "PASS_ALL_15_REPORTED_CHECKS_AT_94e3f2ffaf49f05a29ea66e56dced6b408eb8ef5",
+    "github_actions_run_ids": {
+      "source_and_cashflow": [
+        43817919092,
+        43817930388
+      ],
+      "g3_outcome_and_hurdle": [
+        43817919256,
+        43817930419
+      ],
+      "g4_disposition": [
+        43817919189,
+        43817930319
+      ],
+      "g5_1_lineage": [
+        43817919149,
+        43817930438
+      ],
+      "g5_2_candidate_register": [
+        43817919280,
+        43817930393
+      ],
+      "g5_3_independent_candidate_audit": [
+        43817919188,
+        43817930460
+      ],
+      "g6_3_source_inventory": [
+        43817930407
+      ],
+      "tax_ledger_database": [
+        43817919073,
+        43817930468
+      ]
+    }
   }
 }

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1.0",
+  "record_id": "g6-3-goi-specific-notification-route-probe-2026-11-07-v2",
+  "as_of": "2026-11-07",
+  "purpose": "Identify, render, and retain the official October 2026 GoI notification for 6.94% GS 2036.",
+  "official_rbi_press_release": {
+    "url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792",
+    "release_date": "2026-10-12",
+    "observed_claims": [
+      "6.94% GS 2036",
+      "repayment date 2036-05-11",
+      "auction date 2026-10-16",
+      "settlement date 2026-10-19",
+      "links the GoI specific notification"
+    ],
+    "evidence_scope": "Rendered official RBI press-release content; basic issue, auction and settlement dates only."
+  },
+  "official_gazette_pdf": {
+    "url": "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "publication_id": "CG-DL-E-12102026-277085",
+    "observed_in_chrome": true,
+    "browser_render": "Official 8-page PDF rendered in Chrome using Adobe PDF viewer; first page visibly identifies Gazette, October 12, 2026, 6.94% GS 2036, original issue May 11, 2026, maturity May 11, 2036, 10-year tenure, price-based multiple auction and notified amount ₹34,000 crore.",
+    "bytes_saved": false,
+    "save_dialog": "Open; Save action did not complete through computer-use automation. Exact file 277085.pdf absent from the known Downloads directory at the last check.",
+    "raw_bytes_sha256": null,
+    "evidence_scope": "Rendered page 1 establishes a primary-source identity lead. No raw-byte hash or full-document extraction has been completed; do not yet qualify coupon schedule, accrued-interest cutoff or full settlement cashflow terms."
+  },
+  "official_rbi_linked_pdf": {
+    "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GSEC12102026_E.pdf",
+    "retrieval": "Available web retrieval returned human-verification HTML rather than PDF; the eGazette link above rendered normally in Chrome.",
+    "bytes_saved": false
+  },
+  "result": "OFFICIAL_GAZETTE_PDF_RENDERED; IDENTITY_AND_FIRST_PAGE_PARTIALLY_VERIFIED; RAW_BYTES_NOT_RETAINED; FULL_TERMS_NOT_QUALIFIED",
+  "decision_consequence": "Use no bond cashflow or accrued-interest calculation as qualified until the exact Gazette bytes are saved, hashed, parsed, and reconciled with the RBI auction result. Keep all existing conditional arithmetic illustrative only.",
+  "bounded_next_steps": [
+    "Complete the pending Save As action in Chrome and verify 277085.pdf in Downloads.",
+    "Hash and retain the exact official PDF bytes with source URL, timestamp, file size and SHA-256.",
+    "Extract all pages and independently verify coupon payment dates, accrued-interest cutoff, settlement terms and instrument identity.",
+    "Reconcile the notification against the retained 2026-10-16 RBI auction-result PDF.",
+    "Keep direct-bond return, investor execution/tax/suitability and portfolio decision gates open until their evidence standards pass."
+  ],
+  "controls": [
+    "No CAPTCHA or site-protection challenge was solved or bypassed.",
+    "No nonofficial mirror was accepted as decision evidence.",
+    "No source response bytes were fabricated or reconstructed from rendered text."
+  ]
+}

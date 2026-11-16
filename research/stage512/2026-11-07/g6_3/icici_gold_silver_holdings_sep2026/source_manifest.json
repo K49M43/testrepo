@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "G6.3-ICICI-GOLD-SILVER-HOLDINGS-2026-09",
+  "retrieved_date": "2026-11-07",
+  "source_class": "AMC_first_party_disclosure",
+  "disclosure_period_end": "2026-09-30",
+  "disclosure_index": "https://www.advisorkhoj.com/form-download-centre/Mutual/ICICI-Prudential-Mutual-Fund/Monthly-Portfolio-Disclosures",
+  "official_download_url": "https://www.icicipruamc.com/blob/downloads/Files/Monthly%20Portfolio%20Disclosures/2026/Sep/Monthly-Portfolio-Disclosure-September-2026.zip",
+  "downloaded_container": {
+    "entry_count": 151,
+    "retained_in_repository": false,
+    "retention_note": "Only the exact original workbook bytes for the two in-scope ETF members are retained; full archive was not added to avoid unrelated 149 workbooks.",
+    "file": "Monthly-Portfolio-Disclosure-September-2026.zip",
+    "bytes": 25879936,
+    "sha256": "d40fe596247479b4da3a9ca613a7d19c1773b0a06e866543ee8753352d29dad7"
+  },
+  "source_workbooks": [
+    {
+      "archive_member": "ICICI Prudential Gold ETF.xlsx",
+      "repository_file": "ICICI Prudential Gold ETF.xlsx",
+      "sheet": "GOLD",
+      "bytes": 182629,
+      "sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a"
+    },
+    {
+      "archive_member": "ICICI PRUDENTIAL SILVER ETF.xlsx",
+      "repository_file": "ICICI PRUDENTIAL SILVER ETF.xlsx",
+      "sheet": "SILVER",
+      "bytes": 160341,
+      "sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8"
+    }
+  ],
+  "audit_method": "Exact workbook cells; Decimal arithmetic; no return inference.",
+  "qualification": "PASS_for_2026-09-30_holdings_composition_only",
+  "limitations": [
+    "Not current beyond 2026-09-30.",
+    "No ETF market price, NAV tracking, premium/discount, spread, order-book depth, slippage, or execution cost.",
+    "No historical return, covariance, tax, investor suitability, or forecast qualified.",
+    "Metal quantity units not inferred.",
+    "No bar-level serial or custody evidence."
+  ],
+  "claim_boundaries": {
+    "double_count_control": "Metal category roll-up equals detailed physical holding row; count detail row once.",
+    "silver_physical_weight_percent": "98.963952",
+    "gold_treps_weight_percent": "0.024986",
+    "silver_nca_weight_percent": "1.032648",
+    "silver_treps_weight_percent_derived": "0.003399",
+    "silver_treps_source_cell": "^ (<0.01% absolute NAV per workbook footnote)",
+    "gold_nca_weight_percent": "1.877814",
+    "gold_physical_weight_percent": "98.097201"
+  }
+}

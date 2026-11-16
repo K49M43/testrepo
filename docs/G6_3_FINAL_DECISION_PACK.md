@@ -57,3 +57,20 @@ After this decision-pack snapshot, PRs #55–#58 captured the RBI archive index,
 ## Historical sovereign sample update — 2026-11-06
 
 PR #60 adds one matched RBI T-bill auction cycle: notice, method, auction/settlement dates, full result, cut-off result and Table 218 all reconcile for 26-Nov-2025. This verifies one sample rule-based weighted-average NCB price input and exact source lineage. It does not establish complete historical paired coverage, actual retail fills, direct dated-bond cashflows, the strategy comparison, or an investable rolling return. Therefore the **NO-GO / NOT YET EVALUATED** conclusion is unchanged.
+
+
+## Evidence update — candidate holdings and HDFCGOLD price history (2026-11-07)
+
+Draft PR #64 consolidates an official HDFCGOLD daily-close archive (1,241 observations, 08-Nov-2021–06-Nov-2026) and official 30-Sep-2026 ICICI Gold/Silver holdings snapshots. The G5.4 candidate disposition now links the HDFCGOLD market-price history and the two later holdings snapshots separately from prior evidence. All reported candidate-register, independent-candidate-audit, lineage and source-inventory checks pass on PR #64 head `25be95f2c03ddd85cb6ecb27fcb71572509c2c89`; the PR remains draft and unmerged.
+
+This closes only those bounded evidence increments. It does not produce a comparable execution-cost panel, direct sovereign cashflow path, after-tax candidate comparison, exact date-aligned joint history, investor-specific CPI result or calibrated probability. The October 6.94% GS 2036 terms/cutoff have since been source-qualified in draft PR #65 as detailed below; current execution price and investor-specific economics remain blocked. The decision remains **NO-GO / NOT YET EVALUATED**.
+
+## Direct sovereign source-pair update — 2026-11-07
+
+Draft PR #65 now retains the official October-specific Gazette reissue notice and RBI full auction result for 6.94% GS 2036 (ISIN `IN0020260025`). The Gazette terms confirm 11-May/11-Nov coupon dates, maturity on 11-May-2036, and accrued interest due through 18-Oct-2026 for 19-Oct settlement. The RBI result records weighted-average price/yield 96.93 / 7.3925%; cutoff price/yield 96.91 / 7.3955%. These are distinct auction values. RBI auction FAQ Q23 independently supports 30/360 accrued interest for a price-based reissue. The notice-specific amount ₹3.026611 per ₹100 is a convention-based calculation; exact retail settlement rounding remains unverified.
+
+This supersedes the earlier statement that the October notice bytes and cutoff were unqualified. The new work qualifies the source pair and nominal coupon/redemption skeleton, not an executable quote, continuous traded-price history, investor tax/fee result, coupon reinvestment path, or direct-bond risk distribution. PR #65 remains draft and unmerged; consequently the 2036 source files are not yet in the main branch. Decision remains NO-GO / NOT YET EVALUATED.
+
+## Direct-bond auction yield arithmetic update — 2026-11-16
+
+The retained October auction inputs now have an independent cashflow-yield cross-check. Applying the 20 nominal coupons/redemption to the reported 96.93 weighted-average clean price plus conditional accrued interest gives a nominal-date actual/365 XIRR of 7.52691963% effective. The RBI result's 7.3925% nominal annual yield converts to 7.52912264% effective under semiannual compounding, a 0.2203 bp difference. For the hypothetical minimum ₹10,000 face lot, the conditional dirty outlay is ₹9,995.6611 before fees and nominal coupon/redemption receipts total ₹16,940. These are arithmetic reconciliation figures, not profit, an achieved investor return, or forecast; settlement precision, dates, tax, fees, reinvestment, and actual investor execution remain unresolved. The calculator/audit and input record are in `decision/audit_g6_3_direct_gsec_2036.py` and `research/g6_3/direct_gsec_2036/2026-10-16/auction_yield_reconciliation_v1.json`.

@@ -5,11 +5,13 @@ on:
       - 'decision/audit_g6_3_source_inventory.py'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
+      - 'decision/audit_g6_3_direct_gsec_2036.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/g6_3/direct_gsec_2036/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
   pull_request:
@@ -17,11 +19,13 @@ on:
       - 'decision/audit_g6_3_source_inventory.py'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
+      - 'decision/audit_g6_3_direct_gsec_2036.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/g6_3/direct_gsec_2036/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
 permissions:
@@ -50,3 +54,5 @@ jobs:
         run: python decision/audit_g6_3_rbi_source_capture.py
       - name: Rehash retained RBI 2025-26 T-bill panel
         run: python decision/audit_g6_3_rbi_tbill_window.py research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026
+      - name: Verify direct GoI 2036 source pair, conditional settlement arithmetic and nominal cashflows
+        run: python decision/audit_g6_3_direct_gsec_2036.py

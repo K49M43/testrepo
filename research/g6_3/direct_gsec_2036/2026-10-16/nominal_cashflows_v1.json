@@ -1,0 +1,239 @@
+{
+  "record_id": "G6.3-DIRECT-GSEC-2036-NOMINAL-CASHFLOWS-v1",
+  "security": "6.94% GS 2036",
+  "isin": "IN0020260025",
+  "source_terms": "Original issue 2026-05-11; maturity 2036-05-11; half-yearly coupon 2026-05-11 and 2026-11-11; face repayment at par",
+  "modeled_acquisition_date": "2026-10-19",
+  "coupon_rate_percent_per_annum": "6.94",
+  "coupon_frequency": "semiannual",
+  "coupon_per_100_face_inr": "3.47",
+  "coupon_per_10000_face_inr": "347.00",
+  "schedule_semantics": "Nominal contractual dates, not holiday-adjusted payment dates. RBI FAQ states coupons on Sunday/holiday are paid next working day, while maturity redemption on Sunday/holiday is paid previous working day. Coupon and principal can therefore have different payment dates at maturity. Future public holiday calendars are not applied.",
+  "day_count": "Not needed for nominal regular coupon amount. October auction notice specifies accrued interest due through 2026-10-18; the conditional 30/360 amount and remaining settlement-rounding limitation are in day_count_reconciliation_v1.json.",
+  "source_links": [
+    "https://egazette.gov.in/WriteReadData/2026/277085.pdf",
+    "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711"
+  ],
+  "coupon_events": [
+    {
+      "sequence": 1,
+      "nominal_coupon_date": "2026-11-11",
+      "weekday": "Wednesday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 2,
+      "nominal_coupon_date": "2027-05-11",
+      "weekday": "Tuesday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 3,
+      "nominal_coupon_date": "2027-11-11",
+      "weekday": "Thursday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 4,
+      "nominal_coupon_date": "2028-05-11",
+      "weekday": "Thursday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 5,
+      "nominal_coupon_date": "2028-11-11",
+      "weekday": "Saturday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 6,
+      "nominal_coupon_date": "2029-05-11",
+      "weekday": "Friday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 7,
+      "nominal_coupon_date": "2029-11-11",
+      "weekday": "Sunday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 8,
+      "nominal_coupon_date": "2030-05-11",
+      "weekday": "Saturday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 9,
+      "nominal_coupon_date": "2030-11-11",
+      "weekday": "Monday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 10,
+      "nominal_coupon_date": "2031-05-11",
+      "weekday": "Sunday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 11,
+      "nominal_coupon_date": "2031-11-11",
+      "weekday": "Tuesday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 12,
+      "nominal_coupon_date": "2032-05-11",
+      "weekday": "Tuesday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 13,
+      "nominal_coupon_date": "2032-11-11",
+      "weekday": "Thursday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 14,
+      "nominal_coupon_date": "2033-05-11",
+      "weekday": "Wednesday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 15,
+      "nominal_coupon_date": "2033-11-11",
+      "weekday": "Friday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 16,
+      "nominal_coupon_date": "2034-05-11",
+      "weekday": "Thursday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 17,
+      "nominal_coupon_date": "2034-11-11",
+      "weekday": "Saturday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 18,
+      "nominal_coupon_date": "2035-05-11",
+      "weekday": "Friday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "nominal date weekday; public holiday status not assessed",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 19,
+      "nominal_coupon_date": "2035-11-11",
+      "weekday": "Sunday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": false,
+      "redemption_per_100_face_inr": "0.00",
+      "redemption_payment_date_status": "not applicable"
+    },
+    {
+      "sequence": 20,
+      "nominal_coupon_date": "2036-05-11",
+      "weekday": "Sunday",
+      "coupon_per_100_face_inr": "3.47",
+      "coupon_per_10000_face_inr": "347.00",
+      "coupon_payment_date_status": "unresolved_actual_date; weekend; coupon payment next working day per RBI FAQ; future holiday calendar not applied",
+      "maturity_coupon_and_redemption": true,
+      "redemption_per_100_face_inr": "100.00",
+      "redemption_payment_date_status": "unresolved_actual_date; weekend; redemption previous working day per RBI FAQ; future holiday calendar not applied"
+    }
+  ]
+}

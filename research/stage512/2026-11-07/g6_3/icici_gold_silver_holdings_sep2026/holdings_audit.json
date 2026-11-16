@@ -1,0 +1,52 @@
+{
+  "audit_method": "Exact workbook cells; Decimal arithmetic for reconciliation; no return inference.",
+  "evidence_id": "G6.3-ICICI-GOLD-SILVER-HOLDINGS-2026-09",
+  "limitations": [
+    "This is a 2026-09-30 holdings snapshot, not current holdings after that date.",
+    "It does not establish ETF market price, NAV tracking, premium/discount, bid-ask spread, depth, slippage, or investor execution.",
+    "It does not establish long-run return history, covariance, tax, or suitability.",
+    "Physical metal holdings are reported without a bar-level serial/lot inventory.",
+    "The source quantity fields are retained as reported; no unit is inferred."
+  ],
+  "results": {
+    "gold": {
+      "as_of": "2026-09-30",
+      "exposure_reconciles_to_total": true,
+      "net_current_assets_lakh_rupees": "51856.58579509985",
+      "net_current_assets_weight_percent": "1.877814",
+      "physical_holding_label": "Gold (995 Purity) ^",
+      "physical_holding_value_lakh_rupees": "2708993.78",
+      "physical_holding_weight_percent": "98.097201",
+      "quantity_as_reported": 18352,
+      "rollup_and_detail_are_equal": true,
+      "sheet": "GOLD",
+      "source_file": "ICICI Prudential Gold ETF.xlsx",
+      "source_sha256": "cb232f1d29f42ffd4d17b29bbca8f6ab7a4def038cc9f4a42741798845b1467a",
+      "total_net_assets_lakh_rupees": "2761540.3557951",
+      "treps_percent_source_cell": 0.0002498569316,
+      "treps_value_lakh_rupees": "689.99",
+      "treps_weight_percent_source_or_derived": "0.024986",
+      "weight_reconciles_to_100_percent": true
+    },
+    "silver": {
+      "as_of": "2026-09-30",
+      "exposure_reconciles_to_total": true,
+      "net_current_assets_lakh_rupees": "14809.126551699825",
+      "net_current_assets_weight_percent": "1.032648",
+      "physical_holding_label": "Silver ^",
+      "physical_holding_value_lakh_rupees": "1419233.84",
+      "physical_holding_weight_percent": "98.963952",
+      "quantity_as_reported": 641867.778,
+      "rollup_and_detail_are_equal": true,
+      "sheet": "SILVER",
+      "source_file": "ICICI PRUDENTIAL SILVER ETF.xlsx",
+      "source_sha256": "81d3c10fce48d393abf2b7290ce13c80ec4f5225d2f9de5459bbef9866ac7df8",
+      "total_net_assets_lakh_rupees": "1434091.7165517",
+      "treps_percent_source_cell": "^",
+      "treps_value_lakh_rupees": "48.75",
+      "treps_weight_percent_source_or_derived": "0.003399",
+      "weight_reconciles_to_100_percent": true
+    }
+  },
+  "schema_version": "1.0"
+}

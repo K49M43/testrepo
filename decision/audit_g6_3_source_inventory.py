@@ -297,8 +297,8 @@ def build_record() -> dict[str, Any]:
     readiness = read_json(G6_READINESS)
     return {
         "schema_version": 1,
-        "record_id": "g6-3-source-coverage-audit-2026-11-06-v1",
-        "as_of": "2026-11-06",
+        "record_id": "g6-3-source-coverage-audit-2026-11-07-v1",
+        "as_of": "2026-11-07",
         "result": "PASS_SOURCE_INVENTORY_ONLY_G6_DECISION_GRADE_NOT_READY",
         "g5_source_evidence": g5,
         "r9_lic_source_evidence": r9,
@@ -307,7 +307,7 @@ def build_record() -> dict[str, Any]:
         "existing_open_g6_readiness_gates": readiness["blocker_summary"]["open"],
         "new_source_leads_not_yet_acquired": {
             "rbi_91_day_tbill": "Official RBI Table 218 91-day auctions are now cross-source qualified for the one-year 2025-07-02 through 2026-06-24 window: 50/50 auction dates, 50 notices, and 50 full-result pages. For 49 positive-issue dates, the 91-day cutoff yield matches Table 218 exactly and the full-result cutoff price rounds to its two-decimal price; 2026-03-25 is an explicit zero-issue exception. The exact 114-source capture set, byte hashes, and normalized CSV are retained at research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/ and independently audit with decision/audit_g6_3_rbi_tbill_window.py. This is one-year descriptive, short-duration evidence only: long-run sovereign return history, direct-GoI cashflows, investor retail fill, rolling reinvestment economics, and decision-grade sovereign risk remain unqualified.",
-            "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
+            "direct_goi": "Official Gazette notice and RBI full auction-result bytes for 6.94% GS 2036 are hash-verified in draft PR #65; one primary-auction price/yield, notice-specific accrued-interest cutoff and nominal coupon/redemption schedule are reconciled. No current executable secondary price, retail settlement advice, or continuous security price history is qualified. NSE WDM historical data is a paid licensed route (2026 tariff ₹30,000/year/site before taxes); rights and scope remain unconfirmed. The RBI long-history yield panel remains a proxy, not this security trade-return history.",
             "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
             "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable.",
         },
