@@ -192,7 +192,39 @@ def main():
         for key in ("weighted_price_91", "weighted_yield_91", "cutoff_price_91", "cutoff_yield_91"):
             if row.get(key) != r[key]:
                 raise SystemExit(f"CSV/source value mismatch {key} on {d}")
-    print(json.dumps({"result":"PASS_RBI_TBILL_2025_2026_EXACT_DATE_PANEL","table218_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"captured_source_count":len(records)},indent=2))
+
+    # Descriptive auction-yield levels only. They are not realized holding-period
+    # returns, a chained reinvestment path, or independent annual outcomes.
+    matched = [row for row in panel if row["result_status"] == "MATCHED"]
+    weighted_yields = sorted(Decimal(row["weighted_yield_91"]) for row in matched)
+    weighted_prices = [Decimal(row["weighted_price_91"]) for row in matched]
+    n = len(weighted_yields)
+    mean_yield = sum(weighted_yields) / Decimal(n)
+    sample_variance = sum((value - mean_yield) ** 2 for value in weighted_yields) / Decimal(n - 1)
+    sample_sd = sample_variance.sqrt()
+    four_dp = Decimal("0.0001")
+    method_counts = {}
+    for row in panel:
+        method_counts[row["auction_method"]] = method_counts.get(row["auction_method"], 0) + 1
+    summary = {
+        "classification": "ONE_YEAR_DESCRIPTIVE_AUCTION_YIELD_LEVELS_NOT_REALIZED_RETURNS",
+        "matched_91_day_positive_issue_observations": n,
+        "auction_method_counts": method_counts,
+        "weighted_yield_91_pct_actual_365": {
+            "minimum": str(min(weighted_yields).quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "median": str(weighted_yields[n // 2].quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "mean": str(mean_yield.quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "sample_standard_deviation_percentage_points": str(sample_sd.quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "maximum": str(max(weighted_yields).quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "last_minus_first_percentage_points": str((Decimal(matched[-1]["weighted_yield_91"]) - Decimal(matched[0]["weighted_yield_91"])).quantize(four_dp, rounding=ROUND_HALF_UP)),
+        },
+        "weighted_price_91_per_100_face": {
+            "minimum": str(min(weighted_prices).quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "maximum": str(max(weighted_prices).quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "distinct_from_cutoff_price_observations": sum(row["weighted_price_91"] != row["cutoff_price_91"] for row in matched),
+        },
+    }
+    print(json.dumps({"result":"PASS_RBI_TBILL_2025_2026_EXACT_DATE_PANEL","table218_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"captured_source_count":len(records),"descriptive_summary":summary},indent=2))
 
 if __name__ == "__main__":
     main()
