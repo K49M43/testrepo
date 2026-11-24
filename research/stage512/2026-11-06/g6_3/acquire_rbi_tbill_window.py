@@ -223,11 +223,16 @@ def notice_data(body: bytes) -> dict[str, str]:
     auction = datetime.strptime(auction_match.group(1), "%B %d, %Y").date().isoformat()
     issue = datetime.strptime(issue_match.group(1), "%B %d, %Y").date().isoformat()
     text = visible_text(body)
-    method_match = re.search(r"(price|yield) based using ([a-z -]+?) method", text)
+    # Some archived RBI notices split the final word across an inline span
+    # boundary (for example, ``metho</span>d``). ``visible_text`` separates
+    # text nodes with spaces, so allow that single-word split and normalize the
+    # method back to its canonical wording before storing it.
+    method_match = re.search(r"(price|yield) based using ([a-z -]+?) metho\s*d", text)
     if not method_match:
         raise RuntimeError("auction method missing from notice")
     release = re.search(r"date\s*:\s*([a-z]{3}\s+\d{1,2},\s+\d{4})", text)
-    return {"auction_date": auction, "issue_date": issue, "notified_amount_crore": row[2].replace(",", ""), "auction_method": method_match.group(0), "notice_date": datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat() if release else "", "retail_route": str("retail investors" in text or "individual investors" in text)}
+    method = f"{method_match.group(1)} based using {method_match.group(2).strip()} method"
+    return {"auction_date": auction, "issue_date": issue, "notified_amount_crore": row[2].replace(",", ""), "auction_method": method, "notice_date": datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat() if release else "", "retail_route": str("retail investors" in text or "individual investors" in text)}
 
 
 def result_data(body: bytes) -> dict[str, str]:
@@ -359,16 +364,32 @@ def main() -> None:
         result_by_date[detail["result_date"]] = detail
     output_rows = []
     exceptions = []
+    issue_date_conflicts = []
     for auction_date, t218 in sorted(expected.items()):
         candidates = notice_by_date.get(auction_date, [])
         if len(candidates) != 1:
             raise RuntimeError(f"expected exactly one contemporaneous notice for {auction_date}, found {len(candidates)}")
         notice = candidates[0]
-        if notice["issue_date"] != t218["issue_date"] or notice["notified_amount_crore"] != t218["notified_amount_crore"]:
-            raise RuntimeError(f"notice/Table218 settlement or notified amount mismatch for {auction_date}")
+        if notice["notified_amount_crore"] != t218["notified_amount_crore"]:
+            raise RuntimeError(f"notice/{args.table_name} notified amount mismatch for {auction_date}")
+        if notice["issue_date"] != t218["issue_date"]:
+            issue_date_conflicts.append({
+                "auction_date": auction_date,
+                "table_issue_date": t218["issue_date"],
+                "notice_issue_date": notice["issue_date"],
+                "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE",
+            })
         total_issue = t218["total_issue_crore"].replace("-", "0")
         result = result_by_date.get(auction_date)
-        row = {**t218, "notice_prid": notice["prid"], "notice_date": notice["notice_date"], "auction_method": notice["auction_method"], "retail_route_stated": notice["retail_route"], "notice_path": notice["path"], "result_status": "MATCHED" if result else "NO_RESULT_PAGE"}
+        row = {
+            **t218,
+            "table_issue_date": t218["issue_date"],
+            "issue_date": notice["issue_date"],
+            "issue_date_resolution": "NOTICE_AND_TABLE_AGREE" if notice["issue_date"] == t218["issue_date"] else "NOTICE_OVERRIDES_TABLE_DATE_CONFLICT",
+            "notice_prid": notice["prid"], "notice_date": notice["notice_date"],
+            "auction_method": notice["auction_method"], "retail_route_stated": notice["retail_route"],
+            "notice_path": notice["path"], "result_status": "MATCHED" if result else "NO_RESULT_PAGE",
+        }
         if total_issue in {"0", "0.00"}:
             row["result_status"] = "ZERO_ISSUE_EXCEPTION"
             if result and result.get("weighted_price_91"):
@@ -400,13 +421,15 @@ def main() -> None:
     manifest = {
         "schema_version": 1,
         "captured_at_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": f"official RBI T-bill notice/full-result pairs for {args.expected_auctions} rows in {args.table_name} ({args.first_date} through {args.last_date}); auction-yield levels only, not a calibrated risk history",
+        "scope": f"official RBI T-bill notice/full-result pairs for {args.expected_auctions} rows in {args.table_name} ({args.first_date} through {args.last_date}); table/notice issue-date conflicts retain both source values and use the contemporaneous auction notice for the normalized issue date; auction-yield levels only, not a calibrated risk history",
         "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB body cap",
         "reference_table": args.table_name,
         "table_reference": table_reference,
         "window": {"first_date": args.first_date, "last_date": args.last_date},
         "expected_auctions": len(expected), "matched_notice_dates": len(notice_by_date), "matched_full_result_dates": len(result_by_date),
-        "exceptions": exceptions, "sources": records,
+        "exceptions": exceptions,
+        "source_discrepancies": {"issue_date_conflicts": issue_date_conflicts},
+        "sources": records,
     }
     if args.table_name == "Table 218":
         manifest["table218_reference"] = manifest["table_reference"]

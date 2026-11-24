@@ -85,10 +85,11 @@ def notice(body):
     if not a or not i:
         raise ValueError("notice auction/issue dates missing")
     t = visible(body)
-    m = re.search(r"(price|yield) based using ([a-z -]+?) method", t)
+    m = re.search(r"(price|yield) based using ([a-z -]+?) metho\s*d", t)
     if not m:
         raise ValueError("notice auction method missing")
-    return {"auction_date": datetime.strptime(a.group(1), "%B %d, %Y").date().isoformat(), "issue_date": datetime.strptime(i.group(1), "%B %d, %Y").date().isoformat(), "notified_amount_crore": r[2].replace(",", ""), "auction_method": m.group(0)}
+    method = f"{m.group(1)} based using {m.group(2).strip()} method"
+    return {"auction_date": datetime.strptime(a.group(1), "%B %d, %Y").date().isoformat(), "issue_date": datetime.strptime(i.group(1), "%B %d, %Y").date().isoformat(), "notified_amount_crore": r[2].replace(",", ""), "auction_method": method}
 
 
 def result(body):
@@ -147,6 +148,14 @@ def main():
         body = (capture / path).read_bytes()
         if rec["http_status"] != 200 or rec["bytes"] != len(body) or rec["sha256"] != hashlib.sha256(body).hexdigest():
             raise SystemExit(f"source integrity mismatch: {path}")
+    normalized_meta = manifest.get("normalized_panel")
+    if normalized_meta:
+        normalized_path = (capture / normalized_meta["path"]).resolve()
+        if not normalized_path.is_relative_to(capture.resolve()) or not normalized_path.is_file():
+            raise SystemExit("normalized panel path is missing or escapes the capture directory")
+        normalized_bytes = normalized_path.read_bytes()
+        if normalized_meta["bytes"] != len(normalized_bytes) or normalized_meta["sha256"] != hashlib.sha256(normalized_bytes).hexdigest():
+            raise SystemExit("normalized panel byte count or hash mismatch")
     month_rows = [r for r in records.values() if r["path"].startswith("archive/")]
     first_month = datetime.strptime(args.first_date, "%Y-%m-%d").date().replace(day=1)
     first_month = (first_month - timedelta(days=1)).replace(day=1)
@@ -176,6 +185,7 @@ def main():
     if {r["auction_date"] for r in panel} != set(expected):
         raise SystemExit(f"normalized dates do not exactly equal {args.table_name} dates")
     exceptions = 0
+    issue_date_conflicts = []
     for row in panel:
         d = row["auction_date"]
         nlist = notices.get(d, [])
@@ -183,9 +193,26 @@ def main():
             raise SystemExit(f"expected one official notice for {d}, found {len(nlist)}")
         n = nlist[0]
         t = expected[d]
-        if n["issue_date"] != t["issue_date"] or n["notified_amount_crore"] != t["notified_amount_crore"]:
-            raise SystemExit(f"notice/{args.table_name} date or notified-amount mismatch: {d}")
-        if row["issue_date"] != t["issue_date"] or row["auction_method"] != n["auction_method"]:
+        if n["notified_amount_crore"] != t["notified_amount_crore"]:
+            raise SystemExit(f"notice/{args.table_name} notified-amount mismatch: {d}")
+        table_issue_date = row.get("table_issue_date") or t["issue_date"]
+        if table_issue_date != t["issue_date"]:
+            raise SystemExit(f"CSV/{args.table_name} table issue-date provenance mismatch: {d}")
+        if row["issue_date"] != n["issue_date"]:
+            raise SystemExit(f"CSV/auction-notice actual issue-date mismatch: {d}")
+        if n["issue_date"] != t["issue_date"]:
+            conflict = {
+                "auction_date": d,
+                "table_issue_date": t["issue_date"],
+                "notice_issue_date": n["issue_date"],
+                "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE",
+            }
+            issue_date_conflicts.append(conflict)
+            if row.get("issue_date_resolution") != "NOTICE_OVERRIDES_TABLE_DATE_CONFLICT":
+                raise SystemExit(f"undocumented notice/{args.table_name} issue-date conflict: {d}")
+        elif row.get("issue_date_resolution") not in (None, "", "NOTICE_AND_TABLE_AGREE"):
+            raise SystemExit(f"incorrect issue-date resolution marker: {d}")
+        if row["auction_method"] != n["auction_method"]:
             raise SystemExit(f"CSV notice fields mismatch: {d}")
         total = t["total_issue_crore"].replace("-", "0")
         rlist = results.get(d, [])
@@ -210,6 +237,10 @@ def main():
             if row.get(key) != r[key]:
                 raise SystemExit(f"CSV/source value mismatch {key} on {d}")
 
+    declared_conflicts = manifest.get("source_discrepancies", {}).get("issue_date_conflicts", [])
+    if declared_conflicts != issue_date_conflicts:
+        raise SystemExit("manifest issue-date conflicts do not match independent notice/table comparison")
+
     # Descriptive auction-yield levels only. They are not realized holding-period
     # returns, a chained reinvestment path, or independent annual outcomes.
     matched = [row for row in panel if row["result_status"] == "MATCHED"]
@@ -225,7 +256,7 @@ def main():
     for row in panel:
         method_counts[row["auction_method"]] = method_counts.get(row["auction_method"], 0) + 1
     summary = {
-        "classification": "ONE_YEAR_DESCRIPTIVE_AUCTION_YIELD_LEVELS_NOT_REALIZED_RETURNS",
+        "classification": "DESCRIPTIVE_AUCTION_YIELD_LEVELS_NOT_REALIZED_RETURNS",
         "matched_91_day_positive_issue_observations": n,
         "auction_method_counts": method_counts,
         "weighted_yield_91_pct_actual_365": {
@@ -242,7 +273,10 @@ def main():
             "distinct_from_cutoff_price_observations": sum(row["weighted_price_91"] != row["cutoff_price_91"] for row in matched),
         },
     }
-    print(json.dumps({"result":f"PASS_RBI_TBILL_{args.window_tag}_EXACT_DATE_PANEL","reference_table":args.table_name,"table_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"captured_source_count":len(records),"descriptive_summary":summary},indent=2))
+    result_status = f"PASS_RBI_TBILL_{args.window_tag}_EXACT_DATE_PANEL"
+    if issue_date_conflicts:
+        result_status += "_WITH_RECORDED_SOURCE_DATE_CONFLICTS"
+    print(json.dumps({"result":result_status,"reference_table":args.table_name,"table_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"issue_date_conflicts":issue_date_conflicts,"captured_source_count":len(records),"descriptive_summary":summary},indent=2))
 
 if __name__ == "__main__":
     main()

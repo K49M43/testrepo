@@ -6,7 +6,11 @@ on:
       - '.github/workflows/g6-3-rbi-tbill-rollover-audit.yml'
       - 'decision/audit_g6_3_rbi_tbill_rollover.py'
       - 'decision/audit_g6_3_rbi_tbill_window.py'
+      - 'decision/audit_g6_3_rbi_tbill_window_overlap.py'
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_window.py'
+      - 'research/stage512/2026-11-06/g6_3/reconcile_rbi_tbill_window_capture.py'
+      - 'research/stage512/tests/test_rbi_tbill_inline_markup.py'
       - 'docs/G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md'
       - 'docs/G6_3_FINAL_DECISION_PACK.md'
       - 'research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/**'
@@ -26,6 +30,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Regress historical RBI notice inline-markup parsing
+        run: python -m unittest research.stage512.tests.test_rbi_tbill_inline_markup -v
+      - name: Independently verify the oldest retained RBI auction window
+        run: >-
+          python decision/audit_g6_3_rbi_tbill_window.py
+          research/stage512/2026-11-24/g6_3/rbi_tbill_window_2023_2024
+          --table-path research/stage512/2026-11-24/g6_3/source_raw/table213_20240913.html
+          --table-name 'Table 213' --window-tag 2023_2024 --expected-auctions 60
+          --first-date 2023-07-12 --last-date 2024-08-28
       - name: Independently verify the earlier RBI auction window
         run: >-
           python decision/audit_g6_3_rbi_tbill_window.py
@@ -40,6 +53,8 @@ jobs:
           --table-path research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/table218_20260731.html
           --table-name 'Table 218' --window-tag 2025_2026 --expected-auctions 50
           --first-date 2025-07-02 --last-date 2026-06-24
+      - name: Verify exact overlap and deduplication across all three RBI windows
+        run: python decision/audit_g6_3_rbi_tbill_window_overlap.py --check
       - name: Verify Retail Direct terms, holiday and settlement calendars, and corrected bid-date mechanics
         run: python decision/audit_g6_3_rbi_tbill_rollover.py
       - name: Verify integrated source inventory remains fail-closed

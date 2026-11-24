@@ -23,6 +23,7 @@ R9_MANIFEST = R9_DIR / "qualification_manifest.json"
 NSE_TRI = ROOT / "research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv"
 OUT = ROOT / "research/stage512/2026-11-06/g6_3/source_inventory_v1.json"
 NAV_DIR = ROOT / "research/stage512/2026-11-05/source_retrieval_followup/candidates"
+RBI_TBILL_THREE_WINDOW_AUDIT = ROOT / "research/stage512/2026-11-24/g6_3/rbi_tbill_three_window_overlap_audit_v1.json"
 REGENERATED_AUDIT_ARTIFACTS = {
     "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
     "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json",
@@ -254,6 +255,14 @@ def audit_r9() -> tuple[dict[str, Any], dict[str, float]]:
 def build_record() -> dict[str, Any]:
     g5, product_returns = audit_g5_sources()
     r9, lic_returns = audit_r9()
+    tbill_audit = read_json(RBI_TBILL_THREE_WINDOW_AUDIT)
+    require(tbill_audit["result"] == "PASS_RBI_THREE_WINDOW_OVERLAP_AND_EXACT_DATE_COVERAGE_WITH_LIMITATIONS",
+            "three-window RBI T-bill overlap audit is not PASS")
+    tbill_coverage = tbill_audit["deduplicated_panel"]
+    require(tbill_coverage["unique_auction_dates"] == 151
+            and tbill_coverage["positive_91_day_price_observations"] == 149
+            and len(tbill_audit["known_source_conflicts"]["table_213_issue_date_conflicts"]) == 4,
+            "three-window RBI T-bill source counts or explicit date conflicts differ")
     disposition = read_json(G5_DISPOSITION)
     hypotheses = [c for c in disposition["candidates"] if c.get("product_hypothesis")]
     require(len(hypotheses) == disposition["product_hypothesis_count"] == 10,
@@ -297,16 +306,28 @@ def build_record() -> dict[str, Any]:
     readiness = read_json(G6_READINESS)
     return {
         "schema_version": 1,
-        "record_id": "g6-3-source-coverage-audit-2026-11-24-v2",
+        "record_id": "g6-3-source-coverage-audit-2026-11-24-v3",
         "as_of": "2026-11-24",
         "result": "PASS_SOURCE_INVENTORY_ONLY_G6_DECISION_GRADE_NOT_READY",
         "g5_source_evidence": g5,
         "r9_lic_source_evidence": r9,
+        "rbi_tbill_three_window_overlap": {
+            "audit_record_id": tbill_audit["record_id"],
+            "result": tbill_audit["result"],
+            "first_auction_date": tbill_coverage["first_auction_date"],
+            "last_auction_date": tbill_coverage["last_auction_date"],
+            "unique_auction_dates": tbill_coverage["unique_auction_dates"],
+            "positive_91_day_price_observations": tbill_coverage["positive_91_day_price_observations"],
+            "zero_issue_exceptions": tbill_coverage["zero_issue_exceptions"],
+            "pairwise_overlaps": tbill_audit["pairwise_overlaps"],
+            "table_213_issue_date_conflicts": tbill_audit["known_source_conflicts"]["table_213_issue_date_conflicts"],
+            "use_limit": "DESCRIPTIVE_AUCTION_QUOTE_LEVELS; NOT A LONG_RUN_ROLLOVER_RETURN_OR_RISK_SERIES",
+        },
         "ten_candidate_dispositions": candidate_rows,
         "product_nav_joint_monthly_overlap": overlaps,
         "existing_open_g6_readiness_gates": readiness["blocker_summary"]["open"],
         "source_evidence_status": {
-            "rbi_91_day_tbill": "Official RBI Table 217 (2024-07-03 through 2025-07-30; 55/55 notices and full results) and Table 218 (2025-07-02 through 2026-06-24; 50/50 notices and full results) are independently qualified. Their five overlapping dates match exactly, yielding 100 unique auction dates and 98 positive 91-day price observations. Conditional gross price-to-par holding returns range from 1.2943% to 1.6880% per bill. The v2 audit verifies current published Retail Direct terms from RBI FAQ 145 and the 2021 NCB circular, plus all 98 observed auction-to-settlement dates against captured Mumbai holidays. It corrects a v1 timing defect: 71 of 86 prior successor selections had their auction on or before the prior bill's adjusted maturity and cannot be assumed fundable from its proceeds. The corrected 86 maturity-to-bid transitions wait 5–21 days (median 6); 12 are right-censored. A deterministic ₹10,000-lot 365-day target mechanics scenario has 59 complete overlapping cohorts and 39 censored cohorts; conditional gross annualized values range 4.8466%–5.9502%, median 5.3678%. This is not an investor return or forecast: full allotment is assumed and upfront markup, payment-gateway charges, partial allocation, bank cash yield, tax and investor-specific access are not qualified. The 2021 circular/FAQ set the published ₹10,000 minimum, but the FAQ labels its minimum table as of 2021; verify current portal terms at decision time. Long-run risk, covariance and 2036 probability remain unqualified.",
+            "rbi_91_day_tbill": "Three official RBI Handbook auction tables (Table 213, Table 217 and Table 218) cover 2023-07-12 through 2026-06-24. The 60-row Table 213 panel has 60 matched notices/results; its overlap with Table 217 has 9 dates, and Table 217/218 overlap on 5 dates, with all overlap fields matching. The deduplicated source panel has 151 auction dates, 149 positive 91-day price observations and two zero-issue exceptions. Four Table 213 issue dates conflict with their contemporaneous notices; both values are retained and the notice governs normalized issue date. This panel describes auction quote levels and is not a 2014-2026 rollover history or long-run risk sample. The separate v2 rollover mechanics audit remains scoped to 2024-2026: it verifies RBI Retail Direct rules, 98 observed settlement dates against captured Mumbai holidays, 86 maturity-to-bid transitions (5-21 day waits; median 6; 12 right-censored), and a conditional 365-day scenario with 59 complete / 39 censored cohorts and gross annualized values 4.8466%-5.9502% (median 5.3678%). It assumes full allotment and excludes upfront markup, payment-gateway charges, partial allocation, bank cash yield, tax and investor-specific access. The reconstructed 2023-2024 capture manifest explicitly states that HTTP response headers were not retained during the earlier validation-stopped capture; body hashes and dates are independently checked. Long-run risk, covariance and 2036 probability remain unqualified.",
             "direct_goi": "Official Gazette notice and RBI full auction-result bytes for 6.94% GS 2036 are hash-verified in draft PR #65; one primary-auction price/yield, notice-specific accrued-interest cutoff and nominal coupon/redemption schedule are reconciled. No current executable secondary price, retail settlement advice, or continuous security price history is qualified. NSE WDM historical data is a paid licensed route (2026 tariff ₹30,000/year/site before taxes); rights and scope remain unconfirmed. The RBI long-history yield panel remains a proxy, not this security trade-return history.",
             "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
             "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable.",

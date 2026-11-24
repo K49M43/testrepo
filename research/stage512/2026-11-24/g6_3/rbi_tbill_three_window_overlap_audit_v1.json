@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-3-rbi-tbill-three-window-overlap-2026-11-24-v1",
+  "as_of": "2026-11-24",
+  "result": "PASS_RBI_THREE_WINDOW_OVERLAP_AND_EXACT_DATE_COVERAGE_WITH_LIMITATIONS",
+  "source_windows": [
+    {
+      "name": "Table 213",
+      "first_auction_date": "2023-07-12",
+      "last_auction_date": "2024-08-28",
+      "dated_rows": 60,
+      "manifest": "research/stage512/2026-11-24/g6_3/rbi_tbill_window_2023_2024/manifest.json",
+      "normalized_panel": "research/stage512/2026-11-24/g6_3/rbi_tbill_window_2023_2024/auction_panel_2023_2024.csv",
+      "normalized_panel_sha256": "1f153fe818bb8d64699ab8f5bd51db85d35d2abb1c17bda583eaca15c75d4f5e",
+      "source_date_conflicts": [
+        {
+          "auction_date": "2023-09-27",
+          "table_issue_date": "2023-09-28",
+          "notice_issue_date": "2023-09-29",
+          "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+        },
+        {
+          "auction_date": "2024-04-10",
+          "table_issue_date": "2024-04-11",
+          "notice_issue_date": "2024-04-12",
+          "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+        },
+        {
+          "auction_date": "2024-05-22",
+          "table_issue_date": "2024-05-23",
+          "notice_issue_date": "2024-05-24",
+          "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+        },
+        {
+          "auction_date": "2024-08-14",
+          "table_issue_date": "2024-08-15",
+          "notice_issue_date": "2024-08-16",
+          "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+        }
+      ]
+    },
+    {
+      "name": "Table 217",
+      "first_auction_date": "2024-07-03",
+      "last_auction_date": "2025-07-30",
+      "dated_rows": 55,
+      "manifest": "research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/manifest.json",
+      "normalized_panel": "research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/auction_panel_2024_2025.csv",
+      "normalized_panel_sha256": "2f487d717dc54a95579699fa4485fe162c7731312fe674ee9b5defdb211bbe87",
+      "source_date_conflicts": []
+    },
+    {
+      "name": "Table 218",
+      "first_auction_date": "2025-07-02",
+      "last_auction_date": "2026-06-24",
+      "dated_rows": 50,
+      "manifest": "research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/manifest.json",
+      "normalized_panel": "research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/auction_panel_2025_2026.csv",
+      "normalized_panel_sha256": "5f9372245fb3d6451e60136b3161ce453a5bad214d3ecb2a66c9327c08c5abbe",
+      "source_date_conflicts": []
+    }
+  ],
+  "pairwise_overlaps": [
+    {
+      "left": "Table 213",
+      "right": "Table 217",
+      "overlap_dates": 9,
+      "first_overlap": "2024-07-03",
+      "last_overlap": "2024-08-28",
+      "field_mismatches": 0
+    },
+    {
+      "left": "Table 217",
+      "right": "Table 218",
+      "overlap_dates": 5,
+      "first_overlap": "2025-07-02",
+      "last_overlap": "2025-07-30",
+      "field_mismatches": 0
+    },
+    {
+      "left": "Table 213",
+      "right": "Table 218",
+      "overlap_dates": 0,
+      "first_overlap": null,
+      "last_overlap": null,
+      "field_mismatches": 0
+    }
+  ],
+  "deduplicated_panel": {
+    "first_auction_date": "2023-07-12",
+    "last_auction_date": "2026-06-24",
+    "unique_auction_dates": 151,
+    "positive_91_day_price_observations": 149,
+    "zero_issue_exceptions": [
+      "2025-02-20",
+      "2026-03-25"
+    ],
+    "weighted_average_91_day_yield_levels_pct_actual_365": {
+      "minimum": "5.1916",
+      "median": "6.4644",
+      "mean": "6.2035",
+      "maximum": "7.0408",
+      "classification": "DESCRIPTIVE_QUOTE_LEVELS_NOT_REALIZED_ROLLOVER_RETURNS_OR_RISK_OBSERVATIONS"
+    }
+  },
+  "known_source_conflicts": {
+    "table_213_issue_date_conflicts": [
+      {
+        "auction_date": "2023-09-27",
+        "table_issue_date": "2023-09-28",
+        "notice_issue_date": "2023-09-29",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-04-10",
+        "table_issue_date": "2024-04-11",
+        "notice_issue_date": "2024-04-12",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-05-22",
+        "table_issue_date": "2024-05-23",
+        "notice_issue_date": "2024-05-24",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-08-14",
+        "table_issue_date": "2024-08-15",
+        "notice_issue_date": "2024-08-16",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      }
+    ],
+    "resolution": "retain the original table value and contemporaneous notice value; normalized issue_date follows the auction notice; only 2024-08-14 has an independent Table 217 cross-window corroboration"
+  },
+  "decision_limits": [
+    "Three years of weekly auction quotes do not establish a 2014-2026 rollover history, long-run return distribution, equity-bond covariance, or 2036 success probability.",
+    "Weighted-average auction prices assume full NCB allocation and do not establish this investor's allotment, cash timing, fees, tax, or net return.",
+    "This audit qualifies source overlap and deduplication only; maturity holiday schedules are audited separately."
+  ],
+  "investment_authorization": "NO_GO"
+}
