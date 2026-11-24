@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "result": "PASS_SOURCE_OVERLAP_AND_GROSS_CASHFLOW_MECHANICS__ROLLOVER_NOT_QUALIFIED",
+  "window_inputs": {
+    "table217_manifest": "research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/manifest.json",
+    "table218_manifest": "research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/manifest.json"
+  },
+  "unique_auction_dates": 100,
+  "positive_91_day_price_observations": 98,
+  "overlap": {
+    "dates": 5,
+    "first": "2025-07-02",
+    "last": "2025-07-30",
+    "field_mismatches": 0
+  },
+  "holiday_calendar": {
+    "source_manifest": "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/manifest.json",
+    "rule_source_manifest": "research/stage512/2026-11-24/g6_3/source_raw/rbi_rollover_policy_sources_v1.json",
+    "months": 24,
+    "listed_mumbai_holiday_dates": 43,
+    "nominal_maturities_adjusted_backward": 9,
+    "maximum_backward_adjustment_days": 1
+  },
+  "zero_issue_dates": [
+    "2025-02-20",
+    "2026-03-25"
+  ],
+  "conditional_gross_price_to_par_holding_return_pct": {
+    "minimum": "1.29433906",
+    "mean": "1.45842752",
+    "maximum": "1.68802115",
+    "definition": "100 / RBI non-competitive weighted-average price per 100 face - 1; assumes full allotment, hold to redemption at par, and excludes tax, fees, and investor-specific execution."
+  },
+  "conditional_365d_target_roll_scenario": {
+    "classification": "DETERMINISTIC_HISTORICAL_MECHANICS_SCENARIO_NOT_ACTUAL_INVESTOR_RETURN_OR_FORECAST",
+    "initial_cash_inr": "10000.00",
+    "minimum_face_lot_inr": "10000",
+    "cash_during_wait_days": "0% return",
+    "lot_rounding": "buy the greatest whole number of ₹10,000 face-value lots supported by cash at each observed NCB weighted-average price",
+    "uses_full_allotment": true,
+    "tax_and_fees_included": false,
+    "same_day_maturity_and_next_issue_funding_assumed": true,
+    "complete_start_cohorts": 56,
+    "right_censored_start_cohorts": 42,
+    "annualized_gross_return_minimum": "5.08200973",
+    "annualized_gross_return_median": "5.64034504",
+    "annualized_gross_return_maximum": "6.31710000",
+    "overlap_warning": "Start cohorts overlap in time and are not independent observations; these descriptive values do not estimate a long-run return distribution or probability."
+  },
+  "nominal_roll_schedule_diagnostic": {
+    "definition": "issue date + 91 calendar days; move maturity backward over weekends and official Mumbai holidays; then select the first observed positive 91-day issue date on or after the adjusted date.",
+    "completed_successor_transitions": 86,
+    "same_date_successors": 57,
+    "delayed_successors": 29,
+    "maximum_cash_wait_days_after_adjusted_maturity": 13,
+    "right_censored_without_successor": 12,
+    "limitations": [
+      "The diagnostic applies RBI's previous-working-day rule using the captured Mumbai matrix and the official rule that the Government securities market is closed on Saturdays; each security's specific maturity terms still require confirmation.",
+      "The deterministic one-year-target roll scenario assumes ₹10,000 bid lots, full allotment, and that redemption proceeds can fund a same-date replacement issue; none of these prove investor-specific access or settlement.",
+      "Actual investor charges, tax, partial allotment, and cash yield during any gap are not included.",
+      "The two-year observed window is not a long-run interest-rate model or a 2036 probability estimate."
+    ]
+  }
+}

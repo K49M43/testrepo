@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import json
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from decimal import Decimal, ROUND_HALF_UP
 from html.parser import HTMLParser
 from pathlib import Path
@@ -76,7 +77,7 @@ def table218(path):
 def notice(body):
     p = Rows()
     p.feed(body.decode("utf-8", errors="replace"))
-    r = next((x for x in p.rows if len(x) >= 5 and x[0] == "1" and x[1].casefold() == "91-day"), None)
+    r = next((x for x in p.rows if len(x) >= 5 and x[0] == "1" and re.sub(r"[^a-z0-9]", "", x[1].casefold()) in {"91day", "91days"}), None)
     if r is None:
         raise ValueError("91-day notice row missing")
     a = re.search(r"([A-Za-z]+\s+\d{1,2},\s+\d{4})", r[3])
@@ -96,46 +97,49 @@ def result(body):
     if not d:
         raise ValueError("result date missing")
     out = {"result_date": datetime.strptime(d.group(1).title(), "%b %d, %Y").date().isoformat()}
-    c_head = re.search(r"cut-off price(?:\s*\([^)]*\))?(?: and implicit yield at cut-off price|\s*/\s*yield)\s+(.*?)(?=\s+iv\.\s)", t)
-    c = None
-    if c_head:
-        values = c_head.group(1)
-        yields = re.findall(r"ytm:\s*([\d.]+)%", values)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", re.sub(r"\(ytm:\s*[\d.]+%\)", "", values))
-        if prices and yields:
-            c = (prices[0], yields[0])
-            if len(prices) >= 3 and len(yields) >= 3:
-                c = tuple(x for pair in zip(prices[:3], yields[:3]) for x in pair)
-    w_head = re.search(r"weighted average price(?:\s*\([^)]*\))?\s*/\s*yield\s+(.*?)(?=\s+vii\.\s)", t)
-    w = None
-    if w_head:
-        values = w_head.group(1)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", values.split("(way:", 1)[0])
-        yields = re.findall(r"way:\s*([\d.]+)%", values)
-        if prices and yields:
-            w = (prices[0], yields[0])
-            if len(prices) >= 3 and len(yields) >= 3:
-                w = tuple(v for pair in zip(prices[:3], yields[:3]) for v in pair)
-    if c:
-        out.update({"cutoff_price_91": c[0], "cutoff_yield_91": c[1]})
-        if len(c) >= 6:
-            out.update({"cutoff_price_182": c[2], "cutoff_yield_182": c[3], "cutoff_price_364": c[4], "cutoff_yield_364": c[5]})
-    if w:
-        out.update({"weighted_price_91": w[0], "weighted_yield_91": w[1]})
-        if len(w) >= 6:
-            out.update({"weighted_price_182": w[2], "weighted_yield_182": w[3], "weighted_price_364": w[4], "weighted_yield_364": w[5]})
+    rows = Rows()
+    rows.feed(body.decode("utf-8", errors="replace"))
+    cutoff, weighted = [], []
+    for index, row in enumerate(rows.rows[:-1]):
+        label = " ".join(row).casefold()
+        target = cutoff if "cut-off price" in label and "yield" in label else weighted if "weighted average price" in label and "yield" in label else None
+        if target is None:
+            continue
+        for price_cell, yield_cell in zip(row[-3:], rows.rows[index + 1][-3:]):
+            price_match = re.search(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", price_cell)
+            yield_match = re.search(r"([\d.]+)%", yield_cell)
+            target.append((price_match.group(0) if price_match else "", yield_match.group(1) if yield_match else ""))
+    for tenor, slot in (("91", 0), ("182", 1), ("364", 2)):
+        if len(cutoff) > slot:
+            if cutoff[slot][0]: out[f"cutoff_price_{tenor}"] = cutoff[slot][0]
+            if cutoff[slot][1]: out[f"cutoff_yield_{tenor}"] = cutoff[slot][1]
+        if len(weighted) > slot:
+            if weighted[slot][0]: out[f"weighted_price_{tenor}"] = weighted[slot][0]
+            if weighted[slot][1]: out[f"weighted_yield_{tenor}"] = weighted[slot][1]
     return out
 
 
 def main():
-    capture = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("rbi_tbill_window_capture")
+    parser = argparse.ArgumentParser(description="Independently audit an official RBI 91-day T-bill auction window.")
+    parser.add_argument("capture", nargs="?", type=Path, default=Path("rbi_tbill_window_capture"))
+    parser.add_argument("--table-path", type=Path, default=TABLE218)
+    parser.add_argument("--table-name", default="Table 218")
+    parser.add_argument("--window-tag", default="2025_2026")
+    parser.add_argument("--expected-auctions", type=int, default=50)
+    parser.add_argument("--first-date", default="2025-07-02")
+    parser.add_argument("--last-date", default="2026-06-24")
+    args = parser.parse_args()
+    capture = args.capture
     manifest = json.loads((capture / "manifest.json").read_text(encoding="utf-8"))
-    ref = manifest["table218_reference"]
-    if not TABLE218.is_file() or hashlib.sha256(TABLE218.read_bytes()).hexdigest() != ref["sha256"]:
-        raise SystemExit("Table 218 reference hash mismatch")
-    expected = table218(TABLE218)
-    if len(expected) != 50 or min(expected) != "2025-07-02" or max(expected) != "2026-06-24":
-        raise SystemExit("unexpected Table 218 panel coverage")
+    ref = manifest.get("table_reference") or manifest.get("table218_reference") or manifest.get("table217_reference")
+    table_path = args.table_path.resolve()
+    if not table_path.is_file() or hashlib.sha256(table_path.read_bytes()).hexdigest() != ref["sha256"]:
+        raise SystemExit(f"{args.table_name} reference hash mismatch")
+    if ref.get("path") != table_path.relative_to(ROOT).as_posix():
+        raise SystemExit(f"{args.table_name} reference path mismatch")
+    expected = table218(table_path)
+    if len(expected) != args.expected_auctions or min(expected) != args.first_date or max(expected) != args.last_date:
+        raise SystemExit(f"unexpected {args.table_name} panel coverage")
     records = {x["path"]: x for x in manifest["sources"]}
     if len(records) != len(manifest["sources"]):
         raise SystemExit("duplicate source paths in manifest")
@@ -144,8 +148,17 @@ def main():
         if rec["http_status"] != 200 or rec["bytes"] != len(body) or rec["sha256"] != hashlib.sha256(body).hexdigest():
             raise SystemExit(f"source integrity mismatch: {path}")
     month_rows = [r for r in records.values() if r["path"].startswith("archive/")]
-    if len(month_rows) != 13 or any(r.get("method") != "POST" for r in month_rows):
-        raise SystemExit(f"expected 13 official month POST captures, found {len(month_rows)}")
+    first_month = datetime.strptime(args.first_date, "%Y-%m-%d").date().replace(day=1)
+    first_month = (first_month - timedelta(days=1)).replace(day=1)
+    last_month = datetime.strptime(args.last_date, "%Y-%m-%d").date().replace(day=1)
+    expected_months = set()
+    cursor = first_month
+    while cursor <= last_month:
+        expected_months.add((cursor.year, cursor.month))
+        cursor = (cursor.replace(day=28) + timedelta(days=4)).replace(day=1)
+    observed_months = {(int(r["parameters"]["hdnYear"]), int(r["parameters"]["hdnMonth"])) for r in month_rows}
+    if observed_months != expected_months or any(r.get("method") != "POST" for r in month_rows):
+        raise SystemExit(f"official archive month coverage mismatch: expected {len(expected_months)}, found {len(month_rows)}")
     notices = {}
     results = {}
     for p, rec in records.items():
@@ -156,12 +169,12 @@ def main():
         elif p.startswith("results/"):
             r = result(body)
             results.setdefault(r["result_date"], []).append(r)
-    with (capture / "auction_panel_2025_2026.csv").open(encoding="utf-8", newline="") as stream:
+    with (capture / f"auction_panel_{args.window_tag}.csv").open(encoding="utf-8", newline="") as stream:
         panel = list(csv.DictReader(stream))
-    if len(panel) != 50 or len({r["auction_date"] for r in panel}) != 50:
-        raise SystemExit(f"normalized panel must contain 50 unique Table 218 dates; got {len(panel)}")
+    if len(panel) != args.expected_auctions or len({r["auction_date"] for r in panel}) != args.expected_auctions:
+        raise SystemExit(f"normalized panel must contain {args.expected_auctions} unique {args.table_name} dates; got {len(panel)}")
     if {r["auction_date"] for r in panel} != set(expected):
-        raise SystemExit("normalized dates do not exactly equal Table 218 dates")
+        raise SystemExit(f"normalized dates do not exactly equal {args.table_name} dates")
     exceptions = 0
     for row in panel:
         d = row["auction_date"]
@@ -171,7 +184,7 @@ def main():
         n = nlist[0]
         t = expected[d]
         if n["issue_date"] != t["issue_date"] or n["notified_amount_crore"] != t["notified_amount_crore"]:
-            raise SystemExit(f"notice/Table 218 date or notified-amount mismatch: {d}")
+            raise SystemExit(f"notice/{args.table_name} date or notified-amount mismatch: {d}")
         if row["issue_date"] != t["issue_date"] or row["auction_method"] != n["auction_method"]:
             raise SystemExit(f"CSV notice fields mismatch: {d}")
         total = t["total_issue_crore"].replace("-", "0")
@@ -180,15 +193,19 @@ def main():
             exceptions += 1
             if row["result_status"] != "ZERO_ISSUE_EXCEPTION":
                 raise SystemExit(f"zero-issue row not explicitly classified: {d}")
+            if len(rlist) != 1:
+                raise SystemExit(f"expected one full result to verify other tenors on zero-issue date {d}, found {len(rlist)}")
+            if any(rlist[0].get(k) for k in ("cutoff_price_91", "cutoff_yield_91", "weighted_price_91", "weighted_yield_91")):
+                raise SystemExit(f"zero-issue 91-day source row conflicts with full result on {d}")
             continue
         if len(rlist) != 1:
             raise SystemExit(f"expected one full result for {d}, found {len(rlist)}")
         r = rlist[0]
         if not r.get("weighted_price_91") or r["cutoff_yield_91"] != t["cutoff_yield_actual_365_pct"]:
-            raise SystemExit(f"full-result/Table 218 yield mismatch or missing weighted price: {d}")
+            raise SystemExit(f"full-result/{args.table_name} yield mismatch or missing weighted price: {d}")
         rounded = Decimal(r["cutoff_price_91"]).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
         if rounded != Decimal(t["cutoff_price"]):
-            raise SystemExit(f"full-result/Table 218 cutoff-price rounding mismatch: {d}")
+            raise SystemExit(f"full-result/{args.table_name} cutoff-price rounding mismatch: {d}")
         for key in ("weighted_price_91", "weighted_yield_91", "cutoff_price_91", "cutoff_yield_91"):
             if row.get(key) != r[key]:
                 raise SystemExit(f"CSV/source value mismatch {key} on {d}")
@@ -203,6 +220,7 @@ def main():
     sample_variance = sum((value - mean_yield) ** 2 for value in weighted_yields) / Decimal(n - 1)
     sample_sd = sample_variance.sqrt()
     four_dp = Decimal("0.0001")
+    median_yield = weighted_yields[n // 2] if n % 2 else (weighted_yields[n // 2 - 1] + weighted_yields[n // 2]) / Decimal(2)
     method_counts = {}
     for row in panel:
         method_counts[row["auction_method"]] = method_counts.get(row["auction_method"], 0) + 1
@@ -212,7 +230,7 @@ def main():
         "auction_method_counts": method_counts,
         "weighted_yield_91_pct_actual_365": {
             "minimum": str(min(weighted_yields).quantize(four_dp, rounding=ROUND_HALF_UP)),
-            "median": str(weighted_yields[n // 2].quantize(four_dp, rounding=ROUND_HALF_UP)),
+            "median": str(median_yield.quantize(four_dp, rounding=ROUND_HALF_UP)),
             "mean": str(mean_yield.quantize(four_dp, rounding=ROUND_HALF_UP)),
             "sample_standard_deviation_percentage_points": str(sample_sd.quantize(four_dp, rounding=ROUND_HALF_UP)),
             "maximum": str(max(weighted_yields).quantize(four_dp, rounding=ROUND_HALF_UP)),
@@ -224,7 +242,7 @@ def main():
             "distinct_from_cutoff_price_observations": sum(row["weighted_price_91"] != row["cutoff_price_91"] for row in matched),
         },
     }
-    print(json.dumps({"result":"PASS_RBI_TBILL_2025_2026_EXACT_DATE_PANEL","table218_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"captured_source_count":len(records),"descriptive_summary":summary},indent=2))
+    print(json.dumps({"result":f"PASS_RBI_TBILL_{args.window_tag}_EXACT_DATE_PANEL","reference_table":args.table_name,"table_dates":len(expected),"matched_notice_dates":len(notices),"matched_result_dates":len(results),"zero_issue_exceptions":exceptions,"captured_source_count":len(records),"descriptive_summary":summary},indent=2))
 
 if __name__ == "__main__":
     main()

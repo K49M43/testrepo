@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.rbi.org.in/scripts/PublicationsView.aspx?id=23391",
+  "method": "GET",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at_utc": "2026-11-24T16:14:12.923847+00:00",
+  "bytes": 86017,
+  "sha256": "addeea28d448acc79d950777940b239d91b1e9578fee601cdee7cac58ccbbc75",
+  "path": "research/stage512/2026-11-24/g6_3/source_raw/table217_20261124.html",
+  "coverage_verified_by_parser": {
+    "rows": 55,
+    "first_auction_date": "2024-07-03",
+    "last_auction_date": "2025-07-30"
+  }
+}
