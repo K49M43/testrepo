@@ -1,0 +1,46 @@
+name: G6.3 RBI T-bill retail route and rollover audit
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g6-3-rbi-tbill-rollover-audit.yml'
+      - 'decision/audit_g6_3_rbi_tbill_rollover.py'
+      - 'decision/audit_g6_3_rbi_tbill_window.py'
+      - 'decision/audit_g6_3_source_inventory.py'
+      - 'docs/G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md'
+      - 'docs/G6_3_FINAL_DECISION_PACK.md'
+      - 'research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/**'
+      - 'research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/table218_20260731.html'
+      - 'research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/**'
+      - 'research/stage512/2026-11-24/g6_3/**'
+      - 'research/stage512/2026-11-24/g6_3/source_raw/**'
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-rollover-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Independently verify the earlier RBI auction window
+        run: >-
+          python decision/audit_g6_3_rbi_tbill_window.py
+          research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025
+          --table-path research/stage512/2026-11-24/g6_3/source_raw/table217_20261124.html
+          --table-name 'Table 217' --window-tag 2024_2025 --expected-auctions 55
+          --first-date 2024-07-03 --last-date 2025-07-30
+      - name: Independently verify the recent RBI auction window
+        run: >-
+          python decision/audit_g6_3_rbi_tbill_window.py
+          research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026
+          --table-path research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/table218_20260731.html
+          --table-name 'Table 218' --window-tag 2025_2026 --expected-auctions 50
+          --first-date 2025-07-02 --last-date 2026-06-24
+      - name: Verify Retail Direct terms, holiday and settlement calendars, and corrected bid-date mechanics
+        run: python decision/audit_g6_3_rbi_tbill_rollover.py
+      - name: Verify integrated source inventory remains fail-closed
+        run: python decision/audit_g6_3_source_inventory.py --check

@@ -1,0 +1,24 @@
+{
+  "source_manifest": "research/stage512/2026-11-24/g6_3/source_raw/rbi_retail_direct_rules_manifest_v1.json",
+  "verified_terms": {
+    "retail_direct_tbill_primary_auction": true,
+    "single_final_bid": true,
+    "funding_deadline": true,
+    "partial_allotment_pro_rata": true,
+    "weighted_average_price": true,
+    "settlement_typically_t_plus_one": true,
+    "rbi_primary_bid_fee_none": true,
+    "payment_gateway_charges_investor_borne": true,
+    "markup_refund_within_two_business_days": true,
+    "minimum_bid_10000_and_multiples": true,
+    "aggregate_retail_ncb_cap_5_percent": true
+  },
+  "minimum_face_value_inr": 10000,
+  "minimum_rule_source_date": "2021-11-12 circular; RBI FAQ displays minimums as of 2021-11-12",
+  "retail_ncb_aggregate_limit": "up to 5% of notified nominal issue amount, within notified amount, or other percentage set by RBI; not an individual guaranteed allocation",
+  "partial_allotment": "pro-rata if auction allocation is partial; actual investor allocation is unknown without bid/allotment records",
+  "investor_access": "RBI Retail Direct permits eligible individuals to bid in primary T-bill auctions through the non-competitive segment; this capture does not verify this investor's RDG account or operational eligibility",
+  "upfront_markup_amount": "required by FAQ as part of funding basis, but amount/formula is not specified in captured FAQ; affordability is not qualified",
+  "cash_costs": "RBI reports no account maintenance or primary bid fee; payment-gateway charges are borne by investor and amount is not specified",
+  "settlement": "typically one working day after auction; use observed issue dates as historical settlement dates; this is not a guarantee for future auctions"
+}

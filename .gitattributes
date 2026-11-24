@@ -16,6 +16,12 @@ research/stage512/2026-11-06/hdfcgold_execution_evidence/** -text
 research/stage512/2026-11-06/g6_3/source_raw/** -text
 research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/** -text
 
+# Preserve byte-exact RBI T-bill and holiday evidence captured for G6.3.
+research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/** -text
+research/stage512/2026-11-24/g6_3/source_raw/** -text
+research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/** -text
+research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_07_2024_09/** -text
+
 # Keep generated CPI artifacts and the PIB normalized comparison capture LF-stable.
 research/stage512/2026-11-06/g6_3/cpi_mospi_api_combined_general_2013_2026.csv text eol=lf
 research/stage512/2026-11-06/g6_3/cpi_qualification_v1.json text eol=lf

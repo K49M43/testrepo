@@ -3,6 +3,8 @@
 **As of:** 2026-11-24  
 **Scope:** Source qualification and conditional gross cashflow mechanics only. This is not a personal return history, a 2036 forecast, or investment authorization.
 
+> **Correction:** The initial v1 rollover schedule below is retained for audit history only. Its successor selector used the next issue/settlement date and could treat an auction held before maturity as fundable from maturity proceeds. The v2 increment at the end of this report uses the bid/auction date and requires it to be strictly after maturity. Use the v2 audit and CSVs for current mechanics; v1 return figures are superseded.
+
 ## Result
 
 The official RBI 91-day auction source panel is extended and reconciled across two windows:
@@ -48,4 +50,16 @@ python decision/audit_g6_3_rbi_tbill_rollover.py
 python decision/audit_g6_3_source_inventory.py --check
 ```
 
-The independent rollover audit produces `rbi_tbill_rollover_assumption_audit_v1.json`, `rbi_tbill_merged_roll_schedule_v1.csv`, and `rbi_tbill_conditional_365d_roll_scenarios_v1.csv` in this directory. The 24 monthly Mumbai holiday pages, initial form response, and parsed holiday manifest are retained under `rbi_mumbai_holidays_2024_2026/`. Governing RBI rule bytes are listed in `source_raw/rbi_rollover_policy_sources_v1.json`; raw Table 217 and its response manifest are retained under `source_raw/`. Each auction window has its own per-file source manifest and hashes.
+The initial v1 outputs are retained in this directory as historical audit artifacts and are superseded for roll timing by v2. The 24 monthly Mumbai maturity-holiday pages and manifest are retained under `rbi_mumbai_holidays_2024_2026/`. The additional settlement-calendar months and current RBI retail rules used in v2 are detailed below. Each auction window has its own per-file source manifest and hashes.
+
+## Retail Direct rules and bid-date correction — v2, 2026-11-24
+
+The current RBI Retail Direct FAQ and the RBI non-competitive bidding scheme circular were captured as official raw HTML with response metadata and SHA-256 hashes in `source_raw/rbi_retail_direct_rules_manifest_v1.json`. The independently checked public terms establish that eligible individuals can bid in primary T-bill auctions through Retail Direct's non-competitive segment; bids are single per security/auction; allotment uses the auction weighted-average price; partial allocation is pro-rata; and bids must be funded on the date submitted to RBI or are cancelled. The circular sets a ₹10,000 face-value minimum and multiples and caps retail NCB allocation collectively at up to 5% of the notified issue amount (subject to RBI changes). RBI's FAQ says settlement is typically one working day after auction, no RBI account-maintenance or primary-bid fee is charged, payment-gateway charges are borne by the investor, and excess bid markup is refunded within two business days. The FAQ presents minimum investment amounts as of 12-Nov-2021; the current portal rule must be checked before an actual bid. These sources do not prove this investor has an RDG account, route access, or any allocation.
+
+The earlier v1 schedule had a timing error: it selected the next positive **issue/settlement date** on or after maturity, without checking whether the associated auction and funding date had already passed. In 71 of 86 previously completed transitions, that selected auction occurred on or before the adjusted maturity date. Since redemption proceeds cannot be assumed to fund a bid that must already have been funded/submitted, v2 selects the first positive auction date **strictly after** adjusted maturity. Same-day funding is excluded because intraday timing of maturity proceeds versus the bid-funding cutoff is not established.
+
+Settlement dates for all 98 positive observations were checked against the official Mumbai holiday matrix. The three additional July–September 2024 monthly captures cover the first auctions; all 98 observed issue dates reconcile to the next working day after auction (89 one-calendar-day lags and 9 two-calendar-day lags due to intervening non-working days). Of 86 uncensored maturity-to-bid transitions, time until the next eligible auction is 5–21 calendar days (median 6); 12 remain right-censored.
+
+The recalculated 365-day-target scenario has 59 complete overlapping cohorts and 39 censored cohorts. Conditional annualized gross values are 4.8466%–5.9502%, median 5.3678%, assuming full allotment and zero return on cash gaps. These values are not investor returns, forecasts or probabilities. The model uses the observed final weighted-average price for lot affordability but RBI requires upfront markup funding; the markup amount is not specified in the captured FAQ. Partial allotments, payment-gateway charges, markup cash lock/refund, investor-specific access and bank cash yield are also not modeled, so bid affordability and executable rollover remain **NOT QUALIFIED**.
+
+Current outputs: `rbi_tbill_retail_route_qualification_v1.json`, `rbi_tbill_rollover_assumption_audit_v2.json`, `rbi_tbill_merged_roll_schedule_v2.csv`, and `rbi_tbill_conditional_365d_roll_scenarios_v2.csv`. The expanded settlement calendar is in `rbi_mumbai_holidays_2024_07_2024_09/`; raw RBI Retail Direct FAQ and circular captures are in `source_raw/`. G6.3 remains open and investment authorization remains **NO-GO**.

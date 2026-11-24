@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import calendar
+import argparse
 import hashlib
 import json
 import time
@@ -176,7 +177,20 @@ def parse_holidays(body: bytes, year: int, month: int) -> list[dict[str, str]]:
 
 
 def main():
-    out = Path(__file__).resolve().parent / "rbi_mumbai_holidays_2024_2026"
+    parser = argparse.ArgumentParser(description="Capture official RBI Mumbai holiday-matrix months sequentially.")
+    parser.add_argument("--start", default="2024-10", help="First month as YYYY-MM")
+    parser.add_argument("--end", default="2026-09", help="Last month as YYYY-MM")
+    parser.add_argument("--output-dir", type=Path)
+    args = parser.parse_args()
+    try:
+        start_year, start_month = map(int, args.start.split("-", 1))
+        end_year, end_month = map(int, args.end.split("-", 1))
+        start_date, end_date = datetime(start_year, start_month, 1), datetime(end_year, end_month, 1)
+    except (ValueError, TypeError):
+        parser.error("--start and --end must be valid YYYY-MM months")
+    if start_date > end_date:
+        parser.error("--start must be on or before --end")
+    out = args.output_dir or (Path(__file__).resolve().parent / "rbi_mumbai_holidays_2024_2026")
     out.mkdir(parents=True, exist_ok=True)
     client = Client()
     initial_retrieved = datetime.now(timezone.utc).isoformat()
@@ -190,8 +204,8 @@ def main():
         "content_type": content_type, "retrieved_at_utc": initial_retrieved, "bytes": len(page), "sha256": hashlib.sha256(page).hexdigest(),
     }]
     parsed_months = []
-    year, month = 2024, 10
-    while (year, month) <= (2026, 9):
+    year, month = start_year, start_month
+    while (year, month) <= (end_year, end_month):
         target_url, data = form_post(page, year, month)
         retrieved = datetime.now(timezone.utc).isoformat()
         body, status, content_type = client.request(target_url, data=data, referer=URL)
@@ -215,7 +229,7 @@ def main():
         "source_url": URL,
         "regional_office": "Mumbai",
         "regional_office_value": "28",
-        "coverage": {"first_maturity_month": "2024-10", "last_maturity_month": "2026-09", "months": len(parsed_months)},
+        "coverage": {"first_month": args.start, "last_month": args.end, "months": len(parsed_months)},
         "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 2 MB response cap",
         "sources": records,
         "parsed_mumbai_holidays": parsed_months,
