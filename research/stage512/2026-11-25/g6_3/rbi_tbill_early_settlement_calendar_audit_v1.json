@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-3-rbi-tbill-early-settlement-calendar-audit-2026-11-25-v1",
+  "result": "PASS_NOTICE_SETTLEMENT_RECONCILIATION__MATURITY_ADJUSTMENT_UNQUALIFIED",
+  "source_class": "OFFICIAL_RBI_AUCTION_TABLES_NOTICES_RESULTS_MUMBAI_HOLIDAY_MATRIX_AND_DATE_SPECIFIC_GSEC_EXCEPTION",
+  "calendar_source_url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+  "calendar_packages": {
+    "early_settlement_2023": {
+      "manifest": "research/stage512/2026-11-25/g6_3/rbi_mumbai_holidays_2023_07_2023_09/manifest.json",
+      "months": 3,
+      "raw_pages": 4,
+      "holiday_dates": 5,
+      "first_month": "2023-07",
+      "last_month": "2023-09"
+    },
+    "early_maturity_2023_2024": {
+      "manifest": "research/stage512/2026-11-25/g6_3/rbi_mumbai_holidays_2023_2024/manifest.json",
+      "months": 12,
+      "raw_pages": 13,
+      "holiday_dates": 22,
+      "first_month": "2023-10",
+      "last_month": "2024-09"
+    },
+    "rollover_2024_2026": {
+      "manifest": "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/manifest.json",
+      "months": 24,
+      "raw_pages": 25,
+      "holiday_dates": 43,
+      "first_month": "2024-10",
+      "last_month": "2026-09"
+    },
+    "settlement_2024": {
+      "manifest": "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_07_2024_09/manifest.json",
+      "months": 3,
+      "raw_pages": 4,
+      "holiday_dates": 4,
+      "first_month": "2024-07",
+      "last_month": "2024-09"
+    }
+  },
+  "mumbai_holiday_calendar_coverage": {
+    "first_month": "2023-07",
+    "last_month": "2026-09",
+    "months": 39,
+    "unique_listed_dates": 70
+  },
+  "gsec_operational_exception": {
+    "manifest": "research/stage512/2026-11-25/g6_3/rbi_gsec_calendar_exceptions_v1.json",
+    "rbi_release_number": "2023-2024/1005",
+    "date": "2023-09-29",
+    "scope": "This is a date-specific override, not a complete historical G-Sec business-day calendar. Do not infer that other Mumbai NI Act holidays were market-open or market-closed without the applicable RBI source."
+  },
+  "three_window_deduplication": {
+    "unique_auction_dates": 151,
+    "positive_91_day_price_observations": 149,
+    "pairwise_overlaps": [
+      {
+        "left": "Table 213",
+        "right": "Table 217",
+        "dates": 9,
+        "field_mismatches": 0
+      },
+      {
+        "left": "Table 213",
+        "right": "Table 218",
+        "dates": 0,
+        "field_mismatches": 0
+      },
+      {
+        "left": "Table 217",
+        "right": "Table 218",
+        "dates": 5,
+        "field_mismatches": 0
+      }
+    ],
+    "use_limit": "Auction-yield levels and event dates only; not realized rollover returns, long-run risk history, or calibrated success probabilities."
+  },
+  "table213_settlement_reconciliation": {
+    "notice_settlement_dates_checked": 60,
+    "notice_table_issue_date_conflicts": 4,
+    "notice_table_conflict_auction_dates": [
+      "2023-09-27",
+      "2024-04-10",
+      "2024-05-22",
+      "2024-08-14"
+    ],
+    "notice_issue_dates_on_mumbai_ni_act_holidays": [
+      "2023-09-29"
+    ],
+    "holiday_settlement_dates_with_explicit_gsec_override": [
+      "2023-09-29"
+    ],
+    "weekend_issue_dates": [],
+    "settlement_basis": "Normalized issue_date is taken from the contemporaneous auction notice; both notice and Table 213 dates remain recorded. CI independently reparses notice/result source files."
+  },
+  "nominal_maturity_calendar_flags": {
+    "rows_checked": 60,
+    "maturities_on_mumbai_ni_act_holidays": {
+      "2024-04-11": 1,
+      "2024-05-23": 1,
+      "2024-08-15": 1,
+      "2024-11-15": 1
+    },
+    "maturity_rows_on_mumbai_ni_act_holidays": 4,
+    "maturity_dates_on_weekends": {},
+    "adjustment_status": "NOT_QUALIFIED",
+    "reason": "The RBI Mumbai NI Act matrix is not a complete G-Sec operational calendar. The one verified 2023-09-29 override proves that holiday-matrix dates cannot be applied mechanically; other maturity dates need applicable official G-Sec settlement/holiday evidence."
+  },
+  "limitations": [
+    "The date-specific RBI release validates one G-Sec operational exception only, not a complete historical G-Sec calendar.",
+    "No maturity date is adjusted in this audit, and no maturity-to-auction transition, cash wait, or rollover return is calculated.",
+    "The RBI notice issue date does not prove investor-specific settlement timing or intraday availability of maturity proceeds.",
+    "The auction panel remains a short history of auction quote levels, not a long-run risk distribution, exact cross-asset covariance, or 2036 floor-success probability."
+  ],
+  "decision_status": "NO_GO",
+  "investment_authorization": "NO_GO"
+}
