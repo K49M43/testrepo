@@ -4,6 +4,8 @@
 **Instrument:** 6.94% GS 2036, ISIN IN0020260025  
 **Disposition:** Official data routes identified; no long-run price series qualified.
 
+The [13 November follow-up](2026-11-13/README.md) adds a second verified historical primary-auction reference and checks the public odd-lot quote route. The current executable price and actual retail debit remain open.
+
 ## Source routes assessed
 
 | Source | What it provides | Suitability | Gate / limitation |

@@ -1,0 +1,65 @@
+{
+  "record_id": "G6.3-DIRECT-GSEC-NOVEMBER-2026-AUCTION-v1",
+  "status": "HISTORICAL_PRIMARY_PRICE_ANCHOR_PASS_RETAIL_DEBIT_AND_SECONDARY_QUOTE_OPEN",
+  "isin": "IN0020260025",
+  "auction_date": "2026-11-13",
+  "settlement_date": "2026-11-16",
+  "notice_and_result_allotment": {
+    "notified_crore": "34000",
+    "competitive_accepted_crore": "33947.718",
+    "noncompetitive_accepted_crore": "52.282",
+    "noncompetitive_bids": 8
+  },
+  "primary_quotes": {
+    "cutoff": {
+      "price_per_100": "97.43",
+      "nominal_ytm_percent": "7.3203"
+    },
+    "weighted_average": {
+      "price_per_100": "97.46",
+      "nominal_ytm_percent": "7.3158"
+    }
+  },
+  "change_from_october_weighted_price_per_100": "0.53",
+  "change_from_october_weighted_nominal_ytm_bps": "-7.6700",
+  "price_and_accrual_diagnostic": {
+    "last_scheduled_coupon_date": "2026-11-11",
+    "due_through_date_in_gazette": "2026-11-15",
+    "gazette_last_coupon_cell": "New Security",
+    "confirm_final_retail_debit": false,
+    "nominal_coupon_count_after_settlement": 19,
+    "next_nominal_coupon_date": "2027-05-11",
+    "nominal_maturity_date": "2036-05-11",
+    "alternatives": {
+      "last_scheduled_coupon_to_cutoff_date": {
+        "days_30_360": 4,
+        "projected_clean_price_rounded_per_100": {
+          "cutoff": "97.45",
+          "weighted_average": "97.48"
+        },
+        "matches_both_published_prices": false,
+        "hypothetical_debit_for_10000_face_before_fees_inr": "9753.71"
+      },
+      "last_scheduled_coupon_to_settlement_date": {
+        "days_30_360": 5,
+        "projected_clean_price_rounded_per_100": {
+          "cutoff": "97.43",
+          "weighted_average": "97.46"
+        },
+        "matches_both_published_prices": true,
+        "hypothetical_debit_for_10000_face_before_fees_inr": "9755.64"
+      },
+      "original_issue_to_cutoff_date_sensitivity": {
+        "days_30_360": 184,
+        "projected_clean_price_rounded_per_100": {
+          "cutoff": "93.98",
+          "weighted_average": "94.01"
+        },
+        "matches_both_published_prices": false,
+        "hypothetical_debit_for_10000_face_before_fees_inr": "10100.71"
+      }
+    }
+  },
+  "secondary_retail_quote_verified": false,
+  "investment_authorization": "NO_GO"
+}

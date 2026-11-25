@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-11-25",
+  "scope": "Public October-to-November direct GoI 2036 source follow-up",
+  "attempts": [
+    {
+      "publisher": "Government of India eGazette",
+      "url": "https://egazette.gov.in/WriteReadData/2026/277814.pdf",
+      "result": "PDF text available through the web reader; original bytes and visual rendering unavailable",
+      "observed_failures": ["Python certificate-chain verification failed", "Windows curl TLS credentials error", "web page screenshot cache miss"],
+      "retained_bytes": false
+    },
+    {
+      "publisher": "Reserve Bank of India",
+      "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GSECN09112026E.pdf",
+      "result": "HTTP 200 text/html in lieu of linked notification PDF",
+      "retrieved_utc": "2026-11-25T08:32:54+00:00",
+      "response_bytes": 43773,
+      "response_sha256": "790197c5bf4cba61cf6785ba099bdc0d7e33cd54ca005b732cc88cb2d3107455",
+      "retained_bytes": false
+    },
+    {
+      "publisher": "CCIL",
+      "url": "https://www.ccilindia.com/odd-lot-mkt.-watch",
+      "result": "Guest view shows quote field labels; no date or candidate quote in the checked response",
+      "retained_bytes": false,
+      "interpretation": "Absence in the checked response does not establish market availability or activity"
+    }
+  ],
+  "next_evidence": "Retain the authenticated public Gazette PDF when its official download is accessible. Independently obtain a current retail-sized quote or future eligible primary reissue notice. For past exact debit, require the applicable calculation or redacted allotment/settlement advice.",
+  "investment_authorization": "NO_GO"
+}

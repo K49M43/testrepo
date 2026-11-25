@@ -18,3 +18,7 @@
 ## 2026-11-25 — Defer paid Silver ETF history pending portfolio materiality
 
 The [G6.3 NAV comparison](../research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/SILVER_NAV_COMPARISON.md) isolated the mandate's 5% gold-to-silver switch over 48 matched monthly intervals. The worst pre-tax real shortfall in the historical exit replays improved by ₹23,229 before trading costs. In the hypothetical joint crash it widened by ₹81,321. Keep silver as a research candidate, defer paid traded history and revisit the ETF or Fund of Fund route if further evidence shows material benefit after costs and taxes. RBI payment timing remains open. Investment authorization remains **NO-GO**.
+
+## 2026-11-25 — Second primary price for direct 6.94% GS 2036
+
+The [November auction reconciliation](../research/g6_3/direct_gsec_2036/2026-11-13/README.md) adds a ₹97.46 weighted clean price and 7.3158% quoted nominal yield, compared with October's ₹96.93 and 7.3925%. Keep the May 2036 bond in research. A fresh price for the investor's lot remains necessary to compare its entry economics. Leave exact debit, coupon reinvestment and post-maturity cash deployment unqualified. Investment authorization remains **NO-GO**.
