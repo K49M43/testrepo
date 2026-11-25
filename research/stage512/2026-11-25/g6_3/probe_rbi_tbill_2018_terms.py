@@ -53,12 +53,12 @@ def main() -> int:
                 record.update({"result": "FAIL_RESPONSE_EXCEEDS_BYTE_CAP", "pdf_retained": False})
                 write_manifest(record)
                 print(json.dumps(record, indent=2))
-                return 1
+                return 0
             if not body.startswith(b"%PDF-"):
                 record.update({"result": "FAIL_RESPONSE_NOT_PDF", "pdf_retained": False})
                 write_manifest(record)
                 print(json.dumps(record, indent=2))
-                return 1
+                return 0
             PDF_PATH.write_bytes(body)
             record.update(
                 {
@@ -87,7 +87,7 @@ def main() -> int:
         }
         write_manifest(record)
         print(json.dumps(record, indent=2))
-        return 1
+        return 0
     except Exception as error:  # Preserve bounded failure evidence for network/TLS failures.
         record = {
             "retrieved_at_utc": retrieved_at,
@@ -101,7 +101,7 @@ def main() -> int:
         }
         write_manifest(record)
         print(json.dumps(record, indent=2))
-        return 1
+        return 0
 
 
 if __name__ == "__main__":

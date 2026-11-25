@@ -1,6 +1,10 @@
 name: G6.3 RBI 2018 T-bill terms source probe
 
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/g6-3-rbi-tbill-2018-terms-probe.yml'
+      - 'research/stage512/2026-11-25/g6_3/probe_rbi_tbill_2018_terms.py'
   workflow_dispatch:
 
 permissions:
