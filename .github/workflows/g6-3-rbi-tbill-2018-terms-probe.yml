@@ -1,0 +1,27 @@
+name: G6.3 RBI 2018 T-bill terms source probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-official-source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Make one bounded request to the official RBI-linked PDF
+        run: python research/stage512/2026-11-25/g6_3/probe_rbi_tbill_2018_terms.py
+      - name: Retain PDF or bounded failure metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g6-3-rbi-tbill-2018-terms-source-probe
+          path: rbi_tbill_2018_terms_probe/
+          if-no-files-found: warn
+          retention-days: 30
