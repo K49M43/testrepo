@@ -1,0 +1,138 @@
+{
+  "source_url": "https://mcp.nseindia.in/bhavcopy/cm/mcp",
+  "documented_route": "https://www.nseindia.in/nse-mcp",
+  "scope": "Bounded informational date and one-month history probes. Prices and raw responses were not retained.",
+  "tool": "get_ltp_by_date",
+  "probes": [
+    {
+      "query_symbol": "ICICISILVE",
+      "query_date": "2022-01-31",
+      "request_time_utc": "2026-11-25T08:02:47.339535+00:00",
+      "http_status": 200,
+      "response_bytes": 94,
+      "response_sha256": "054a38fcecc84bd7c4c65ea07315e30735c922996eb9f9d549239c18ee0617d7",
+      "rpc_error": false,
+      "tool_error": false,
+      "response_fields": [],
+      "response_identity_fields": {}
+    },
+    {
+      "query_symbol": "ICICISILVE",
+      "query_date": "2023-12-19",
+      "request_time_utc": "2026-11-25T08:02:47.559110+00:00",
+      "http_status": 200,
+      "response_bytes": 94,
+      "response_sha256": "3f11c10aed2329317ce27755a390d8e05d0d44d37aab106f765cb7093e24d6cf",
+      "rpc_error": false,
+      "tool_error": false,
+      "response_fields": [],
+      "response_identity_fields": {}
+    },
+    {
+      "query_symbol": "SILVERIETF",
+      "query_date": "2023-12-20",
+      "request_time_utc": "2026-11-25T08:02:47.773769+00:00",
+      "http_status": 200,
+      "response_bytes": 94,
+      "response_sha256": "f741b81b185b758cb4496c22807b6df3ab6d2b1eda3c3993bc031338008579a1",
+      "rpc_error": false,
+      "tool_error": false,
+      "response_fields": [],
+      "response_identity_fields": {}
+    },
+    {
+      "query_symbol": "SILVERIETF",
+      "query_date": "2026-10-30",
+      "request_time_utc": "2026-11-25T08:02:47.980351+00:00",
+      "http_status": 200,
+      "response_bytes": 94,
+      "response_sha256": "e0435975c853388568e6c30cfe64173e6f7daf278850a34f0286103222aae920",
+      "rpc_error": false,
+      "tool_error": false,
+      "response_fields": [],
+      "response_identity_fields": {}
+    }
+  ],
+  "history_probe": {
+    "tool": "get_stock_history",
+    "requested_months": 1,
+    "attempts": [
+      {
+        "query_symbol": "ICICISILVE",
+        "requested_end_date": "2023-12-19",
+        "request_time_utc": "2026-11-25T08:04:11.085560+00:00",
+        "http_status": 200,
+        "response_bytes": 6588,
+        "response_sha256": "e0a5294798a9eb1769e5ff4c3b5be04e39eba5397f1e922b81028d49282b3629",
+        "classification": "ROWS_RETURNED",
+        "fields": [
+          "chunk_months",
+          "data",
+          "from_date",
+          "next_end_date",
+          "query_ms",
+          "source",
+          "summary",
+          "symbol",
+          "to_date",
+          "trading_days"
+        ],
+        "rows": 21,
+        "first_returned_date": "2023-11-20",
+        "last_returned_date": "2023-12-19"
+      },
+      {
+        "query_symbol": "SILVERIETF",
+        "requested_end_date": "2026-10-30",
+        "request_time_utc": "2026-11-25T08:04:11.306596+00:00",
+        "http_status": 200,
+        "response_bytes": 6768,
+        "response_sha256": "f476bd8177c6d5fff9ba163237b8f37067e9bc5178a8119f0855a464aeb27a77",
+        "classification": "ROWS_RETURNED",
+        "fields": [
+          "chunk_months",
+          "data",
+          "from_date",
+          "next_end_date",
+          "query_ms",
+          "source",
+          "summary",
+          "symbol",
+          "to_date",
+          "trading_days"
+        ],
+        "rows": 21,
+        "first_returned_date": "2026-09-30",
+        "last_returned_date": "2026-10-30"
+      },
+      {
+        "query_symbol": "ICICISILVE",
+        "requested_end_date": "2022-01-31",
+        "request_time_utc": "2026-11-25T08:04:34.797503+00:00",
+        "http_status": 200,
+        "response_bytes": 735,
+        "response_sha256": "4cc88397eeaa87dceeea42b342d5c85eed8c17320bded2c71d24613bc265e4e4",
+        "classification": "ROWS_RETURNED",
+        "returned_symbol": "ICICISILVE",
+        "rows": 1,
+        "first_returned_date": "2022-01-31",
+        "last_returned_date": "2022-01-31",
+        "requested_date_present": true
+      },
+      {
+        "query_symbol": "SILVERIETF",
+        "requested_end_date": "2023-12-20",
+        "request_time_utc": "2026-11-25T08:04:35.067449+00:00",
+        "http_status": 200,
+        "response_bytes": 733,
+        "response_sha256": "cb1376cbf40cda7d8de441d87403003f3f5e78c8d846f73d73bd70f18a7ae216",
+        "classification": "ROWS_RETURNED",
+        "returned_symbol": "SILVERIETF",
+        "rows": 1,
+        "first_returned_date": "2023-12-20",
+        "last_returned_date": "2023-12-20",
+        "requested_date_present": true
+      }
+    ]
+  }
+}

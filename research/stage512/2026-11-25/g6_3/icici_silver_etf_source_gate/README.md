@@ -1,5 +1,7 @@
 # G6.3 ICICI Prudential Silver ETF source audit
 
+The [licensed history follow-up](AUTHORIZED_NSE_HISTORY_SOURCES.md) verifies sampled availability across both symbols and identifies the parties that can confirm licensed delivery and use.
+
 **Evidence date** 25 November 2026
 
 **Result** Historical AMFI NAV lineage passes for the declared window. The NSE pilot passes its sample checks. Full exchange price history, use rights and execution evidence remain open.
