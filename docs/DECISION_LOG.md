@@ -457,3 +457,9 @@ This log records **actual investment authorization** separately from engineering
 - Verified the three RBI PDFs cited for the 2024 terms package. The linked base attachment matched the archived bytes. Both amendments concern eligibility or bid price precision and leave paragraph 9 on repayment at tenor expiry intact.
 - Retained five NSE circulars covering four exact ISIN and listed maturity matches plus one exchange trading suspension. Actual holiday cash payment dates verified total zero of four. The [audit and manifest](/research/stage512/2026-11-25/g6_3/RBI_TBILL_AMENDMENTS_AND_NSE_MATURITY_AUDIT.md) record the sources and their evidence limits.
 - The cited historical terms package passes. A T-bill specific holiday payment rule or an actual dated payment record and applicable Retail Direct bank credit timing remain open. The rollover analysis stays conditional and G6.3 remains open with investment authorization at NO-GO.
+
+## 2026-11-25 — G6.3 Silver ETF candidate source pilot
+
+- Reconstructed 1,160 ICICI Prudential Silver ETF NAV observations from ten official AMFI windows and checked four matching issuer anchors. The historical NAV lineage passes for the declared window.
+- Checked 20 October NSE dates and reconciled nine fields to a separate exchange bhavcopy on the one overlapping date. The full post-listing market history and its modelling rights remain open. The [source audit](/research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/README.md) records the exchange receipts, the share symbol transition, and the fund benchmark and regulatory valuation change dates.
+- The RBI holiday payment question stays open. The candidate pilot supplies no execution-cost series or decision model inputs. G6.3 remains open with investment authorization at NO-GO.
