@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "review_date_ist": "2026-11-25",
+  "scope": "RBI-linked documents cited by the March 2024 auction notice and NSE identity records for four 2024 91-day bills.",
+  "rbi_auction_notice_url": "https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57510",
+  "rbi_amendment_circular_url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12212&Mode=0",
+  "rbi_retrieval": "User saved the documents from the requested official RBI attachment links. Retrieved from Downloads for review on the recorded date. HTTP headers, exact download timestamps and independent signature validation are unavailable.",
+  "rbi_files": [
+    {
+      "notification_date": "2018-03-27",
+      "gazette_issue_number": "102",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_A.pdf",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/GOI27032018_TBill.pdf",
+      "bytes": 1845463,
+      "pages": 6,
+      "sha256": "896e1f66fce128014769be977ccb3f9e22132289a1c936205d6802aa53abade2",
+      "identical_to_previously_retained_copy": true
+    },
+    {
+      "notification_date": "2018-04-05",
+      "gazette_issue_number": "123",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI05042018_A.pdf",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/GOI05042018_A.pdf",
+      "bytes": 1767698,
+      "pages": 2,
+      "sha256": "2f94db1e0d65c6c5e69c400f36e0e22269a2558b5ccae982ca0adc1b195a06d8",
+      "identical_to_previously_retained_copy": null
+    },
+    {
+      "notification_date": "2021-12-23",
+      "gazette_issue_number": "378",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI23122021_A.pdf",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/GOI23122021_A.pdf",
+      "bytes": 1070347,
+      "pages": 2,
+      "sha256": "103ec8edc811c0cf88d6094b3c70ac2e4372c0e9b9fb589c2435d4233eaa0712",
+      "identical_to_previously_retained_copy": null
+    }
+  ],
+  "nse_capture_policy": "One sequential HTTPS GET per published NSE circular with a 12-second timeout and a 2 MB body cap.",
+  "nse_files": [
+    {
+      "id": "CML60218",
+      "source_url": "https://nsearchives.nseindia.com/content/circulars/CML60218.pdf",
+      "retrieved_at_utc": "2026-11-25T06:53:33.815525+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://nsearchives.nseindia.com/content/circulars/CML60218.pdf",
+      "bytes": 132028,
+      "sha256": "39800aff95b964595aa9c52149bf1239cacad69a1c662dd3102358cc02b079fd",
+      "status": "PDF_CAPTURED",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/CML60218.pdf",
+      "pages": 2
+    },
+    {
+      "id": "CML60818",
+      "source_url": "https://nsearchives.nseindia.com/content/circulars/CML60818.pdf",
+      "retrieved_at_utc": "2026-11-25T06:53:34.253925+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://nsearchives.nseindia.com/content/circulars/CML60818.pdf",
+      "bytes": 141468,
+      "sha256": "f5a17f9932b00ff531493cc7020cb41813ced353ffe13e36248b6559fb724d2f",
+      "status": "PDF_CAPTURED",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/CML60818.pdf",
+      "pages": 2
+    },
+    {
+      "id": "CML62065",
+      "source_url": "https://nsearchives.nseindia.com/content/circulars/CML62065.pdf",
+      "retrieved_at_utc": "2026-11-25T06:53:34.477783+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://nsearchives.nseindia.com/content/circulars/CML62065.pdf",
+      "bytes": 129965,
+      "sha256": "d48d69de1b79b8d76b4df4fd1702eb2d1bc807a1ae6b173b4e0e04567ee129e7",
+      "status": "PDF_CAPTURED",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/CML62065.pdf",
+      "pages": 2
+    },
+    {
+      "id": "CML63407",
+      "source_url": "https://nsearchives.nseindia.com/content/circulars/CML63407.pdf",
+      "retrieved_at_utc": "2026-11-25T06:53:34.944434+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://nsearchives.nseindia.com/content/circulars/CML63407.pdf",
+      "bytes": 129563,
+      "sha256": "d25109a5c743644d5cf406a58fb1bcd110fb623e2fc46e5f7bd4bfde02a605ca",
+      "status": "PDF_CAPTURED",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/CML63407.pdf",
+      "pages": 2
+    },
+    {
+      "id": "CML63038",
+      "source_url": "https://nsearchives.nseindia.com/content/circulars/CML63038.pdf",
+      "retrieved_at_utc": "2026-11-25T06:53:35.173119+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "final_url": "https://nsearchives.nseindia.com/content/circulars/CML63038.pdf",
+      "bytes": 137407,
+      "sha256": "67881ae9ad4d734a4babdffc25c947a5a8a8919d29355e39e84f6bf4539f0e55",
+      "status": "PDF_CAPTURED",
+      "file": "research/stage512/2026-11-25/g6_3/source_raw/CML63038.pdf",
+      "pages": 2
+    }
+  ],
+  "amendment_paragraphs": {
+    "2018-04-05": [
+      "4(ii)",
+      "5(iii)"
+    ],
+    "2021-12-23": [
+      "3",
+      "4(ii)"
+    ]
+  },
+  "base_repayment_paragraph": "9",
+  "nse_matches": [
+    {
+      "rbi_auction_notice_id": 57074,
+      "nse_circular": "CML60218",
+      "symbol": "91D110424",
+      "isin": "IN002023X427",
+      "listed_maturity": "2024-04-11"
+    },
+    {
+      "rbi_auction_notice_id": 57348,
+      "nse_circular": "CML60818",
+      "symbol": "91D230524",
+      "isin": "IN002023X492",
+      "listed_maturity": "2024-05-23"
+    },
+    {
+      "rbi_auction_notice_id": 57881,
+      "nse_circular": "CML62065",
+      "symbol": "91D150824",
+      "isin": "IN002024X086",
+      "listed_maturity": "2024-08-15"
+    },
+    {
+      "rbi_auction_notice_id": 58465,
+      "nse_circular": "CML63407",
+      "symbol": "91D151124",
+      "isin": "IN002024X219",
+      "listed_maturity": "2024-11-15"
+    }
+  ],
+  "nse_suspension": {
+    "circular": "CML63038",
+    "isin": "IN002024X086",
+    "date": "2024-08-12",
+    "scope": "NSE trading suspension only"
+  },
+  "observed_holiday_redemption_dates": 0,
+  "gate_disposition": {
+    "historical_terms_package_cited_for_2024": "PASS",
+    "base_attachment_identity": "BYTE_FOR_BYTE_MATCH",
+    "nse_listed_maturity_and_isin_matches": "4_OF_4",
+    "t_bill_holiday_redemption_date": "NOT_QUALIFIED",
+    "retail_direct_bank_credit_timing": "NOT_QUALIFIED",
+    "same_day_funding": "EXCLUDED",
+    "g6_3": "OPEN_NOT_READY",
+    "investment_authorization": "NO_GO"
+  }
+}

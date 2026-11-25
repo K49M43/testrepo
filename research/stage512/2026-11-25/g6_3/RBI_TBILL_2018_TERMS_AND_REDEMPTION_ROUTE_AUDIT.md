@@ -1,5 +1,7 @@
 # RBI T-bill 2018 terms and redemption-route audit
 
+**Follow-up on 25 November 2026** The [amendment and listed maturity audit](RBI_TBILL_AMENDMENTS_AND_NSE_MATURITY_AUDIT.md) completes the attachment package and resolves the base file identity. Holiday cash payment and Retail Direct credit timing remain open. This report preserves the earlier evidence state.
+
 **Audit date:** 2026-11-25
 
 **Scope:** retain and inspect the RBI-hosted 2018 GoI T-bill general notification; reconcile its source identity with the terms cited by RBI for 2024; review first-party redemption-route wording.

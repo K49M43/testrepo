@@ -451,3 +451,9 @@ This log records **actual investment authorization** separately from engineering
 - **Route evidence:** RBI's Retail Direct FAQ says redemption amounts are credited to the linked savings bank account, but does not state exact T-bill credit date/time. RBI's general Government Securities FAQ states automatic redemption to a bank account on due date for specified holding forms; this does not establish a T-bill-specific holiday rule or same-day availability. The FAQ pages were reviewed online but raw bytes were not retained.
 - **Artifacts:** research/stage512/2026-11-25/g6_3/RBI_TBILL_2018_TERMS_AND_REDEMPTION_ROUTE_AUDIT.md, rbi_tbill_2018_terms_and_route_evidence_manifest_v1.json, and source_raw/GOI27032018_TBill.pdf.
 - **Disposition:** base terms text captured with provenance caveat; complete applicable amendment package and T-bill holiday/credit-time gates remain unqualified. No returns or rollover schedule were recalculated. G6.3 remains open/not ready; investment authorization remains NO-GO.
+
+## 2026-11-25 — G6.3 RBI amendments and NSE listed maturity qualification
+
+- Verified the three RBI PDFs cited for the 2024 terms package. The linked base attachment matched the archived bytes. Both amendments concern eligibility or bid price precision and leave paragraph 9 on repayment at tenor expiry intact.
+- Retained five NSE circulars covering four exact ISIN and listed maturity matches plus one exchange trading suspension. Actual holiday cash payment dates verified total zero of four. The [audit and manifest](/research/stage512/2026-11-25/g6_3/RBI_TBILL_AMENDMENTS_AND_NSE_MATURITY_AUDIT.md) record the sources and their evidence limits.
+- The cited historical terms package passes. A T-bill specific holiday payment rule or an actual dated payment record and applicable Retail Direct bank credit timing remain open. The rollover analysis stays conditional and G6.3 remains open with investment authorization at NO-GO.
