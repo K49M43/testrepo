@@ -59,6 +59,14 @@ Obtain the exact official amendment attachments dated 5 April 2018 and 23 Decemb
 
 G6.3 remains OPEN / NOT READY. Investment authorization remains NO-GO.
 
+## Bounded attachment recheck — 2026-11-25
+
+The exact RBI-linked attachment URLs for the 27 March 2018 base notification and the 5 April 2018 and 23 December 2021 amendments were each requested once in sequence over a direct HTTPS connection, with no cookies, authentication, retries, or challenge handling. Each returned HTTP 200 `text/html`, not a PDF. The three complete HTML response bodies, timestamps, byte counts, and SHA-256 hashes are retained in `rbi_tbill_amendment_access_probe_v1.json` and `source_raw/rbi_notification_attachment_attempts/`.
+
+Inspection confirms all three bodies are RBI-hosted human-verification challenge pages. They are retained strictly as failed access attempts and do not qualify as notification text. The local direct connection bypassed only the configured unusable proxy; it did not interact with or bypass the RBI challenge. No amendment content or base-attachment identity was inferred from these responses.
+
+**Gate disposition:** exact 2018/2021 notification attachment text and the 2018 base-attachment identity remain NOT QUALIFIED. The precise next action is to obtain the three PDFs through the official RBI links using an ordinary browser session, saving the original files without automated challenge solving. After receipt, verify PDF signatures, page counts, hashes, extract/review the relevant clauses, and reconcile the base attachment byte-for-byte against the retained `GOI27032018_TBill.pdf`. The separate first-party holiday-redemption record and investor-route credit-time gates also remain open.
+
 ## Reproduction
 
 Verify the PDF hash with:
