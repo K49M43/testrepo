@@ -14,3 +14,7 @@
 **Why the gate stays closed:** the planned ₹90L floor and ₹1Cr stretch are framed in 2026 purchasing power, but the CPI anchor is still assumed rather than selected from the latest released observation; instrument-level returns, fees, trading friction, tax lots and terminal exit taxation have not been integrated; future 2036 tax law is uncertain; and the investor has not confirmed actual payment/exit dates or approved a portfolio.
 
 **Next evidence that can change this status:** a reproducible deterministic cashflow/tax ledger, checked against independent examples; a source-pinned CPI origin and deflator; dated executable candidate terms; and a falsification review of goal feasibility and downside risk. A successful model or source gate alone will not change this authorization.
+
+## 2026-11-25 — Defer paid Silver ETF history pending portfolio materiality
+
+The [G6.3 NAV comparison](../research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/SILVER_NAV_COMPARISON.md) isolated the mandate's 5% gold-to-silver switch over 48 matched monthly intervals. The worst pre-tax real shortfall in the historical exit replays improved by ₹23,229 before trading costs. In the hypothetical joint crash it widened by ₹81,321. Keep silver as a research candidate, defer paid traded history and revisit the ETF or Fund of Fund route if further evidence shows material benefit after costs and taxes. RBI payment timing remains open. Investment authorization remains **NO-GO**.

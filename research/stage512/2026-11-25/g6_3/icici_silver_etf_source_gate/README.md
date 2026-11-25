@@ -2,6 +2,8 @@
 
 The [licensed history follow-up](AUTHORIZED_NSE_HISTORY_SOURCES.md) verifies sampled availability across both symbols and identifies the parties that can confirm licensed delivery and use.
 
+The [NAV comparison](SILVER_NAV_COMPARISON.md) tests the portfolio impact of switching 5% from gold to silver before deciding whether to pay for traded history.
+
 **Evidence date** 25 November 2026
 
 **Result** Historical AMFI NAV lineage passes for the declared window. The NSE pilot passes its sample checks. Full exchange price history, use rights and execution evidence remain open.

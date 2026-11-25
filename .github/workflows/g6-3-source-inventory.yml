@@ -3,6 +3,12 @@ on:
   push:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_silver_nav_comparison.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'config/investment_mandate_2036.json'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/silver_nav_comparison_v1.json'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
       - 'decision/audit_g6_3_direct_gsec_2036.py'
@@ -17,6 +23,12 @@ on:
   pull_request:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_silver_nav_comparison.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'config/investment_mandate_2036.json'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/silver_nav_comparison_v1.json'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
       - 'decision/audit_g6_3_direct_gsec_2036.py'
@@ -48,6 +60,8 @@ jobs:
         run: python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
       - name: Reconcile candidate and LIC source coverage
         run: python decision/audit_g6_3_source_inventory.py --check
+      - name: Reproduce matched-date Silver NAV comparison
+        run: python decision/audit_g6_3_silver_nav_comparison.py --check
       - name: Requalify official CPI source series
         run: python decision/audit_g6_3_cpi_qualification.py --check
       - name: Verify archived RBI T-bill source bytes and identity anchors
