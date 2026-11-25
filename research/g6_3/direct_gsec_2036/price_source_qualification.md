@@ -6,6 +6,8 @@
 
 The [13 November follow-up](2026-11-13/README.md) adds a second verified historical primary-auction reference and checks the public odd-lot quote route. The current executable price and actual retail debit remain open.
 
+The [25 November retail quote check](2026-11-25-retail-quote/README.md) qualifies the distinct NSE Capital Market listing and a same-session displayed offer sufficient for a 100-unit screening lot. Fresh quote, Groww access and all-in charges remain open.
+
 ## Source routes assessed
 
 | Source | What it provides | Suitability | Gate / limitation |
