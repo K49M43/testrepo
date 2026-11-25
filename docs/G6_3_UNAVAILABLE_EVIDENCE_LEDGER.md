@@ -111,3 +111,15 @@ Four 91-day issue-plus-91-calendar-day dates coincide with Mumbai NI Act holiday
 This is date arithmetic only, not evidence of actual T-bill redemption, credited proceeds, executable reinvestment, or realized returns. The 2024–2026 v2 rollover schedule remains conditional on its prior-working-day assumption; this audit does not qualify that assumption for T-bills. See `research/stage512/2026-11-25/g6_3/RBI_TBILL_MATURITY_RULE_SCOPE_AND_EVENT_SENSITIVITY_AUDIT.md`, `rbi_tbill_maturity_rule_scope_audit_v1.json`, and `rbi_tbill_holiday_maturity_sensitivity_v1.csv`.
 
 **Next gate:** retain the applicable 2018 GoI T-bill terms or a first-party date-specific T-bill redemption record, then establish the investor-route credit timing. Until those evidence gates pass, historical rollover remains unqualified. G6.3 remains **OPEN / NOT READY** and investment authorization remains **NO-GO**.
+
+## T-bill base terms and redemption route — 2026-11-25
+
+The official RBI-hosted 27 March 2018 GoI T-bill notification has now been retained and reviewed. Clauses 2(i), 2(iv), 5(v), 7 and 9 establish the auction scope, discount/par structure, settlement-day bidder funding, SGL form and repayment at par on expiration of tenor. Clause 9 does not specify holiday adjustment or intraday proceeds availability.
+
+The full package governing the 2024 auction sample is still not qualified. RBI's 15 March 2024 notice cites the 27 March 2018 general notification plus amendments dated 5 April 2018 and 23 December 2021. The raw amendment attachments were not retained; their official paths returned verification/rejection HTML. The retained base PDF's official RBI path is GOI27032018_TBill.pdf, while the 2024 notice links to GOI27032018_A.pdf; file identity was not reconciled.
+
+RBI's Retail Direct FAQ states that the linked rupee savings bank account receives redemption amounts, but gives no exact T-bill credit date or intraday time. RBI's general Government Securities FAQ describes automatic-redemption bank credit on the due date for specified holding forms; this does not establish a T-bill holiday adjustment, account-specific credit, or same-day auction funding. These online FAQ pages were reviewed but their raw bytes were not retained.
+
+**Gate disposition:** the 2018 base-notification text is PASS_WITH_PROVENANCE_CAVEAT; full applicable 2024 terms, T-bill holiday adjustment, exact Retail Direct credit timing and same-day funding remain NOT QUALIFIED / EXCLUDED. No historical returns were recalculated. See research/stage512/2026-11-25/g6_3/RBI_TBILL_2018_TERMS_AND_REDEMPTION_ROUTE_AUDIT.md and rbi_tbill_2018_terms_and_route_evidence_manifest_v1.json.
+
+**Next source gate:** obtain the exact 5 April 2018 and 23 December 2021 amendment attachments, reconcile the base attachment identity, and look for a first-party record of a T-bill redemption on a holiday. Keep same-day proceeds excluded unless an authoritative source establishes timing before auction funding cut-off.
