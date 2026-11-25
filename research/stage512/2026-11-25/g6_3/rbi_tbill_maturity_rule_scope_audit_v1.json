@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-3-rbi-tbill-maturity-rule-scope-audit-2026-11-25-v1",
+  "as_of": "2026-11-25",
+  "result": "RBI_RULE_SCOPE_AMBIGUOUS_FOR_TBILLS__FOUR_EVENT_SENSITIVITY_REPRODUCED__ROLLOVER_STILL_UNQUALIFIED",
+  "rule_evidence": {
+    "source_url": "https://m.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=711",
+    "source_path": "research/stage512/2026-11-06/g6_3/source_raw/rbi_tbill_sample/retail_ncb_faq.html",
+    "source_sha256": "e8c38bb4bb89e16edcda41ad60662044b01fd52f7daf8eeeb19355d6dbb9252a",
+    "t_bill_definition_and_tenors_present": true,
+    "holiday_rule_text_present": true,
+    "section_order": "Treasury Bills subsection precedes Dated G-Secs subsection; previous-working-day sentence occurs after the Dated G-Secs heading.",
+    "t_bill_specific_holiday_adjustment_qualified": false,
+    "interpretation": "Do not promote the previous-working-day sentence into a T-bill-specific rule without an explicit applicable RBI/GoI source. Keep any calendar adjustment as sensitivity only."
+  },
+  "official_2018_tbill_terms_access": {
+    "rbi_notification_url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11250&Mode=0",
+    "linked_goi_tbill_notification_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_TBill.pdf",
+    "status": "RBI_ATTACHMENT_PATH_PRESENTS_HUMAN_VERIFICATION_CHALLENGE_IN_BROWSER_TOOL; RAW_BYTES_NOT_RETAINED",
+    "local_official_source_fetch": "A separate local fetch attempt for the official 2025 eGazette PDF was refused by the execution environment; it was not a fetch attempt for this 2018 attachment. No access control was bypassed.",
+    "gate_effect": "Historical 2024 T-bill maturity terms remain unqualified until the applicable 2018 terms or a date-specific RBI/GoI redemption record is retained and audited."
+  },
+  "historical_panel": {
+    "unique_auction_dates": 151,
+    "positive_91_day_observations": 149,
+    "zero_issue_exceptions": [
+      "2025-02-20",
+      "2026-03-25"
+    ],
+    "source_windows": [
+      "Table 213",
+      "Table 217",
+      "Table 218"
+    ]
+  },
+  "holiday_calendar": {
+    "source_manifests": [
+      "research/stage512/2026-11-25/g6_3/rbi_mumbai_holidays_2023_2024/manifest.json",
+      "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/manifest.json"
+    ],
+    "coverage": "2023-10 through 2026-09, 36 months; relevant raw pages rehashed and all monthly pages independently reparsed",
+    "usage_limit": "RBI Mumbai holiday matrix is not treated as a complete G-Sec/T-bill operational calendar."
+  },
+  "conditional_event_sensitivity": {
+    "rows": 4,
+    "events_with_auction_on_conditional_date": 3,
+    "next_strictly_later_auction_changes_between_nominal_and_conditional_dates": 0,
+    "event_schedule_csv": "research/stage512/2026-11-25/g6_3/rbi_tbill_holiday_maturity_sensitivity_v1.csv",
+    "scope": "Descriptive date alignment only. No actual redemption date, credited-funds timing, investor return, auction allocation, tax, fee or probability is inferred."
+  },
+  "decision_status": "NO_GO",
+  "investment_authorization": "NO_GO"
+}

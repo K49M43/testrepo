@@ -36,6 +36,10 @@ The authoritative current/open-input inventory is [G6.3 Decision Input Register]
 
 Complete G6.3 in dependency order under issue #44. WP0 reconciles the status records and classifies confirmed, provisional, and unconfirmed inputs. WP1 then qualifies candidate-specific sources and CPI evidence. Do not feed unqualified or pre-inception observations into a risk model. Continue through instrument economics/tax, portfolio exits, statistical assurance, and independent decision review. A defensible NO-GO is acceptable; no gate may be weakened to force a GO.
 
+### G6.3 continuation update — 25 November 2026
+
+PR #67's T-bill source panel now spans 151 unique RBI auction dates (149 positive 91-day issue observations) across Tables 213, 217, and 218. The early-window settlement audit identifies four nominal issue-plus-91-day maturities on Mumbai NI Act holidays. A new scope audit found the RBI primer's previous-working-day sentence under its Dated G-Secs subsection; the retained text does not explicitly establish that holiday adjustment for T-bills. A four-date sensitivity is recorded, with same-day auction funding excluded, but actual T-bill redemption and investor proceeds-credit timing remain unqualified. The 2024–2026 roll scenario still depends on a conditional prior-working-day assumption. Next: retain applicable 2018 GoI T-bill terms or first-party date-specific redemption evidence, then establish proceeds-credit timing. G6.3 remains open; investment authorization remains **NO-GO**. See the dated entry in `docs/G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md` and `research/stage512/2026-11-25/g6_3/RBI_TBILL_MATURITY_RULE_SCOPE_AND_EVENT_SENSITIVITY_AUDIT.md`.
+
 **Nothing in this plan authorizes transactions.**
 ## Completed on 2 November 2026 — P0 Tasks 1–2
 

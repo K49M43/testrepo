@@ -8,6 +8,7 @@ on:
       - 'decision/audit_g6_3_rbi_tbill_window.py'
       - 'decision/audit_g6_3_rbi_tbill_window_overlap.py'
       - 'decision/audit_g6_3_rbi_tbill_early_calendar.py'
+      - 'decision/audit_g6_3_rbi_tbill_maturity_rule_scope.py'
       - 'decision/audit_g6_3_source_inventory.py'
       - 'research/stage512/2026-11-06/g6_3/acquire_rbi_tbill_window.py'
       - 'research/stage512/2026-11-06/g6_3/reconcile_rbi_tbill_window_capture.py'
@@ -61,5 +62,7 @@ jobs:
         run: python decision/audit_g6_3_rbi_tbill_rollover.py
       - name: Reconcile earlier notice settlements and fail closed on unqualified maturity dates
         run: python decision/audit_g6_3_rbi_tbill_early_calendar.py
+      - name: Reconcile T-bill holiday-rule scope and conditional maturity sensitivity
+        run: python decision/audit_g6_3_rbi_tbill_maturity_rule_scope.py
       - name: Verify integrated source inventory remains fail-closed
         run: python decision/audit_g6_3_source_inventory.py --check
