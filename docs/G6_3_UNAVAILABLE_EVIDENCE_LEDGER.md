@@ -159,3 +159,7 @@ The [13 November source audit](../research/g6_3/direct_gsec_2036/2026-11-13/READ
 ## Direct GoI 2036 retail route and quote freshness — 2026-11-25
 
 The [retail quote check](../research/g6_3/direct_gsec_2036/2026-11-25-retail-quote/README.md) verifies NSE Capital Market `694GS2036`, series `GS`, with one ₹100-face unit per market lot and accrued interest built into the quote. The rendered book showed enough ask quantity for 100 units, but its timestamp was 26 minutes 52 seconds earlier when rechecked. A later public CCIL odd-lot view showed dated rows without a candidate row. Verify fresh depth, the user-accessible broker route and actual fees before using an entry price. Paid Silver ETF history remains deferred, RBI T-bill payment timing remains open, and investment authorization remains **NO-GO**.
+
+## Direct GoI bond and SBI June 2036 Gilt Fund conditional comparison — 2026-11-26
+
+The [matched-budget comparison](../research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/README.md) uses the audited direct-bond cashflows and official SBI scheme terms. The fund leads by ₹10,800 after tax per ₹1 lakh in the reference scenario. At ₹97.46 clean and 4% gross reserve interest, the direct bond leads when fund gross growth falls below about 6.61% with 0.28% TER. This result supports further candidate comparison. The live quote is deferred and stays open, as do fund portfolio realization and actual investor tax assumptions. Paid Silver ETF history remains deferred. RBI T-bill payment timing remains open. Investment authorization remains **NO-GO**.

@@ -26,3 +26,7 @@ The [November auction reconciliation](../research/g6_3/direct_gsec_2036/2026-11-
 ## 2026-11-25 — Direct bond exchange route verified, fresh quote pending
 
 The [read-only retail check](../research/g6_3/direct_gsec_2036/2026-11-25-retail-quote/README.md) verifies the NSE `GS` listing and a displayed offer sufficient for 100 units. Refreshing the public book did not yield a newer timestamp. Keep the direct bond in research until current broker depth, account access and all-in charges are verified. Investment authorization remains **NO-GO**.
+
+## 2026-11-26 — Compare the sovereign bond and target-maturity fund before seeking a quote
+
+The [comparison](../research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/README.md) tested 504 scenarios on the same ₹1 lakh budget and 30 June 2036 valuation date. Preserve both candidates. The reference SBI case leads by ₹10,800 after tax, and the bond leads under some lower fund-growth assumptions. Defer a live quote until the investment comparison requires it. Paid Silver ETF history remains deferred, the RBI T-bill timing issue remains open, and investment authorization remains **NO-GO**.
