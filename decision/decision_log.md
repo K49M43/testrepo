@@ -30,3 +30,7 @@ The [read-only retail check](../research/g6_3/direct_gsec_2036/2026-11-25-retail
 ## 2026-11-26 — Compare the sovereign bond and target-maturity fund before seeking a quote
 
 The [comparison](../research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/README.md) tested 504 scenarios on the same ₹1 lakh budget and 30 June 2036 valuation date. Preserve both candidates. The reference SBI case leads by ₹10,800 after tax, and the bond leads under some lower fund-growth assumptions. Defer a live quote until the investment comparison requires it. Paid Silver ETF history remains deferred, the RBI T-bill timing issue remains open, and investment authorization remains **NO-GO**.
+
+## 2026-11-26 — Challenge the June 2036 fund hurdle using official holdings
+
+The [SBI holdings and cashflow audit](../research/g6_3/direct_gsec_2036/2026-11-26-sbi-holdings/README.md) verified a 95.39% holding in IN0020220029 and qualified its 20 nominal coupons and May 2036 par repayment at snapshot quantity. At 4% reinvestment the frozen case spans 6.52%–6.79% gross, either side of the 6.61% hurdle. Keep both candidates. The securities disclosure leaves the accrued-interest and reported-YTM reconciliation open. Live quote and paid Silver ETF history remain deferred, the RBI T-bill payment timing gate remains open, and investment authorization remains **NO-GO**.

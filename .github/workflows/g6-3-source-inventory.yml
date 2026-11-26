@@ -14,6 +14,7 @@ on:
       - 'decision/audit_g6_3_direct_gsec_2036.py'
       - 'decision/audit_g6_3_direct_gsec_november_auction.py'
       - 'decision/compare_g6_3_gilt_routes.py'
+      - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
@@ -37,6 +38,7 @@ on:
       - 'decision/audit_g6_3_direct_gsec_2036.py'
       - 'decision/audit_g6_3_direct_gsec_november_auction.py'
       - 'decision/compare_g6_3_gilt_routes.py'
+      - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
@@ -80,3 +82,5 @@ jobs:
         run: python decision/audit_g6_3_direct_gsec_november_auction.py --check
       - name: Reproduce direct bond and SBI gilt comparison
         run: python decision/compare_g6_3_gilt_routes.py --check
+      - name: Reconcile SBI gilt holdings and break-even cashflows
+        run: python decision/audit_g6_3_sbi_gilt_holdings.py --check
