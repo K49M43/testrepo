@@ -1,0 +1,588 @@
+{
+  "record_id": "G6.3-SBI-JUNE-2036-ACCRUED-INTEREST-2026-11-27",
+  "accounting_evidence": "CLEAN_MARK_WITH_SEPARATE_ACCRUAL_BETTER_SUPPORTED_OCTOBER_LEDGER_UNVERIFIED",
+  "holding_yield_basis": "ANNUAL_EFFECTIVE_30E360_STRONGLY_INDICATED_CUTOFF_UNVERIFIED",
+  "october_cashflows": "BOTH_ACCOUNTING_CASES_RETAINED",
+  "input_sha256_normalized": "35d2b3e4eaddc2bd0171c181a5aab211dc264352a21dc010f50b5964a1b02314",
+  "base_holdings_sha256_normalized": "860b6921566608593322204beda63d6a1b3162eea39b93a0250fafd1b5af2d84",
+  "code_sha256_normalized": "82d699d0ff82104da96a297ca022d176c9a7a1f00f63275c09fd8852f3f19ed5",
+  "pricing_diagnostics": [
+    {
+      "as_of": "2026-09-30",
+      "reported_mark_per_100_inr": "102.23779950",
+      "reported_holding_yield_percent": "7.34201618",
+      "half_market_value_rounding_tick_per_100_inr": "0.00000206",
+      "cases": [
+        {
+          "trial_valuation_date": "2026-09-30",
+          "discount_day_count": "actual365",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "2.65994444",
+          "implied_dirty_pv_per_100_inr": "104.87313938",
+          "implied_clean_pv_per_100_inr": "102.21319493",
+          "reported_minus_model_dirty_per_100_inr": "-2.63533988",
+          "reported_minus_model_clean_per_100_inr": "0.02460456",
+          "clean_gap_in_lakh_at_reported_quantity": "59.663608",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-09-30",
+          "discount_day_count": "actual365",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "2.65994444",
+          "implied_dirty_pv_per_100_inr": "103.97227025",
+          "implied_clean_pv_per_100_inr": "101.31232581",
+          "reported_minus_model_dirty_per_100_inr": "-1.73447076",
+          "reported_minus_model_clean_per_100_inr": "0.92547369",
+          "clean_gap_in_lakh_at_reported_quantity": "2244.181146",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-09-30",
+          "discount_day_count": "30e360",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "2.65994444",
+          "implied_dirty_pv_per_100_inr": "104.89810698",
+          "implied_clean_pv_per_100_inr": "102.23816254",
+          "reported_minus_model_dirty_per_100_inr": "-2.66030749",
+          "reported_minus_model_clean_per_100_inr": "-0.00036304",
+          "clean_gap_in_lakh_at_reported_quantity": "-0.880343",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-09-30",
+          "discount_day_count": "30e360",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "2.65994444",
+          "implied_dirty_pv_per_100_inr": "103.99740067",
+          "implied_clean_pv_per_100_inr": "101.33745622",
+          "reported_minus_model_dirty_per_100_inr": "-1.75960117",
+          "reported_minus_model_clean_per_100_inr": "0.90034327",
+          "clean_gap_in_lakh_at_reported_quantity": "2183.242402",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-01",
+          "discount_day_count": "actual365",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "2.68088889",
+          "implied_dirty_pv_per_100_inr": "104.89349822",
+          "implied_clean_pv_per_100_inr": "102.21260934",
+          "reported_minus_model_dirty_per_100_inr": "-2.65569873",
+          "reported_minus_model_clean_per_100_inr": "0.02519016",
+          "clean_gap_in_lakh_at_reported_quantity": "61.083622",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-01",
+          "discount_day_count": "actual365",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "2.68088889",
+          "implied_dirty_pv_per_100_inr": "103.99281169",
+          "implied_clean_pv_per_100_inr": "101.31192280",
+          "reported_minus_model_dirty_per_100_inr": "-1.75501219",
+          "reported_minus_model_clean_per_100_inr": "0.92587670",
+          "clean_gap_in_lakh_at_reported_quantity": "2245.158411",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-01",
+          "discount_day_count": "30e360",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "2.68088889",
+          "implied_dirty_pv_per_100_inr": "104.91875354",
+          "implied_clean_pv_per_100_inr": "102.23786465",
+          "reported_minus_model_dirty_per_100_inr": "-2.68095404",
+          "reported_minus_model_clean_per_100_inr": "-0.00006515",
+          "clean_gap_in_lakh_at_reported_quantity": "-0.157982",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-01",
+          "discount_day_count": "30e360",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "2.68088889",
+          "implied_dirty_pv_per_100_inr": "104.01823246",
+          "implied_clean_pv_per_100_inr": "101.33734357",
+          "reported_minus_model_dirty_per_100_inr": "-1.78043296",
+          "reported_minus_model_clean_per_100_inr": "0.90045592",
+          "clean_gap_in_lakh_at_reported_quantity": "2183.515572",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        }
+      ]
+    },
+    {
+      "as_of": "2026-10-31",
+      "reported_mark_per_100_inr": "100.73609843",
+      "reported_holding_yield_percent": "7.568006125",
+      "half_market_value_rounding_tick_per_100_inr": "0.00000202",
+      "cases": [
+        {
+          "trial_valuation_date": "2026-10-31",
+          "discount_day_count": "actual365",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "3.28827778",
+          "implied_dirty_pv_per_100_inr": "104.01097188",
+          "implied_clean_pv_per_100_inr": "100.72269410",
+          "reported_minus_model_dirty_per_100_inr": "-3.27487345",
+          "reported_minus_model_clean_per_100_inr": "0.01340433",
+          "clean_gap_in_lakh_at_reported_quantity": "33.174368",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-31",
+          "discount_day_count": "actual365",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "3.28827778",
+          "implied_dirty_pv_per_100_inr": "103.07891868",
+          "implied_clean_pv_per_100_inr": "99.79064090",
+          "reported_minus_model_dirty_per_100_inr": "-2.34282025",
+          "reported_minus_model_clean_per_100_inr": "0.94545753",
+          "clean_gap_in_lakh_at_reported_quantity": "2339.912832",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-31",
+          "discount_day_count": "30e360",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "3.28827778",
+          "implied_dirty_pv_per_100_inr": "104.02423648",
+          "implied_clean_pv_per_100_inr": "100.73595871",
+          "reported_minus_model_dirty_per_100_inr": "-3.28813806",
+          "reported_minus_model_clean_per_100_inr": "0.00013972",
+          "clean_gap_in_lakh_at_reported_quantity": "0.345796",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-10-31",
+          "discount_day_count": "30e360",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "3.28827778",
+          "implied_dirty_pv_per_100_inr": "103.09223758",
+          "implied_clean_pv_per_100_inr": "99.80395980",
+          "reported_minus_model_dirty_per_100_inr": "-2.35613915",
+          "reported_minus_model_clean_per_100_inr": "0.93213862",
+          "clean_gap_in_lakh_at_reported_quantity": "2306.949880",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-11-01",
+          "discount_day_count": "actual365",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "3.30922222",
+          "implied_dirty_pv_per_100_inr": "104.03176278",
+          "implied_clean_pv_per_100_inr": "100.72254056",
+          "reported_minus_model_dirty_per_100_inr": "-3.29566435",
+          "reported_minus_model_clean_per_100_inr": "0.01355787",
+          "clean_gap_in_lakh_at_reported_quantity": "33.554373",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-11-01",
+          "discount_day_count": "actual365",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "3.30922222",
+          "implied_dirty_pv_per_100_inr": "103.09989902",
+          "implied_clean_pv_per_100_inr": "99.79067680",
+          "reported_minus_model_dirty_per_100_inr": "-2.36380059",
+          "reported_minus_model_clean_per_100_inr": "0.94542163",
+          "clean_gap_in_lakh_at_reported_quantity": "2339.823999",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-11-01",
+          "discount_day_count": "30e360",
+          "yield_style": "effective",
+          "accrued_30e360_per_100_inr": "3.30922222",
+          "implied_dirty_pv_per_100_inr": "104.04531887",
+          "implied_clean_pv_per_100_inr": "100.73609664",
+          "reported_minus_model_dirty_per_100_inr": "-3.30922044",
+          "reported_minus_model_clean_per_100_inr": "0.00000179",
+          "clean_gap_in_lakh_at_reported_quantity": "0.004418",
+          "clean_fits_amount_rounding": true,
+          "dirty_fits_amount_rounding": false
+        },
+        {
+          "trial_valuation_date": "2026-11-01",
+          "discount_day_count": "30e360",
+          "yield_style": "nominal_semiannual",
+          "accrued_30e360_per_100_inr": "3.30922222",
+          "implied_dirty_pv_per_100_inr": "103.11351209",
+          "implied_clean_pv_per_100_inr": "99.80428987",
+          "reported_minus_model_dirty_per_100_inr": "-2.37741366",
+          "reported_minus_model_clean_per_100_inr": "0.93180856",
+          "clean_gap_in_lakh_at_reported_quantity": "2306.133000",
+          "clean_fits_amount_rounding": false,
+          "dirty_fits_amount_rounding": false
+        }
+      ]
+    }
+  ],
+  "after_tax_comparison": {
+    "start": "2026-10-31",
+    "end": "2036-06-30",
+    "budget_inr": "100000",
+    "scenario_count": 40,
+    "matched_date_fixed_4pct_direct_after_tax_inr": "153456.31",
+    "ranges": [
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "0.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "143408.61",
+          "143408.61"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-10047.70",
+          "-10047.70"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-2770.34",
+          "-2770.34"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "0.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "145493.47",
+          "145493.47"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-7962.84",
+          "-7962.84"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-685.48",
+          "-685.48"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "2.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "148662.79",
+          "148667.02"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-4793.52",
+          "-4789.29"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-1022.89",
+          "-1018.67"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "2.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "150751.88",
+          "151187.73"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-2704.43",
+          "-2268.58"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "1066.19",
+          "1502.05"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "4.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "154532.03",
+          "154541.27"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "1075.71",
+          "1084.95"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "1075.71",
+          "1084.95"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "4.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "156626.13",
+          "157578.59"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "3169.81",
+          "4122.28"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "3169.81",
+          "4122.28"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "6.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "161089.45",
+          "161104.61"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "7633.14",
+          "7648.30"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "3577.55",
+          "3592.72"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "6.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "163189.47",
+          "164752.27"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "9733.16",
+          "11295.96"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "5677.58",
+          "7240.38"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "7.54",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "166658.29",
+          "166678.72"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "13201.97",
+          "13222.40"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "5815.26",
+          "5835.69"
+        ]
+      },
+      {
+        "ter_percent": "0.28",
+        "gross_reinvestment_percent": "7.54",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "168763.58",
+          "170869.41"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "15307.26",
+          "17413.10"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "7920.55",
+          "10026.38"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "0.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "141037.21",
+          "141037.21"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-12419.10",
+          "-12419.10"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-5141.74",
+          "-5141.74"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "0.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "143078.01",
+          "143078.01"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-10378.30",
+          "-10378.30"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-3100.94",
+          "-3100.94"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "2.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "146180.36",
+          "146184.50"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-7275.96",
+          "-7271.82"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-3505.33",
+          "-3501.19"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "2.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "148225.30",
+          "148651.94"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-5231.02",
+          "-4804.38"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-1460.39",
+          "-1033.75"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "4.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "151925.56",
+          "151934.60"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "-1530.76",
+          "-1521.71"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "-1530.76",
+          "-1521.71"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "4.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "153975.40",
+          "154907.73"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "519.09",
+          "1451.42"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "519.09",
+          "1451.42"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "6.00",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "158344.40",
+          "158359.24"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "4888.08",
+          "4902.92"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "832.50",
+          "847.34"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "6.00",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "160400.04",
+          "161929.81"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "6943.72",
+          "8473.50"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "2888.14",
+          "4417.91"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "7.54",
+        "market_value_basis": "accrual_in_net_receivables",
+        "fund_after_cost_and_tax_inr": [
+          "163795.54",
+          "163815.54"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "10339.23",
+          "10359.23"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "2952.52",
+          "2972.52"
+        ]
+      },
+      {
+        "ter_percent": "0.50",
+        "gross_reinvestment_percent": "7.54",
+        "market_value_basis": "market_value_includes_accrual",
+        "fund_after_cost_and_tax_inr": [
+          "165856.34",
+          "167917.67"
+        ],
+        "fund_minus_fixed_4pct_direct_after_tax_inr": [
+          "12400.03",
+          "14461.36"
+        ],
+        "fund_minus_same_rate_direct_after_tax_inr": [
+          "5013.32",
+          "7074.64"
+        ]
+      }
+    ]
+  },
+  "live_quote": "DEFERRED",
+  "paid_silver_history": "DEFERRED",
+  "rbi_tbill_payment_timing": "OPEN",
+  "investment_authorization": "NO_GO"
+}

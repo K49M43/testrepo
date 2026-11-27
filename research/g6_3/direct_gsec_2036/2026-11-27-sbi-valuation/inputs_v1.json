@@ -1,0 +1,54 @@
+{
+  "record_id": "G6.3-SBI-JUNE-2036-ACCRUED-INTEREST-2026-11-27",
+  "september_holdings": {
+    "url": "https://www.sbimf.com/docs/default-source/scheme-portfolios/all-schemes-monthly-portfolio---as-on-30th-september-2026.xlsx?sfvrsn=2a79126c_2",
+    "retrieved_utc": "2026-11-27T15:23:27Z",
+    "bytes": 2610463,
+    "sha256": "0659fedaf826fdbef4eef702b99a3ac4bcfca1ebc4da1c14bd7dd24b341a67f9",
+    "sheet": "SCIGI-JUN 2036",
+    "cells": {
+      "D4": "2026-09-30",
+      "D24": "IN0020220029",
+      "F24": "242490000",
+      "G24": "247916.44",
+      "I24": "7.34201618",
+      "G53": "11048.31",
+      "G58": "4836.17",
+      "G61": "263800.92",
+      "E83": "13.3943"
+    }
+  },
+  "september_financial_results": {
+    "url": "https://www.sbimf.com/docs/default-source/default-library/half-yearly-unaudited-financial-results-as-on-september-30-2026ecd6614bdb154247a3601d5bb62f813a.xlsx?sfvrsn=2ac32336_0",
+    "retrieved_utc": "2026-11-27T15:26:05Z",
+    "bytes": 1366802,
+    "sha256": "6b5da531197a661ac7d00ce49de02517b24ab4e8648ae4c093fcc0faf6745bb4",
+    "sheet": "Solution Oriented & Others",
+    "cells": {
+      "AU4": "663",
+      "AU16": "2638.0092389240003",
+      "AV27": "13.3943",
+      "AU37": "93.16046768",
+      "AV55": "0.28"
+    },
+    "scope": "Scheme AUM, Direct Growth NAV and expenses cross-check. Interest reported is six-month income. No security-level accrued-interest balance or mark-to-yield bridge."
+  },
+  "scheme_accounting": {
+    "url": "https://www.sbimf.com/docs/default-source/lists/scheme-annual-report-2024-25.pdf?sfvrsn=559ce3e3_0",
+    "retrieved_utc": "2026-11-27T15:23:25Z",
+    "bytes": 16085068,
+    "sha256": "0126bc330afecbb5822035b0f71ebc9d5bd63f00b9c23fa6c72f90cafd5c4f88",
+    "printed_page": 393,
+    "pdf_page": 398,
+    "note": 6,
+    "as_of": "2025-03-31",
+    "separate_accrued_interest_lakh": "5985.43",
+    "scope": "Audited scheme balance-sheet treatment at a prior date."
+  },
+  "sebi_accounting": {
+    "url": "https://www.sebi.gov.in/sebi_data/attachdocs/jul-2026/1783933012694.pdf",
+    "page": 81,
+    "reference": "Eighth Schedule paragraphs (a) and (c), effective 1 April 2026, as amended through 7 July 2026"
+  },
+  "rbi_market_yield": "https://m.rbi.org.in/CommonPerson/english/Scripts/FAQs.aspx?Id=711"
+}
