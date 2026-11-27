@@ -1,0 +1,1224 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-24T16:04:20.285223+00:00",
+  "scope": "official RBI Table 217 91-day T-bill notices and full auction results paired by exact auction date for 2024-07-03 through 2025-07-30; source yield levels and conditional gross price-to-par mechanics only, not a qualified investor rollover return history",
+  "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB body cap",
+  "reference_table": "Table 217",
+  "table_reference": {
+    "path": "research/stage512/2026-11-24/g6_3/source_raw/table217_20261124.html",
+    "bytes": 86017,
+    "sha256": "addeea28d448acc79d950777940b239d91b1e9578fee601cdee7cac58ccbbc75",
+    "url": "https://www.rbi.org.in/scripts/PublicationsView.aspx?id=23391",
+    "method": "GET",
+    "http_status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "retrieved_at_utc": "2026-11-24T16:14:12.923847+00:00"
+  },
+  "window": {
+    "first_date": "2024-07-03",
+    "last_date": "2025-07-30"
+  },
+  "expected_auctions": 55,
+  "matched_notice_dates": 55,
+  "matched_full_result_dates": 55,
+  "exceptions": [
+    {
+      "auction_date": "2025-02-20",
+      "status": "ZERO_ISSUE_EXCEPTION",
+      "reason": "Table 217 reports zero 91-day total issue and no investable 91-day price/yield."
+    }
+  ],
+  "sources": [
+    {
+      "path": "archive_index.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 162245,
+      "sha256": "29425aeacd43488868fd952f0dfd71acb6e59df4363e7d4043bb83054fd9630f"
+    },
+    {
+      "path": "archive/archive_2024_06.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 226523,
+      "sha256": "598b8fbb662bb8657629bd7722fd108f079ae9943d03cb5bd3fd482d09524791",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "6"
+      }
+    },
+    {
+      "path": "archive/archive_2024_07.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 222197,
+      "sha256": "1df39583c97e81fc2d1424ba59305ab17fea035c74be5011095be64cf782f749",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "7"
+      }
+    },
+    {
+      "path": "archive/archive_2024_08.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 222577,
+      "sha256": "1e446ce38a054d9ccc1eb8d96efaf59ce3ad6ff736edf808bae814c0d97e55d7",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "8"
+      }
+    },
+    {
+      "path": "archive/archive_2024_09.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 212257,
+      "sha256": "53400ef73f816165609c4a4a601eb53f97da03bb42e6552b7cc75ecd9d855462",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "9"
+      }
+    },
+    {
+      "path": "archive/archive_2024_10.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 232636,
+      "sha256": "c1613b1a1a5309330b6eb8dbaa02999cc3d1ecf16b1a466d1a82a2e6d3ae1bb3",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "10"
+      }
+    },
+    {
+      "path": "archive/archive_2024_11.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 218868,
+      "sha256": "3d27dc1c9e2c0be6a66c1668db4fb530efa46a1d85e7ffc75bcf965c4e7d8c19",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "11"
+      }
+    },
+    {
+      "path": "archive/archive_2024_12.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 224628,
+      "sha256": "a2937074f47169b61ca93050c8806bbca98cf62a0ae4406b26a1a2615e146c03",
+      "parameters": {
+        "hdnYear": "2024",
+        "hdnMonth": "12"
+      }
+    },
+    {
+      "path": "archive/archive_2025_01.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 241398,
+      "sha256": "c0b6879db43e7f0057d6c5c55fcb58a614415c344ca92c8a8ac95a64a84fc5dc",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "1"
+      }
+    },
+    {
+      "path": "archive/archive_2025_02.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 211866,
+      "sha256": "60c54e2f1acf4fb9b6ff2a7b435bc17ad009b0634c8c3c9e7c1097c45a708ade",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "2"
+      }
+    },
+    {
+      "path": "archive/archive_2025_03.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 180806,
+      "sha256": "feb479097a2c3ce29034417ee22e83bb408570d9e5962e5636e326917914dc49",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "3"
+      }
+    },
+    {
+      "path": "archive/archive_2025_04.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 229807,
+      "sha256": "74520d6e247b08455e32af07fee90365f77d9830cf85f88e02eb7163fb752155",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "4"
+      }
+    },
+    {
+      "path": "archive/archive_2025_05.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 234442,
+      "sha256": "14ac57637cfce8c32b7a25d5a9bfd22eef3f30abe5de02730d85bb44620ae2cb",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "5"
+      }
+    },
+    {
+      "path": "archive/archive_2025_06.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 231095,
+      "sha256": "14fc3a7b7284acf083e7464e222a0e7ad55207b24a79804fdec27d4dd9d3526b",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "6"
+      }
+    },
+    {
+      "path": "archive/archive_2025_07.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757",
+      "method": "POST",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 232006,
+      "sha256": "21690ddfab587dc3fdae9b7e27ee9dc0a23908568c53fe1952b30f4a2467cc8f",
+      "parameters": {
+        "hdnYear": "2025",
+        "hdnMonth": "7"
+      }
+    },
+    {
+      "path": "notices/notice_prid58192.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58192&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126919,
+      "sha256": "c3686ecdb73bc507f3fdaccdd181ed2ef67789ae14398e14a7aa23a527252493"
+    },
+    {
+      "path": "notices/notice_prid58380.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58380&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127011,
+      "sha256": "79ce789258be35d67e975ce2997a62307cbff164ad87c9a8370965bf3b3a1f16"
+    },
+    {
+      "path": "notices/notice_prid58333.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58333&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127519,
+      "sha256": "abc9bd0b6c442e5ddeb33db3e13e008d477bad91bbd99b8506f3a8206e45ef24"
+    },
+    {
+      "path": "notices/notice_prid58282.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58282&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127360,
+      "sha256": "79d43279b9bc3ac87aa78203383e3ed368441ae70836419fc1c6bfe55ede05ea"
+    },
+    {
+      "path": "notices/notice_prid58235.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58235&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127519,
+      "sha256": "be462d16856c8a72560af09e3c3631a2c0a7f584ecdddaa0e44e8036a1f35ab2"
+    },
+    {
+      "path": "notices/notice_prid58610.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58610&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127367,
+      "sha256": "8a10f58806340562be8fc34440c1b83642ef116aefeed8f78878a1ca740b6888"
+    },
+    {
+      "path": "notices/notice_prid58563.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58563&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127641,
+      "sha256": "65ed5b33b54758bc6e27d3eda830338fa84b81b6b7aa85dbaa7f24864dc2b17e"
+    },
+    {
+      "path": "notices/notice_prid58511.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58511&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127534,
+      "sha256": "594797bd97552de044fbc7b746371ddce460270c20ffeda3584f270387f75845"
+    },
+    {
+      "path": "notices/notice_prid58465.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58465&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127130,
+      "sha256": "a716f9530e8f8a49b2b03ca9c2cc7f06e588ef4bfe5cf11413056f39fbe5edca"
+    },
+    {
+      "path": "notices/notice_prid58424.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58424&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127039,
+      "sha256": "782b2fdd560d395cea4051921d8433d735c1cc173c11f9bdea41b0327c01c11b"
+    },
+    {
+      "path": "notices/notice_prid58772.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58772&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127248,
+      "sha256": "5a8cf4f42e9541dc8e30d0e5e176b9fb90c3691adc77beddf64d94ffbbc8cc25"
+    },
+    {
+      "path": "notices/notice_prid58653.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58653&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127009,
+      "sha256": "e89f74ed8c0c9b22bb294e848e4f4b7d742865009a0544099667b0246c03a62e"
+    },
+    {
+      "path": "notices/notice_prid59006.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59006&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126990,
+      "sha256": "be87665232c94eb6d4d10335a44ad7f15e853497d63a97cc4517939ded602dc9"
+    },
+    {
+      "path": "notices/notice_prid58976.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58976&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127584,
+      "sha256": "c50c821dd83e1bfc2d8fe7fac5b49fa18f4f4e173ce5e00a05cec4239f2bfba6"
+    },
+    {
+      "path": "notices/notice_prid58936.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58936&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127009,
+      "sha256": "3e45a6dbb5dac4542fdc4adb43ca70e92c7ed21a3406e790fa31ce5385aa2d42"
+    },
+    {
+      "path": "notices/notice_prid58872.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58872&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126994,
+      "sha256": "258837fd494f4c4868334c88a41b360e69c4d28030dd2fc22f7c96c55314c206"
+    },
+    {
+      "path": "notices/notice_prid58822.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58822&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127060,
+      "sha256": "960bd72712853ab0257995388a70d9e745b964bb251b2f33c922267efc62b337"
+    },
+    {
+      "path": "notices/notice_prid59216.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59216&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127569,
+      "sha256": "3c106e25fa4e1c858078bd5d53ad936c8cc2bd0269f5d1d1818d5f308775a3f1"
+    },
+    {
+      "path": "notices/notice_prid59165.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59165&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127534,
+      "sha256": "4099bee1acfc347ffefcf736a6884b07cfb1968b15aec53fecde4efea2949780"
+    },
+    {
+      "path": "notices/notice_prid59111.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59111&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127583,
+      "sha256": "d48f0710612c2ad8241ee6f3178b1de7d7191255b192658adace81a949b5cc13"
+    },
+    {
+      "path": "notices/notice_prid59065.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59065&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127149,
+      "sha256": "998e1f63184e3c932d873367e795bfe200d0609e169b1c2d19dd3a7e18167881"
+    },
+    {
+      "path": "notices/notice_prid59400.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59400&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127571,
+      "sha256": "0765edc4bf7e47426da6d8d0b68020fb5d3be98ee0d19774a5dbbd9bd16310fc"
+    },
+    {
+      "path": "notices/notice_prid59349.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59349&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127599,
+      "sha256": "414a634040db7f0a49a7fb80d11d6c5b8f50936afd5a27fe7855cec6b44a8436"
+    },
+    {
+      "path": "notices/notice_prid59299.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59299&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127589,
+      "sha256": "5f24b1d27f26a784a76ab13025a02693ae06bc35dddc4bfe7b36a01129a1e484"
+    },
+    {
+      "path": "notices/notice_prid59254.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59254&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127675,
+      "sha256": "644cd8dfb8f56137f713453edeeba9daa2489aa11d28055365192331ed62c4a5"
+    },
+    {
+      "path": "notices/notice_prid59655.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59655&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127003,
+      "sha256": "e95a82d9e577b52de0ad098409d9dafe2b02f5b96acf976064aeb46151ad4f71"
+    },
+    {
+      "path": "notices/notice_prid59597.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59597&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127660,
+      "sha256": "0317edd14f7a0601a99db340d4cacb3b0277b848ba412ab8362c08398cab28fa"
+    },
+    {
+      "path": "notices/notice_prid59549.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59549&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126990,
+      "sha256": "7e67bafbdd3a1c09d17341a764b28317ff4a398780d19af007b0fe80ea0d3d48"
+    },
+    {
+      "path": "notices/notice_prid59501.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59501&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127820,
+      "sha256": "e7f2b2e26fd421bf2bcdfd404b402a0ccd6f27b13cb580b03eab95ca0387ab2d"
+    },
+    {
+      "path": "notices/notice_prid59449.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59449&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127669,
+      "sha256": "2180d63e893fff670a7d04b0b10cb237402158bf43dfe68384a854c5c32d0357"
+    },
+    {
+      "path": "notices/notice_prid59877.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59877&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127605,
+      "sha256": "e2757426a1cc97dc289fa0896493cdfd85b3fc8180f9f7ac0c893c7c7eb0816e"
+    },
+    {
+      "path": "notices/notice_prid59821.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59821&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127004,
+      "sha256": "5c6357a1e5fb38ea9e0fa43164b0c9f1392a6916fac7445a6125638fa4aa84b9"
+    },
+    {
+      "path": "notices/notice_prid59768.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59768&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127015,
+      "sha256": "1dc21a360e19749262f8cd95c09cc8f5f785057ab5b061d251630ad6667f6e09"
+    },
+    {
+      "path": "notices/notice_prid59705.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59705&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 129240,
+      "sha256": "42c8d9bad4a310c6e23cd67e46d0f5f832c6282cc5cd36543c0939b342774eac"
+    },
+    {
+      "path": "notices/notice_prid60102.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60102&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126484,
+      "sha256": "f37be63c69c3dafd04b319c534c88a4a63d129eb759841c873a25a351c44b90a"
+    },
+    {
+      "path": "notices/notice_prid60036.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60036&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127290,
+      "sha256": "153c93b9521147bbc865cc12d6ffddb7b7806507b3b9759a4d330d88e3aae50e"
+    },
+    {
+      "path": "notices/notice_prid59971.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59971&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127549,
+      "sha256": "1699a075e300fa4e9748aa5d3c4888a0810a3c85e5de92972df2b7944aba747d"
+    },
+    {
+      "path": "notices/notice_prid59929.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59929&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126869,
+      "sha256": "0af99e73811061b8a25dbdaf77b107793b57dda432826d343b2a81ec3f452606"
+    },
+    {
+      "path": "notices/notice_prid60301.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60301&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125994,
+      "sha256": "8634d00fb2f3547bccbda69fee2f8c51436ec3e29149ee63fdb585e1f996e345"
+    },
+    {
+      "path": "notices/notice_prid60247.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60247&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126738,
+      "sha256": "abb1b73167cd109c7da3f108e87d8361a951640a86c06b9ec2f29cf594d4093a"
+    },
+    {
+      "path": "notices/notice_prid60208.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60208&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126722,
+      "sha256": "7dcf2728c154d8ae0d5e5330790303fdb28a8152b288f2810db4e9eabd289e98"
+    },
+    {
+      "path": "notices/notice_prid60154.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60154&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126108,
+      "sha256": "d4235ebd00325f8dca0ee62b87acacab1bc0f215a9908bfee053ef4556e0725d"
+    },
+    {
+      "path": "notices/notice_prid60561.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60561&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126673,
+      "sha256": "7fe83c4f1604c1eeb254a806bbbec8c605c4f147fbf50ea92f43a52ac6b58a08"
+    },
+    {
+      "path": "notices/notice_prid60516.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60516&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126323,
+      "sha256": "8bcb4324ad1c392cbecdf5163afa605873743e3a590b63e99eb9cde646473973"
+    },
+    {
+      "path": "notices/notice_prid60468.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60468&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126918,
+      "sha256": "5b05a38b90541000023059be35e23f99ce9d7748ba95c3aaabc06c2336ae90f1"
+    },
+    {
+      "path": "notices/notice_prid60420.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60420&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126722,
+      "sha256": "ee5ddb7e31331d20e5790b72cb4c6171b5b4d6b4e41fef0ebff83f3b62733668"
+    },
+    {
+      "path": "notices/notice_prid60353.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60353&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125988,
+      "sha256": "c7f66ea5a516f1d4232da8e82b441b1c3c33294671e647daab005a18597754f5"
+    },
+    {
+      "path": "notices/notice_prid60733.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60733&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126533,
+      "sha256": "5e4566540945f3983dc7105009551ef2b421d8175b36621610bf08ce2ab50b50"
+    },
+    {
+      "path": "notices/notice_prid60687.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60687&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126765,
+      "sha256": "9c2f7dc38b494937b0c7adac98c27e074bd10e9a392be5aa5e052d492a6c72d4"
+    },
+    {
+      "path": "notices/notice_prid60657.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60657&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126442,
+      "sha256": "dee56c758e790e171b428c695d33a3f81caad0abe097db11cb432a39b2053241"
+    },
+    {
+      "path": "notices/notice_prid60619.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60619&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126115,
+      "sha256": "f4d3388365580155bef13f62cfa335b492cee99cb68722bf392c5a8d3db1d2d0"
+    },
+    {
+      "path": "notices/notice_prid60902.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60902&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126163,
+      "sha256": "7240237f638fc2d81c1195daac70ba9774b76a36f54518c8df2041bee986fc4f"
+    },
+    {
+      "path": "notices/notice_prid60858.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60858&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126778,
+      "sha256": "c01c86f3c7fd3c14166286ddbc103909762462b0ad4ba9be1d46711b0ab1ee87"
+    },
+    {
+      "path": "notices/notice_prid60815.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60815&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126787,
+      "sha256": "e9720ee98f87079a136fc0aabdc6fcfbb5ffe9839e549e22de244b6ff1a3a5eb"
+    },
+    {
+      "path": "notices/notice_prid60771.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60771&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126156,
+      "sha256": "9d11168f6a0b4fe6d6cb678bd229a123bcefa1efa44416840c24287e125b58a2"
+    },
+    {
+      "path": "results/full_result_prid58399.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58399&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125541,
+      "sha256": "115806d67f75e54bc6387c6b5dc840837ef4dad565f5560f4b80cb88b44547cf"
+    },
+    {
+      "path": "results/full_result_prid58357.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58357&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128953,
+      "sha256": "4f9191ccc4a8632babdd12b5e1d7dda45eb4e87d8f0a21039e6fc63cebd0a6b2"
+    },
+    {
+      "path": "results/full_result_prid58318.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58318&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125574,
+      "sha256": "7683821264609a93530082d01e536cbb26d6a8bea5e9269430a73e2b9435dc04"
+    },
+    {
+      "path": "results/full_result_prid58265.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58265&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126836,
+      "sha256": "0069a1eef8efdf4fe90a494aef228c18ac1e21ad0f490c0307259868ca96d4c3"
+    },
+    {
+      "path": "results/full_result_prid58219.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58219&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125555,
+      "sha256": "0ac4d538b1b94954d9540aaaec137f583e74fd2539a16070a05648578215d0a1"
+    },
+    {
+      "path": "results/full_result_prid58584.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58584&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127407,
+      "sha256": "ce90fa9148b0a6b4d8fa431369e41e33d5b8d71795bdbbac8040c5f7d7214d98"
+    },
+    {
+      "path": "results/full_result_prid58538.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58538&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125574,
+      "sha256": "d9316bd8a0febbd00f5b1c54c58fa426bde40a0448d02c73952e29843b8e95af"
+    },
+    {
+      "path": "results/full_result_prid58500.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58500&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125567,
+      "sha256": "aefe934dd5d180f8f03cc5ff7b307428fd9f96d424d2b24122d37e2a93bfac00"
+    },
+    {
+      "path": "results/full_result_prid58444.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58444&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125567,
+      "sha256": "16f980f940bd9e439fa60b78ab327164a984707378d0a288a46ced9dffcdac1d"
+    },
+    {
+      "path": "results/full_result_prid58680.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58680&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125189,
+      "sha256": "b00e7d52a169c46352622fde3088c1fe8c1065a52f03da60370678c4a502f6c2"
+    },
+    {
+      "path": "results/full_result_prid58634.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58634&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125581,
+      "sha256": "a42cda476c43865ca10809d26fa149995896d5da047e48a5087466d581e5ce6f"
+    },
+    {
+      "path": "results/full_result_prid58999.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58999&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125575,
+      "sha256": "d2514380d75c87af1da7f05591f550275c08fd785da5f5b35d711346730e5edf"
+    },
+    {
+      "path": "results/full_result_prid58956.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58956&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127408,
+      "sha256": "bff9fe2d58cf51482a1db9d7e53e6c562da6a67ec7e3fe7d6d15021eb69521ec"
+    },
+    {
+      "path": "results/full_result_prid58903.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58903&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126869,
+      "sha256": "e4aeecbb2b93fd2f2c73604b94cf652c515a43f318c64e62c9d7473940716c5d"
+    },
+    {
+      "path": "results/full_result_prid58855.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58855&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127388,
+      "sha256": "f5e386ee7c9d5554e45cd10fc296d7e4692acc0a686c80d3366b1d79f77137c7"
+    },
+    {
+      "path": "results/full_result_prid58808.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=58808&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125555,
+      "sha256": "5f9f22002014fc80674a69d0daec1bc59d2e503683eddd61adc5ad3aa497ac09"
+    },
+    {
+      "path": "results/full_result_prid59193.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59193&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125575,
+      "sha256": "9db5b3c2a9045632bfbf4118e9ae6369d84590bde4858e8d75daac5ac0d89746"
+    },
+    {
+      "path": "results/full_result_prid59146.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59146&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126863,
+      "sha256": "570e22266f8418239f9fbd430fb304f6563a4915c39e2d1b99991c50f20d0c0c"
+    },
+    {
+      "path": "results/full_result_prid59094.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59094&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126374,
+      "sha256": "9b740ba06e4ccbf927a752aec5a7dd80d1bd87cdd3c2f7853e7a4c8400d27d1a"
+    },
+    {
+      "path": "results/full_result_prid59036.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59036&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 125569,
+      "sha256": "0d78746f3cfdffccff2a1b0eac0e46bc20b7c7683e2ecf3c68bbbfe50400e94b"
+    },
+    {
+      "path": "results/full_result_prid59378.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59378&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127388,
+      "sha256": "4cb63a4ee4bb6ce2bfecaaf9d93caf0ce070c77152dddb1599a1d28d23b374d4"
+    },
+    {
+      "path": "results/full_result_prid59325.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59325&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127400,
+      "sha256": "8c72b1249035420391808e17340a385a5dfc9ef860304b53cb495ae2bbb30383"
+    },
+    {
+      "path": "results/full_result_prid59279.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59279&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127403,
+      "sha256": "55a083215a386e7087a914a62a4e4f7f211db022bbab490434140eb9c4f60cb0"
+    },
+    {
+      "path": "results/full_result_prid59235.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59235&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127396,
+      "sha256": "781eb0c71d19d1044806e833eaa3de3c122b98a65ebe2d74280ada1bc69b328c"
+    },
+    {
+      "path": "results/full_result_prid59627.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59627&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127408,
+      "sha256": "796d65884130f5b6e53d1f6689323963126fc8dcf35a7b56981585335ad27fea"
+    },
+    {
+      "path": "results/full_result_prid59573.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59573&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127402,
+      "sha256": "73207e3006800eb8087b3fddb8948e3d13d59a149afc989e2316e316a4059663"
+    },
+    {
+      "path": "results/full_result_prid59528.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59528&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128683,
+      "sha256": "4795043ca80f9bf389628becb378deed56e9187b0dab4df07934b28372f006cb"
+    },
+    {
+      "path": "results/full_result_prid59472.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59472&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127268,
+      "sha256": "e72f919cd2320ab7e182f53f9165cc5c4b471064b806fc01635c5e484b37c2aa"
+    },
+    {
+      "path": "results/full_result_prid59434.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59434&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127380,
+      "sha256": "610b50e258864d3a9926dad73330d067e5ee2252aa34ed16abe9cb48bd588358"
+    },
+    {
+      "path": "results/full_result_prid59857.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59857&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127403,
+      "sha256": "ff97b93f656aa620e51debb18c3d4327c523acfe6d6fcaa511955300e3f5c203"
+    },
+    {
+      "path": "results/full_result_prid59801.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59801&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127010,
+      "sha256": "cbd50db7ca4eb808783918df501b11e266e863f77e20df8cfc9362d9f215fb99"
+    },
+    {
+      "path": "results/full_result_prid59732.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59732&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127401,
+      "sha256": "058950735f4c2b145fdf39dcd27c16ffeb906e1b9806c832c3fadf2332619120"
+    },
+    {
+      "path": "results/full_result_prid59677.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59677&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127402,
+      "sha256": "a27b86eb8ab884c431cf1aec822404deaeb7fe614332d8f258c829624d9af151"
+    },
+    {
+      "path": "results/full_result_prid60061.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60061&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127394,
+      "sha256": "36de6ab0c128fa97451d699ea2b9ae0b091e9bbb21d91661c314f749107aeab6"
+    },
+    {
+      "path": "results/full_result_prid60012.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60012&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127401,
+      "sha256": "1d494cd181b24c69967a45c5208671360cdc015818cfad1613b0c681145dd324"
+    },
+    {
+      "path": "results/full_result_prid59958.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59958&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127484,
+      "sha256": "78b09100ace99996535f1cc7521958dbf088277a3ed85f62e830ee3118f4b04e"
+    },
+    {
+      "path": "results/full_result_prid59899.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=59899&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126883,
+      "sha256": "ef855493fcc6e37b661bfa9b588d7ba8172bc6e5bfd064cf939ccb93a307881a"
+    },
+    {
+      "path": "results/full_result_prid60331.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60331&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127449,
+      "sha256": "99a9dc8db166708b478367af607d1e29ad9df3124e0345de1cd06eee97595043"
+    },
+    {
+      "path": "results/full_result_prid60277.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60277&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127394,
+      "sha256": "1c6f5bb413860d127c4bc774ae4410ce4dd88c7edac446572c5a63c768b43b5c"
+    },
+    {
+      "path": "results/full_result_prid60229.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60229&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127374,
+      "sha256": "2ae924c67c26fdd4ddf7abdfa32450b1419723742377918a57a39553345e494a"
+    },
+    {
+      "path": "results/full_result_prid60183.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60183&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127367,
+      "sha256": "4ac98a91fc2eb8f8333115ad1d5021101b9015e7014afe406f0dc6fc99ad095f"
+    },
+    {
+      "path": "results/full_result_prid60130.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60130&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127332,
+      "sha256": "4a2f23ef7acb99e6b568958becc9a87d2178463046eef991c4769b6739a40acb"
+    },
+    {
+      "path": "results/full_result_prid60537.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60537&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127389,
+      "sha256": "856eb629cf682b7672c6dc8972b1d4850cf781fdbc6361efaf00fd14b894c867"
+    },
+    {
+      "path": "results/full_result_prid60495.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60495&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128668,
+      "sha256": "7b11351af27929450e8f1a824162c2ac7aade34baff4e8268ee50203cbeea0f0"
+    },
+    {
+      "path": "results/full_result_prid60436.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60436&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127381,
+      "sha256": "676f55fe806be2bd861eb64b9fd99ad8ce620a81d34b5cbd1790f37bc39d1ea8"
+    },
+    {
+      "path": "results/full_result_prid60388.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60388&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128668,
+      "sha256": "e35f5bf024240391195308caa5bc1697ce81c78175f674e74f6965ec58b8b7e1"
+    },
+    {
+      "path": "results/full_result_prid60703.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60703&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128634,
+      "sha256": "f335a7a8479c69ad691f0b33997e07ed58e3b6a426fa6325c4fd9b214bcca35a"
+    },
+    {
+      "path": "results/full_result_prid60674.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60674&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127417,
+      "sha256": "1497f3d042c7e0ce1a6067c4d46ca456d54fcf9db5c4465a4dda3eedb0938923"
+    },
+    {
+      "path": "results/full_result_prid60639.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60639&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127389,
+      "sha256": "4e5dec8197cd91e6357b1e4c464336a471546c44867b5d9ce5787b9816b4a634"
+    },
+    {
+      "path": "results/full_result_prid60590.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60590&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 128675,
+      "sha256": "50d9bd78b0dd0ad6064ab2704a4c17eedb292b22504748057dd6a0fcac2f1cd5"
+    },
+    {
+      "path": "results/full_result_prid60921.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60921&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126861,
+      "sha256": "e163fd56590ef1aa07bba429d99acf6590d722da5cfaabab54f10e08a3f3d121"
+    },
+    {
+      "path": "results/full_result_prid60883.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60883&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126282,
+      "sha256": "54c0d5d0540755034f1732c93e7d18761f058db6c1802ed17de507a1e7739a3b"
+    },
+    {
+      "path": "results/full_result_prid60839.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60839&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127274,
+      "sha256": "ee104fc7e8e2a97b48354c1e2cb388a29e85704abdf6947c0db31d051a363346"
+    },
+    {
+      "path": "results/full_result_prid60797.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60797&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127270,
+      "sha256": "78fa26e65796f69cd480f2ca3930c14a8e164cf567e15c2bfd83107afc57f034"
+    },
+    {
+      "path": "results/full_result_prid60757.html",
+      "url": "https://rbi.org.in/scripts/FS_PressRelease.aspx?prid=60757&fn=2757",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 126843,
+      "sha256": "59c53d19baef708bd21266b71bc2fbf2b9ef32da5e30512f90310007466ed7a2"
+    }
+  ],
+  "table217_reference": {
+    "path": "research/stage512/2026-11-24/g6_3/source_raw/table217_20261124.html",
+    "bytes": 86017,
+    "sha256": "addeea28d448acc79d950777940b239d91b1e9578fee601cdee7cac58ccbbc75",
+    "url": "https://www.rbi.org.in/scripts/PublicationsView.aspx?id=23391",
+    "method": "GET",
+    "http_status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "retrieved_at_utc": "2026-11-24T16:14:12.923847+00:00"
+  }
+}

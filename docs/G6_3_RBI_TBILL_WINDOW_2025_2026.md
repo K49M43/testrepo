@@ -11,8 +11,13 @@
 - 50/50 corresponding auction notices and 50/50 corresponding full-result pages captured from the official RBI press-release archive.
 - 114 raw source captures total: initial archive index, 13 month-filtered archive pages, 50 auction notices and 50 full-result pages. Every retained file has byte length and SHA-256 in `manifest.json`.
 - For 49 positive-issue dates, full-result 91-day cut-off yield matches Table 218 exactly; full-result cut-off price rounds to the two-decimal Table 218 price using half-up rounding.
+- All 50 notices identify the price-based multiple-price method. For all 49 positive-issue dates, the full result also supplies a 91-day weighted-average price/yield pair; the weighted price differs from the cut-off price on all 49 dates. This is why the cut-off series is not substituted for the rule-based weighted-average NCB input.
 - 2026-03-25 is kept as a zero-issue exception: Table 218 has no investable price/yield; it is not imputed.
 - Missing 182-day and 364-day values on some 91-day auctions remain unavailable; they are not filled or used to reject a valid 91-day observation.
+
+## One-year descriptive result
+
+Across the 49 positive-issue auctions, the published 91-day weighted-average yields range from **5.1916% to 5.5471%** (actual/365 annualized), with a median of **5.3756%**, mean of **5.3723%**, and sample standard deviation of **0.0956 percentage points**. The first-to-last auction yield level changed by **−0.1240 percentage points**. Weighted-average prices range from 98.6359 to 98.7222 per ₹100 face. These are descriptive auction quote levels for one year; the standard deviation is not realized-return volatility, and the first-to-last change is not an investment return. The independent audit recomputes these values from the hash-verified panel after validating each source pair.
 
 ## Reproduce the independent audit
 

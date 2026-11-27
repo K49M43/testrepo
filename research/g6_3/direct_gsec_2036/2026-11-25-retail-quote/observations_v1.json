@@ -1,0 +1,42 @@
+{
+  "record_id": "G6.3-DIRECT-GSEC-RETAIL-QUOTE-2026-11-25-V1",
+  "isin": "IN0020260025",
+  "nse_capital_market_symbol": "694GS2036",
+  "nse_capital_market_series": "GS",
+  "maturity_date": "2036-05-11",
+  "face_inr_per_unit": 100,
+  "market_lot_units": 1,
+  "screening_quantity_units": 100,
+  "screening_face_inr": 10000,
+  "expected_normal_t_plus_one_settlement_for_2026_11_25_trade": "2026-11-26",
+  "nse_settlement_schedule": "https://nsearchives.nseindia.com/content/circulars/CMPT76729.pdf",
+  "observations": [
+    {
+      "source_url": "https://www.nseindia.in/get-quote/bonds/694GS2036/Government-of-India",
+      "observed_at": "2026-11-25T14:39:57+05:30",
+      "displayed_as_of": "2026-11-25T14:13:05+05:30",
+      "method": "Read-only public Chrome quote, Bonds / All Securities / Trade Info",
+      "matched_identity": true,
+      "displayed_ask_qty_covers_screening_quantity": true,
+      "refresh_advanced_timestamp": false,
+      "age_seconds": 1612,
+      "price_basis": "DIRTY_INR_PER_UNIT",
+      "classified_as": "HISTORICAL_SAME_SESSION_DISPLAYED_OFFER",
+      "price_and_depth_values_retained": false
+    },
+    {
+      "source_url": "https://www.ccilindia.com/odd-lot-mkt.-watch",
+      "observed_at": "2026-11-25T14:41:11+05:30",
+      "displayed_as_of": "2026-11-25T14:40:55+05:30",
+      "method": "Read-only public Chrome, rendered CG/SG odd-lot table",
+      "target_visible_in_checked_table": false,
+      "classified_as": "NO_CANDIDATE_ROW_IN_PUBLIC_SNAPSHOT",
+      "price_and_depth_values_retained": false
+    }
+  ],
+  "fresh_broker_offer_verified": false,
+  "broker_access_verified": false,
+  "broker_charges_verified": false,
+  "order_submitted": false,
+  "investment_authorization": "NO_GO"
+}

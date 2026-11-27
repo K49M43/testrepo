@@ -1,0 +1,2842 @@
+{
+  "status": "PASS_EXACT_DATE_COVERAGE_AND_RESEARCH_INCLUSION",
+  "qualified_for_portfolio_probability": false,
+  "coverage_cutoff": "2026-10-30",
+  "source_series": {
+    "MOTILAL_NIFTY500_INDEX_FUND": {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_147625_daily.csv",
+      "sha256_normalized": "2bbd9f09d0ac9dcd4e78c2e8dbbb69d84eb7879df2e7287b8e90ffabb6808412",
+      "class": "AMFI_GROWTH_NAV",
+      "value_field": "nav",
+      "observed_dates": 1761,
+      "first": "2019-09-11",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 85
+    },
+    "SBI_GILT_JUNE2036_FUND": {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_150681_daily.csv",
+      "sha256_normalized": "971150a46162dd7b20afc784b5a005026d1533ece1ca3f340a47b0bd8b634ac7",
+      "class": "AMFI_GROWTH_NAV",
+      "value_field": "nav",
+      "observed_dates": 993,
+      "first": "2022-10-10",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 48
+    },
+    "HDFC_GOLD_ETF": {
+      "path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/nav_113049_current_unit_basis.csv",
+      "sha256_normalized": "51b8427bb06317078bf860e4b9f1cd85249587c7d27666408bb2f28f1cba6fd5",
+      "class": "AMFI_GROWTH_NAV",
+      "value_field": "nav_current_1_rupee_face_value_basis",
+      "observed_dates": 2918,
+      "first": "2015-01-01",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 141
+    },
+    "ICICI_SILVER_ETF": {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_149464_daily.csv",
+      "sha256_normalized": "bf60e3abb80296b72e787d4d33eaa21d1154a10761dfd855ad8040208afb224d",
+      "class": "AMFI_GROWTH_NAV",
+      "value_field": "nav",
+      "observed_dates": 1160,
+      "first": "2022-01-25",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 57
+    },
+    "SBI_NIFTY500_INDEX_FUND": {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_152908_daily.csv",
+      "sha256_normalized": "8faa2e97cbb1d2bd04782320e2f9c787284bbb493ad9d7fbe98024e79ae754ff",
+      "class": "AMFI_GROWTH_NAV",
+      "value_field": "nav",
+      "observed_dates": 519,
+      "first": "2024-10-04",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 24
+    },
+    "LIC_GSEC_8_13_ETF": {
+      "path": "research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_amfi_daily.csv",
+      "sha256_normalized": "7359b20c11de05b7cf0a86ca473f6e83b471d2b416793655bc43c6f0c14ca846",
+      "class": "AMFI_FUND_NAV_PROXY",
+      "value_field": "nav_inr",
+      "observed_dates": 2867,
+      "first": "2014-12-26",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 142
+    },
+    "HDFCGOLD_NSE_CLOSE": {
+      "path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/hdfcgold_nse_5y.csv",
+      "sha256_normalized": "b4f88ad9135f942ddd6e695e7b708c6a10af1da957ae3646c5474cf6e6a6c0d4",
+      "class": "OFFICIAL_NSE_CLOSE_PRICE_ONLY",
+      "value_field": "Close Price  ",
+      "observed_dates": 1236,
+      "first": "2021-11-08",
+      "last": "2026-10-30",
+      "adjacent_monthly_intervals": 59
+    },
+    "NIFTY500_TRI_BENCHMARK": {
+      "class": "OFFICIAL_NSE_MONTHLY_TRI_WITH_SECONDARY_DATE_ANCHORS",
+      "artifacts": [
+        {
+          "path": "research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv",
+          "sha256_normalized": "c380dace3cc36a2c699b4b046a2e855268ca4747bde538f78af1a0910fdc308e"
+        },
+        {
+          "path": "research/stage512/data/nse500_tri_month_end_dates_R9.csv",
+          "sha256_normalized": "9c0a1b22714f940dcf09a57dfcec563bd70ca5a57a8af6532f97f1f86f246e34"
+        },
+        {
+          "path": "research/stage512/data/nse500_tri_validation_R8.json",
+          "sha256_normalized": "e0c98c73b0ca53759634836e2d9ce62ce4b6b22f12c5424e0ae5e2bd86e3dad6"
+        },
+        {
+          "path": "research/stage512/data/r9_nse_gsec_129m_source_bridge.json",
+          "sha256_normalized": "f43185b8e754ec8f95243346f44086ac0efd904d100a63a399e70fc206dd4047"
+        }
+      ],
+      "observed_dates": 130,
+      "first": "2014-12-31",
+      "last": "2025-09-30",
+      "adjacent_monthly_intervals": 129
+    }
+  },
+  "g5_candidate_register": {
+    "path": "research/stage512/2026-11-05/g5_4/g5_candidate_disposition_v1.json",
+    "sha256_normalized": "e435388859ee5c62df332531bbeafcc022886a18a07b2c50b8aa8e0f525d426f"
+  },
+  "sbi_accrual_evidence": {
+    "path": "research/g6_3/direct_gsec_2036/2026-11-27-sbi-valuation/valuation_audit_v1.json",
+    "sha256_normalized": "1045c5c984abd0927bc5809604d1ad15d131e1818483fce89ef6bfea5ccece18"
+  },
+  "silver_alignment_control": {
+    "path": "research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/silver_nav_comparison_v1.json",
+    "sha256_normalized": "6d908f9b5eea45b3a9b544f12e0103367c4c7958127770828907c34752868cd2"
+  },
+  "code": {
+    "path": "decision/audit_g6_3_exact_date_coverage.py",
+    "sha256_normalized": "0519807cd8b6946304cdd2396866aaa0f64500c4c9fc3fe645a1de58b0c21a1d"
+  },
+  "candidate_inclusion": [
+    {
+      "candidate_id": "MOTILAL_NIFTY500_ETF",
+      "identity": "ISIN INF247L01BU1; AMFI 152106; NSE symbol/issue ID in G5.2 register",
+      "observed_series": [],
+      "research_use": "ALTERNATIVE_HISTORY_UNQUALIFIED",
+      "reason": "Duplicate equity exposure. The dated traded return path has not qualified.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "identity": "ISIN INF247L01957; AMFI 147625; CMT 40785; Direct Growth",
+      "observed_series": [
+        "MOTILAL_NIFTY500_INDEX_FUND"
+      ],
+      "research_use": "PRODUCT_NAV_REPLAY",
+      "reason": "Primary broad-equity product history for the matched historical exercises.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "LIC_GSEC_8_13_ETF",
+      "identity": "AMFI 133307; ISIN INF767K01MV5; NSE LICNETFGSC",
+      "observed_series": [
+        "LIC_GSEC_8_13_ETF"
+      ],
+      "research_use": "FUND_NAV_PROXY_REPLAY",
+      "reason": "Duration exposure via the fund NAV. ETF execution and direct sovereign returns need separate evidence.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "ICICI_GOLD_ETF",
+      "identity": "ISIN INF109KC1NT3; AMFI 113076; NSE GOLDIETF",
+      "observed_series": [],
+      "research_use": "ALTERNATIVE_HISTORY_UNQUALIFIED",
+      "reason": "Gold alternative. Dated holdings alone yield no qualified return path.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "ICICI_SILVER_ETF",
+      "identity": "ISIN INF109KC1Y56; AMFI 149464; NSE SILVERIETF",
+      "observed_series": [
+        "ICICI_SILVER_ETF"
+      ],
+      "research_use": "NAV_SENSITIVITY_ONLY",
+      "reason": "Use observed AMFI NAV for the gold-to-silver sensitivity. Full traded history is deferred.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "SBI_NIFTY500_INDEX_FUND",
+      "identity": "AMFI 152908; ISIN INF200KB1381; Direct Growth",
+      "observed_series": [
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "research_use": "SHORT_HISTORY_SUBSTITUTION_ONLY",
+      "reason": "Shorter alternative for the equity sleeve. Compare with Motilal as a substitution.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "SBI_NIFTY10Y_GSEC_ETF",
+      "identity": "ISIN INF200KA1JT1; NSE SETF10GILT; scheme inception 2016-06-10",
+      "observed_series": [],
+      "research_use": "ALTERNATIVE_HISTORY_UNQUALIFIED",
+      "reason": "Gilt alternative. Dated holdings alone yield no qualified return path.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "SBI_GILT_JUNE2036_FUND",
+      "identity": "AMFI 150681; ISIN INF200KA12Q9; Direct Growth; stated inception 2022-10-04",
+      "observed_series": [
+        "SBI_GILT_JUNE2036_FUND"
+      ],
+      "research_use": "PRODUCT_NAV_REPLAY_AND_CONDITIONAL_CASHFLOWS",
+      "reason": "Use the same historical NAV for both forward accrued-interest cases.",
+      "executable_shortlist": false,
+      "forward_accrual_cases": [
+        "accrual_in_net_receivables",
+        "market_value_includes_accrual"
+      ]
+    },
+    {
+      "candidate_id": "HDFC_GOLD_ETF",
+      "identity": "AMFI 113049; ISIN INF179KC1981; NSE product HDFCGOLD",
+      "observed_series": [
+        "HDFC_GOLD_ETF",
+        "HDFCGOLD_NSE_CLOSE"
+      ],
+      "research_use": "PRODUCT_NAV_REPLAY_AND_CLOSE_DIAGNOSTIC",
+      "reason": "Use the unit-rebased NAV for product replay. Keep the NSE close history separate.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "SBI_GILT_FUND",
+      "identity": "AMFI 119707; ISIN INF200K01SH3; Direct Growth; stated inception 2000-12-30",
+      "observed_series": [],
+      "research_use": "ALTERNATIVE_HISTORY_UNQUALIFIED",
+      "reason": "Active-duration alternative. No qualified product path for this comparison.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "NIFTY500_TRI_BENCHMARK",
+      "identity": "NIFTY 500 Total Return Index; NSE Indices; INR",
+      "observed_series": [
+        "NIFTY500_TRI_BENCHMARK"
+      ],
+      "research_use": "BENCHMARK_DIAGNOSTIC_ONLY",
+      "reason": "Official rounded monthly TRI returns with secondary mirror endpoint dates. No product or execution path.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "GOI_DIRECT_DATED_GSEC_718_2033",
+      "identity": "RBI security identifier IN0020230085; 7.18% Government of India security; maturity 2033-08-14",
+      "observed_series": [],
+      "research_use": "CASHFLOW_AND_REINVESTMENT_BLOCKED",
+      "reason": "Requires an independently qualified cashflow and 2033-to-2036 rollover path.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "CASH_HOLD_91D_TBILL_ROLLING",
+      "identity": "Rolling RBI 91-day Treasury Bill policy; issue-specific ISINs required",
+      "observed_series": [],
+      "research_use": "AUCTION_AND_ROLLOVER_SENSITIVITY_ONLY",
+      "reason": "Auction quotes and conditional cohorts support mechanics tests. Payment timing stays open.",
+      "executable_shortlist": false
+    },
+    {
+      "candidate_id": "GOI_DIRECT_DATED_GSEC_694_2036",
+      "identity": "6.94% GS 2036; ISIN IN0020260025; Government of India dated security",
+      "observed_series": [],
+      "research_use": "CONDITIONAL_CASHFLOWS_ONLY",
+      "reason": "Use verified nominal cashflows and explicit clean-price scenarios. Live quote is deferred.",
+      "executable_shortlist": false
+    }
+  ],
+  "nav_replay_panels": {
+    "lic_plus_gold": {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "LIC_GSEC_8_13_ETF",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 85,
+      "independent_last_dates_equal": {
+        "intervals": 83,
+        "longest_contiguous_intervals": 71,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2020-09-30",
+            "intervals": 12
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2026-10-30",
+            "intervals": 71
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 85,
+        "longest_contiguous_intervals": 85,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2026-10-30",
+            "intervals": 85
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2020-10-29",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2020-10-30",
+            "HDFC_GOLD_ETF": "2020-10-30"
+          }
+        }
+      ],
+      "latest_common_observed_endpoints": [
+        "2019-09-30",
+        "2019-10-31",
+        "2019-11-29",
+        "2019-12-31",
+        "2020-01-31",
+        "2020-02-28",
+        "2020-03-31",
+        "2020-04-30",
+        "2020-05-29",
+        "2020-06-30",
+        "2020-07-31",
+        "2020-08-31",
+        "2020-09-30",
+        "2020-10-29",
+        "2020-11-27",
+        "2020-12-31",
+        "2021-01-29",
+        "2021-02-26",
+        "2021-03-31",
+        "2021-04-30",
+        "2021-05-31",
+        "2021-06-30",
+        "2021-07-30",
+        "2021-08-31",
+        "2021-09-30",
+        "2021-10-29",
+        "2021-11-30",
+        "2021-12-31",
+        "2022-01-31",
+        "2022-02-28",
+        "2022-03-31",
+        "2022-04-29",
+        "2022-05-31",
+        "2022-06-30",
+        "2022-07-29",
+        "2022-08-30",
+        "2022-09-30",
+        "2022-10-31",
+        "2022-11-30",
+        "2022-12-30",
+        "2023-01-31",
+        "2023-02-28",
+        "2023-03-31",
+        "2023-04-28",
+        "2023-05-31",
+        "2023-06-30",
+        "2023-07-31",
+        "2023-08-31",
+        "2023-09-29",
+        "2023-10-31",
+        "2023-11-30",
+        "2023-12-29",
+        "2024-01-31",
+        "2024-02-29",
+        "2024-03-31",
+        "2024-04-30",
+        "2024-05-31",
+        "2024-06-28",
+        "2024-07-31",
+        "2024-08-30",
+        "2024-09-30",
+        "2024-10-31",
+        "2024-11-29",
+        "2024-12-31",
+        "2025-01-31",
+        "2025-02-28",
+        "2025-03-31",
+        "2025-04-30",
+        "2025-05-30",
+        "2025-06-30",
+        "2025-07-31",
+        "2025-08-29",
+        "2025-09-30",
+        "2025-10-31",
+        "2025-11-28",
+        "2025-12-31",
+        "2026-01-30",
+        "2026-02-27",
+        "2026-03-31",
+        "2026-04-30",
+        "2026-05-29",
+        "2026-06-30",
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30",
+        "2026-10-30"
+      ]
+    },
+    "lic_plus_gold_silver": {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "LIC_GSEC_8_13_ETF",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 57,
+      "independent_last_dates_equal": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [],
+      "latest_common_observed_endpoints": [
+        "2022-01-31",
+        "2022-02-28",
+        "2022-03-31",
+        "2022-04-29",
+        "2022-05-31",
+        "2022-06-30",
+        "2022-07-29",
+        "2022-08-30",
+        "2022-09-30",
+        "2022-10-31",
+        "2022-11-30",
+        "2022-12-30",
+        "2023-01-31",
+        "2023-02-28",
+        "2023-03-31",
+        "2023-04-28",
+        "2023-05-31",
+        "2023-06-30",
+        "2023-07-31",
+        "2023-08-31",
+        "2023-09-29",
+        "2023-10-31",
+        "2023-11-30",
+        "2023-12-29",
+        "2024-01-31",
+        "2024-02-29",
+        "2024-03-31",
+        "2024-04-30",
+        "2024-05-31",
+        "2024-06-28",
+        "2024-07-31",
+        "2024-08-30",
+        "2024-09-30",
+        "2024-10-31",
+        "2024-11-29",
+        "2024-12-31",
+        "2025-01-31",
+        "2025-02-28",
+        "2025-03-31",
+        "2025-04-30",
+        "2025-05-30",
+        "2025-06-30",
+        "2025-07-31",
+        "2025-08-29",
+        "2025-09-30",
+        "2025-10-31",
+        "2025-11-28",
+        "2025-12-31",
+        "2026-01-30",
+        "2026-02-27",
+        "2026-03-31",
+        "2026-04-30",
+        "2026-05-29",
+        "2026-06-30",
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30",
+        "2026-10-30"
+      ]
+    },
+    "sbi_plus_gold": {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ],
+      "latest_common_observed_endpoints": [
+        "2022-10-31",
+        "2022-11-30",
+        "2022-12-30",
+        "2023-01-31",
+        "2023-02-28",
+        "2023-03-31",
+        "2023-04-28",
+        "2023-05-31",
+        "2023-06-30",
+        "2023-07-31",
+        "2023-08-31",
+        "2023-09-29",
+        "2023-10-31",
+        "2023-11-30",
+        "2023-12-29",
+        "2024-01-31",
+        "2024-02-29",
+        "2024-03-31",
+        "2024-04-30",
+        "2024-05-31",
+        "2024-06-28",
+        "2024-07-31",
+        "2024-08-30",
+        "2024-09-30",
+        "2024-10-31",
+        "2024-11-29",
+        "2024-12-31",
+        "2025-01-31",
+        "2025-02-28",
+        "2025-03-31",
+        "2025-04-30",
+        "2025-05-30",
+        "2025-06-30",
+        "2025-07-31",
+        "2025-08-29",
+        "2025-09-30",
+        "2025-10-31",
+        "2025-11-28",
+        "2025-12-31",
+        "2026-01-30",
+        "2026-02-27",
+        "2026-03-31",
+        "2026-04-30",
+        "2026-05-29",
+        "2026-06-30",
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30",
+        "2026-10-30"
+      ]
+    },
+    "sbi_plus_gold_silver": {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ],
+      "latest_common_observed_endpoints": [
+        "2022-10-31",
+        "2022-11-30",
+        "2022-12-30",
+        "2023-01-31",
+        "2023-02-28",
+        "2023-03-31",
+        "2023-04-28",
+        "2023-05-31",
+        "2023-06-30",
+        "2023-07-31",
+        "2023-08-31",
+        "2023-09-29",
+        "2023-10-31",
+        "2023-11-30",
+        "2023-12-29",
+        "2024-01-31",
+        "2024-02-29",
+        "2024-03-31",
+        "2024-04-30",
+        "2024-05-31",
+        "2024-06-28",
+        "2024-07-31",
+        "2024-08-30",
+        "2024-09-30",
+        "2024-10-31",
+        "2024-11-29",
+        "2024-12-31",
+        "2025-01-31",
+        "2025-02-28",
+        "2025-03-31",
+        "2025-04-30",
+        "2025-05-30",
+        "2025-06-30",
+        "2025-07-31",
+        "2025-08-29",
+        "2025-09-30",
+        "2025-10-31",
+        "2025-11-28",
+        "2025-12-31",
+        "2026-01-30",
+        "2026-02-27",
+        "2026-03-31",
+        "2026-04-30",
+        "2026-05-29",
+        "2026-06-30",
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30",
+        "2026-10-30"
+      ]
+    },
+    "sbi_with_equity_alternative": {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 4,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30",
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31",
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31",
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30",
+            "SBI_NIFTY500_INDEX_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31",
+            "SBI_NIFTY500_INDEX_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28",
+            "SBI_NIFTY500_INDEX_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31",
+            "SBI_NIFTY500_INDEX_FUND": "2026-05-31"
+          }
+        }
+      ],
+      "latest_common_observed_endpoints": [
+        "2024-10-31",
+        "2024-11-29",
+        "2024-12-31",
+        "2025-01-31",
+        "2025-02-28",
+        "2025-03-31",
+        "2025-04-30",
+        "2025-05-30",
+        "2025-06-30",
+        "2025-07-31",
+        "2025-08-29",
+        "2025-09-30",
+        "2025-10-31",
+        "2025-11-28",
+        "2025-12-31",
+        "2026-01-30",
+        "2026-02-27",
+        "2026-03-31",
+        "2026-04-30",
+        "2026-05-29",
+        "2026-06-30",
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30",
+        "2026-10-30"
+      ]
+    }
+  },
+  "nav_pair_coverage": [
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "LIC_GSEC_8_13_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 85,
+      "independent_last_dates_equal": {
+        "intervals": 83,
+        "longest_contiguous_intervals": 71,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2020-09-30",
+            "intervals": 12
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2026-10-30",
+            "intervals": 71
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 85,
+        "longest_contiguous_intervals": 85,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2026-10-30",
+            "intervals": 85
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2020-10-29",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2020-10-30"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 85,
+      "independent_last_dates_equal": {
+        "intervals": 85,
+        "longest_contiguous_intervals": 85,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2026-10-30",
+            "intervals": 85
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 85,
+        "longest_contiguous_intervals": 85,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2026-10-30",
+            "intervals": 85
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": []
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 57,
+      "independent_last_dates_equal": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": []
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 4,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "LIC_GSEC_8_13_ETF",
+        "SBI_GILT_JUNE2036_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "LIC_GSEC_8_13_ETF",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 141,
+      "independent_last_dates_equal": {
+        "intervals": 137,
+        "longest_contiguous_intervals": 71,
+        "contiguous_bands": [
+          {
+            "start": "2015-01-30",
+            "end": "2018-03-28",
+            "intervals": 38
+          },
+          {
+            "start": "2018-05-31",
+            "end": "2020-09-30",
+            "intervals": 28
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2026-10-30",
+            "intervals": 71
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 141,
+        "longest_contiguous_intervals": 141,
+        "contiguous_bands": [
+          {
+            "start": "2015-01-30",
+            "end": "2026-10-30",
+            "intervals": 141
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2018-04-27",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2018-04-30"
+          }
+        },
+        {
+          "joint_date": "2020-10-29",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2020-10-30"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "LIC_GSEC_8_13_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 57,
+      "independent_last_dates_equal": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": []
+    },
+    {
+      "series": [
+        "LIC_GSEC_8_13_ETF",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 4,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "SBI_GILT_JUNE2036_FUND",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 31,
+        "longest_contiguous_intervals": 19,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-05-31",
+            "intervals": 19
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "SBI_GILT_JUNE2036_FUND",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": []
+    },
+    {
+      "series": [
+        "HDFC_GOLD_ETF",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 57,
+      "independent_last_dates_equal": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 57,
+        "longest_contiguous_intervals": 57,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2026-10-30",
+            "intervals": 57
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": []
+    },
+    {
+      "series": [
+        "HDFC_GOLD_ETF",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 4,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "ICICI_SILVER_ETF",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 24,
+      "independent_last_dates_equal": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 4,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-04-30",
+            "intervals": 4
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-03-31",
+            "end": "2026-04-30",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 24,
+        "longest_contiguous_intervals": 24,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2026-10-30",
+            "intervals": 24
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2026-05-31"
+          }
+        }
+      ]
+    }
+  ],
+  "benchmark_date_mirror_coverage": [
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "MOTILAL_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 72,
+      "independent_last_dates_equal": {
+        "intervals": 68,
+        "longest_contiguous_intervals": 53,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2024-02-29",
+            "intervals": 53
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2025-09-30",
+            "intervals": 5
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 72,
+        "longest_contiguous_intervals": 72,
+        "contiguous_bands": [
+          {
+            "start": "2019-09-30",
+            "end": "2025-09-30",
+            "intervals": 72
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2025-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "LIC_GSEC_8_13_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 129,
+      "independent_last_dates_equal": {
+        "intervals": 117,
+        "longest_contiguous_intervals": 39,
+        "contiguous_bands": [
+          {
+            "start": "2014-12-31",
+            "end": "2015-01-30",
+            "intervals": 1
+          },
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2018-03-28",
+            "intervals": 16
+          },
+          {
+            "start": "2018-05-31",
+            "end": "2020-09-30",
+            "intervals": 28
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2024-02-29",
+            "intervals": 39
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2025-09-30",
+            "intervals": 5
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 121,
+        "longest_contiguous_intervals": 58,
+        "contiguous_bands": [
+          {
+            "start": "2014-12-31",
+            "end": "2015-01-30",
+            "intervals": 1
+          },
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2018-03-28",
+            "intervals": 16
+          },
+          {
+            "start": "2018-05-31",
+            "end": "2020-09-30",
+            "intervals": 28
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2025-09-30",
+            "intervals": 58
+          }
+        ]
+      },
+      "unmatched_months": [
+        "2015-02",
+        "2016-10",
+        "2018-04",
+        "2020-10"
+      ],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "LIC_GSEC_8_13_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "LIC_GSEC_8_13_ETF": "2025-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "SBI_GILT_JUNE2036_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 35,
+      "independent_last_dates_equal": {
+        "intervals": 21,
+        "longest_contiguous_intervals": 16,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-02-29",
+            "intervals": 16
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2024-05-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-02-28",
+            "intervals": 2
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 35,
+        "longest_contiguous_intervals": 35,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2025-09-30",
+            "intervals": 35
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 128,
+      "independent_last_dates_equal": {
+        "intervals": 120,
+        "longest_contiguous_intervals": 87,
+        "contiguous_bands": [
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2024-02-29",
+            "intervals": 87
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2025-09-30",
+            "intervals": 5
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 124,
+        "longest_contiguous_intervals": 106,
+        "contiguous_bands": [
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2025-09-30",
+            "intervals": 106
+          }
+        ]
+      },
+      "unmatched_months": [
+        "2015-02",
+        "2016-10"
+      ],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2025-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "ICICI_SILVER_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 44,
+      "independent_last_dates_equal": {
+        "intervals": 40,
+        "longest_contiguous_intervals": 25,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2024-02-29",
+            "intervals": 25
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2025-09-30",
+            "intervals": 5
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 44,
+        "longest_contiguous_intervals": 44,
+        "contiguous_bands": [
+          {
+            "start": "2022-01-31",
+            "end": "2025-09-30",
+            "intervals": 44
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "ICICI_SILVER_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "ICICI_SILVER_ETF": "2025-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "SBI_NIFTY500_INDEX_FUND"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 11,
+      "independent_last_dates_equal": {
+        "intervals": 3,
+        "longest_contiguous_intervals": 2,
+        "contiguous_bands": [
+          {
+            "start": "2024-12-31",
+            "end": "2025-02-28",
+            "intervals": 2
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 11,
+        "longest_contiguous_intervals": 11,
+        "contiguous_bands": [
+          {
+            "start": "2024-10-31",
+            "end": "2025-09-30",
+            "intervals": 11
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_NIFTY500_INDEX_FUND": "2025-08-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "NIFTY500_TRI_BENCHMARK",
+        "LIC_GSEC_8_13_ETF",
+        "HDFC_GOLD_ETF"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 128,
+      "independent_last_dates_equal": {
+        "intervals": 116,
+        "longest_contiguous_intervals": 39,
+        "contiguous_bands": [
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2018-03-28",
+            "intervals": 16
+          },
+          {
+            "start": "2018-05-31",
+            "end": "2020-09-30",
+            "intervals": 28
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2024-02-29",
+            "intervals": 39
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2025-09-30",
+            "intervals": 5
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 120,
+        "longest_contiguous_intervals": 58,
+        "contiguous_bands": [
+          {
+            "start": "2015-03-31",
+            "end": "2016-09-30",
+            "intervals": 18
+          },
+          {
+            "start": "2016-11-30",
+            "end": "2018-03-28",
+            "intervals": 16
+          },
+          {
+            "start": "2018-05-31",
+            "end": "2020-09-30",
+            "intervals": 28
+          },
+          {
+            "start": "2020-11-27",
+            "end": "2025-09-30",
+            "intervals": 58
+          }
+        ]
+      },
+      "unmatched_months": [
+        "2015-02",
+        "2016-10",
+        "2018-04",
+        "2020-10"
+      ],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "LIC_GSEC_8_13_ETF": "2024-03-31",
+            "HDFC_GOLD_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "LIC_GSEC_8_13_ETF": "2025-03-31",
+            "HDFC_GOLD_ETF": "2025-03-31"
+          }
+        }
+      ]
+    }
+  ],
+  "exchange_close_date_diagnostics": [
+    {
+      "series": [
+        "HDFC_GOLD_ETF",
+        "HDFCGOLD_NSE_CLOSE"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 59,
+      "independent_last_dates_equal": {
+        "intervals": 53,
+        "longest_contiguous_intervals": 27,
+        "contiguous_bands": [
+          {
+            "start": "2021-11-30",
+            "end": "2024-02-29",
+            "intervals": 27
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2026-02-27",
+            "intervals": 10
+          },
+          {
+            "start": "2026-04-30",
+            "end": "2026-10-30",
+            "intervals": 6
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 59,
+        "longest_contiguous_intervals": 59,
+        "contiguous_bands": [
+          {
+            "start": "2021-11-30",
+            "end": "2026-10-30",
+            "intervals": 59
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2025-03-31"
+          }
+        },
+        {
+          "joint_date": "2026-03-30",
+          "later_individual_dates": {
+            "HDFC_GOLD_ETF": "2026-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "LIC_GSEC_8_13_ETF",
+        "HDFCGOLD_NSE_CLOSE"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 59,
+      "independent_last_dates_equal": {
+        "intervals": 53,
+        "longest_contiguous_intervals": 27,
+        "contiguous_bands": [
+          {
+            "start": "2021-11-30",
+            "end": "2024-02-29",
+            "intervals": 27
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2025-02-28",
+            "intervals": 10
+          },
+          {
+            "start": "2025-04-30",
+            "end": "2026-02-27",
+            "intervals": 10
+          },
+          {
+            "start": "2026-04-30",
+            "end": "2026-10-30",
+            "intervals": 6
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 59,
+        "longest_contiguous_intervals": 59,
+        "contiguous_bands": [
+          {
+            "start": "2021-11-30",
+            "end": "2026-10-30",
+            "intervals": 59
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2024-03-31",
+            "LIC_GSEC_8_13_ETF": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2025-03-31",
+            "LIC_GSEC_8_13_ETF": "2025-03-31"
+          }
+        },
+        {
+          "joint_date": "2026-03-30",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2026-03-31",
+            "LIC_GSEC_8_13_ETF": "2026-03-31"
+          }
+        }
+      ]
+    },
+    {
+      "series": [
+        "MOTILAL_NIFTY500_INDEX_FUND",
+        "SBI_GILT_JUNE2036_FUND",
+        "HDFCGOLD_NSE_CLOSE"
+      ],
+      "shared_month_labels_for_adjacent_intervals": 48,
+      "independent_last_dates_equal": {
+        "intervals": 26,
+        "longest_contiguous_intervals": 16,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2024-02-29",
+            "intervals": 16
+          },
+          {
+            "start": "2024-04-30",
+            "end": "2024-05-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-09-30",
+            "end": "2024-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2024-12-31",
+            "end": "2025-02-28",
+            "intervals": 2
+          },
+          {
+            "start": "2025-06-30",
+            "end": "2025-07-31",
+            "intervals": 1
+          },
+          {
+            "start": "2025-09-30",
+            "end": "2025-10-31",
+            "intervals": 1
+          },
+          {
+            "start": "2026-06-30",
+            "end": "2026-10-30",
+            "intervals": 4
+          }
+        ]
+      },
+      "latest_common_observed_dates": {
+        "intervals": 48,
+        "longest_contiguous_intervals": 48,
+        "contiguous_bands": [
+          {
+            "start": "2022-10-31",
+            "end": "2026-10-30",
+            "intervals": 48
+          }
+        ]
+      },
+      "unmatched_months": [],
+      "common_dates_earlier_than_individual_last": [
+        {
+          "joint_date": "2024-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2024-03-31",
+            "SBI_GILT_JUNE2036_FUND": "2024-03-31"
+          }
+        },
+        {
+          "joint_date": "2024-06-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-06-30"
+          }
+        },
+        {
+          "joint_date": "2024-08-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-08-31"
+          }
+        },
+        {
+          "joint_date": "2024-11-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2024-11-30"
+          }
+        },
+        {
+          "joint_date": "2025-03-28",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2025-03-31",
+            "SBI_GILT_JUNE2036_FUND": "2025-03-31"
+          }
+        },
+        {
+          "joint_date": "2025-05-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-05-31"
+          }
+        },
+        {
+          "joint_date": "2025-08-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-08-31"
+          }
+        },
+        {
+          "joint_date": "2025-11-28",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2025-11-30"
+          }
+        },
+        {
+          "joint_date": "2026-01-30",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-01-31"
+          }
+        },
+        {
+          "joint_date": "2026-02-27",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-02-28"
+          }
+        },
+        {
+          "joint_date": "2026-03-30",
+          "later_individual_dates": {
+            "MOTILAL_NIFTY500_INDEX_FUND": "2026-03-31",
+            "SBI_GILT_JUNE2036_FUND": "2026-03-31"
+          }
+        },
+        {
+          "joint_date": "2026-05-29",
+          "later_individual_dates": {
+            "SBI_GILT_JUNE2036_FUND": "2026-05-31"
+          }
+        }
+      ]
+    }
+  ],
+  "live_quote": "DEFERRED",
+  "paid_silver_history": "DEFERRED",
+  "rbi_tbill_payment_timing": "OPEN",
+  "investment_authorization": "NO_GO"
+}

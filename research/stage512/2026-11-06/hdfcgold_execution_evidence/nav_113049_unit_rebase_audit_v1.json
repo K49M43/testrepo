@@ -1,0 +1,96 @@
+{
+  "audit_id": "hdfc_gold_etf_amfi_unit_rebase_2026-11-06_v1",
+  "source_identity": {
+    "scheme_code": "113049",
+    "isin": "INF179KC1981",
+    "scheme_name": "HDFC Gold ETF"
+  },
+  "input": {
+    "repo_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_113049_daily.csv",
+    "sha256": "66B5253E897A89FB0BFFF1A44E83BC909C31373040389A32A561B5DBDDD3EF0B",
+    "observations": 2918,
+    "first_date": "2015-01-01",
+    "last_date": "2026-10-30"
+  },
+  "corporate_action_basis": {
+    "source": "HDFC Mutual Fund June 2026 Fund Factsheet",
+    "url": "https://files.hdfcfund.com/s3fs-public/2026-06/Fund%20Facts%20-%20HDFC%20NIFTY%20Gold%20ETF_June%2026.pdf",
+    "reviewed_on": "2026-11-06",
+    "published_statement": "Face value per unit revised from ₹100 to ₹1 and allotment price from ₹1,800.3288 to ₹18.0033 effective 2021-02-19; HDFC states return computations were adjusted.",
+    "raw_pdf_bytes_and_hash_retained": false,
+    "first_post_split_observation_in_input": "2021-02-22",
+    "mapping": "Input NAV rows before 2021-02-22 are in the pre-rebase ₹100 face-value basis and are divided by 100. From 2021-02-22 onward values remain unchanged in the ₹1 basis. This preserves raw values and is applied only to the derived output."
+  },
+  "transition_reconciliation": {
+    "2021-02-18_raw_nav": "4139.0628",
+    "2021-02-19_raw_nav": "4120.0604",
+    "2021-02-19_adjusted_nav": "41.200604",
+    "2021-02-22_raw_and_adjusted_nav": "41.5242",
+    "unadjusted_cross_denomination_return": "not computed; NAV unit bases differ",
+    "adjusted_return_pct_2021-02-19_to_2021-02-22": "0.785415670119787564279397500",
+    "adjusted_return_pct_2021-02-18_to_2021-02-19": "-0.4590990984722435233405977800"
+  },
+  "integrity": {
+    "output_observations": 2918,
+    "unique_dates": 2918,
+    "duplicate_dates": 0,
+    "nonpositive_raw_nav": 0,
+    "adjusted_daily_returns_abs_ge_5pct": [
+      {
+        "date": "2020-03-24",
+        "return_pct": "6.521963157070963798294017500"
+      },
+      {
+        "date": "2024-07-23",
+        "return_pct": "-6.227355740062903523621405820"
+      },
+      {
+        "date": "2026-01-29",
+        "return_pct": "6.357314208517054426594140600"
+      },
+      {
+        "date": "2026-01-30",
+        "return_pct": "-6.114056666376207361132523180"
+      },
+      {
+        "date": "2026-02-01",
+        "return_pct": "-9.423742124332910917950273980"
+      },
+      {
+        "date": "2026-03-02",
+        "return_pct": "5.287927465473053032472833200"
+      },
+      {
+        "date": "2026-03-23",
+        "return_pct": "-7.262295081967213114754098360"
+      },
+      {
+        "date": "2026-05-13",
+        "return_pct": "5.958584436192365437476261900"
+      }
+    ]
+  },
+  "independent_fund_return_anchor": {
+    "hdfc_reported_period": "5 years ending 2026-05-29",
+    "hdfc_reported_cagr_pct": "25.01",
+    "source": "https://files.hdfcfund.com/s3fs-public/2026-06/Fund%20Facts%20-%20HDFC%20NIFTY%20Gold%20ETF_June%2026.pdf",
+    "series_start_date": "2021-05-31",
+    "series_start_nav": "43.494",
+    "series_end_date": "2026-05-29",
+    "series_end_nav": "132.7263",
+    "derived_cagr_using_exact_five_year_exponent_pct": "24.99870898147166764075290480",
+    "interpretation": "Close cross-check (24.9987% vs reported 25.01%); not exact reproduction because report-period and annualization conventions are not fully specified."
+  },
+  "output": {
+    "filename": "nav_113049_current_unit_basis.csv",
+    "bytes": 624116,
+    "sha256": "51B8427BB06317078BF860E4B9F1CD85249587C7D27666408BB2F28F1CBA6FD5"
+  },
+  "limits": [
+    "This is a unit-denomination normalization, not a return fill or price splice.",
+    "It does not convert AMFI NAV into NSE traded price.",
+    "The independent fund return anchor begins after the unit rebase and therefore checks later-series arithmetic but does not independently prove the split factor.",
+    "Other source-specific corporate actions would require separate evidence; none are inferred.",
+    "G6.3 remains OPEN; investment state remains NO-GO / NOT YET EVALUATED."
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "result": "PASS_SOURCE_OVERLAP_RETAIL_RULES_AND_BID_DATE_ROLLOVER_MECHANICS__INVESTOR_ROLLOVER_NOT_QUALIFIED",
+  "window_inputs": {
+    "table217_manifest": "research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/manifest.json",
+    "table218_manifest": "research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/manifest.json"
+  },
+  "unique_auction_dates": 100,
+  "positive_91_day_price_observations": 98,
+  "overlap": {
+    "dates": 5,
+    "first": "2025-07-02",
+    "last": "2025-07-30",
+    "field_mismatches": 0
+  },
+  "holiday_calendar": {
+    "source_manifest": "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/manifest.json",
+    "rule_source_manifest": "research/stage512/2026-11-24/g6_3/source_raw/rbi_rollover_policy_sources_v1.json",
+    "months": 24,
+    "listed_mumbai_holiday_dates": 43,
+    "nominal_maturities_adjusted_backward": 9,
+    "maximum_backward_adjustment_days": 1
+  },
+  "settlement_calendar": {
+    "extended_source_manifest": "research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_07_2024_09/manifest.json",
+    "months_added_for_initial_auctions": 3,
+    "additional_mumbai_holiday_dates": 4,
+    "historical_positive_auction_settlements_checked": 98,
+    "auction_to_next_mumbai_working_day_mismatches": 0,
+    "observed_settlement_calendar_day_lags": {
+      "1": 89,
+      "2": 9
+    },
+    "basis": "Observed RBI auction dates and issue/settlement dates reconciled against weekends plus captured official Mumbai holidays; not a future settlement guarantee."
+  },
+  "retail_direct_rules": {
+    "source_manifest": "research/stage512/2026-11-24/g6_3/source_raw/rbi_retail_direct_rules_manifest_v1.json",
+    "verified_terms": {
+      "retail_direct_tbill_primary_auction": true,
+      "single_final_bid": true,
+      "funding_deadline": true,
+      "partial_allotment_pro_rata": true,
+      "weighted_average_price": true,
+      "settlement_typically_t_plus_one": true,
+      "rbi_primary_bid_fee_none": true,
+      "payment_gateway_charges_investor_borne": true,
+      "markup_refund_within_two_business_days": true,
+      "minimum_bid_10000_and_multiples": true,
+      "aggregate_retail_ncb_cap_5_percent": true
+    },
+    "minimum_face_value_inr": 10000,
+    "minimum_rule_source_date": "2021-11-12 circular; RBI FAQ displays minimums as of 2021-11-12",
+    "retail_ncb_aggregate_limit": "up to 5% of notified nominal issue amount, within notified amount, or other percentage set by RBI; not an individual guaranteed allocation",
+    "partial_allotment": "pro-rata if auction allocation is partial; actual investor allocation is unknown without bid/allotment records",
+    "investor_access": "RBI Retail Direct permits eligible individuals to bid in primary T-bill auctions through the non-competitive segment; this capture does not verify this investor's RDG account or operational eligibility",
+    "upfront_markup_amount": "required by FAQ as part of funding basis, but amount/formula is not specified in captured FAQ; affordability is not qualified",
+    "cash_costs": "RBI reports no account maintenance or primary bid fee; payment-gateway charges are borne by investor and amount is not specified",
+    "settlement": "typically one working day after auction; use observed issue dates as historical settlement dates; this is not a guarantee for future auctions"
+  },
+  "zero_issue_dates": [
+    "2025-02-20",
+    "2026-03-25"
+  ],
+  "conditional_gross_price_to_par_holding_return_pct": {
+    "minimum": "1.29433906",
+    "mean": "1.45842752",
+    "maximum": "1.68802115",
+    "definition": "100 / RBI non-competitive weighted-average price per 100 face - 1; assumes full allotment, hold to redemption at par, and excludes tax, fees, and investor-specific execution."
+  },
+  "conditional_365d_target_roll_scenario": {
+    "classification": "DETERMINISTIC_HISTORICAL_BID_DATE_AND_CASH_GAP_SCENARIO_NOT_ACTUAL_INVESTOR_RETURN_OR_FORECAST",
+    "initial_cash_inr": "10000.00",
+    "minimum_face_lot_inr": "10000",
+    "cash_during_wait_days": "0% return",
+    "lot_rounding": "buy the greatest whole number of ₹10,000 face-value lots supported by cash at each observed NCB weighted-average price; upfront markup and payment-gateway charges are excluded, so bid affordability is not established",
+    "uses_full_allotment": true,
+    "tax_and_fees_included": false,
+    "same_day_maturity_and_next_auction_funding_assumed": false,
+    "next_bid_date_rule": "first observed positive 91-day auction date strictly after adjusted maturity; same-day funding is excluded because RBI requires funding on the bid-submission date and intraday maturity-credit timing is not established",
+    "cash_wait_return_assumption": "0% between maturity receipt and next eligible auction; no return is credited while auction funds are reserved or excess markup is awaiting refund",
+    "upfront_markup_and_refund_timing": "RBI FAQ requires markup-funded bids and says excess is refunded within two business days; the markup amount is unspecified and not modeled",
+    "complete_start_cohorts": 59,
+    "right_censored_start_cohorts": 39,
+    "annualized_gross_return_minimum": "4.84659248",
+    "annualized_gross_return_median": "5.36784347",
+    "annualized_gross_return_maximum": "5.95021571",
+    "overlap_warning": "Start cohorts overlap in time and are not independent observations; these descriptive values do not estimate a long-run return distribution or probability."
+  },
+  "nominal_roll_schedule_diagnostic": {
+    "definition": "Issue date + 91 calendar days; move maturity backward over weekends and official Mumbai holidays; then select the first positive auction date strictly after adjusted maturity because retail funding is required on the auction/bid date.",
+    "completed_successor_transitions": 86,
+    "legacy_selected_auction_not_after_maturity_count": 71,
+    "same_day_auction_funding_used": 0,
+    "minimum_cash_wait_days_to_next_bid": 5,
+    "maximum_cash_wait_days_to_next_bid": 21,
+    "median_cash_wait_days_to_next_bid": 6.0,
+    "right_censored_without_successor": 12,
+    "limitations": [
+      "The diagnostic applies RBI's previous-working-day rule using the captured Mumbai matrix and the official rule that the Government securities market is closed on Saturdays; each security's specific maturity terms still require confirmation.",
+      "The deterministic one-year-target roll scenario uses the public ₹10,000 minimum lot and historical auction dates, assumes full allotment, and excludes required upfront markup; it does not prove investor-specific access or bid affordability.",
+      "The bid-date rule conservatively excludes an auction on the same date as maturity because the exact order of maturity credit and bid-funding cutoff is not established by public evidence.",
+      "Actual partial allocation, payment-gateway charges, markup amount/refund cash timing, tax, and any bank cash yield are not modeled.",
+      "The two-year observed window is not a long-run interest-rate model or a 2036 probability estimate."
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+  "regional_office": "Mumbai",
+  "regional_office_value": "28",
+  "coverage": {
+    "first_month": "2024-07",
+    "last_month": "2024-09",
+    "months": 3
+  },
+  "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 2 MB response cap",
+  "sources": [
+    {
+      "path": "holiday_matrix_initial.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "GET",
+      "parameters": {},
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:24:02.361208+00:00",
+      "bytes": 72369,
+      "sha256": "b48d882cdeb22fba76b1eeb498758f7544f12100335c97fb7bc00d86b92942ba"
+    },
+    {
+      "path": "mumbai_2024_07.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "7",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:24:02.929017+00:00",
+      "bytes": 73052,
+      "sha256": "71332083aa50188873d7fef38f8b42742b2bf16affe92ff9f4c247b50238ba7d"
+    },
+    {
+      "path": "mumbai_2024_08.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "8",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:24:05.575097+00:00",
+      "bytes": 71523,
+      "sha256": "aca127c3a4407957fa3e7ba6780126fef953f8764f3676f09087d235a43e9a1f"
+    },
+    {
+      "path": "mumbai_2024_09.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "9",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:24:07.923690+00:00",
+      "bytes": 73935,
+      "sha256": "b642821ab02daec839fabdcacab4566a6aa0539e9fcdbb8aeb56f16d9c17898c"
+    }
+  ],
+  "parsed_mumbai_holidays": [
+    {
+      "year": 2024,
+      "month": 7,
+      "holiday_dates": [
+        {
+          "date": "2024-07-17",
+          "description": "Muharram/Ashoora/U Tirot Sing Day"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "holiday_dates": [
+        {
+          "date": "2024-08-15",
+          "description": "Independence Day/Parsi New Year (Shahenshahi)"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "holiday_dates": [
+        {
+          "date": "2024-09-07",
+          "description": "Ganesh Chaturthi/Samvatsari (Chaturthi Paksha)/Varasiddhi Vinayaka Vrata/Vinayakar Chathurthi"
+        },
+        {
+          "date": "2024-09-18",
+          "description": "Pang-Lhabsol/Id-E-Milad/Unitarian Anniversary Day"
+        }
+      ]
+    }
+  ],
+  "interpretation_limit": "Holiday dates are source inputs only. Business-day maturity adjustment must also use the governing RBI security terms and settlement calendar; do not infer investor settlement or market access from this matrix alone."
+}

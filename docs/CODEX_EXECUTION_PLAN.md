@@ -36,6 +36,10 @@ The authoritative current/open-input inventory is [G6.3 Decision Input Register]
 
 Complete G6.3 in dependency order under issue #44. WP0 reconciles the status records and classifies confirmed, provisional, and unconfirmed inputs. WP1 then qualifies candidate-specific sources and CPI evidence. Do not feed unqualified or pre-inception observations into a risk model. Continue through instrument economics/tax, portfolio exits, statistical assurance, and independent decision review. A defensible NO-GO is acceptable; no gate may be weakened to force a GO.
 
+### G6.3 continuation update — 25 November 2026
+
+PR #67's T-bill source panel spans 151 unique RBI auction dates, with 149 positive 91-day issue observations. The notification package cited for the 2024 sample passes. The linked base attachment matches the retained bytes and both amendments leave paragraph 9 on repayment intact. Four NSE circulars identify the bills whose listed maturities fall on Mumbai holidays. Actual payment dates remain unverified for all four. Use those ISINs to qualify the applicable RBI Public Debt Office payment rule or obtain an actual dated redemption record. Retail Direct credit timing requires route-specific evidence before those proceeds can count toward same-day funding. The 2024–2026 rollover scenario remains conditional. G6.3 remains open and investment authorization remains **NO-GO**. See the [unavailable evidence ledger](G6_3_UNAVAILABLE_EVIDENCE_LEDGER.md) and [amendment and listed maturity audit](../research/stage512/2026-11-25/g6_3/RBI_TBILL_AMENDMENTS_AND_NSE_MATURITY_AUDIT.md).
+
 **Nothing in this plan authorizes transactions.**
 ## Completed on 2 November 2026 — P0 Tasks 1–2
 

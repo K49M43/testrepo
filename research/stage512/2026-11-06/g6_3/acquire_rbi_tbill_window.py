@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import http.cookiejar
 import json
@@ -75,7 +76,12 @@ def visible_text(body: bytes) -> str:
     return re.sub(r"\s+", " ", " ".join(parser.parts)).casefold()
 
 
-def parse_table218(body: bytes) -> dict[str, dict[str, str]]:
+def parse_table218(
+    body: bytes,
+    expected_count: int = 50,
+    first_date: str = "2025-07-02",
+    last_date: str = "2026-06-24",
+) -> dict[str, dict[str, str]]:
     parser = TableRows()
     parser.feed(body.decode("utf-8", errors="replace"))
     panel: dict[str, dict[str, str]] = {}
@@ -90,9 +96,9 @@ def parse_table218(body: bytes) -> dict[str, dict[str, str]]:
             "total_issue_crore": row[-3].replace(",", ""),
             "cutoff_price": row[-2], "cutoff_yield_actual_365_pct": row[-1],
         }
-    if len(panel) != 50:
-        raise RuntimeError(f"Table 218 expected 50 dated rows, found {len(panel)}")
-    if min(panel) != "2025-07-02" or max(panel) != "2026-06-24":
+    if len(panel) != expected_count:
+        raise RuntimeError(f"expected {expected_count} dated table rows, found {len(panel)}")
+    if min(panel) != first_date or max(panel) != last_date:
         raise RuntimeError(f"unexpected Table 218 coverage: {min(panel)} to {max(panel)}")
     return panel
 
@@ -170,6 +176,16 @@ def capture_month(client: Client, page: bytes, year: int, month: int) -> bytes:
     return body
 
 
+def is_tbill_notice_title(title: str) -> bool:
+    lower = title.casefold()
+    return (
+        "result" not in lower
+        and "auction" in lower
+        and ("treasury bills" in lower or "t-bill" in lower)
+        and re.search(r"\b91\s*[- ]?\s*days?\b", lower) is not None
+    )
+
+
 def archive_items(body: bytes) -> list[dict[str, str]]:
     text = body.decode("utf-8", errors="replace")
     heads = list(re.finditer(r"(?is)<th\b[^>]*>\s*((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\s*</th>", text))
@@ -181,9 +197,7 @@ def archive_items(body: bytes) -> list[dict[str, str]]:
             title = re.sub(r"<[^>]+>", " ", a.group(2))
             title = re.sub(r"\s+", " ", unescape(title)).strip()
             lower = title.casefold()
-            if "treasury bills" not in lower and "t-bill" not in lower:
-                continue
-            if "auction of 91-day" not in lower and "full auction result" not in lower:
+            if "full auction result" not in lower and not is_tbill_notice_title(lower):
                 continue
             parsed = urllib.parse.parse_qs(urllib.parse.urlparse(a.group(1)).query)
             prid = parsed.get("prid", [""])[0]
@@ -199,7 +213,7 @@ def source_record(path: str, url: str, method: str, body: bytes, content_type: s
 def notice_data(body: bytes) -> dict[str, str]:
     parser = TableRows()
     parser.feed(body.decode("utf-8", errors="replace"))
-    row = next((r for r in parser.rows if len(r) >= 5 and r[0] == "1" and r[1].casefold() == "91-day"), None)
+    row = next((r for r in parser.rows if len(r) >= 5 and r[0] == "1" and re.sub(r"[^a-z0-9]", "", r[1].casefold()) in {"91day", "91days"}), None)
     if row is None:
         raise RuntimeError("91-Day row missing from auction notice")
     auction_match = re.search(r"([A-Za-z]+\s+\d{1,2},\s+\d{4})", row[3])
@@ -209,11 +223,16 @@ def notice_data(body: bytes) -> dict[str, str]:
     auction = datetime.strptime(auction_match.group(1), "%B %d, %Y").date().isoformat()
     issue = datetime.strptime(issue_match.group(1), "%B %d, %Y").date().isoformat()
     text = visible_text(body)
-    method_match = re.search(r"(price|yield) based using ([a-z -]+?) method", text)
+    # Some archived RBI notices split the final word across an inline span
+    # boundary (for example, ``metho</span>d``). ``visible_text`` separates
+    # text nodes with spaces, so allow that single-word split and normalize the
+    # method back to its canonical wording before storing it.
+    method_match = re.search(r"(price|yield) based using ([a-z -]+?) metho\s*d", text)
     if not method_match:
         raise RuntimeError("auction method missing from notice")
     release = re.search(r"date\s*:\s*([a-z]{3}\s+\d{1,2},\s+\d{4})", text)
-    return {"auction_date": auction, "issue_date": issue, "notified_amount_crore": row[2].replace(",", ""), "auction_method": method_match.group(0), "notice_date": datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat() if release else "", "retail_route": str("retail investors" in text or "individual investors" in text)}
+    method = f"{method_match.group(1)} based using {method_match.group(2).strip()} method"
+    return {"auction_date": auction, "issue_date": issue, "notified_amount_crore": row[2].replace(",", ""), "auction_method": method, "notice_date": datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat() if release else "", "retail_route": str("retail investors" in text or "individual investors" in text)}
 
 
 def result_data(body: bytes) -> dict[str, str]:
@@ -222,53 +241,67 @@ def result_data(body: bytes) -> dict[str, str]:
     if not release:
         raise RuntimeError("result publication date missing")
     result_date = datetime.strptime(release.group(1).title(), "%b %d, %Y").date().isoformat()
-    cutoff_head = re.search(r"cut-off price(?:\s*\([^)]*\))?(?: and implicit yield at cut-off price|\s*/\s*yield)\s+(.*?)(?=\s+iv\.\s)", text)
-    cutoff = None
-    if cutoff_head:
-        section = cutoff_head.group(1)
-        yields = re.findall(r"ytm:\s*([\d.]+)%", section)
-        prices_text = re.sub(r"\(ytm:\s*[\d.]+%\)", "", section)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", prices_text)
-        if prices and yields:
-            cutoff = (prices[0], yields[0])
-            if len(prices) >= 3 and len(yields) >= 3:
-                cutoff = tuple(value for pair in zip(prices[:3], yields[:3]) for value in pair)
-    weighted_head = re.search(r"weighted average price(?:\s*\([^)]*\))?\s*/\s*yield\s+(.*?)(?=\s+vii\.\s)", text)
-    weighted = None
-    if weighted_head:
-        section = weighted_head.group(1)
-        prices = re.findall(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", section.split("(way:", 1)[0])
-        yields = re.findall(r"way:\s*([\d.]+)%", section)
-        if prices and yields:
-            weighted = (prices[0], yields[0])
-            if len(prices) >= 3 and len(yields) >= 3:
-                weighted = tuple(value for pair in zip(prices[:3], yields[:3]) for value in pair)
+    rows = TableRows()
+    rows.feed(body.decode("utf-8", errors="replace"))
+    cutoff: list[tuple[str, str]] = []
+    weighted: list[tuple[str, str]] = []
+    for index, row in enumerate(rows.rows[:-1]):
+        label = " ".join(row).casefold()
+        target = cutoff if "cut-off price" in label and "yield" in label else weighted if "weighted average price" in label and "yield" in label else None
+        if target is None:
+            continue
+        price_cells = row[-3:]
+        yield_cells = rows.rows[index + 1][-3:]
+        for price_cell, yield_cell in zip(price_cells, yield_cells):
+            price_match = re.search(r"(?<![\d.])[\d]+\.[\d]{1,4}(?![\d.])", price_cell)
+            yield_match = re.search(r"([\d.]+)%", yield_cell)
+            target.append((price_match.group(0) if price_match else "", yield_match.group(1) if yield_match else ""))
     out = {"result_date": result_date}
-    if cutoff:
-        out.update({"cutoff_price_91": cutoff[0], "cutoff_yield_91": cutoff[1]})
-        if len(cutoff) >= 6:
-            out.update({"cutoff_price_182": cutoff[2], "cutoff_yield_182": cutoff[3], "cutoff_price_364": cutoff[4], "cutoff_yield_364": cutoff[5]})
-    if weighted:
-        out.update({"weighted_price_91": weighted[0], "weighted_yield_91": weighted[1]})
-        if len(weighted) >= 6:
-            out.update({"weighted_price_182": weighted[2], "weighted_yield_182": weighted[3], "weighted_price_364": weighted[4], "weighted_yield_364": weighted[5]})
+    for tenor, slot in (("91", 0), ("182", 1), ("364", 2)):
+        if len(cutoff) > slot:
+            if cutoff[slot][0]: out[f"cutoff_price_{tenor}"] = cutoff[slot][0]
+            if cutoff[slot][1]: out[f"cutoff_yield_{tenor}"] = cutoff[slot][1]
+        if len(weighted) > slot:
+            if weighted[slot][0]: out[f"weighted_price_{tenor}"] = weighted[slot][0]
+            if weighted[slot][1]: out[f"weighted_yield_{tenor}"] = weighted[slot][1]
     return out
 
 
 def main() -> None:
-    if not TABLE218.is_file():
-        raise RuntimeError(f"authoritative Table 218 bytes missing: {TABLE218}")
-    table_bytes = TABLE218.read_bytes()
-    expected = parse_table218(table_bytes)
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "archive").mkdir(exist_ok=True)
-    (OUT / "notices").mkdir(exist_ok=True)
-    (OUT / "results").mkdir(exist_ok=True)
+    parser = argparse.ArgumentParser(description="Capture and reconcile an official RBI 91-day T-bill auction window.")
+    parser.add_argument("--table-path", type=Path, default=TABLE218)
+    parser.add_argument("--table-url")
+    parser.add_argument("--output-dir", type=Path, default=OUT)
+    parser.add_argument("--table-name", default="Table 218")
+    parser.add_argument("--window-tag", default="2025_2026")
+    parser.add_argument("--expected-auctions", type=int, default=50)
+    parser.add_argument("--first-date", default="2025-07-02")
+    parser.add_argument("--last-date", default="2026-06-24")
+    args = parser.parse_args()
+    table_path = args.table_path.resolve()
+    out = args.output_dir
     client = Client()
+    table_http = None
+    if args.table_url:
+        retrieved_at_utc = datetime.now(timezone.utc).isoformat()
+        table_bytes, table_content_type, table_status = client.request(args.table_url)
+        if table_status != 200 or not table_bytes:
+            raise RuntimeError(f"invalid {args.table_name} source response: {table_status}")
+        table_path.parent.mkdir(parents=True, exist_ok=True)
+        table_path.write_bytes(table_bytes)
+        table_http = {"url": args.table_url, "method": "GET", "http_status": table_status, "content_type": table_content_type, "retrieved_at_utc": retrieved_at_utc}
+    if not table_path.is_file():
+        raise RuntimeError(f"authoritative {args.table_name} bytes missing: {table_path}")
+    table_bytes = table_path.read_bytes()
+    expected = parse_table218(table_bytes, args.expected_auctions, args.first_date, args.last_date)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "archive").mkdir(exist_ok=True)
+    (out / "notices").mkdir(exist_ok=True)
+    (out / "results").mkdir(exist_ok=True)
     body, content_type, status = client.request(ARCHIVE_URL)
     if status != 200 or not body:
         raise RuntimeError("RBI archive initial form GET failed")
-    index_path = OUT / "archive_index.html"
+    index_path = out / "archive_index.html"
     index_path.write_bytes(body)
     records: list[dict] = [source_record("archive_index.html", ARCHIVE_URL, "GET", body, content_type)]
     months: set[tuple[int, int]] = set()
@@ -285,17 +318,17 @@ def main() -> None:
             pass
         body = capture_month(client, body, year, month)
         name = f"archive_{year}_{month:02d}.html"
-        (OUT / "archive" / name).write_bytes(body)
+        (out / "archive" / name).write_bytes(body)
         records.append(source_record(f"archive/{name}", ARCHIVE_URL, "POST", body, "text/html", parameters={"hdnYear": str(year), "hdnMonth": str(month)}))
     all_items: list[dict[str, str]] = []
-    for path in sorted((OUT / "archive").glob("archive_*.html")):
+    for path in sorted((out / "archive").glob("archive_*.html")):
         all_items.extend(archive_items(path.read_bytes()))
     notice_start = min(dates) - timedelta(days=7)
     notice_end = max(dates)
     notices = {
         x["prid"]: x
         for x in all_items
-        if "auction of 91-day" in x["title"].casefold()
+        if is_tbill_notice_title(x["title"])
         and notice_start.isoformat() <= x["archive_date"] <= notice_end.isoformat()
     }
     result_links = {x["prid"]: x for x in all_items if "full auction result" in x["title"].casefold() and x["archive_date"] in expected}
@@ -308,7 +341,7 @@ def main() -> None:
         if status != 200 or not body:
             raise RuntimeError(f"invalid notice response {prid}: {status}")
         name = f"notice_prid{prid}.html"
-        (OUT / "notices" / name).write_bytes(body)
+        (out / "notices" / name).write_bytes(body)
         records.append(source_record(f"notices/{name}", url, "GET", body, ctype))
         detail = notice_data(body)
         if detail["auction_date"] in expected:
@@ -320,7 +353,7 @@ def main() -> None:
         if status != 200 or not body:
             raise RuntimeError(f"invalid full result response {prid}: {status}")
         name = f"full_result_prid{prid}.html"
-        (OUT / "results" / name).write_bytes(body)
+        (out / "results" / name).write_bytes(body)
         records.append(source_record(f"results/{name}", item["url"], "GET", body, ctype))
         detail = result_data(body)
         if detail["result_date"] != item["archive_date"]:
@@ -331,21 +364,37 @@ def main() -> None:
         result_by_date[detail["result_date"]] = detail
     output_rows = []
     exceptions = []
+    issue_date_conflicts = []
     for auction_date, t218 in sorted(expected.items()):
         candidates = notice_by_date.get(auction_date, [])
         if len(candidates) != 1:
             raise RuntimeError(f"expected exactly one contemporaneous notice for {auction_date}, found {len(candidates)}")
         notice = candidates[0]
-        if notice["issue_date"] != t218["issue_date"] or notice["notified_amount_crore"] != t218["notified_amount_crore"]:
-            raise RuntimeError(f"notice/Table218 settlement or notified amount mismatch for {auction_date}")
+        if notice["notified_amount_crore"] != t218["notified_amount_crore"]:
+            raise RuntimeError(f"notice/{args.table_name} notified amount mismatch for {auction_date}")
+        if notice["issue_date"] != t218["issue_date"]:
+            issue_date_conflicts.append({
+                "auction_date": auction_date,
+                "table_issue_date": t218["issue_date"],
+                "notice_issue_date": notice["issue_date"],
+                "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE",
+            })
         total_issue = t218["total_issue_crore"].replace("-", "0")
         result = result_by_date.get(auction_date)
-        row = {**t218, "notice_prid": notice["prid"], "notice_date": notice["notice_date"], "auction_method": notice["auction_method"], "retail_route_stated": notice["retail_route"], "notice_path": notice["path"], "result_status": "MATCHED" if result else "NO_RESULT_PAGE"}
+        row = {
+            **t218,
+            "table_issue_date": t218["issue_date"],
+            "issue_date": notice["issue_date"],
+            "issue_date_resolution": "NOTICE_AND_TABLE_AGREE" if notice["issue_date"] == t218["issue_date"] else "NOTICE_OVERRIDES_TABLE_DATE_CONFLICT",
+            "notice_prid": notice["prid"], "notice_date": notice["notice_date"],
+            "auction_method": notice["auction_method"], "retail_route_stated": notice["retail_route"],
+            "notice_path": notice["path"], "result_status": "MATCHED" if result else "NO_RESULT_PAGE",
+        }
         if total_issue in {"0", "0.00"}:
             row["result_status"] = "ZERO_ISSUE_EXCEPTION"
             if result and result.get("weighted_price_91"):
                 raise RuntimeError(f"Table 218 zero-issue exception has positive weighted result for {auction_date}")
-            exceptions.append({"auction_date": auction_date, "status": "ZERO_ISSUE_EXCEPTION", "reason": "Table 218 reports zero total issue and no investable price/yield."})
+            exceptions.append({"auction_date": auction_date, "status": "ZERO_ISSUE_EXCEPTION", "reason": f"{args.table_name} reports zero 91-day total issue and no investable 91-day price/yield."})
         else:
             if not result:
                 raise RuntimeError(f"missing full result for positive-issue auction {auction_date}")
@@ -361,21 +410,33 @@ def main() -> None:
             row["result_prid"] = result["prid"]
         output_rows.append(row)
     fields = sorted({key for row in output_rows for key in row})
-    with (OUT / "auction_panel_2025_2026.csv").open("w", encoding="utf-8", newline="") as stream:
+    panel_name = f"auction_panel_{args.window_tag}.csv"
+    with (out / panel_name).open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=fields)
         writer.writeheader()
         writer.writerows(output_rows)
+    table_reference = {"path": table_path.relative_to(ROOT).as_posix(), "bytes": len(table_bytes), "sha256": hashlib.sha256(table_bytes).hexdigest()}
+    if table_http:
+        table_reference.update(table_http)
     manifest = {
         "schema_version": 1,
         "captured_at_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": "official RBI T-bill notice/full-result pairs for the 50-row 2025-26 Table 218 window; one-year descriptive sample only, not a calibrated risk history",
+        "scope": f"official RBI T-bill notice/full-result pairs for {args.expected_auctions} rows in {args.table_name} ({args.first_date} through {args.last_date}); table/notice issue-date conflicts retain both source values and use the contemporaneous auction notice for the normalized issue date; auction-yield levels only, not a calibrated risk history",
         "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 5 MB body cap",
-        "table218_reference": {"path": str(TABLE218.relative_to(ROOT)).replace("\\", "/"), "bytes": len(table_bytes), "sha256": hashlib.sha256(table_bytes).hexdigest()},
+        "reference_table": args.table_name,
+        "table_reference": table_reference,
+        "window": {"first_date": args.first_date, "last_date": args.last_date},
         "expected_auctions": len(expected), "matched_notice_dates": len(notice_by_date), "matched_full_result_dates": len(result_by_date),
-        "exceptions": exceptions, "sources": records,
+        "exceptions": exceptions,
+        "source_discrepancies": {"issue_date_conflicts": issue_date_conflicts},
+        "sources": records,
     }
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({"result": "CAPTURED_RBI_TBILL_WINDOW", "expected_auctions": len(expected), "notices": len(notice_by_date), "full_results": len(result_by_date), "exceptions": exceptions, "manifest_sources": len(records), "csv": str(OUT / "auction_panel_2025_2026.csv")}, indent=2))
+    if args.table_name == "Table 218":
+        manifest["table218_reference"] = manifest["table_reference"]
+    elif args.table_name == "Table 217":
+        manifest["table217_reference"] = manifest["table_reference"]
+    (out / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(json.dumps({"result": "CAPTURED_RBI_TBILL_WINDOW", "reference_table": args.table_name, "expected_auctions": len(expected), "notices": len(notice_by_date), "full_results": len(result_by_date), "exceptions": exceptions, "manifest_sources": len(records), "csv": str(out / panel_name)}, indent=2))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,42 @@
+{
+  "rbi_auction_notice.html": {
+    "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63952",
+    "final_url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63952",
+    "retrieved_utc": "2026-11-25T08:31:27+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 121444,
+    "sha256": "d2e6b9659019f5aaddbb7cca3a2b1b6e32187b0b4be912e62a4e5778712c4a37",
+    "retained": true
+  },
+  "rbi_auction_result.html": {
+    "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63970",
+    "final_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63970",
+    "retrieved_utc": "2026-11-25T08:31:27+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 113676,
+    "sha256": "a3fda9c723de3fb558d9382d734005150d595784e307adb9b9cd01ebc0172403",
+    "retained": true
+  },
+  "rbi_cutoff_result.html": {
+    "url": "https://www.rbi.org.in/SCRIPTS/BS_PressReleaseDisplay.aspx?prid=63969",
+    "final_url": "https://www.rbi.org.in/SCRIPTS/BS_PressReleaseDisplay.aspx?prid=63969",
+    "retrieved_utc": "2026-11-25T08:31:28+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 111839,
+    "sha256": "23a332731679b5b5e23e012c06dfdf0a46004ad3bd5509ebf3b15841a2c911a1",
+    "retained": true
+  },
+  "rbi_outstanding_2026_11_23.html": {
+    "url": "https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=1956",
+    "final_url": "https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=1956",
+    "retrieved_utc": "2026-11-25T08:33:50+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 109352,
+    "sha256": "917707137f789ff901ceb61d4dbab3d2e87e25d193500e03d95eff038b0b5a0b",
+    "retained": true
+  }
+}

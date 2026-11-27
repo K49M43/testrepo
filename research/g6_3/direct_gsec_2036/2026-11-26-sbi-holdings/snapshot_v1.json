@@ -1,0 +1,72 @@
+{
+  "record_id": "G6.3-SBI-JUNE-2036-HOLDINGS-2026-10-31",
+  "portfolio": {
+    "url": "https://www.sbimf.com/docs/default-source/scheme-portfolios/all-schemes-monthly-portfolio---as-on-31st-october-2026.xlsx",
+    "retrieved_utc": "2026-11-26T08:21:23Z",
+    "bytes": 2614595,
+    "sha256": "3561f640a28a09e947b9bcd3516b7680a59a3849226b27d4d8023fcf2fddbf7f",
+    "sheet": "SCIGI-JUN 2036",
+    "as_of": "2026-10-31",
+    "cells": {
+      "D3": "SBI CRISIL IBX Gilt Index- June 2036 Fund",
+      "D4": "2026-10-31",
+      "F6": "Quantity",
+      "G6": "Market value\n(Rs. in Lakhs)",
+      "H6": "% to AUM",
+      "I6": "YTM %",
+      "C24": "7.54% CGL 2036",
+      "D24": "IN0020220029",
+      "E24": "Sovereign",
+      "F24": "247490000",
+      "G24": "249311.77",
+      "H24": "95.39",
+      "I24": "7.568006125",
+      "C37": "Treasury Bills",
+      "G37": "NIL",
+      "C53": "TREPS",
+      "G53": "3988.28",
+      "H53": "1.53",
+      "C58": "Net Receivable / Payable",
+      "G58": "8059.96",
+      "H58": "3.08",
+      "C61": "GRAND TOTAL (AUM)",
+      "G61": "261360.01",
+      "H61": "100",
+      "C83": "Direct Plan - Growth Option",
+      "E83": "13.286",
+      "E90": "NIL"
+    }
+  },
+  "bond_terms": {
+    "isin": "IN0020220029",
+    "issue": "2022-05-23",
+    "maturity": "2036-05-23",
+    "coupon_annual_percent": "7.54",
+    "coupon_months": [5, 11],
+    "coupon_day": 23,
+    "par_inr_per_quantity_unit": "100",
+    "gazette": {
+      "url": "https://egazette.gov.in/WriteReadData/2022/239952.pdf",
+      "retrieved_utc": "2026-11-26T08:22:49Z",
+      "bytes": 1622293,
+      "sha256": "c706961029dc80c357c45a585bc09c9f06e0cf8d9cc4a0c5d31e87eca710f632",
+      "page": 5,
+      "paragraph": 6
+    },
+    "rbi_isin_register": "https://www.rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=12765"
+  },
+  "sbi_factsheet_comparison": {
+    "date": "2026-10-30",
+    "aum_inr_lakh": "261359",
+    "direct_growth_nav_inr": "13.286",
+    "government_weight_percent": "95.39",
+    "portfolio_ytm_percent": "7.54"
+  },
+  "valuation_policy": {
+    "url": "https://www.sbimf.com/docs/default-source/disclosures/valuation-policy/valuation-policy6523ebaf60e84b3db60813a5951ad4a4.pdf",
+    "retrieved_utc": "2026-11-26T08:22:52Z",
+    "bytes": 1078527,
+    "sha256": "3b6c4310bc8b10684622fe2c7ff0cedb5743785e2f1938066aaeeb67b1a1ebdf"
+  },
+  "coupon_reinvestment_percent_cases": ["0", "2", "4", "6", "7.54"]
+}

@@ -3,3 +3,43 @@
 research/stage512/data/r9_lic_gsec_etf/*.csv text eol=lf
 research/stage512/data/r9_lic_gsec_etf/*.json text eol=lf
 research/stage512/data/r9_lic_gsec_etf/raw/** -text
+
+# G5.4 files are hash-pinned as source artifacts in the source-reacquisition
+# manifest. Preserve their repository bytes across Windows/Git checkouts.
+research/stage512/2026-11-05/g5_4/** -text
+research/stage512/2026-11-05/source_retrieval_followup/** -text
+
+# Preserve the official NSE export exactly as pinned by the candidate audit.
+research/stage512/2026-11-06/hdfcgold_execution_evidence/** -text
+
+# Preserve CPI source response bytes and the retained RBI T-bill evidence panel.
+research/stage512/2026-11-06/g6_3/source_raw/** -text
+research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/** -text
+
+# Preserve byte-exact RBI T-bill and holiday evidence captured for G6.3.
+research/stage512/2026-11-19/g6_3/rbi_tbill_window_2024_2025/** -text
+research/stage512/2026-11-24/g6_3/source_raw/** -text
+research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_2026/** -text
+research/stage512/2026-11-24/g6_3/rbi_mumbai_holidays_2024_07_2024_09/** -text
+research/stage512/2026-11-24/g6_3/rbi_tbill_window_2023_2024/** -text
+
+# Preserve the new official RBI Mumbai holiday and G-Sec exception evidence byte-for-byte.
+research/stage512/2026-11-25/g6_3/** -text
+
+# Keep generated CPI artifacts and the PIB normalized comparison capture LF-stable.
+research/stage512/2026-11-06/g6_3/cpi_mospi_api_combined_general_2013_2026.csv text eol=lf
+research/stage512/2026-11-06/g6_3/cpi_qualification_v1.json text eol=lf
+research/stage512/2026-11-02/cpi_pib_sep2026_annexure_iv_capture.csv text eol=lf
+
+# Keep the newly generated direct-bond yield reconciliation canonical LF JSON.
+research/g6_3/direct_gsec_2036/2026-10-16/auction_yield_reconciliation_v1.json text eol=lf
+research/g6_3/direct_gsec_2036/2026-11-13/*.html binary
+
+# Preserve G5.3 hash-pinned AMFI pilot inputs byte-for-byte on Windows checkouts.
+research/stage512/data/amfi_pilot/manifest.json -text
+research/stage512/data/amfi_pilot/named_scheme_observations.csv -text
+research/stage59/amfi_ter_export_diagnostic.json -text
+research/stage512/2026-11-05/g5_3_qcsae_v1.json text eol=lf
+
+# Holdings source workbooks and their hashed evidence package are immutable bytes.
+research/stage512/2026-11-07/g6_3/icici_gold_silver_holdings_sep2026/** -text

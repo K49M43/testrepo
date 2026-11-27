@@ -15,7 +15,7 @@ product=[x for x in disp['candidates'] if x['product_hypothesis']]
 expected_base={x['candidate_id'] for x in reg['candidates'] if x['candidate_id'] not in {'NIFTY500_TRI_BENCHMARK','GOI_DIRECT_DATED_GSEC_718_2033','CASH_HOLD_91D_TBILL_ROLLING'}}
 expected={*expected_base,*{x['candidate_id'] for x in exp['candidates']}}
 assert len(product)==10 and {x['candidate_id'] for x in product}==expected
-assert len(ids)==13 and len(ids)==len(disp['candidates'])
+assert len(ids)==14 and len(ids)==len(disp['candidates'])
 assert all(x['classification'] in {'INVESTABLE','PROXY_ONLY','BLOCKED'} for x in disp['candidates'])
 required_gates={'fees','tax','liquidity','execution','settlement','account_platform_access','investor_suitability','source_quality'}
 ter_by_name={x['candidate']:x for x in ter['records']}
@@ -41,6 +41,11 @@ for c in disp['candidates']:
             assert path.exists(),p
             assert hashlib.sha256(path.read_bytes()).hexdigest().lower()==expected_sha.lower(),p
 assert disp['initial_comparison_set'] and set(disp['initial_comparison_set']).issubset(ids)
+_direct36=next(x for x in disp['candidates'] if x['candidate_id']=='GOI_DIRECT_DATED_GSEC_694_2036')
+assert not _direct36['product_hypothesis'] and _direct36['classification']=='BLOCKED'
+assert {'current timestamped clean/dirty secondary-market quote and accrued interest','retail settlement advice and exact amount rounding','investor account access, terminal-date flexibility and suitability confirmation'}.issubset(set(_direct36['open_gates']))
+assert any(r.get('repository_path','').endswith('specific_notification.pdf') and r.get('content_sha256')=='D70A72BE3FC8CF411313F7DF3DBD5470ADFF1E7B2ABBFD5FA8C1C07DB3EAFDEB' for r in _direct36['evidence_references'])
+assert 'GOI_DIRECT_DATED_GSEC_694_2036' in disp['initial_comparison_set']
 assert hashlib.sha256(extracted).hexdigest()==holdings['extracted_text_sha256']
 assert len(holdings['snapshots'])==5
 for h in holdings['snapshots']:
@@ -54,4 +59,4 @@ for h in holdings['snapshots']:
     assert row['holdings_evidence']['source_sha256'].lower()==h['source_sha256'].lower()
 assert disp['acceptance']['ranking_or_weights']=='NOT_PRODUCED'
 assert disp['acceptance']['investor_suitability_or_trade_authorization']=='NOT_ASSESSED_NO_GO'
-print(f'PASS: {len(product)}/10 product hypotheses exactly reconcile to G5.2 + G5.4; 13/13 rows classified; every product has source, fee, holdings, tax, liquidity, execution, settlement, access and suitability fields; five official factsheet holdings snapshots and arithmetic checks reproduce; evidence hashes reproduce; no ranking/weights/authorization.')
+print(f'PASS: {len(product)}/10 product hypotheses exactly reconcile to G5.2 + G5.4; 14/14 rows classified; every product has source, fee, holdings, tax, liquidity, execution, settlement, access and suitability fields; five official factsheet holdings snapshots and arithmetic checks reproduce; evidence hashes reproduce; no ranking/weights/authorization.')

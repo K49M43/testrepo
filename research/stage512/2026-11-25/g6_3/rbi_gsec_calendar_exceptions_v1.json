@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-24T18:50:49.405195+00:00",
+  "source_class": "OFFICIAL_RBI_PRESS_RELEASE",
+  "scope": "One specific G-Sec market-operational exception: 29-Sep-2023 was a Maharashtra NI Act public holiday, but RBI kept Government-securities markets operational and explicitly set settlement for the 27-Sep-2023 GoI T-bill auction on 29-Sep-2023.",
+  "operational_exception_dates": [
+    {
+      "date": "2023-09-29",
+      "status": "GSEC_MARKET_OPERATIONAL_DESPITE_NI_ACT_PUBLIC_HOLIDAY",
+      "auction_settlement": {
+        "auction_date": "2023-09-27",
+        "settlement_date": "2023-09-29"
+      },
+      "rbi_press_release_number": "2023-2024/1005"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=56455",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_date": "Tue, 24 Nov 2026 18:50:51 GMT",
+      "retrieved_at_utc": "2026-11-24T18:50:49.405195+00:00",
+      "bytes": 114355,
+      "sha256": "88acdb4fdca81437b2ea532eb3ec3148c86547bfb9cd3fbe757104b6f5fadbdf",
+      "path": "source_raw/rbi_gsec_market_open_exception_2023_09_29.html",
+      "supports": "RBI's explicit market-operational exception and the T-bill auction's stated 29-Sep-2023 settlement date."
+    }
+  ],
+  "interpretation_limit": "This is a date-specific override, not a complete historical G-Sec business-day calendar. Do not infer that other Mumbai NI Act holidays were market-open or market-closed without the applicable RBI source."
+}

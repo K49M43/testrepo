@@ -1,0 +1,4357 @@
+{
+  "experiment_id": "G6.3-SILVER-NAV-COMPARISON-2026-11-25-V1",
+  "status": "PROVISIONAL_NAV_COMPARISON_ONLY",
+  "investment_authorization": "NO_GO",
+  "input_sources": {
+    "equity": {
+      "candidate_id": "MOTILAL_NIFTY500_INDEX_FUND",
+      "scheme_code": "147625",
+      "isin": "INF247L01957",
+      "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+      "request_windows": 15,
+      "observations": 1761,
+      "first_observation": "2019-09-11",
+      "last_observation": "2026-10-30",
+      "max_gap_days": 5,
+      "gaps_over_12_days": [],
+      "raw_segment_checks": [
+        {
+          "start": "2019-09-06",
+          "end": "2020-02-29",
+          "rows": 116,
+          "sha256": "46044f69abe7c113ea554bf932711e1060bc1bb37c0a6880c4a7bb7a955d3535",
+          "first": "2019-09-11",
+          "last": "2020-02-28"
+        },
+        {
+          "start": "2020-03-01",
+          "end": "2020-08-31",
+          "rows": 124,
+          "sha256": "bc4eeb1ab18913cee30dfe5c18e90c9b4f814a12b3fc1da487a5ee3d8e8e6925",
+          "first": "2020-03-02",
+          "last": "2020-08-31"
+        },
+        {
+          "start": "2020-09-01",
+          "end": "2021-02-28",
+          "rows": 124,
+          "sha256": "4acbcccf6125488d0ed542ace2df18cea3182de265d555cb2ff5c01e54e5bafe",
+          "first": "2020-09-01",
+          "last": "2021-02-26"
+        },
+        {
+          "start": "2021-03-01",
+          "end": "2021-08-31",
+          "rows": 124,
+          "sha256": "e62f44856d5770797f8bc9ca132a8dba6ec90935bbb1de00cc2a9e4507e6a5b6",
+          "first": "2021-03-01",
+          "last": "2021-08-31"
+        },
+        {
+          "start": "2021-09-01",
+          "end": "2022-02-28",
+          "rows": 123,
+          "sha256": "368214c77f30454ed682c09bb772d6d71f068f0167c52fb837cb3951f6fabe6f",
+          "first": "2021-09-01",
+          "last": "2022-02-28"
+        },
+        {
+          "start": "2022-03-01",
+          "end": "2022-08-31",
+          "rows": 124,
+          "sha256": "f1ef0779da64114dcb491d702b1e096f12511b0a4a381b19a165e43cb928801d",
+          "first": "2022-03-02",
+          "last": "2022-08-30"
+        },
+        {
+          "start": "2022-09-01",
+          "end": "2023-02-28",
+          "rows": 124,
+          "sha256": "fc8d890e30d93f0748ce5f8647ff1bc0adf48f879a512c4fa71959337c8af374",
+          "first": "2022-09-01",
+          "last": "2023-02-28"
+        },
+        {
+          "start": "2023-03-01",
+          "end": "2023-08-31",
+          "rows": 124,
+          "sha256": "e31d21425d82eeda65df9108f7b4514110f86f648721b12576a5d6ee42fefc18",
+          "first": "2023-03-01",
+          "last": "2023-08-31"
+        },
+        {
+          "start": "2023-09-01",
+          "end": "2024-02-29",
+          "rows": 121,
+          "sha256": "8b0f37e1c25f9d47a27ed7aacb4635c3a007c16310fbcab79fb1010ffa72bd01",
+          "first": "2023-09-01",
+          "last": "2024-02-29"
+        },
+        {
+          "start": "2024-03-01",
+          "end": "2024-08-31",
+          "rows": 122,
+          "sha256": "ae5177f3a5d9ef4675056717cf4093b25ae7898b1fdcd8f1d70766794d308783",
+          "first": "2024-03-01",
+          "last": "2024-08-30"
+        },
+        {
+          "start": "2024-09-01",
+          "end": "2025-02-28",
+          "rows": 124,
+          "sha256": "3715b7105db8e2eef856a12d2d0eb3ae37d2c9fc1836d64713f5e48bcb66de04",
+          "first": "2024-09-02",
+          "last": "2025-02-28"
+        },
+        {
+          "start": "2025-03-01",
+          "end": "2025-08-31",
+          "rows": 123,
+          "sha256": "9668328bfa289f8183cd365cf48a867c6df90e86ea3fd2bbc47e14b55083fc1e",
+          "first": "2025-03-03",
+          "last": "2025-08-29"
+        },
+        {
+          "start": "2025-09-01",
+          "end": "2026-02-28",
+          "rows": 123,
+          "sha256": "a1fe9c91348a5014d657fa12210b5d0f79c82ab381894e33f3567f8a9bd85587",
+          "first": "2025-09-01",
+          "last": "2026-02-27"
+        },
+        {
+          "start": "2026-03-01",
+          "end": "2026-08-31",
+          "rows": 124,
+          "sha256": "6f4799999f80f5db945bd4aea7114917f000479c69fb6953740b891d9d3a2fed",
+          "first": "2026-03-02",
+          "last": "2026-08-31"
+        },
+        {
+          "start": "2026-09-01",
+          "end": "2026-10-31",
+          "rows": 41,
+          "sha256": "ae0332905e0361f1b8c92f4d98c88dfeb36f60b6fd306802ffd0bfe09a875537",
+          "first": "2026-09-01",
+          "last": "2026-10-30"
+        }
+      ],
+      "normalized_csv_sha256": "2bbd9f09d0ac9dcd4e78c2e8dbbb69d84eb7879df2e7287b8e90ffabb6808412"
+    },
+    "gilt": {
+      "candidate_id": "SBI_GILT_JUNE2036_FUND",
+      "scheme_code": "150681",
+      "isin": "INF200KA12Q9",
+      "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+      "request_windows": 9,
+      "observations": 994,
+      "first_observation": "2022-10-10",
+      "last_observation": "2026-10-31",
+      "max_gap_days": 4,
+      "gaps_over_12_days": [],
+      "raw_segment_checks": [
+        {
+          "start": "2022-10-04",
+          "end": "2023-03-31",
+          "rows": 118,
+          "sha256": "2c2b0210bd7a042f9a380d93918568a398c9670a50fbd80eb53f166fbf063922",
+          "first": "2022-10-10",
+          "last": "2023-03-31"
+        },
+        {
+          "start": "2023-04-01",
+          "end": "2023-09-30",
+          "rows": 120,
+          "sha256": "9ce580738ebb8dcde441ae48eb1f5523535bf9cd2f48c350cbddec280e97d65f",
+          "first": "2023-04-03",
+          "last": "2023-09-29"
+        },
+        {
+          "start": "2023-10-01",
+          "end": "2024-03-31",
+          "rows": 120,
+          "sha256": "3c3a14bd0c1c38c8afca166e525f38801c70565b8e73e5a1420d903d1a3edef6",
+          "first": "2023-10-03",
+          "last": "2024-03-31"
+        },
+        {
+          "start": "2024-04-01",
+          "end": "2024-09-30",
+          "rows": 122,
+          "sha256": "d3568baa35c2a08be6c28ed18b57f506f92d3bf0512e630930597620d89431d1",
+          "first": "2024-04-02",
+          "last": "2024-09-30"
+        },
+        {
+          "start": "2024-10-01",
+          "end": "2025-03-31",
+          "rows": 123,
+          "sha256": "ee3f910300fc875684a0d6299592ec4bb20924b7a490a12965fa281e92a30e6f",
+          "first": "2024-10-01",
+          "last": "2025-03-31"
+        },
+        {
+          "start": "2025-04-01",
+          "end": "2025-09-30",
+          "rows": 124,
+          "sha256": "db5121b33ec14e99bef67a0d753464196918509f5e8bf9d2ebfd078e0c23f398",
+          "first": "2025-04-02",
+          "last": "2025-09-30"
+        },
+        {
+          "start": "2025-10-01",
+          "end": "2026-03-31",
+          "rows": 122,
+          "sha256": "01a37164144075120e7fdf0c5b4eb4179703cc36547ec6e0a8fd355f2d61a40d",
+          "first": "2025-10-01",
+          "last": "2026-03-31"
+        },
+        {
+          "start": "2026-04-01",
+          "end": "2026-09-30",
+          "rows": 124,
+          "sha256": "79b7fd165eaaeaf210ab27b31906fe8fe2ae8facb1bdae6ba8cc425c15ce0653",
+          "first": "2026-04-02",
+          "last": "2026-09-30"
+        },
+        {
+          "start": "2026-10-01",
+          "end": "2026-10-31",
+          "rows": 21,
+          "sha256": "831de3feef7b1bafc3e8d58c426b94c0df7467707db001b87d18c67b2ff8ba86",
+          "first": "2026-10-01",
+          "last": "2026-10-31"
+        }
+      ],
+      "normalized_csv_sha256": "971150a46162dd7b20afc784b5a005026d1533ece1ca3f340a47b0bd8b634ac7"
+    },
+    "gold": {
+      "candidate_id": "HDFC_GOLD_ETF",
+      "scheme_code": "113049",
+      "isin": "INF179KC1981",
+      "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+      "request_windows": 24,
+      "observations": 2918,
+      "first_observation": "2015-01-01",
+      "last_observation": "2026-10-30",
+      "max_gap_days": 5,
+      "gaps_over_12_days": [],
+      "raw_segment_checks": [
+        {
+          "start": "2015-01-01",
+          "end": "2015-06-30",
+          "rows": 122,
+          "sha256": "978272b3230c31aca415aa1ec706c7b56aa888185e98b6ff4aedd68a69f1c209",
+          "first": "2015-01-01",
+          "last": "2015-06-30"
+        },
+        {
+          "start": "2015-07-01",
+          "end": "2015-12-31",
+          "rows": 124,
+          "sha256": "9496385c88af45cd21f7d07682486608cb4f5ec64f6d1ea378455d2c727c97ab",
+          "first": "2015-07-01",
+          "last": "2015-12-31"
+        },
+        {
+          "start": "2016-01-01",
+          "end": "2016-06-30",
+          "rows": 123,
+          "sha256": "d8034acf51cad3e3bf6d302c4485d8faca4b0a6391c7d00b75080cf0e804e0c9",
+          "first": "2016-01-01",
+          "last": "2016-06-30"
+        },
+        {
+          "start": "2016-07-01",
+          "end": "2016-12-31",
+          "rows": 123,
+          "sha256": "f51e9435c4eb4cff046f04be522a9729088353bd2b21a4aa7ac01be1200d1adb",
+          "first": "2016-07-01",
+          "last": "2016-12-30"
+        },
+        {
+          "start": "2017-01-01",
+          "end": "2017-06-30",
+          "rows": 123,
+          "sha256": "0fd2f5a2f4fca3dab4762b75155823ed625b9372dc74119118b9d132358b3eea",
+          "first": "2017-01-02",
+          "last": "2017-06-30"
+        },
+        {
+          "start": "2017-07-01",
+          "end": "2017-12-31",
+          "rows": 124,
+          "sha256": "3a61075d7088c0a66c6c47b94686e353941cd9224fff3f8d7a8a829edcb77cc8",
+          "first": "2017-07-03",
+          "last": "2017-12-29"
+        },
+        {
+          "start": "2018-01-01",
+          "end": "2018-06-30",
+          "rows": 124,
+          "sha256": "c4e598ea16d1c3412744d107fc4cec6d48b35baa6a51a3fe81ba5b38a464be7b",
+          "first": "2018-01-01",
+          "last": "2018-06-29"
+        },
+        {
+          "start": "2018-07-01",
+          "end": "2018-12-31",
+          "rows": 121,
+          "sha256": "b77d14678a003d7d127770fa09555218371464b7882909c5bf56bac01725feb3",
+          "first": "2018-07-02",
+          "last": "2018-12-31"
+        },
+        {
+          "start": "2019-01-01",
+          "end": "2019-06-30",
+          "rows": 122,
+          "sha256": "7d10ae2a988ca02ccd1218e66c456751cc459458c26e14019bfc28c4492a9872",
+          "first": "2019-01-01",
+          "last": "2019-06-28"
+        },
+        {
+          "start": "2019-07-01",
+          "end": "2019-12-31",
+          "rows": 122,
+          "sha256": "ae753307edfd992ce3b2afc152a0c3832c456ba57a87b4b4d16da8b237543a99",
+          "first": "2019-07-01",
+          "last": "2019-12-31"
+        },
+        {
+          "start": "2020-01-01",
+          "end": "2020-06-30",
+          "rows": 122,
+          "sha256": "d7fd49fc5afdf8250577571265e9dac6f46257f1656f9e8893419fbe1e6b7ab1",
+          "first": "2020-01-01",
+          "last": "2020-06-30"
+        },
+        {
+          "start": "2020-07-01",
+          "end": "2020-12-31",
+          "rows": 128,
+          "sha256": "e0a61a6dac885071f6d36bae5bc4c299d10b881818530202555731ae571145d7",
+          "first": "2020-07-01",
+          "last": "2020-12-31"
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2021-06-30",
+          "rows": 122,
+          "sha256": "bfe8703d93b96218bf3554437d674602753a9e525b633a1aa227b1cc6c91366b",
+          "first": "2021-01-01",
+          "last": "2021-06-30"
+        },
+        {
+          "start": "2021-07-01",
+          "end": "2021-12-31",
+          "rows": 125,
+          "sha256": "43970f62456efb7955f049cc21d1503df29f393efcbb81117b3f62ca2098738a",
+          "first": "2021-07-01",
+          "last": "2021-12-31"
+        },
+        {
+          "start": "2022-01-01",
+          "end": "2022-06-30",
+          "rows": 123,
+          "sha256": "5a4aff28fc87383363972087326cd4a34e9388bc234e497bbffbd60474655beb",
+          "first": "2022-01-03",
+          "last": "2022-06-30"
+        },
+        {
+          "start": "2022-07-01",
+          "end": "2022-12-31",
+          "rows": 124,
+          "sha256": "d4fe27e32bda68c9a534ad17fcdb42e18ba4c080e132742f43cbfdf1cd84f979",
+          "first": "2022-07-01",
+          "last": "2022-12-30"
+        },
+        {
+          "start": "2023-01-01",
+          "end": "2023-06-30",
+          "rows": 122,
+          "sha256": "86b1b81e73951764ebc32b98819e1838fb2066c466ea8fa66a7490c481b90857",
+          "first": "2023-01-02",
+          "last": "2023-06-30"
+        },
+        {
+          "start": "2023-07-01",
+          "end": "2023-12-31",
+          "rows": 123,
+          "sha256": "752141ccc5da6fccaa46ce8c81ca52d76350b2a3574e3545b20b3d99fd13f8cc",
+          "first": "2023-07-03",
+          "last": "2023-12-29"
+        },
+        {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "rows": 121,
+          "sha256": "a853d7d0081b903aa4a1d1b145944b545f4824d8575b3e48309786bfba37b32d",
+          "first": "2024-01-01",
+          "last": "2024-06-28"
+        },
+        {
+          "start": "2024-07-01",
+          "end": "2024-12-31",
+          "rows": 125,
+          "sha256": "e623c74293b27a92f33972a155cc8e19d1abfd803fcfe82bde575cfe0c2f1684",
+          "first": "2024-07-01",
+          "last": "2024-12-31"
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "rows": 124,
+          "sha256": "4aa4f2e6cf87cdb51e778bdefd98f099b7824277c1b22be28e3c3523ef37b99b",
+          "first": "2025-01-01",
+          "last": "2025-06-30"
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-12-31",
+          "rows": 125,
+          "sha256": "2cbd8c6b236487a8f2da1cfa9e332017e3416da46cd4f0eb196f63d71c59d11c",
+          "first": "2025-07-01",
+          "last": "2025-12-31"
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-06-30",
+          "rows": 121,
+          "sha256": "5a3b16d76522963dcb3232a356496f1a2ad20ff22d1fa6d9092dd00ccae7994b",
+          "first": "2026-01-01",
+          "last": "2026-06-30"
+        },
+        {
+          "start": "2026-07-01",
+          "end": "2026-10-31",
+          "rows": 85,
+          "sha256": "1410ea24fd130e4ded0cc6919150b962334eba3c0adf5ebe56dc778ab6b31684",
+          "first": "2026-07-01",
+          "last": "2026-10-30"
+        }
+      ],
+      "normalized_csv_sha256": "66b5253e897a89fb0bfff1a44e83bc909c31373040389a32a561b5dbddd3ef0b"
+    },
+    "silver": {
+      "candidate_id": "ICICI_SILVER_ETF",
+      "scheme_code": "149464",
+      "isin": "INF109KC1Y56",
+      "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+      "request_windows": 10,
+      "observations": 1160,
+      "first_observation": "2022-01-25",
+      "last_observation": "2026-10-30",
+      "max_gap_days": 5,
+      "gaps_over_12_days": [],
+      "raw_segment_checks": [
+        {
+          "start": "2022-01-24",
+          "end": "2022-06-30",
+          "rows": 105,
+          "sha256": "323f0d885b3b087cf38c595949da9fbe141256a00f63a2705cbdd9cd5fb29a14",
+          "first": "2022-01-25",
+          "last": "2022-06-30"
+        },
+        {
+          "start": "2022-07-01",
+          "end": "2022-12-31",
+          "rows": 123,
+          "sha256": "c792a10fcee946a3f921341661f83439f6a1c1bf060c6e14f355c82225ebefed",
+          "first": "2022-07-01",
+          "last": "2022-12-30"
+        },
+        {
+          "start": "2023-01-01",
+          "end": "2023-06-30",
+          "rows": 120,
+          "sha256": "37a70b1796e8a175440d5fcaf44d20e48da639809e7ae71883ceeae012a17331",
+          "first": "2023-01-02",
+          "last": "2023-06-30"
+        },
+        {
+          "start": "2023-07-01",
+          "end": "2023-12-31",
+          "rows": 122,
+          "sha256": "300113511c61affd7ecdef2b049568b37e88eafd1bc6c2d83dc6d76240e8d685",
+          "first": "2023-07-03",
+          "last": "2023-12-29"
+        },
+        {
+          "start": "2024-01-01",
+          "end": "2024-06-30",
+          "rows": 117,
+          "sha256": "e71f6bec77fc072ed4e3be9d16357a2830e385894ce440d8524f6058c58b0f17",
+          "first": "2024-01-01",
+          "last": "2024-06-28"
+        },
+        {
+          "start": "2024-07-01",
+          "end": "2024-12-31",
+          "rows": 124,
+          "sha256": "2471bad677fc7a12765c2c4aa232ce498d920b54aa6d915c81a60a4556ad8b8d",
+          "first": "2024-07-01",
+          "last": "2024-12-31"
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-06-30",
+          "rows": 120,
+          "sha256": "dc23cd243df1175c68fe63c499dd5d8ef1c1aac07935140fcbf1824c1651f03d",
+          "first": "2025-01-01",
+          "last": "2025-06-30"
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-12-31",
+          "rows": 124,
+          "sha256": "1a682487c8ee840020ea18a0882949eb50c2c02ac46eb477d306912806e38270",
+          "first": "2025-07-01",
+          "last": "2025-12-31"
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-06-30",
+          "rows": 120,
+          "sha256": "ee8714392ee84d3c72a39785f4617adee88506b8e66b556759e04ee6b706980e",
+          "first": "2026-01-01",
+          "last": "2026-06-30"
+        },
+        {
+          "start": "2026-07-01",
+          "end": "2026-10-31",
+          "rows": 85,
+          "sha256": "4e633f3593eab135a436c1b6e79b08fbf5de2cd81394ff025ad00a6b0cc5f8f5",
+          "first": "2026-07-01",
+          "last": "2026-10-30"
+        }
+      ],
+      "normalized_csv_sha256": "bf60e3abb80296b72e787d4d33eaa21d1154a10761dfd855ad8040208afb224d"
+    }
+  },
+  "g3_schedule_normalized_sha256": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec",
+  "g3_contract_normalized_sha256": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873",
+  "experiment_code_normalized_sha256": "82005180178d6288be0150fae8e72e12ecee1f3e59cce7af084ff1658253f704",
+  "alignment": {
+    "shared_endpoints": [
+      "2022-10-31",
+      "2022-11-30",
+      "2022-12-30",
+      "2023-01-31",
+      "2023-02-28",
+      "2023-03-31",
+      "2023-04-28",
+      "2023-05-31",
+      "2023-06-30",
+      "2023-07-31",
+      "2023-08-31",
+      "2023-09-29",
+      "2023-10-31",
+      "2023-11-30",
+      "2023-12-29",
+      "2024-01-31",
+      "2024-02-29",
+      "2024-03-31",
+      "2024-04-30",
+      "2024-05-31",
+      "2024-06-28",
+      "2024-07-31",
+      "2024-08-30",
+      "2024-09-30",
+      "2024-10-31",
+      "2024-11-29",
+      "2024-12-31",
+      "2025-01-31",
+      "2025-02-28",
+      "2025-03-31",
+      "2025-04-30",
+      "2025-05-30",
+      "2025-06-30",
+      "2025-07-31",
+      "2025-08-29",
+      "2025-09-30",
+      "2025-10-31",
+      "2025-11-28",
+      "2025-12-31",
+      "2026-01-30",
+      "2026-02-27",
+      "2026-03-31",
+      "2026-04-30",
+      "2026-05-29",
+      "2026-06-30",
+      "2026-07-31",
+      "2026-08-31",
+      "2026-09-30",
+      "2026-10-30"
+    ],
+    "intervals": 48,
+    "differing_individual_month_ends": [
+      {
+        "common_observed_date": "2024-06-28",
+        "individual_month_ends": {
+          "equity": "2024-06-28",
+          "gilt": "2024-06-30",
+          "gold": "2024-06-28",
+          "silver": "2024-06-28"
+        }
+      },
+      {
+        "common_observed_date": "2024-08-30",
+        "individual_month_ends": {
+          "equity": "2024-08-30",
+          "gilt": "2024-08-31",
+          "gold": "2024-08-30",
+          "silver": "2024-08-30"
+        }
+      },
+      {
+        "common_observed_date": "2024-11-29",
+        "individual_month_ends": {
+          "equity": "2024-11-29",
+          "gilt": "2024-11-30",
+          "gold": "2024-11-29",
+          "silver": "2024-11-29"
+        }
+      },
+      {
+        "common_observed_date": "2025-05-30",
+        "individual_month_ends": {
+          "equity": "2025-05-30",
+          "gilt": "2025-05-31",
+          "gold": "2025-05-30",
+          "silver": "2025-05-30"
+        }
+      },
+      {
+        "common_observed_date": "2025-08-29",
+        "individual_month_ends": {
+          "equity": "2025-08-29",
+          "gilt": "2025-08-31",
+          "gold": "2025-08-29",
+          "silver": "2025-08-29"
+        }
+      },
+      {
+        "common_observed_date": "2025-11-28",
+        "individual_month_ends": {
+          "equity": "2025-11-28",
+          "gilt": "2025-11-30",
+          "gold": "2025-11-28",
+          "silver": "2025-11-28"
+        }
+      },
+      {
+        "common_observed_date": "2026-01-30",
+        "individual_month_ends": {
+          "equity": "2026-01-30",
+          "gilt": "2026-01-31",
+          "gold": "2026-01-30",
+          "silver": "2026-01-30"
+        }
+      },
+      {
+        "common_observed_date": "2026-02-27",
+        "individual_month_ends": {
+          "equity": "2026-02-27",
+          "gilt": "2026-02-28",
+          "gold": "2026-02-27",
+          "silver": "2026-02-27"
+        }
+      },
+      {
+        "common_observed_date": "2026-05-29",
+        "individual_month_ends": {
+          "equity": "2026-05-29",
+          "gilt": "2026-05-31",
+          "gold": "2026-05-29",
+          "silver": "2026-05-29"
+        }
+      },
+      {
+        "common_observed_date": "2026-10-30",
+        "individual_month_ends": {
+          "equity": "2026-10-30",
+          "gilt": "2026-10-31",
+          "gold": "2026-10-30",
+          "silver": "2026-10-30"
+        }
+      }
+    ]
+  },
+  "assumptions": {
+    "weights_with_silver": {
+      "equity": "0.65",
+      "gilt": "0.2",
+      "gold": "0.1",
+      "silver": "0.05"
+    },
+    "baseline_gold_weight": "0.15",
+    "baseline_silver_weight": "0",
+    "portfolio_rule": "Allocate initial and end-of-month contributions at target weights, then hold until liquidation",
+    "cashflow_months": 120,
+    "initial_inr": "4200000.00",
+    "contributions_inr": "4781227.38",
+    "annual_inflation": "0.06",
+    "floor_inr_2026": "9000000.00",
+    "quiet_months_equal_all_asset_return_annualized": "0.0825359186",
+    "quiet_months_purpose": "Arithmetic hurdle to isolate sequence effects, not a forecast",
+    "incremental_silver_cost_per_side_bps": [
+      0,
+      25,
+      50,
+      100,
+      200
+    ],
+    "cost_convention": "One proportional haircut to each silver purchase budget and terminal sale proceeds; other trading costs omitted",
+    "tax_scope": "Before investor taxes; no after-tax floor or probability claim"
+  },
+  "neutral_hurdle_control": {
+    "baseline_nominal_before_cost_and_tax_inr": "16117629.27",
+    "silver_nominal_before_cost_and_tax_inr": "16117629.27",
+    "baseline_real_before_cost_and_tax_inr": "9000000.00",
+    "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+    "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+    "by_incremental_silver_cost_per_side_bps": {
+      "0": {
+        "silver_cost_terminal_effect_nominal_inr": "0.00",
+        "silver_after_test_cost_nominal_inr": "16117629.27",
+        "silver_real_before_tax_inr": "9000000.00",
+        "silver_shortfall_before_tax_inr": "0.00",
+        "silver_minus_baseline_real_inr": "0.00"
+      },
+      "25": {
+        "silver_cost_terminal_effect_nominal_inr": "4024.37",
+        "silver_after_test_cost_nominal_inr": "16113604.90",
+        "silver_real_before_tax_inr": "8997752.81",
+        "silver_shortfall_before_tax_inr": "2247.19",
+        "silver_minus_baseline_real_inr": "-2247.19"
+      },
+      "50": {
+        "silver_cost_terminal_effect_nominal_inr": "8038.67",
+        "silver_after_test_cost_nominal_inr": "16109590.60",
+        "silver_real_before_tax_inr": "8995511.25",
+        "silver_shortfall_before_tax_inr": "4488.75",
+        "silver_minus_baseline_real_inr": "-4488.75"
+      },
+      "100": {
+        "silver_cost_terminal_effect_nominal_inr": "16037.04",
+        "silver_after_test_cost_nominal_inr": "16101592.23",
+        "silver_real_before_tax_inr": "8991045.00",
+        "silver_shortfall_before_tax_inr": "8955.00",
+        "silver_minus_baseline_real_inr": "-8955.00"
+      },
+      "200": {
+        "silver_cost_terminal_effect_nominal_inr": "31912.91",
+        "silver_after_test_cost_nominal_inr": "16085716.36",
+        "silver_real_before_tax_inr": "8982180.00",
+        "silver_shortfall_before_tax_inr": "17820.00",
+        "silver_minus_baseline_real_inr": "-17820.00"
+      }
+    }
+  },
+  "historical_stress_windows": [
+    {
+      "first_nav_date": "2022-10-31",
+      "last_nav_date": "2023-10-31",
+      "baseline_12_interval_nav_return": "0.1106918384",
+      "silver_12_interval_nav_return": "0.1121620103",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16369785.93",
+          "silver_nominal_before_cost_and_tax_inr": "16381460.29",
+          "baseline_real_before_cost_and_tax_inr": "9140802.96",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "66.81",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16381460.29",
+              "silver_real_before_tax_inr": "9147321.87",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "6518.90"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4377.42",
+              "silver_after_test_cost_nominal_inr": "16377082.88",
+              "silver_real_before_tax_inr": "9144877.54",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "4074.58"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8743.88",
+              "silver_after_test_cost_nominal_inr": "16372716.42",
+              "silver_real_before_tax_inr": "9142439.33",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "1636.37"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17443.93",
+              "silver_after_test_cost_nominal_inr": "16364016.37",
+              "silver_real_before_tax_inr": "9137581.27",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-3221.70"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34712.54",
+              "silver_after_test_cost_nominal_inr": "16346747.75",
+              "silver_real_before_tax_inr": "9127938.56",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12864.40"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16530134.71",
+          "silver_nominal_before_cost_and_tax_inr": "16549950.58",
+          "baseline_real_before_cost_and_tax_inr": "9230340.88",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "107.90",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16549950.58",
+              "silver_real_before_tax_inr": "9241405.96",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "11065.08"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4610.20",
+              "silver_after_test_cost_nominal_inr": "16545340.38",
+              "silver_real_before_tax_inr": "9238831.65",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "8490.77"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9208.87",
+              "silver_after_test_cost_nominal_inr": "16540741.71",
+              "silver_real_before_tax_inr": "9236263.78",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "5922.89"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18371.58",
+              "silver_after_test_cost_nominal_inr": "16531579.00",
+              "silver_real_before_tax_inr": "9231147.37",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "806.49"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36558.52",
+              "silver_after_test_cost_nominal_inr": "16513392.06",
+              "silver_real_before_tax_inr": "9220991.88",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-9349.01"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2022-11-30",
+      "last_nav_date": "2023-11-30",
+      "baseline_12_interval_nav_return": "0.1262850111",
+      "silver_12_interval_nav_return": "0.1275707720",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16529605.64",
+          "silver_nominal_before_cost_and_tax_inr": "16540962.01",
+          "baseline_real_before_cost_and_tax_inr": "9230045.45",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "66.90",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16540962.01",
+              "silver_real_before_tax_inr": "9236386.79",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "6341.34"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4252.54",
+              "silver_after_test_cost_nominal_inr": "16536709.47",
+              "silver_real_before_tax_inr": "9234012.19",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "3966.74"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8494.44",
+              "silver_after_test_cost_nominal_inr": "16532467.57",
+              "silver_real_before_tax_inr": "9231643.54",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "1598.09"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16946.30",
+              "silver_after_test_cost_nominal_inr": "16524015.71",
+              "silver_real_before_tax_inr": "9226924.07",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-3121.39"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33722.29",
+              "silver_after_test_cost_nominal_inr": "16507239.72",
+              "silver_real_before_tax_inr": "9217556.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12489.01"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16781883.03",
+          "silver_nominal_before_cost_and_tax_inr": "16800537.29",
+          "baseline_real_before_cost_and_tax_inr": "9370915.83",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "106.42",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16800537.29",
+              "silver_real_before_tax_inr": "9381332.27",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "10416.44"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4400.26",
+              "silver_after_test_cost_nominal_inr": "16796137.04",
+              "silver_real_before_tax_inr": "9378875.19",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "7959.36"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8789.50",
+              "silver_after_test_cost_nominal_inr": "16791747.79",
+              "silver_real_before_tax_inr": "9376424.26",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "5508.43"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17534.94",
+              "silver_after_test_cost_nominal_inr": "16783002.36",
+              "silver_real_before_tax_inr": "9371540.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "625.02"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34893.64",
+              "silver_after_test_cost_nominal_inr": "16765643.65",
+              "silver_real_before_tax_inr": "9361847.85",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-9067.99"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2022-12-30",
+      "last_nav_date": "2023-12-29",
+      "baseline_12_interval_nav_return": "0.2081483488",
+      "silver_12_interval_nav_return": "0.2028000149",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17259430.51",
+          "silver_nominal_before_cost_and_tax_inr": "17212593.32",
+          "baseline_real_before_cost_and_tax_inr": "9637575.85",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17212593.32",
+              "silver_real_before_tax_inr": "9611422.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-26153.64"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3887.51",
+              "silver_after_test_cost_nominal_inr": "17208705.81",
+              "silver_real_before_tax_inr": "9609251.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-28324.41"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7765.29",
+              "silver_after_test_cost_nominal_inr": "17204828.03",
+              "silver_real_before_tax_inr": "9607086.11",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-30489.74"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15491.65",
+              "silver_after_test_cost_nominal_inr": "17197101.67",
+              "silver_real_before_tax_inr": "9602771.75",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-34804.10"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "30827.61",
+              "silver_after_test_cost_nominal_inr": "17181765.71",
+              "silver_real_before_tax_inr": "9594208.23",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-43367.62"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17977407.53",
+          "silver_nominal_before_cost_and_tax_inr": "17900275.80",
+          "baseline_real_before_cost_and_tax_inr": "10038490.47",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17900275.80",
+              "silver_real_before_tax_inr": "9995420.51",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-43069.96"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3798.52",
+              "silver_after_test_cost_nominal_inr": "17896477.28",
+              "silver_real_before_tax_inr": "9993299.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-45191.03"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7587.52",
+              "silver_after_test_cost_nominal_inr": "17892688.28",
+              "silver_real_before_tax_inr": "9991183.68",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-47306.79"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15137.02",
+              "silver_after_test_cost_nominal_inr": "17885138.79",
+              "silver_real_before_tax_inr": "9986968.08",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-51522.39"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "30121.90",
+              "silver_after_test_cost_nominal_inr": "17870153.90",
+              "silver_real_before_tax_inr": "9978600.60",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-59889.87"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-01-31",
+      "last_nav_date": "2024-01-31",
+      "baseline_12_interval_nav_return": "0.2494019042",
+      "silver_12_interval_nav_return": "0.2473124110",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17610253.82",
+          "silver_nominal_before_cost_and_tax_inr": "17591099.92",
+          "baseline_real_before_cost_and_tax_inr": "9833473.76",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17591099.92",
+              "silver_real_before_tax_inr": "9822778.31",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-10695.44"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3953.55",
+              "silver_after_test_cost_nominal_inr": "17587146.36",
+              "silver_real_before_tax_inr": "9820570.67",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12903.09"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7897.21",
+              "silver_after_test_cost_nominal_inr": "17583202.71",
+              "silver_real_before_tax_inr": "9818368.55",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15105.20"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15754.84",
+              "silver_after_test_cost_nominal_inr": "17575345.08",
+              "silver_real_before_tax_inr": "9813980.90",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-19492.86"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "31351.33",
+              "silver_after_test_cost_nominal_inr": "17559748.59",
+              "silver_real_before_tax_inr": "9805271.89",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-28201.86"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18560284.47",
+          "silver_nominal_before_cost_and_tax_inr": "18529162.52",
+          "baseline_real_before_cost_and_tax_inr": "10363965.91",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18529162.52",
+              "silver_real_before_tax_inr": "10346587.57",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-17378.33"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3909.94",
+              "silver_after_test_cost_nominal_inr": "18525252.58",
+              "silver_real_before_tax_inr": "10344404.28",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-19561.62"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7810.09",
+              "silver_after_test_cost_nominal_inr": "18521352.43",
+              "silver_real_before_tax_inr": "10342226.46",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-21739.45"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15581.03",
+              "silver_after_test_cost_nominal_inr": "18513581.49",
+              "silver_real_before_tax_inr": "10337887.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-26078.70"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "31005.46",
+              "silver_after_test_cost_nominal_inr": "18498157.06",
+              "silver_real_before_tax_inr": "10329274.28",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-34691.62"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-02-28",
+      "last_nav_date": "2024-02-29",
+      "baseline_12_interval_nav_return": "0.2934990618",
+      "silver_12_interval_nav_return": "0.2923424453",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17981927.53",
+          "silver_nominal_before_cost_and_tax_inr": "17970013.53",
+          "baseline_real_before_cost_and_tax_inr": "10041014.41",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17970013.53",
+              "silver_real_before_tax_inr": "10034361.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-6652.72"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4040.56",
+              "silver_after_test_cost_nominal_inr": "17965972.97",
+              "silver_real_before_tax_inr": "10032105.47",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-8908.95"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8071.01",
+              "silver_after_test_cost_nominal_inr": "17961942.52",
+              "silver_real_before_tax_inr": "10029854.89",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-11159.53"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16101.56",
+              "silver_after_test_cost_nominal_inr": "17953911.97",
+              "silver_real_before_tax_inr": "10025370.67",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15643.75"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "32041.30",
+              "silver_after_test_cost_nominal_inr": "17937972.23",
+              "silver_real_before_tax_inr": "10016470.00",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-24544.41"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19179491.05",
+          "silver_nominal_before_cost_and_tax_inr": "19160749.07",
+          "baseline_real_before_cost_and_tax_inr": "10709727.63",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19160749.07",
+              "silver_real_before_tax_inr": "10699262.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-10465.42"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4057.16",
+              "silver_after_test_cost_nominal_inr": "19156691.92",
+              "silver_real_before_tax_inr": "10696996.71",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12730.92"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8104.16",
+              "silver_after_test_cost_nominal_inr": "19152644.92",
+              "silver_real_before_tax_inr": "10694736.89",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-14990.74"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16167.69",
+              "silver_after_test_cost_nominal_inr": "19144581.38",
+              "silver_real_before_tax_inr": "10690234.25",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-19493.38"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "32172.89",
+              "silver_after_test_cost_nominal_inr": "19128576.18",
+              "silver_real_before_tax_inr": "10681297.03",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-28430.60"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-03-31",
+      "last_nav_date": "2024-03-31",
+      "baseline_12_interval_nav_return": "0.2972562399",
+      "silver_12_interval_nav_return": "0.2927093784",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18011677.05",
+          "silver_nominal_before_cost_and_tax_inr": "17970203.47",
+          "baseline_real_before_cost_and_tax_inr": "10057626.39",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17970203.47",
+              "silver_real_before_tax_inr": "10034467.76",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-23158.63"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3907.97",
+              "silver_after_test_cost_nominal_inr": "17966295.51",
+              "silver_real_before_tax_inr": "10032285.57",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-25340.82"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7806.15",
+              "silver_after_test_cost_nominal_inr": "17962397.32",
+              "silver_real_before_tax_inr": "10030108.85",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-27517.54"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15573.17",
+              "silver_after_test_cost_nominal_inr": "17954630.30",
+              "silver_real_before_tax_inr": "10025771.78",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-31854.61"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "30989.84",
+              "silver_after_test_cost_nominal_inr": "17939213.64",
+              "silver_real_before_tax_inr": "10017163.20",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-40463.19"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19230033.80",
+          "silver_nominal_before_cost_and_tax_inr": "19162549.04",
+          "baseline_real_before_cost_and_tax_inr": "10737950.43",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19162549.04",
+              "silver_real_before_tax_inr": "10700267.29",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-37683.14"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3832.82",
+              "silver_after_test_cost_nominal_inr": "19158716.22",
+              "silver_real_before_tax_inr": "10698127.07",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-39823.36"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7656.04",
+              "silver_after_test_cost_nominal_inr": "19154892.99",
+              "silver_real_before_tax_inr": "10695992.20",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-41958.23"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15273.71",
+              "silver_after_test_cost_nominal_inr": "19147275.33",
+              "silver_real_before_tax_inr": "10691738.53",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-46211.90"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "30393.92",
+              "silver_after_test_cost_nominal_inr": "19132155.12",
+              "silver_real_before_tax_inr": "10683295.49",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-54654.94"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-04-28",
+      "last_nav_date": "2024-04-30",
+      "baseline_12_interval_nav_return": "0.2925459387",
+      "silver_12_interval_nav_return": "0.2874232631",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17977410.24",
+          "silver_nominal_before_cost_and_tax_inr": "17931921.39",
+          "baseline_real_before_cost_and_tax_inr": "10038491.98",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17931921.39",
+              "silver_real_before_tax_inr": "10013091.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-25400.74"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4024.28",
+              "silver_after_test_cost_nominal_inr": "17927897.11",
+              "silver_real_before_tax_inr": "10010844.10",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-27647.87"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8038.49",
+              "silver_after_test_cost_nominal_inr": "17923882.90",
+              "silver_real_before_tax_inr": "10008602.59",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-29889.39"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16036.68",
+              "silver_after_test_cost_nominal_inr": "17915884.70",
+              "silver_real_before_tax_inr": "10004136.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-34355.54"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "31912.19",
+              "silver_after_test_cost_nominal_inr": "17900009.20",
+              "silver_real_before_tax_inr": "9995271.64",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-43220.34"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19170168.27",
+          "silver_nominal_before_cost_and_tax_inr": "19095565.81",
+          "baseline_real_before_cost_and_tax_inr": "10704521.84",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19095565.81",
+              "silver_real_before_tax_inr": "10662864.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-41657.63"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4019.80",
+              "silver_after_test_cost_nominal_inr": "19091546.01",
+              "silver_real_before_tax_inr": "10660619.58",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-43902.26"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8029.53",
+              "silver_after_test_cost_nominal_inr": "19087536.28",
+              "silver_real_before_tax_inr": "10658380.56",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-46141.27"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16018.81",
+              "silver_after_test_cost_nominal_inr": "19079547.00",
+              "silver_real_before_tax_inr": "10653919.39",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-50602.45"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "31876.63",
+              "silver_after_test_cost_nominal_inr": "19063689.17",
+              "silver_real_before_tax_inr": "10645064.46",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-59457.37"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-05-31",
+      "last_nav_date": "2024-05-31",
+      "baseline_12_interval_nav_return": "0.2665645282",
+      "silver_12_interval_nav_return": "0.2718519873",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17747605.38",
+          "silver_nominal_before_cost_and_tax_inr": "17795808.71",
+          "baseline_real_before_cost_and_tax_inr": "9910170.15",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "271.36",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17795808.71",
+              "silver_real_before_tax_inr": "9937086.64",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "26916.49"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4496.28",
+              "silver_after_test_cost_nominal_inr": "17791312.44",
+              "silver_real_before_tax_inr": "9934575.94",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "24405.79"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8981.30",
+              "silver_after_test_cost_nominal_inr": "17786827.41",
+              "silver_real_before_tax_inr": "9932071.53",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "21901.38"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17917.58",
+              "silver_after_test_cost_nominal_inr": "17777891.13",
+              "silver_real_before_tax_inr": "9927081.55",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "16911.40"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35655.09",
+              "silver_after_test_cost_nominal_inr": "17760153.62",
+              "silver_real_before_tax_inr": "9917177.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "7006.87"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18792844.33",
+          "silver_nominal_before_cost_and_tax_inr": "18871291.62",
+          "baseline_real_before_cost_and_tax_inr": "10493826.12",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "417.53",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18871291.62",
+              "silver_real_before_tax_inr": "10537630.68",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "43804.56"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4791.21",
+              "silver_after_test_cost_nominal_inr": "18866500.42",
+              "silver_real_before_tax_inr": "10534955.29",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "41129.18"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9570.42",
+              "silver_after_test_cost_nominal_inr": "18861721.21",
+              "silver_real_before_tax_inr": "10532286.61",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "38460.49"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19092.86",
+              "silver_after_test_cost_nominal_inr": "18852198.76",
+              "silver_real_before_tax_inr": "10526969.32",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "33143.21"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "37993.84",
+              "silver_after_test_cost_nominal_inr": "18833297.79",
+              "silver_real_before_tax_inr": "10516415.12",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "22589.00"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-06-30",
+      "last_nav_date": "2024-06-28",
+      "baseline_12_interval_nav_return": "0.2969116998",
+      "silver_12_interval_nav_return": "0.2995849222",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18024687.38",
+          "silver_nominal_before_cost_and_tax_inr": "18048669.34",
+          "baseline_real_before_cost_and_tax_inr": "10064891.29",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "135.44",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18048669.34",
+              "silver_real_before_tax_inr": "10078282.69",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "13391.40"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4451.20",
+              "silver_after_test_cost_nominal_inr": "18044218.15",
+              "silver_real_before_tax_inr": "10075797.17",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "10905.87"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8891.25",
+              "silver_after_test_cost_nominal_inr": "18039778.09",
+              "silver_real_before_tax_inr": "10073317.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "8426.57"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17737.93",
+              "silver_after_test_cost_nominal_inr": "18030931.41",
+              "silver_real_before_tax_inr": "10068377.92",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "3486.63"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35297.59",
+              "silver_after_test_cost_nominal_inr": "18013371.75",
+              "silver_real_before_tax_inr": "10058572.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-6318.59"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19243575.61",
+          "silver_nominal_before_cost_and_tax_inr": "19282788.05",
+          "baseline_real_before_cost_and_tax_inr": "10745512.11",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "209.51",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19282788.05",
+              "silver_real_before_tax_inr": "10767408.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "21896.02"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4722.78",
+              "silver_after_test_cost_nominal_inr": "19278065.27",
+              "silver_real_before_tax_inr": "10764770.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "19258.84"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9433.74",
+              "silver_after_test_cost_nominal_inr": "19273354.31",
+              "silver_real_before_tax_inr": "10762140.38",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "16628.27"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18820.20",
+              "silver_after_test_cost_nominal_inr": "19263967.85",
+              "silver_real_before_tax_inr": "10756899.03",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "11386.92"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "37451.24",
+              "silver_after_test_cost_nominal_inr": "19245336.80",
+              "silver_real_before_tax_inr": "10746495.55",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "983.44"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-07-31",
+      "last_nav_date": "2024-07-31",
+      "baseline_12_interval_nav_return": "0.2919693450",
+      "silver_12_interval_nav_return": "0.2902929301",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17985543.61",
+          "silver_nominal_before_cost_and_tax_inr": "17971571.36",
+          "baseline_real_before_cost_and_tax_inr": "10043033.61",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17971571.36",
+              "silver_real_before_tax_inr": "10035231.58",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-7802.03"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4109.05",
+              "silver_after_test_cost_nominal_inr": "17967462.31",
+              "silver_real_before_tax_inr": "10032937.11",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-10096.51"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8207.82",
+              "silver_after_test_cost_nominal_inr": "17963363.54",
+              "silver_real_before_tax_inr": "10030648.38",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12385.24"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16374.50",
+              "silver_after_test_cost_nominal_inr": "17955196.86",
+              "silver_real_before_tax_inr": "10026088.15",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-16945.47"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "32584.44",
+              "silver_after_test_cost_nominal_inr": "17938986.93",
+              "silver_real_before_tax_inr": "10017036.60",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-25997.01"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19177077.98",
+          "silver_nominal_before_cost_and_tax_inr": "19153719.81",
+          "baseline_real_before_cost_and_tax_inr": "10708380.18",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19153719.81",
+              "silver_real_before_tax_inr": "10695337.10",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-13043.08"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4161.51",
+              "silver_after_test_cost_nominal_inr": "19149558.31",
+              "silver_real_before_tax_inr": "10693013.34",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15366.84"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8312.60",
+              "silver_after_test_cost_nominal_inr": "19145407.22",
+              "silver_real_before_tax_inr": "10690695.39",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-17684.79"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16583.52",
+              "silver_after_test_cost_nominal_inr": "19137136.29",
+              "silver_real_before_tax_inr": "10686076.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-22303.23"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33000.38",
+              "silver_after_test_cost_nominal_inr": "19120719.44",
+              "silver_real_before_tax_inr": "10676909.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-31470.32"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-08-31",
+      "last_nav_date": "2024-08-30",
+      "baseline_12_interval_nav_return": "0.3148284450",
+      "silver_12_interval_nav_return": "0.3114372429",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18175428.88",
+          "silver_nominal_before_cost_and_tax_inr": "18146532.51",
+          "baseline_real_before_cost_and_tax_inr": "10149064.56",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18146532.51",
+              "silver_real_before_tax_inr": "10132928.97",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-16135.58"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4139.86",
+              "silver_after_test_cost_nominal_inr": "18142392.65",
+              "silver_real_before_tax_inr": "10130617.30",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-18447.26"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8269.36",
+              "silver_after_test_cost_nominal_inr": "18138263.15",
+              "silver_real_before_tax_inr": "10128311.40",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-20753.15"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16497.28",
+              "silver_after_test_cost_nominal_inr": "18130035.23",
+              "silver_real_before_tax_inr": "10123716.98",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-25347.58"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "32828.75",
+              "silver_after_test_cost_nominal_inr": "18113703.76",
+              "silver_real_before_tax_inr": "10114597.57",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-34466.99"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19494848.26",
+          "silver_nominal_before_cost_and_tax_inr": "19446867.30",
+          "baseline_real_before_cost_and_tax_inr": "10885821.45",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19446867.30",
+              "silver_real_before_tax_inr": "10859029.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-26792.32"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4211.39",
+              "silver_after_test_cost_nominal_inr": "19442655.91",
+              "silver_real_before_tax_inr": "10856677.51",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-29143.94"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8412.25",
+              "silver_after_test_cost_nominal_inr": "19438455.05",
+              "silver_real_before_tax_inr": "10854331.77",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-31489.67"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16782.32",
+              "silver_after_test_cost_nominal_inr": "19430084.98",
+              "silver_real_before_tax_inr": "10849657.97",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-36163.48"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33395.98",
+              "silver_after_test_cost_nominal_inr": "19413471.32",
+              "silver_real_before_tax_inr": "10840380.99",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-45440.46"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-09-29",
+      "last_nav_date": "2024-09-30",
+      "baseline_12_interval_nav_return": "0.3311620095",
+      "silver_12_interval_nav_return": "0.3287084702",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18314976.30",
+          "silver_nominal_before_cost_and_tax_inr": "18294495.10",
+          "baseline_real_before_cost_and_tax_inr": "10226987.10",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18294495.10",
+              "silver_real_before_tax_inr": "10215550.51",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-11436.60"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4379.21",
+              "silver_after_test_cost_nominal_inr": "18290115.88",
+              "silver_real_before_tax_inr": "10213105.18",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-13881.93"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8747.47",
+              "silver_after_test_cost_nominal_inr": "18285747.63",
+              "silver_real_before_tax_inr": "10210665.97",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-16321.14"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17451.08",
+              "silver_after_test_cost_nominal_inr": "18277044.01",
+              "silver_real_before_tax_inr": "10205805.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-21181.19"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34726.78",
+              "silver_after_test_cost_nominal_inr": "18259768.31",
+              "silver_real_before_tax_inr": "10196159.25",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-30827.85"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19726372.93",
+          "silver_nominal_before_cost_and_tax_inr": "19692149.90",
+          "baseline_real_before_cost_and_tax_inr": "11015103.61",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19692149.90",
+              "silver_real_before_tax_inr": "10995993.65",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-19109.96"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4605.17",
+              "silver_after_test_cost_nominal_inr": "19687544.73",
+              "silver_real_before_tax_inr": "10993422.15",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-21681.46"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9198.81",
+              "silver_after_test_cost_nominal_inr": "19682951.09",
+              "silver_real_before_tax_inr": "10990857.08",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-24246.53"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18351.51",
+              "silver_after_test_cost_nominal_inr": "19673798.39",
+              "silver_real_before_tax_inr": "10985746.26",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-29357.35"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36518.58",
+              "silver_after_test_cost_nominal_inr": "19655631.32",
+              "silver_real_before_tax_inr": "10975601.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-39501.75"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-10-31",
+      "last_nav_date": "2024-10-31",
+      "baseline_12_interval_nav_return": "0.2961505040",
+      "silver_12_interval_nav_return": "0.2987004326",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17975203.66",
+          "silver_nominal_before_cost_and_tax_inr": "17998301.99",
+          "baseline_real_before_cost_and_tax_inr": "10037259.84",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "126.99",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17998301.99",
+              "silver_real_before_tax_inr": "10050157.82",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "12897.98"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4570.59",
+              "silver_after_test_cost_nominal_inr": "17993731.40",
+              "silver_real_before_tax_inr": "10047605.63",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "10345.79"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9129.73",
+              "silver_after_test_cost_nominal_inr": "17989172.25",
+              "silver_real_before_tax_inr": "10045059.83",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "7799.99"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18213.70",
+              "silver_after_test_cost_nominal_inr": "17980088.29",
+              "silver_real_before_tax_inr": "10039987.39",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "2727.55"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36244.35",
+              "silver_after_test_cost_nominal_inr": "17962057.64",
+              "silver_real_before_tax_inr": "10029919.17",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-7340.67"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "19183146.78",
+          "silver_nominal_before_cost_and_tax_inr": "19220807.59",
+          "baseline_real_before_cost_and_tax_inr": "10711768.97",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "193.08",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19220807.59",
+              "silver_real_before_tax_inr": "10732798.56",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "21029.60"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4917.80",
+              "silver_after_test_cost_nominal_inr": "19215889.79",
+              "silver_real_before_tax_inr": "10730052.49",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "18283.52"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9823.29",
+              "silver_after_test_cost_nominal_inr": "19210984.29",
+              "silver_real_before_tax_inr": "10727313.29",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "15544.32"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19597.34",
+              "silver_after_test_cost_nominal_inr": "19201210.24",
+              "silver_real_before_tax_inr": "10721855.51",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "10086.54"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "38997.73",
+              "silver_after_test_cost_nominal_inr": "19181809.86",
+              "silver_real_before_tax_inr": "10711022.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-746.53"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-11-30",
+      "last_nav_date": "2024-11-29",
+      "baseline_12_interval_nav_return": "0.2282391401",
+      "silver_12_interval_nav_return": "0.2257137841",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17378500.62",
+          "silver_nominal_before_cost_and_tax_inr": "17356773.93",
+          "baseline_real_before_cost_and_tax_inr": "9704063.98",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17356773.93",
+              "silver_real_before_tax_inr": "9691931.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12132.07"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4214.37",
+              "silver_after_test_cost_nominal_inr": "17352559.56",
+              "silver_real_before_tax_inr": "9689578.63",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-14485.35"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8418.18",
+              "silver_after_test_cost_nominal_inr": "17348355.74",
+              "silver_real_before_tax_inr": "9687231.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-16832.74"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16794.17",
+              "silver_after_test_cost_nominal_inr": "17339979.76",
+              "silver_real_before_tax_inr": "9682554.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-21509.85"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33419.56",
+              "silver_after_test_cost_nominal_inr": "17323354.37",
+              "silver_real_before_tax_inr": "9673270.60",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-30793.38"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18201467.01",
+          "silver_nominal_before_cost_and_tax_inr": "18165496.18",
+          "baseline_real_before_cost_and_tax_inr": "10163604.11",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18165496.18",
+              "silver_real_before_tax_inr": "10143518.19",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-20085.92"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4335.22",
+              "silver_after_test_cost_nominal_inr": "18161160.96",
+              "silver_real_before_tax_inr": "10141097.42",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-22506.69"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8659.59",
+              "silver_after_test_cost_nominal_inr": "18156836.59",
+              "silver_real_before_tax_inr": "10138682.72",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-24921.39"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17275.77",
+              "silver_after_test_cost_nominal_inr": "18148220.41",
+              "silver_real_before_tax_inr": "10133871.49",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-29732.62"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34377.91",
+              "silver_after_test_cost_nominal_inr": "18131118.26",
+              "silver_real_before_tax_inr": "10124321.74",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-39282.37"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2023-12-29",
+      "last_nav_date": "2024-12-31",
+      "baseline_12_interval_nav_return": "0.1521659562",
+      "silver_12_interval_nav_return": "0.1506325826",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16712659.59",
+          "silver_nominal_before_cost_and_tax_inr": "16698449.95",
+          "baseline_real_before_cost_and_tax_inr": "9332261.82",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16698449.95",
+              "silver_real_before_tax_inr": "9324327.23",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-7934.59"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4203.75",
+              "silver_after_test_cost_nominal_inr": "16694246.19",
+              "silver_real_before_tax_inr": "9321979.88",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-10281.94"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8396.98",
+              "silver_after_test_cost_nominal_inr": "16690052.96",
+              "silver_real_before_tax_inr": "9319638.40",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12623.42"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16751.88",
+              "silver_after_test_cost_nominal_inr": "16681698.07",
+              "silver_real_before_tax_inr": "9314973.07",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-17288.75"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33335.39",
+              "silver_after_test_cost_nominal_inr": "16665114.55",
+              "silver_real_before_tax_inr": "9305712.92",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-26548.90"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17104780.48",
+          "silver_nominal_before_cost_and_tax_inr": "17081764.31",
+          "baseline_real_before_cost_and_tax_inr": "9551220.08",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17081764.31",
+              "silver_real_before_tax_inr": "9538367.97",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12852.11"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4321.92",
+              "silver_after_test_cost_nominal_inr": "17077442.39",
+              "silver_real_before_tax_inr": "9535954.63",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15265.45"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8633.03",
+              "silver_after_test_cost_nominal_inr": "17073131.28",
+              "silver_real_before_tax_inr": "9533547.33",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-17672.75"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17222.79",
+              "silver_after_test_cost_nominal_inr": "17064541.53",
+              "silver_real_before_tax_inr": "9528750.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-22469.22"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34272.48",
+              "silver_after_test_cost_nominal_inr": "17047491.83",
+              "silver_real_before_tax_inr": "9519230.40",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-31989.68"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-01-31",
+      "last_nav_date": "2025-01-31",
+      "baseline_12_interval_nav_return": "0.1271601656",
+      "silver_12_interval_nav_return": "0.1267127039",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16486236.11",
+          "silver_nominal_before_cost_and_tax_inr": "16481515.41",
+          "baseline_real_before_cost_and_tax_inr": "9205828.14",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16481515.41",
+              "silver_real_before_tax_inr": "9203192.12",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-2636.02"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4477.87",
+              "silver_after_test_cost_nominal_inr": "16477037.53",
+              "silver_real_before_tax_inr": "9200691.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-5136.44"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8944.54",
+              "silver_after_test_cost_nominal_inr": "16472570.87",
+              "silver_real_before_tax_inr": "9198197.53",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-7630.60"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17844.24",
+              "silver_after_test_cost_nominal_inr": "16463671.16",
+              "silver_real_before_tax_inr": "9193227.99",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12600.15"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35509.15",
+              "silver_after_test_cost_nominal_inr": "16446006.26",
+              "silver_real_before_tax_inr": "9183364.00",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-22464.14"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16735564.33",
+          "silver_nominal_before_cost_and_tax_inr": "16728184.80",
+          "baseline_real_before_cost_and_tax_inr": "9345051.71",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16728184.80",
+              "silver_real_before_tax_inr": "9340931.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-4120.69"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4771.48",
+              "silver_after_test_cost_nominal_inr": "16723413.32",
+              "silver_real_before_tax_inr": "9338266.65",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-6785.06"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9531.02",
+              "silver_after_test_cost_nominal_inr": "16718653.78",
+              "silver_real_before_tax_inr": "9335608.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-9442.76"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19014.26",
+              "silver_after_test_cost_nominal_inr": "16709170.54",
+              "silver_real_before_tax_inr": "9330313.56",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-14738.16"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "37837.43",
+              "silver_after_test_cost_nominal_inr": "16690347.37",
+              "silver_real_before_tax_inr": "9319802.80",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-25248.91"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-02-29",
+      "last_nav_date": "2025-02-28",
+      "baseline_12_interval_nav_return": "0.0667364458",
+      "silver_12_interval_nav_return": "0.0658301925",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15937954.55",
+          "silver_nominal_before_cost_and_tax_inr": "15928153.29",
+          "baseline_real_before_cost_and_tax_inr": "8899670.58",
+          "baseline_shortfall_before_cost_and_tax_inr": "100329.42",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15928153.29",
+              "silver_real_before_tax_inr": "8894197.60",
+              "silver_shortfall_before_tax_inr": "105802.40",
+              "silver_minus_baseline_real_inr": "-5472.98"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4565.09",
+              "silver_after_test_cost_nominal_inr": "15923588.20",
+              "silver_real_before_tax_inr": "8891648.48",
+              "silver_shortfall_before_tax_inr": "108351.52",
+              "silver_minus_baseline_real_inr": "-8022.10"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9118.75",
+              "silver_after_test_cost_nominal_inr": "15919034.54",
+              "silver_real_before_tax_inr": "8889105.74",
+              "silver_shortfall_before_tax_inr": "110894.26",
+              "silver_minus_baseline_real_inr": "-10564.84"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18191.78",
+              "silver_after_test_cost_nominal_inr": "15909961.50",
+              "silver_real_before_tax_inr": "8884039.40",
+              "silver_shortfall_before_tax_inr": "115960.60",
+              "silver_minus_baseline_real_inr": "-15631.17"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36200.74",
+              "silver_after_test_cost_nominal_inr": "15891952.55",
+              "silver_real_before_tax_inr": "8873983.30",
+              "silver_shortfall_before_tax_inr": "126016.70",
+              "silver_minus_baseline_real_inr": "-25687.28"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15842061.26",
+          "silver_nominal_before_cost_and_tax_inr": "15826837.79",
+          "baseline_real_before_cost_and_tax_inr": "8846124.26",
+          "baseline_shortfall_before_cost_and_tax_inr": "153875.74",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15826837.79",
+              "silver_real_before_tax_inr": "8837623.56",
+              "silver_shortfall_before_tax_inr": "162376.44",
+              "silver_minus_baseline_real_inr": "-8500.71"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4918.09",
+              "silver_after_test_cost_nominal_inr": "15821919.70",
+              "silver_real_before_tax_inr": "8834877.32",
+              "silver_shortfall_before_tax_inr": "165122.68",
+              "silver_minus_baseline_real_inr": "-11246.94"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9823.88",
+              "silver_after_test_cost_nominal_inr": "15817013.92",
+              "silver_real_before_tax_inr": "8832137.96",
+              "silver_shortfall_before_tax_inr": "167862.04",
+              "silver_minus_baseline_real_inr": "-13986.31"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19598.51",
+              "silver_after_test_cost_nominal_inr": "15807239.29",
+              "silver_real_before_tax_inr": "8826679.85",
+              "silver_shortfall_before_tax_inr": "173320.15",
+              "silver_minus_baseline_real_inr": "-19444.41"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "39000.05",
+              "silver_after_test_cost_nominal_inr": "15787837.75",
+              "silver_real_before_tax_inr": "8815846.14",
+              "silver_shortfall_before_tax_inr": "184153.86",
+              "silver_minus_baseline_real_inr": "-30278.13"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-03-31",
+      "last_nav_date": "2025-03-31",
+      "baseline_12_interval_nav_return": "0.1045955484",
+      "silver_12_interval_nav_return": "0.1063891092",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16291283.37",
+          "silver_nominal_before_cost_and_tax_inr": "16305250.57",
+          "baseline_real_before_cost_and_tax_inr": "9096967.54",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "76.37",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16305250.57",
+              "silver_real_before_tax_inr": "9104766.76",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "7799.21"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4584.07",
+              "silver_after_test_cost_nominal_inr": "16300666.51",
+              "silver_real_before_tax_inr": "9102207.04",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "5239.50"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9156.66",
+              "silver_after_test_cost_nominal_inr": "16296093.92",
+              "silver_real_before_tax_inr": "9099653.73",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "2686.19"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18267.41",
+              "silver_after_test_cost_nominal_inr": "16286983.16",
+              "silver_real_before_tax_inr": "9094566.33",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-2401.21"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36351.23",
+              "silver_after_test_cost_nominal_inr": "16268899.34",
+              "silver_real_before_tax_inr": "9084468.42",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-12499.12"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16413210.01",
+          "silver_nominal_before_cost_and_tax_inr": "16437066.96",
+          "baseline_real_before_cost_and_tax_inr": "9165050.74",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "121.17",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16437066.96",
+              "silver_real_before_tax_inr": "9178372.34",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "13321.60"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4946.02",
+              "silver_after_test_cost_nominal_inr": "16432120.94",
+              "silver_real_before_tax_inr": "9175610.50",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "10559.76"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9879.67",
+              "silver_after_test_cost_nominal_inr": "16427187.29",
+              "silver_real_before_tax_inr": "9172855.58",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "7804.84"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19709.82",
+              "silver_after_test_cost_nominal_inr": "16417357.15",
+              "silver_real_before_tax_inr": "9167366.48",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "2315.74"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "39221.54",
+              "silver_after_test_cost_nominal_inr": "16397845.42",
+              "silver_real_before_tax_inr": "9156471.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-8579.51"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-04-30",
+      "last_nav_date": "2025-04-30",
+      "baseline_12_interval_nav_return": "0.1091302227",
+      "silver_12_interval_nav_return": "0.1021396173",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16345969.64",
+          "silver_nominal_before_cost_and_tax_inr": "16280920.93",
+          "baseline_real_before_cost_and_tax_inr": "9127504.07",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16280920.93",
+              "silver_real_before_tax_inr": "9091181.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-36322.86"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4203.24",
+              "silver_after_test_cost_nominal_inr": "16276717.69",
+              "silver_real_before_tax_inr": "9088834.15",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-38669.93"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8395.96",
+              "silver_after_test_cost_nominal_inr": "16272524.98",
+              "silver_real_before_tax_inr": "9086492.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-41011.12"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "16749.83",
+              "silver_after_test_cost_nominal_inr": "16264171.10",
+              "silver_real_before_tax_inr": "9081828.19",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-45675.88"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33331.32",
+              "silver_after_test_cost_nominal_inr": "16247589.61",
+              "silver_real_before_tax_inr": "9072569.18",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-54934.89"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16495901.93",
+          "silver_nominal_before_cost_and_tax_inr": "16390663.08",
+          "baseline_real_before_cost_and_tax_inr": "9211225.48",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16390663.08",
+              "silver_real_before_tax_inr": "9152460.65",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-58764.83"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4320.99",
+              "silver_after_test_cost_nominal_inr": "16386342.10",
+              "silver_real_before_tax_inr": "9150047.84",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-61177.64"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8631.15",
+              "silver_after_test_cost_nominal_inr": "16382031.93",
+              "silver_real_before_tax_inr": "9147641.06",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-63584.42"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17219.05",
+              "silver_after_test_cost_nominal_inr": "16373444.03",
+              "silver_real_before_tax_inr": "9142845.63",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-68379.85"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "34265.04",
+              "silver_after_test_cost_nominal_inr": "16356398.04",
+              "silver_real_before_tax_inr": "9133327.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-77898.24"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-05-31",
+      "last_nav_date": "2025-05-30",
+      "baseline_12_interval_nav_return": "0.1282391448",
+      "silver_12_interval_nav_return": "0.1152383835",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16520569.65",
+          "silver_nominal_before_cost_and_tax_inr": "16405296.43",
+          "baseline_real_before_cost_and_tax_inr": "9224999.81",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16405296.43",
+              "silver_real_before_tax_inr": "9160631.84",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-64367.96"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3954.32",
+              "silver_after_test_cost_nominal_inr": "16401342.11",
+              "silver_real_before_tax_inr": "9158423.77",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-66576.04"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7898.74",
+              "silver_after_test_cost_nominal_inr": "16397397.69",
+              "silver_real_before_tax_inr": "9156221.23",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-68778.58"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15757.88",
+              "silver_after_test_cost_nominal_inr": "16389538.55",
+              "silver_real_before_tax_inr": "9151832.72",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-73167.08"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "31357.39",
+              "silver_after_test_cost_nominal_inr": "16373939.04",
+              "silver_real_before_tax_inr": "9143122.04",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-81877.77"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16779864.74",
+          "silver_nominal_before_cost_and_tax_inr": "16590731.21",
+          "baseline_real_before_cost_and_tax_inr": "9369788.83",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16590731.21",
+              "silver_real_before_tax_inr": "9264177.65",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-105611.17"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "3906.08",
+              "silver_after_test_cost_nominal_inr": "16586825.13",
+              "silver_real_before_tax_inr": "9261996.52",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-107792.31"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "7802.38",
+              "silver_after_test_cost_nominal_inr": "16582928.83",
+              "silver_real_before_tax_inr": "9259820.84",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-109967.98"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "15565.66",
+              "silver_after_test_cost_nominal_inr": "16575165.55",
+              "silver_real_before_tax_inr": "9255485.87",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-114302.96"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "30974.87",
+              "silver_after_test_cost_nominal_inr": "16559756.33",
+              "silver_real_before_tax_inr": "9246881.44",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-122907.38"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-06-28",
+      "last_nav_date": "2025-06-30",
+      "baseline_12_interval_nav_return": "0.1053028682",
+      "silver_12_interval_nav_return": "0.0989447856",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16333122.14",
+          "silver_nominal_before_cost_and_tax_inr": "16277686.12",
+          "baseline_real_before_cost_and_tax_inr": "9120330.09",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16277686.12",
+              "silver_real_before_tax_inr": "9089374.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-30955.18"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4277.85",
+              "silver_after_test_cost_nominal_inr": "16273408.27",
+              "silver_real_before_tax_inr": "9086986.18",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-33343.91"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8544.99",
+              "silver_after_test_cost_nominal_inr": "16269141.13",
+              "silver_real_before_tax_inr": "9084603.43",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-35726.66"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17047.15",
+              "silver_after_test_cost_nominal_inr": "16260638.97",
+              "silver_real_before_tax_inr": "9079855.87",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-40474.22"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33922.98",
+              "silver_after_test_cost_nominal_inr": "16243763.14",
+              "silver_real_before_tax_inr": "9070432.50",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-49897.60"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16464577.43",
+          "silver_nominal_before_cost_and_tax_inr": "16373165.14",
+          "baseline_real_before_cost_and_tax_inr": "9193734.04",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16373165.14",
+              "silver_real_before_tax_inr": "9142689.90",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-51044.15"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4436.56",
+              "silver_after_test_cost_nominal_inr": "16368728.58",
+              "silver_real_before_tax_inr": "9140212.54",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-53521.50"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8862.02",
+              "silver_after_test_cost_nominal_inr": "16364303.12",
+              "silver_real_before_tax_inr": "9137741.39",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-55992.65"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17679.62",
+              "silver_after_test_cost_nominal_inr": "16355485.52",
+              "silver_real_before_tax_inr": "9132817.69",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-60916.36"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35181.56",
+              "silver_after_test_cost_nominal_inr": "16337983.58",
+              "silver_real_before_tax_inr": "9123044.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-70689.35"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-07-31",
+      "last_nav_date": "2025-07-31",
+      "baseline_12_interval_nav_return": "0.0687554078",
+      "silver_12_interval_nav_return": "0.0642971255",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16007189.44",
+          "silver_nominal_before_cost_and_tax_inr": "15968779.81",
+          "baseline_real_before_cost_and_tax_inr": "8938330.97",
+          "baseline_shortfall_before_cost_and_tax_inr": "61669.03",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15968779.81",
+              "silver_real_before_tax_inr": "8916883.24",
+              "silver_shortfall_before_tax_inr": "83116.76",
+              "silver_minus_baseline_real_inr": "-21447.74"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4539.30",
+              "silver_after_test_cost_nominal_inr": "15964240.51",
+              "silver_real_before_tax_inr": "8914348.52",
+              "silver_shortfall_before_tax_inr": "85651.48",
+              "silver_minus_baseline_real_inr": "-23982.46"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9067.23",
+              "silver_after_test_cost_nominal_inr": "15959712.58",
+              "silver_real_before_tax_inr": "8911820.14",
+              "silver_shortfall_before_tax_inr": "88179.86",
+              "silver_minus_baseline_real_inr": "-26510.83"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18089.01",
+              "silver_after_test_cost_nominal_inr": "15950690.80",
+              "silver_real_before_tax_inr": "8906782.43",
+              "silver_shortfall_before_tax_inr": "93217.57",
+              "silver_minus_baseline_real_inr": "-31548.54"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35996.21",
+              "silver_after_test_cost_nominal_inr": "15932783.59",
+              "silver_real_before_tax_inr": "8896783.14",
+              "silver_shortfall_before_tax_inr": "103216.86",
+              "silver_minus_baseline_real_inr": "-41547.83"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15930719.11",
+          "silver_nominal_before_cost_and_tax_inr": "15867154.53",
+          "baseline_real_before_cost_and_tax_inr": "8895630.34",
+          "baseline_shortfall_before_cost_and_tax_inr": "104369.66",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15867154.53",
+              "silver_real_before_tax_inr": "8860136.21",
+              "silver_shortfall_before_tax_inr": "139863.79",
+              "silver_minus_baseline_real_inr": "-35494.13"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4868.42",
+              "silver_after_test_cost_nominal_inr": "15862286.11",
+              "silver_real_before_tax_inr": "8857417.71",
+              "silver_shortfall_before_tax_inr": "142582.29",
+              "silver_minus_baseline_real_inr": "-38212.63"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9724.66",
+              "silver_after_test_cost_nominal_inr": "15857429.87",
+              "silver_real_before_tax_inr": "8854706.02",
+              "silver_shortfall_before_tax_inr": "145293.98",
+              "silver_minus_baseline_real_inr": "-40924.32"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19400.57",
+              "silver_after_test_cost_nominal_inr": "15847753.96",
+              "silver_real_before_tax_inr": "8849303.04",
+              "silver_shortfall_before_tax_inr": "150696.96",
+              "silver_minus_baseline_real_inr": "-46327.30"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "38606.15",
+              "silver_after_test_cost_nominal_inr": "15828548.38",
+              "silver_real_before_tax_inr": "8838578.74",
+              "silver_shortfall_before_tax_inr": "161421.26",
+              "silver_minus_baseline_real_inr": "-57051.60"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-08-30",
+      "last_nav_date": "2025-08-29",
+      "baseline_12_interval_nav_return": "0.0454145386",
+      "silver_12_interval_nav_return": "0.0435085340",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15799461.78",
+          "silver_nominal_before_cost_and_tax_inr": "15784005.26",
+          "baseline_real_before_cost_and_tax_inr": "8822336.94",
+          "baseline_shortfall_before_cost_and_tax_inr": "177663.06",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15784005.26",
+              "silver_real_before_tax_inr": "8813706.10",
+              "silver_shortfall_before_tax_inr": "186293.90",
+              "silver_minus_baseline_real_inr": "-8630.84"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4660.86",
+              "silver_after_test_cost_nominal_inr": "15779344.40",
+              "silver_real_before_tax_inr": "8811103.50",
+              "silver_shortfall_before_tax_inr": "188896.50",
+              "silver_minus_baseline_real_inr": "-11233.44"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9310.05",
+              "silver_after_test_cost_nominal_inr": "15774695.21",
+              "silver_real_before_tax_inr": "8808507.41",
+              "silver_shortfall_before_tax_inr": "191492.59",
+              "silver_minus_baseline_real_inr": "-13829.53"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "18573.43",
+              "silver_after_test_cost_nominal_inr": "15765431.83",
+              "silver_real_before_tax_inr": "8803334.79",
+              "silver_shortfall_before_tax_inr": "196665.21",
+              "silver_minus_baseline_real_inr": "-19002.15"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "36960.20",
+              "silver_after_test_cost_nominal_inr": "15747045.06",
+              "silver_real_before_tax_inr": "8793067.71",
+              "silver_shortfall_before_tax_inr": "206932.29",
+              "silver_minus_baseline_real_inr": "-29269.23"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15590266.98",
+          "silver_nominal_before_cost_and_tax_inr": "15564205.61",
+          "baseline_real_before_cost_and_tax_inr": "8705523.65",
+          "baseline_shortfall_before_cost_and_tax_inr": "294476.35",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15564205.61",
+              "silver_real_before_tax_inr": "8690971.12",
+              "silver_shortfall_before_tax_inr": "309028.88",
+              "silver_minus_baseline_real_inr": "-14552.53"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5066.36",
+              "silver_after_test_cost_nominal_inr": "15559139.25",
+              "silver_real_before_tax_inr": "8688142.09",
+              "silver_shortfall_before_tax_inr": "311857.91",
+              "silver_minus_baseline_real_inr": "-17381.56"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "10120.04",
+              "silver_after_test_cost_nominal_inr": "15554085.58",
+              "silver_real_before_tax_inr": "8685320.15",
+              "silver_shortfall_before_tax_inr": "314679.85",
+              "silver_minus_baseline_real_inr": "-20203.51"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "20189.35",
+              "silver_after_test_cost_nominal_inr": "15544016.27",
+              "silver_real_before_tax_inr": "8679697.50",
+              "silver_shortfall_before_tax_inr": "320302.50",
+              "silver_minus_baseline_real_inr": "-25826.16"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "40175.79",
+              "silver_after_test_cost_nominal_inr": "15524029.83",
+              "silver_real_before_tax_inr": "8668537.17",
+              "silver_shortfall_before_tax_inr": "331462.83",
+              "silver_minus_baseline_real_inr": "-36986.48"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-09-30",
+      "last_nav_date": "2025-09-30",
+      "baseline_12_interval_nav_return": "0.0551220635",
+      "silver_12_interval_nav_return": "0.0578018218",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15899572.81",
+          "silver_nominal_before_cost_and_tax_inr": "15926380.31",
+          "baseline_real_before_cost_and_tax_inr": "8878238.41",
+          "baseline_shortfall_before_cost_and_tax_inr": "121761.59",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "131.85",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15926380.31",
+              "silver_real_before_tax_inr": "8893207.58",
+              "silver_shortfall_before_tax_inr": "106792.42",
+              "silver_minus_baseline_real_inr": "14969.17"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5110.39",
+              "silver_after_test_cost_nominal_inr": "15921269.92",
+              "silver_real_before_tax_inr": "8890353.96",
+              "silver_shortfall_before_tax_inr": "109646.04",
+              "silver_minus_baseline_real_inr": "12115.55"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "10207.99",
+              "silver_after_test_cost_nominal_inr": "15916172.32",
+              "silver_real_before_tax_inr": "8887507.49",
+              "silver_shortfall_before_tax_inr": "112492.51",
+              "silver_minus_baseline_real_inr": "9269.08"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "20364.81",
+              "silver_after_test_cost_nominal_inr": "15906015.50",
+              "silver_real_before_tax_inr": "8881835.98",
+              "silver_shortfall_before_tax_inr": "118164.02",
+              "silver_minus_baseline_real_inr": "3597.56"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "40524.95",
+              "silver_after_test_cost_nominal_inr": "15885855.36",
+              "silver_real_before_tax_inr": "8870578.66",
+              "silver_shortfall_before_tax_inr": "129421.34",
+              "silver_minus_baseline_real_inr": "-7659.76"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15747703.47",
+          "silver_nominal_before_cost_and_tax_inr": "15790207.34",
+          "baseline_real_before_cost_and_tax_inr": "8793435.37",
+          "baseline_shortfall_before_cost_and_tax_inr": "206564.63",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "184.81",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15790207.34",
+              "silver_real_before_tax_inr": "8817169.31",
+              "silver_shortfall_before_tax_inr": "182830.69",
+              "silver_minus_baseline_real_inr": "23733.94"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5796.13",
+              "silver_after_test_cost_nominal_inr": "15784411.21",
+              "silver_real_before_tax_inr": "8813932.78",
+              "silver_shortfall_before_tax_inr": "186067.22",
+              "silver_minus_baseline_real_inr": "20497.41"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11577.76",
+              "silver_after_test_cost_nominal_inr": "15778629.59",
+              "silver_real_before_tax_inr": "8810704.35",
+              "silver_shortfall_before_tax_inr": "189295.65",
+              "silver_minus_baseline_real_inr": "17268.98"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "23097.48",
+              "silver_after_test_cost_nominal_inr": "15767109.86",
+              "silver_real_before_tax_inr": "8804271.79",
+              "silver_shortfall_before_tax_inr": "195728.21",
+              "silver_minus_baseline_real_inr": "10836.43"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "45962.82",
+              "silver_after_test_cost_nominal_inr": "15744244.52",
+              "silver_real_before_tax_inr": "8791503.91",
+              "silver_shortfall_before_tax_inr": "208496.09",
+              "silver_minus_baseline_real_inr": "-1931.46"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-10-31",
+      "last_nav_date": "2025-10-31",
+      "baseline_12_interval_nav_return": "0.1257522967",
+      "silver_12_interval_nav_return": "0.1266854152",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16523017.76",
+          "silver_nominal_before_cost_and_tax_inr": "16534916.29",
+          "baseline_real_before_cost_and_tax_inr": "9226366.81",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "59.33",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16534916.29",
+              "silver_real_before_tax_inr": "9233010.89",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "6644.08"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5022.08",
+              "silver_after_test_cost_nominal_inr": "16529894.21",
+              "silver_real_before_tax_inr": "9230206.59",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "3839.78"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "10031.59",
+              "silver_after_test_cost_nominal_inr": "16524884.71",
+              "silver_real_before_tax_inr": "9227409.31",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "1042.50"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "20012.89",
+              "silver_after_test_cost_nominal_inr": "16514903.41",
+              "silver_real_before_tax_inr": "9221835.80",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-4531.01"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "39824.64",
+              "silver_after_test_cost_nominal_inr": "16495091.65",
+              "silver_real_before_tax_inr": "9210773.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15593.79"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16771979.83",
+          "silver_nominal_before_cost_and_tax_inr": "16789741.21",
+          "baseline_real_before_cost_and_tax_inr": "9365385.93",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "78.83",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16789741.21",
+              "silver_real_before_tax_inr": "9375303.80",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "9917.86"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5648.09",
+              "silver_after_test_cost_nominal_inr": "16784093.12",
+              "silver_real_before_tax_inr": "9372149.93",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "6764.00"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11282.04",
+              "silver_after_test_cost_nominal_inr": "16778459.17",
+              "silver_real_before_tax_inr": "9369003.96",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "3618.03"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "22507.53",
+              "silver_after_test_cost_nominal_inr": "16767233.68",
+              "silver_real_before_tax_inr": "9362735.71",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-2650.22"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "44788.84",
+              "silver_after_test_cost_nominal_inr": "16744952.36",
+              "silver_real_before_tax_inr": "9350293.94",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "-15092.00"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-11-29",
+      "last_nav_date": "2025-11-28",
+      "baseline_12_interval_nav_return": "0.1514218483",
+      "silver_12_interval_nav_return": "0.1604167731",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16746044.03",
+          "silver_nominal_before_cost_and_tax_inr": "16829232.52",
+          "baseline_real_before_cost_and_tax_inr": "9350903.52",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "374.86",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16829232.52",
+              "silver_real_before_tax_inr": "9397355.54",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "46452.02"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5646.84",
+              "silver_after_test_cost_nominal_inr": "16823585.68",
+              "silver_real_before_tax_inr": "9394202.37",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "43298.85"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11279.54",
+              "silver_after_test_cost_nominal_inr": "16817952.97",
+              "silver_real_before_tax_inr": "9391057.10",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "40153.58"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "22502.54",
+              "silver_after_test_cost_nominal_inr": "16806729.97",
+              "silver_real_before_tax_inr": "9384790.23",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "33886.71"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "44778.93",
+              "silver_after_test_cost_nominal_inr": "16784453.58",
+              "silver_real_before_tax_inr": "9372351.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "21447.70"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17140131.67",
+          "silver_nominal_before_cost_and_tax_inr": "17274954.34",
+          "baseline_real_before_cost_and_tax_inr": "9570960.00",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "517.52",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17274954.34",
+              "silver_real_before_tax_inr": "9646244.27",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "75284.27"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "6677.57",
+              "silver_after_test_cost_nominal_inr": "17268276.77",
+              "silver_real_before_tax_inr": "9642515.55",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "71555.55"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "13338.42",
+              "silver_after_test_cost_nominal_inr": "17261615.91",
+              "silver_real_before_tax_inr": "9638796.17",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "67836.17"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "26609.99",
+              "silver_after_test_cost_nominal_inr": "17248344.35",
+              "silver_real_before_tax_inr": "9631385.40",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "60425.39"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "52952.54",
+              "silver_after_test_cost_nominal_inr": "17222001.80",
+              "silver_real_before_tax_inr": "9616675.85",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "45715.85"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2024-12-31",
+      "last_nav_date": "2025-12-31",
+      "baseline_12_interval_nav_return": "0.1725141598",
+      "silver_12_interval_nav_return": "0.2172754816",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16923230.98",
+          "silver_nominal_before_cost_and_tax_inr": "17326826.25",
+          "baseline_real_before_cost_and_tax_inr": "9449843.79",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1459.02",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17326826.25",
+              "silver_real_before_tax_inr": "9675209.28",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "225365.49"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7450.39",
+              "silver_after_test_cost_nominal_inr": "17319375.86",
+              "silver_real_before_tax_inr": "9671049.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "221205.23"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "14882.13",
+              "silver_after_test_cost_nominal_inr": "17311944.12",
+              "silver_real_before_tax_inr": "9666899.18",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "217055.39"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "29689.66",
+              "silver_after_test_cost_nominal_inr": "17297136.59",
+              "silver_real_before_tax_inr": "9658630.73",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "208786.94"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "59080.94",
+              "silver_after_test_cost_nominal_inr": "17267745.31",
+              "silver_real_before_tax_inr": "9642218.79",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "192375.00"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17435625.79",
+          "silver_nominal_before_cost_and_tax_inr": "18094560.28",
+          "baseline_real_before_cost_and_tax_inr": "9735962.37",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1886.06",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18094560.28",
+              "silver_real_before_tax_inr": "10103907.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "367945.58"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "9631.64",
+              "silver_after_test_cost_nominal_inr": "18084928.64",
+              "silver_real_before_tax_inr": "10098529.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "362567.32"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "19239.16",
+              "silver_after_test_cost_nominal_inr": "18075321.12",
+              "silver_real_before_tax_inr": "10093164.90",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "357202.53"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "38381.89",
+              "silver_after_test_cost_nominal_inr": "18056178.39",
+              "silver_real_before_tax_inr": "10082475.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "346513.33"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "76378.03",
+              "silver_after_test_cost_nominal_inr": "18018182.25",
+              "silver_real_before_tax_inr": "10061258.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "325296.48"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-01-31",
+      "last_nav_date": "2026-01-30",
+      "baseline_12_interval_nav_return": "0.2105145090",
+      "silver_12_interval_nav_return": "0.2865374210",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17252931.18",
+          "silver_nominal_before_cost_and_tax_inr": "17938077.39",
+          "baseline_real_before_cost_and_tax_inr": "9633946.66",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "2015.85",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17938077.39",
+              "silver_real_before_tax_inr": "10016528.72",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "382582.06"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "9437.61",
+              "silver_after_test_cost_nominal_inr": "17928639.78",
+              "silver_real_before_tax_inr": "10011258.81",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "377312.15"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "18851.60",
+              "silver_after_test_cost_nominal_inr": "17919225.79",
+              "silver_real_before_tax_inr": "10006002.09",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "372055.43"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "37608.70",
+              "silver_after_test_cost_nominal_inr": "17900468.69",
+              "silver_real_before_tax_inr": "9995528.22",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "361581.56"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "74839.42",
+              "silver_after_test_cost_nominal_inr": "17863237.97",
+              "silver_real_before_tax_inr": "9974738.78",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "340792.12"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17980093.72",
+          "silver_nominal_before_cost_and_tax_inr": "19098859.69",
+          "baseline_real_before_cost_and_tax_inr": "10039990.42",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "2476.51",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19098859.69",
+              "silver_real_before_tax_inr": "10664703.50",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "624713.08"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "12873.76",
+              "silver_after_test_cost_nominal_inr": "19085985.93",
+              "silver_real_before_tax_inr": "10657514.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "617524.44"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "25715.29",
+              "silver_after_test_cost_nominal_inr": "19073144.40",
+              "silver_real_before_tax_inr": "10650344.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "610353.79"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "51301.68",
+              "silver_after_test_cost_nominal_inr": "19047558.01",
+              "silver_real_before_tax_inr": "10636056.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "596066.49"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "102087.77",
+              "silver_after_test_cost_nominal_inr": "18996771.92",
+              "silver_real_before_tax_inr": "10607698.22",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "567707.80"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-02-28",
+      "last_nav_date": "2026-02-27",
+      "baseline_12_interval_nav_return": "0.2553409659",
+      "silver_12_interval_nav_return": "0.3030043826",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "17622538.24",
+          "silver_nominal_before_cost_and_tax_inr": "18047653.22",
+          "baseline_real_before_cost_and_tax_inr": "9840333.31",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1462.31",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "18047653.22",
+              "silver_real_before_tax_inr": "10077715.30",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "237381.99"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7831.40",
+              "silver_after_test_cost_nominal_inr": "18039821.83",
+              "silver_real_before_tax_inr": "10073342.28",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "233008.98"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "15643.19",
+              "silver_after_test_cost_nominal_inr": "18032010.03",
+              "silver_real_before_tax_inr": "10068980.22",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "228646.91"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "31207.97",
+              "silver_after_test_cost_nominal_inr": "18016445.25",
+              "silver_real_before_tax_inr": "10060288.93",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "219955.62"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "62102.30",
+              "silver_after_test_cost_nominal_inr": "17985550.93",
+              "silver_real_before_tax_inr": "10043037.70",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "202704.39"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "18600054.98",
+          "silver_nominal_before_cost_and_tax_inr": "19296344.09",
+          "baseline_real_before_cost_and_tax_inr": "10386173.55",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1868.44",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "19296344.09",
+              "silver_real_before_tax_inr": "10774977.75",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "388804.20"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "10263.67",
+              "silver_after_test_cost_nominal_inr": "19286080.42",
+              "silver_real_before_tax_inr": "10769246.58",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "383073.02"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "20501.64",
+              "silver_after_test_cost_nominal_inr": "19275842.45",
+              "silver_real_before_tax_inr": "10763529.74",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "377356.19"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "40900.52",
+              "silver_after_test_cost_nominal_inr": "19255443.57",
+              "silver_real_before_tax_inr": "10752139.12",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "365965.57"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "81389.97",
+              "silver_after_test_cost_nominal_inr": "19214954.12",
+              "silver_real_before_tax_inr": "10729530.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "343356.47"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-03-31",
+      "last_nav_date": "2026-03-31",
+      "baseline_12_interval_nav_return": "0.0804713315",
+      "silver_12_interval_nav_return": "0.1144033787",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16060348.50",
+          "silver_nominal_before_cost_and_tax_inr": "16362284.57",
+          "baseline_real_before_cost_and_tax_inr": "8968014.72",
+          "baseline_shortfall_before_cost_and_tax_inr": "31985.28",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1191.52",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16362284.57",
+              "silver_real_before_tax_inr": "9136614.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "168599.52"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "6728.03",
+              "silver_after_test_cost_nominal_inr": "16355556.54",
+              "silver_real_before_tax_inr": "9132857.35",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "164842.63"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "13439.21",
+              "silver_after_test_cost_nominal_inr": "16348845.36",
+              "silver_real_before_tax_inr": "9129109.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "161095.14"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "26811.06",
+              "silver_after_test_cost_nominal_inr": "16335473.51",
+              "silver_real_before_tax_inr": "9121643.09",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "153628.37"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "53352.65",
+              "silver_after_test_cost_nominal_inr": "16308931.91",
+              "silver_real_before_tax_inr": "9106822.40",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "138807.68"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16042580.98",
+          "silver_nominal_before_cost_and_tax_inr": "16537458.94",
+          "baseline_real_before_cost_and_tax_inr": "8958093.43",
+          "baseline_shortfall_before_cost_and_tax_inr": "41906.57",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1586.17",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16537458.94",
+              "silver_real_before_tax_inr": "9234430.69",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "276337.26"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "8461.17",
+              "silver_after_test_cost_nominal_inr": "16528997.76",
+              "silver_real_before_tax_inr": "9229706.02",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "271612.59"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "16901.17",
+              "silver_after_test_cost_nominal_inr": "16520557.77",
+              "silver_real_before_tax_inr": "9224993.17",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "266899.74"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "33717.62",
+              "silver_after_test_cost_nominal_inr": "16503741.31",
+              "silver_real_before_tax_inr": "9215602.95",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "257509.52"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "67096.37",
+              "silver_after_test_cost_nominal_inr": "16470362.56",
+              "silver_real_before_tax_inr": "9196964.43",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "238871.00"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-04-30",
+      "last_nav_date": "2026-04-30",
+      "baseline_12_interval_nav_return": "0.1146082177",
+      "silver_12_interval_nav_return": "0.1610674506",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16388755.80",
+          "silver_nominal_before_cost_and_tax_inr": "16795930.44",
+          "baseline_real_before_cost_and_tax_inr": "9151395.64",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1542.74",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16795930.44",
+              "silver_real_before_tax_inr": "9378759.83",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "227364.19"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7140.79",
+              "silver_after_test_cost_nominal_inr": "16788789.64",
+              "silver_real_before_tax_inr": "9374772.45",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "223376.81"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "14263.71",
+              "silver_after_test_cost_nominal_inr": "16781666.72",
+              "silver_real_before_tax_inr": "9370795.05",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "219399.41"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "28455.93",
+              "silver_after_test_cost_nominal_inr": "16767474.51",
+              "silver_real_before_tax_inr": "9362870.19",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "211474.55"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "56625.87",
+              "silver_after_test_cost_nominal_inr": "16739304.56",
+              "silver_real_before_tax_inr": "9347140.24",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "195744.60"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16568913.55",
+          "silver_nominal_before_cost_and_tax_inr": "17239295.82",
+          "baseline_real_before_cost_and_tax_inr": "9251994.79",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "2036.26",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17239295.82",
+              "silver_real_before_tax_inr": "9626332.74",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "374337.96"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "9152.08",
+              "silver_after_test_cost_nominal_inr": "17230143.74",
+              "silver_real_before_tax_inr": "9621222.27",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "369227.48"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "18281.24",
+              "silver_after_test_cost_nominal_inr": "17221014.57",
+              "silver_real_before_tax_inr": "9616124.59",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "364129.80"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "36470.85",
+              "silver_after_test_cost_nominal_inr": "17202824.96",
+              "silver_real_before_tax_inr": "9605967.61",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "353972.82"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "72575.16",
+              "silver_after_test_cost_nominal_inr": "17166720.65",
+              "silver_real_before_tax_inr": "9585807.15",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "333812.36"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-05-30",
+      "last_nav_date": "2026-05-29",
+      "baseline_12_interval_nav_return": "0.0968004815",
+      "silver_12_interval_nav_return": "0.1486711610",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16236719.27",
+          "silver_nominal_before_cost_and_tax_inr": "16690641.05",
+          "baseline_real_before_cost_and_tax_inr": "9066499.24",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1654.06",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16690641.05",
+              "silver_real_before_tax_inr": "9319966.78",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "253467.55"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7469.91",
+              "silver_after_test_cost_nominal_inr": "16683171.14",
+              "silver_real_before_tax_inr": "9315795.62",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "249296.39"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "14921.12",
+              "silver_after_test_cost_nominal_inr": "16675719.92",
+              "silver_real_before_tax_inr": "9311634.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "245135.67"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "29767.46",
+              "silver_after_test_cost_nominal_inr": "16660873.59",
+              "silver_real_before_tax_inr": "9303344.79",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "236845.56"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "59235.74",
+              "silver_after_test_cost_nominal_inr": "16631405.30",
+              "silver_real_before_tax_inr": "9286889.86",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "220390.62"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16316614.81",
+          "silver_nominal_before_cost_and_tax_inr": "17064296.66",
+          "baseline_real_before_cost_and_tax_inr": "9111112.49",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "2158.11",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17064296.66",
+              "silver_real_before_tax_inr": "9528614.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "417501.64"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "9696.80",
+              "silver_after_test_cost_nominal_inr": "17054599.85",
+              "silver_real_before_tax_inr": "9523199.48",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "412087.00"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "19369.34",
+              "silver_after_test_cost_nominal_inr": "17044927.32",
+              "silver_real_before_tax_inr": "9517798.39",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "406685.90"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "38641.58",
+              "silver_after_test_cost_nominal_inr": "17025655.08",
+              "silver_real_before_tax_inr": "9507036.87",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "395924.38"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "76894.81",
+              "silver_after_test_cost_nominal_inr": "16987401.85",
+              "silver_real_before_tax_inr": "9485676.47",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "374563.98"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-06-30",
+      "last_nav_date": "2026-06-30",
+      "baseline_12_interval_nav_return": "0.0656788471",
+      "silver_12_interval_nav_return": "0.0976868329",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15964987.35",
+          "silver_nominal_before_cost_and_tax_inr": "16243809.89",
+          "baseline_real_before_cost_and_tax_inr": "8914765.55",
+          "baseline_shortfall_before_cost_and_tax_inr": "85234.45",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1189.92",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16243809.89",
+              "silver_real_before_tax_inr": "9070458.60",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "155693.05"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "6220.79",
+              "silver_after_test_cost_nominal_inr": "16237589.10",
+              "silver_real_before_tax_inr": "9066984.94",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "152219.40"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "12426.01",
+              "silver_after_test_cost_nominal_inr": "16231383.88",
+              "silver_real_before_tax_inr": "9063519.98",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "148754.43"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "24789.73",
+              "silver_after_test_cost_nominal_inr": "16219020.16",
+              "silver_real_before_tax_inr": "9056616.14",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "141850.60"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "49330.32",
+              "silver_after_test_cost_nominal_inr": "16194479.57",
+              "silver_real_before_tax_inr": "9042912.81",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "128147.26"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15868726.40",
+          "silver_nominal_before_cost_and_tax_inr": "16328621.96",
+          "baseline_real_before_cost_and_tax_inr": "8861013.94",
+          "baseline_shortfall_before_cost_and_tax_inr": "138986.06",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1634.50",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16328621.96",
+              "silver_real_before_tax_inr": "9117817.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "256803.28"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7650.65",
+              "silver_after_test_cost_nominal_inr": "16320971.31",
+              "silver_real_before_tax_inr": "9113545.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "252531.20"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "15282.14",
+              "silver_after_test_cost_nominal_inr": "16313339.81",
+              "silver_real_before_tax_inr": "9109283.75",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "248269.81"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "30487.68",
+              "silver_after_test_cost_nominal_inr": "16298134.27",
+              "silver_real_before_tax_inr": "9100793.05",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "239779.12"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "60668.96",
+              "silver_after_test_cost_nominal_inr": "16267953.00",
+              "silver_real_before_tax_inr": "9083939.99",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "222926.05"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-07-31",
+      "last_nav_date": "2026-07-31",
+      "baseline_12_interval_nav_return": "0.0954226564",
+      "silver_12_interval_nav_return": "0.1213064386",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16225096.60",
+          "silver_nominal_before_cost_and_tax_inr": "16448587.87",
+          "baseline_real_before_cost_and_tax_inr": "9060009.20",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "996.04",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16448587.87",
+              "silver_real_before_tax_inr": "9184805.56",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "124796.36"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5896.10",
+              "silver_after_test_cost_nominal_inr": "16442691.77",
+              "silver_real_before_tax_inr": "9181513.20",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "121504.01"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11777.45",
+              "silver_after_test_cost_nominal_inr": "16436810.42",
+              "silver_real_before_tax_inr": "9178229.09",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "118219.89"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "23495.87",
+              "silver_after_test_cost_nominal_inr": "16425092.01",
+              "silver_real_before_tax_inr": "9171685.59",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "111676.39"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "46755.59",
+              "silver_after_test_cost_nominal_inr": "16401832.28",
+              "silver_real_before_tax_inr": "9158697.48",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "98688.28"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16297256.42",
+          "silver_nominal_before_cost_and_tax_inr": "16666868.12",
+          "baseline_real_before_cost_and_tax_inr": "9100302.86",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1392.88",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16666868.12",
+              "silver_real_before_tax_inr": "9306692.11",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "206389.24"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7121.62",
+              "silver_after_test_cost_nominal_inr": "16659746.50",
+              "silver_real_before_tax_inr": "9302715.43",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "202412.57"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "14225.41",
+              "silver_after_test_cost_nominal_inr": "16652642.71",
+              "silver_real_before_tax_inr": "9298748.71",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "198445.85"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "28379.52",
+              "silver_after_test_cost_nominal_inr": "16638488.60",
+              "silver_real_before_tax_inr": "9290845.13",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "190542.27"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "56473.82",
+              "silver_after_test_cost_nominal_inr": "16610394.30",
+              "silver_real_before_tax_inr": "9275157.42",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "174854.56"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-08-29",
+      "last_nav_date": "2026-08-31",
+      "baseline_12_interval_nav_return": "0.1213385124",
+      "silver_12_interval_nav_return": "0.1455555047",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16449590.23",
+          "silver_nominal_before_cost_and_tax_inr": "16657592.63",
+          "baseline_real_before_cost_and_tax_inr": "9185365.27",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "910.96",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "16657592.63",
+              "silver_real_before_tax_inr": "9301512.72",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "116147.45"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5973.25",
+              "silver_after_test_cost_nominal_inr": "16651619.38",
+              "silver_real_before_tax_inr": "9298177.29",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "112812.02"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11931.54",
+              "silver_after_test_cost_nominal_inr": "16645661.09",
+              "silver_real_before_tax_inr": "9294850.21",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "109484.94"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "23803.27",
+              "silver_after_test_cost_nominal_inr": "16633789.35",
+              "silver_real_before_tax_inr": "9288221.09",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "102855.83"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "47367.32",
+              "silver_after_test_cost_nominal_inr": "16610225.31",
+              "silver_real_before_tax_inr": "9275063.06",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "89697.79"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "16668163.93",
+          "silver_nominal_before_cost_and_tax_inr": "17012707.33",
+          "baseline_real_before_cost_and_tax_inr": "9307415.68",
+          "baseline_shortfall_before_cost_and_tax_inr": "0.00",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "1267.10",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "17012707.33",
+              "silver_real_before_tax_inr": "9499806.91",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "192391.23"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "7248.59",
+              "silver_after_test_cost_nominal_inr": "17005458.74",
+              "silver_real_before_tax_inr": "9495759.34",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "188343.66"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "14479.03",
+              "silver_after_test_cost_nominal_inr": "16998228.30",
+              "silver_real_before_tax_inr": "9491721.90",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "184306.22"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "28885.48",
+              "silver_after_test_cost_nominal_inr": "16983821.85",
+              "silver_real_before_tax_inr": "9483677.41",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "176261.73"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "57480.66",
+              "silver_after_test_cost_nominal_inr": "16955226.67",
+              "silver_real_before_tax_inr": "9467710.01",
+              "silver_shortfall_before_tax_inr": "0.00",
+              "silver_minus_baseline_real_inr": "160294.33"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-09-30",
+      "last_nav_date": "2026-09-30",
+      "baseline_12_interval_nav_return": "0.0346342579",
+      "silver_12_interval_nav_return": "0.0480376255",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15674360.42",
+          "silver_nominal_before_cost_and_tax_inr": "15788323.11",
+          "baseline_real_before_cost_and_tax_inr": "8752480.99",
+          "baseline_shortfall_before_cost_and_tax_inr": "247519.01",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "586.11",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15788323.11",
+              "silver_real_before_tax_inr": "8816117.16",
+              "silver_shortfall_before_tax_inr": "183882.84",
+              "silver_minus_baseline_real_inr": "63636.17"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5001.51",
+              "silver_after_test_cost_nominal_inr": "15783321.60",
+              "silver_real_before_tax_inr": "8813324.34",
+              "silver_shortfall_before_tax_inr": "186675.66",
+              "silver_minus_baseline_real_inr": "60843.35"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "9990.50",
+              "silver_after_test_cost_nominal_inr": "15778332.61",
+              "silver_real_before_tax_inr": "8810538.52",
+              "silver_shortfall_before_tax_inr": "189461.48",
+              "silver_minus_baseline_real_inr": "58057.53"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "19930.92",
+              "silver_after_test_cost_nominal_inr": "15768392.19",
+              "silver_real_before_tax_inr": "8804987.84",
+              "silver_shortfall_before_tax_inr": "195012.16",
+              "silver_minus_baseline_real_inr": "52506.85"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "39661.52",
+              "silver_after_test_cost_nominal_inr": "15748661.59",
+              "silver_real_before_tax_inr": "8793970.37",
+              "silver_shortfall_before_tax_inr": "206029.63",
+              "silver_minus_baseline_real_inr": "41489.38"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15399347.58",
+          "silver_nominal_before_cost_and_tax_inr": "15588701.80",
+          "baseline_real_before_cost_and_tax_inr": "8598915.26",
+          "baseline_shortfall_before_cost_and_tax_inr": "401084.74",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "875.54",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15588701.80",
+              "silver_real_before_tax_inr": "8704649.66",
+              "silver_shortfall_before_tax_inr": "295350.34",
+              "silver_minus_baseline_real_inr": "105734.40"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "5647.27",
+              "silver_after_test_cost_nominal_inr": "15583054.52",
+              "silver_real_before_tax_inr": "8701496.26",
+              "silver_shortfall_before_tax_inr": "298503.74",
+              "silver_minus_baseline_real_inr": "102581.00"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "11280.41",
+              "silver_after_test_cost_nominal_inr": "15577421.39",
+              "silver_real_before_tax_inr": "8698350.74",
+              "silver_shortfall_before_tax_inr": "301649.26",
+              "silver_minus_baseline_real_inr": "99435.49"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "22504.27",
+              "silver_after_test_cost_nominal_inr": "15566197.53",
+              "silver_real_before_tax_inr": "8692083.40",
+              "silver_shortfall_before_tax_inr": "307916.60",
+              "silver_minus_baseline_real_inr": "93168.14"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "44782.36",
+              "silver_after_test_cost_nominal_inr": "15543919.43",
+              "silver_real_before_tax_inr": "8679643.43",
+              "silver_shortfall_before_tax_inr": "320356.57",
+              "silver_minus_baseline_real_inr": "80728.17"
+            }
+          }
+        }
+      }
+    },
+    {
+      "first_nav_date": "2025-10-31",
+      "last_nav_date": "2026-10-30",
+      "baseline_12_interval_nav_return": "-0.0178096871",
+      "silver_12_interval_nav_return": "-0.0144955334",
+      "placements": {
+        "first_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "15216679.63",
+          "silver_nominal_before_cost_and_tax_inr": "15240337.87",
+          "baseline_real_before_cost_and_tax_inr": "8496914.43",
+          "baseline_shortfall_before_cost_and_tax_inr": "503085.57",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "139.03",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "15240337.87",
+              "silver_real_before_tax_inr": "8510125.06",
+              "silver_shortfall_before_tax_inr": "489874.94",
+              "silver_minus_baseline_real_inr": "13210.64"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4278.73",
+              "silver_after_test_cost_nominal_inr": "15236059.14",
+              "silver_real_before_tax_inr": "8507735.85",
+              "silver_shortfall_before_tax_inr": "492264.15",
+              "silver_minus_baseline_real_inr": "10821.42"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8546.74",
+              "silver_after_test_cost_nominal_inr": "15231791.12",
+              "silver_real_before_tax_inr": "8505352.61",
+              "silver_shortfall_before_tax_inr": "494647.39",
+              "silver_minus_baseline_real_inr": "8438.18"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17050.65",
+              "silver_after_test_cost_nominal_inr": "15223287.22",
+              "silver_real_before_tax_inr": "8500604.07",
+              "silver_shortfall_before_tax_inr": "499395.93",
+              "silver_minus_baseline_real_inr": "3689.64"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "33929.93",
+              "silver_after_test_cost_nominal_inr": "15206407.94",
+              "silver_real_before_tax_inr": "8491178.77",
+              "silver_shortfall_before_tax_inr": "508821.23",
+              "silver_minus_baseline_real_inr": "-5735.66"
+            }
+          }
+        },
+        "last_12_months": {
+          "baseline_nominal_before_cost_and_tax_inr": "14644854.97",
+          "silver_nominal_before_cost_and_tax_inr": "14686454.39",
+          "baseline_real_before_cost_and_tax_inr": "8177610.52",
+          "baseline_shortfall_before_cost_and_tax_inr": "822389.48",
+          "breakeven_per_side_bps_if_zero_cost_silver_leads": "235.45",
+          "by_incremental_silver_cost_per_side_bps": {
+            "0": {
+              "silver_cost_terminal_effect_nominal_inr": "0.00",
+              "silver_after_test_cost_nominal_inr": "14686454.39",
+              "silver_real_before_tax_inr": "8200839.42",
+              "silver_shortfall_before_tax_inr": "799160.58",
+              "silver_minus_baseline_real_inr": "23228.90"
+            },
+            "25": {
+              "silver_cost_terminal_effect_nominal_inr": "4464.02",
+              "silver_after_test_cost_nominal_inr": "14681990.37",
+              "silver_real_before_tax_inr": "8198346.74",
+              "silver_shortfall_before_tax_inr": "801653.26",
+              "silver_minus_baseline_real_inr": "20736.21"
+            },
+            "50": {
+              "silver_cost_terminal_effect_nominal_inr": "8916.87",
+              "silver_after_test_cost_nominal_inr": "14677537.52",
+              "silver_real_before_tax_inr": "8195860.29",
+              "silver_shortfall_before_tax_inr": "804139.71",
+              "silver_minus_baseline_real_inr": "18249.77"
+            },
+            "100": {
+              "silver_cost_terminal_effect_nominal_inr": "17789.05",
+              "silver_after_test_cost_nominal_inr": "14668665.34",
+              "silver_real_before_tax_inr": "8190906.11",
+              "silver_shortfall_before_tax_inr": "809093.89",
+              "silver_minus_baseline_real_inr": "13295.59"
+            },
+            "200": {
+              "silver_cost_terminal_effect_nominal_inr": "35399.32",
+              "silver_after_test_cost_nominal_inr": "14651055.07",
+              "silver_real_before_tax_inr": "8181072.63",
+              "silver_shortfall_before_tax_inr": "818927.37",
+              "silver_minus_baseline_real_inr": "3462.10"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "synthetic_joint_crash_at_exit": {
+    "one_year_asset_returns": {
+      "equity": "-0.25",
+      "gilt": "-0.05",
+      "gold": "-0.10",
+      "silver": "-0.30"
+    },
+    "portfolio_outcomes": {
+      "baseline_nominal_before_cost_and_tax_inr": "12190138.50",
+      "silver_nominal_before_cost_and_tax_inr": "12044505.09",
+      "baseline_real_before_cost_and_tax_inr": "6806909.67",
+      "baseline_shortfall_before_cost_and_tax_inr": "2193090.33",
+      "breakeven_per_side_bps_if_zero_cost_silver_leads": null,
+      "by_incremental_silver_cost_per_side_bps": {
+        "0": {
+          "silver_cost_terminal_effect_nominal_inr": "0.00",
+          "silver_after_test_cost_nominal_inr": "12044505.09",
+          "silver_real_before_tax_inr": "6725588.73",
+          "silver_shortfall_before_tax_inr": "2274411.27",
+          "silver_minus_baseline_real_inr": "-81320.94"
+        },
+        "25": {
+          "silver_cost_terminal_effect_nominal_inr": "2634.59",
+          "silver_after_test_cost_nominal_inr": "12041870.50",
+          "silver_real_before_tax_inr": "6724117.59",
+          "silver_shortfall_before_tax_inr": "2275882.41",
+          "silver_minus_baseline_real_inr": "-82792.08"
+        },
+        "50": {
+          "silver_cost_terminal_effect_nominal_inr": "5262.58",
+          "silver_after_test_cost_nominal_inr": "12039242.51",
+          "silver_real_before_tax_inr": "6722650.14",
+          "silver_shortfall_before_tax_inr": "2277349.86",
+          "silver_minus_baseline_real_inr": "-84259.53"
+        },
+        "100": {
+          "silver_cost_terminal_effect_nominal_inr": "10498.78",
+          "silver_after_test_cost_nominal_inr": "12034006.31",
+          "silver_real_before_tax_inr": "6719726.27",
+          "silver_shortfall_before_tax_inr": "2280273.73",
+          "silver_minus_baseline_real_inr": "-87183.40"
+        },
+        "200": {
+          "silver_cost_terminal_effect_nominal_inr": "20892.04",
+          "silver_after_test_cost_nominal_inr": "12023613.05",
+          "silver_real_before_tax_inr": "6713922.72",
+          "silver_shortfall_before_tax_inr": "2286077.28",
+          "silver_minus_baseline_real_inr": "-92986.95"
+        }
+      }
+    }
+  }
+}

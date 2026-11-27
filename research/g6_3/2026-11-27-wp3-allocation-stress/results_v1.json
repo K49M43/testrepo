@@ -1,0 +1,2798 @@
+{
+  "id": "G6.3-WP3-ALLOCATION-STRESS-2026-11-27",
+  "status": "WP3_DETERMINISTIC_STRESS_ONLY",
+  "protocol_commit": "9cb2a3b543f1fa94d7cdc85e957d424383132510",
+  "decision_grade_personal_output": false,
+  "probability_qualified": false,
+  "live_quote": "DEFERRED",
+  "paid_silver_history": "DEFERRED",
+  "rbi_tbill_payment_timing": "OPEN",
+  "investment_authorization": "NO_GO",
+  "sources": [
+    {
+      "path": "research/g6_3/2026-11-27-wp3-allocation-stress/protocol_v1.json",
+      "sha256_normalized": "50b944c892b097032ab5ca3222e74486d9b9015b2d49abf16932f2b5515cc1b0"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-wp2-dated/inputs_v2.json",
+      "sha256_normalized": "d99a1e02999f782c5f24bbed4df42925e0281af066eca35b4867f4a5541a60a7"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-wp2-portfolio/inputs_v1.json",
+      "sha256_normalized": "68990d1b11afa56c691b9f70870810b07931c1b359b493cced1e598dd39cc470"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-exact-date-coverage/coverage_v1.json",
+      "sha256_normalized": "9950b5cd6ff107d28d7d8d63fd5e947528577c9d5cc257ec12650f7c2bb51158"
+    },
+    {
+      "path": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "sha256_normalized": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873"
+    },
+    {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "sha256_normalized": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-10-16/nominal_cashflows_v1.json",
+      "sha256_normalized": "ce821db1bd15297bc50ac6d6561b269589017e08a2bdf925b8f3641bc9cc19d1"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-13/auction_reconciliation_v1.json",
+      "sha256_normalized": "d6f46ca1fb668503afa844e52f5d7be32093ff1d729f1b720d43bd8eb5f816da"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-sbi-holdings/cashflow_audit_v1.json",
+      "sha256_normalized": "860b6921566608593322204beda63d6a1b3162eea39b93a0250fafd1b5af2d84"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/inputs_v1.json",
+      "sha256_normalized": "0d7c2de201158e0d1d455b08b528e294ce92a322a9245f4969fd0677eff98668"
+    },
+    {
+      "path": "decision/g6_3_wp3_allocation_stress.py",
+      "sha256_normalized": "09ec4c1ea6679413f9f7096023c3cd631bc3da4e702e7e7d0fa4d87619cded5c"
+    },
+    {
+      "path": "decision/audit_g6_3_wp3_allocation_stress.py",
+      "sha256_normalized": "881127aa170c80f9d597d0b154bca70dac09efa32fc0ee2d920d5a11fcffc664"
+    },
+    {
+      "path": "decision/g6_3_wp2_dated.py",
+      "sha256_normalized": "680ca4d8e3eb8b34611a4dfc2beda109dce9ad181bb753b8df06b46daa74cd9b"
+    },
+    {
+      "path": "decision/capital_gain_loss_schedule.py",
+      "sha256_normalized": "aec37dd9d17af01335b2eed18e316f918395e858b5315c4cedf3958c29b995c8"
+    },
+    {
+      "path": "decision/ty2026_27_tax_components.py",
+      "sha256_normalized": "476a071003f78856c6a2b16e1bd776a479b194981139190dc85d9eff3b6beffa"
+    }
+  ],
+  "forward": [
+    {
+      "scenario": "reference",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14287323.15",
+      "modeled_tax_set_aside": "1267090.00",
+      "after_tax_nominal": "13020153.53",
+      "after_tax_real": "7270385.73",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.2757"
+      },
+      "floor_shortfall": "1729614.27",
+      "stretch_shortfall": "2729614.27",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "8.5078",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "reference",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14930660.36",
+      "modeled_tax_set_aside": "1075390.00",
+      "after_tax_nominal": "13855192.71",
+      "after_tax_real": "7736667.24",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1441"
+      },
+      "floor_shortfall": "1263332.76",
+      "stretch_shortfall": "2263332.76",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.7580",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "reference",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15299455.63",
+      "modeled_tax_set_aside": "1033370.00",
+      "after_tax_nominal": "14266003.06",
+      "after_tax_real": "7966061.60",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.5512"
+      },
+      "floor_shortfall": "1033938.40",
+      "stretch_shortfall": "2033938.40",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.2704",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "reference",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14522266.61",
+      "modeled_tax_set_aside": "1253320.00",
+      "after_tax_nominal": "13141813.11",
+      "after_tax_real": "7338319.80",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.4058"
+      },
+      "floor_shortfall": "1661680.20",
+      "stretch_shortfall": "2661680.20",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "3.6929",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "reference",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15024276.89",
+      "modeled_tax_set_aside": "1069790.00",
+      "after_tax_nominal": "13903610.52",
+      "after_tax_real": "7763703.49",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1927"
+      },
+      "floor_shortfall": "1236296.51",
+      "stretch_shortfall": "2236296.51",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.9343",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "reference",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15345873.56",
+      "modeled_tax_set_aside": "1030470.00",
+      "after_tax_nominal": "14289947.50",
+      "after_tax_real": "7979432.05",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.5746"
+      },
+      "floor_shortfall": "1020567.95",
+      "stretch_shortfall": "2020567.95",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "5.3844",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "reference",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14360382.63",
+      "modeled_tax_set_aside": "1288390.00",
+      "after_tax_nominal": "13071927.20",
+      "after_tax_real": "7299295.87",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.3312"
+      },
+      "floor_shortfall": "1700704.13",
+      "stretch_shortfall": "2700704.13",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "8.6190",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "reference",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14960055.65",
+      "modeled_tax_set_aside": "1083990.00",
+      "after_tax_nominal": "13876000.22",
+      "after_tax_real": "7748286.05",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1650"
+      },
+      "floor_shortfall": "1251713.95",
+      "stretch_shortfall": "2251713.95",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.8051",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "reference",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15314301.34",
+      "modeled_tax_set_aside": "1037740.00",
+      "after_tax_nominal": "14276493.75",
+      "after_tax_real": "7971919.54",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.5615"
+      },
+      "floor_shortfall": "1028080.46",
+      "stretch_shortfall": "2028080.46",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.2947",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "reference",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14448339.69",
+      "modeled_tax_set_aside": "1318580.00",
+      "after_tax_nominal": "13129694.26",
+      "after_tax_real": "7331552.70",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.3929"
+      },
+      "floor_shortfall": "1668447.30",
+      "stretch_shortfall": "2668447.30",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "8.7749",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "reference",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14995238.48",
+      "modeled_tax_set_aside": "1096070.00",
+      "after_tax_nominal": "13899103.05",
+      "after_tax_real": "7761186.55",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1882"
+      },
+      "floor_shortfall": "1238813.45",
+      "stretch_shortfall": "2238813.45",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.8695",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "reference",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15331892.75",
+      "modeled_tax_set_aside": "1043780.00",
+      "after_tax_nominal": "14288045.17",
+      "after_tax_real": "7978369.79",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.5727"
+      },
+      "floor_shortfall": "1021630.21",
+      "stretch_shortfall": "2021630.21",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.3268",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11635462.10",
+      "modeled_tax_set_aside": "704690.00",
+      "after_tax_nominal": "10930753.29",
+      "after_tax_real": "5063053.74",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "2.8124"
+      },
+      "floor_shortfall": "3936946.26",
+      "stretch_shortfall": "4936946.26",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "5.8814",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11642342.51",
+      "modeled_tax_set_aside": "530920.00",
+      "after_tax_nominal": "11111406.29",
+      "after_tax_real": "5146731.04",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.0447"
+      },
+      "floor_shortfall": "3853268.96",
+      "stretch_shortfall": "4853268.96",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.3455",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11723792.09",
+      "modeled_tax_set_aside": "484190.00",
+      "after_tax_nominal": "11239584.02",
+      "after_tax_real": "5206102.13",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.2070"
+      },
+      "floor_shortfall": "3793897.87",
+      "stretch_shortfall": "4793897.87",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "3.8913",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12510971.97",
+      "modeled_tax_set_aside": "867520.00",
+      "after_tax_nominal": "11585792.39",
+      "after_tax_real": "5366463.59",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.6357"
+      },
+      "floor_shortfall": "3633536.41",
+      "stretch_shortfall": "4633536.41",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "1.6572",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11991886.64",
+      "modeled_tax_set_aside": "624520.00",
+      "after_tax_nominal": "11344309.77",
+      "after_tax_real": "5254610.41",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3382"
+      },
+      "floor_shortfall": "3745389.59",
+      "stretch_shortfall": "4745389.59",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "2.8977",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11897877.78",
+      "modeled_tax_set_aside": "530780.00",
+      "after_tax_nominal": "11355574.81",
+      "after_tax_real": "5259828.30",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3522"
+      },
+      "floor_shortfall": "3740171.70",
+      "stretch_shortfall": "4740171.70",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "3.1719",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12223234.62",
+      "modeled_tax_set_aside": "902910.00",
+      "after_tax_nominal": "11320311.82",
+      "after_tax_real": "5243494.72",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3082"
+      },
+      "floor_shortfall": "3756505.28",
+      "stretch_shortfall": "4756505.28",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.2373",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11877585.14",
+      "modeled_tax_set_aside": "610270.00",
+      "after_tax_nominal": "11267302.35",
+      "after_tax_real": "5218941.08",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.2419"
+      },
+      "floor_shortfall": "3781058.92",
+      "stretch_shortfall": "4781058.92",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.9353",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11841528.89",
+      "modeled_tax_set_aside": "523910.00",
+      "after_tax_nominal": "11317604.24",
+      "after_tax_real": "5242240.59",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3049"
+      },
+      "floor_shortfall": "3757759.41",
+      "stretch_shortfall": "4757759.41",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.1923",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12309381.76",
+      "modeled_tax_set_aside": "932480.00",
+      "after_tax_nominal": "11376888.97",
+      "after_tax_real": "5269700.88",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3787"
+      },
+      "floor_shortfall": "3730299.12",
+      "stretch_shortfall": "4730299.12",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.4271",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11912044.00",
+      "modeled_tax_set_aside": "622090.00",
+      "after_tax_nominal": "11289941.21",
+      "after_tax_real": "5229427.25",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.2703"
+      },
+      "floor_shortfall": "3770572.75",
+      "stretch_shortfall": "4770572.75",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "5.0204",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "low_growth_high_inflation",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.08",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11858758.32",
+      "modeled_tax_set_aside": "529820.00",
+      "after_tax_nominal": "11328923.67",
+      "after_tax_real": "5247483.67",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3190"
+      },
+      "floor_shortfall": "3752516.33",
+      "stretch_shortfall": "4752516.33",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.2362",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13275291.33",
+      "modeled_tax_set_aside": "1122370.00",
+      "after_tax_nominal": "12152841.72",
+      "after_tax_real": "6786083.34",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3087"
+      },
+      "floor_shortfall": "2213916.66",
+      "stretch_shortfall": "3213916.66",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "10.1624",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13051172.70",
+      "modeled_tax_set_aside": "806620.00",
+      "after_tax_nominal": "12244475.06",
+      "after_tax_real": "6837250.92",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4143"
+      },
+      "floor_shortfall": "2162749.08",
+      "stretch_shortfall": "3162749.08",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "19.1838",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12986240.06",
+      "modeled_tax_set_aside": "702570.00",
+      "after_tax_nominal": "12283587.49",
+      "after_tax_real": "6859091.10",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4591"
+      },
+      "floor_shortfall": "2140908.90",
+      "stretch_shortfall": "3140908.90",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "23.6452",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13510234.80",
+      "modeled_tax_set_aside": "1108590.00",
+      "after_tax_nominal": "12274511.30",
+      "after_tax_real": "6854023.00",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4487"
+      },
+      "floor_shortfall": "2145977.00",
+      "stretch_shortfall": "3145977.00",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "10.1126",
+        "on": "2027-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13144789.23",
+      "modeled_tax_set_aside": "801020.00",
+      "after_tax_nominal": "12292892.86",
+      "after_tax_real": "6864287.17",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4697"
+      },
+      "floor_shortfall": "2135712.83",
+      "stretch_shortfall": "3135712.83",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "19.1623",
+        "on": "2027-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13032657.98",
+      "modeled_tax_set_aside": "699670.00",
+      "after_tax_nominal": "12307531.93",
+      "after_tax_real": "6872461.54",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4865"
+      },
+      "floor_shortfall": "2127538.46",
+      "stretch_shortfall": "3127538.46",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "23.6341",
+        "on": "2027-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13348350.82",
+      "modeled_tax_set_aside": "1143670.00",
+      "after_tax_nominal": "12204615.39",
+      "after_tax_real": "6814993.49",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3685"
+      },
+      "floor_shortfall": "2185006.51",
+      "stretch_shortfall": "3185006.51",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "10.1383",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13080568.00",
+      "modeled_tax_set_aside": "815230.00",
+      "after_tax_nominal": "12265272.57",
+      "after_tax_real": "6848864.14",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4381"
+      },
+      "floor_shortfall": "2151135.86",
+      "stretch_shortfall": "3151135.86",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "19.1692",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13001085.76",
+      "modeled_tax_set_aside": "706950.00",
+      "after_tax_nominal": "12294068.18",
+      "after_tax_real": "6864943.46",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4711"
+      },
+      "floor_shortfall": "2135056.54",
+      "stretch_shortfall": "3135056.54",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "23.6367",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13436307.88",
+      "modeled_tax_set_aside": "1173860.00",
+      "after_tax_nominal": "12262382.45",
+      "after_tax_real": "6847250.31",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4348"
+      },
+      "floor_shortfall": "2152749.69",
+      "stretch_shortfall": "3152749.69",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "10.1228",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13115750.83",
+      "modeled_tax_set_aside": "827300.00",
+      "after_tax_nominal": "12288385.40",
+      "after_tax_real": "6861770.22",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4646"
+      },
+      "floor_shortfall": "2138229.78",
+      "stretch_shortfall": "3138229.78",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "19.1603",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "early_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13018677.18",
+      "modeled_tax_set_aside": "712980.00",
+      "after_tax_nominal": "12305629.59",
+      "after_tax_real": "6871399.29",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4843"
+      },
+      "floor_shortfall": "2128600.71",
+      "stretch_shortfall": "3128600.71",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "23.6315",
+        "on": "2027-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12663581.97",
+      "modeled_tax_set_aside": "1026790.00",
+      "after_tax_nominal": "11636712.36",
+      "after_tax_real": "6497879.40",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.6975"
+      },
+      "floor_shortfall": "2502120.60",
+      "stretch_shortfall": "3502120.60",
+      "gain_loss_offsets": "131742.05",
+      "monthly_max_drawdown": {
+        "percent": "16.2762",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11915141.03",
+      "modeled_tax_set_aside": "629110.00",
+      "after_tax_nominal": "11285953.39",
+      "after_tax_real": "6302017.42",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.2653"
+      },
+      "floor_shortfall": "2697982.58",
+      "stretch_shortfall": "3697982.58",
+      "gain_loss_offsets": "244663.81",
+      "monthly_max_drawdown": {
+        "percent": "22.2744",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11588047.23",
+      "modeled_tax_set_aside": "484100.00",
+      "after_tax_nominal": "11103864.66",
+      "after_tax_real": "6200340.03",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.0351"
+      },
+      "floor_shortfall": "2799659.97",
+      "stretch_shortfall": "3799659.97",
+      "gain_loss_offsets": "301124.69",
+      "monthly_max_drawdown": {
+        "percent": "25.3558",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12898525.44",
+      "modeled_tax_set_aside": "944520.00",
+      "after_tax_nominal": "11826871.94",
+      "after_tax_real": "6604063.52",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.9260"
+      },
+      "floor_shortfall": "2395936.48",
+      "stretch_shortfall": "3395936.48",
+      "gain_loss_offsets": "131742.05",
+      "monthly_max_drawdown": {
+        "percent": "11.6247",
+        "on": "2036-05-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12008757.56",
+      "modeled_tax_set_aside": "636320.00",
+      "after_tax_nominal": "11321561.19",
+      "after_tax_real": "6321900.64",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3098"
+      },
+      "floor_shortfall": "2678099.36",
+      "stretch_shortfall": "3678099.36",
+      "gain_loss_offsets": "244663.81",
+      "monthly_max_drawdown": {
+        "percent": "20.8902",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11634465.15",
+      "modeled_tax_set_aside": "497310.00",
+      "after_tax_nominal": "11111699.10",
+      "after_tax_real": "6204714.74",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.0451"
+      },
+      "floor_shortfall": "2795285.26",
+      "stretch_shortfall": "3795285.26",
+      "gain_loss_offsets": "301124.69",
+      "monthly_max_drawdown": {
+        "percent": "24.7751",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12736641.45",
+      "modeled_tax_set_aside": "1048090.00",
+      "after_tax_nominal": "11688486.02",
+      "after_tax_real": "6526789.55",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.7601"
+      },
+      "floor_shortfall": "2473210.45",
+      "stretch_shortfall": "3473210.45",
+      "gain_loss_offsets": "131742.05",
+      "monthly_max_drawdown": {
+        "percent": "16.5453",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11944536.33",
+      "modeled_tax_set_aside": "637720.00",
+      "after_tax_nominal": "11306750.90",
+      "after_tax_real": "6313630.65",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.2913"
+      },
+      "floor_shortfall": "2686369.35",
+      "stretch_shortfall": "3686369.35",
+      "gain_loss_offsets": "244663.81",
+      "monthly_max_drawdown": {
+        "percent": "22.3602",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11602892.94",
+      "modeled_tax_set_aside": "488470.00",
+      "after_tax_nominal": "11114355.35",
+      "after_tax_real": "6206197.98",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.0485"
+      },
+      "floor_shortfall": "2793802.02",
+      "stretch_shortfall": "3793802.02",
+      "gain_loss_offsets": "301124.69",
+      "monthly_max_drawdown": {
+        "percent": "25.3935",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12824598.52",
+      "modeled_tax_set_aside": "1078280.00",
+      "after_tax_nominal": "11746253.09",
+      "after_tax_real": "6559046.37",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.8296"
+      },
+      "floor_shortfall": "2440953.63",
+      "stretch_shortfall": "3440953.63",
+      "gain_loss_offsets": "131742.05",
+      "monthly_max_drawdown": {
+        "percent": "16.6318",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11979719.15",
+      "modeled_tax_set_aside": "649790.00",
+      "after_tax_nominal": "11329863.72",
+      "after_tax_real": "6326536.73",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.3202"
+      },
+      "floor_shortfall": "2673463.27",
+      "stretch_shortfall": "3673463.27",
+      "gain_loss_offsets": "244663.81",
+      "monthly_max_drawdown": {
+        "percent": "22.3795",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "late_equity_shock",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "11620484.35",
+      "modeled_tax_set_aside": "494510.00",
+      "after_tax_nominal": "11125906.76",
+      "after_tax_real": "6212648.23",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.0632"
+      },
+      "floor_shortfall": "2787351.77",
+      "stretch_shortfall": "3787351.77",
+      "gain_loss_offsets": "301124.69",
+      "monthly_max_drawdown": {
+        "percent": "25.3994",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12385405.62",
+      "modeled_tax_set_aside": "848350.00",
+      "after_tax_nominal": "11536976.00",
+      "after_tax_real": "6442187.14",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.5761"
+      },
+      "floor_shortfall": "2557812.86",
+      "stretch_shortfall": "3557812.86",
+      "gain_loss_offsets": "5943.22",
+      "monthly_max_drawdown": {
+        "percent": "14.3046",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12609101.49",
+      "modeled_tax_set_aside": "684730.00",
+      "after_tax_nominal": "11924293.85",
+      "after_tax_real": "6658463.41",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.0416"
+      },
+      "floor_shortfall": "2341536.59",
+      "stretch_shortfall": "3341536.59",
+      "gain_loss_offsets": "10711.51",
+      "monthly_max_drawdown": {
+        "percent": "16.6982",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12751259.90",
+      "modeled_tax_set_aside": "639660.00",
+      "after_tax_nominal": "12111517.33",
+      "after_tax_real": "6763008.02",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2608"
+      },
+      "floor_shortfall": "2236991.98",
+      "stretch_shortfall": "3236991.98",
+      "gain_loss_offsets": "13106.73",
+      "monthly_max_drawdown": {
+        "percent": "17.8989",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13358172.34",
+      "modeled_tax_set_aside": "1087410.00",
+      "after_tax_nominal": "12143626.75",
+      "after_tax_real": "6780937.75",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2980"
+      },
+      "floor_shortfall": "2219062.25",
+      "stretch_shortfall": "3219062.25",
+      "gain_loss_offsets": "5736.05",
+      "monthly_max_drawdown": {
+        "percent": "9.4645",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12997639.27",
+      "modeled_tax_set_aside": "780180.00",
+      "after_tax_nominal": "12166582.20",
+      "after_tax_real": "6793755.96",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3246"
+      },
+      "floor_shortfall": "2206244.04",
+      "stretch_shortfall": "3206244.04",
+      "gain_loss_offsets": "10628.70",
+      "monthly_max_drawdown": {
+        "percent": "14.8938",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12944972.57",
+      "modeled_tax_set_aside": "687240.00",
+      "after_tax_nominal": "12232276.05",
+      "after_tax_real": "6830439.05",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4003"
+      },
+      "floor_shortfall": "2169560.95",
+      "stretch_shortfall": "3169560.95",
+      "gain_loss_offsets": "13065.48",
+      "monthly_max_drawdown": {
+        "percent": "17.0276",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13216149.02",
+      "modeled_tax_set_aside": "1129940.00",
+      "after_tax_nominal": "12086143.59",
+      "after_tax_real": "6748839.46",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2313"
+      },
+      "floor_shortfall": "2251160.54",
+      "stretch_shortfall": "3251160.54",
+      "gain_loss_offsets": "5736.05",
+      "monthly_max_drawdown": {
+        "percent": "12.3251",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12941368.88",
+      "modeled_tax_set_aside": "797380.00",
+      "after_tax_nominal": "12143923.45",
+      "after_tax_real": "6781103.43",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2984"
+      },
+      "floor_shortfall": "2218896.57",
+      "stretch_shortfall": "3218896.57",
+      "gain_loss_offsets": "10628.70",
+      "monthly_max_drawdown": {
+        "percent": "15.9264",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12917380.14",
+      "modeled_tax_set_aside": "696000.00",
+      "after_tax_nominal": "12221312.56",
+      "after_tax_real": "6824317.10",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3877"
+      },
+      "floor_shortfall": "2175682.90",
+      "stretch_shortfall": "3175682.90",
+      "gain_loss_offsets": "13065.48",
+      "monthly_max_drawdown": {
+        "percent": "17.5196",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "13304157.58",
+      "modeled_tax_set_aside": "1160140.00",
+      "after_tax_nominal": "12143952.15",
+      "after_tax_real": "6781119.45",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2984"
+      },
+      "floor_shortfall": "2218880.55",
+      "stretch_shortfall": "3218880.55",
+      "gain_loss_offsets": "5736.05",
+      "monthly_max_drawdown": {
+        "percent": "12.2929",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12976572.31",
+      "modeled_tax_set_aside": "809460.00",
+      "after_tax_nominal": "12167046.88",
+      "after_tax_real": "6794015.43",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3251"
+      },
+      "floor_shortfall": "2205984.57",
+      "stretch_shortfall": "3205984.57",
+      "gain_loss_offsets": "10628.70",
+      "monthly_max_drawdown": {
+        "percent": "15.9064",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_october",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "12934981.86",
+      "modeled_tax_set_aside": "702040.00",
+      "after_tax_nominal": "12232874.27",
+      "after_tax_real": "6830773.10",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4010"
+      },
+      "floor_shortfall": "2169226.90",
+      "stretch_shortfall": "3169226.90",
+      "gain_loss_offsets": "13065.48",
+      "monthly_max_drawdown": {
+        "percent": "17.5081",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "12647934.15",
+      "modeled_tax_set_aside": "879410.00",
+      "after_tax_nominal": "11768439.94",
+      "after_tax_real": "6507925.89",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "3.6160"
+      },
+      "floor_shortfall": "2492074.11",
+      "stretch_shortfall": "3492074.11",
+      "gain_loss_offsets": "3713.36",
+      "monthly_max_drawdown": {
+        "percent": "14.3046",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1355
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "12886200.54",
+      "modeled_tax_set_aside": "710670.00",
+      "after_tax_nominal": "12175448.38",
+      "after_tax_real": "6733000.81",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.0897"
+      },
+      "floor_shortfall": "2266999.19",
+      "stretch_shortfall": "3266999.19",
+      "gain_loss_offsets": "6896.24",
+      "monthly_max_drawdown": {
+        "percent": "16.6982",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1355
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13036870.82",
+      "modeled_tax_set_aside": "664420.00",
+      "after_tax_nominal": "12372363.57",
+      "after_tax_real": "6841894.56",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3128"
+      },
+      "floor_shortfall": "2158105.44",
+      "stretch_shortfall": "3158105.44",
+      "gain_loss_offsets": "8487.68",
+      "monthly_max_drawdown": {
+        "percent": "17.8989",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1355
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13607607.21",
+      "modeled_tax_set_aside": "1112060.00",
+      "after_tax_nominal": "12363015.53",
+      "after_tax_real": "6836725.11",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3023"
+      },
+      "floor_shortfall": "2163274.89",
+      "stretch_shortfall": "3163274.89",
+      "gain_loss_offsets": "3713.36",
+      "monthly_max_drawdown": {
+        "percent": "9.4645",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2515
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13269502.94",
+      "modeled_tax_set_aside": "803570.00",
+      "after_tax_nominal": "12412896.26",
+      "after_tax_real": "6864309.06",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3582"
+      },
+      "floor_shortfall": "2135690.94",
+      "stretch_shortfall": "3135690.94",
+      "gain_loss_offsets": "6896.24",
+      "monthly_max_drawdown": {
+        "percent": "14.8938",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2515
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13227966.68",
+      "modeled_tax_set_aside": "710710.00",
+      "after_tax_nominal": "12490719.31",
+      "after_tax_real": "6907345.06",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4450"
+      },
+      "floor_shortfall": "2092654.94",
+      "stretch_shortfall": "3092654.94",
+      "gain_loss_offsets": "8487.68",
+      "monthly_max_drawdown": {
+        "percent": "17.0276",
+        "on": "2034-10-31"
+      },
+      "trace_events": 2515
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13464649.92",
+      "modeled_tax_set_aside": "1156130.00",
+      "after_tax_nominal": "12308450.84",
+      "after_tax_real": "6806550.93",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.2408"
+      },
+      "floor_shortfall": "2193449.07",
+      "stretch_shortfall": "3193449.07",
+      "gain_loss_offsets": "3713.36",
+      "monthly_max_drawdown": {
+        "percent": "12.3251",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13212862.51",
+      "modeled_tax_set_aside": "821370.00",
+      "after_tax_nominal": "12391423.43",
+      "after_tax_real": "6852434.62",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3342"
+      },
+      "floor_shortfall": "2147565.38",
+      "stretch_shortfall": "3147565.38",
+      "gain_loss_offsets": "6896.24",
+      "monthly_max_drawdown": {
+        "percent": "15.9264",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13200192.79",
+      "modeled_tax_set_aside": "719780.00",
+      "after_tax_nominal": "12480341.41",
+      "after_tax_real": "6901606.11",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4335"
+      },
+      "floor_shortfall": "2098393.89",
+      "stretch_shortfall": "3098393.89",
+      "gain_loss_offsets": "8487.68",
+      "monthly_max_drawdown": {
+        "percent": "17.5196",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13553237.24",
+      "modeled_tax_set_aside": "1186530.00",
+      "after_tax_nominal": "12366638.16",
+      "after_tax_real": "6838728.41",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3063"
+      },
+      "floor_shortfall": "2161271.59",
+      "stretch_shortfall": "3161271.59",
+      "gain_loss_offsets": "3713.36",
+      "monthly_max_drawdown": {
+        "percent": "12.2929",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13248297.44",
+      "modeled_tax_set_aside": "833530.00",
+      "after_tax_nominal": "12414698.36",
+      "after_tax_real": "6865305.61",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.3602"
+      },
+      "floor_shortfall": "2134694.39",
+      "stretch_shortfall": "3134694.39",
+      "gain_loss_offsets": "6896.24",
+      "monthly_max_drawdown": {
+        "percent": "15.9064",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "joint_shock_december",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 122,
+      "end": "2036-12-31",
+      "inflation": "0.06",
+      "contributions": "9110914.50",
+      "pre_tax_nominal_after_product_costs": "13217910.26",
+      "modeled_tax_set_aside": "725860.00",
+      "after_tax_nominal": "12491978.88",
+      "after_tax_real": "6908041.60",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.4464"
+      },
+      "floor_shortfall": "2091958.40",
+      "stretch_shortfall": "3091958.40",
+      "gain_loss_offsets": "8487.68",
+      "monthly_max_drawdown": {
+        "percent": "17.5081",
+        "on": "2034-10-31"
+      },
+      "trace_events": 1338
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "lic",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14218031.68",
+      "modeled_tax_set_aside": "1335540.00",
+      "after_tax_nominal": "12882412.07",
+      "after_tax_real": "7193471.61",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.1268"
+      },
+      "floor_shortfall": "1806528.39",
+      "stretch_shortfall": "2806528.39",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "9.2591",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "lic",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14893926.10",
+      "modeled_tax_set_aside": "1238830.00",
+      "after_tax_nominal": "13655016.49",
+      "after_tax_real": "7624889.89",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.9410"
+      },
+      "floor_shortfall": "1375110.11",
+      "stretch_shortfall": "2375110.11",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.9971",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "lic",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15278642.88",
+      "modeled_tax_set_aside": "1194840.00",
+      "after_tax_nominal": "14083723.27",
+      "after_tax_real": "7864277.51",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.3721"
+      },
+      "floor_shortfall": "1135722.49",
+      "stretch_shortfall": "2135722.49",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.4098",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1333
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "bond",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14496897.29",
+      "modeled_tax_set_aside": "1322830.00",
+      "after_tax_nominal": "13044755.73",
+      "after_tax_real": "7284123.47",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.3021"
+      },
+      "floor_shortfall": "1715876.53",
+      "stretch_shortfall": "2715876.53",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "4.1847",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "bond",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15004998.64",
+      "modeled_tax_set_aside": "1136920.00",
+      "after_tax_nominal": "13816334.95",
+      "after_tax_real": "7714969.27",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1049"
+      },
+      "floor_shortfall": "1285030.73",
+      "stretch_shortfall": "2285030.73",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "5.4218",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "bond",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15333773.14",
+      "modeled_tax_set_aside": "1185610.00",
+      "after_tax_nominal": "14122276.04",
+      "after_tax_real": "7885805.18",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.4102"
+      },
+      "floor_shortfall": "1114194.82",
+      "stretch_shortfall": "2114194.82",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "6.4382",
+        "on": "2036-10-31"
+      },
+      "trace_events": 2499
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "accrual_in_net_receivables",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14230152.32",
+      "modeled_tax_set_aside": "1320260.00",
+      "after_tax_nominal": "12909824.74",
+      "after_tax_real": "7208778.70",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.1566"
+      },
+      "floor_shortfall": "1791221.30",
+      "stretch_shortfall": "2791221.30",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "8.9755",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "accrual_in_net_receivables",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14898921.09",
+      "modeled_tax_set_aside": "1232530.00",
+      "after_tax_nominal": "13666323.51",
+      "after_tax_real": "7631203.67",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.9526"
+      },
+      "floor_shortfall": "1368796.33",
+      "stretch_shortfall": "2368796.33",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.8873",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "accrual_in_net_receivables",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15281260.53",
+      "modeled_tax_set_aside": "1191760.00",
+      "after_tax_nominal": "14089432.94",
+      "after_tax_real": "7867465.77",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.3778"
+      },
+      "floor_shortfall": "1132534.23",
+      "stretch_shortfall": "2132534.23",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.3569",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "market_value_includes_accrual",
+      "policy": "defensive",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14316360.74",
+      "modeled_tax_set_aside": "1350420.00",
+      "after_tax_nominal": "12965873.16",
+      "after_tax_real": "7240075.85",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.2172"
+      },
+      "floor_shortfall": "1759924.15",
+      "stretch_shortfall": "2759924.15",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "9.1315",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "market_value_includes_accrual",
+      "policy": "diversified",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "14933404.46",
+      "modeled_tax_set_aside": "1245140.00",
+      "after_tax_nominal": "13688196.87",
+      "after_tax_real": "7643417.64",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.9749"
+      },
+      "floor_shortfall": "1356582.36",
+      "stretch_shortfall": "2356582.36",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.9533",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    },
+    {
+      "scenario": "cost_and_tax_stress",
+      "route": "market_value_includes_accrual",
+      "policy": "growth",
+      "payments": 120,
+      "end": "2036-10-31",
+      "inflation": "0.06",
+      "contributions": "8981227.38",
+      "pre_tax_nominal_after_product_costs": "15298502.21",
+      "modeled_tax_set_aside": "1198070.00",
+      "after_tax_nominal": "14100364.63",
+      "after_tax_real": "7873569.96",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "6.3886"
+      },
+      "floor_shortfall": "1126430.04",
+      "stretch_shortfall": "2126430.04",
+      "gain_loss_offsets": "0.00",
+      "monthly_max_drawdown": {
+        "percent": "7.3898",
+        "on": "2036-10-31"
+      },
+      "trace_events": 1322
+    }
+  ],
+  "historical": [
+    {
+      "scenario": "core_full",
+      "route": "lic",
+      "policy": "defensive",
+      "first_observed": "2019-09-30",
+      "last_observed": "2026-10-30",
+      "payments": 85,
+      "end": "2033-11-30",
+      "inflation": "0.06",
+      "contributions": "7094869.23",
+      "pre_tax_nominal_after_product_costs": "12818802.24",
+      "modeled_tax_set_aside": "1095700.00",
+      "after_tax_nominal": "11723102.24",
+      "after_tax_real": "7758766.35",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "9.2271"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "20436.09",
+      "monthly_max_drawdown": {
+        "percent": "13.8978",
+        "on": "2033-11-30"
+      },
+      "trace_events": 859
+    },
+    {
+      "scenario": "core_full",
+      "route": "lic",
+      "policy": "diversified",
+      "first_observed": "2019-09-30",
+      "last_observed": "2026-10-30",
+      "payments": 85,
+      "end": "2033-11-30",
+      "inflation": "0.06",
+      "contributions": "7094869.23",
+      "pre_tax_nominal_after_product_costs": "14251596.27",
+      "modeled_tax_set_aside": "1226220.00",
+      "after_tax_nominal": "13025376.27",
+      "after_tax_real": "8620657.66",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "11.1837"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "31544.25",
+      "monthly_max_drawdown": {
+        "percent": "16.7060",
+        "on": "2027-04-30"
+      },
+      "trace_events": 859
+    },
+    {
+      "scenario": "core_full",
+      "route": "lic",
+      "policy": "growth",
+      "first_observed": "2019-09-30",
+      "last_observed": "2026-10-30",
+      "payments": 85,
+      "end": "2033-11-30",
+      "inflation": "0.06",
+      "contributions": "7094869.23",
+      "pre_tax_nominal_after_product_costs": "14428674.80",
+      "modeled_tax_set_aside": "1200370.00",
+      "after_tax_nominal": "13228304.80",
+      "after_tax_real": "8754962.99",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "11.4717"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "35778.21",
+      "monthly_max_drawdown": {
+        "percent": "21.6361",
+        "on": "2027-04-30"
+      },
+      "trace_events": 859
+    },
+    {
+      "scenario": "matched_full",
+      "route": "lic",
+      "policy": "defensive",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8173941.77",
+      "modeled_tax_set_aside": "536550.00",
+      "after_tax_nominal": "7637391.77",
+      "after_tax_real": "6049529.62",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "9.2719"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "15228.02",
+      "monthly_max_drawdown": {
+        "percent": "11.8485",
+        "on": "2030-10-31"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "lic",
+      "policy": "diversified",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8386104.88",
+      "modeled_tax_set_aside": "483970.00",
+      "after_tax_nominal": "7902134.88",
+      "after_tax_real": "6259230.97",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "10.3209"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "23496.27",
+      "monthly_max_drawdown": {
+        "percent": "12.1108",
+        "on": "2030-10-31"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "lic",
+      "policy": "growth",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8161259.08",
+      "modeled_tax_set_aside": "423990.00",
+      "after_tax_nominal": "7737269.08",
+      "after_tax_real": "6128641.81",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "9.6710"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "26671.49",
+      "monthly_max_drawdown": {
+        "percent": "13.2998",
+        "on": "2029-02-28"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "lic",
+      "policy": "diversified_silver",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8471437.77",
+      "modeled_tax_set_aside": "495620.00",
+      "after_tax_nominal": "7975817.77",
+      "after_tax_real": "6317594.71",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "10.6079"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "26326.13",
+      "monthly_max_drawdown": {
+        "percent": "16.7564",
+        "on": "2030-10-31"
+      },
+      "trace_events": 630
+    },
+    {
+      "scenario": "matched_full",
+      "route": "sbi",
+      "policy": "defensive",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8255838.82",
+      "modeled_tax_set_aside": "562570.00",
+      "after_tax_nominal": "7693268.82",
+      "after_tax_real": "6093789.48",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "9.4957"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "14959.39",
+      "monthly_max_drawdown": {
+        "percent": "11.9272",
+        "on": "2030-10-31"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "sbi",
+      "policy": "diversified",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8418897.58",
+      "modeled_tax_set_aside": "494390.00",
+      "after_tax_nominal": "7924507.58",
+      "after_tax_real": "6276952.23",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "10.4083"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "23389.45",
+      "monthly_max_drawdown": {
+        "percent": "12.1407",
+        "on": "2030-10-31"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "sbi",
+      "policy": "growth",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8177679.89",
+      "modeled_tax_set_aside": "429210.00",
+      "after_tax_nominal": "7748469.89",
+      "after_tax_real": "6137513.90",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "9.7155"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "26618.49",
+      "monthly_max_drawdown": {
+        "percent": "13.3200",
+        "on": "2029-02-28"
+      },
+      "trace_events": 486
+    },
+    {
+      "scenario": "matched_full",
+      "route": "sbi",
+      "policy": "diversified_silver",
+      "first_observed": "2022-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 48,
+      "end": "2030-10-31",
+      "inflation": "0.06",
+      "contributions": "5592300.00",
+      "pre_tax_nominal_after_product_costs": "8504230.46",
+      "modeled_tax_set_aside": "506040.00",
+      "after_tax_nominal": "7998190.46",
+      "after_tax_real": "6335315.98",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "10.6946"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "26219.30",
+      "monthly_max_drawdown": {
+        "percent": "16.6975",
+        "on": "2030-10-31"
+      },
+      "trace_events": 630
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "lic",
+      "policy": "defensive",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6382769.49",
+      "modeled_tax_set_aside": "265190.00",
+      "after_tax_nominal": "6117579.49",
+      "after_tax_real": "5444623.97",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "13.4391"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "1369.20",
+      "monthly_max_drawdown": {
+        "percent": "5.9061",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "lic",
+      "policy": "diversified",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6792492.20",
+      "modeled_tax_set_aside": "272890.00",
+      "after_tax_nominal": "6519602.20",
+      "after_tax_real": "5802422.75",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "17.3320"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "2525.85",
+      "monthly_max_drawdown": {
+        "percent": "7.5403",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "lic",
+      "policy": "growth",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6915315.24",
+      "modeled_tax_set_aside": "337110.00",
+      "after_tax_nominal": "6578205.24",
+      "after_tax_real": "5854579.24",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "17.8891"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "3105.34",
+      "monthly_max_drawdown": {
+        "percent": "9.4308",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "sbi",
+      "policy": "defensive",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6429905.38",
+      "modeled_tax_set_aside": "278310.00",
+      "after_tax_nominal": "6151595.38",
+      "after_tax_real": "5474897.99",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "13.7734"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "1369.50",
+      "monthly_max_drawdown": {
+        "percent": "6.0254",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "sbi",
+      "policy": "diversified",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6811359.12",
+      "modeled_tax_set_aside": "278140.00",
+      "after_tax_nominal": "6533219.12",
+      "after_tax_real": "5814541.76",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "17.4617"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "2525.98",
+      "monthly_max_drawdown": {
+        "percent": "7.5804",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_first_half",
+      "route": "sbi",
+      "policy": "growth",
+      "first_observed": "2022-10-31",
+      "last_observed": "2024-10-31",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "6924758.90",
+      "modeled_tax_set_aside": "345880.00",
+      "after_tax_nominal": "6578878.90",
+      "after_tax_real": "5855178.80",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "17.8955"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "3105.42",
+      "monthly_max_drawdown": {
+        "percent": "9.5328",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "lic",
+      "policy": "defensive",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5462289.02",
+      "modeled_tax_set_aside": "116520.00",
+      "after_tax_nominal": "5345769.02",
+      "after_tax_real": "4757715.39",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.5804"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "37884.47",
+      "monthly_max_drawdown": {
+        "percent": "7.3325",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "lic",
+      "policy": "diversified",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5323269.58",
+      "modeled_tax_set_aside": "76200.00",
+      "after_tax_nominal": "5247069.58",
+      "after_tax_real": "4669873.25",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.5346"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "66392.14",
+      "monthly_max_drawdown": {
+        "percent": "9.1574",
+        "on": "2028-03-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "lic",
+      "policy": "growth",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5113172.19",
+      "modeled_tax_set_aside": "41330.00",
+      "after_tax_nominal": "5071842.19",
+      "after_tax_real": "4513921.50",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "2.6528"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "79819.48",
+      "monthly_max_drawdown": {
+        "percent": "10.0274",
+        "on": "2028-03-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "sbi",
+      "policy": "defensive",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5489380.20",
+      "modeled_tax_set_aside": "123460.00",
+      "after_tax_nominal": "5365920.20",
+      "after_tax_real": "4775649.88",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "5.7927"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "37663.14",
+      "monthly_max_drawdown": {
+        "percent": "7.2787",
+        "on": "2028-10-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "sbi",
+      "policy": "diversified",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5334109.14",
+      "modeled_tax_set_aside": "78980.00",
+      "after_tax_nominal": "5255129.14",
+      "after_tax_real": "4677046.22",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "4.6203"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "66304.37",
+      "monthly_max_drawdown": {
+        "percent": "9.1657",
+        "on": "2028-03-31"
+      },
+      "trace_events": 244
+    },
+    {
+      "scenario": "matched_last_half",
+      "route": "sbi",
+      "policy": "growth",
+      "first_observed": "2024-10-31",
+      "last_observed": "2026-10-30",
+      "payments": 24,
+      "end": "2028-10-31",
+      "inflation": "0.06",
+      "contributions": "4830000.00",
+      "pre_tax_nominal_after_product_costs": "5118594.18",
+      "modeled_tax_set_aside": "42710.00",
+      "after_tax_nominal": "5075884.18",
+      "after_tax_real": "4517518.85",
+      "xirr_nominal_after_modeled_tax": {
+        "status": "PASS",
+        "annual_percent": "2.6966"
+      },
+      "floor_shortfall": null,
+      "stretch_shortfall": null,
+      "gain_loss_offsets": "79775.97",
+      "monthly_max_drawdown": {
+        "percent": "10.0316",
+        "on": "2028-03-31"
+      },
+      "trace_events": 244
+    }
+  ]
+}

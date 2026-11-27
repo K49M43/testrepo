@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "record": "g6-3-icici-silver-etf-source-pilot-2026-11-25",
+  "candidate_id": "ICICI_SILVER_ETF",
+  "identity": {
+    "isin": "INF109KC1Y56",
+    "amfi_scheme_code": "149464",
+    "nse_listing_date": "2022-01-31",
+    "old_symbol": "ICICISILVE",
+    "new_symbol": "SILVERIETF",
+    "symbol_change_date": "2023-12-20",
+    "nse_identity_url": "https://www.nseindia.in/get-quote/equity/SILVERIETF/ICICI-Prudential-Mutual-Fund---ICICI-Prudential-Silver-ETF",
+    "nse_symbol_circular": "https://nsearchives.nseindia.com/content/circulars/CML59760.pdf"
+  },
+  "amfi": {
+    "existing_auditor": "research/stage512/2026-11-05/g5_4/audit_g5_candidate_nav_history.py",
+    "normalized_csv_path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_149464_daily.csv",
+    "request_windows": 10,
+    "observations": 1160,
+    "first_observation": "2022-01-25",
+    "last_observation": "2026-10-30",
+    "max_gap_days": 5,
+    "normalized_csv_sha256": "bf60e3abb80296b72e787d4d33eaa21d1154a10761dfd855ad8040208afb224d",
+    "status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY",
+    "issuer_anchor_checks": [
+      {
+        "date": "2025-12-31",
+        "expected_nav_inr": "227.6864",
+        "source_url": "https://digitalfactsheet.icicipruamc.com/passive/pdf/passive-fund-factsheet-december-2025.pdf",
+        "match": true
+      },
+      {
+        "date": "2026-01-30",
+        "expected_nav_inr": "329.5533",
+        "source_url": "https://www.icicipruamc.com/blob/emailmedia/mutualfund/Passive%20Fund%20Factsheet%20January%202026%20_1.pdf",
+        "match": true
+      },
+      {
+        "date": "2026-04-30",
+        "expected_nav_inr": "237.5847",
+        "source_url": "https://digitalfactsheet.icicipruamc.com/passive/pdf/passive-fund-factsheet-april-2026.pdf",
+        "match": true
+      },
+      {
+        "date": "2026-10-30",
+        "expected_nav_inr": "180.8909",
+        "source_url": "https://www.icicipruamc.com/blob/downloads/Files/Historic%20Factsheets/2026-2027/Passive%20Simplified%20October%202026.pdf",
+        "match": true
+      }
+    ],
+    "issuer_source_capture": "Online review only. Factsheet PDF bytes were not retained by this increment."
+  },
+  "nse_probe": {
+    "response_receipts": {
+      "symbol_history_oct": {
+        "url": "https://www.nseindia.com/api/historicalOR/cm/equity?symbol=SILVERIETF&series=%5B%22EQ%22%5D&from=01-10-2026&to=30-10-2026&csv=true",
+        "requested_at_utc": "2026-11-25T07:54:13.321067+00:00",
+        "status": 200,
+        "final_url": "https://www.nseindia.in/api/historicalOR/cm/equity?symbol=SILVERIETF&series=%5B%22EQ%22%5D&from=01-10-2026&to=30-10-2026&csv=true",
+        "content_type": "text/csv",
+        "captured_bytes": 2918,
+        "sha256": "de1be86373046c407c61c832f5f6d6aed3c407246d521d497fda5229bb0893b3",
+        "body_complete": true
+      },
+      "bhavcopy_2026_09_30": {
+        "url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20260930_F_0000.csv.zip",
+        "requested_at_utc": "2026-11-25T07:54:14.528462+00:00",
+        "status": 200,
+        "final_url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20260930_F_0000.csv.zip",
+        "content_type": "application/zip",
+        "captured_bytes": 206815,
+        "sha256": "0ece4833d287f504885258a40edc21fd6368632849b87add88d288f1ef0d4a59",
+        "body_complete": true
+      },
+      "bhavcopy_2026_10_30": {
+        "url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20261030_F_0000.csv.zip",
+        "requested_at_utc": "2026-11-25T07:54:14.244537+00:00",
+        "status": 200,
+        "final_url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20261030_F_0000.csv.zip",
+        "content_type": "application/zip",
+        "captured_bytes": 203326,
+        "sha256": "ce2b0e6615bbc48990bb32ab081f85568451bb6f16fc54bff7d786faa7d2ca44",
+        "body_complete": true
+      }
+    },
+    "raw_market_data_published": false,
+    "market_payload_retention": "Temporary verification only. Raw payloads removed after the pilot.",
+    "row_count": 20,
+    "first": "2026-10-01",
+    "last": "2026-10-30",
+    "identity_confirmed_bhavcopy_dates": [
+      "2026-09-30",
+      "2026-10-30"
+    ],
+    "date_and_market_field_crosschecks": [
+      {
+        "date": "2026-10-30",
+        "matching_fields": [
+          "OPEN",
+          "HIGH",
+          "LOW",
+          "close",
+          "ltp",
+          "PREV. CLOSE",
+          "VOLUME",
+          "VALUE",
+          "No of trades"
+        ],
+        "mismatches": 0
+      }
+    ],
+    "previous_close_continuity_matches": 19,
+    "previous_close_transitions": 19,
+    "exact_date_nav_matches": 20,
+    "date_matching_limit": "The same date does not synchronize the exchange close with the fund valuation.",
+    "rights_gate": "OPEN. Three bounded requests completed before review of the automated collection, reuse and simulation terms. Further programmatic acquisition and publication or model use require a route with applicable authorization.",
+    "terms_url": "https://www.nseindia.in/static/nse-terms-of-use",
+    "data_policy_url": "https://www.nseindia.in/static/market-data/nse-data-policy"
+  },
+  "historical_nav_lineage": "PASS_FOR_DECLARED_WINDOW",
+  "market_close_full_history": "OPEN",
+  "investment_model_use": "NOT_QUALIFIED",
+  "decision_status": "OPEN_NOT_READY",
+  "investment_authorization": "NO_GO"
+}

@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+  "regional_office": "Mumbai",
+  "regional_office_value": "28",
+  "coverage": {
+    "first_maturity_month": "2024-10",
+    "last_maturity_month": "2026-09",
+    "months": 24
+  },
+  "request_policy": "sequential; minimum 2 seconds between requests; max 3 attempts for HTTP 429 only; 30-second timeout; 2 MB response cap",
+  "sources": [
+    {
+      "path": "holiday_matrix_initial.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "GET",
+      "parameters": {},
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:18.552702+00:00",
+      "bytes": 72375,
+      "sha256": "923a5ed0939dd38cddebb57471723905d305988d595695f9e81dec3d6a9f566d"
+    },
+    {
+      "path": "mumbai_2024_10.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "10",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:19.473027+00:00",
+      "bytes": 73842,
+      "sha256": "ef334cdfd37e2f468dc79701556b2fbf5584c37586711f2211e62c394eff49ee"
+    },
+    {
+      "path": "mumbai_2024_11.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "11",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:21.964149+00:00",
+      "bytes": 73908,
+      "sha256": "afaa0ae5246c8c4b5d1e4ae1ac200fa3883199f3eb3007fd99fbf6af2f3da9fc"
+    },
+    {
+      "path": "mumbai_2024_12.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "12",
+        "drYear": "2024"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:24.413226+00:00",
+      "bytes": 72998,
+      "sha256": "a9115fa0d75b58326791a30798ed80367ab209c7db5a75f7b0587c6f074fa122"
+    },
+    {
+      "path": "mumbai_2025_01.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "1",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:26.853995+00:00",
+      "bytes": 70800,
+      "sha256": "85da216ce127215ced33265838c646bc82351f8c6e06c519b32945ffa954e56a"
+    },
+    {
+      "path": "mumbai_2025_02.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "2",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:29.179095+00:00",
+      "bytes": 73744,
+      "sha256": "eed8f8e5261b629c54b904c93f98fc596c72f2584a037f01f546eddcd5945c61"
+    },
+    {
+      "path": "mumbai_2025_03.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "3",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:31.584604+00:00",
+      "bytes": 73848,
+      "sha256": "d60362b3f8a16bcbe644afe8dfb2a84d8e9b56f09facd30ec56e54ca03de0027"
+    },
+    {
+      "path": "mumbai_2025_04.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "4",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:34.081209+00:00",
+      "bytes": 75396,
+      "sha256": "0b1e85bf426fe737fe295e0828787be03ba5e31979b36928c1ca3be4ebd4a677"
+    },
+    {
+      "path": "mumbai_2025_05.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "5",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:36.484792+00:00",
+      "bytes": 73735,
+      "sha256": "4eb0f21bc7e9e49f166cd1d0b8fd0dd187d7877873b94ee093e148b635a7d50c"
+    },
+    {
+      "path": "mumbai_2025_06.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "6",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:38.855157+00:00",
+      "bytes": 73032,
+      "sha256": "b6839016a664334fbb8f9a9398bde6e7fe30b0ba9ce696b87f945989085c2f6e"
+    },
+    {
+      "path": "mumbai_2025_07.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "7",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:41.205011+00:00",
+      "bytes": 70793,
+      "sha256": "1feba43a7a3ced7a4b987b31ecf32c69d6b0df97b14b901de606d11a46b77c93"
+    },
+    {
+      "path": "mumbai_2025_08.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "8",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:43.568947+00:00",
+      "bytes": 74008,
+      "sha256": "e23badbd08444447ee6a7703906a676ce8650ffac911081df8c7253545e3e5c9"
+    },
+    {
+      "path": "mumbai_2025_09.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "9",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:45.994708+00:00",
+      "bytes": 73024,
+      "sha256": "8e9a6cf2f180074c8b8b1cfedf0057fa92c78fca32cb1ef85d636d2cc8587fdc"
+    },
+    {
+      "path": "mumbai_2025_10.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "10",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:48.423279+00:00",
+      "bytes": 74869,
+      "sha256": "050359d480ff2d9f3eb1dd5dd5eed073473d71af0db334b910ef14506ca9831a"
+    },
+    {
+      "path": "mumbai_2025_11.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "11",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:50.783871+00:00",
+      "bytes": 73113,
+      "sha256": "ea7ed905318a4d2967c08bddd9952c0aec01e609150b759d3b4f0747588b6277"
+    },
+    {
+      "path": "mumbai_2025_12.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "12",
+        "drYear": "2025"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:53.167153+00:00",
+      "bytes": 73024,
+      "sha256": "940fcb287d5220070d65bc3eda923efd103bec6e5fd36a3125a2cd5f37f0852e"
+    },
+    {
+      "path": "mumbai_2026_01.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "1",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:55.614269+00:00",
+      "bytes": 73917,
+      "sha256": "58610f2ad4a895a0a18b4450c441804ebceaf8f00c7fb5c1b9fc69e3736e19f0"
+    },
+    {
+      "path": "mumbai_2026_02.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "2",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:30:58.023253+00:00",
+      "bytes": 73080,
+      "sha256": "38ae45a002baa09b8f925637dec17a9f41d57d561f4531c7c09e686d0c9362bb"
+    },
+    {
+      "path": "mumbai_2026_03.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "3",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:00.344932+00:00",
+      "bytes": 74565,
+      "sha256": "cc9f867be67b25437ac075ba51398d708235bb2f2cab432db8d9a67c62daa93b"
+    },
+    {
+      "path": "mumbai_2026_04.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "4",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:02.826323+00:00",
+      "bytes": 74668,
+      "sha256": "2a6833b6e498a2b503490c403a733463b79de306d74177a5cb0de0ffd77fac35"
+    },
+    {
+      "path": "mumbai_2026_05.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "5",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:05.213883+00:00",
+      "bytes": 72331,
+      "sha256": "31f3debd90e00612fb1d4bf39cdb94dc7bf6313967ce05bf393363d2bc190c13"
+    },
+    {
+      "path": "mumbai_2026_06.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "6",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:07.579382+00:00",
+      "bytes": 71562,
+      "sha256": "edded43934134122cc6fe28232ffb27ad19fa7dfbc5498f2c9bc03995b4fd4cb"
+    },
+    {
+      "path": "mumbai_2026_07.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "7",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:10.000006+00:00",
+      "bytes": 70793,
+      "sha256": "c0c8bff5ab1b6d41bba16a107e4c4e6ec5fb3d46c425d73a1d4c66ddaf23cf3e"
+    },
+    {
+      "path": "mumbai_2026_08.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "8",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:13.460127+00:00",
+      "bytes": 73911,
+      "sha256": "d13906be25eede4d19c4ca9f46ca764d16646bf8204daa3bb3d69f2fac2aa661"
+    },
+    {
+      "path": "mumbai_2026_09.html",
+      "url": "https://www.rbi.org.in/scripts/HolidayMatrixDisplay.aspx?regoff=Mumbai",
+      "method": "POST",
+      "parameters": {
+        "drRegionalOffice": "28",
+        "drMonth": "9",
+        "drYear": "2026"
+      },
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T16:31:15.995555+00:00",
+      "bytes": 73205,
+      "sha256": "371edde92c7c838311d5bbf25696ad75b731d4baf673e425dd35e0448daadbb2"
+    }
+  ],
+  "parsed_mumbai_holidays": [
+    {
+      "year": 2024,
+      "month": 10,
+      "holiday_dates": [
+        {
+          "date": "2024-10-02",
+          "description": "Mahatma Gandhi Jayanti/Mahalaya Amavasye"
+        },
+        {
+          "date": "2024-10-12",
+          "description": "Dasara/Dussehra (Mahanavami/Vijayadashmi)/Durga Puja (Dasain)"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "holiday_dates": [
+        {
+          "date": "2024-11-01",
+          "description": "Diwali Amavasya (Laxmi Pujan)/Deepawali/Kut/Kannada Rajyothsava/Govardhan Pooja"
+        },
+        {
+          "date": "2024-11-02",
+          "description": "Diwali (Bali Pratipada)/Balipadyami/Laxmi Puja (Deepawali)/Govardhan Pooja/Vikram Samvant New Year Day"
+        },
+        {
+          "date": "2024-11-15",
+          "description": "Guru Nanak Jayanti/Karthika Purnima/Rahas Purnima"
+        },
+        {
+          "date": "2024-11-20",
+          "description": "Assembly General Election, 2024"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "holiday_dates": [
+        {
+          "date": "2024-12-25",
+          "description": "Christmas"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "holiday_dates": []
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "holiday_dates": [
+        {
+          "date": "2025-02-19",
+          "description": "Chhatrapati Shivaji Maharaj Jayanti"
+        },
+        {
+          "date": "2025-02-26",
+          "description": "Mahashivratri"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "holiday_dates": [
+        {
+          "date": "2025-03-14",
+          "description": "Holi (Second Day) - Dhuleti/Dhulandi/Dol Jatra"
+        },
+        {
+          "date": "2025-03-31",
+          "description": "Ramzan-Id (Id-Ul-Fitr) (Shawal-1)/Khutub-E-Ramzan"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "holiday_dates": [
+        {
+          "date": "2025-04-01",
+          "description": "To enable to Banks to close their yearly accounts/Sarhul"
+        },
+        {
+          "date": "2025-04-10",
+          "description": "Mahavir Janmakalyanak/Mahavir Jayanti"
+        },
+        {
+          "date": "2025-04-14",
+          "description": "Dr. Babasaheb Ambedkar Jayanti/Vishu/Biju/Buisu Festival/Maha Vishuva Sankranti/Tamil New Year's Day/Bohag Bihu/Cheiraoba"
+        },
+        {
+          "date": "2025-04-18",
+          "description": "Good Friday"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "holiday_dates": [
+        {
+          "date": "2025-05-01",
+          "description": "Maharashtra Din/May Day (Labor Day)"
+        },
+        {
+          "date": "2025-05-12",
+          "description": "Buddha Pournima"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "holiday_dates": [
+        {
+          "date": "2025-06-07",
+          "description": "Bakri ID (Id-Uz-Zuha)"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "holiday_dates": []
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "holiday_dates": [
+        {
+          "date": "2025-08-15",
+          "description": "Independence Day/Parsi New Year (Shahenshahi)/Janmashtami"
+        },
+        {
+          "date": "2025-08-27",
+          "description": "Ganesh Chaturthi/Samvatsari (Chaturthi Paksha)/Varasiddhi Vinayaka Vrata/Ganesh Puja/Vinayakar Chathurthi"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "holiday_dates": [
+        {
+          "date": "2025-09-08",
+          "description": "Id-E-Milad"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "holiday_dates": [
+        {
+          "date": "2025-10-02",
+          "description": "Mahatma Gandhi Jayanti/Dasara/Vijaya Dashami/Dussehra/Durga Puja (Dasain)/Janmotsav of Sri Sri Sankardeva"
+        },
+        {
+          "date": "2025-10-21",
+          "description": "Diwali Amavasya (Laxmi Pujan)/Deepawali/Govardhan Pooja"
+        },
+        {
+          "date": "2025-10-22",
+          "description": "Diwali (Bali Pratipada)/Vikram Samvant New Year Day/Govardhan Pooja/Balipadyami, Laxmi Puja (Deepawali)"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "holiday_dates": [
+        {
+          "date": "2025-11-05",
+          "description": "Guru Nanak Jayanti/Kartika Purnima/Rahas Purnima"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "holiday_dates": [
+        {
+          "date": "2025-12-25",
+          "description": "Christmas"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "holiday_dates": [
+        {
+          "date": "2026-01-15",
+          "description": "Uttarayana Punyakala/Pongal/Maghe Sankranti/Makara Sankranti/Election to Municipal Corporations in Maharashtra"
+        },
+        {
+          "date": "2026-01-26",
+          "description": "Republic Day"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "holiday_dates": [
+        {
+          "date": "2026-02-19",
+          "description": "Chhatrapati Shivaji Maharaj Jayanti"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "holiday_dates": [
+        {
+          "date": "2026-03-03",
+          "description": "Holi (Second Day)/Dol Jatra/Dhulandi/Holika Dahan/Attukal Pongala"
+        },
+        {
+          "date": "2026-03-19",
+          "description": "Gudhi Padwa/Ugadi Festival/Telugu New Year's Day/Sajibu Nongmapanba (Cheiraoba)/1st Navratra"
+        },
+        {
+          "date": "2026-03-21",
+          "description": "Ramzan-Id (Id-Ul-Fitr) (Shawal-1)/Khutub-E-Ramzan/Sarhul"
+        },
+        {
+          "date": "2026-03-26",
+          "description": "Shree Ram Navami"
+        },
+        {
+          "date": "2026-03-31",
+          "description": "Mahavir Janmakalyanak/Mahavir Jayanti"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "holiday_dates": [
+        {
+          "date": "2026-04-01",
+          "description": "To enable to Banks to close their yearly accounts"
+        },
+        {
+          "date": "2026-04-03",
+          "description": "Good Friday"
+        },
+        {
+          "date": "2026-04-14",
+          "description": "Dr. Babasaheb Ambedkar Jayanti/Maha Vishuva Sankranti/Biju/Buisu Festival/Tamil New Year's Day/Bohag Bihu/Cheiraoba/Baisakhi"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "holiday_dates": [
+        {
+          "date": "2026-05-01",
+          "description": "Maharashtra Din/Buddha Pournima/May Day (Labour Day)/Birth Anniversary of Pandit Raghunath Murmu"
+        },
+        {
+          "date": "2026-05-28",
+          "description": "Bakri ID (Id-Uz-Zuha)"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "holiday_dates": [
+        {
+          "date": "2026-06-26",
+          "description": "Muharram (Yaom-EShahadath)/Last Day of Moharam/Ashoora"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "holiday_dates": []
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "holiday_dates": [
+        {
+          "date": "2026-08-15",
+          "description": "Independence Day/Parsi New Year (Shahenshahi)"
+        },
+        {
+          "date": "2026-08-26",
+          "description": "Id-E-Milad/Baravafat/Milad-un-Nabi (Birthday of Prophet Mohammad)/Thiruvonam"
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "holiday_dates": [
+        {
+          "date": "2026-09-14",
+          "description": "Ganesh Chaturthi/Ganesh Puja/Varasiddhi Vinayaka Vrata/Vinayakar Chathurthi/Hartalika"
+        }
+      ]
+    }
+  ],
+  "interpretation_limit": "Holiday dates are source inputs only. Business-day maturity adjustment must also use the governing RBI security terms and settlement calendar; do not infer investor settlement or market access from this matrix alone."
+}

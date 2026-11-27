@@ -1,0 +1,41 @@
+{
+  "id": "G6.3-WP3-ALLOCATION-STRESS-2026-11-27",
+  "parent_wp2_commit": "73e38026bcead1899bdb3eb3bdb31be39eb8404c",
+  "scope": "Deterministic allocation stress and historical replay. No random draws, optimization, or probability estimates.",
+  "policy": "Invest the initial capital and each SIP at the specified sleeve weights. Hold acquired units until exit or maturity. No interim rebalancing. Keep proceeds and unfunded sleeve amounts in the modeled reserve.",
+  "policies": {
+    "defensive": {"equity": "0.35", "gilt": "0.50", "gold": "0.15"},
+    "diversified": {"equity": "0.65", "gilt": "0.20", "gold": "0.15"},
+    "growth": {"equity": "0.80", "gilt": "0.10", "gold": "0.10"}
+  },
+  "sovereign_routes": [
+    "lic",
+    "bond",
+    "accrual_in_net_receivables",
+    "market_value_includes_accrual"
+  ],
+  "forward": [
+    {"id": "reference", "payments": 120, "inflation": "0.06", "rates": "reference"},
+    {"id": "low_growth_high_inflation", "payments": 120, "inflation": "0.08", "rates": "lower_growth"},
+    {"id": "early_equity_shock", "payments": 120, "inflation": "0.06", "rates": "reference", "shock": {"month": 12, "equity": "0.70"}},
+    {"id": "late_equity_shock", "payments": 120, "inflation": "0.06", "rates": "reference", "shock": {"month": 115, "equity": "0.70"}},
+    {"id": "joint_shock_october", "payments": 120, "inflation": "0.06", "rates": "reference", "shock": {"month": 96, "equity": "0.80", "gold": "0.90", "lic": "0.88", "sbi_initial": "0.92", "bond_yield_add": "0.015"}},
+    {"id": "joint_shock_december", "payments": 122, "inflation": "0.06", "rates": "reference", "shock": {"month": 96, "equity": "0.80", "gold": "0.90", "lic": "0.88", "sbi_initial": "0.92", "bond_yield_add": "0.015"}},
+    {"id": "cost_and_tax_stress", "payments": 120, "inflation": "0.06", "rates": "reference", "etf_bps": "50", "bond_bps": "25", "sbi_ter": "0.005", "sbi_lag": 14, "tax_context": "stress"}
+  ],
+  "shock_policy": "Apply a level shock from the observed scenario month-end onward, before that day's simulated trades. Equity, gold and LIC retain the level shift. SBI's hypothetical mark shock decays linearly to zero at its target maturity. Reprice the direct bond under the higher yield using its remaining coupons and par, with unchanged contractual cashflows.",
+  "historical": [
+    {"id": "core_full", "panel": "lic_plus_gold", "gilt": "lic", "first_interval": 0, "interval_count": 85},
+    {"id": "matched_full", "panel": "sbi_plus_gold_silver", "gilt": "lic", "first_interval": 0, "interval_count": 48},
+    {"id": "matched_full", "panel": "sbi_plus_gold_silver", "gilt": "sbi", "first_interval": 0, "interval_count": 48},
+    {"id": "matched_first_half", "panel": "sbi_plus_gold_silver", "gilt": "lic", "first_interval": 0, "interval_count": 24},
+    {"id": "matched_first_half", "panel": "sbi_plus_gold_silver", "gilt": "sbi", "first_interval": 0, "interval_count": 24},
+    {"id": "matched_last_half", "panel": "sbi_plus_gold_silver", "gilt": "lic", "first_interval": 24, "interval_count": 24},
+    {"id": "matched_last_half", "panel": "sbi_plus_gold_silver", "gilt": "sbi", "first_interval": 24, "interval_count": 24}
+  ],
+  "silver_challenge": {"policy": "diversified", "swap_gold_to_silver": "0.05", "tape": "matched_full", "scope": "NAV replay only"},
+  "observation_rule": "Use WP1 latest jointly observed endpoints and chronological intervals. Use the first and last 24 intervals as fixed subperiods, with no fit, extrapolation or interpolation. Transplant returns onto the frozen funding calendar. Any source marks after the scenario's starting funding date are forbidden.",
+  "metrics": ["terminal nominal before investor tax", "terminal nominal after modeled tax", "terminal real after modeled tax", "real floor and stretch shortfalls", "nominal XIRR", "flow-adjusted monthly maximum drawdown"],
+  "comparison": "Compare policies on identical tapes and sovereign routes. Summarize the reference and worst named stress, with October and December shown separately. Historical replay is descriptive. No pooling of unequal windows, scenario frequencies, tail percentiles, or model selection.",
+  "evidence": {"live_quote": "DEFERRED", "paid_silver_history": "DEFERRED", "rbi_tbill_payment_timing": "OPEN", "investment_authorization": "NO_GO"}
+}

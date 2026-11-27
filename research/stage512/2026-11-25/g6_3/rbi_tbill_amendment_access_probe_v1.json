@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "capture_date_local": "2026-11-25",
+  "purpose": "Capture the exact RBI-linked 2018 T-bill base attachment and 2018/2021 amendment responses for source qualification.",
+  "request_policy": "Sequential single GET per URL; direct connection to avoid the configured local proxy; no cookies, authentication, retries, challenge solving, or access-control bypass; 25-second timeout; 5 MB response cap.",
+  "sources": [
+    {
+      "source_id": "base_notification_attachment_2018",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_A.pdf",
+      "final_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_A.pdf",
+      "retrieved_at_utc": "2026-11-25T06:24:53.901366+00:00",
+      "http_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 47784,
+      "response_sha256": "20a455db837934289bb52ee6c13dc1a158c8641df99652dc18ca04e102513d53",
+      "is_pdf": false,
+      "result": "RESPONSE_NOT_PDF",
+      "response_path": "research/stage512/2026-11-25/g6_3/source_raw/rbi_notification_attachment_attempts/base_notification_attachment_2018.html",
+      "raw_response_retained": true
+    },
+    {
+      "source_id": "amendment_notification_2018_04_05",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI05042018_A.pdf",
+      "final_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI05042018_A.pdf",
+      "retrieved_at_utc": "2026-11-25T06:24:54.270596+00:00",
+      "http_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 47784,
+      "response_sha256": "a53028a8d05af825d379335de75ee523eb7d1e2ac0aab52382012991c063914c",
+      "is_pdf": false,
+      "result": "RESPONSE_NOT_PDF",
+      "response_path": "research/stage512/2026-11-25/g6_3/source_raw/rbi_notification_attachment_attempts/amendment_notification_2018_04_05.html",
+      "raw_response_retained": true
+    },
+    {
+      "source_id": "amendment_notification_2021_12_23",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI23122021_A.pdf",
+      "final_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI23122021_A.pdf",
+      "retrieved_at_utc": "2026-11-25T06:24:54.543100+00:00",
+      "http_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 44728,
+      "response_sha256": "df969edb21b20d2c1ba5ad825694dbea68c84672069d510b8db8c5fbd5788460",
+      "is_pdf": false,
+      "result": "RESPONSE_NOT_PDF",
+      "response_path": "research/stage512/2026-11-25/g6_3/source_raw/rbi_notification_attachment_attempts/amendment_notification_2021_12_23.html",
+      "raw_response_retained": true
+    }
+  ]
+}

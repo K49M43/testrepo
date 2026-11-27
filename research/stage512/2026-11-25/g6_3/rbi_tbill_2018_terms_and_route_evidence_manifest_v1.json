@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "record_id": "g6-3-rbi-tbill-2018-terms-and-redemption-route-2026-11-25-v1",
+  "capture_date_local": "2026-11-25",
+  "capture_timestamp_precision": "date_only; exact download time was not captured",
+  "purpose": "Record official-source evidence for 2018 Treasury Bill terms and the redemption-credit route without inferring holiday treatment or intraday availability.",
+  "decision_status": "NO_GO",
+  "investment_authorization": "NO_GO",
+  "sources": [
+    {
+      "source_id": "goi_tbill_general_notification_2018_raw",
+      "title": "Sale of Government of India Treasury Bills/Cash Management Bill by Auction",
+      "issuer": "Government of India, Ministry of Finance, Department of Economic Affairs",
+      "notification_date": "2018-03-27",
+      "source_url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_TBill.pdf",
+      "rbi_notification_page": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11250&Mode=0",
+      "local_path": "research/stage512/2026-11-25/g6_3/source_raw/GOI27032018_TBill.pdf",
+      "retrieval_method": "Chrome Save As from the official RBI-hosted PDF URL; no access-control challenge was bypassed",
+      "raw_file_retained": true,
+      "http_status": null,
+      "content_type": null,
+      "http_headers_captured": false,
+      "bytes": 1845463,
+      "pages": 6,
+      "sha256": "896e1f66fce128014769be977ccb3f9e22132289a1c936205d6802aa53abade2",
+      "verification": {
+        "pdf_page_count_checked": true,
+        "pages_4_to_6_text_extracted": true,
+        "pages_4_to_6_visually_reviewed": true,
+        "clause_2_i": "Bills may have maturities up to 364 days; auction particulars are announced by RBI.",
+        "clause_2_iv": "Bills are issued at a discount and redeemed at face value.",
+        "clause_5_v": "Successful bidders deposit the requisite amount by the prescribed cut-off on the auction settlement day.",
+        "clause_7": "Bills are issued as Promissory Note / credit to SGL account with RBI.",
+        "clause_9": "Bills are repaid at par on expiration of tenor at the RBI office where registered."
+      },
+      "provenance_limit": "The retained official RBI-hosted URL ends GOI27032018_TBill.pdf. RBI's 2024 auction notice links a similarly dated attachment ending GOI27032018_A.pdf. The identity/equivalence of those two files was not established; do not claim byte equivalence.",
+      "unresolved_from_document": [
+        "No explicit holiday or business-day adjustment for a T-bill maturity.",
+        "No exact intraday time when redemption proceeds become available.",
+        "No evidence that same-day maturity proceeds can fund an auction bid."
+      ]
+    },
+    {
+      "source_id": "rbi_2024_applicable_terms_reference",
+      "title": "91 days, 182 days and 364 days Treasury Bills auction",
+      "publisher": "Reserve Bank of India",
+      "publication_date": "2024-03-15",
+      "source_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57510",
+      "review_status": "official page reviewed online; raw page bytes not retained",
+      "finding": "The 2024 notice states the auction is subject to the 2018-03-27 General Notification and Amendment Notifications dated 2018-04-05 and 2021-12-23.",
+      "linked_attachments": [
+        {
+          "date": "2018-03-27",
+          "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI27032018_A.pdf",
+          "raw_retained": false,
+          "status": "not retrieved in this capture"
+        },
+        {
+          "date": "2018-04-05",
+          "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI05042018_A.pdf",
+          "raw_retained": false,
+          "status": "official fetch returned rejection/verification HTML; not treated as notification bytes"
+        },
+        {
+          "date": "2021-12-23",
+          "url": "https://rbidocs.rbi.org.in/rdocs/content/pdfs/GOI23122021_A.pdf",
+          "raw_retained": false,
+          "status": "official fetch returned human-verification HTML; no verification was bypassed"
+        }
+      ]
+    },
+    {
+      "source_id": "rbi_government_securities_faq_redemption",
+      "title": "The Government Securities Act, 2006 and The Government Securities Regulations, 2007 — FAQ",
+      "publisher": "Reserve Bank of India",
+      "publication_date": "2012-07-09",
+      "source_url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=380",
+      "review_status": "official page reviewed online; raw page bytes not retained",
+      "relevant_question": "Q36 says holders of securities in SC, BLA, SGL/CSGL may use automatic redemption, with maturity proceeds credited to the investor's bank account on the due date if bank details are provided to RBI or its agent.",
+      "scope_limit": "General Government-security FAQ. It does not state a T-bill-specific holiday rule, an intraday credit time, or actual account-level performance."
+    },
+    {
+      "source_id": "rbi_retail_direct_faq_redemption_route",
+      "title": "Retail Direct Scheme FAQs",
+      "publisher": "Reserve Bank of India",
+      "source_url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=145",
+      "review_status": "official page reviewed online; raw page bytes not retained",
+      "relevant_questions": {
+        "q3": "T-bills are among the Government securities available through Retail Direct.",
+        "q18": "Purchase/sale funds settle through the linked rupee savings bank account, and redemption amounts are credited to that account."
+      },
+      "scope_limit": "The FAQ does not specify the exact redemption-credit date for a T-bill or an intraday time."
+    }
+  ],
+  "gate_disposition": {
+    "official_2018_terms_text_captured": "PASS_WITH_PROVENANCE_CAVEAT",
+    "full_2018_2024_applicable_terms_package": "NOT_QUALIFIED; two amendments are not retained and the linked 2018 attachment identity is not reconciled",
+    "date_level_redemption_wording": "PARTIALLY_SUPPORTED; base notification says repayment at tenor expiry, and RBI general FAQ describes due-date automatic redemption",
+    "t_bill_holiday_adjustment": "NOT_QUALIFIED",
+    "retail_direct_redemption_destination": "QUALIFIED_AT_DESTINATION_LEVEL",
+    "retail_direct_exact_date_and_intraday_credit_time": "NOT_QUALIFIED",
+    "same_day_auction_funding": "EXCLUDED"
+  }
+}

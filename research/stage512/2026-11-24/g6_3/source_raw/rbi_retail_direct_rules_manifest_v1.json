@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "capture_purpose": "Current official RBI retail primary-auction access, funding, allotment, settlement and non-competitive bidding rules for bounded T-bill rollover mechanics; not investor-specific account verification.",
+  "sources": [
+    {
+      "path": "research/stage512/2026-11-24/g6_3/source_raw/rbi_retail_direct_faq_145.html",
+      "url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=145",
+      "final_url": "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=145",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:17:34.311009+00:00",
+      "bytes": 156263,
+      "sha256": "718e6773d8d32777fd25b3a3b62d7d4e254fc758b0e472e1d02fc550345959a5"
+    },
+    {
+      "path": "research/stage512/2026-11-24/g6_3/source_raw/rbi_ncb_scheme_2021_id12193.html",
+      "url": "https://www.rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=12193",
+      "final_url": "https://www.rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=12193",
+      "method": "GET",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "retrieved_at_utc": "2026-11-24T17:17:34.956138+00:00",
+      "bytes": 92894,
+      "sha256": "5f84174559b83b766e6ea7d7329d3caf48f4ec4a5a32fa90d64ef6c92f442a9c"
+    }
+  ]
+}

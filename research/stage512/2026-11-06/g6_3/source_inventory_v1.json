@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "record_id": "g6-3-source-coverage-audit-2026-11-06-v1",
-  "as_of": "2026-11-06",
+  "record_id": "g6-3-source-coverage-audit-2026-11-25-v4",
+  "as_of": "2026-11-25",
   "result": "PASS_SOURCE_INVENTORY_ONLY_G6_DECISION_GRADE_NOT_READY",
   "g5_source_evidence": {
     "manifest_record_id": "g5-4-source-reacquisition-2026-11-05-v3",
@@ -11,7 +11,7 @@
       "research/stage512/2026-11-05/g5_4/candidate_nav_history_audit.json",
       "research/stage512/2026-11-05/g5_4/g5_exit_acceptance_audit.json"
     ],
-    "retained_immutable_source_bytes": 22452710,
+    "retained_immutable_source_bytes": 22466403,
     "missing_files": 0,
     "hash_or_byte_mismatches": 0,
     "reported_candidate_history_counts": {
@@ -164,6 +164,95 @@
     ],
     "classification": "OFFICIAL_FUND_NAV_PROXY_NOT_ETF_MARKET_PRICE_OR_GSEC_TOTAL_RETURN_INDEX"
   },
+  "rbi_tbill_three_window_overlap": {
+    "audit_record_id": "g6-3-rbi-tbill-three-window-overlap-2026-11-24-v1",
+    "result": "PASS_RBI_THREE_WINDOW_OVERLAP_AND_EXACT_DATE_COVERAGE_WITH_LIMITATIONS",
+    "first_auction_date": "2023-07-12",
+    "last_auction_date": "2026-06-24",
+    "unique_auction_dates": 151,
+    "positive_91_day_price_observations": 149,
+    "zero_issue_exceptions": [
+      "2025-02-20",
+      "2026-03-25"
+    ],
+    "pairwise_overlaps": [
+      {
+        "left": "Table 213",
+        "right": "Table 217",
+        "overlap_dates": 9,
+        "first_overlap": "2024-07-03",
+        "last_overlap": "2024-08-28",
+        "field_mismatches": 0
+      },
+      {
+        "left": "Table 217",
+        "right": "Table 218",
+        "overlap_dates": 5,
+        "first_overlap": "2025-07-02",
+        "last_overlap": "2025-07-30",
+        "field_mismatches": 0
+      },
+      {
+        "left": "Table 213",
+        "right": "Table 218",
+        "overlap_dates": 0,
+        "first_overlap": null,
+        "last_overlap": null,
+        "field_mismatches": 0
+      }
+    ],
+    "table_213_issue_date_conflicts": [
+      {
+        "auction_date": "2023-09-27",
+        "table_issue_date": "2023-09-28",
+        "notice_issue_date": "2023-09-29",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-04-10",
+        "table_issue_date": "2024-04-11",
+        "notice_issue_date": "2024-04-12",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-05-22",
+        "table_issue_date": "2024-05-23",
+        "notice_issue_date": "2024-05-24",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      },
+      {
+        "auction_date": "2024-08-14",
+        "table_issue_date": "2024-08-15",
+        "notice_issue_date": "2024-08-16",
+        "resolution": "RETAIN_BOTH; USE_CONTEMPORANEOUS_AUCTION_NOTICE_FOR_ACTUAL_ISSUE_DATE"
+      }
+    ],
+    "use_limit": "DESCRIPTIVE_AUCTION_QUOTE_LEVELS; NOT A LONG_RUN_ROLLOVER_RETURN_OR_RISK_SERIES"
+  },
+  "rbi_tbill_early_settlement_calendar": {
+    "audit_record_id": "g6-3-rbi-tbill-early-settlement-calendar-audit-2026-11-25-v1",
+    "result": "PASS_NOTICE_SETTLEMENT_RECONCILIATION__MATURITY_ADJUSTMENT_UNQUALIFIED",
+    "table213_notice_settlement_dates_checked": 60,
+    "notice_table_issue_date_conflicts": 4,
+    "verified_gsec_open_holiday_override": "2023-09-29",
+    "nominal_maturities_on_mumbai_ni_act_holidays": {
+      "2024-04-11": 1,
+      "2024-05-23": 1,
+      "2024-08-15": 1,
+      "2024-11-15": 1
+    },
+    "maturity_adjustment_status": "NOT_QUALIFIED",
+    "use_limit": "NOTICE_SETTLEMENT_RECONCILIATION_ONLY; MATURITY_ADJUSTMENTS_AND_ROLLOVER_TRANSITIONS_NOT_QUALIFIED"
+  },
+  "rbi_tbill_maturity_rule_scope": {
+    "audit_record_id": "g6-3-rbi-tbill-maturity-rule-scope-audit-2026-11-25-v1",
+    "result": "RBI_RULE_SCOPE_AMBIGUOUS_FOR_TBILLS__FOUR_EVENT_SENSITIVITY_REPRODUCED__ROLLOVER_STILL_UNQUALIFIED",
+    "t_bill_specific_holiday_adjustment_qualified": false,
+    "conditional_sensitivity_events": 4,
+    "events_with_auction_on_conditional_date": 3,
+    "next_strictly_later_auction_changed_by_adjustment": 0,
+    "use_limit": "FOUR_DATE_SENSITIVITY_ONLY; ACTUAL_TBILL_REDEMPTION_AND_CREDIT_TIMING_UNQUALIFIED"
+  },
   "ten_candidate_dispositions": [
     {
       "candidate_id": "MOTILAL_NIFTY500_ETF",
@@ -217,10 +306,9 @@
       "candidate_id": "ICICI_GOLD_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_AS_ALTERNATIVE; DEFER_FULL_HISTORY",
-      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here.",
+      "source_status": "2026-03-31 official holdings snapshot; AMFI bounded samples and Oct 2026 TER evidence; continuous history not independently qualified here. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "qualified_continuous_history": null,
       "open_gates": [
-        "newer dated official holdings disclosure",
         "continuous official NAV history if retained in quantitative comparison",
         "ETF traded-price, spread/premium, tax and access evidence"
       ]
@@ -229,7 +317,7 @@
       "candidate_id": "ICICI_SILVER_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; 44 common monthly returns to NSE Nifty 500 TRI through 2025-09. September 2026 holdings snapshot independently audited; decision-use gates remain open.",
       "qualified_continuous_history": {
         "observations": 1160,
         "first": "2022-01-25",
@@ -238,7 +326,6 @@
       },
       "open_gates": [
         "only 44 common months; no long-run covariance claim",
-        "official holdings snapshot in G5.2 is dated 2026-03-31",
         "ETF traded-price/liquidity, tax and access evidence"
       ]
     },
@@ -294,7 +381,7 @@
       "candidate_id": "HDFC_GOLD_ETF",
       "classification": "INVESTABLE",
       "screen_disposition": "RETAIN_IN_INITIAL_COMPARISON_SET",
-      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.",
+      "source_status": "PASS_RAW_TO_NORMALIZED_LINEAGE_AND_DATE_CONTINUITY; common-analysis window starts after fund inception in 2010.; PASS_BOUNDED_OFFICIAL_NSE_DAILY_CLOSE_HISTORY_2021-11-08_TO_2026-11-06 (not execution-cost qualification).",
       "qualified_continuous_history": {
         "observations": 2918,
         "first": "2015-01-01",
@@ -303,7 +390,7 @@
       },
       "open_gates": [
         "product inception-to-2014 history not in selected window",
-        "ETF traded-price, premium/discount, spread and liquidity",
+        "current quote, synchronized premium/discount, spread/depth, liquidity, execution costs and slippage",
         "tax, account access and suitability"
       ]
     },
@@ -373,9 +460,9 @@
     "investor_access_suitability_tax_inputs_for_personal_output",
     "cross_asset_uncertainty_and_probability"
   ],
-  "new_source_leads_not_yet_acquired": {
-    "rbi_91_day_tbill": "Official RBI Table 218 91-day auctions are now cross-source qualified for the one-year 2025-07-02 through 2026-06-24 window: 50/50 auction dates, 50 notices, and 50 full-result pages. For 49 positive-issue dates, the 91-day cutoff yield matches Table 218 exactly and the full-result cutoff price rounds to its two-decimal price; 2026-03-25 is an explicit zero-issue exception. The exact 114-source capture set, byte hashes, and normalized CSV are retained at research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026/ and independently audit with decision/audit_g6_3_rbi_tbill_window.py. This is one-year descriptive, short-duration evidence only: long-run sovereign return history, direct-GoI cashflows, investor retail fill, rolling reinvestment economics, and decision-grade sovereign risk remain unqualified.",
-    "direct_goi": "CCIL MTM page has daily clean-price archive; on non-traded securities CCIL switches to internal model values, so trade and modeled marks must stay separately classified; no data acquired.",
+  "source_evidence_status": {
+    "rbi_91_day_tbill": "Three official RBI Handbook auction tables (Table 213, Table 217 and Table 218) cover 2023-07-12 through 2026-06-24. The 60-row Table 213 panel has 60 matched notices/results; its overlap with Table 217 has 9 dates, and Table 217/218 overlap on 5 dates, with all overlap fields matching. The deduplicated source panel has 151 auction dates, 149 positive 91-day price observations and two zero-issue exceptions. Four Table 213 issue dates conflict with their contemporaneous notices; both values are retained and the notice governs normalized issue date. A bounded date audit reconciles all 60 Table 213 notice settlement dates and verifies RBI's 2023-09-29 G-Sec market-open exception despite a Mumbai NI Act holiday. Four nominal issue+91-day maturities fall on listed Mumbai holidays. The previous-working-day sentence in the RBI primer is located after the Dated G-Secs subsection; its application to T-bills is not explicit in the captured source, and the official 2018 T-bill terms are not retained. A four-event previous-day sensitivity has therefore been calculated without qualifying an actual T-bill redemption date or proceeds-credit timing; same-day bid funding remains excluded. The holiday matrix is not a complete G-Sec operational calendar, so no actual maturity adjustment or 2023-2024 maturity-to-bid transition is qualified. This panel describes auction quote levels and is not a 2014-2026 rollover history or long-run risk sample. The separate v2 rollover mechanics audit remains scoped to 2024-2026 and uses a conditional prior-working-day convention; it verifies RBI Retail Direct rules, 98 observed settlement dates against captured Mumbai holidays, 86 maturity-to-bid transitions (5-21 day waits; median 6; 12 right-censored), and a conditional 365-day scenario with 59 complete / 39 censored cohorts and gross annualized values 4.8466%-5.9502% (median 5.3678%). It assumes full allotment and excludes upfront markup, payment-gateway charges, partial allocation, bank cash yield, tax and investor-specific access. The reconstructed 2023-2024 capture manifest explicitly states that HTTP response headers were not retained during the earlier validation-stopped capture; body hashes and dates are independently checked. Long-run risk, covariance and 2036 probability remain unqualified.",
+    "direct_goi": "Official Gazette notice and RBI full auction-result bytes for 6.94% GS 2036 are hash-verified in draft PR #65; one primary-auction price/yield, notice-specific accrued-interest cutoff and nominal coupon/redemption schedule are reconciled. No current executable secondary price, retail settlement advice, or continuous security price history is qualified. NSE WDM historical data is a paid licensed route (2026 tariff ₹30,000/year/site before taxes); rights and scope remain unconfirmed. The RBI long-history yield panel remains a proxy, not this security trade-return history.",
     "ccil_historical_trades": "Historical trade-by-trade page requires sign-in and CCIL Data Sharing Policy applies; rights/access/redistribution terms must be resolved before acquisition or publication.",
     "cpi": "Historical MoSPI CPI source-series gate qualified separately in cpi_qualification_v1.json (165 contiguous observations, 2013-01 through 2026-09); investor-confirmed purchasing-power base month remains unavailable."
   },

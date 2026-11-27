@@ -3,25 +3,85 @@ on:
   push:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_silver_nav_comparison.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'config/investment_mandate_2036.json'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/silver_nav_comparison_v1.json'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
+      - 'decision/audit_g6_3_direct_gsec_2036.py'
+      - 'decision/audit_g6_3_direct_gsec_november_auction.py'
+      - 'decision/compare_g6_3_gilt_routes.py'
+      - 'decision/audit_g6_3_sbi_gilt_holdings.py'
+      - 'decision/audit_g6_3_sbi_gilt_valuation.py'
+      - 'decision/audit_g6_3_exact_date_coverage.py'
+      - 'decision/g6_3_wp2_portfolio.py'
+      - 'decision/g6_3_wp2_dated.py'
+      - 'decision/audit_g6_3_wp2_dated.py'
+      - 'decision/g6_3_wp3_allocation_stress.py'
+      - 'decision/audit_g6_3_wp3_allocation_stress.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/g6_2_full_horizon_bridge.py'
+      - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_month_end_dates_R9.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'research/stage512/data/r9_nse_gsec_129m_source_bridge.json'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
+      - 'research/g6_3/direct_gsec_2036/**'
+      - 'research/g6_3/2026-11-27-exact-date-coverage/**'
+      - 'research/g6_3/2026-11-27-wp2-portfolio/**'
+      - 'research/g6_3/2026-11-27-wp2-dated/**'
+      - 'research/g6_3/2026-11-27-wp3-allocation-stress/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
   pull_request:
     paths:
       - 'decision/audit_g6_3_source_inventory.py'
+      - 'decision/audit_g6_3_silver_nav_comparison.py'
+      - 'decision/g3_goal_hurdle.py'
+      - 'config/investment_mandate_2036.json'
+      - 'research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv'
+      - 'research/stage512/2026-11-04/g3_outcome_contract_v1.json'
+      - 'research/stage512/2026-11-25/g6_3/icici_silver_etf_source_gate/silver_nav_comparison_v1.json'
       - 'decision/audit_g6_3_cpi_qualification.py'
       - 'decision/audit_g6_3_rbi_source_capture.py'
+      - 'decision/audit_g6_3_direct_gsec_2036.py'
+      - 'decision/audit_g6_3_direct_gsec_november_auction.py'
+      - 'decision/compare_g6_3_gilt_routes.py'
+      - 'decision/audit_g6_3_sbi_gilt_holdings.py'
+      - 'decision/audit_g6_3_sbi_gilt_valuation.py'
+      - 'decision/audit_g6_3_exact_date_coverage.py'
+      - 'decision/g6_3_wp2_portfolio.py'
+      - 'decision/g6_3_wp2_dated.py'
+      - 'decision/audit_g6_3_wp2_dated.py'
+      - 'decision/g6_3_wp3_allocation_stress.py'
+      - 'decision/audit_g6_3_wp3_allocation_stress.py'
+      - 'decision/after_tax_event_ledger.py'
+      - 'decision/capital_gain_loss_schedule.py'
+      - 'decision/g6_2_full_horizon_bridge.py'
+      - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_month_end_dates_R9.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'research/stage512/data/r9_nse_gsec_129m_source_bridge.json'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
+      - 'research/g6_3/direct_gsec_2036/**'
+      - 'research/g6_3/2026-11-27-exact-date-coverage/**'
+      - 'research/g6_3/2026-11-27-wp2-portfolio/**'
+      - 'research/g6_3/2026-11-27-wp2-dated/**'
+      - 'research/g6_3/2026-11-27-wp3-allocation-stress/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
 permissions:
@@ -44,9 +104,33 @@ jobs:
         run: python research/stage512/pipelines/r9_lic_gsec_official_amfi_history.py
       - name: Reconcile candidate and LIC source coverage
         run: python decision/audit_g6_3_source_inventory.py --check
+      - name: Reproduce matched-date Silver NAV comparison
+        run: python decision/audit_g6_3_silver_nav_comparison.py --check
       - name: Requalify official CPI source series
         run: python decision/audit_g6_3_cpi_qualification.py --check
       - name: Verify archived RBI T-bill source bytes and identity anchors
         run: python decision/audit_g6_3_rbi_source_capture.py
       - name: Rehash retained RBI 2025-26 T-bill panel
         run: python decision/audit_g6_3_rbi_tbill_window.py research/stage512/2026-11-06/g6_3/rbi_tbill_window_2025_2026
+      - name: Verify direct GoI 2036 source pair, conditional settlement arithmetic and nominal cashflows
+        run: python decision/audit_g6_3_direct_gsec_2036.py
+      - name: Verify November direct GoI primary price and accrual reconciliation
+        run: python decision/audit_g6_3_direct_gsec_november_auction.py --check
+      - name: Reproduce direct bond and SBI gilt comparison
+        run: python decision/compare_g6_3_gilt_routes.py --check
+      - name: Reconcile SBI gilt holdings and break-even cashflows
+        run: python decision/audit_g6_3_sbi_gilt_holdings.py --check
+      - name: Verify SBI gilt accrued interest and after-tax replay
+        run: python decision/audit_g6_3_sbi_gilt_valuation.py --check
+      - name: Verify exact-date return coverage and candidate inclusion
+        run: python decision/audit_g6_3_exact_date_coverage.py --check
+      - name: Reproduce WP2 matched NAV and full funding scenarios
+        run: python decision/g6_3_wp2_portfolio.py --check
+      - name: Reproduce and independently reconcile dated WP2 events
+        run: |
+          python decision/g6_3_wp2_dated.py --check --trace-dir "$RUNNER_TEMP/g63-wp2"
+          python decision/audit_g6_3_wp2_dated.py "$RUNNER_TEMP/g63-wp2"
+      - name: Reproduce and audit the frozen WP3 allocation stress protocol
+        run: |
+          python decision/g6_3_wp3_allocation_stress.py --check
+          python decision/audit_g6_3_wp3_allocation_stress.py

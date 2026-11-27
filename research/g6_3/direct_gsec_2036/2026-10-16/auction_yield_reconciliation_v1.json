@@ -1,0 +1,49 @@
+{
+  "record_id": "G6.3-DIRECT-GSEC-2036-AUCTION-YIELD-RECONCILIATION-v1",
+  "qualification": "ARITHMETIC_CROSSCHECK_ONLY_CONDITIONAL_INPUTS",
+  "security": "6.94% GS 2036",
+  "isin": "IN0020260025",
+  "source_manifest": "source_manifest.json",
+  "source_observation": "RBI full result for the 2026-10-16 auction; hypothetical noncompetitive allocation at reported competitive weighted-average price, not an investor's actual allotment or fill.",
+  "official_method_reference": "https://rbi.org.in/scripts/FS_FAQs.aspx?Id=79 (Q24: Government bonds use semiannual coupon frequency and yield formula with r/2; Q25: 30/360 bond-market convention)",
+  "inputs": {
+    "auction_weighted_average_clean_price_per_100": "96.93",
+    "coupon_percent_per_annum": "6.94",
+    "coupon_frequency_per_year": 2,
+    "accrual_start_date": "2026-05-11",
+    "accrued_interest_cutoff_date": "2026-10-18",
+    "conditional_day_count": "157/360",
+    "conditional_accrued_interest_per_100": "3.026611111111111111111111111",
+    "initial_dirty_consideration_per_100": "99.95661111111111111111111111",
+    "modeled_settlement_date": "2026-10-19",
+    "coupon_events": 20,
+    "coupon_per_100_face": "3.47",
+    "final_redemption_per_100_face": "100.00"
+  },
+  "method": {
+    "cashflow_dates": "Nominal coupon dates from nominal_cashflows_v1.json; no weekend or public-holiday payment-date adjustment applied.",
+    "xirr_day_count": "Actual calendar days divided by 365; annual-effective rate solved by bisection on the dated nominal cashflows.",
+    "auction_yield_conversion": "Reported annual nominal yield with semiannual compounding converted to effective annual as (1 + y/2)^2 - 1.",
+    "scope": "A cross-convention arithmetic check only. It is not a yield guarantee, achieved investor return, coupon-reinvestment result, forecast, or decision-grade after-tax return. RBI defines YTM with a coupon-reinvestment assumption; realized reinvestment is not modeled here."
+  },
+  "results": {
+    "reported_weighted_average_yield_nominal_percent": "7.3925",
+    "quoted_yield_semiannual_effective_percent": "7.52912264062500",
+    "actual_365_xirr_effective_percent": "7.52691962969730",
+    "difference_actual_365_xirr_minus_quoted_effective_bps": "-0.22030109276927",
+    "gross_nominal_receipts_per_100_face": "169.40000000000000",
+    "gross_receipts_less_conditional_dirty_consideration_per_100_face": "69.44338888888888888888888889",
+    "minimum_lot_face_value_inr": "10000",
+    "minimum_lot_dirty_consideration_inr": "9995.661111111111111111111111",
+    "minimum_lot_nominal_receipts_inr": "16940.00",
+    "minimum_lot_gross_receipts_less_conditional_outlay_inr": "6944.338888888888888888888889"
+  },
+  "limitations": [
+    "Dirty consideration depends on a conditional 30/360 accrued-interest calculation; the auction notice resolves the cutoff date but settlement rounding/collection was not independently verified.",
+    "The reported auction yield and weighted-average clean price are rounded publication values; the comparison mixes the reported auction yield convention with a separately defined actual/365 XIRR convention.",
+    "Nominal dates are used; applicable future working-day adjustments and future holidays are not applied.",
+    "No investor-specific allotment, transaction fee, coupon tax, coupon reinvestment, future acquisition price, early-exit price, or final investment suitability is qualified.",
+    "Do not feed this cross-check into the 2036 portfolio decision, return distribution, covariance, or success-probability calculation."
+  ],
+  "decision_status": "NO_GO_NOT_YET_EVALUATED"
+}

@@ -1,0 +1,4880 @@
+{
+  "record_id": "G6.3-WP2-PORTFOLIO-SCENARIOS-2026-11-27",
+  "status": "BOUNDED_WP2_DETERMINISTIC_COMPARISON",
+  "sources": [
+    {
+      "path": "decision/g6_3_wp2_portfolio.py",
+      "sha256_normalized": "1ab80a7533acca22fee605b1b64bb8205ff434b73262b76cb05ab144dae9a944"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-wp2-portfolio/inputs_v1.json",
+      "sha256_normalized": "68990d1b11afa56c691b9f70870810b07931c1b359b493cced1e598dd39cc470"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-exact-date-coverage/coverage_v1.json",
+      "sha256_normalized": "9950b5cd6ff107d28d7d8d63fd5e947528577c9d5cc257ec12650f7c2bb51158"
+    },
+    {
+      "path": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "sha256_normalized": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873"
+    },
+    {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "sha256_normalized": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-sbi-holdings/cashflow_audit_v1.json",
+      "sha256_normalized": "860b6921566608593322204beda63d6a1b3162eea39b93a0250fafd1b5af2d84"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/inputs_v1.json",
+      "sha256_normalized": "0d7c2de201158e0d1d455b08b528e294ce92a322a9245f4969fd0677eff98668"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-13/auction_reconciliation_v1.json",
+      "sha256_normalized": "d6f46ca1fb668503afa844e52f5d7be32093ff1d729f1b720d43bd8eb5f816da"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-10-16/nominal_cashflows_v1.json",
+      "sha256_normalized": "ce821db1bd15297bc50ac6d6561b269589017e08a2bdf925b8f3641bc9cc19d1"
+    },
+    {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_147625_daily.csv",
+      "sha256_normalized": "2bbd9f09d0ac9dcd4e78c2e8dbbb69d84eb7879df2e7287b8e90ffabb6808412"
+    },
+    {
+      "path": "research/stage512/2026-11-06/hdfcgold_execution_evidence/nav_113049_current_unit_basis.csv",
+      "sha256_normalized": "51b8427bb06317078bf860e4b9f1cd85249587c7d27666408bb2f28f1cba6fd5"
+    },
+    {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_149464_daily.csv",
+      "sha256_normalized": "bf60e3abb80296b72e787d4d33eaa21d1154a10761dfd855ad8040208afb224d"
+    },
+    {
+      "path": "research/stage512/data/r9_lic_gsec_etf/lic_gsec_133307_amfi_daily.csv",
+      "sha256_normalized": "7359b20c11de05b7cf0a86ca473f6e83b471d2b416793655bc43c6f0c14ca846"
+    },
+    {
+      "path": "research/stage512/2026-11-05/source_retrieval_followup/candidates/nav_150681_daily.csv",
+      "sha256_normalized": "971150a46162dd7b20afc784b5a005026d1533ece1ca3f340a47b0bd8b634ac7"
+    }
+  ],
+  "source_replay_endpoints": [
+    "2022-10-31",
+    "2022-11-30",
+    "2022-12-30",
+    "2023-01-31",
+    "2023-02-28",
+    "2023-03-31",
+    "2023-04-28",
+    "2023-05-31",
+    "2023-06-30",
+    "2023-07-31",
+    "2023-08-31",
+    "2023-09-29",
+    "2023-10-31",
+    "2023-11-30",
+    "2023-12-29",
+    "2024-01-31",
+    "2024-02-29",
+    "2024-03-31",
+    "2024-04-30",
+    "2024-05-31",
+    "2024-06-28",
+    "2024-07-31",
+    "2024-08-30",
+    "2024-09-30",
+    "2024-10-31",
+    "2024-11-29",
+    "2024-12-31",
+    "2025-01-31",
+    "2025-02-28",
+    "2025-03-31",
+    "2025-04-30",
+    "2025-05-30",
+    "2025-06-30",
+    "2025-07-31",
+    "2025-08-29",
+    "2025-09-30",
+    "2025-10-31",
+    "2025-11-28",
+    "2025-12-31",
+    "2026-01-30",
+    "2026-02-27",
+    "2026-03-31",
+    "2026-04-30",
+    "2026-05-29",
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30",
+    "2026-10-30"
+  ],
+  "replay_cases": [
+    {
+      "gilt": "lic",
+      "weights": "gold_baseline",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "start": "2026-10-31",
+      "end": "2030-10-31",
+      "sip_count": 48,
+      "contributions_inr": "5592300.00",
+      "before_explicit_costs_and_investor_tax_inr": "8394311.59",
+      "explicit_cost_effect_at_terminal_inr": "7123.75",
+      "after_costs_before_investor_tax_inr": "8387187.84",
+      "tax_effect_at_terminal_inr": "400670.55",
+      "after_costs_and_modeled_tax_inr": "7986517.29",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "12.1724",
+        "after_modeled_tax": "10.6494"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "6826908.45"
+        },
+        "0.06": {
+          "net_real_inr": "6326069.73"
+        },
+        "0.08": {
+          "net_real_inr": "5870328.63"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "4967455.40",
+          "before_tax": "4967158.66",
+          "after_tax": "4807515.47",
+          "funded": "3634995.00",
+          "maturity_or_exit_tax": "159643.19",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "19679.20",
+          "contributions_to_cash": "21628.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "1585.92",
+            "section198": "1350487.06"
+          }
+        },
+        "lic": {
+          "before_costs": "1389681.23",
+          "before_tax": "1386916.56",
+          "after_tax": "1302210.71",
+          "funded": "1118460.00",
+          "maturity_or_exit_tax": "84705.86",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "543.12",
+          "contributions_to_cash": "6655.00",
+          "acquired_lots": 48,
+          "long_lots": 0,
+          "short_lots": 48,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "271493.13"
+          }
+        },
+        "gold": {
+          "before_costs": "2037174.95",
+          "before_tax": "2033112.62",
+          "after_tax": "1876791.11",
+          "funded": "838845.00",
+          "maturity_or_exit_tax": "156321.51",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "3327.71",
+          "contributions_to_cash": "4991.25",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1438.41",
+            "section197": "1199020.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic",
+      "weights": "silver_challenger",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "start": "2026-10-31",
+      "end": "2030-10-31",
+      "sip_count": 48,
+      "contributions_inr": "5592300.00",
+      "before_explicit_costs_and_investor_tax_inr": "8481277.77",
+      "explicit_cost_effect_at_terminal_inr": "7297.60",
+      "after_costs_before_investor_tax_inr": "8473980.17",
+      "tax_effect_at_terminal_inr": "412363.18",
+      "after_costs_and_modeled_tax_inr": "8061616.99",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "12.4946",
+        "after_modeled_tax": "10.9394"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "6891103.99"
+        },
+        "0.06": {
+          "net_real_inr": "6385555.73"
+        },
+        "0.08": {
+          "net_real_inr": "5925529.15"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "4967455.40",
+          "before_tax": "4967158.66",
+          "after_tax": "4807515.47",
+          "funded": "3634995.00",
+          "maturity_or_exit_tax": "159643.19",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "19679.20",
+          "contributions_to_cash": "21628.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "1585.92",
+            "section198": "1350487.06"
+          }
+        },
+        "lic": {
+          "before_costs": "1389681.23",
+          "before_tax": "1386916.56",
+          "after_tax": "1302210.71",
+          "funded": "1118460.00",
+          "maturity_or_exit_tax": "84705.86",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "543.12",
+          "contributions_to_cash": "6655.00",
+          "acquired_lots": 48,
+          "long_lots": 0,
+          "short_lots": 48,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "271493.13"
+          }
+        },
+        "gold": {
+          "before_costs": "1358116.64",
+          "before_tax": "1355408.41",
+          "after_tax": "1251194.08",
+          "funded": "559230.00",
+          "maturity_or_exit_tax": "104214.34",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "2218.48",
+          "contributions_to_cash": "3327.50",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "958.94",
+            "section197": "799347.28"
+          }
+        },
+        "silver": {
+          "before_costs": "766024.50",
+          "before_tax": "764496.54",
+          "after_tax": "700696.74",
+          "funded": "279615.00",
+          "maturity_or_exit_tax": "63799.80",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "4136.04",
+          "contributions_to_cash": "1663.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "506.13",
+            "section197": "489553.00"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "sbi",
+      "weights": "gold_baseline",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "start": "2026-10-31",
+      "end": "2030-10-31",
+      "sip_count": 48,
+      "contributions_inr": "5592300.00",
+      "before_explicit_costs_and_investor_tax_inr": "8424351.68",
+      "explicit_cost_effect_at_terminal_inr": "4429.74",
+      "after_costs_before_investor_tax_inr": "8419921.94",
+      "tax_effect_at_terminal_inr": "410089.28",
+      "after_costs_and_modeled_tax_inr": "8009832.66",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "12.2942",
+        "after_modeled_tax": "10.7396"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "6846838.53"
+        },
+        "0.06": {
+          "net_real_inr": "6344537.70"
+        },
+        "0.08": {
+          "net_real_inr": "5887466.12"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "4967455.40",
+          "before_tax": "4967158.66",
+          "after_tax": "4807515.47",
+          "funded": "3634995.00",
+          "maturity_or_exit_tax": "159643.19",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "19679.20",
+          "contributions_to_cash": "21628.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "1585.92",
+            "section198": "1350487.06"
+          }
+        },
+        "sbi": {
+          "before_costs": "1419721.32",
+          "before_tax": "1419650.67",
+          "after_tax": "1325526.09",
+          "funded": "1118460.00",
+          "maturity_or_exit_tax": "94124.58",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "435.10",
+          "contributions_to_cash": "6655.00",
+          "acquired_lots": 48,
+          "long_lots": 0,
+          "short_lots": 48,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "301681.36"
+          }
+        },
+        "gold": {
+          "before_costs": "2037174.95",
+          "before_tax": "2033112.62",
+          "after_tax": "1876791.11",
+          "funded": "838845.00",
+          "maturity_or_exit_tax": "156321.51",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "3327.71",
+          "contributions_to_cash": "4991.25",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1438.41",
+            "section197": "1199020.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "sbi",
+      "weights": "silver_challenger",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "start": "2026-10-31",
+      "end": "2030-10-31",
+      "sip_count": 48,
+      "contributions_inr": "5592300.00",
+      "before_explicit_costs_and_investor_tax_inr": "8511317.86",
+      "explicit_cost_effect_at_terminal_inr": "4603.58",
+      "after_costs_before_investor_tax_inr": "8506714.28",
+      "tax_effect_at_terminal_inr": "421781.91",
+      "after_costs_and_modeled_tax_inr": "8084932.37",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "12.6155",
+        "after_modeled_tax": "11.0290"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "6911034.07"
+        },
+        "0.06": {
+          "net_real_inr": "6404023.69"
+        },
+        "0.08": {
+          "net_real_inr": "5942666.65"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "4967455.40",
+          "before_tax": "4967158.66",
+          "after_tax": "4807515.47",
+          "funded": "3634995.00",
+          "maturity_or_exit_tax": "159643.19",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "19679.20",
+          "contributions_to_cash": "21628.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "1585.92",
+            "section198": "1350487.06"
+          }
+        },
+        "sbi": {
+          "before_costs": "1419721.32",
+          "before_tax": "1419650.67",
+          "after_tax": "1325526.09",
+          "funded": "1118460.00",
+          "maturity_or_exit_tax": "94124.58",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "435.10",
+          "contributions_to_cash": "6655.00",
+          "acquired_lots": 48,
+          "long_lots": 0,
+          "short_lots": 48,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "301681.36"
+          }
+        },
+        "gold": {
+          "before_costs": "1358116.64",
+          "before_tax": "1355408.41",
+          "after_tax": "1251194.08",
+          "funded": "559230.00",
+          "maturity_or_exit_tax": "104214.34",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "2218.48",
+          "contributions_to_cash": "3327.50",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "958.94",
+            "section197": "799347.28"
+          }
+        },
+        "silver": {
+          "before_costs": "766024.50",
+          "before_tax": "764496.54",
+          "after_tax": "700696.74",
+          "funded": "279615.00",
+          "maturity_or_exit_tax": "63799.80",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "4136.04",
+          "contributions_to_cash": "1663.75",
+          "acquired_lots": 48,
+          "long_lots": 36,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "506.13",
+            "section197": "489553.00"
+          }
+        }
+      }
+    }
+  ],
+  "forward_cases": [
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "11654304.41",
+      "explicit_cost_effect_at_terminal_inr": "8268.93",
+      "after_costs_before_investor_tax_inr": "11646035.48",
+      "tax_effect_at_terminal_inr": "437849.75",
+      "after_costs_and_modeled_tax_inr": "11208185.73",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.7088",
+        "after_modeled_tax": "3.1675"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7571848.67",
+          "planning_floor_shortfall_inr": "1428151.33",
+          "stretch_goal_shortfall_inr": "2428151.33"
+        },
+        "0.06": {
+          "net_real_inr": "6258592.37",
+          "planning_floor_shortfall_inr": "2741407.63",
+          "stretch_goal_shortfall_inr": "3741407.63"
+        },
+        "0.08": {
+          "net_real_inr": "5191558.64",
+          "planning_floor_shortfall_inr": "3808441.36",
+          "stretch_goal_shortfall_inr": "4808441.36"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7497257.02",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "230221.43",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1519102.96",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "26356.15",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2377827.64",
+          "before_tax": "2373097.93",
+          "after_tax": "2191825.75",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "181272.18",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "581000.58"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "12000979.23",
+      "explicit_cost_effect_at_terminal_inr": "6103.57",
+      "after_costs_before_investor_tax_inr": "11994875.65",
+      "tax_effect_at_terminal_inr": "571690.85",
+      "after_costs_and_modeled_tax_inr": "11423184.80",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.1247",
+        "after_modeled_tax": "3.4361"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7717094.34",
+          "planning_floor_shortfall_inr": "1282905.66",
+          "stretch_goal_shortfall_inr": "2282905.66"
+        },
+        "0.06": {
+          "net_real_inr": "6378646.73",
+          "planning_floor_shortfall_inr": "2621353.27",
+          "stretch_goal_shortfall_inr": "3621353.27"
+        },
+        "0.08": {
+          "net_real_inr": "5291144.81",
+          "planning_floor_shortfall_inr": "3708855.19",
+          "stretch_goal_shortfall_inr": "4708855.19"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7497257.02",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "230221.43",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1519102.96",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "26356.15",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2724502.45",
+          "before_tax": "2721938.10",
+          "after_tax": "2406824.82",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "11980260.71",
+      "explicit_cost_effect_at_terminal_inr": "99967.05",
+      "after_costs_before_investor_tax_inr": "11880293.66",
+      "tax_effect_at_terminal_inr": "510727.40",
+      "after_costs_and_modeled_tax_inr": "11369566.25",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.9895",
+        "after_modeled_tax": "3.3696"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7680871.58",
+          "planning_floor_shortfall_inr": "1319128.42",
+          "stretch_goal_shortfall_inr": "2319128.42"
+        },
+        "0.06": {
+          "net_real_inr": "6348706.41",
+          "planning_floor_shortfall_inr": "2651293.59",
+          "stretch_goal_shortfall_inr": "3651293.59"
+        },
+        "0.08": {
+          "net_real_inr": "5266309.05",
+          "planning_floor_shortfall_inr": "3733690.95",
+          "stretch_goal_shortfall_inr": "4733690.95"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7497257.02",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "230221.43",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1519102.96",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "26356.15",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2703783.93",
+          "before_tax": "2607356.11",
+          "after_tax": "2353206.27",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "248044.36",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "795013.99"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "12016264.17",
+      "explicit_cost_effect_at_terminal_inr": "101511.66",
+      "after_costs_before_investor_tax_inr": "11914752.51",
+      "tax_effect_at_terminal_inr": "521524.76",
+      "after_costs_and_modeled_tax_inr": "11393227.76",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.0303",
+        "after_modeled_tax": "3.3990"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7696856.44",
+          "planning_floor_shortfall_inr": "1303143.56",
+          "stretch_goal_shortfall_inr": "2303143.56"
+        },
+        "0.06": {
+          "net_real_inr": "6361918.87",
+          "planning_floor_shortfall_inr": "2638081.13",
+          "stretch_goal_shortfall_inr": "3638081.13"
+        },
+        "0.08": {
+          "net_real_inr": "5277268.91",
+          "planning_floor_shortfall_inr": "3722731.09",
+          "stretch_goal_shortfall_inr": "4722731.09"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7497257.02",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "230221.43",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1519102.96",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "26356.15",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2739787.40",
+          "before_tax": "2641814.96",
+          "after_tax": "2376867.78",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "258728.08",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "829256.66"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "11654304.41",
+      "explicit_cost_effect_at_terminal_inr": "8268.93",
+      "after_costs_before_investor_tax_inr": "11646035.48",
+      "tax_effect_at_terminal_inr": "499509.73",
+      "after_costs_and_modeled_tax_inr": "11146525.75",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.7088",
+        "after_modeled_tax": "3.0894"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7530193.40",
+          "planning_floor_shortfall_inr": "1469806.60",
+          "stretch_goal_shortfall_inr": "2469806.60"
+        },
+        "0.06": {
+          "net_real_inr": "6224161.76",
+          "planning_floor_shortfall_inr": "2775838.24",
+          "stretch_goal_shortfall_inr": "3775838.24"
+        },
+        "0.08": {
+          "net_real_inr": "5162998.14",
+          "planning_floor_shortfall_inr": "3837001.86",
+          "stretch_goal_shortfall_inr": "4837001.86"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7456359.88",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "271118.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1516467.34",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "28991.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2377827.64",
+          "before_tax": "2373097.93",
+          "after_tax": "2173698.53",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "199399.40",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "581000.58"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "12000979.23",
+      "explicit_cost_effect_at_terminal_inr": "6103.57",
+      "after_costs_before_investor_tax_inr": "11994875.65",
+      "tax_effect_at_terminal_inr": "645796.34",
+      "after_costs_and_modeled_tax_inr": "11349079.31",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.1247",
+        "after_modeled_tax": "3.3441"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7667031.33",
+          "planning_floor_shortfall_inr": "1332968.67",
+          "stretch_goal_shortfall_inr": "2332968.67"
+        },
+        "0.06": {
+          "net_real_inr": "6337266.61",
+          "planning_floor_shortfall_inr": "2662733.39",
+          "stretch_goal_shortfall_inr": "3662733.39"
+        },
+        "0.08": {
+          "net_real_inr": "5256819.63",
+          "planning_floor_shortfall_inr": "3743180.37",
+          "stretch_goal_shortfall_inr": "4743180.37"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7456359.88",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "271118.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1516467.34",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "28991.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2724502.45",
+          "before_tax": "2721938.10",
+          "after_tax": "2376252.09",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "11980260.71",
+      "explicit_cost_effect_at_terminal_inr": "99967.05",
+      "after_costs_before_investor_tax_inr": "11880293.66",
+      "tax_effect_at_terminal_inr": "579622.69",
+      "after_costs_and_modeled_tax_inr": "11300670.97",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.9895",
+        "after_modeled_tax": "3.2837"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7634328.39",
+          "planning_floor_shortfall_inr": "1365671.61",
+          "stretch_goal_shortfall_inr": "2365671.61"
+        },
+        "0.06": {
+          "net_real_inr": "6310235.65",
+          "planning_floor_shortfall_inr": "2689764.35",
+          "stretch_goal_shortfall_inr": "3689764.35"
+        },
+        "0.08": {
+          "net_real_inr": "5234397.20",
+          "planning_floor_shortfall_inr": "3765602.80",
+          "stretch_goal_shortfall_inr": "4765602.80"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7456359.88",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "271118.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1516467.34",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "28991.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2703783.93",
+          "before_tax": "2607356.11",
+          "after_tax": "2327843.75",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "272848.80",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "795013.99"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "12016264.17",
+      "explicit_cost_effect_at_terminal_inr": "101511.66",
+      "after_costs_before_investor_tax_inr": "11914752.51",
+      "tax_effect_at_terminal_inr": "591497.48",
+      "after_costs_and_modeled_tax_inr": "11323255.03",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.0303",
+        "after_modeled_tax": "3.3119"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7649585.38",
+          "planning_floor_shortfall_inr": "1350414.62",
+          "stretch_goal_shortfall_inr": "2350414.62"
+        },
+        "0.06": {
+          "net_real_inr": "6322846.47",
+          "planning_floor_shortfall_inr": "2677153.53",
+          "stretch_goal_shortfall_inr": "3677153.53"
+        },
+        "0.08": {
+          "net_real_inr": "5244858.00",
+          "planning_floor_shortfall_inr": "3755142.00",
+          "stretch_goal_shortfall_inr": "4755142.00"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7727939.82",
+          "before_tax": "7727478.45",
+          "after_tax": "7456359.88",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "271118.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9810.88",
+            "section198": "1880236.63"
+          }
+        },
+        "gold": {
+          "before_costs": "1548536.95",
+          "before_tax": "1545459.10",
+          "after_tax": "1516467.34",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "28991.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1134.35",
+            "section197": "200017.15"
+          }
+        },
+        "gilt": {
+          "before_costs": "2739787.40",
+          "before_tax": "2641814.96",
+          "after_tax": "2350427.81",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "284600.89",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "829256.66"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "14949873.40",
+      "explicit_cost_effect_at_terminal_inr": "9884.37",
+      "after_costs_before_investor_tax_inr": "14939989.03",
+      "tax_effect_at_terminal_inr": "933541.53",
+      "after_costs_and_modeled_tax_inr": "14006447.50",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.1932",
+        "after_modeled_tax": "6.2954"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9462254.06",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "537745.94"
+        },
+        "0.06": {
+          "net_real_inr": "7821127.13",
+          "planning_floor_shortfall_inr": "1178872.87",
+          "stretch_goal_shortfall_inr": "2178872.87"
+        },
+        "0.08": {
+          "net_real_inr": "6487695.27",
+          "planning_floor_shortfall_inr": "2512304.73",
+          "stretch_goal_shortfall_inr": "3512304.73"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9727405.24",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "564335.12",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1836892.41",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "74249.92",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2742565.15",
+          "before_tax": "2737106.33",
+          "after_tax": "2442149.85",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "294956.49",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "945373.36"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15039699.57",
+      "explicit_cost_effect_at_terminal_inr": "7122.69",
+      "after_costs_before_investor_tax_inr": "15032576.88",
+      "tax_effect_at_terminal_inr": "1008940.77",
+      "after_costs_and_modeled_tax_inr": "14023636.11",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2791",
+        "after_modeled_tax": "6.3125"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9473866.07",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "526133.93"
+        },
+        "0.06": {
+          "net_real_inr": "7830725.16",
+          "planning_floor_shortfall_inr": "1169274.84",
+          "stretch_goal_shortfall_inr": "2169274.84"
+        },
+        "0.08": {
+          "net_real_inr": "6495656.92",
+          "planning_floor_shortfall_inr": "2504343.08",
+          "stretch_goal_shortfall_inr": "3504343.08"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9727405.24",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "564335.12",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1836892.41",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "74249.92",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2832391.32",
+          "before_tax": "2829694.18",
+          "after_tax": "2459338.45",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15029557.35",
+      "explicit_cost_effect_at_terminal_inr": "61762.35",
+      "after_costs_before_investor_tax_inr": "14967795.00",
+      "tax_effect_at_terminal_inr": "943266.54",
+      "after_costs_and_modeled_tax_inr": "14024528.46",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2191",
+        "after_modeled_tax": "6.3134"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9474468.91",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "525531.09"
+        },
+        "0.06": {
+          "net_real_inr": "7831223.44",
+          "planning_floor_shortfall_inr": "1168776.56",
+          "stretch_goal_shortfall_inr": "2168776.56"
+        },
+        "0.08": {
+          "net_real_inr": "6496070.26",
+          "planning_floor_shortfall_inr": "2503929.74",
+          "stretch_goal_shortfall_inr": "3503929.74"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9727405.24",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "564335.12",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1836892.41",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "74249.92",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2822249.10",
+          "before_tax": "2764912.31",
+          "after_tax": "2460230.81",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "291672.60",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "934848.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15065616.94",
+      "explicit_cost_effect_at_terminal_inr": "62639.12",
+      "after_costs_before_investor_tax_inr": "15002977.83",
+      "tax_effect_at_terminal_inr": "954336.27",
+      "after_costs_and_modeled_tax_inr": "14048641.55",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2517",
+        "after_modeled_tax": "6.3374"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9490758.85",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "509241.15"
+        },
+        "0.06": {
+          "net_real_inr": "7844688.07",
+          "planning_floor_shortfall_inr": "1155311.93",
+          "stretch_goal_shortfall_inr": "2155311.93"
+        },
+        "0.08": {
+          "net_real_inr": "6507239.28",
+          "planning_floor_shortfall_inr": "2492760.72",
+          "stretch_goal_shortfall_inr": "3492760.72"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9727405.24",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "564335.12",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1836892.41",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "74249.92",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2858308.69",
+          "before_tax": "2800095.13",
+          "after_tax": "2484343.90",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "302513.67",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "969595.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "14949873.40",
+      "explicit_cost_effect_at_terminal_inr": "9884.37",
+      "after_costs_before_investor_tax_inr": "14939989.03",
+      "tax_effect_at_terminal_inr": "1044770.68",
+      "after_costs_and_modeled_tax_inr": "13895218.35",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.1932",
+        "after_modeled_tax": "6.1843"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9387111.63",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "612888.37"
+        },
+        "0.06": {
+          "net_real_inr": "7759017.35",
+          "planning_floor_shortfall_inr": "1240982.65",
+          "stretch_goal_shortfall_inr": "2240982.65"
+        },
+        "0.08": {
+          "net_real_inr": "6436174.65",
+          "planning_floor_shortfall_inr": "2563825.35",
+          "stretch_goal_shortfall_inr": "3563825.35"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9653096.73",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "638643.64",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1829467.42",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "81674.91",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2742565.15",
+          "before_tax": "2737106.33",
+          "after_tax": "2412654.20",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "324452.14",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "945373.36"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15039699.57",
+      "explicit_cost_effect_at_terminal_inr": "7122.69",
+      "after_costs_before_investor_tax_inr": "15032576.88",
+      "tax_effect_at_terminal_inr": "1125585.70",
+      "after_costs_and_modeled_tax_inr": "13906991.18",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2791",
+        "after_modeled_tax": "6.1961"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9395064.94",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "604935.06"
+        },
+        "0.06": {
+          "net_real_inr": "7765591.24",
+          "planning_floor_shortfall_inr": "1234408.76",
+          "stretch_goal_shortfall_inr": "2234408.76"
+        },
+        "0.08": {
+          "net_real_inr": "6441627.76",
+          "planning_floor_shortfall_inr": "2558372.24",
+          "stretch_goal_shortfall_inr": "3558372.24"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9653096.73",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "638643.64",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1829467.42",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "81674.91",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2832391.32",
+          "before_tax": "2829694.18",
+          "after_tax": "2424427.03",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15029557.35",
+      "explicit_cost_effect_at_terminal_inr": "61762.35",
+      "after_costs_before_investor_tax_inr": "14967795.00",
+      "tax_effect_at_terminal_inr": "1055348.00",
+      "after_costs_and_modeled_tax_inr": "13912447.01",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2191",
+        "after_modeled_tax": "6.2016"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9398750.70",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "601249.30"
+        },
+        "0.06": {
+          "net_real_inr": "7768637.74",
+          "planning_floor_shortfall_inr": "1231362.26",
+          "stretch_goal_shortfall_inr": "2231362.26"
+        },
+        "0.08": {
+          "net_real_inr": "6444154.86",
+          "planning_floor_shortfall_inr": "2555845.14",
+          "stretch_goal_shortfall_inr": "3555845.14"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9653096.73",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "638643.64",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1829467.42",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "81674.91",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2822249.10",
+          "before_tax": "2764912.31",
+          "after_tax": "2429882.86",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "320839.86",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "934848.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "15065616.94",
+      "explicit_cost_effect_at_terminal_inr": "62639.12",
+      "after_costs_before_investor_tax_inr": "15002977.83",
+      "tax_effect_at_terminal_inr": "1067520.12",
+      "after_costs_and_modeled_tax_inr": "13935457.71",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2517",
+        "after_modeled_tax": "6.2246"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9414295.90",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "585704.10"
+        },
+        "0.06": {
+          "net_real_inr": "7781486.80",
+          "planning_floor_shortfall_inr": "1218513.20",
+          "stretch_goal_shortfall_inr": "2218513.20"
+        },
+        "0.08": {
+          "net_real_inr": "6454813.26",
+          "planning_floor_shortfall_inr": "2545186.74",
+          "stretch_goal_shortfall_inr": "3545186.74"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10292355.60",
+          "before_tax": "10291740.36",
+          "after_tax": "9653096.73",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "638643.64",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19507.22",
+            "section198": "4434827.86"
+          }
+        },
+        "gold": {
+          "before_costs": "1914952.65",
+          "before_tax": "1911142.33",
+          "after_tax": "1829467.42",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "81674.91",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2823.19",
+            "section197": "564377.58"
+          }
+        },
+        "gilt": {
+          "before_costs": "2858308.69",
+          "before_tax": "2800095.13",
+          "after_tax": "2452893.56",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "332765.04",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "969595.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19074453.46",
+      "explicit_cost_effect_at_terminal_inr": "11420.07",
+      "after_costs_before_investor_tax_inr": "19063033.39",
+      "tax_effect_at_terminal_inr": "1507802.82",
+      "after_costs_and_modeled_tax_inr": "17555230.57",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5641",
+        "after_modeled_tax": "9.4272"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11859684.75",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9802749.06",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "197250.94"
+        },
+        "0.08": {
+          "net_real_inr": "8131468.48",
+          "planning_floor_shortfall_inr": "868531.52",
+          "stretch_goal_shortfall_inr": "1868531.52"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12736847.66",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1014886.71",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2236107.10",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "134321.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2946737.26",
+          "before_tax": "2940870.30",
+          "after_tax": "2582275.82",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "358594.48",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "1149341.29"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19078276.85",
+      "explicit_cost_effect_at_terminal_inr": "8397.17",
+      "after_costs_before_investor_tax_inr": "19069879.68",
+      "tax_effect_at_terminal_inr": "1581970.10",
+      "after_costs_and_modeled_tax_inr": "17487909.59",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5691",
+        "after_modeled_tax": "9.3741"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11814205.11",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9765157.37",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "234842.63"
+        },
+        "0.08": {
+          "net_real_inr": "8100285.84",
+          "planning_floor_shortfall_inr": "899714.16",
+          "stretch_goal_shortfall_inr": "1899714.16"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12736847.66",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1014886.71",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2236107.10",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "134321.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2950560.65",
+          "before_tax": "2947716.60",
+          "after_tax": "2514954.84",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19080926.29",
+      "explicit_cost_effect_at_terminal_inr": "66011.85",
+      "after_costs_before_investor_tax_inr": "19014914.44",
+      "tax_effect_at_terminal_inr": "1495336.73",
+      "after_costs_and_modeled_tax_inr": "17519577.71",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5293",
+        "after_modeled_tax": "9.3991"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11835598.96",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9782840.69",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "217159.31"
+        },
+        "0.08": {
+          "net_real_inr": "8114954.31",
+          "planning_floor_shortfall_inr": "885045.69",
+          "stretch_goal_shortfall_inr": "1885045.69"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12736847.66",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1014886.71",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2236107.10",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "134321.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2953210.09",
+          "before_tax": "2892751.35",
+          "after_tax": "2546622.96",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "325736.40",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1044026.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19117037.92",
+      "explicit_cost_effect_at_terminal_inr": "66891.82",
+      "after_costs_before_investor_tax_inr": "19050146.11",
+      "tax_effect_at_terminal_inr": "1506465.88",
+      "after_costs_and_modeled_tax_inr": "17543680.23",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5548",
+        "after_modeled_tax": "9.4181"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11851881.75",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9796299.41",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "203700.59"
+        },
+        "0.08": {
+          "net_real_inr": "8126118.44",
+          "planning_floor_shortfall_inr": "873881.56",
+          "stretch_goal_shortfall_inr": "1873881.56"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12736847.66",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1014886.71",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2236107.10",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "134321.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2989321.72",
+          "before_tax": "2927983.02",
+          "after_tax": "2570725.48",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "336527.00",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1078612.18"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19074453.46",
+      "explicit_cost_effect_at_terminal_inr": "11420.07",
+      "after_costs_before_investor_tax_inr": "19063033.39",
+      "tax_effect_at_terminal_inr": "1676458.10",
+      "after_costs_and_modeled_tax_inr": "17386575.29",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5641",
+        "after_modeled_tax": "9.2939"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11745747.28",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9708572.83",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "291427.17"
+        },
+        "0.08": {
+          "net_real_inr": "8053348.45",
+          "planning_floor_shortfall_inr": "946651.55",
+          "stretch_goal_shortfall_inr": "1946651.55"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12617483.99",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1134250.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2222674.93",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "147753.78",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2946737.26",
+          "before_tax": "2940870.30",
+          "after_tax": "2546416.37",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "394453.93",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "11789.74",
+          "acquired_lots": 120,
+          "long_lots": 0,
+          "short_lots": 120,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "1149341.29"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19078276.85",
+      "explicit_cost_effect_at_terminal_inr": "8397.17",
+      "after_costs_before_investor_tax_inr": "19069879.68",
+      "tax_effect_at_terminal_inr": "1754440.24",
+      "after_costs_and_modeled_tax_inr": "17315439.44",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5691",
+        "after_modeled_tax": "9.2372"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11697690.45",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9668850.94",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "331149.06"
+        },
+        "0.08": {
+          "net_real_inr": "8020398.79",
+          "planning_floor_shortfall_inr": "979601.21",
+          "stretch_goal_shortfall_inr": "1979601.21"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12617483.99",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1134250.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2222674.93",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "147753.78",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2950560.65",
+          "before_tax": "2947716.60",
+          "after_tax": "2475280.52",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "70738.43",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19080926.29",
+      "explicit_cost_effect_at_terminal_inr": "66011.85",
+      "after_costs_before_investor_tax_inr": "19014914.44",
+      "tax_effect_at_terminal_inr": "1662548.79",
+      "after_costs_and_modeled_tax_inr": "17352365.65",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5293",
+        "after_modeled_tax": "9.2667"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11722636.47",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9689470.34",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "310529.66"
+        },
+        "0.08": {
+          "net_real_inr": "8037502.77",
+          "planning_floor_shortfall_inr": "962497.23",
+          "stretch_goal_shortfall_inr": "1962497.23"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12617483.99",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1134250.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2222674.93",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "147753.78",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2953210.09",
+          "before_tax": "2892751.35",
+          "after_tax": "2512206.73",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "358310.04",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1044026.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-10-31",
+      "sip_count": 120,
+      "contributions_inr": "8981227.38",
+      "before_explicit_costs_and_investor_tax_inr": "19117037.92",
+      "explicit_cost_effect_at_terminal_inr": "66891.82",
+      "after_costs_before_investor_tax_inr": "19050146.11",
+      "tax_effect_at_terminal_inr": "1674784.12",
+      "after_costs_and_modeled_tax_inr": "17375361.99",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5548",
+        "after_modeled_tax": "9.2850"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11738171.98",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9702311.38",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "297688.62"
+        },
+        "0.08": {
+          "net_real_inr": "8048154.52",
+          "planning_floor_shortfall_inr": "951845.48",
+          "stretch_goal_shortfall_inr": "1951845.48"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "13752557.22",
+          "before_tax": "13751734.37",
+          "after_tax": "12617483.99",
+          "funded": "5837797.80",
+          "maturity_or_exit_tax": "1134250.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "38316.65",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29095.30",
+            "section198": "7885268.38"
+          }
+        },
+        "gold": {
+          "before_costs": "2375158.98",
+          "before_tax": "2370428.72",
+          "after_tax": "2222674.93",
+          "funded": "1347184.11",
+          "maturity_or_exit_tax": "147753.78",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "8842.30",
+          "acquired_lots": 120,
+          "long_lots": 108,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4497.39",
+            "section197": "1022449.51"
+          }
+        },
+        "gilt": {
+          "before_costs": "2989321.72",
+          "before_tax": "2927983.02",
+          "after_tax": "2535203.07",
+          "funded": "1796245.48",
+          "maturity_or_exit_tax": "370179.70",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "58948.69",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1078612.18"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "11855782.94",
+      "explicit_cost_effect_at_terminal_inr": "8405.07",
+      "after_costs_before_investor_tax_inr": "11847377.87",
+      "tax_effect_at_terminal_inr": "450045.68",
+      "after_costs_and_modeled_tax_inr": "11397332.19",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.7092",
+        "after_modeled_tax": "3.1683"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7649462.57",
+          "planning_floor_shortfall_inr": "1350537.43",
+          "stretch_goal_shortfall_inr": "2350537.43"
+        },
+        "0.06": {
+          "net_real_inr": "6302703.98",
+          "planning_floor_shortfall_inr": "2697296.02",
+          "stretch_goal_shortfall_inr": "3697296.02"
+        },
+        "0.08": {
+          "net_real_inr": "5211887.42",
+          "planning_floor_shortfall_inr": "3788112.58",
+          "stretch_goal_shortfall_inr": "4788112.58"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7625870.52",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "236857.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1542986.33",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "27028.14",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2419445.46",
+          "before_tax": "2414634.91",
+          "after_tax": "2228475.34",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "186159.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "596665.30"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12195830.81",
+      "explicit_cost_effect_at_terminal_inr": "6167.37",
+      "after_costs_before_investor_tax_inr": "12189663.44",
+      "tax_effect_at_terminal_inr": "582525.96",
+      "after_costs_and_modeled_tax_inr": "11607137.48",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.1059",
+        "after_modeled_tax": "3.4233"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7790276.02",
+          "planning_floor_shortfall_inr": "1209723.98",
+          "stretch_goal_shortfall_inr": "2209723.98"
+        },
+        "0.06": {
+          "net_real_inr": "6418725.92",
+          "planning_floor_shortfall_inr": "2581274.08",
+          "stretch_goal_shortfall_inr": "3581274.08"
+        },
+        "0.08": {
+          "net_real_inr": "5307829.30",
+          "planning_floor_shortfall_inr": "3692170.70",
+          "stretch_goal_shortfall_inr": "4692170.70"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7625870.52",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "236857.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1542986.33",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "27028.14",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2759493.33",
+          "before_tax": "2756920.48",
+          "after_tax": "2438280.63",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12175043.61",
+      "explicit_cost_effect_at_terminal_inr": "100342.00",
+      "after_costs_before_investor_tax_inr": "12074701.61",
+      "tax_effect_at_terminal_inr": "521305.27",
+      "after_costs_and_modeled_tax_inr": "11553396.34",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.9741",
+        "after_modeled_tax": "3.3585"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7754206.98",
+          "planning_floor_shortfall_inr": "1245793.02",
+          "stretch_goal_shortfall_inr": "2245793.02"
+        },
+        "0.06": {
+          "net_real_inr": "6389007.16",
+          "planning_floor_shortfall_inr": "2610992.84",
+          "stretch_goal_shortfall_inr": "3610992.84"
+        },
+        "0.08": {
+          "net_real_inr": "5283254.01",
+          "planning_floor_shortfall_inr": "3716745.99",
+          "stretch_goal_shortfall_inr": "4716745.99"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7625870.52",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "236857.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1542986.33",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "27028.14",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2738706.13",
+          "before_tax": "2641958.65",
+          "after_tax": "2384539.48",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "248044.36",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "795013.99"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12211166.43",
+      "explicit_cost_effect_at_terminal_inr": "101891.73",
+      "after_costs_before_investor_tax_inr": "12109274.69",
+      "tax_effect_at_terminal_inr": "532162.75",
+      "after_costs_and_modeled_tax_inr": "11577111.94",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.0139",
+        "after_modeled_tax": "3.3872"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7770124.00",
+          "planning_floor_shortfall_inr": "1229876.00",
+          "stretch_goal_shortfall_inr": "2229876.00"
+        },
+        "0.06": {
+          "net_real_inr": "6402121.85",
+          "planning_floor_shortfall_inr": "2597878.15",
+          "stretch_goal_shortfall_inr": "3597878.15"
+        },
+        "0.08": {
+          "net_real_inr": "5294098.92",
+          "planning_floor_shortfall_inr": "3705901.08",
+          "stretch_goal_shortfall_inr": "4705901.08"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7625870.52",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "236857.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1542986.33",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "27028.14",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2774828.95",
+          "before_tax": "2676531.74",
+          "after_tax": "2408255.09",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "258728.08",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "829256.66"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "11855782.94",
+      "explicit_cost_effect_at_terminal_inr": "8405.07",
+      "after_costs_before_investor_tax_inr": "11847377.87",
+      "tax_effect_at_terminal_inr": "512925.24",
+      "after_costs_and_modeled_tax_inr": "11334452.63",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.7092",
+        "after_modeled_tax": "3.0909"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7607260.16",
+          "planning_floor_shortfall_inr": "1392739.84",
+          "stretch_goal_shortfall_inr": "2392739.84"
+        },
+        "0.06": {
+          "net_real_inr": "6267931.69",
+          "planning_floor_shortfall_inr": "2732068.31",
+          "stretch_goal_shortfall_inr": "3732068.31"
+        },
+        "0.08": {
+          "net_real_inr": "5183133.21",
+          "planning_floor_shortfall_inr": "3816866.79",
+          "stretch_goal_shortfall_inr": "4816866.79"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7584309.73",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "278418.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1540283.52",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "29730.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2419445.46",
+          "before_tax": "2414634.91",
+          "after_tax": "2209859.38",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "204775.53",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "596665.30"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12195830.81",
+      "explicit_cost_effect_at_terminal_inr": "6167.37",
+      "after_costs_before_investor_tax_inr": "12189663.44",
+      "tax_effect_at_terminal_inr": "657677.94",
+      "after_costs_and_modeled_tax_inr": "11531985.49",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.1059",
+        "after_modeled_tax": "3.3326"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7739836.82",
+          "planning_floor_shortfall_inr": "1260163.18",
+          "stretch_goal_shortfall_inr": "2260163.18"
+        },
+        "0.06": {
+          "net_real_inr": "6377167.01",
+          "planning_floor_shortfall_inr": "2622832.99",
+          "stretch_goal_shortfall_inr": "3622832.99"
+        },
+        "0.08": {
+          "net_real_inr": "5273463.04",
+          "planning_floor_shortfall_inr": "3726536.96",
+          "stretch_goal_shortfall_inr": "4726536.96"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7584309.73",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "278418.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1540283.52",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "29730.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2759493.33",
+          "before_tax": "2756920.48",
+          "after_tax": "2407392.25",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12175043.61",
+      "explicit_cost_effect_at_terminal_inr": "100342.00",
+      "after_costs_before_investor_tax_inr": "12074701.61",
+      "tax_effect_at_terminal_inr": "591230.15",
+      "after_costs_and_modeled_tax_inr": "11483471.45",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "3.9741",
+        "after_modeled_tax": "3.2737"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7707276.01",
+          "planning_floor_shortfall_inr": "1292723.99",
+          "stretch_goal_shortfall_inr": "2292723.99"
+        },
+        "0.06": {
+          "net_real_inr": "6350338.83",
+          "planning_floor_shortfall_inr": "2649661.17",
+          "stretch_goal_shortfall_inr": "3649661.17"
+        },
+        "0.08": {
+          "net_real_inr": "5251278.05",
+          "planning_floor_shortfall_inr": "3748721.95",
+          "stretch_goal_shortfall_inr": "4748721.95"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7584309.73",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "278418.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1540283.52",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "29730.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2738706.13",
+          "before_tax": "2641958.65",
+          "after_tax": "2358878.21",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "272848.80",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "795013.99"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "lower_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "12211166.43",
+      "explicit_cost_effect_at_terminal_inr": "101891.73",
+      "after_costs_before_investor_tax_inr": "12109274.69",
+      "tax_effect_at_terminal_inr": "603169.86",
+      "after_costs_and_modeled_tax_inr": "11506104.83",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "4.0139",
+        "after_modeled_tax": "3.3012"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "7722466.69",
+          "planning_floor_shortfall_inr": "1277533.31",
+          "stretch_goal_shortfall_inr": "2277533.31"
+        },
+        "0.06": {
+          "net_real_inr": "6362855.05",
+          "planning_floor_shortfall_inr": "2637144.95",
+          "stretch_goal_shortfall_inr": "3637144.95"
+        },
+        "0.08": {
+          "net_real_inr": "5261628.07",
+          "planning_floor_shortfall_inr": "3738371.93",
+          "stretch_goal_shortfall_inr": "4738371.93"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "7863197.74",
+          "before_tax": "7862728.48",
+          "after_tax": "7584309.73",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "278418.76",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "9963.44",
+            "section198": "1931042.82"
+          }
+        },
+        "gold": {
+          "before_costs": "1573139.74",
+          "before_tax": "1570014.47",
+          "after_tax": "1540283.52",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "29730.96",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "1151.94",
+            "section197": "205144.12"
+          }
+        },
+        "gilt": {
+          "before_costs": "2774828.95",
+          "before_tax": "2676531.74",
+          "after_tax": "2381511.58",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "284600.89",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.76",
+          "gains": {
+            "section76": "829256.66"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15255692.86",
+      "explicit_cost_effect_at_terminal_inr": "10069.02",
+      "after_costs_before_investor_tax_inr": "15245623.84",
+      "tax_effect_at_terminal_inr": "961355.39",
+      "after_costs_and_modeled_tax_inr": "14284268.45",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.1942",
+        "after_modeled_tax": "6.2994"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9587066.07",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "412933.93"
+        },
+        "0.06": {
+          "net_real_inr": "7899174.48",
+          "planning_floor_shortfall_inr": "1100825.52",
+          "stretch_goal_shortfall_inr": "2100825.52"
+        },
+        "0.08": {
+          "net_real_inr": "6532054.85",
+          "planning_floor_shortfall_inr": "2467945.15",
+          "stretch_goal_shortfall_inr": "3467945.15"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9927821.13",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "581714.52",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1869946.25",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "76299.31",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2795404.73",
+          "before_tax": "2789842.64",
+          "after_tax": "2486501.08",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "303341.57",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "972248.61"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15337286.59",
+      "explicit_cost_effect_at_terminal_inr": "7221.80",
+      "after_costs_before_investor_tax_inr": "15330064.78",
+      "tax_effect_at_terminal_inr": "1035808.02",
+      "after_costs_and_modeled_tax_inr": "14294256.77",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2700",
+        "after_modeled_tax": "6.3091"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9593769.86",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "406230.14"
+        },
+        "0.06": {
+          "net_real_inr": "7904698.00",
+          "planning_floor_shortfall_inr": "1095302.00",
+          "stretch_goal_shortfall_inr": "2095302.00"
+        },
+        "0.08": {
+          "net_real_inr": "6536622.41",
+          "planning_floor_shortfall_inr": "2463377.59",
+          "stretch_goal_shortfall_inr": "3463377.59"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9927821.13",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "581714.52",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1869946.25",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "76299.31",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2876998.45",
+          "before_tax": "2874283.58",
+          "after_tax": "2496489.39",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15327077.67",
+      "explicit_cost_effect_at_terminal_inr": "62220.78",
+      "after_costs_before_investor_tax_inr": "15264856.89",
+      "tax_effect_at_terminal_inr": "969703.70",
+      "after_costs_and_modeled_tax_inr": "14295153.18",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2115",
+        "after_modeled_tax": "6.3099"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9594371.50",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "405628.50"
+        },
+        "0.06": {
+          "net_real_inr": "7905193.71",
+          "planning_floor_shortfall_inr": "1094806.29",
+          "stretch_goal_shortfall_inr": "2094806.29"
+        },
+        "0.08": {
+          "net_real_inr": "6537032.33",
+          "planning_floor_shortfall_inr": "2462967.67",
+          "stretch_goal_shortfall_inr": "3462967.67"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9927821.13",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "581714.52",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1869946.25",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "76299.31",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2866789.54",
+          "before_tax": "2809075.68",
+          "after_tax": "2497385.81",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "291672.60",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "934848.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "reference",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15363374.40",
+      "explicit_cost_effect_at_terminal_inr": "63103.32",
+      "after_costs_before_investor_tax_inr": "15300271.08",
+      "tax_effect_at_terminal_inr": "980895.16",
+      "after_costs_and_modeled_tax_inr": "14319375.92",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2433",
+        "after_modeled_tax": "6.3332"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9610628.90",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "389371.10"
+        },
+        "0.06": {
+          "net_real_inr": "7918588.85",
+          "planning_floor_shortfall_inr": "1081411.15",
+          "stretch_goal_shortfall_inr": "2081411.15"
+        },
+        "0.08": {
+          "net_real_inr": "6548109.15",
+          "planning_floor_shortfall_inr": "2451890.85",
+          "stretch_goal_shortfall_inr": "3451890.85"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9927821.13",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "581714.52",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1869946.25",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "76299.31",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2903086.27",
+          "before_tax": "2844489.88",
+          "after_tax": "2521608.55",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "302513.67",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "969595.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15255692.86",
+      "explicit_cost_effect_at_terminal_inr": "10069.02",
+      "after_costs_before_investor_tax_inr": "15245623.84",
+      "tax_effect_at_terminal_inr": "1075365.93",
+      "after_costs_and_modeled_tax_inr": "14170257.91",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.1942",
+        "after_modeled_tax": "6.1891"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9510546.47",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "489453.53"
+        },
+        "0.06": {
+          "net_real_inr": "7836126.85",
+          "planning_floor_shortfall_inr": "1163873.15",
+          "stretch_goal_shortfall_inr": "2163873.15"
+        },
+        "0.08": {
+          "net_real_inr": "6479918.95",
+          "planning_floor_shortfall_inr": "2520081.05",
+          "stretch_goal_shortfall_inr": "3520081.05"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9851774.67",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "657760.97",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1862316.32",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "83929.24",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2795404.73",
+          "before_tax": "2789842.64",
+          "after_tax": "2456166.92",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "333675.72",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "972248.61"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15337286.59",
+      "explicit_cost_effect_at_terminal_inr": "7221.80",
+      "after_costs_before_investor_tax_inr": "15330064.78",
+      "tax_effect_at_terminal_inr": "1155050.52",
+      "after_costs_and_modeled_tax_inr": "14175014.26",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2700",
+        "after_modeled_tax": "6.1938"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9513738.75",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "486261.25"
+        },
+        "0.06": {
+          "net_real_inr": "7838757.11",
+          "planning_floor_shortfall_inr": "1161242.89",
+          "stretch_goal_shortfall_inr": "2161242.89"
+        },
+        "0.08": {
+          "net_real_inr": "6482093.99",
+          "planning_floor_shortfall_inr": "2517906.01",
+          "stretch_goal_shortfall_inr": "3517906.01"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9851774.67",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "657760.97",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1862316.32",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "83929.24",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2876998.45",
+          "before_tax": "2874283.58",
+          "after_tax": "2460923.27",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15327077.67",
+      "explicit_cost_effect_at_terminal_inr": "62220.78",
+      "after_costs_before_investor_tax_inr": "15264856.89",
+      "tax_effect_at_terminal_inr": "1084363.11",
+      "after_costs_and_modeled_tax_inr": "14180493.78",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2115",
+        "after_modeled_tax": "6.1991"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9517416.40",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "482583.60"
+        },
+        "0.06": {
+          "net_real_inr": "7841787.27",
+          "planning_floor_shortfall_inr": "1158212.73",
+          "stretch_goal_shortfall_inr": "2158212.73"
+        },
+        "0.08": {
+          "net_real_inr": "6484599.72",
+          "planning_floor_shortfall_inr": "2515400.28",
+          "stretch_goal_shortfall_inr": "3515400.28"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9851774.67",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "657760.97",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1862316.32",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "83929.24",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2866789.54",
+          "before_tax": "2809075.68",
+          "after_tax": "2466402.79",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "320839.86",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "934848.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "reference",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "15363374.40",
+      "explicit_cost_effect_at_terminal_inr": "63103.32",
+      "after_costs_before_investor_tax_inr": "15300271.08",
+      "tax_effect_at_terminal_inr": "1096666.66",
+      "after_costs_and_modeled_tax_inr": "14203604.42",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "7.2433",
+        "after_modeled_tax": "6.2215"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "9532927.40",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "467072.60"
+        },
+        "0.06": {
+          "net_real_inr": "7854567.42",
+          "planning_floor_shortfall_inr": "1145432.58",
+          "stretch_goal_shortfall_inr": "2145432.58"
+        },
+        "0.08": {
+          "net_real_inr": "6495167.99",
+          "planning_floor_shortfall_inr": "2504832.01",
+          "stretch_goal_shortfall_inr": "3504832.01"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "10510163.72",
+          "before_tax": "10509535.65",
+          "after_tax": "9851774.67",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "657760.97",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "19812.00",
+            "section198": "4568027.89"
+          }
+        },
+        "gold": {
+          "before_costs": "1950124.41",
+          "before_tax": "1946245.55",
+          "after_tax": "1862316.32",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "83929.24",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "2867.14",
+            "section197": "580036.61"
+          }
+        },
+        "gilt": {
+          "before_costs": "2903086.27",
+          "before_tax": "2844489.88",
+          "after_tax": "2489513.43",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "332765.04",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.77",
+          "gains": {
+            "section76": "969595.09"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19531895.99",
+      "explicit_cost_effect_at_terminal_inr": "11656.04",
+      "after_costs_before_investor_tax_inr": "19520239.95",
+      "tax_effect_at_terminal_inr": "1556555.45",
+      "after_costs_and_modeled_tax_inr": "17963684.50",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5671",
+        "after_modeled_tax": "9.4363"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "12056552.34",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9933884.86",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "66115.14"
+        },
+        "0.08": {
+          "net_real_inr": "8214615.46",
+          "planning_floor_shortfall_inr": "785384.54",
+          "stretch_goal_shortfall_inr": "1785384.54"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "13050214.23",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1049157.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2282257.67",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "138335.75",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3006258.26",
+          "before_tax": "3000274.68",
+          "after_tax": "2631212.59",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "369062.08",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "1182891.29"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19531073.33",
+      "explicit_cost_effect_at_terminal_inr": "8544.34",
+      "after_costs_before_investor_tax_inr": "19522528.99",
+      "tax_effect_at_terminal_inr": "1632060.85",
+      "after_costs_and_modeled_tax_inr": "17890468.14",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5687",
+        "after_modeled_tax": "9.3806"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "12007412.26",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9893396.35",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "106603.65"
+        },
+        "0.08": {
+          "net_real_inr": "8181134.34",
+          "planning_floor_shortfall_inr": "818865.66",
+          "stretch_goal_shortfall_inr": "1818865.66"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "13050214.23",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1049157.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2282257.67",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "138335.75",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3005435.60",
+          "before_tax": "3002563.72",
+          "after_tax": "2557996.23",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4211.83",
+          "coupon_tax": "261966.40",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19533748.69",
+      "explicit_cost_effect_at_terminal_inr": "66722.82",
+      "after_costs_before_investor_tax_inr": "19467025.87",
+      "tax_effect_at_terminal_inr": "1544674.80",
+      "after_costs_and_modeled_tax_inr": "17922351.07",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5300",
+        "after_modeled_tax": "9.4049"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "12028810.89",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9911027.55",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "88972.45"
+        },
+        "0.08": {
+          "net_real_inr": "8195714.09",
+          "planning_floor_shortfall_inr": "804285.91",
+          "stretch_goal_shortfall_inr": "1804285.91"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "13050214.23",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1049157.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2282257.67",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "138335.75",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3008110.97",
+          "before_tax": "2947060.60",
+          "after_tax": "2589879.17",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "325736.40",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1044026.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_unused_equity_threshold",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19570213.70",
+      "explicit_cost_effect_at_terminal_inr": "67611.39",
+      "after_costs_before_investor_tax_inr": "19502602.31",
+      "tax_effect_at_terminal_inr": "1555985.23",
+      "after_costs_and_modeled_tax_inr": "17946617.08",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5548",
+        "after_modeled_tax": "9.4233"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "12045097.33",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9924446.61",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "75553.39"
+        },
+        "0.08": {
+          "net_real_inr": "8206810.69",
+          "planning_floor_shortfall_inr": "793189.31",
+          "stretch_goal_shortfall_inr": "1793189.31"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "13050214.23",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1049157.62",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2282257.67",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "138335.75",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3044575.98",
+          "before_tax": "2982637.04",
+          "after_tax": "2614145.17",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "336527.00",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1078612.18"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "lic_nav_assumption",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19531895.99",
+      "explicit_cost_effect_at_terminal_inr": "11656.04",
+      "after_costs_before_investor_tax_inr": "19520239.95",
+      "tax_effect_at_terminal_inr": "1730085.99",
+      "after_costs_and_modeled_tax_inr": "17790153.95",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5671",
+        "after_modeled_tax": "9.3040"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11940085.14",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9837922.78",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "162077.22"
+        },
+        "0.08": {
+          "net_real_inr": "8135261.65",
+          "planning_floor_shortfall_inr": "864738.35",
+          "stretch_goal_shortfall_inr": "1864738.35"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "12927423.47",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1171948.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2268424.10",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "152169.33",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3006258.26",
+          "before_tax": "3000274.68",
+          "after_tax": "2594306.39",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "405968.29",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "12968.71",
+          "acquired_lots": 122,
+          "long_lots": 0,
+          "short_lots": 122,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section76": "1182891.29"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "direct_gsec_694_2036",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19531073.33",
+      "explicit_cost_effect_at_terminal_inr": "8544.34",
+      "after_costs_before_investor_tax_inr": "19522528.99",
+      "tax_effect_at_terminal_inr": "1809379.92",
+      "after_costs_and_modeled_tax_inr": "17713149.07",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5687",
+        "after_modeled_tax": "9.2449"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11888402.35",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9795339.22",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "204660.78"
+        },
+        "0.08": {
+          "net_real_inr": "8100048.08",
+          "planning_floor_shortfall_inr": "899951.92",
+          "stretch_goal_shortfall_inr": "1899951.92"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "12927423.47",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1171948.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2268424.10",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "152169.33",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3005435.60",
+          "before_tax": "3002563.72",
+          "after_tax": "2517301.50",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "4633.01",
+          "coupon_tax": "288163.04",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "96675.86",
+          "acquired_lots": 115,
+          "long_lots": 103,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "242.21",
+            "section197": "31817.39"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "accrual_in_net_receivables",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19533748.69",
+      "explicit_cost_effect_at_terminal_inr": "66722.82",
+      "after_costs_before_investor_tax_inr": "19467025.87",
+      "tax_effect_at_terminal_inr": "1716711.30",
+      "after_costs_and_modeled_tax_inr": "17750314.57",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5300",
+        "after_modeled_tax": "9.2735"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11913346.44",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9815891.68",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "184108.32"
+        },
+        "0.08": {
+          "net_real_inr": "8117043.50",
+          "planning_floor_shortfall_inr": "882956.50",
+          "stretch_goal_shortfall_inr": "1882956.50"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "12927423.47",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1171948.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2268424.10",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "152169.33",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3008110.97",
+          "before_tax": "2947060.60",
+          "after_tax": "2554467.01",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "358310.04",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1044026.93"
+          }
+        }
+      }
+    },
+    {
+      "gilt": "market_value_includes_accrual",
+      "curve": "higher_growth",
+      "tax_case": "30_slab_10_surcharge_equity_threshold_used",
+      "weights": "gold_baseline",
+      "start": "2026-10-31",
+      "end": "2036-12-31",
+      "sip_count": 122,
+      "contributions_inr": "9110914.50",
+      "before_explicit_costs_and_investor_tax_inr": "19570213.70",
+      "explicit_cost_effect_at_terminal_inr": "67611.39",
+      "after_costs_before_investor_tax_inr": "19502602.31",
+      "tax_effect_at_terminal_inr": "1729142.37",
+      "after_costs_and_modeled_tax_inr": "17773459.94",
+      "nominal_xirr_pct": {
+        "before_investor_tax": "10.5548",
+        "after_modeled_tax": "9.2912"
+      },
+      "after_tax_real_october_2026_reference": {
+        "0.04": {
+          "net_real_inr": "11928880.74",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "0.00"
+        },
+        "0.06": {
+          "net_real_inr": "9828691.03",
+          "planning_floor_shortfall_inr": "0.00",
+          "stretch_goal_shortfall_inr": "171308.97"
+        },
+        "0.08": {
+          "net_real_inr": "8127627.65",
+          "planning_floor_shortfall_inr": "872372.35",
+          "stretch_goal_shortfall_inr": "1872372.35"
+        }
+      },
+      "sleeves": {
+        "equity": {
+          "before_costs": "14100215.33",
+          "before_tax": "14099371.85",
+          "after_tax": "12927423.47",
+          "funded": "5922094.43",
+          "maturity_or_exit_tax": "1171948.38",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "42148.31",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "section196": "29552.02",
+            "section198": "8148159.97"
+          }
+        },
+        "gold": {
+          "before_costs": "2425422.40",
+          "before_tax": "2420593.42",
+          "after_tax": "2268424.10",
+          "funded": "1366637.18",
+          "maturity_or_exit_tax": "152169.33",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "9726.53",
+          "acquired_lots": 122,
+          "long_lots": 110,
+          "short_lots": 12,
+          "exit_load_inr": "0.00",
+          "gains": {
+            "ordinary_stcg": "4567.66",
+            "section197": "1053158.78"
+          }
+        },
+        "gilt": {
+          "before_costs": "3044575.98",
+          "before_tax": "2982637.04",
+          "after_tax": "2577612.37",
+          "funded": "1822182.90",
+          "maturity_or_exit_tax": "370179.70",
+          "coupon_tax": "0.00",
+          "realized_losses_excluded": "0.00",
+          "contributions_to_cash": "84886.12",
+          "acquired_lots": 116,
+          "long_lots": 0,
+          "short_lots": 116,
+          "exit_load_inr": "17.78",
+          "gains": {
+            "section76": "1078612.18"
+          }
+        }
+      }
+    }
+  ],
+  "sbi_forward_accrual_cases": [
+    "accrual_in_net_receivables",
+    "market_value_includes_accrual"
+  ],
+  "direct_auction_nominal_yield_pct": "7.3158",
+  "supports_actual_personal_outcomes": false,
+  "supports_probability": false,
+  "live_quote": "DEFERRED",
+  "paid_silver_history": "DEFERRED",
+  "rbi_tbill_payment_timing": "OPEN",
+  "investment_authorization": "NO_GO"
+}

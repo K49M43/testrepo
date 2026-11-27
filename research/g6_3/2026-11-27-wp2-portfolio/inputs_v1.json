@@ -1,0 +1,35 @@
+{
+  "record_id": "G6.3-WP2-PORTFOLIO-SCENARIOS-2026-11-27",
+  "portfolio_weights": {
+    "gold_baseline": {"equity": "0.65", "gilt": "0.20", "gold": "0.15", "silver": "0"},
+    "silver_challenger": {"equity": "0.65", "gilt": "0.20", "gold": "0.10", "silver": "0.05"}
+  },
+  "forward_returns": [
+    {"label": "lower_growth", "equity_nav_pct": "4", "gold_nav_pct": "2", "lic_nav_pct": "4", "reserve_gross_pct": "2", "sbi_ter_pct": "0.50"},
+    {"label": "reference", "equity_nav_pct": "8", "gold_nav_pct": "5", "lic_nav_pct": "6", "reserve_gross_pct": "4", "sbi_ter_pct": "0.28"},
+    {"label": "higher_growth", "equity_nav_pct": "12", "gold_nav_pct": "8", "lic_nav_pct": "7", "reserve_gross_pct": "6", "sbi_ter_pct": "0.28"}
+  ],
+  "tax_cases": [
+    {"label": "30_slab_unused_equity_threshold", "ordinary_percent": "30", "surcharge_percent": "0", "cess_percent": "4", "bond_ltcg_percent": "12.5", "assumed_available_equity_ltcg_exemption_inr": "125000"},
+    {"label": "30_slab_10_surcharge_equity_threshold_used", "ordinary_percent": "30", "surcharge_percent": "10", "cess_percent": "4", "bond_ltcg_percent": "12.5", "assumed_available_equity_ltcg_exemption_inr": "0"}
+  ],
+  "costs": {
+    "equity_fund_entry_stamp_percent": "0.005",
+    "equity_fund_exit_load_percent": "1",
+    "equity_fund_exit_load_up_to_days": 15,
+    "equity_fund_exit_stt_percent": "0.001",
+    "etf_assumed_all_in_friction_bps_per_side": "10",
+    "sbi_exit_load_percent_sensitivity": "0.15",
+    "sbi_exit_load_up_to_days": 30,
+    "direct_bond_entry_cost_bps": "10"
+  },
+  "sbi_maturity_cash_availability_lag_calendar_days": 7,
+  "sources": [
+    {"label": "Income-tax Act 2025 as amended by Finance Act 2026, sections 2(101), 76, 196–198 and 202", "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf"},
+    {"label": "Finance Act 2026, surcharge and cess", "url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1"},
+    {"label": "Motilal Oswal Nifty 500 Index Fund scheme document, exit load", "url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/downloads/mf/sid/2025/nov/08f19-sid_motilal-oswal-nifty-500-index-fund-.pdf"},
+    {"label": "SBI June 2036 Gilt Fund scheme terms", "url": "https://www.sbimf.com/docs/default-source/sif-forms/sid---sbi-crisil-ibx-gilt-index---june-2036-fund.pdf"},
+    {"label": "LIC 8–13 Year G-Sec ETF scheme terms and asset allocation", "url": "https://www.licmf.com/assets/downloads/sai_sid_kim/2025-2026/32.%20Scheme%20Information%20Document%20-%20LIC%20MF%20Nifty%208-13%20year%20G-Sec%20ETF.pdf"},
+    {"label": "Securities transaction tax, sale of an equity-oriented unit to the mutual fund", "url": "https://www.incometaxindia.gov.in/w/section-98-55"}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "record_id": "G6.3-DIRECT-GSEC-VS-SBI-GILT-2036-V1",
+  "evidence_date": "2026-11-26",
+  "scope": "Conditional single-lump-sum comparison, no live entry or investor-specific tax claim",
+  "contribution_inr": "100000",
+  "hypothetical_investment_date": "2026-11-26",
+  "common_valuation_date": "2036-06-30",
+  "bond": {
+    "isin": "IN0020260025",
+    "coupon_annual_percent": "6.94",
+    "last_scheduled_coupon_before_entry": "2026-11-11",
+    "maturity_date": "2036-05-11",
+    "unit_face_inr": "100",
+    "clean_prices_per_100_face": ["95.00", "96.93", "97.46", "100.00", "102.50"],
+    "purchase_costs_bps_of_dirty_consideration": ["0", "10", "50"],
+    "accrued_interest_basis_cases": ["clean_only", "dirty"],
+    "reference_price_status": "96.93 and 97.46 are retained October and November auction anchors used in hypothetical cases; other levels are sensitivities"
+  },
+  "fund": {
+    "isin": "INF200KA12Q9",
+    "amfi_code": "150681",
+    "plan": "SBI CRISIL IBX Gilt Index - June 2036 Fund Direct Growth",
+    "factsheet_valuation_date": "2026-10-30",
+    "factsheet_portfolio_ytm_percent": "7.54",
+    "factsheet_direct_ter_percent": "0.28",
+    "factsheet_government_securities_percent": "95.39",
+    "factsheet_modified_duration_years": "6.43",
+    "target_maturity_date": "2036-06-30",
+    "maturity_payout_terms": "Automatic redemption at target-date NAV and proceeds within three working days subject to scheme terms",
+    "gross_annual_effective_return_percent_cases": ["6.54", "7.54", "8.54"],
+    "annual_ter_percent_cases": ["0.28", "0.50"],
+    "stamp_duty_percent_of_subscription": "0.005",
+    "exit_load_after_30_days_percent": "0",
+    "section76_classification_scope": "Conditional on continued specified-mutual-fund status; SID normally allocates 95-100% to the gilt index and latest factsheet shows 95.39% government securities",
+    "economic_return_convention": "YTM anchors the center of a gross growth sensitivity; the future portfolio return, NAV and redemption amount are uncertain"
+  },
+  "reserve_gross_annual_percent_cases": ["0", "4", "6", "7.54"],
+  "inflation_annual_percent_cases": ["4", "6", "8"],
+  "tax_cases": [
+    {"label": "no_tax_control", "ordinary_percent": "0", "bond_ltcg_percent": "0", "surcharge_percent": "0", "cess_percent": "0"},
+    {"label": "20_slab", "ordinary_percent": "20", "bond_ltcg_percent": "12.5", "surcharge_percent": "0", "cess_percent": "4"},
+    {"label": "30_slab", "ordinary_percent": "30", "bond_ltcg_percent": "12.5", "surcharge_percent": "0", "cess_percent": "4"},
+    {"label": "30_slab_plus_10_surcharge", "ordinary_percent": "30", "bond_ltcg_percent": "12.5", "surcharge_percent": "10", "cess_percent": "4"}
+  ],
+  "sources": [
+    {"document": "SBI Mutual Fund October 2026 passive factsheet, p. 83", "url": "https://www.sbimf.com/docs/default-source/scheme-factsheets/sbi-mf-passives-%28index-etf-fof%29-factsheet-october-2026.pdf", "retrieved_date_ist": "2026-11-26", "checked_pdf_bytes": 3043955, "checked_pdf_sha256": "8c8ad46fdb58ba3c64953660b88f8968a205145ae820a1aa9abfbaa68ee4cc69"},
+    {"document": "SBI Mutual Fund scheme information document, section I on maturity, section II on debt allocation, section IV on stamp duty", "url": "https://www.sbimf.com/docs/default-source/sif-forms/sid---sbi-crisil-ibx-gilt-index---june-2036-fund.pdf", "retrieved_date_ist": "2026-11-26", "checked_pdf_bytes": 1224574, "checked_pdf_sha256": "2725a3664492327b42caad49be3d71637c222b22bd727ed8355eed3d825ce4b2"},
+    {"document": "Income-tax Act 2025 as amended by Finance Act 2026, sections 2(101), 76, 92, 197, 202", "url": "https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf"},
+    {"document": "Finance Act 2026, section 3 on cess and surcharge", "url": "https://www.incometaxindia.gov.in/documents/d/guest/finance-act-2026-pdf-1"},
+    {"document": "NSE listing circular CML74143", "url": "https://nsearchives.nseindia.com/content/circulars/CML74143.pdf"}
+  ],
+  "investment_authorization": "NO_GO"
+}
