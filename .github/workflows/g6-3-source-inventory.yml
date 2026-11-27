@@ -16,13 +16,19 @@ on:
       - 'decision/compare_g6_3_gilt_routes.py'
       - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/audit_g6_3_sbi_gilt_valuation.py'
+      - 'decision/audit_g6_3_exact_date_coverage.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_month_end_dates_R9.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'research/stage512/data/r9_nse_gsec_129m_source_bridge.json'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
       - 'research/g6_3/direct_gsec_2036/**'
+      - 'research/g6_3/2026-11-27-exact-date-coverage/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
   pull_request:
@@ -41,13 +47,19 @@ on:
       - 'decision/compare_g6_3_gilt_routes.py'
       - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/audit_g6_3_sbi_gilt_valuation.py'
+      - 'decision/audit_g6_3_exact_date_coverage.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
       - 'research/stage512/data/r9_lic_gsec_etf/**'
       - 'research/stage512/data/nse500_official_tri_monthly_2015_2025q3_R8.csv'
+      - 'research/stage512/data/nse500_tri_month_end_dates_R9.csv'
+      - 'research/stage512/data/nse500_tri_validation_R8.json'
+      - 'research/stage512/data/r9_nse_gsec_129m_source_bridge.json'
       - 'research/stage512/2026-11-06/g6_3/**'
+      - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
       - 'research/g6_3/direct_gsec_2036/**'
+      - 'research/g6_3/2026-11-27-exact-date-coverage/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
 permissions:
@@ -88,3 +100,5 @@ jobs:
         run: python decision/audit_g6_3_sbi_gilt_holdings.py --check
       - name: Verify SBI gilt accrued interest and after-tax replay
         run: python decision/audit_g6_3_sbi_gilt_valuation.py --check
+      - name: Verify exact-date return coverage and candidate inclusion
+        run: python decision/audit_g6_3_exact_date_coverage.py --check

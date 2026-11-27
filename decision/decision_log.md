@@ -38,3 +38,7 @@ The [SBI holdings and cashflow audit](../research/g6_3/direct_gsec_2036/2026-11-
 ## 2026-11-27 — Prefer separate SBI gilt accrual for research
 
 The [valuation audit](../research/g6_3/direct_gsec_2036/2026-11-27-sbi-valuation/README.md) supports a clean mark with separate accrual using audited scheme precedent and September and October price-yield diagnostics. The exact October accounting and pricing cutoff remain unverified. Carry both cases. At 4% reinvestment and 0.28% TER the supported treatment gives SBI a ₹1,076–₹1,085 after-tax edge per ₹1 lakh in the common-date scenario. Lower modeled reinvestment or higher fees can reverse that edge. Investment authorization remains **NO-GO**.
+
+## 2026-11-27 — Qualify matched-date windows for G6.3 research
+
+The [WP1 audit](../research/g6_3/2026-11-27-exact-date-coverage/README.md) maps the ten G5 hypotheses, three sovereign/reserve comparisons and the Nifty benchmark to their defensible uses. The largest product-only three-sleeve set has 85 contiguous matching NAV intervals. The SBI gilt mix has 48 on common observed dates and 31 if every product uses its own last date. Carry both SBI forward accounting cases. Historical research coverage and conditional forward cashflows support the next deterministic comparison. Investment authorization remains **NO-GO**.
