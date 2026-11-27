@@ -46,3 +46,7 @@ The [WP1 audit](../research/g6_3/2026-11-27-exact-date-coverage/README.md) maps 
 ## 2026-11-27 — Run the funded 2036 portfolio scenarios
 
 The [WP2 portfolio comparison](../research/g6_3/2026-11-27-wp2-portfolio/README.md) carries both SBI accrual cases into the full funding fixture and retains LIC and the direct GoI bond. At 6% illustration inflation and 120 payments, the reference cases deliver ₹78.21–₹78.45 lakh modeled real after-tax wealth, with a ₹11.55–₹11.79 lakh shortfall. The better-supported SBI accounting case leads the direct bond by only ₹892 nominal after tax in that reference case. The lower- and higher-growth cases change the order. Keep all routes as research candidates and leave full WP2 and G6.3 open. Investment authorization remains **NO-GO**.
+
+## 2026-11-27 — Independently reconcile dated WP2 outcomes
+
+The [dated reconciliation](../research/g6_3/2026-11-27-wp2-dated/README.md) exercises the cash release and fiscal-year boundaries, a 25% early sale and ₹5 lakh withdrawal, annual incremental tax under a hypothetical taxpayer profile, loss offsets, withholding credits and a tax-policy stress. The dated 120-payment full exits deliver ₹77.37–₹77.64 lakh real at 6% inflation after costs and modeled tax. The deterministic research scope passes independent reconciliation. Keep portfolio ranking conditional and retain the personal and executable evidence blocks in [issue #44](https://github.com/K49M43/testrepo/issues/44). WP3 probabilities remain unqualified, and investment authorization remains **NO-GO**.

@@ -1,0 +1,3033 @@
+{
+  "record_id": "G6.3-WP2-DATED-RESEARCH-2026-11-27",
+  "status": "WP2_CONDITIONAL_RESEARCH_SCENARIOS_ONLY",
+  "decision_grade_personal_outputs": false,
+  "eligible_probability_input": false,
+  "sources": [
+    {
+      "path": "research/g6_3/2026-11-27-wp2-dated/inputs_v2.json",
+      "sha256_normalized": "d99a1e02999f782c5f24bbed4df42925e0281af066eca35b4867f4a5541a60a7"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-wp2-portfolio/inputs_v1.json",
+      "sha256_normalized": "68990d1b11afa56c691b9f70870810b07931c1b359b493cced1e598dd39cc470"
+    },
+    {
+      "path": "research/g6_3/2026-11-27-exact-date-coverage/coverage_v1.json",
+      "sha256_normalized": "9950b5cd6ff107d28d7d8d63fd5e947528577c9d5cc257ec12650f7c2bb51158"
+    },
+    {
+      "path": "research/stage512/2026-11-04/g3_outcome_contract_v1.json",
+      "sha256_normalized": "9723efd8e5c29b06c78fe813a6d4649e12f5be73cf066ddd4aa4ea607bb75873"
+    },
+    {
+      "path": "research/stage512/2026-11-02/cashflow_hurdle_monthly_2026-10_base.csv",
+      "sha256_normalized": "d69d9e179fce37e978db75cf59940a2a48b9fc498ceb80341dc45728c70d31ec"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-10-16/nominal_cashflows_v1.json",
+      "sha256_normalized": "ce821db1bd15297bc50ac6d6561b269589017e08a2bdf925b8f3641bc9cc19d1"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-13/auction_reconciliation_v1.json",
+      "sha256_normalized": "d6f46ca1fb668503afa844e52f5d7be32093ff1d729f1b720d43bd8eb5f816da"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-sbi-holdings/cashflow_audit_v1.json",
+      "sha256_normalized": "860b6921566608593322204beda63d6a1b3162eea39b93a0250fafd1b5af2d84"
+    },
+    {
+      "path": "research/g6_3/direct_gsec_2036/2026-11-26-gilt-comparison/inputs_v1.json",
+      "sha256_normalized": "0d7c2de201158e0d1d455b08b528e294ce92a322a9245f4969fd0677eff98668"
+    },
+    {
+      "path": "decision/g6_3_wp2_dated.py",
+      "sha256_normalized": "3a13ea40e597dda821f18876e255a667d4159d40319e9e8b2649870bb342595a"
+    },
+    {
+      "path": "decision/after_tax_event_ledger.py",
+      "sha256_normalized": "a6f16393612e270f0cb1f563c1fa4eeba7351347af0951bd7f4690aa2aef579b"
+    },
+    {
+      "path": "decision/g6_3_wp2_portfolio.py",
+      "sha256_normalized": "1ab80a7533acca22fee605b1b64bb8205ff434b73262b76cb05ab144dae9a944"
+    },
+    {
+      "path": "decision/audit_g6_3_wp2_dated.py",
+      "sha256_normalized": "b57f3a64e20071b44c7f20cd2f336e4a12b5b45e60929de700c27a08b1825cc1"
+    },
+    {
+      "path": "decision/capital_gain_loss_schedule.py",
+      "sha256_normalized": "aec37dd9d17af01335b2eed18e316f918395e858b5315c4cedf3958c29b995c8"
+    },
+    {
+      "path": "decision/ty2026_27_tax_components.py",
+      "sha256_normalized": "476a071003f78856c6a2b16e1bd776a479b194981139190dc85d9eff3b6beffa"
+    }
+  ],
+  "sbi_forward_accrual_cases": [
+    "accrual_in_net_receivables",
+    "market_value_includes_accrual"
+  ],
+  "results": [
+    {
+      "case": "replay-lic-gold_baseline",
+      "first": "2026-10-31",
+      "end": "2030-10-31",
+      "payments": 48,
+      "reserve_rate": "0",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "5592300.00",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "8393344.59",
+      "after_explicit_costs_before_taxes_remaining": "8386104.88",
+      "remaining_after_tax_set-aside": "7902134.88",
+      "tax_set_aside": "483970.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "12.1683"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "10.3209"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "6754778.02",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.06": {
+          "remaining_real": "6259230.97",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.08": {
+          "remaining_real": "5808305.04",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        }
+      },
+      "same_year_loss_offsets": "23496.27",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 486,
+      "trace_sha256": "b65e4d263b612eaa398ddcd3564a16aa7f162eaa9e64f59e165f21b7a2a4fdd3",
+      "event_types": {
+        "acquisition": 144,
+        "cash_release": 144,
+        "contribution": 49,
+        "sale": 144,
+        "tax_reserve": 5
+      }
+    },
+    {
+      "case": "replay-lic-silver_challenger",
+      "first": "2026-10-31",
+      "end": "2030-10-31",
+      "payments": 48,
+      "reserve_rate": "0",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "5592300.00",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "8478845.25",
+      "after_explicit_costs_before_taxes_remaining": "8471437.77",
+      "remaining_after_tax_set-aside": "7975817.77",
+      "tax_set_aside": "495620.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "12.4852"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "10.6079"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "6817762.45",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.06": {
+          "remaining_real": "6317594.71",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.08": {
+          "remaining_real": "5862464.16",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        }
+      },
+      "same_year_loss_offsets": "26326.13",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 630,
+      "trace_sha256": "b85a44419d01c690b7abac0b19806282aa6ec32a03847fa16f46fef4b69893bd",
+      "event_types": {
+        "acquisition": 192,
+        "cash_release": 192,
+        "contribution": 49,
+        "sale": 192,
+        "tax_reserve": 5
+      }
+    },
+    {
+      "case": "replay-sbi-gold_baseline",
+      "first": "2026-10-31",
+      "end": "2030-10-31",
+      "payments": 48,
+      "reserve_rate": "0",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "5592300.00",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "8423455.77",
+      "after_explicit_costs_before_taxes_remaining": "8418897.58",
+      "remaining_after_tax_set-aside": "7924507.58",
+      "tax_set_aside": "494390.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "12.2904"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "10.4083"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "6773902.29",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.06": {
+          "remaining_real": "6276952.23",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.08": {
+          "remaining_real": "5824749.64",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        }
+      },
+      "same_year_loss_offsets": "23389.45",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 486,
+      "trace_sha256": "b28dbbc57481252404bdb0ce0ad5e84a3c082f2da7b646885742766a1cf87033",
+      "event_types": {
+        "acquisition": 144,
+        "cash_release": 144,
+        "contribution": 49,
+        "sale": 144,
+        "tax_reserve": 5
+      }
+    },
+    {
+      "case": "replay-sbi-silver_challenger",
+      "first": "2026-10-31",
+      "end": "2030-10-31",
+      "payments": 48,
+      "reserve_rate": "0",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "5592300.00",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "8508956.44",
+      "after_explicit_costs_before_taxes_remaining": "8504230.46",
+      "remaining_after_tax_set-aside": "7998190.46",
+      "tax_set_aside": "506040.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "12.6063"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "10.6946"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "6836886.73",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.06": {
+          "remaining_real": "6335315.98",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        },
+        "0.08": {
+          "remaining_real": "5878908.76",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": null
+        }
+      },
+      "same_year_loss_offsets": "26219.30",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 630,
+      "trace_sha256": "1e35f0fb7252a0c9f5dfb8024de721d5438ce19e0cd5ab2511a91e6421e904c6",
+      "event_types": {
+        "acquisition": 192,
+        "cash_release": 192,
+        "contribution": 49,
+        "sale": 192,
+        "tax_reserve": 5
+      }
+    },
+    {
+      "case": "120-lic-full",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14940489.63",
+      "after_explicit_costs_before_taxes_remaining": "14930660.36",
+      "remaining_after_tax_set-aside": "13855192.71",
+      "tax_set_aside": "1075390.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1846"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1441"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9360071.75",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7736667.24",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1263332.76"
+        },
+        "0.08": {
+          "remaining_real": "6417635.04",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2582364.96"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "6ce80e894c0cc63fb9573765dbe26d90b41316e7c6fae44304ce10934234bbd8",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-lic-staged",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14363264.05",
+      "after_explicit_costs_before_taxes_remaining": "14353457.97",
+      "remaining_after_tax_set-aside": "13318393.78",
+      "tax_set_aside": "1029200.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "8997429.62",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "2570.38"
+        },
+        "0.06": {
+          "remaining_real": "7436921.52",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1563078.48"
+        },
+        "0.08": {
+          "remaining_real": "6168993.27",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2831006.73"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1343,
+      "trace_sha256": "f3ebdd6b5a8e0526f7f6e2031488bd0427cf61f12fe7d1886b29bc024c9681bd",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 363,
+        "contribution": 121,
+        "reserve_interest": 124,
+        "sale": 363,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "120-lic-higher_etf_friction",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "25",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14940489.63",
+      "after_explicit_costs_before_taxes_remaining": "14916858.41",
+      "remaining_after_tax_set-aside": "13841966.08",
+      "tax_set_aside": "1074810.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1717"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1308"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9351136.31",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7729281.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1270718.44"
+        },
+        "0.08": {
+          "remaining_real": "6411508.55",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2588491.45"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "65576f47c593a787fd319ac8cf080234b70122f0d18d4f6afcf5b5b8258e35a5",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-lic-higher_reserve",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.06",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14941903.37",
+      "after_explicit_costs_before_taxes_remaining": "14932029.10",
+      "remaining_after_tax_set-aside": "13856049.96",
+      "tax_set_aside": "1075790.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1858"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1449"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9360650.88",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7737145.93",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1262854.07"
+        },
+        "0.08": {
+          "remaining_real": "6418032.11",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2581967.89"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "bb2d033dac8c5ab51dd3453e1376d3ff3cb54c08576428bf1638852852d7d5f2",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-lic-tax_context",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "4500000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14940489.63",
+      "after_explicit_costs_before_taxes_remaining": "14930660.36",
+      "remaining_after_tax_set-aside": "13713452.71",
+      "tax_set_aside": "1217130.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1846"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.0006"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9264317.28",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7657520.37",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1342479.63"
+        },
+        "0.08": {
+          "remaining_real": "6351982.00",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2648018.00"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "5800abbf7f6f5e06174edc13cf8bf922dd0db536e9ce9972cde71b7a35c204cf",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-lic-higher_cess",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.06",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14940489.63",
+      "after_explicit_costs_before_taxes_remaining": "14930660.36",
+      "remaining_after_tax_set-aside": "13834522.71",
+      "tax_set_aside": "1096060.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1846"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1233"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9346107.84",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7725125.22",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1274874.78"
+        },
+        "0.08": {
+          "remaining_real": "6408060.83",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2591939.17"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "79dc2c3130988109baa95853c3712e9b616e5d60c00bbb29620a06aa9453741a",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-lic-lower_equity_tracking",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14576649.05",
+      "after_explicit_costs_before_taxes_remaining": "14566841.61",
+      "remaining_after_tax_set-aside": "13543503.97",
+      "tax_set_aside": "1023260.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "6.8416"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "5.8266"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9149506.00",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7562621.88",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1437378.12"
+        },
+        "0.08": {
+          "remaining_real": "6273262.84",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2726737.16"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1333,
+      "trace_sha256": "e421020760783e42b11bd8fc90b4f5b890be1be5d4ffc9674d65a54645b2076c",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 121,
+        "reserve_interest": 121,
+        "sale": 360,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-full",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15024276.89",
+      "remaining_after_tax_set-aside": "13903610.52",
+      "tax_set_aside": "1069790.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2714"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1927"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9392781.08",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7763703.49",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1236296.51"
+        },
+        "0.08": {
+          "remaining_real": "6440061.85",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2559938.15"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "f0773b82993f12b376e1d7709330a6af681f14cd45f9e90ab3ce38aaa22474ed",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-staged",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14459715.94",
+      "after_explicit_costs_before_taxes_remaining": "14452215.22",
+      "remaining_after_tax_set-aside": "13363274.15",
+      "tax_set_aside": "1034120.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9027749.19",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7461982.49",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1538017.51"
+        },
+        "0.08": {
+          "remaining_real": "6189781.56",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2810218.44"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2509,
+      "trace_sha256": "f7058d83798f9f46b4cbafbfc1ba44ad269b09a2a1063d1060c3bdf9a541437e",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 358,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 145,
+        "sale": 243,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "120-bond-higher_etf_friction",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "25",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15018603.71",
+      "remaining_after_tax_set-aside": "13898067.34",
+      "tax_set_aside": "1069660.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2661"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1872"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9389036.31",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7760608.21",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1239391.79"
+        },
+        "0.08": {
+          "remaining_real": "6437494.29",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2562505.71"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "5f39e3480e76c0d843eaec750cd7f0eb2debf866f6e86fc0d6637233b56e756c",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-higher_reserve",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.06",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15150363.74",
+      "after_explicit_costs_before_taxes_remaining": "15143092.98",
+      "remaining_after_tax_set-aside": "13961672.20",
+      "tax_set_aside": "1097250.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.3808"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.2508"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9432005.47",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7796124.83",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1203875.17"
+        },
+        "0.08": {
+          "remaining_real": "6466955.64",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2533044.36"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "14b9a6e852a2238fd1b1a0b38ea95abc6b620c2ac42e1290526267a7398edbc1",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-tax_context",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "4500000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15024276.89",
+      "remaining_after_tax_set-aside": "13856810.52",
+      "tax_set_aside": "1116590.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2714"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1457"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9361164.68",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7737570.62",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1262429.38"
+        },
+        "0.08": {
+          "remaining_real": "6418384.40",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2581615.60"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "ba0b454e373570cfe20fc5dc7c35e8e6119091aaf9e856da6cef156c09cf479a",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-higher_cess",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.06",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15024276.89",
+      "remaining_after_tax_set-aside": "13882406.57",
+      "tax_set_aside": "1090050.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2714"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1714"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9378456.46",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7751863.32",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1248136.68"
+        },
+        "0.08": {
+          "remaining_real": "6430240.32",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2569759.68"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "3049c813c044c4b890ae7840d608a0a5ee413c42b629a78adfbc73e0283a5c44",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-lower_equity_tracking",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14667505.09",
+      "after_explicit_costs_before_taxes_remaining": "14660458.14",
+      "remaining_after_tax_set-aside": "13591911.77",
+      "tax_set_aside": "1017670.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "6.9307"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "5.8764"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9182208.58",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7589652.54",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1410347.46"
+        },
+        "0.08": {
+          "remaining_real": "6295685.02",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2704314.98"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "f2e41d2f9d952f6458714520b2e5e23d4285a84af707ff3a71cb8a4905262bd5",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-dirty_basis",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15024276.89",
+      "remaining_after_tax_set-aside": "13910220.52",
+      "tax_set_aside": "1063180.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2714"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1993"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9397246.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7767394.48",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1232605.52"
+        },
+        "0.08": {
+          "remaining_real": "6443123.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2556876.44"
+        }
+      },
+      "same_year_loss_offsets": "13272.71",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "bf6cd433fe5f55ae2cfd9a6b608f4f56c39a00aa2b0c13335571345cb7920d2e",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-higher_bond_friction",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "25",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15020069.38",
+      "remaining_after_tax_set-aside": "13900006.88",
+      "tax_set_aside": "1069270.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2675"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1891"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9390346.60",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7761691.24",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1238308.76"
+        },
+        "0.08": {
+          "remaining_real": "6438392.67",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2561607.33"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "bf398de6e7ad5262881e250adc1dbb08e456f3057cb0dd5c9f45a7a4d285c417",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-higher_bond_yield",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15180215.19",
+      "after_explicit_costs_before_taxes_remaining": "15172981.52",
+      "remaining_after_tax_set-aside": "14017413.89",
+      "tax_set_aside": "1101400.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.4082"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.3063"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9469662.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7827250.70",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1172749.30"
+        },
+        "0.08": {
+          "remaining_real": "6492774.83",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2507225.17"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2499,
+      "trace_sha256": "8eeb022aeef499977be60492d279285030b3025ddb15de1b9084cb47067f9120",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-bond-coupon_withholding",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0.10",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15031345.67",
+      "after_explicit_costs_before_taxes_remaining": "15024276.89",
+      "remaining_after_tax_set-aside": "13902050.69",
+      "tax_set_aside": "1069070.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2714"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1912"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9391727.32",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7762832.50",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1237167.50"
+        },
+        "0.08": {
+          "remaining_real": "6439339.35",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2560660.65"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 3659,
+      "trace_sha256": "8fa12660038b53bac409123b643accdd2dd6fe0b32231a1dc628579ae19767c2",
+      "event_types": {
+        "acquisition": 355,
+        "cash_release": 355,
+        "contribution": 121,
+        "coupon": 1160,
+        "coupon_withholding": 1160,
+        "maturity": 115,
+        "reserve_interest": 142,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-full",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15021764.55",
+      "after_explicit_costs_before_taxes_remaining": "14960055.65",
+      "remaining_after_tax_set-aside": "13876000.22",
+      "tax_set_aside": "1083990.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2119"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1650"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9374128.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7748286.05",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1251713.95"
+        },
+        "0.08": {
+          "remaining_real": "6427272.94",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2572727.06"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "6125f43d94e35120c66773cc5318610d4cc1cec79aab5ddef9f55d87c3bd15b0",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-staged",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14447933.20",
+      "after_explicit_costs_before_taxes_remaining": "14386817.74",
+      "remaining_after_tax_set-aside": "13342118.53",
+      "tax_set_aside": "1038760.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9013457.21",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7450169.30",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1549830.70"
+        },
+        "0.08": {
+          "remaining_real": "6179982.42",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2820017.58"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1332,
+      "trace_sha256": "5075e4b0bcc37035c785e5081b228d9749873da0561a9dcee8e6d771e01f8ba9",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 359,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 125,
+        "sale": 243,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-higher_etf_friction",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "25",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15021764.55",
+      "after_explicit_costs_before_taxes_remaining": "14954382.48",
+      "remaining_after_tax_set-aside": "13870435.54",
+      "tax_set_aside": "1083880.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2066"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1594"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9370369.25",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7745178.76",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1254821.24"
+        },
+        "0.08": {
+          "remaining_real": "6424695.42",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2575304.58"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "1a7dad23b439fd16c94e6aee7777b0bbe72ac3b88c5fc4784b75d153ae89c62e",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-higher_reserve",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.06",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15039860.99",
+      "after_explicit_costs_before_taxes_remaining": "14977748.66",
+      "remaining_after_tax_set-aside": "13887602.38",
+      "tax_set_aside": "1090000.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2283"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1767"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9381966.56",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7754764.63",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1245235.37"
+        },
+        "0.08": {
+          "remaining_real": "6432646.99",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2567353.01"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "2ec4e882068aba552709e7ddc2d028fafa5ce057e69774e930aff57dbbc2b9e3",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-tax_context",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "4500000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15021764.55",
+      "after_explicit_costs_before_taxes_remaining": "14960055.65",
+      "remaining_after_tax_set-aside": "13733850.22",
+      "tax_set_aside": "1226140.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2119"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.0214"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9278097.11",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7668910.23",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1331089.77"
+        },
+        "0.08": {
+          "remaining_real": "6361429.99",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2638570.01"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "0837e4f813a1d4416d2c7f1b8044eac0847129ac8b31bce86dd9c0d9ae0210d4",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-higher_cess",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.06",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15021764.55",
+      "after_explicit_costs_before_taxes_remaining": "14960055.65",
+      "remaining_after_tax_set-aside": "13855160.22",
+      "tax_set_aside": "1104830.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2119"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1440"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9360049.80",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7736649.10",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1263350.90"
+        },
+        "0.08": {
+          "remaining_real": "6417619.99",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2582380.01"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "54766dd69b298a9c0cb18fe0dc0f9b596e39f4d2ceae3417bfa370c6e11af7bb",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-lower_equity_tracking",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14657923.97",
+      "after_explicit_costs_before_taxes_remaining": "14596236.91",
+      "remaining_after_tax_set-aside": "13564301.48",
+      "tax_set_aside": "1031870.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "6.8697"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "5.8480"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9163556.05",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7574235.10",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1425764.90"
+        },
+        "0.08": {
+          "remaining_real": "6282896.11",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2717103.89"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "c374a94bed37b8058c8987692d5c1be9c268eb0b1102e3450a613d64d64c57aa",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-longer_sbi_release",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15019687.13",
+      "after_explicit_costs_before_taxes_remaining": "14958021.35",
+      "remaining_after_tax_set-aside": "13874655.92",
+      "tax_set_aside": "1083300.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2100"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1636"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9373220.39",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7747535.40",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1252464.60"
+        },
+        "0.08": {
+          "remaining_real": "6426650.27",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2573349.73"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "ddbaa5a3faf414cc2c644b72eb71a0ad83203277743faadc3fddc93c4fcd9517",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-higher_sbi_ter",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15021764.55",
+      "after_explicit_costs_before_taxes_remaining": "14915993.00",
+      "remaining_after_tax_set-aside": "13847057.57",
+      "tax_set_aside": "1068870.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1709"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1359"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9354575.94",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7732124.62",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1267875.38"
+        },
+        "0.08": {
+          "remaining_real": "6413866.90",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2586133.10"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "c26778d3e05356a06163e1f7751a92bb020df8c530940095d5bc8620fdae0069",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-accrual_in_net_receivables-higher_sbi_reinvestment",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15135069.84",
+      "after_explicit_costs_before_taxes_remaining": "15070603.89",
+      "remaining_after_tax_set-aside": "13948598.46",
+      "tax_set_aside": "1121940.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.3141"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.2378"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9423173.33",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7788824.53",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1211175.47"
+        },
+        "0.08": {
+          "remaining_real": "6460899.98",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2539100.02"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "bea892b07c0d51d5b423b0c85018ca0a87e62d95928bdb9364b7894f6c3ba4f6",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-full",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15057824.14",
+      "after_explicit_costs_before_taxes_remaining": "14995238.48",
+      "remaining_after_tax_set-aside": "13899103.05",
+      "tax_set_aside": "1096070.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2445"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1882"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9389736.00",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7761186.55",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1238813.45"
+        },
+        "0.08": {
+          "remaining_real": "6437974.02",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2562025.98"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "fe223587e53fe58a4317898e367d3dd267c970f536caf658575bfccb8e7e87d7",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-staged",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14483619.43",
+      "after_explicit_costs_before_taxes_remaining": "14421641.59",
+      "remaining_after_tax_set-aside": "13365232.59",
+      "tax_set_aside": "1050400.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9029072.25",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7463076.07",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1536923.93"
+        },
+        "0.08": {
+          "remaining_real": "6190688.70",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2809311.30"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1332,
+      "trace_sha256": "ca40458a2e09a0205a9e838aa269df9db9465577d7b210bf8a932f8f60970e70",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 359,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 125,
+        "sale": 243,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-higher_etf_friction",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "25",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15057824.14",
+      "after_explicit_costs_before_taxes_remaining": "14989565.30",
+      "remaining_after_tax_set-aside": "13893548.36",
+      "tax_set_aside": "1095950.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2393"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1826"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9385983.45",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7758084.84",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1241915.16"
+        },
+        "0.08": {
+          "remaining_real": "6435401.13",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2564598.87"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "480ee338ae661589a44b084f61135bca274b60270cb72d1bb4b0fb1e4fc78ff9",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-higher_reserve",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.06",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15076139.54",
+      "after_explicit_costs_before_taxes_remaining": "15013145.12",
+      "remaining_after_tax_set-aside": "13910858.83",
+      "tax_set_aside": "1102140.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2611"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.2000"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9397677.79",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7767750.91",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1232249.09"
+        },
+        "0.08": {
+          "remaining_real": "6443419.23",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2556580.77"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "82aab6c086e0f7770d66b312642695a4d9fa1ea7d9ad1a1362994f6534aebf15",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-tax_context",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "4500000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15057824.14",
+      "after_explicit_costs_before_taxes_remaining": "14995238.48",
+      "remaining_after_tax_set-aside": "13756413.05",
+      "tax_set_aside": "1238760.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2445"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.0443"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9293339.75",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7681509.20",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1318490.80"
+        },
+        "0.08": {
+          "remaining_real": "6371880.94",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2628119.06"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "88261101ff367cc7676e1348c4daf7da1a885aafe6cf096e96fd115f415949df",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-higher_cess",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.06",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15057824.14",
+      "after_explicit_costs_before_taxes_remaining": "14995238.48",
+      "remaining_after_tax_set-aside": "13878033.05",
+      "tax_set_aside": "1117140.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2445"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1670"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9375501.86",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7749421.17",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1250578.83"
+        },
+        "0.08": {
+          "remaining_real": "6428214.54",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2571785.46"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "1a700c11640c3feb35c82d8667826af14d9172d317820f5cfd9fa3319411ba20",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-lower_equity_tracking",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "14693983.57",
+      "after_explicit_costs_before_taxes_remaining": "14631419.73",
+      "remaining_after_tax_set-aside": "13587414.30",
+      "tax_set_aside": "1043940.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "6.9032"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "5.8718"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9179170.25",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7587141.18",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1412858.82"
+        },
+        "0.08": {
+          "remaining_real": "6293601.82",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2706398.18"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "fa5e5d92ddbccdd5e5457008b8039fcb1f7aab7d98ea4ff25b2c9ba9e490663c",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-longer_sbi_release",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15055719.61",
+      "after_explicit_costs_before_taxes_remaining": "14993177.72",
+      "remaining_after_tax_set-aside": "13897752.29",
+      "tax_set_aside": "1095360.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2426"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1868"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9388823.47",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7760432.29",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1239567.71"
+        },
+        "0.08": {
+          "remaining_real": "6437348.36",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2562651.64"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "26d4b1b1f24b3f15518beb38a707e0ab7e365104aeea09dbf5efa077622d8a91",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-higher_sbi_ter",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15057824.14",
+      "after_explicit_costs_before_taxes_remaining": "14950502.32",
+      "remaining_after_tax_set-aside": "13869716.89",
+      "tax_set_aside": "1080720.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2030"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1587"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9369883.76",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7744777.47",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1255222.53"
+        },
+        "0.08": {
+          "remaining_real": "6424362.54",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2575637.46"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "058bd367e8c17cda5933098597bec15b8806ed44287d1a79c1ad37fe2e0f292c",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "120-market_value_includes_accrual-higher_sbi_reinvestment",
+      "first": "2026-10-31",
+      "end": "2036-10-31",
+      "payments": 120,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "8981227.38",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15170963.52",
+      "after_explicit_costs_before_taxes_remaining": "15105622.93",
+      "remaining_after_tax_set-aside": "13971607.50",
+      "tax_set_aside": "1133950.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.3464"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.2607"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9438717.41",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7801672.65",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1198327.35"
+        },
+        "0.08": {
+          "remaining_real": "6471557.61",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2528442.39"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1322,
+      "trace_sha256": "0b17850023e7fa5256abc591f9f51e173605e49ecdd16d7dac3a5c06f8958cf1",
+      "event_types": {
+        "acquisition": 356,
+        "cash_release": 356,
+        "contribution": 121,
+        "maturity": 116,
+        "reserve_interest": 122,
+        "sale": 240,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "122-lic-full",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15246100.35",
+      "after_explicit_costs_before_taxes_remaining": "15236087.67",
+      "remaining_after_tax_set-aside": "14130045.51",
+      "tax_set_aside": "1105960.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.1857"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1500"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9483557.41",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7813889.47",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1186110.53"
+        },
+        "0.08": {
+          "remaining_real": "6461530.22",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2538469.78"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1355,
+      "trace_sha256": "ffe2270cff511a1f13bc1474801bfbb677a1d1a3bf4d47bd8ac7f70e9413905d",
+      "event_types": {
+        "acquisition": 366,
+        "cash_release": 366,
+        "contribution": 123,
+        "reserve_interest": 123,
+        "sale": 366,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "122-lic-staged",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14646342.99",
+      "after_explicit_costs_before_taxes_remaining": "14636360.23",
+      "remaining_after_tax_set-aside": "13570147.56",
+      "tax_set_aside": "1058670.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9107774.87",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7504266.92",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1495733.08"
+        },
+        "0.08": {
+          "remaining_real": "6205494.42",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2794505.58"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1365,
+      "trace_sha256": "c9ee4fe61dff095d57203c485b09219b1d9492f5fd865aba4c7bb6c79d23dad5",
+      "event_types": {
+        "acquisition": 366,
+        "cash_release": 369,
+        "contribution": 123,
+        "reserve_interest": 126,
+        "sale": 369,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "122-bond-full",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15328757.37",
+      "after_explicit_costs_before_taxes_remaining": "15321590.68",
+      "remaining_after_tax_set-aside": "14171744.90",
+      "tax_set_aside": "1096810.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2624"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1906"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9511544.48",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7836949.16",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1163050.84"
+        },
+        "0.08": {
+          "remaining_real": "6480598.94",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2519401.06"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2515,
+      "trace_sha256": "5b82936e3ccd0a41adb2a42aa4950ffff3757a57ed54c7d567af819c8d5c56a1",
+      "event_types": {
+        "acquisition": 359,
+        "cash_release": 359,
+        "contribution": 123,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 144,
+        "sale": 244,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "122-bond-staged",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14736752.65",
+      "after_explicit_costs_before_taxes_remaining": "14729153.49",
+      "remaining_after_tax_set-aside": "13610071.88",
+      "tax_set_aside": "1060960.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9134570.58",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7526345.00",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1473655.00"
+        },
+        "0.08": {
+          "remaining_real": "6223751.41",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2776248.59"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 2525,
+      "trace_sha256": "1253c203a5aa0817d52d8aeb538301023b86f5a3d09de2c1edaee7af55b3bb30",
+      "event_types": {
+        "acquisition": 359,
+        "cash_release": 362,
+        "contribution": 123,
+        "coupon": 1160,
+        "maturity": 115,
+        "reserve_interest": 147,
+        "sale": 247,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "122-accrual_in_net_receivables-full",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15319113.24",
+      "after_explicit_costs_before_taxes_remaining": "15256947.12",
+      "remaining_after_tax_set-aside": "14145268.04",
+      "tax_set_aside": "1111610.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2044"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1648"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9493774.20",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7822307.50",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1177692.50"
+        },
+        "0.08": {
+          "remaining_real": "6468491.33",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2531508.67"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1338,
+      "trace_sha256": "38fc450937fde4bc017b72bd443063abf595d08c01d22be30eb40c2f79945857",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 123,
+        "maturity": 116,
+        "reserve_interest": 124,
+        "sale": 244,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "122-accrual_in_net_receivables-staged",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14724892.42",
+      "after_explicit_costs_before_taxes_remaining": "14663325.95",
+      "remaining_after_tax_set-aside": "13589673.90",
+      "tax_set_aside": "1066010.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9120880.22",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7515064.95",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1484935.05"
+        },
+        "0.08": {
+          "remaining_real": "6214423.62",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2785576.38"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1348,
+      "trace_sha256": "81db92cb2bdea809b0a7c63ddbf64905970833f5dec46fc2b230dfe821c342a0",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 363,
+        "contribution": 123,
+        "maturity": 116,
+        "reserve_interest": 127,
+        "sale": 247,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    },
+    {
+      "case": "122-market_value_includes_accrual-full",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "0.00",
+      "before_explicit_costs_and_taxes_remaining": "15355409.97",
+      "after_explicit_costs_before_taxes_remaining": "15292361.31",
+      "remaining_after_tax_set-aside": "14168522.23",
+      "tax_set_aside": "1123770.00",
+      "xirr_before_tax": {
+        "status": "PASS",
+        "annual_percent": "7.2362"
+      },
+      "xirr_after_tax": {
+        "status": "PASS",
+        "annual_percent": "6.1874"
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9509381.55",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7835167.03",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "1164832.97"
+        },
+        "0.08": {
+          "remaining_real": "6479125.24",
+          "real_withdrawals_separate": "0.00",
+          "floor_shortfall_before_withdrawals_credit": "2520874.76"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1338,
+      "trace_sha256": "f1175e68b265d0798dd5c1044d7ae0184d35ca6ec5c73699b57e3fce502ce1be",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 360,
+        "contribution": 123,
+        "maturity": 116,
+        "reserve_interest": 124,
+        "sale": 244,
+        "tax_reserve": 11
+      }
+    },
+    {
+      "case": "122-market_value_includes_accrual-staged",
+      "first": "2026-10-31",
+      "end": "2036-12-31",
+      "payments": 122,
+      "reserve_rate": "0.04",
+      "synthetic_external_ordinary_income": "3000000",
+      "cess": "0.04",
+      "coupon_withholding_rate": "0",
+      "etf_friction_bps_per_side": "10",
+      "bond_friction_bps_per_side": "10",
+      "contributed": "9110914.50",
+      "withdrawn": "500000.00",
+      "before_explicit_costs_and_taxes_remaining": "14760813.33",
+      "after_explicit_costs_before_taxes_remaining": "14698378.81",
+      "remaining_after_tax_set-aside": "13612926.78",
+      "tax_set_aside": "1077720.00",
+      "xirr_before_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "xirr_after_tax": {
+        "status": "AMBIGUOUS_MULTIPLE_SIGN_CHANGES",
+        "annual_percent": null
+      },
+      "inflation": {
+        "0.04": {
+          "remaining_real": "9136486.69",
+          "real_withdrawals_separate": "345490.90",
+          "floor_shortfall_before_withdrawals_credit": "0.00"
+        },
+        "0.06": {
+          "remaining_real": "7527923.75",
+          "real_withdrawals_separate": "288716.03",
+          "floor_shortfall_before_withdrawals_credit": "1472076.25"
+        },
+        "0.08": {
+          "remaining_real": "6225056.93",
+          "real_withdrawals_separate": "242082.03",
+          "floor_shortfall_before_withdrawals_credit": "2774943.07"
+        }
+      },
+      "same_year_loss_offsets": "0.00",
+      "cash_invariants": {
+        "unsettled_at_endpoint": 0,
+        "unclosed_lots_at_endpoint": 0
+      },
+      "event_count": 1348,
+      "trace_sha256": "b7667661da79fac3c6c5fdfcbe938d6aa1665abaf18e0b9e9b3f504e4cc7d9ca",
+      "event_types": {
+        "acquisition": 360,
+        "cash_release": 363,
+        "contribution": 123,
+        "maturity": 116,
+        "reserve_interest": 127,
+        "sale": 247,
+        "tax_reserve": 11,
+        "withdrawal": 1
+      }
+    }
+  ],
+  "live_quote": "DEFERRED",
+  "paid_silver_history": "DEFERRED",
+  "rbi_tbill_payment_timing": "OPEN",
+  "investment_authorization": "NO_GO"
+}

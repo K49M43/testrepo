@@ -1,0 +1,14 @@
+{
+  "record_id": "G6.3-WP2-DATED-RESEARCH-2026-11-27",
+  "ordinary_external_income": "3000000",
+  "stress_external_income": "4500000",
+  "stress_cess": "0.06",
+  "stress_coupon_withholding": "0.10",
+  "stress_equity_tracking_drag": "0.005",
+  "sale_lag_calendar_days": 3,
+  "bond_redemption_lag_calendar_days": 3,
+  "early_sale": "2036-03-24",
+  "early_fraction": "0.25",
+  "withdrawal_date": "2036-04-01",
+  "withdrawal_inr": "500000"
+}
