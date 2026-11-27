@@ -17,6 +17,8 @@ on:
       - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/audit_g6_3_sbi_gilt_valuation.py'
       - 'decision/audit_g6_3_exact_date_coverage.py'
+      - 'decision/g6_3_wp2_portfolio.py'
+      - 'decision/g6_2_full_horizon_bridge.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
@@ -29,6 +31,7 @@ on:
       - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
       - 'research/g6_3/direct_gsec_2036/**'
       - 'research/g6_3/2026-11-27-exact-date-coverage/**'
+      - 'research/g6_3/2026-11-27-wp2-portfolio/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
   pull_request:
@@ -48,6 +51,8 @@ on:
       - 'decision/audit_g6_3_sbi_gilt_holdings.py'
       - 'decision/audit_g6_3_sbi_gilt_valuation.py'
       - 'decision/audit_g6_3_exact_date_coverage.py'
+      - 'decision/g6_3_wp2_portfolio.py'
+      - 'decision/g6_2_full_horizon_bridge.py'
       - 'decision/ty2026_27_tax_components.py'
       - 'research/stage512/2026-11-05/g5_4/**'
       - 'research/stage512/2026-11-05/source_retrieval_followup/**'
@@ -60,6 +65,7 @@ on:
       - 'research/stage512/2026-11-06/hdfcgold_execution_evidence/**'
       - 'research/g6_3/direct_gsec_2036/**'
       - 'research/g6_3/2026-11-27-exact-date-coverage/**'
+      - 'research/g6_3/2026-11-27-wp2-portfolio/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
 permissions:
@@ -102,3 +108,5 @@ jobs:
         run: python decision/audit_g6_3_sbi_gilt_valuation.py --check
       - name: Verify exact-date return coverage and candidate inclusion
         run: python decision/audit_g6_3_exact_date_coverage.py --check
+      - name: Reproduce WP2 matched NAV and full funding scenarios
+        run: python decision/g6_3_wp2_portfolio.py --check

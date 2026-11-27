@@ -42,3 +42,7 @@ The [valuation audit](../research/g6_3/direct_gsec_2036/2026-11-27-sbi-valuation
 ## 2026-11-27 — Qualify matched-date windows for G6.3 research
 
 The [WP1 audit](../research/g6_3/2026-11-27-exact-date-coverage/README.md) maps the ten G5 hypotheses, three sovereign/reserve comparisons and the Nifty benchmark to their defensible uses. The largest product-only three-sleeve set has 85 contiguous matching NAV intervals. The SBI gilt mix has 48 on common observed dates and 31 if every product uses its own last date. Carry both SBI forward accounting cases. Historical research coverage and conditional forward cashflows support the next deterministic comparison. Investment authorization remains **NO-GO**.
+
+## 2026-11-27 — Run the funded 2036 portfolio scenarios
+
+The [WP2 portfolio comparison](../research/g6_3/2026-11-27-wp2-portfolio/README.md) carries both SBI accrual cases into the full funding fixture and retains LIC and the direct GoI bond. At 6% illustration inflation and 120 payments, the reference cases deliver ₹78.21–₹78.45 lakh modeled real after-tax wealth, with a ₹11.55–₹11.79 lakh shortfall. The better-supported SBI accounting case leads the direct bond by only ₹892 nominal after tax in that reference case. The lower- and higher-growth cases change the order. Keep all routes as research candidates and leave full WP2 and G6.3 open. Investment authorization remains **NO-GO**.
