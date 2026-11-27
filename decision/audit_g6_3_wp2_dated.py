@@ -175,7 +175,8 @@ def check_trace(path, expected, charges, sbi_stamp):
                         "illegal capital loss allocation")
                 used_losses[loss_id] += amount
                 used_gains[gain_id] += amount
-                require(used_losses[loss_id] <= -loss[2] and used_gains[gain_id] <= gain[2], "double use of a tax offset")
+                require(used_losses[loss_id] + loss[2] <= D("1e-25") and used_gains[gain_id] - gain[2] <= D("1e-25"),
+                        "double use of a tax offset")
                 year_gains[gain[1]] -= amount
             require({k for k, value in year_gains.items() if value} <= set(row["net_capital_gains"]), "missing tax gain bucket")
             for bucket, amount in row["net_capital_gains"].items():
@@ -259,6 +260,15 @@ def boundary_checks():
     result = allocate_losses("2034-35", [gain], [long_loss])
     require(result.candidate_gains_after_explicit_offsets_by_bucket["ordinary_stcg"] == D(10),
             "long-term loss offset short-term gain")
+    fractional_gain = replace(gain, amount_inr=D("1.00001"))
+    fractional_losses = [replace(valid, loss_id=key, origin_tax_year="2034-35", amount_inr=D(amount))
+                         for key, amount in (("a", "0.00002"), ("b", "2"))]
+    with localcontext() as reduced:
+        reduced.prec = 3
+        result = allocate_losses("2034-35", [fractional_gain], fractional_losses)
+    require(sum(D(row["amount_inr"]) for row in result.offset_trace) == fractional_gain.amount_inr
+            and result.candidate_gains_after_explicit_offsets_by_bucket["ordinary_stcg"] == ZERO,
+            "fractional offsets must exactly exhaust the gain")
     fixture = Policy(b, b, 0, 0, None, ZERO, None, ZERO, ZERO, D("3000000"), ZERO, ZERO, "clean", ZERO)
     reject(simulate, [(a, D(50))], {"bond": D(1)}, fixture, {"bond": lambda day: D(100)},
            {"bond": b - timedelta(days=2)}, {"coupons": {}, "accrued": lambda day: ZERO}, {})

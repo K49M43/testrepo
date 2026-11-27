@@ -97,6 +97,20 @@ def capital_bucket(kind, acquired, sold):
 
 
 def allocate_losses(year, gains, losses, carried=()):
+    # Allocation subtracts an offset while the validator adds it back. Both
+    # operations must agree exactly, including fractions below a paisa.
+    amounts = [row.amount_inr for row in (*gains, *losses, *carried)]
+    if not amounts:
+        return _allocate_losses(year, gains, losses, carried)
+    require(all(amount.is_finite() for amount in amounts), "nonfinite capital gain or loss")
+    exponent = min(amount.as_tuple().exponent for amount in amounts)
+    digits = max(amount.adjusted() for amount in amounts) - exponent + 1
+    with localcontext() as context:
+        context.prec = max(context.prec, digits + len(str(len(amounts))))
+        return _allocate_losses(year, gains, losses, carried)
+
+
+def _allocate_losses(year, gains, losses, carried):
     # Explicit fixture policy. Constrained long losses first, then flexible short
     # losses. Within a class prefer older losses and the listed gain buckets.
     priority = {key: i for i, key in enumerate(("ordinary_stcg", "section76", "section196", "section197", "section198"))}

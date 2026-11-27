@@ -20,6 +20,8 @@ on:
       - 'decision/g6_3_wp2_portfolio.py'
       - 'decision/g6_3_wp2_dated.py'
       - 'decision/audit_g6_3_wp2_dated.py'
+      - 'decision/g6_3_wp3_allocation_stress.py'
+      - 'decision/audit_g6_3_wp3_allocation_stress.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/capital_gain_loss_schedule.py'
       - 'decision/g6_2_full_horizon_bridge.py'
@@ -37,6 +39,7 @@ on:
       - 'research/g6_3/2026-11-27-exact-date-coverage/**'
       - 'research/g6_3/2026-11-27-wp2-portfolio/**'
       - 'research/g6_3/2026-11-27-wp2-dated/**'
+      - 'research/g6_3/2026-11-27-wp3-allocation-stress/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
   pull_request:
@@ -59,6 +62,8 @@ on:
       - 'decision/g6_3_wp2_portfolio.py'
       - 'decision/g6_3_wp2_dated.py'
       - 'decision/audit_g6_3_wp2_dated.py'
+      - 'decision/g6_3_wp3_allocation_stress.py'
+      - 'decision/audit_g6_3_wp3_allocation_stress.py'
       - 'decision/after_tax_event_ledger.py'
       - 'decision/capital_gain_loss_schedule.py'
       - 'decision/g6_2_full_horizon_bridge.py'
@@ -76,6 +81,7 @@ on:
       - 'research/g6_3/2026-11-27-exact-date-coverage/**'
       - 'research/g6_3/2026-11-27-wp2-portfolio/**'
       - 'research/g6_3/2026-11-27-wp2-dated/**'
+      - 'research/g6_3/2026-11-27-wp3-allocation-stress/**'
       - 'docs/G6_3_SOURCE_COVERAGE_AUDIT.md'
       - '.github/workflows/g6-3-source-inventory.yml'
 permissions:
@@ -124,3 +130,7 @@ jobs:
         run: |
           python decision/g6_3_wp2_dated.py --check --trace-dir "$RUNNER_TEMP/g63-wp2"
           python decision/audit_g6_3_wp2_dated.py "$RUNNER_TEMP/g63-wp2"
+      - name: Reproduce and audit the frozen WP3 allocation stress protocol
+        run: |
+          python decision/g6_3_wp3_allocation_stress.py --check
+          python decision/audit_g6_3_wp3_allocation_stress.py

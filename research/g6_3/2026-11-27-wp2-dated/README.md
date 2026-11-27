@@ -45,3 +45,5 @@ python decision/audit_g6_3_wp2_dated.py tmp/g63-wp2-traces
 ```
 
 [Inputs](inputs_v2.json) and [frozen results](results_v2.json) list the run assumptions, normalized source hashes, and event trace digests. The regeneration and independent check use Python 3.13 and standard-library dependencies, without random draws. JSONL files are generated locally or within CI and each event includes a date, fiscal year, cash delta and running cash balance.
+
+The later [WP3 comparison](../2026-11-27-wp3-allocation-stress/README.md) exposed a precision edge in multi-loss allocation. The resulting exact-offset trace correction changed event digests while leaving all 50 reported financial rows unchanged. The prior hashes remain available in commit `73e3802`.

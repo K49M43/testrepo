@@ -50,3 +50,7 @@ The [WP2 portfolio comparison](../research/g6_3/2026-11-27-wp2-portfolio/README.
 ## 2026-11-27 — Independently reconcile dated WP2 outcomes
 
 The [dated reconciliation](../research/g6_3/2026-11-27-wp2-dated/README.md) exercises the cash release and fiscal-year boundaries, a 25% early sale and ₹5 lakh withdrawal, annual incremental tax under a hypothetical taxpayer profile, loss offsets, withholding credits and a tax-policy stress. The dated 120-payment full exits deliver ₹77.37–₹77.64 lakh real at 6% inflation after costs and modeled tax. The deterministic research scope passes independent reconciliation. Keep portfolio ranking conditional and retain the personal and executable evidence blocks in [issue #44](https://github.com/K49M43/testrepo/issues/44). WP3 probabilities remain unqualified, and investment authorization remains **NO-GO**.
+
+## 2026-11-27 — Compare three allocations under a frozen stress protocol
+
+The [WP3 comparison](../research/g6_3/2026-11-27-wp3-allocation-stress/README.md) adds 84 forward cases and 23 exact-date NAV replays. Growth leads the reference paths at ₹79.66–₹79.79 lakh real. Defensive leads after a late equity shock, with ₹64.98–₹66.04 lakh real versus ₹62.00–₹62.13 lakh for growth. The risk trade-off is conditional on instrument, stress and exit. Keep all three mixes in research, retain both SBI accrual cases, and require additional statistical assurance for probabilities and further evidence for execution. Investment authorization remains **NO-GO**.

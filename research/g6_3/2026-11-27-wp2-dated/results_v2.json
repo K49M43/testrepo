@@ -42,7 +42,7 @@
     },
     {
       "path": "decision/g6_3_wp2_dated.py",
-      "sha256_normalized": "3a13ea40e597dda821f18876e255a667d4159d40319e9e8b2649870bb342595a"
+      "sha256_normalized": "680ca4d8e3eb8b34611a4dfc2beda109dce9ad181bb753b8df06b46daa74cd9b"
     },
     {
       "path": "decision/after_tax_event_ledger.py",
@@ -54,7 +54,7 @@
     },
     {
       "path": "decision/audit_g6_3_wp2_dated.py",
-      "sha256_normalized": "b57f3a64e20071b44c7f20cd2f336e4a12b5b45e60929de700c27a08b1825cc1"
+      "sha256_normalized": "4013dcbc203065b574f922d88666655d94e5f316c684d8a1e6f97ce155d81adf"
     },
     {
       "path": "decision/capital_gain_loss_schedule.py",
@@ -118,7 +118,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 486,
-      "trace_sha256": "b65e4d263b612eaa398ddcd3564a16aa7f162eaa9e64f59e165f21b7a2a4fdd3",
+      "trace_sha256": "80f5884a583da059a30513c1514b3559fd5d1c4d22eacb9d4362f10b10f51478",
       "event_types": {
         "acquisition": 144,
         "cash_release": 144,
@@ -175,7 +175,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 630,
-      "trace_sha256": "b85a44419d01c690b7abac0b19806282aa6ec32a03847fa16f46fef4b69893bd",
+      "trace_sha256": "159aa7241787124d2edf8dcac0ad3fdbf62f78882cce1f16ca6ed44e6daddd78",
       "event_types": {
         "acquisition": 192,
         "cash_release": 192,
@@ -232,7 +232,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 486,
-      "trace_sha256": "b28dbbc57481252404bdb0ce0ad5e84a3c082f2da7b646885742766a1cf87033",
+      "trace_sha256": "02bc74eef6c063aae2c162c592f794a5281235b0b9095fc8770bec48f8c964cd",
       "event_types": {
         "acquisition": 144,
         "cash_release": 144,
@@ -289,7 +289,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 630,
-      "trace_sha256": "1e35f0fb7252a0c9f5dfb8024de721d5438ce19e0cd5ab2511a91e6421e904c6",
+      "trace_sha256": "3f49c1ad65322229392a464bcfc1e3e860406c53edcdc8d895cd772fcb92cb38",
       "event_types": {
         "acquisition": 192,
         "cash_release": 192,
@@ -346,7 +346,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "6ce80e894c0cc63fb9573765dbe26d90b41316e7c6fae44304ce10934234bbd8",
+      "trace_sha256": "8f4523cff5efe91fe53a8f7c6c3e8122dc0e29649fa8e52b7897d1f4069b2b66",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -404,7 +404,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1343,
-      "trace_sha256": "f3ebdd6b5a8e0526f7f6e2031488bd0427cf61f12fe7d1886b29bc024c9681bd",
+      "trace_sha256": "9db72746d829a6e6eb9921337f2bb56582b945563d3ae10266f7df0297ceac13",
       "event_types": {
         "acquisition": 360,
         "cash_release": 363,
@@ -463,7 +463,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "65576f47c593a787fd319ac8cf080234b70122f0d18d4f6afcf5b5b8258e35a5",
+      "trace_sha256": "78b34886bd8f61f2e06da6cf3ad5f4b3d44fc2752473001b753045562542bcc4",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -521,7 +521,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "bb2d033dac8c5ab51dd3453e1376d3ff3cb54c08576428bf1638852852d7d5f2",
+      "trace_sha256": "e5468f16d04cd31cc9b2d81e6d70d96064208341459897bd43891acdb7bc5014",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -579,7 +579,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "5800abbf7f6f5e06174edc13cf8bf922dd0db536e9ce9972cde71b7a35c204cf",
+      "trace_sha256": "2ad116266900aed184c02c5d8472d8a6c1531a788680794ebd0e81cbc26cd76b",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -637,7 +637,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "79dc2c3130988109baa95853c3712e9b616e5d60c00bbb29620a06aa9453741a",
+      "trace_sha256": "b337a7fcb25743c34998bca9f812a7d27c8111bf46403d2e5f226e6d8dc6c463",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -695,7 +695,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1333,
-      "trace_sha256": "e421020760783e42b11bd8fc90b4f5b890be1be5d4ffc9674d65a54645b2076c",
+      "trace_sha256": "32ab65e0f33633fbb6b852592f3e1355e60179bd488df4b53b68cfc311527cee",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -753,7 +753,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "f0773b82993f12b376e1d7709330a6af681f14cd45f9e90ab3ce38aaa22474ed",
+      "trace_sha256": "8b101a0017166e1a58745ec079671f25c6fab2d4ac1cec71f8dee7f4ca093f60",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -813,7 +813,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2509,
-      "trace_sha256": "f7058d83798f9f46b4cbafbfc1ba44ad269b09a2a1063d1060c3bdf9a541437e",
+      "trace_sha256": "548b595ccd9dc14dfddbb92e3e4c0f81e71b5b8e21039984770cdc03af722862",
       "event_types": {
         "acquisition": 355,
         "cash_release": 358,
@@ -874,7 +874,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "5f39e3480e76c0d843eaec750cd7f0eb2debf866f6e86fc0d6637233b56e756c",
+      "trace_sha256": "9b129ee945a6075a47f67ca2d9c635576d1a1a8aa9db128041b2a12daadf6121",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -934,7 +934,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "14b9a6e852a2238fd1b1a0b38ea95abc6b620c2ac42e1290526267a7398edbc1",
+      "trace_sha256": "d85f7f07e0c3c2a5b9c22e067462c097727024de54692afc1d082dc306062b84",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -994,7 +994,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "ba0b454e373570cfe20fc5dc7c35e8e6119091aaf9e856da6cef156c09cf479a",
+      "trace_sha256": "71062e54e94a58e7f6edf51b7ef48dcafbcf6028c5307e3bf888059c0557d693",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1054,7 +1054,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "3049c813c044c4b890ae7840d608a0a5ee413c42b629a78adfbc73e0283a5c44",
+      "trace_sha256": "324674d26d4f4b41ed2d8b507e9f82250d97084c3a50b7fd885cf9939f534193",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1114,7 +1114,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "f2e41d2f9d952f6458714520b2e5e23d4285a84af707ff3a71cb8a4905262bd5",
+      "trace_sha256": "9496e41b5ae09547f8843579ffea245397c9af9e274c9b9ad3a3bd97df08603c",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1174,7 +1174,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "bf6cd433fe5f55ae2cfd9a6b608f4f56c39a00aa2b0c13335571345cb7920d2e",
+      "trace_sha256": "f2e3028d93faa3457851141d9faabff6fab1f9511a57dd70a02ae464a556556e",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1234,7 +1234,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "bf398de6e7ad5262881e250adc1dbb08e456f3057cb0dd5c9f45a7a4d285c417",
+      "trace_sha256": "dbb437db39c21caa12ce51cdf59ab0bdccca33c279733fac048900e1b602bc93",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1294,7 +1294,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2499,
-      "trace_sha256": "8eeb022aeef499977be60492d279285030b3025ddb15de1b9084cb47067f9120",
+      "trace_sha256": "66f42c44318414cf94c8266fec3bd9d6690430e3c376903f05c20ad2f992e1e8",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1354,7 +1354,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 3659,
-      "trace_sha256": "8fa12660038b53bac409123b643accdd2dd6fe0b32231a1dc628579ae19767c2",
+      "trace_sha256": "cf635954e8f1aa448feb7b34579040764e11f045b26752259bb59720144abd87",
       "event_types": {
         "acquisition": 355,
         "cash_release": 355,
@@ -1415,7 +1415,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "6125f43d94e35120c66773cc5318610d4cc1cec79aab5ddef9f55d87c3bd15b0",
+      "trace_sha256": "df16303c2085279734b4b03c6f7e0e97afe84bdb9457d47359c03d734551e6dd",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1474,7 +1474,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1332,
-      "trace_sha256": "5075e4b0bcc37035c785e5081b228d9749873da0561a9dcee8e6d771e01f8ba9",
+      "trace_sha256": "a37240bfd92383108bd11a6fb6db9d732107f3e04464e3881ef0baa927778405",
       "event_types": {
         "acquisition": 356,
         "cash_release": 359,
@@ -1534,7 +1534,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "1a7dad23b439fd16c94e6aee7777b0bbe72ac3b88c5fc4784b75d153ae89c62e",
+      "trace_sha256": "df224311c225ccf2cc25e604705b6c9dbbc91a291ed64bb1dad71e855e28cc47",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1593,7 +1593,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "2ec4e882068aba552709e7ddc2d028fafa5ce057e69774e930aff57dbbc2b9e3",
+      "trace_sha256": "62968f01050d779c8017452eed123709f61f24aeb71b332387cc42c928655089",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1652,7 +1652,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "0837e4f813a1d4416d2c7f1b8044eac0847129ac8b31bce86dd9c0d9ae0210d4",
+      "trace_sha256": "be7436a61621c8624cd134504094d103209a05ff8421d802d8eeb34e369f3c9d",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1711,7 +1711,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "54766dd69b298a9c0cb18fe0dc0f9b596e39f4d2ceae3417bfa370c6e11af7bb",
+      "trace_sha256": "ee59e59328d30c6df1f7ef8ebecba4b6b32b564a9b1df760c9af285d7592bc35",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1770,7 +1770,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "c374a94bed37b8058c8987692d5c1be9c268eb0b1102e3450a613d64d64c57aa",
+      "trace_sha256": "0718fdaf26d35334670f5c6566e4f5bc3b393002431e26a98158190242af72ef",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1829,7 +1829,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "ddbaa5a3faf414cc2c644b72eb71a0ad83203277743faadc3fddc93c4fcd9517",
+      "trace_sha256": "babe68b99d022c5a729aaf40be4340d63fe3ce9a3d9364e8cd2e8c7184f2004b",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1888,7 +1888,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "c26778d3e05356a06163e1f7751a92bb020df8c530940095d5bc8620fdae0069",
+      "trace_sha256": "c35f09ca0128fccc7a257b7d1e49c2b9f42c4f5c1a6ff45e9f252fd94f0f5f28",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -1947,7 +1947,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "bea892b07c0d51d5b423b0c85018ca0a87e62d95928bdb9364b7894f6c3ba4f6",
+      "trace_sha256": "d2155d49aa0a6091905c67ccfe009656cc5d1b55db2a6554687ada6abee048ca",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2006,7 +2006,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "fe223587e53fe58a4317898e367d3dd267c970f536caf658575bfccb8e7e87d7",
+      "trace_sha256": "15a3f974b248cde47ca054374c4a08a0b0f48fb466939e26dc3838bd42ac42b3",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2065,7 +2065,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1332,
-      "trace_sha256": "ca40458a2e09a0205a9e838aa269df9db9465577d7b210bf8a932f8f60970e70",
+      "trace_sha256": "998555c0e9e79f31417553e87691a9e1c561704f56212c486e68d906de342a2d",
       "event_types": {
         "acquisition": 356,
         "cash_release": 359,
@@ -2125,7 +2125,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "480ee338ae661589a44b084f61135bca274b60270cb72d1bb4b0fb1e4fc78ff9",
+      "trace_sha256": "d87508ea7aefccfe3ba5d6805710d3e75faae730af269b2f1a4baa38d92ad561",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2184,7 +2184,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "82aab6c086e0f7770d66b312642695a4d9fa1ea7d9ad1a1362994f6534aebf15",
+      "trace_sha256": "ede04549fe2274976eeb95befb4260aba3765f5591fe1de1a499a8fd36afa3ab",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2243,7 +2243,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "88261101ff367cc7676e1348c4daf7da1a885aafe6cf096e96fd115f415949df",
+      "trace_sha256": "4c565ac2f523ce15961d036de8d34632b7d81934adb2d807df8485c1f2125ac5",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2302,7 +2302,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "1a700c11640c3feb35c82d8667826af14d9172d317820f5cfd9fa3319411ba20",
+      "trace_sha256": "e30e48d5f7b1babea83019a98e657483057d3af310955a0c9062993a2f72d4f3",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2361,7 +2361,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "fa5e5d92ddbccdd5e5457008b8039fcb1f7aab7d98ea4ff25b2c9ba9e490663c",
+      "trace_sha256": "afe1b519f1ac4880c391c2c8890d09c8fb627dabb604d4004224c2d93ebcc01d",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2420,7 +2420,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "26d4b1b1f24b3f15518beb38a707e0ab7e365104aeea09dbf5efa077622d8a91",
+      "trace_sha256": "ab281594399d1a4bbd724b754bdd08a192aaad9be6e3718a6bc7da7191c5204f",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2479,7 +2479,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "058bd367e8c17cda5933098597bec15b8806ed44287d1a79c1ad37fe2e0f292c",
+      "trace_sha256": "3d8825ae25fbbbb1187ca29b252f9ec9694ec5ee50cbbffc5d833367b52e0825",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2538,7 +2538,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1322,
-      "trace_sha256": "0b17850023e7fa5256abc591f9f51e173605e49ecdd16d7dac3a5c06f8958cf1",
+      "trace_sha256": "37cad36f5861c471cc8da2fe04dd7b9be7c78e1f9dff0ca529b9a128e4857895",
       "event_types": {
         "acquisition": 356,
         "cash_release": 356,
@@ -2597,7 +2597,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1355,
-      "trace_sha256": "ffe2270cff511a1f13bc1474801bfbb677a1d1a3bf4d47bd8ac7f70e9413905d",
+      "trace_sha256": "e525bf05a667d2b070e86df778b91d8e6596504018d38bee8821e1490a047f7f",
       "event_types": {
         "acquisition": 366,
         "cash_release": 366,
@@ -2655,7 +2655,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1365,
-      "trace_sha256": "c9ee4fe61dff095d57203c485b09219b1d9492f5fd865aba4c7bb6c79d23dad5",
+      "trace_sha256": "4c0b9f18e0bbacbe239d1a818cd6fd8a7fa9b0e647a00dda88961e9fa911235c",
       "event_types": {
         "acquisition": 366,
         "cash_release": 369,
@@ -2714,7 +2714,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2515,
-      "trace_sha256": "5b82936e3ccd0a41adb2a42aa4950ffff3757a57ed54c7d567af819c8d5c56a1",
+      "trace_sha256": "905578d156e701a4c527ae07642cef3fdcfddbe886b64c7856c01a3fbc2a4a31",
       "event_types": {
         "acquisition": 359,
         "cash_release": 359,
@@ -2774,7 +2774,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 2525,
-      "trace_sha256": "1253c203a5aa0817d52d8aeb538301023b86f5a3d09de2c1edaee7af55b3bb30",
+      "trace_sha256": "8e08ac00c29a1171db980a7c480d61ead6454b72b33034971fd5d3585e48114f",
       "event_types": {
         "acquisition": 359,
         "cash_release": 362,
@@ -2835,7 +2835,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1338,
-      "trace_sha256": "38fc450937fde4bc017b72bd443063abf595d08c01d22be30eb40c2f79945857",
+      "trace_sha256": "2307a344f16ad7da82fae491909e3196f3b314b68c60ff90e4bb88222f391f17",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -2894,7 +2894,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1348,
-      "trace_sha256": "81db92cb2bdea809b0a7c63ddbf64905970833f5dec46fc2b230dfe821c342a0",
+      "trace_sha256": "7546f89bad093d67d4b986132890c7413694508d8b68fd5b56927f12bc2e432d",
       "event_types": {
         "acquisition": 360,
         "cash_release": 363,
@@ -2954,7 +2954,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1338,
-      "trace_sha256": "f1175e68b265d0798dd5c1044d7ae0184d35ca6ec5c73699b57e3fce502ce1be",
+      "trace_sha256": "e8e525cc88824557a7dbf4023d3be5317d3c7e910ce8ee9f821029a616ab91eb",
       "event_types": {
         "acquisition": 360,
         "cash_release": 360,
@@ -3013,7 +3013,7 @@
         "unclosed_lots_at_endpoint": 0
       },
       "event_count": 1348,
-      "trace_sha256": "b7667661da79fac3c6c5fdfcbe938d6aa1665abaf18e0b9e9b3f504e4cc7d9ca",
+      "trace_sha256": "e0b340aab4d4958445b5f25e17fac277a0cb1bd895c0fc6ccc4647979d642886",
       "event_types": {
         "acquisition": 360,
         "cash_release": 363,
